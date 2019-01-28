@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="247" id="KGk-i7-Jjw" customClass="QR_codeViewCell" customModule="AEON" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="247"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="246.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htf-4W-GaG">
+                        <rect key="frame" x="16" y="11" width="288" height="225"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code-icon" translatesAutoresizingMaskIntoConstraints="NO" id="5mj-vu-Tuh">
+                                <rect key="frame" x="69" y="8" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="RyE-Kw-pnH"/>
+                                    <constraint firstAttribute="width" constant="150" id="laB-m0-wxe"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1810-1-0000123123-5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouF-lL-raa">
+                                <rect key="frame" x="16" y="178" width="256" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kSz-zg-cio"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ouF-lL-raa" firstAttribute="top" secondItem="5mj-vu-Tuh" secondAttribute="bottom" constant="20" id="Anz-I9-utS"/>
+                            <constraint firstItem="5mj-vu-Tuh" firstAttribute="top" secondItem="htf-4W-GaG" secondAttribute="top" constant="8" id="YXt-Zk-QK3"/>
+                            <constraint firstItem="5mj-vu-Tuh" firstAttribute="centerX" secondItem="htf-4W-GaG" secondAttribute="centerX" id="arW-E9-dBB"/>
+                            <constraint firstItem="ouF-lL-raa" firstAttribute="leading" secondItem="htf-4W-GaG" secondAttribute="leading" constant="16" id="eHm-uz-ZMa"/>
+                            <constraint firstItem="ouF-lL-raa" firstAttribute="centerX" secondItem="htf-4W-GaG" secondAttribute="centerX" id="shh-DM-uXP"/>
+                            <constraint firstAttribute="trailing" secondItem="ouF-lL-raa" secondAttribute="trailing" constant="16" id="sw7-Ac-eG5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="htf-4W-GaG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="5Ib-Mx-iIF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="htf-4W-GaG" secondAttribute="trailing" id="R2u-uv-ode"/>
+                    <constraint firstItem="htf-4W-GaG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="fi4-1b-fmy"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="htf-4W-GaG" secondAttribute="bottom" id="gv2-cU-eJ8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="108.8" y="2.2488755622188905"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="qr-code-icon" width="40" height="40"/>
+    </resources>
+</document>
