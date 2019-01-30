@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B3070436D2B2F0F73EE66CF /* Pods_AEON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B5C869496E74A33D0068C5 /* Pods_AEON.framework */; };
+		752115D2220158BE001BC94A /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115D1220158BE001BC94A /* SideMenuTableViewController.swift */; };
+		752115DA22016146001BC94A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115D922016146001BC94A /* HomeViewController.swift */; };
+		752115DC22016193001BC94A /* EventNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115DB22016193001BC94A /* EventNewViewController.swift */; };
+		752115DE220161AC001BC94A /* ApplyAeonServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115DD220161AC001BC94A /* ApplyAeonServiceViewController.swift */; };
 		753C8B9421F9B670002E101B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C8B9321F9B670002E101B /* AppDelegate.swift */; };
 		753C8B9621F9B670002E101B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C8B9521F9B670002E101B /* ViewController.swift */; };
 		753C8B9921F9B670002E101B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753C8B9721F9B670002E101B /* Main.storyboard */; };
@@ -15,11 +20,30 @@
 		753C8BA121F9B67B002E101B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753C8B9F21F9B67B002E101B /* LaunchScreen.storyboard */; };
 		7561955D21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561955B21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift */; };
 		7561955E21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7561955C21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib */; };
+		75A31DF72200020E002E7336 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31DF62200020E002E7336 /* MainViewController.swift */; };
+		75A31DF92200026C002E7336 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31DF82200026C002E7336 /* LoginViewController.swift */; };
+		75A31DFF220069F5002E7336 /* SecQuestConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31DFE220069F5002E7336 /* SecQuestConfirmViewController.swift */; };
+		75A31E0122006A89002E7336 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0022006A89002E7336 /* ResetPasswordViewController.swift */; };
+		75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0222006B80002E7336 /* ContactUsViewController.swift */; };
+		75A31E0522006C13002E7336 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0422006C13002E7336 /* RegistrationViewController.swift */; };
+		75A31E0722006C9A002E7336 /* SecQuestRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0622006C9A002E7336 /* SecQuestRegisterViewController.swift */; };
+		75A31E0922006E40002E7336 /* CustomerInfoUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0822006E40002E7336 /* CustomerInfoUpdateViewController.swift */; };
+		75A31E0B22006EA7002E7336 /* VerifyMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */; };
+		75A31E0D22006F32002E7336 /* PhotoTakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */; };
+		75A31E0F22007341002E7336 /* MemberCardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0E22007341002E7336 /* MemberCardInfoViewController.swift */; };
+		75A31E1322007A13002E7336 /* SiteMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E1122007A13002E7336 /* SiteMenuTableViewCell.swift */; };
+		75A31E1422007A13002E7336 /* SiteMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E1222007A13002E7336 /* SiteMenuTableViewCell.xib */; };
 		75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C9F39321FD9C8A00D65E0A /* QR_codeViewCell.swift */; };
 		75C9F39621FD9C8A00D65E0A /* QR_codeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C9F39421FD9C8A00D65E0A /* QR_codeViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11B5C869496E74A33D0068C5 /* Pods_AEON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FA7DEF980A69C1DB3D34C57 /* Pods-AEON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AEON/Pods-AEON.debug.xcconfig"; sourceTree = "<group>"; };
+		752115D1220158BE001BC94A /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
+		752115D922016146001BC94A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		752115DB22016193001BC94A /* EventNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNewViewController.swift; sourceTree = "<group>"; };
+		752115DD220161AC001BC94A /* ApplyAeonServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyAeonServiceViewController.swift; sourceTree = "<group>"; };
 		753C8B9021F9B670002E101B /* AEON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AEON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		753C8B9321F9B670002E101B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		753C8B9521F9B670002E101B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,8 +54,22 @@
 		753C8BA221F9B67B002E101B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7561955B21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		7561955C21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		75A31DF62200020E002E7336 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		75A31DF82200026C002E7336 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		75A31DFE220069F5002E7336 /* SecQuestConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuestConfirmViewController.swift; sourceTree = "<group>"; };
+		75A31E0022006A89002E7336 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		75A31E0222006B80002E7336 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		75A31E0422006C13002E7336 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		75A31E0622006C9A002E7336 /* SecQuestRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuestRegisterViewController.swift; sourceTree = "<group>"; };
+		75A31E0822006E40002E7336 /* CustomerInfoUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoUpdateViewController.swift; sourceTree = "<group>"; };
+		75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMemberViewController.swift; sourceTree = "<group>"; };
+		75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakingViewController.swift; sourceTree = "<group>"; };
+		75A31E0E22007341002E7336 /* MemberCardInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCardInfoViewController.swift; sourceTree = "<group>"; };
+		75A31E1122007A13002E7336 /* SiteMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteMenuTableViewCell.swift; sourceTree = "<group>"; };
+		75A31E1222007A13002E7336 /* SiteMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SiteMenuTableViewCell.xib; sourceTree = "<group>"; };
 		75C9F39321FD9C8A00D65E0A /* QR_codeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QR_codeViewCell.swift; sourceTree = "<group>"; };
 		75C9F39421FD9C8A00D65E0A /* QR_codeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QR_codeViewCell.xib; sourceTree = "<group>"; };
+		802FCD3D50A1E2D1015F39E0 /* Pods-AEON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON.release.xcconfig"; path = "Pods/Target Support Files/Pods-AEON/Pods-AEON.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +77,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3070436D2B2F0F73EE66CF /* Pods_AEON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D1F6E8BE494C25DD865EF25 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4FA7DEF980A69C1DB3D34C57 /* Pods-AEON.debug.xcconfig */,
+				802FCD3D50A1E2D1015F39E0 /* Pods-AEON.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		753C8B8721F9B670002E101B = {
 			isa = PBXGroup;
 			children = (
 				753C8B9221F9B670002E101B /* AEON */,
 				753C8B9121F9B670002E101B /* Products */,
+				0D1F6E8BE494C25DD865EF25 /* Pods */,
+				BAC2EBB666E1965C731BE89D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +114,7 @@
 		753C8B9221F9B670002E101B /* AEON */ = {
 			isa = PBXGroup;
 			children = (
+				75A31DF522000182002E7336 /* controllers */,
 				75C9F39121FD9C3100D65E0A /* Cell */,
 				753C8B9321F9B670002E101B /* AppDelegate.swift */,
 				753C8B9521F9B670002E101B /* ViewController.swift */,
@@ -85,9 +136,41 @@
 			path = sec_ques_cell;
 			sourceTree = "<group>";
 		};
+		75A31DF522000182002E7336 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				75A31E0222006B80002E7336 /* ContactUsViewController.swift */,
+				75A31E0822006E40002E7336 /* CustomerInfoUpdateViewController.swift */,
+				75A31DF82200026C002E7336 /* LoginViewController.swift */,
+				75A31DF62200020E002E7336 /* MainViewController.swift */,
+				75A31E0E22007341002E7336 /* MemberCardInfoViewController.swift */,
+				75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */,
+				75A31E0422006C13002E7336 /* RegistrationViewController.swift */,
+				75A31E0022006A89002E7336 /* ResetPasswordViewController.swift */,
+				75A31DFE220069F5002E7336 /* SecQuestConfirmViewController.swift */,
+				75A31E0622006C9A002E7336 /* SecQuestRegisterViewController.swift */,
+				752115D1220158BE001BC94A /* SideMenuTableViewController.swift */,
+				75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */,
+				752115D922016146001BC94A /* HomeViewController.swift */,
+				752115DB22016193001BC94A /* EventNewViewController.swift */,
+				752115DD220161AC001BC94A /* ApplyAeonServiceViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		75A31E10220079C4002E7336 /* side_menu_cell */ = {
+			isa = PBXGroup;
+			children = (
+				75A31E1122007A13002E7336 /* SiteMenuTableViewCell.swift */,
+				75A31E1222007A13002E7336 /* SiteMenuTableViewCell.xib */,
+			);
+			path = side_menu_cell;
+			sourceTree = "<group>";
+		};
 		75C9F39121FD9C3100D65E0A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				75A31E10220079C4002E7336 /* side_menu_cell */,
 				75C9F39221FD9C4500D65E0A /* QR_code_cell */,
 				7561955A21FC77B70037AF9D /* sec_ques_cell */,
 			);
@@ -103,6 +186,14 @@
 			path = QR_code_cell;
 			sourceTree = "<group>";
 		};
+		BAC2EBB666E1965C731BE89D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11B5C869496E74A33D0068C5 /* Pods_AEON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,9 +201,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 753C8BA521F9B67B002E101B /* Build configuration list for PBXNativeTarget "AEON" */;
 			buildPhases = (
+				91CEE6F580328DB60D9D96F3 /* [CP] Check Pods Manifest.lock */,
 				753C8B8C21F9B670002E101B /* Sources */,
 				753C8B8D21F9B670002E101B /* Frameworks */,
 				753C8B8E21F9B670002E101B /* Resources */,
+				973002E6173498D0CCD7DDD2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				753C8BA121F9B67B002E101B /* LaunchScreen.storyboard in Resources */,
+				75A31E1422007A13002E7336 /* SiteMenuTableViewCell.xib in Resources */,
 				753C8B9E21F9B67B002E101B /* Assets.xcassets in Resources */,
 				753C8B9921F9B670002E101B /* Main.storyboard in Resources */,
 				7561955E21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib in Resources */,
@@ -171,14 +265,79 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		91CEE6F580328DB60D9D96F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AEON-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		973002E6173498D0CCD7DDD2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AEON/Pods-AEON-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AEON/Pods-AEON-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		753C8B8C21F9B670002E101B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A31E0B22006EA7002E7336 /* VerifyMemberViewController.swift in Sources */,
+				75A31E0122006A89002E7336 /* ResetPasswordViewController.swift in Sources */,
+				752115DC22016193001BC94A /* EventNewViewController.swift in Sources */,
+				75A31E1322007A13002E7336 /* SiteMenuTableViewCell.swift in Sources */,
+				75A31E0F22007341002E7336 /* MemberCardInfoViewController.swift in Sources */,
+				752115DE220161AC001BC94A /* ApplyAeonServiceViewController.swift in Sources */,
+				75A31DFF220069F5002E7336 /* SecQuestConfirmViewController.swift in Sources */,
+				752115DA22016146001BC94A /* HomeViewController.swift in Sources */,
+				75A31DF92200026C002E7336 /* LoginViewController.swift in Sources */,
+				75A31E0522006C13002E7336 /* RegistrationViewController.swift in Sources */,
+				75A31E0922006E40002E7336 /* CustomerInfoUpdateViewController.swift in Sources */,
 				75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */,
 				753C8B9C21F9B670002E101B /* AEON.xcdatamodeld in Sources */,
+				75A31E0D22006F32002E7336 /* PhotoTakingViewController.swift in Sources */,
 				7561955D21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift in Sources */,
+				75A31DF72200020E002E7336 /* MainViewController.swift in Sources */,
+				752115D2220158BE001BC94A /* SideMenuTableViewController.swift in Sources */,
+				75A31E0722006C9A002E7336 /* SecQuestRegisterViewController.swift in Sources */,
+				75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */,
 				753C8B9621F9B670002E101B /* ViewController.swift in Sources */,
 				753C8B9421F9B670002E101B /* AppDelegate.swift in Sources */,
 			);
@@ -324,6 +483,7 @@
 		};
 		753C8BA621F9B67B002E101B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FA7DEF980A69C1DB3D34C57 /* Pods-AEON.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -342,6 +502,7 @@
 		};
 		753C8BA721F9B67B002E101B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 802FCD3D50A1E2D1015F39E0 /* Pods-AEON.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
