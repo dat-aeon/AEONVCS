@@ -10,21 +10,18 @@ import UIKit
 
 class PhotoTakingViewController: UIViewController {
 
+    @IBOutlet weak var btnTakePhoto: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    self.btnTakePhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickTakePhoto)))
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func onClickTakePhoto(){
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
+        self.present(navigationVC, animated: true, completion: nil)
     }
-    */
+
 
 }

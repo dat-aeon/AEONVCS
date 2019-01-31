@@ -10,6 +10,12 @@ import UIKit
 
 class SecurityQuestionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var secQuesView: UIView!
+    @IBOutlet weak var lbQuesNo: UILabel!
+    @IBOutlet weak var lbQuestion: UILabel!
+    @IBOutlet weak var lbAnsNo: UILabel!
+    @IBOutlet weak var tfAnswer: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +27,10 @@ class SecurityQuestionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setData(data:SecurityQuestion) {
+        self.lbQuesNo.text = "Q" + data.index
+        self.lbQuestion.text = data.questionEng
+        self.lbAnsNo.text = "Ans"+data.index
+        tfAnswer.isSecureTextEntry = true
+    }
 }

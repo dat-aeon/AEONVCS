@@ -11,26 +11,23 @@ import UIKit
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var vLoginButton: UIButton!
+    @IBOutlet weak var lbForgetPass: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.vLoginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickLogin)))
+        
+        self.lbForgetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickForgetPassword)))
     }
     
     @objc func onClickLogin(){
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc func onClickForgetPassword(){
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
+        self.present(navigationVC, animated: true, completion: nil)
     }
-    */
 
 }

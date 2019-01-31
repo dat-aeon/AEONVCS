@@ -10,21 +10,16 @@ import UIKit
 
 class ResetPasswordViewController: UIViewController {
 
+    @IBOutlet weak var btnResetPass: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    self.btnResetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickResetPassword)))
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func onClickResetPassword(){
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
+        self.present(navigationVC, animated: true, completion: nil)
     }
-    */
 
 }

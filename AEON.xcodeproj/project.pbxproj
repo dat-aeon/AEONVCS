@@ -12,6 +12,10 @@
 		752115DA22016146001BC94A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115D922016146001BC94A /* HomeViewController.swift */; };
 		752115DC22016193001BC94A /* EventNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115DB22016193001BC94A /* EventNewViewController.swift */; };
 		752115DE220161AC001BC94A /* ApplyAeonServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115DD220161AC001BC94A /* ApplyAeonServiceViewController.swift */; };
+		752115E122019378001BC94A /* SecQuesConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115DF22019378001BC94A /* SecQuesConfirmTableViewCell.swift */; };
+		752115E222019378001BC94A /* SecQuesConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752115E022019378001BC94A /* SecQuesConfirmTableViewCell.xib */; };
+		752115E52201AA4C001BC94A /* SecQuesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115E42201AA4C001BC94A /* SecQuesDataModel.swift */; };
+		752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115E62201CA3B001BC94A /* CustomerTypeViewController.swift */; };
 		753C8B9421F9B670002E101B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C8B9321F9B670002E101B /* AppDelegate.swift */; };
 		753C8B9621F9B670002E101B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C8B9521F9B670002E101B /* ViewController.swift */; };
 		753C8B9921F9B670002E101B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753C8B9721F9B670002E101B /* Main.storyboard */; };
@@ -31,8 +35,6 @@
 		75A31E0B22006EA7002E7336 /* VerifyMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */; };
 		75A31E0D22006F32002E7336 /* PhotoTakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */; };
 		75A31E0F22007341002E7336 /* MemberCardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0E22007341002E7336 /* MemberCardInfoViewController.swift */; };
-		75A31E1322007A13002E7336 /* SiteMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E1122007A13002E7336 /* SiteMenuTableViewCell.swift */; };
-		75A31E1422007A13002E7336 /* SiteMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E1222007A13002E7336 /* SiteMenuTableViewCell.xib */; };
 		75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C9F39321FD9C8A00D65E0A /* QR_codeViewCell.swift */; };
 		75C9F39621FD9C8A00D65E0A /* QR_codeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C9F39421FD9C8A00D65E0A /* QR_codeViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,10 @@
 		752115D922016146001BC94A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		752115DB22016193001BC94A /* EventNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNewViewController.swift; sourceTree = "<group>"; };
 		752115DD220161AC001BC94A /* ApplyAeonServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyAeonServiceViewController.swift; sourceTree = "<group>"; };
+		752115DF22019378001BC94A /* SecQuesConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuesConfirmTableViewCell.swift; sourceTree = "<group>"; };
+		752115E022019378001BC94A /* SecQuesConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecQuesConfirmTableViewCell.xib; sourceTree = "<group>"; };
+		752115E42201AA4C001BC94A /* SecQuesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuesDataModel.swift; sourceTree = "<group>"; };
+		752115E62201CA3B001BC94A /* CustomerTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTypeViewController.swift; sourceTree = "<group>"; };
 		753C8B9021F9B670002E101B /* AEON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AEON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		753C8B9321F9B670002E101B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		753C8B9521F9B670002E101B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,8 +71,6 @@
 		75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMemberViewController.swift; sourceTree = "<group>"; };
 		75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakingViewController.swift; sourceTree = "<group>"; };
 		75A31E0E22007341002E7336 /* MemberCardInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCardInfoViewController.swift; sourceTree = "<group>"; };
-		75A31E1122007A13002E7336 /* SiteMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteMenuTableViewCell.swift; sourceTree = "<group>"; };
-		75A31E1222007A13002E7336 /* SiteMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SiteMenuTableViewCell.xib; sourceTree = "<group>"; };
 		75C9F39321FD9C8A00D65E0A /* QR_codeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QR_codeViewCell.swift; sourceTree = "<group>"; };
 		75C9F39421FD9C8A00D65E0A /* QR_codeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QR_codeViewCell.xib; sourceTree = "<group>"; };
 		802FCD3D50A1E2D1015F39E0 /* Pods-AEON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON.release.xcconfig"; path = "Pods/Target Support Files/Pods-AEON/Pods-AEON.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +97,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		752115E32201A9EF001BC94A /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				752115E42201AA4C001BC94A /* SecQuesDataModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		753C8B8721F9B670002E101B = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +126,7 @@
 		753C8B9221F9B670002E101B /* AEON */ = {
 			isa = PBXGroup;
 			children = (
+				752115E32201A9EF001BC94A /* DataModel */,
 				75A31DF522000182002E7336 /* controllers */,
 				75C9F39121FD9C3100D65E0A /* Cell */,
 				753C8B9321F9B670002E101B /* AppDelegate.swift */,
@@ -154,23 +167,24 @@
 				752115D922016146001BC94A /* HomeViewController.swift */,
 				752115DB22016193001BC94A /* EventNewViewController.swift */,
 				752115DD220161AC001BC94A /* ApplyAeonServiceViewController.swift */,
+				752115E62201CA3B001BC94A /* CustomerTypeViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
 		};
-		75A31E10220079C4002E7336 /* side_menu_cell */ = {
+		75A31E10220079C4002E7336 /* seq_ques_confirm_cell */ = {
 			isa = PBXGroup;
 			children = (
-				75A31E1122007A13002E7336 /* SiteMenuTableViewCell.swift */,
-				75A31E1222007A13002E7336 /* SiteMenuTableViewCell.xib */,
+				752115DF22019378001BC94A /* SecQuesConfirmTableViewCell.swift */,
+				752115E022019378001BC94A /* SecQuesConfirmTableViewCell.xib */,
 			);
-			path = side_menu_cell;
+			path = seq_ques_confirm_cell;
 			sourceTree = "<group>";
 		};
 		75C9F39121FD9C3100D65E0A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				75A31E10220079C4002E7336 /* side_menu_cell */,
+				75A31E10220079C4002E7336 /* seq_ques_confirm_cell */,
 				75C9F39221FD9C4500D65E0A /* QR_code_cell */,
 				7561955A21FC77B70037AF9D /* sec_ques_cell */,
 			);
@@ -255,10 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				753C8BA121F9B67B002E101B /* LaunchScreen.storyboard in Resources */,
-				75A31E1422007A13002E7336 /* SiteMenuTableViewCell.xib in Resources */,
 				753C8B9E21F9B67B002E101B /* Assets.xcassets in Resources */,
 				753C8B9921F9B670002E101B /* Main.storyboard in Resources */,
 				7561955E21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib in Resources */,
+				752115E222019378001BC94A /* SecQuesConfirmTableViewCell.xib in Resources */,
 				75C9F39621FD9C8A00D65E0A /* QR_codeViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,15 +336,16 @@
 				75A31E0B22006EA7002E7336 /* VerifyMemberViewController.swift in Sources */,
 				75A31E0122006A89002E7336 /* ResetPasswordViewController.swift in Sources */,
 				752115DC22016193001BC94A /* EventNewViewController.swift in Sources */,
-				75A31E1322007A13002E7336 /* SiteMenuTableViewCell.swift in Sources */,
 				75A31E0F22007341002E7336 /* MemberCardInfoViewController.swift in Sources */,
 				752115DE220161AC001BC94A /* ApplyAeonServiceViewController.swift in Sources */,
 				75A31DFF220069F5002E7336 /* SecQuestConfirmViewController.swift in Sources */,
 				752115DA22016146001BC94A /* HomeViewController.swift in Sources */,
 				75A31DF92200026C002E7336 /* LoginViewController.swift in Sources */,
 				75A31E0522006C13002E7336 /* RegistrationViewController.swift in Sources */,
+				752115E52201AA4C001BC94A /* SecQuesDataModel.swift in Sources */,
 				75A31E0922006E40002E7336 /* CustomerInfoUpdateViewController.swift in Sources */,
 				75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */,
+				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
 				753C8B9C21F9B670002E101B /* AEON.xcdatamodeld in Sources */,
 				75A31E0D22006F32002E7336 /* PhotoTakingViewController.swift in Sources */,
 				7561955D21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift in Sources */,
@@ -340,6 +355,7 @@
 				75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */,
 				753C8B9621F9B670002E101B /* ViewController.swift in Sources */,
 				753C8B9421F9B670002E101B /* AppDelegate.swift in Sources */,
+				752115E122019378001BC94A /* SecQuesConfirmTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +432,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -471,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -489,6 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD2RZNNY89;
 				INFOPLIST_FILE = AEON/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -508,6 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD2RZNNY89;
 				INFOPLIST_FILE = AEON/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

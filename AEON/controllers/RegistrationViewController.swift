@@ -10,21 +10,17 @@ import UIKit
 
 class RegistrationViewController: UIViewController {
 
+    @IBOutlet weak var btnRegister: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    self.btnRegister.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickRegister)))
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func onClickRegister(){
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestRegisterViewController") as! UINavigationController
+        self.present(navigationVC, animated: true, completion: nil)
     }
-    */
-
+    
+    
 }

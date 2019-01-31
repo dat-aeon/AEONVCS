@@ -43,12 +43,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bU8-GI-2Tg">
                                 <rect key="frame" x="82" y="16" width="356" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favorite food?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEs-MX-7i4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favorite food?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEs-MX-7i4">
                                         <rect key="frame" x="16" y="14.5" width="205" height="21"/>
-                                        <color key="tintColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="highlightedColor" red="0.82406836750000001" green="0.1919207275" blue="0.63621109720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,6 +117,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lbAnsNo" destination="J9H-iR-2II" id="nvL-Bi-67g"/>
+                <outlet property="lbQuesNo" destination="SKo-iZ-qQ8" id="9YZ-00-t4r"/>
+                <outlet property="lbQuestion" destination="LEs-MX-7i4" id="2Tn-rE-VzC"/>
+                <outlet property="secQuesView" destination="io1-tP-EZn" id="6ib-Hs-j6W"/>
+                <outlet property="tfAnswer" destination="Mss-ps-9Js" id="Ec1-Ze-X0m"/>
+            </connections>
             <point key="canvasLocation" x="-171.19999999999999" y="3.1484257871064472"/>
         </tableViewCell>
     </objects>

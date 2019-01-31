@@ -10,21 +10,17 @@ import UIKit
 
 class VerifyMemberViewController: UIViewController {
 
+    @IBOutlet weak var btnVerify: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    self.btnVerify.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickVerify)))
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func onClickVerify(){
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
+        self.present(navigationVC, animated: true, completion: nil)
     }
-    */
 
 }
