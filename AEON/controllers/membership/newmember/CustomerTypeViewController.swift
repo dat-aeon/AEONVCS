@@ -15,19 +15,16 @@ class CustomerTypeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.btnUsedCustomer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickUsedCustomer)))
-        
-        self.btnNewCustomer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickNewCustomer)))
     }
     
-    @objc func onClickUsedCustomer(){
+    @IBAction  func onClickUsedCustomer(_ sender:UIButton){
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "VerifyMemberViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }
 
-    @objc func onClickNewCustomer(){
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyAeonServiceViewController") as! UINavigationController
-        self.present(navigationVC, animated: true, completion: nil)
+    @IBAction func onClickNewCustomer(_ sender:UIButton){
+//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyAeonServiceViewController") as! UINavigationController
+//        self.present(navigationVC, animated: true, completion: nil)
     }
 
 }

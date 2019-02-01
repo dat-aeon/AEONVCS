@@ -14,10 +14,10 @@ class ResetPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    self.btnResetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickResetPassword)))
+   
     }
     
-    @objc func onClickResetPassword(){
+    @IBAction func onClickResetPassword(_ sender:UIButton){
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }

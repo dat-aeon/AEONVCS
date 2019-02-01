@@ -24,10 +24,18 @@ class SecQuestConfirmViewController: UIViewController {
         self.secQuesTableView.register(UINib(nibName: "SecurityQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "SecurityQuestionTableViewCell")
         self.secQuesTableView.register(UINib(nibName: "SecuQuesConfirmTableViewCell", bundle: nil), forCellReuseIdentifier: "SecuQuesConfirmTableViewCell")
         
-        self.secQuesTableView.dataSource = self
-        self.secQuesTableView.delegate = self
+        //open thid comment in real
+//        self.secQuesTableView.dataSource = self
+//        self.secQuesTableView.delegate = self
         
         
+        
+    }
+    
+    //remove this override function in real
+    override func viewWillAppear(_ animated: Bool) {
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
 }

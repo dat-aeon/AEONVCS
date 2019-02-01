@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		4B3070436D2B2F0F73EE66CF /* Pods_AEON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B5C869496E74A33D0068C5 /* Pods_AEON.framework */; };
+		6A3197972203FE640031D86F /* MemberCardInfoOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197962203FE640031D86F /* MemberCardInfoOneViewController.swift */; };
+		6A3197992203FE770031D86F /* MemberCardInfoTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197982203FE770031D86F /* MemberCardInfoTwoViewController.swift */; };
+		6A31979B2203FEF60031D86F /* SecurityQuestionUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A31979A2203FEF60031D86F /* SecurityQuestionUpdateViewController.swift */; };
+		6A31979D2203FF1F0031D86F /* InformationUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A31979C2203FF1F0031D86F /* InformationUpdateViewController.swift */; };
+		6A3197A02203FF830031D86F /* CuponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A31979F2203FF830031D86F /* CuponViewController.swift */; };
+		6A3197A22203FF910031D86F /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197A12203FF910031D86F /* PromotionViewController.swift */; };
+		6A3197A42203FF9E0031D86F /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197A32203FF9E0031D86F /* NewsViewController.swift */; };
+		6A3197A72204000F0031D86F /* HotlinePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197A62204000F0031D86F /* HotlinePhoneNumberViewController.swift */; };
+		6A3197A9220400290031D86F /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197A8220400290031D86F /* MessagingViewController.swift */; };
+		6A3197AC220400700031D86F /* FaqAndTermsConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197AB220400700031D86F /* FaqAndTermsConditionViewController.swift */; };
+		6A3197AE2204007E0031D86F /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197AD2204007E0031D86F /* FAQViewController.swift */; };
+		6A3197B0220400970031D86F /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197AF220400970031D86F /* TermsAndConditionsViewController.swift */; };
+		6A3197B5220401310031D86F /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197B4220401310031D86F /* MembershipViewController.swift */; };
+		6A3197BD220403140031D86F /* SecQuestionResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197BC220403140031D86F /* SecQuestionResetPasswordViewController.swift */; };
 		752115D2220158BE001BC94A /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115D1220158BE001BC94A /* SideMenuTableViewController.swift */; };
 		752115DA22016146001BC94A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115D922016146001BC94A /* HomeViewController.swift */; };
 		752115DC22016193001BC94A /* EventNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115DB22016193001BC94A /* EventNewViewController.swift */; };
@@ -30,7 +44,6 @@
 		75A31E0122006A89002E7336 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0022006A89002E7336 /* ResetPasswordViewController.swift */; };
 		75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0222006B80002E7336 /* ContactUsViewController.swift */; };
 		75A31E0522006C13002E7336 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0422006C13002E7336 /* RegistrationViewController.swift */; };
-		75A31E0722006C9A002E7336 /* SecQuestRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0622006C9A002E7336 /* SecQuestRegisterViewController.swift */; };
 		75A31E0922006E40002E7336 /* CustomerInfoUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0822006E40002E7336 /* CustomerInfoUpdateViewController.swift */; };
 		75A31E0B22006EA7002E7336 /* VerifyMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */; };
 		75A31E0D22006F32002E7336 /* PhotoTakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */; };
@@ -42,6 +55,20 @@
 /* Begin PBXFileReference section */
 		11B5C869496E74A33D0068C5 /* Pods_AEON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FA7DEF980A69C1DB3D34C57 /* Pods-AEON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AEON/Pods-AEON.debug.xcconfig"; sourceTree = "<group>"; };
+		6A3197962203FE640031D86F /* MemberCardInfoOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCardInfoOneViewController.swift; sourceTree = "<group>"; };
+		6A3197982203FE770031D86F /* MemberCardInfoTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCardInfoTwoViewController.swift; sourceTree = "<group>"; };
+		6A31979A2203FEF60031D86F /* SecurityQuestionUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityQuestionUpdateViewController.swift; sourceTree = "<group>"; };
+		6A31979C2203FF1F0031D86F /* InformationUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationUpdateViewController.swift; sourceTree = "<group>"; };
+		6A31979F2203FF830031D86F /* CuponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuponViewController.swift; sourceTree = "<group>"; };
+		6A3197A12203FF910031D86F /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
+		6A3197A32203FF9E0031D86F /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		6A3197A62204000F0031D86F /* HotlinePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotlinePhoneNumberViewController.swift; sourceTree = "<group>"; };
+		6A3197A8220400290031D86F /* MessagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
+		6A3197AB220400700031D86F /* FaqAndTermsConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqAndTermsConditionViewController.swift; sourceTree = "<group>"; };
+		6A3197AD2204007E0031D86F /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		6A3197AF220400970031D86F /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		6A3197B4220401310031D86F /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
+		6A3197BC220403140031D86F /* SecQuestionResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuestionResetPasswordViewController.swift; sourceTree = "<group>"; };
 		752115D1220158BE001BC94A /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		752115D922016146001BC94A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		752115DB22016193001BC94A /* EventNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNewViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +93,6 @@
 		75A31E0022006A89002E7336 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		75A31E0222006B80002E7336 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		75A31E0422006C13002E7336 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		75A31E0622006C9A002E7336 /* SecQuestRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuestRegisterViewController.swift; sourceTree = "<group>"; };
 		75A31E0822006E40002E7336 /* CustomerInfoUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoUpdateViewController.swift; sourceTree = "<group>"; };
 		75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMemberViewController.swift; sourceTree = "<group>"; };
 		75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTakingViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +121,124 @@
 				802FCD3D50A1E2D1015F39E0 /* Pods-AEON.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6A31979E2203FF5C0031D86F /* event */ = {
+			isa = PBXGroup;
+			children = (
+				752115DB22016193001BC94A /* EventNewViewController.swift */,
+				6A31979F2203FF830031D86F /* CuponViewController.swift */,
+				6A3197A12203FF910031D86F /* PromotionViewController.swift */,
+				6A3197A32203FF9E0031D86F /* NewsViewController.swift */,
+			);
+			name = event;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6A3197A52203FFE40031D86F /* contactus */ = {
+			isa = PBXGroup;
+			children = (
+				75A31E0222006B80002E7336 /* ContactUsViewController.swift */,
+				6A3197A62204000F0031D86F /* HotlinePhoneNumberViewController.swift */,
+				6A3197A8220400290031D86F /* MessagingViewController.swift */,
+			);
+			path = contactus;
+			sourceTree = "<group>";
+		};
+		6A3197AA220400500031D86F /* faq */ = {
+			isa = PBXGroup;
+			children = (
+				6A3197AB220400700031D86F /* FaqAndTermsConditionViewController.swift */,
+				6A3197AD2204007E0031D86F /* FAQViewController.swift */,
+				6A3197AF220400970031D86F /* TermsAndConditionsViewController.swift */,
+			);
+			path = faq;
+			sourceTree = "<group>";
+		};
+		6A3197B1220400DB0031D86F /* membership */ = {
+			isa = PBXGroup;
+			children = (
+				6A3197B3220400EB0031D86F /* newmember */,
+				6A3197B2220400E20031D86F /* member */,
+				6A3197B4220401310031D86F /* MembershipViewController.swift */,
+			);
+			path = membership;
+			sourceTree = "<group>";
+		};
+		6A3197B2220400E20031D86F /* member */ = {
+			isa = PBXGroup;
+			children = (
+				75A31E0E22007341002E7336 /* MemberCardInfoViewController.swift */,
+				6A3197982203FE770031D86F /* MemberCardInfoTwoViewController.swift */,
+				6A3197962203FE640031D86F /* MemberCardInfoOneViewController.swift */,
+			);
+			path = member;
+			sourceTree = "<group>";
+		};
+		6A3197B3220400EB0031D86F /* newmember */ = {
+			isa = PBXGroup;
+			children = (
+				75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */,
+				75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */,
+				752115E62201CA3B001BC94A /* CustomerTypeViewController.swift */,
+			);
+			path = newmember;
+			sourceTree = "<group>";
+		};
+		6A3197B6220401970031D86F /* informationupdate */ = {
+			isa = PBXGroup;
+			children = (
+				6A31979C2203FF1F0031D86F /* InformationUpdateViewController.swift */,
+				6A31979A2203FEF60031D86F /* SecurityQuestionUpdateViewController.swift */,
+				75A31E0822006E40002E7336 /* CustomerInfoUpdateViewController.swift */,
+			);
+			path = informationupdate;
+			sourceTree = "<group>";
+		};
+		6A3197B7220401D50031D86F /* register */ = {
+			isa = PBXGroup;
+			children = (
+				75A31DFE220069F5002E7336 /* SecQuestConfirmViewController.swift */,
+				75A31E0422006C13002E7336 /* RegistrationViewController.swift */,
+			);
+			path = register;
+			sourceTree = "<group>";
+		};
+		6A3197B8220401DE0031D86F /* forgetpassword */ = {
+			isa = PBXGroup;
+			children = (
+				75A31E0022006A89002E7336 /* ResetPasswordViewController.swift */,
+				6A3197BC220403140031D86F /* SecQuestionResetPasswordViewController.swift */,
+			);
+			path = forgetpassword;
+			sourceTree = "<group>";
+		};
+		6A3197B9220401F70031D86F /* aeonservice */ = {
+			isa = PBXGroup;
+			children = (
+				752115DD220161AC001BC94A /* ApplyAeonServiceViewController.swift */,
+			);
+			name = aeonservice;
+			path = "New Group1";
+			sourceTree = "<group>";
+		};
+		6A3197BA2204020F0031D86F /* home */ = {
+			isa = PBXGroup;
+			children = (
+				752115D1220158BE001BC94A /* SideMenuTableViewController.swift */,
+				752115D922016146001BC94A /* HomeViewController.swift */,
+			);
+			name = home;
+			path = "New Group2";
+			sourceTree = "<group>";
+		};
+		6A3197BB220402520031D86F /* login */ = {
+			isa = PBXGroup;
+			children = (
+				75A31DF82200026C002E7336 /* LoginViewController.swift */,
+			);
+			name = login;
+			path = "New Group3";
 			sourceTree = "<group>";
 		};
 		752115E32201A9EF001BC94A /* DataModel */ = {
@@ -152,22 +296,17 @@
 		75A31DF522000182002E7336 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				75A31E0222006B80002E7336 /* ContactUsViewController.swift */,
-				75A31E0822006E40002E7336 /* CustomerInfoUpdateViewController.swift */,
-				75A31DF82200026C002E7336 /* LoginViewController.swift */,
+				6A3197BB220402520031D86F /* login */,
+				6A3197BA2204020F0031D86F /* home */,
+				6A3197B9220401F70031D86F /* aeonservice */,
+				6A3197B8220401DE0031D86F /* forgetpassword */,
+				6A3197B7220401D50031D86F /* register */,
+				6A3197B6220401970031D86F /* informationupdate */,
+				6A3197B1220400DB0031D86F /* membership */,
+				6A3197AA220400500031D86F /* faq */,
+				6A3197A52203FFE40031D86F /* contactus */,
+				6A31979E2203FF5C0031D86F /* event */,
 				75A31DF62200020E002E7336 /* MainViewController.swift */,
-				75A31E0E22007341002E7336 /* MemberCardInfoViewController.swift */,
-				75A31E0C22006F32002E7336 /* PhotoTakingViewController.swift */,
-				75A31E0422006C13002E7336 /* RegistrationViewController.swift */,
-				75A31E0022006A89002E7336 /* ResetPasswordViewController.swift */,
-				75A31DFE220069F5002E7336 /* SecQuestConfirmViewController.swift */,
-				75A31E0622006C9A002E7336 /* SecQuestRegisterViewController.swift */,
-				752115D1220158BE001BC94A /* SideMenuTableViewController.swift */,
-				75A31E0A22006EA7002E7336 /* VerifyMemberViewController.swift */,
-				752115D922016146001BC94A /* HomeViewController.swift */,
-				752115DB22016193001BC94A /* EventNewViewController.swift */,
-				752115DD220161AC001BC94A /* ApplyAeonServiceViewController.swift */,
-				752115E62201CA3B001BC94A /* CustomerTypeViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -336,26 +475,39 @@
 				75A31E0B22006EA7002E7336 /* VerifyMemberViewController.swift in Sources */,
 				75A31E0122006A89002E7336 /* ResetPasswordViewController.swift in Sources */,
 				752115DC22016193001BC94A /* EventNewViewController.swift in Sources */,
+				6A3197A42203FF9E0031D86F /* NewsViewController.swift in Sources */,
+				6A31979D2203FF1F0031D86F /* InformationUpdateViewController.swift in Sources */,
 				75A31E0F22007341002E7336 /* MemberCardInfoViewController.swift in Sources */,
 				752115DE220161AC001BC94A /* ApplyAeonServiceViewController.swift in Sources */,
+				6A3197AE2204007E0031D86F /* FAQViewController.swift in Sources */,
+				6A3197992203FE770031D86F /* MemberCardInfoTwoViewController.swift in Sources */,
 				75A31DFF220069F5002E7336 /* SecQuestConfirmViewController.swift in Sources */,
+				6A3197A02203FF830031D86F /* CuponViewController.swift in Sources */,
 				752115DA22016146001BC94A /* HomeViewController.swift in Sources */,
+				6A3197B5220401310031D86F /* MembershipViewController.swift in Sources */,
 				75A31DF92200026C002E7336 /* LoginViewController.swift in Sources */,
 				75A31E0522006C13002E7336 /* RegistrationViewController.swift in Sources */,
 				752115E52201AA4C001BC94A /* SecQuesDataModel.swift in Sources */,
 				75A31E0922006E40002E7336 /* CustomerInfoUpdateViewController.swift in Sources */,
 				75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */,
 				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
+				6A3197BD220403140031D86F /* SecQuestionResetPasswordViewController.swift in Sources */,
 				753C8B9C21F9B670002E101B /* AEON.xcdatamodeld in Sources */,
 				75A31E0D22006F32002E7336 /* PhotoTakingViewController.swift in Sources */,
+				6A3197972203FE640031D86F /* MemberCardInfoOneViewController.swift in Sources */,
+				6A3197A22203FF910031D86F /* PromotionViewController.swift in Sources */,
+				6A3197A9220400290031D86F /* MessagingViewController.swift in Sources */,
 				7561955D21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift in Sources */,
 				75A31DF72200020E002E7336 /* MainViewController.swift in Sources */,
 				752115D2220158BE001BC94A /* SideMenuTableViewController.swift in Sources */,
-				75A31E0722006C9A002E7336 /* SecQuestRegisterViewController.swift in Sources */,
+				6A3197A72204000F0031D86F /* HotlinePhoneNumberViewController.swift in Sources */,
 				75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */,
+				6A3197AC220400700031D86F /* FaqAndTermsConditionViewController.swift in Sources */,
 				753C8B9621F9B670002E101B /* ViewController.swift in Sources */,
 				753C8B9421F9B670002E101B /* AppDelegate.swift in Sources */,
 				752115E122019378001BC94A /* SecQuesConfirmTableViewCell.swift in Sources */,
+				6A3197B0220400970031D86F /* TermsAndConditionsViewController.swift in Sources */,
+				6A31979B2203FEF60031D86F /* SecurityQuestionUpdateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +584,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -487,7 +639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -505,7 +657,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD2RZNNY89;
 				INFOPLIST_FILE = AEON/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -525,7 +677,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD2RZNNY89;
 				INFOPLIST_FILE = AEON/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,14 +1,14 @@
 //
-//  EventNewViewController.swift
+//  MemberCardInfoOneViewController.swift
 //  AEON
 //
-//  Created by Mobile User on 1/30/19.
+//  Created by AcePlus101 on 2/1/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
 import UIKit
 
-class EventNewViewController: UIViewController {
+class MemberCardInfoOneViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

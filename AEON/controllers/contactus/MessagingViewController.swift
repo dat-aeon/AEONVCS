@@ -1,14 +1,14 @@
 //
-//  ContactUsViewController.swift
+//  MessagingViewController.swift
 //  AEON
 //
-//  Created by Mobile User on 1/29/19.
+//  Created by AcePlus101 on 2/1/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
 import UIKit
 
-class ContactUsViewController: UIViewController {
+class MessagingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

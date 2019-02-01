@@ -15,12 +15,15 @@ class VerifyMemberViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    self.btnVerify.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickVerify)))
+   
     }
     
-    @objc func onClickVerify(){
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
+    @IBAction func onClickVerify(_ sender:UIButton){
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "PhotoTakingViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }
-
+    @IBAction func onClickBackButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

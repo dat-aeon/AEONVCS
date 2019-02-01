@@ -17,10 +17,13 @@ class RegistrationViewController: UIViewController {
     self.btnRegister.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickRegister)))
     }
     
-    @objc func onClickRegister(){
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestRegisterViewController") as! UINavigationController
+    @IBAction func onClickRegister(_ sender:UIButton){
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }
     
+    @IBAction func onClickBackButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
 }

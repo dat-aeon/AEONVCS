@@ -15,12 +15,13 @@ class PhotoTakingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    self.btnTakePhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickTakePhoto)))
+
     }
     
-    @objc func onClickTakePhoto(){
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
-        self.present(navigationVC, animated: true, completion: nil)
+    @IBAction func onClickTakePhoto(_ sender:UIButton){
+//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
+//        self.present(navigationVC, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
 

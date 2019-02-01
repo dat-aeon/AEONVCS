@@ -15,18 +15,16 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.vLoginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickLogin)))
-        
-        self.lbForgetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickForgetPassword)))
+    self.lbForgetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickForgetPassword)))
     }
     
-    @objc func onClickLogin(){
+    @IBAction func onClickLogin(_ sender:UIButton){
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onClickForgetPassword(){
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestionResetPasswordViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }
 
