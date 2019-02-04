@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecQuestConfirmViewController: UIViewController {
+class SecQuestConfirmViewController: BaseUIViewController {
 
     @IBOutlet weak var secQuesTableView: UITableView!
     

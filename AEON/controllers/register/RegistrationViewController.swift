@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: BaseUIViewController {
 
     @IBOutlet weak var btnRegister: UIButton!
     

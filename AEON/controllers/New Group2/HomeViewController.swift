@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseUIViewController {
 
     @IBOutlet weak var cvMembership: UIView!
     

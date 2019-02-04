@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: BaseUIViewController {
 
     @IBOutlet weak var btnResetPass: UIButton!
     

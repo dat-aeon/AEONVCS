@@ -1337,7 +1337,7 @@
                                     <constraint firstAttribute="height" constant="48" id="4Bo-If-rQO"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="CUPONS"/>
+                                    <segment title="COUPONS"/>
                                     <segment title="PROMOTIONS"/>
                                     <segment title="NEWS"/>
                                 </segments>
@@ -2719,28 +2719,31 @@ Because the content created by users is public to other users, a DMCA notice cla
             </objects>
             <point key="canvasLocation" x="-10394" y="3200"/>
         </scene>
-        <!--Cupon View Controller-->
+        <!--Coupon View Controller-->
         <scene sceneID="mdE-aN-SFO">
             <objects>
-                <viewController id="aMX-V3-Lw0" customClass="CuponViewController" customModule="AEON" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aMX-V3-Lw0" customClass="CouponViewController" customModule="AEON" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vmX-0j-t2c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="511"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cupons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFa-fp-9J6">
-                                <rect key="frame" x="158" y="245" width="59" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-80-a2c">
+                                <rect key="frame" x="0.0" y="20" width="375" height="491"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="AFa-fp-9J6" firstAttribute="centerY" secondItem="vmX-0j-t2c" secondAttribute="centerY" id="1vn-xM-oih"/>
-                            <constraint firstItem="AFa-fp-9J6" firstAttribute="centerX" secondItem="vmX-0j-t2c" secondAttribute="centerX" id="EaI-ep-ErX"/>
+                            <constraint firstItem="7gR-80-a2c" firstAttribute="leading" secondItem="0u0-68-8P6" secondAttribute="leading" id="0NN-7D-UFL"/>
+                            <constraint firstItem="0u0-68-8P6" firstAttribute="trailing" secondItem="7gR-80-a2c" secondAttribute="trailing" id="AGo-wI-RFa"/>
+                            <constraint firstItem="7gR-80-a2c" firstAttribute="top" secondItem="0u0-68-8P6" secondAttribute="top" id="q43-Ox-gI1"/>
+                            <constraint firstItem="0u0-68-8P6" firstAttribute="bottom" secondItem="7gR-80-a2c" secondAttribute="bottom" id="rDe-TP-iv7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0u0-68-8P6"/>
                     </view>
+                    <connections>
+                        <outlet property="tvCoupon" destination="7gR-80-a2c" id="U03-gB-ixb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Rr-2r-CQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
