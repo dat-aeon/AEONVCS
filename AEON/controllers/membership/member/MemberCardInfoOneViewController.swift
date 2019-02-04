@@ -9,22 +9,46 @@
 import UIKit
 
 class MemberCardInfoOneViewController: UIViewController {
-
+    @IBOutlet weak var tvMemberCardInfo: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tvMemberCardInfo.register(UINib(nibName: "MemberCardHeaderView", bundle: nil), forCellReuseIdentifier: "MemberCardHeaderView")
+        self.tvMemberCardInfo.register(UINib(nibName: "MemberCardInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "MemberCardInfoTableViewCell")
+        self.tvMemberCardInfo.dataSource = self
+        self.tvMemberCardInfo.delegate = self
+    }
 
-        // Do any additional setup after loading the view.
+}
+extension MemberCardInfoOneViewController:UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            return 1
+        }
+        return 3
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCardHeaderView") as! MemberCardHeaderView
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCardInfoTableViewCell", for: indexPath) as! MemberCardInfoTableViewCell
+        return cell
     }
-    */
-
+    
+}
+extension MemberCardInfoOneViewController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0{
+            return CGFloat(200.0)
+        }
+        return CGFloat(150.0)
+    }
 }

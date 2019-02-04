@@ -14,7 +14,7 @@ class MembershipViewController: UIViewController {
     
     @IBOutlet weak var cvMemberCardInfo: UIView!
     
-    var containerIndex = 1
+    var containerIndex = 2
     override func viewDidLoad() {
         super.viewDidLoad()
         toggleContainer(position:containerIndex)

@@ -26,17 +26,16 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // setup side menu
         setupSideMenu()
         
         //show hide containers
         toggleContainer(position:containerIndex)
-       
+        NotificationCenter.default.addObserver(self, selector: #selector(changeContainer(_ :)), name: NSNotification.Name("ChangeContainer"), object:nil)
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(changeContainer(_ :)), name: NSNotification.Name("ChangeContainer"), object:nil)
-    }
     @objc func changeContainer(_ notification:NSNotification) {
         //show hide containers
 //        if let position = notification.userInfo?["position"] as? Int {
@@ -45,17 +44,22 @@ class HomeViewController: UIViewController {
         print(notification.userInfo ?? "")
         if let dict = notification.userInfo as NSDictionary? {
             if let position = dict["position"] as? Int{
-                toggleContainer(position:position)
+                if position == 7{
+                    let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController
+                    self.present(navigationVC, animated: true, completion:nil)
+                }else{
+                    toggleContainer(position:position)
+                }
             }
         }
         
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-//        NotificationCenter.default.removeObserver(self)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
-    
-    fileprivate func setupSideMenu() {
+    func setupSideMenu() {
+        
         // Define the menus
         SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "SideMenuTableViewController") as? UISideMenuNavigationController
         
@@ -68,7 +72,7 @@ class HomeViewController: UIViewController {
         SideMenuManager.default.menuAnimationBackgroundColor = UIColor.gray
         SideMenuManager.default.menuFadeStatusBar = false
         SideMenuManager.default.menuPresentMode = .menuSlideIn
-        SideMenuManager.default.menuWidth  = self.view.frame.width-100
+//        SideMenuManager.default.menuWidth  = self.view.frame.width-100
     }
     
     func toggleContainer(position:Int){
@@ -136,5 +140,27 @@ class HomeViewController: UIViewController {
         let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: "SideMenuTableViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)    }
     
+    
+}
+extension HomeViewController: UISideMenuNavigationControllerDelegate {
+    
+    func sideMenuWillAppear(menu: UISideMenuNavigationController, animated: Bool) {
+        print("SideMenu Appearing! (animated: \(animated))")
+    }
+    
+    func sideMenuDidAppear(menu: UISideMenuNavigationController, animated: Bool) {
+        print("SideMenu Appeared! (animated: \(animated))")
+    }
+    
+    func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+        print("SideMenu Disappearing! (animated: \(animated))")
+    }
+    
+    func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+        print("SideMenu Disappeared! (animated: \(animated))")
+        // setup side menu
+//        setupSideMenu()
+        
+    }
     
 }

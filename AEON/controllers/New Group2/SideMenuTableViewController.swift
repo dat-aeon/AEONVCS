@@ -10,7 +10,9 @@ import UIKit
 import SideMenu
 
 class SideMenuTableViewController: UITableViewController {
-
+    override func viewDidLoad() {
+       
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -21,6 +23,8 @@ class SideMenuTableViewController: UITableViewController {
         guard SideMenuManager.default.menuBlurEffectStyle == nil else {
             return
         }
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0);
+        
         
         // Set up a cool background image for demo purposes
         //        let imageView = UIImageView(image: UIImage(named: "background"))
@@ -29,6 +33,15 @@ class SideMenuTableViewController: UITableViewController {
         //        tableView.backgroundView = imageView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // refresh cell blur effect in case it changed
+        tableView.reloadData()
+        
+        self.tableView.contentInsetAdjustmentBehavior = .never
+        guard SideMenuManager.default.menuBlurEffectStyle == nil else {
+            return
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! UITableViewVibrantCell
         cell.blurEffectStyle = SideMenuManager.default.menuBlurEffectStyle
@@ -41,20 +54,11 @@ class SideMenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("click item at \(indexPath.row)")
         tableView.deselectRow(at: indexPath, animated: true)
-        let position = indexPath.row
-        if indexPath.row == 0 {
-            self.dismiss(animated: true, completion: nil)
-            
-        }else if indexPath.row == 7{
-            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController
-            self.present(navigationVC, animated: true, completion: nil)
-            
-        }else{
-        let indexDataDict:[String: Int] = ["position": position]
-
-        NotificationCenter.default.post(NSNotification.init(name: NSNotification.Name("ChangeContainer"), object: nil, userInfo:indexDataDict) as Notification)
         self.dismiss(animated: true, completion: nil)
-        }
+        let position = indexPath.row
+        let indexDataDict:[String: Int] = ["position": position]
+        self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(NSNotification.init(name: NSNotification.Name("ChangeContainer"), object: nil, userInfo:indexDataDict) as Notification)
     }
     
 }

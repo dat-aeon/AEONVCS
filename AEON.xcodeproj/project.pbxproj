@@ -22,6 +22,27 @@
 		6A3197B0220400970031D86F /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197AF220400970031D86F /* TermsAndConditionsViewController.swift */; };
 		6A3197B5220401310031D86F /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197B4220401310031D86F /* MembershipViewController.swift */; };
 		6A3197BD220403140031D86F /* SecQuestionResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197BC220403140031D86F /* SecQuestionResetPasswordViewController.swift */; };
+		6AC88E132206AE6D0062926F /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E122206AE6D0062926F /* LoginData.swift */; };
+		6AC88E152206AF020062926F /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E142206AF020062926F /* ApiService.swift */; };
+		6AC88E172206AF2D0062926F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E162206AF2D0062926F /* Constants.swift */; };
+		6AC88E192206AFC50062926F /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E182206AFC50062926F /* BaseModel.swift */; };
+		6AC88E1C2206B0A10062926F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E1B2206B0A10062926F /* LoginModel.swift */; };
+		6AC88E1E2206BBC50062926F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E1D2206BBC50062926F /* LoginViewModel.swift */; };
+		6AC88E202206BF510062926F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E1F2206BF510062926F /* Utils.swift */; };
+		6AC88E232206D6F70062926F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E222206D6F70062926F /* CardView.swift */; };
+		6AC88E272206D8580062926F /* MemberCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E252206D8580062926F /* MemberCardHeaderView.swift */; };
+		6AC88E282206D8580062926F /* MemberCardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC88E262206D8580062926F /* MemberCardHeaderView.xib */; };
+		6AC88E2B2206D8AE0062926F /* MemberCardInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E292206D8AE0062926F /* MemberCardInfoTableViewCell.swift */; };
+		6AC88E2C2206D8AE0062926F /* MemberCardInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC88E2A2206D8AE0062926F /* MemberCardInfoTableViewCell.xib */; };
+		6AC88E342206E5E90062926F /* SecurityQuestionUpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E322206E5E90062926F /* SecurityQuestionUpdateTableViewCell.swift */; };
+		6AC88E352206E5E90062926F /* SecurityQuestionUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC88E332206E5E90062926F /* SecurityQuestionUpdateTableViewCell.xib */; };
+		6AFEBE052205CDDA006D2F81 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFEBE042205CDDA006D2F81 /* FAQ.swift */; };
+		6AFEBE0B2205CEAD006D2F81 /* FAQHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFEBE092205CEAD006D2F81 /* FAQHeaderView.swift */; };
+		6AFEBE0C2205CEAD006D2F81 /* FAQHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AFEBE0A2205CEAD006D2F81 /* FAQHeaderView.xib */; };
+		6AFEBE0F2205CEC8006D2F81 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFEBE0D2205CEC8006D2F81 /* FAQTableViewCell.swift */; };
+		6AFEBE102205CEC8006D2F81 /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AFEBE0E2205CEC8006D2F81 /* FAQTableViewCell.xib */; };
+		6AFEBE152205CF45006D2F81 /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFEBE142205CF45006D2F81 /* UIExtension.swift */; };
+		6AFEBE172205D975006D2F81 /* FAQDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFEBE162205D975006D2F81 /* FAQDataModel.swift */; };
 		752115D2220158BE001BC94A /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115D1220158BE001BC94A /* SideMenuTableViewController.swift */; };
 		752115DA22016146001BC94A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115D922016146001BC94A /* HomeViewController.swift */; };
 		752115DC22016193001BC94A /* EventNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752115DB22016193001BC94A /* EventNewViewController.swift */; };
@@ -69,6 +90,28 @@
 		6A3197AF220400970031D86F /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		6A3197B4220401310031D86F /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		6A3197BC220403140031D86F /* SecQuestionResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuestionResetPasswordViewController.swift; sourceTree = "<group>"; };
+		6AC88E122206AE6D0062926F /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		6AC88E142206AF020062926F /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		6AC88E162206AF2D0062926F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6AC88E182206AFC50062926F /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		6AC88E1B2206B0A10062926F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		6AC88E1D2206BBC50062926F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		6AC88E1F2206BF510062926F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		6AC88E212206CEBF0062926F /* AEON.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AEON.entitlements; sourceTree = "<group>"; };
+		6AC88E222206D6F70062926F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		6AC88E252206D8580062926F /* MemberCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCardHeaderView.swift; sourceTree = "<group>"; };
+		6AC88E262206D8580062926F /* MemberCardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCardHeaderView.xib; sourceTree = "<group>"; };
+		6AC88E292206D8AE0062926F /* MemberCardInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCardInfoTableViewCell.swift; sourceTree = "<group>"; };
+		6AC88E2A2206D8AE0062926F /* MemberCardInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCardInfoTableViewCell.xib; sourceTree = "<group>"; };
+		6AC88E322206E5E90062926F /* SecurityQuestionUpdateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityQuestionUpdateTableViewCell.swift; sourceTree = "<group>"; };
+		6AC88E332206E5E90062926F /* SecurityQuestionUpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityQuestionUpdateTableViewCell.xib; sourceTree = "<group>"; };
+		6AFEBE042205CDDA006D2F81 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
+		6AFEBE092205CEAD006D2F81 /* FAQHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQHeaderView.swift; sourceTree = "<group>"; };
+		6AFEBE0A2205CEAD006D2F81 /* FAQHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQHeaderView.xib; sourceTree = "<group>"; };
+		6AFEBE0D2205CEC8006D2F81 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
+		6AFEBE0E2205CEC8006D2F81 /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
+		6AFEBE142205CF45006D2F81 /* UIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		6AFEBE162205D975006D2F81 /* FAQDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQDataModel.swift; sourceTree = "<group>"; };
 		752115D1220158BE001BC94A /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		752115D922016146001BC94A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		752115DB22016193001BC94A /* EventNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNewViewController.swift; sourceTree = "<group>"; };
@@ -241,12 +284,129 @@
 			path = "New Group3";
 			sourceTree = "<group>";
 		};
-		752115E32201A9EF001BC94A /* DataModel */ = {
+		6AC88E1A2206B05A0062926F /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				6AC88E1D2206BBC50062926F /* LoginViewModel.swift */,
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		6AC88E242206D7E40062926F /* membercard */ = {
+			isa = PBXGroup;
+			children = (
+				6AC88E252206D8580062926F /* MemberCardHeaderView.swift */,
+				6AC88E262206D8580062926F /* MemberCardHeaderView.xib */,
+				6AC88E292206D8AE0062926F /* MemberCardInfoTableViewCell.swift */,
+				6AC88E2A2206D8AE0062926F /* MemberCardInfoTableViewCell.xib */,
+			);
+			path = membercard;
+			sourceTree = "<group>";
+		};
+		6AC88E2D2206E3540062926F /* security_question */ = {
+			isa = PBXGroup;
+			children = (
+				6AC88E322206E5E90062926F /* SecurityQuestionUpdateTableViewCell.swift */,
+				6AC88E332206E5E90062926F /* SecurityQuestionUpdateTableViewCell.xib */,
+			);
+			path = security_question;
+			sourceTree = "<group>";
+		};
+		6AFEBE002205CDA1006D2F81 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				6AC88E1A2206B05A0062926F /* viewmodel */,
+				6AFEBE032205CDBB006D2F81 /* model */,
+				6AFEBE022205CDB0006D2F81 /* struct */,
+				6AFEBE012205CDAA006D2F81 /* network */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		6AFEBE012205CDAA006D2F81 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				6AC88E142206AF020062926F /* ApiService.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		6AFEBE022205CDB0006D2F81 /* struct */ = {
+			isa = PBXGroup;
+			children = (
+				6AFEBE042205CDDA006D2F81 /* FAQ.swift */,
+				6AC88E122206AE6D0062926F /* LoginData.swift */,
+			);
+			name = struct;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6AFEBE032205CDBB006D2F81 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				752115E42201AA4C001BC94A /* SecQuesDataModel.swift */,
+				6AFEBE162205D975006D2F81 /* FAQDataModel.swift */,
+				6AC88E182206AFC50062926F /* BaseModel.swift */,
+				6AC88E1B2206B0A10062926F /* LoginModel.swift */,
 			);
-			path = DataModel;
+			name = model;
+			path = "New Group1";
+			sourceTree = "<group>";
+		};
+		6AFEBE062205CDEB006D2F81 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				6AFEBE132205CF2C006D2F81 /* customview */,
+				6AFEBE072205CDF5006D2F81 /* storyboard */,
+				75C9F39121FD9C3100D65E0A /* Cell */,
+			);
+			name = ui;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6AFEBE072205CDF5006D2F81 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				753C8B9721F9B670002E101B /* Main.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		6AFEBE082205CE2C006D2F81 /* faq */ = {
+			isa = PBXGroup;
+			children = (
+				6AFEBE092205CEAD006D2F81 /* FAQHeaderView.swift */,
+				6AFEBE0A2205CEAD006D2F81 /* FAQHeaderView.xib */,
+				6AFEBE0D2205CEC8006D2F81 /* FAQTableViewCell.swift */,
+				6AFEBE0E2205CEC8006D2F81 /* FAQTableViewCell.xib */,
+			);
+			path = faq;
+			sourceTree = "<group>";
+		};
+		6AFEBE112205CF16006D2F81 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				6AFEBE122205CF1F006D2F81 /* extension */,
+				6AC88E162206AF2D0062926F /* Constants.swift */,
+				6AC88E1F2206BF510062926F /* Utils.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		6AFEBE122205CF1F006D2F81 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				6AFEBE142205CF45006D2F81 /* UIExtension.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		6AFEBE132205CF2C006D2F81 /* customview */ = {
+			isa = PBXGroup;
+			children = (
+				6AC88E222206D6F70062926F /* CardView.swift */,
+			);
+			path = customview;
 			sourceTree = "<group>";
 		};
 		753C8B8721F9B670002E101B = {
@@ -270,12 +430,13 @@
 		753C8B9221F9B670002E101B /* AEON */ = {
 			isa = PBXGroup;
 			children = (
-				752115E32201A9EF001BC94A /* DataModel */,
+				6AC88E212206CEBF0062926F /* AEON.entitlements */,
+				6AFEBE112205CF16006D2F81 /* util */,
+				6AFEBE062205CDEB006D2F81 /* ui */,
+				6AFEBE002205CDA1006D2F81 /* data */,
 				75A31DF522000182002E7336 /* controllers */,
-				75C9F39121FD9C3100D65E0A /* Cell */,
 				753C8B9321F9B670002E101B /* AppDelegate.swift */,
 				753C8B9521F9B670002E101B /* ViewController.swift */,
-				753C8B9721F9B670002E101B /* Main.storyboard */,
 				753C8B9D21F9B67B002E101B /* Assets.xcassets */,
 				753C8B9F21F9B67B002E101B /* LaunchScreen.storyboard */,
 				753C8BA221F9B67B002E101B /* Info.plist */,
@@ -323,6 +484,9 @@
 		75C9F39121FD9C3100D65E0A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6AC88E2D2206E3540062926F /* security_question */,
+				6AC88E242206D7E40062926F /* membercard */,
+				6AFEBE082205CE2C006D2F81 /* faq */,
 				75A31E10220079C4002E7336 /* seq_ques_confirm_cell */,
 				75C9F39221FD9C4500D65E0A /* QR_code_cell */,
 				7561955A21FC77B70037AF9D /* sec_ques_cell */,
@@ -381,6 +545,14 @@
 				TargetAttributes = {
 					753C8B8F21F9B670002E101B = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 0;
+							};
+							com.apple.Siri = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -407,9 +579,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AFEBE102205CEC8006D2F81 /* FAQTableViewCell.xib in Resources */,
+				6AC88E2C2206D8AE0062926F /* MemberCardInfoTableViewCell.xib in Resources */,
+				6AC88E352206E5E90062926F /* SecurityQuestionUpdateTableViewCell.xib in Resources */,
 				753C8BA121F9B67B002E101B /* LaunchScreen.storyboard in Resources */,
 				753C8B9E21F9B67B002E101B /* Assets.xcassets in Resources */,
 				753C8B9921F9B670002E101B /* Main.storyboard in Resources */,
+				6AC88E282206D8580062926F /* MemberCardHeaderView.xib in Resources */,
+				6AFEBE0C2205CEAD006D2F81 /* FAQHeaderView.xib in Resources */,
 				7561955E21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib in Resources */,
 				752115E222019378001BC94A /* SecQuesConfirmTableViewCell.xib in Resources */,
 				75C9F39621FD9C8A00D65E0A /* QR_codeViewCell.xib in Resources */,
@@ -450,15 +627,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AEON/Pods-AEON-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -481,33 +664,49 @@
 				752115DE220161AC001BC94A /* ApplyAeonServiceViewController.swift in Sources */,
 				6A3197AE2204007E0031D86F /* FAQViewController.swift in Sources */,
 				6A3197992203FE770031D86F /* MemberCardInfoTwoViewController.swift in Sources */,
+				6AC88E192206AFC50062926F /* BaseModel.swift in Sources */,
 				75A31DFF220069F5002E7336 /* SecQuestConfirmViewController.swift in Sources */,
 				6A3197A02203FF830031D86F /* CuponViewController.swift in Sources */,
 				752115DA22016146001BC94A /* HomeViewController.swift in Sources */,
+				6AC88E1C2206B0A10062926F /* LoginModel.swift in Sources */,
+				6AC88E342206E5E90062926F /* SecurityQuestionUpdateTableViewCell.swift in Sources */,
 				6A3197B5220401310031D86F /* MembershipViewController.swift in Sources */,
 				75A31DF92200026C002E7336 /* LoginViewController.swift in Sources */,
 				75A31E0522006C13002E7336 /* RegistrationViewController.swift in Sources */,
 				752115E52201AA4C001BC94A /* SecQuesDataModel.swift in Sources */,
 				75A31E0922006E40002E7336 /* CustomerInfoUpdateViewController.swift in Sources */,
+				6AC88E272206D8580062926F /* MemberCardHeaderView.swift in Sources */,
 				75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */,
 				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
 				6A3197BD220403140031D86F /* SecQuestionResetPasswordViewController.swift in Sources */,
 				753C8B9C21F9B670002E101B /* AEON.xcdatamodeld in Sources */,
+				6AC88E202206BF510062926F /* Utils.swift in Sources */,
 				75A31E0D22006F32002E7336 /* PhotoTakingViewController.swift in Sources */,
 				6A3197972203FE640031D86F /* MemberCardInfoOneViewController.swift in Sources */,
+				6AC88E172206AF2D0062926F /* Constants.swift in Sources */,
+				6AC88E132206AE6D0062926F /* LoginData.swift in Sources */,
+				6AC88E232206D6F70062926F /* CardView.swift in Sources */,
+				6AC88E1E2206BBC50062926F /* LoginViewModel.swift in Sources */,
+				6AFEBE152205CF45006D2F81 /* UIExtension.swift in Sources */,
 				6A3197A22203FF910031D86F /* PromotionViewController.swift in Sources */,
 				6A3197A9220400290031D86F /* MessagingViewController.swift in Sources */,
 				7561955D21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift in Sources */,
+				6AFEBE0B2205CEAD006D2F81 /* FAQHeaderView.swift in Sources */,
 				75A31DF72200020E002E7336 /* MainViewController.swift in Sources */,
 				752115D2220158BE001BC94A /* SideMenuTableViewController.swift in Sources */,
+				6AFEBE052205CDDA006D2F81 /* FAQ.swift in Sources */,
 				6A3197A72204000F0031D86F /* HotlinePhoneNumberViewController.swift in Sources */,
+				6AC88E2B2206D8AE0062926F /* MemberCardInfoTableViewCell.swift in Sources */,
 				75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */,
 				6A3197AC220400700031D86F /* FaqAndTermsConditionViewController.swift in Sources */,
 				753C8B9621F9B670002E101B /* ViewController.swift in Sources */,
 				753C8B9421F9B670002E101B /* AppDelegate.swift in Sources */,
+				6AFEBE172205D975006D2F81 /* FAQDataModel.swift in Sources */,
+				6AFEBE0F2205CEC8006D2F81 /* FAQTableViewCell.swift in Sources */,
 				752115E122019378001BC94A /* SecQuesConfirmTableViewCell.swift in Sources */,
 				6A3197B0220400970031D86F /* TermsAndConditionsViewController.swift in Sources */,
 				6A31979B2203FEF60031D86F /* SecurityQuestionUpdateViewController.swift in Sources */,
+				6AC88E152206AF020062926F /* ApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
         self.vLoginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickLogin)))
         
          self.vAboutUsButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickAboutUs)))
+        self.vFAQButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickFAQ)))
     }
     
     @objc func onClickLogin(){
@@ -30,5 +31,11 @@ class MainViewController: UIViewController {
     @objc func onClickAboutUs(){
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
+    }
+    
+    @objc func onClickFAQ(){
+        let faqVC = self.storyboard?.instantiateViewController(withIdentifier: "FAQViewController") as! FAQViewController
+        faqVC.showNavBar = true
+        self.present(faqVC, animated: true, completion: nil)
     }
 }

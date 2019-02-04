@@ -20,4 +20,7 @@ class SecQuestionResetPasswordViewController: UIViewController {
     }
     
 
+    @IBAction func onClickCloseButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

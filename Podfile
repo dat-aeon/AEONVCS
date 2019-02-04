@@ -6,6 +6,9 @@ target 'AEON' do
   use_frameworks!
 
   # Pods for AEON
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+  pod 'Kingfisher'
 
 pod 'SideMenu'
 pod 'PageMenu'
