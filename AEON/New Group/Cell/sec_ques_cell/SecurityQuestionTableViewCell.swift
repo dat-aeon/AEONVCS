@@ -31,6 +31,5 @@ class SecurityQuestionTableViewCell: UITableViewCell {
         self.lbQuesNo.text = "Q" + data.index
         self.lbQuestion.text = data.questionEng
         self.lbAnsNo.text = "Ans"+data.index
-        tfAnswer.isSecureTextEntry = true
     }
 }

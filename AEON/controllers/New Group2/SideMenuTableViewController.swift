@@ -19,7 +19,11 @@ class SideMenuTableViewController: UITableViewController {
         // refresh cell blur effect in case it changed
         tableView.reloadData()
         
-        self.tableView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         guard SideMenuManager.default.menuBlurEffectStyle == nil else {
             return
         }
@@ -37,7 +41,11 @@ class SideMenuTableViewController: UITableViewController {
         // refresh cell blur effect in case it changed
         tableView.reloadData()
         
-        self.tableView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         guard SideMenuManager.default.menuBlurEffectStyle == nil else {
             return
         }

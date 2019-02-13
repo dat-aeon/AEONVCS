@@ -17,7 +17,7 @@ enum Locale: String {
     
     
     static let ChangeNotification = "Locale.ChangeNotification"
-    private static let defaultsSuitName = "com.kkk.localechange"
+    private static let defaultsSuitName = "com.aeon.vcs.localechange"
     
     static var currentLocale: Locale {
         get { return Locale(rawValue: current) ?? defaultLocale }

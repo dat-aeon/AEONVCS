@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: BaseUIViewController {
 
     @IBOutlet weak var vLoginButton: UIView!
+    @IBOutlet weak var vRegisterButton: UIView!
     @IBOutlet weak var vAboutUsButton: UIView!
     @IBOutlet weak var vFAQButton: UIView!
     
@@ -18,13 +19,18 @@ class MainViewController: BaseUIViewController {
         super.viewDidLoad()
 
         self.vLoginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickLogin)))
-        
-         self.vAboutUsButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickAboutUs)))
+        self.vRegisterButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickRegister)))
+        self.vAboutUsButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickAboutUs)))
         self.vFAQButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickFAQ)))
     }
     
     @objc func onClickLogin(){
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! UINavigationController
+        self.present(navigationVC, animated: true, completion: nil)
+    }
+    
+    @objc func onClickRegister(){
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }
     

@@ -5,3 +5,98 @@
   Created by AcePlus101 on 2/4/19.
   Copyright © 2019 AEON microfinance. All rights reserved.
 */
+
+// HOME Screen
+"home.title" = "AEON";
+"home.login.button" = "LOGIN";
+"home.aboutus.button" = "ABOUT US";
+"home.faq.button" = "FAQ";
+
+//LOGIN Screen
+"login.title" = "LOGIN";
+"login.phoneno.holder" = "ဖုန်းနံပါတ်";
+"login.password.holder" = "လျှို့ဝှက်နံပါတ်";
+"login.login.button" = "ဝင်မည်";
+"login.forgetpassword.link" ="ဖုန်းနံပါတ်မေ့ခဲ့လျှင်?";
+
+//SECURITYQUESTION CONFIRMATION Screen
+"secquestconfirm.title" ="လုံခြုံရေးမေးခွန်းကိုအတည်ပြုခြင်း";
+"secquestconfirm.confrim.button" = "အတည်ပြုသည်";
+
+//RESET PASSWORD Screen
+"resetpass.title" = "လျှို့ဝှတ်နံပါတ်အားပြန်ပြင်ခြင်း";
+"resetpass.newpass.label" = "New Password *";
+"resetpass.conpass.label" = "Confirm New Password *";
+"resetpass.reset.button" = "RESET PASSWORD";
+
+//REGISTER Screen
+"register.title" = "REGISTRATION";
+"register.name.label" = "Name *";
+"register.dob.label" = "Date Of Birth *";
+"register.dob.holder" = "dd/MM/yyyy";
+"register.nrc.label" = "NRC No. *";
+"register.phoneno.label" = "Phone No. *";
+"register.phoneno.holder" = "09xxxxxxxx";
+"register.password.label" = "Password *";
+"register.password.holder" = "minimum 6 characters.";
+"register.conpassword.label" = "Confirm Password *";
+"register.save.button" = "SAVE";
+
+//CUSTOMERTYPE Screen
+"customertype.title" = "Customer Type";
+"customertype.oldcustomer.button" = "Customer Used AEON Services Before";
+"customertype.newcustomre.button" = "New Customer To Apply AEON Services";
+
+//SECURITYQUESTION REGISTER Screen
+"secquest.title" = "Security Question";
+"secquest.question.label" = "Q: " ;
+"secquest.answer.label" = "A: ";
+"secquest.save.button" = "SAVE";
+
+//VERIFIACTION Screen
+"verify.title" = "Verification Member";
+"verify.agreementno.label" = "Agreement No. *";
+"verify.agreementno.holder" = "XXXX-X-XXXXXXXXXX-X";
+"verify.dob.label" = "Date Of Birth *";
+"verify.dob.holder" = "dd/MM/yyyy";
+"verify.nrc.label" = "NRC No. *";
+"verify.callnow.notice" = "If you don't know \"Agreement No\", please contact to AEON Customer Service.";
+"verify.callnow.button" = "CALL NOW";
+"verify.verify.button" = "VERIFY";
+
+//PHOTO UPLOAD Screen
+"photoupload.title" = "PHOTO UPLOAD";
+"photoupload.announce.label" = "Your picture will be taken to issue the member card";
+"photoupload.notice1.label" = "Member card can use only for your AEON Service with this picture information.";
+"photoupload.notice2.label" = "This picture ";
+"photoupload.notice3.label" = "1. Save in your mobile phone and don't share to others.";
+"photoupload.notice4.label" = "2. Not change until you reinstall this application again.";
+"photoupload.notice5.label" = "3. To secure and verify your member card when you lost your phone.";
+"photoupload.upload.button" = "Setup Face Photo";
+
+//PHOTO CONFIRMATION Screen
+"photoconfirm.title" = "Confirmation";
+"photoconfirm.confirm.title" = "Use this photo in member card?";
+"photoconfirm.confirm.confirm" = "Confirm";
+"photoconfirm.confirm.retry" = "Retry";
+
+//MEMBERSHIP Screen
+"membership.title" = "MEMBERSHIP";
+"membership.card2.photo.label" = "This photo can use for securing your member card. If you want to update this photo, please contact to AEON Customer Service.";
+
+//INFORMATION UPDATE Screen
+"infoupdate.title" = "Information Update";
+"infoupdate.tag1.title" = "SECURITY QUESTION UPDATE";
+"infoupdate.tag2.title" = "CUSTOMER INFO UPDATE";
+"infoupate.update.button" = "UPDATE";
+
+//CONTACTUS Screen
+"contactus.title" = "Contact Us";
+"contactus.tag1.title" = "HOTLINE PHONE";
+"contactus.tag2.title" = "MESSAGING";
+"contactus.callnow.button" = "CALL NOW";
+
+//FAQ Screen
+"faq.title" = "FAQ";
+"faq.tag1.title" = "FAQ";
+"faq.tag2.title" = "TERMS & CONDITIONS";

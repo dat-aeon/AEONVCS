@@ -8,9 +8,11 @@
 
 import UIKit
 
-class FAQViewController: UIViewController {
+class FAQViewController: BaseUIViewController {
     @IBOutlet weak var tvFAQView: UITableView!
     var dataList = [FAQHeaderListItem]()
+    
+    //var faqDataList = [FAQCateoryDataBeanElement]()
     
     var showNavBar:Bool = false
     override func viewDidLoad() {
@@ -36,7 +38,23 @@ class FAQViewController: UIViewController {
             
         }
         
-        dataList = FAQDataModel.init().getFAQHeaderListItemData()
+        FAQViewModel.init().getFAQData(loginId: "Jue", success: { (result) in
+            
+            switch Locale.currentLocale {
+            case .EN:
+                self.dataList = result
+            case .MY:
+                self.dataList = result
+            }
+            self.tvFAQView.reloadData()
+            
+        }) { (error) in
+            // Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
+            }
+        
+        
+        //dataList = FAQDataModel.init().getFAQHeaderListItemData()
+        print("Data List size ::::::::::::::::: \(dataList.count)")
         tvFAQView.register(UINib(nibName: "FAQTableViewCell", bundle: nil), forCellReuseIdentifier: "FAQTableViewCell")
         tvFAQView.register(UINib(nibName: "FAQHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "FAQHeaderView")
         tvFAQView.dataSource = self

@@ -10,5 +10,12 @@ import Foundation
 struct ApiServiceEndPoint {
     //Login API end Point
     static var login = "appLogin"
+    static var faqList = "information/faq_info"
+    static var nrcList = "information/nrc_info"
+    static var checkMember = "check_member"
+    static var register = "registration"
+    static var secQuesList = "get_security_questions"
+    static var selectedQuesList = "security_questions"
+    static var confirmUser = "confirm_info"
     
 }

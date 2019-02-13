@@ -7,9 +7,15 @@
 //
 
 import Foundation
-class FAQDataModel{
+import SwiftyJSON
+import Alamofire
+
+class FAQDataModel: BaseModel{
     func getFAQHeaderListItemData() -> [FAQHeaderListItem] {
         var data = [FAQHeaderListItem]()
+        
+        
+        
         let faqItem1 = FAQItem(subQuestion: "Q1 This is my question", answer: "Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer ", isCollapsed: false)
         let faqItem2 = FAQItem(subQuestion: "Q2 This is my question", answer: "A1Answer Answer Answer Answer Answer Answer Answer Answer ", isCollapsed: false)
         let faqItem3 = FAQItem(subQuestion: "Q3 This is my question", answer: "A1Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer ", isCollapsed: false)
@@ -42,5 +48,34 @@ class FAQDataModel{
         data.append(faqHeaderListItem4)
         
         return data
+    }
+    
+    func getFaqData(loginId:String,success: @escaping (FAQCateoryDataBean) -> Void,failure: @escaping (String) -> Void){
+        let rawData = [
+           // "loginID": loginId
+            "siteActivationKey" : loginId
+        ]
+        let _ = super.performRequest(endPoint: ApiServiceEndPoint.faqList, rawData: rawData) { (result) in
+            switch result{
+            case .success(let result):
+                
+                let responseJsonData = JSON(result)
+                let responseValue  = try! responseJsonData.rawData()
+                
+                //if let loginResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
+                    
+                if let fAQCateoryDataBean:FAQCateoryDataBean = try? JSONDecoder().decode(FAQCateoryDataBean.self, from: responseValue){
+                    success(fAQCateoryDataBean)
+                    print("call data model :::::::::::\(fAQCateoryDataBean)")
+                    
+                    //return fAQCateoryDataBean;
+                }else{
+                    failure("Cannot load any data")
+                }
+            case .failure(let error):
+                failure(error.localizedDescription)
+            }
+        }
+        
     }
 }

@@ -42,3 +42,63 @@ struct FAQItem {
     var answer:String = ""
     var isCollapsed:Bool = false
 }
+
+struct FAQResponse: Codable {
+    let message: String
+    let dataBean: FAQCateoryDataBean
+}
+
+typealias FAQCateoryDataBean = [FAQCateoryDataBeanElement]
+
+struct FAQCateoryDataBeanElement: Codable {
+    let faqCategory: String
+    let faqInfoResInfoList: [FAQInfoResInfoList]
+}
+
+struct FAQInfoResInfoList: Codable {
+    let faqID: Int
+    let questionMM, questionEN, answerMM, answerEN: String
+    let categoryID, delFlag: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case faqID = "faqId"
+        case questionMM, questionEN, answerMM, answerEN
+        case categoryID = "categoryId"
+        case delFlag
+    }
+}
+//
+//struct FAQCateoryDataBean: Codable {
+//
+//    let faqCategory: Int!
+//    let faqDataBean: FAQDataBean
+//
+//    enum CodingKeys: String, CodingKey {
+//        case faqCategory = "faqCategory"
+//        case faqDataBean = "faqInfoResInfoList"
+//
+//    }
+//}
+//
+//struct FAQDataBean: Codable {
+//    let faqId: Double
+//    let questionMM: String
+//    let questionEN: String
+//    let answerMM: String
+//    let answerEN: String
+//    let categoryId: Int
+//    let delFlag: Int
+//
+//    enum  CodingKeys: String, CodingKey {
+//        case faqId = "faqId"
+//        case questionMM = "questionMM"
+//        case questionEN = "questionEN"
+//        case answerMM = "answerMM"
+//        case answerEN = "answerEN"
+//        case categoryId = "categoryId"
+//        case delFlag = "delFlag"
+//    }
+//
+//}
+
+
