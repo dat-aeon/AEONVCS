@@ -9,20 +9,15 @@
 import Foundation
 
 struct UserSecQuesResponse : Codable{
-    let numOfQuestion: Int
-    let userSecQuesBeanList : UserSecQuesBeanList
-}
-
-struct UserSecQuesBeanList : Codable {
-    let customerId: Int = 0
-    let questionList = [QuestionBean]()
+    let numOfSecQues: Int
+    let numOfAnsChar: Int
+    let userSecQuesBeanList : [QuestionBean]
 }
 
 struct QuestionBean : Codable {
     let secQuesId: Int
     let questionMM: String
     let questionEN: String
-    let answer: String
 }
 
 struct UserSecQuesConfirmRequest : Codable{

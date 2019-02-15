@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		047F1611220DA1F70015CDEB /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F1610220DA1F70015CDEB /* RegisterData.swift */; };
+		04A20AE622141F0000A7C1D9 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A20AE522141F0000A7C1D9 /* AboutUsViewController.swift */; };
+		04A20AE82215847D00A7C1D9 /* AboutUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A20AE72215847D00A7C1D9 /* AboutUsData.swift */; };
+		04A20AEA2215849400A7C1D9 /* AboutUsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A20AE92215849400A7C1D9 /* AboutUsModel.swift */; };
+		04A20AEC221584A100A7C1D9 /* AboutUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A20AEB221584A100A7C1D9 /* AboutUsViewModel.swift */; };
 		04BA7ABF22103796006696E7 /* SecQuesRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7ABD22103796006696E7 /* SecQuesRegisterTableViewCell.swift */; };
 		04BA7AC022103796006696E7 /* SecQuesRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BA7ABE22103796006696E7 /* SecQuesRegisterTableViewCell.xib */; };
 		04BA7AC222105B72006696E7 /* SecQuesConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7AC122105B72006696E7 /* SecQuesConfirmModel.swift */; };
@@ -96,6 +100,10 @@
 
 /* Begin PBXFileReference section */
 		047F1610220DA1F70015CDEB /* RegisterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterData.swift; sourceTree = "<group>"; };
+		04A20AE522141F0000A7C1D9 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		04A20AE72215847D00A7C1D9 /* AboutUsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsData.swift; sourceTree = "<group>"; };
+		04A20AE92215849400A7C1D9 /* AboutUsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsModel.swift; sourceTree = "<group>"; };
+		04A20AEB221584A100A7C1D9 /* AboutUsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewModel.swift; sourceTree = "<group>"; };
 		04BA7ABD22103796006696E7 /* SecQuesRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuesRegisterTableViewCell.swift; sourceTree = "<group>"; };
 		04BA7ABE22103796006696E7 /* SecQuesRegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecQuesRegisterTableViewCell.xib; sourceTree = "<group>"; };
 		04BA7AC122105B72006696E7 /* SecQuesConfirmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuesConfirmModel.swift; sourceTree = "<group>"; };
@@ -202,6 +210,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04A20AE422141ED300A7C1D9 /* aboutus */ = {
+			isa = PBXGroup;
+			children = (
+				04A20AE522141F0000A7C1D9 /* AboutUsViewController.swift */,
+			);
+			path = aboutus;
+			sourceTree = "<group>";
+		};
 		04BA7ABC2210373E006696E7 /* sec_ques_register_cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +419,7 @@
 				04F0023222094FCF007A9ACF /* FAQViewModel.swift */,
 				04BA7AC3221076DF006696E7 /* SecQuesRegisterViewModel.swift */,
 				04BA7ACD221317B5006696E7 /* SecQuesConfirmViewModel.swift */,
+				04A20AEB221584A100A7C1D9 /* AboutUsViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -454,6 +471,7 @@
 				047F1610220DA1F70015CDEB /* RegisterData.swift */,
 				04BA7AC522107A9D006696E7 /* SecQuesListData.swift */,
 				04BA7ACF221319F7006696E7 /* UserSecQuesData.swift */,
+				04A20AE72215847D00A7C1D9 /* AboutUsData.swift */,
 			);
 			name = struct;
 			path = "New Group";
@@ -468,6 +486,7 @@
 				6AC88E1B2206B0A10062926F /* LoginModel.swift */,
 				04F0023022094E67007A9ACF /* RegisterModel.swift */,
 				04BA7AC122105B72006696E7 /* SecQuesConfirmModel.swift */,
+				04A20AE92215849400A7C1D9 /* AboutUsModel.swift */,
 			);
 			name = model;
 			path = "New Group1";
@@ -578,6 +597,7 @@
 		75A31DF522000182002E7336 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04A20AE422141ED300A7C1D9 /* aboutus */,
 				6A3197BB220402520031D86F /* login */,
 				6A3197BA2204020F0031D86F /* home */,
 				6A3197B9220401F70031D86F /* aeonservice */,
@@ -786,12 +806,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				75A31E0B22006EA7002E7336 /* VerifyMemberViewController.swift in Sources */,
+				04A20AE82215847D00A7C1D9 /* AboutUsData.swift in Sources */,
 				75A31E0122006A89002E7336 /* ResetPasswordViewController.swift in Sources */,
 				752115DC22016193001BC94A /* EventNewViewController.swift in Sources */,
 				6A3197A42203FF9E0031D86F /* NewsViewController.swift in Sources */,
 				6A31979D2203FF1F0031D86F /* InformationUpdateViewController.swift in Sources */,
 				75A31E0F22007341002E7336 /* MemberCardInfoViewController.swift in Sources */,
 				752115DE220161AC001BC94A /* ApplyAeonServiceViewController.swift in Sources */,
+				04A20AEA2215849400A7C1D9 /* AboutUsModel.swift in Sources */,
 				6A3197AE2204007E0031D86F /* FAQViewController.swift in Sources */,
 				047F1611220DA1F70015CDEB /* RegisterData.swift in Sources */,
 				6A3197992203FE770031D86F /* MemberCardInfoTwoViewController.swift in Sources */,
@@ -799,8 +821,10 @@
 				75A31DFF220069F5002E7336 /* SecQuestConfirmViewController.swift in Sources */,
 				04BA7AC222105B72006696E7 /* SecQuesConfirmModel.swift in Sources */,
 				6A3197A02203FF830031D86F /* CouponViewController.swift in Sources */,
+				04A20AEC221584A100A7C1D9 /* AboutUsViewModel.swift in Sources */,
 				04BA7AD0221319F7006696E7 /* UserSecQuesData.swift in Sources */,
 				6A6A99272207F00D001C30D2 /* Localizable.swift in Sources */,
+				04A20AE622141F0000A7C1D9 /* AboutUsViewController.swift in Sources */,
 				752115DA22016146001BC94A /* HomeViewController.swift in Sources */,
 				6AC88E1C2206B0A10062926F /* LoginModel.swift in Sources */,
 				6AC88E342206E5E90062926F /* SecurityQuestionUpdateTableViewCell.swift in Sources */,

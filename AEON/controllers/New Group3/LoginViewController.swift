@@ -18,18 +18,18 @@ class LoginViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let button = UIButton(type: .custom)
-        //set image for button
-        button.setImage(UIImage(named: "mm_flag.png"), for: .normal)
-        //add function for button
-        button.addTarget(self, action: #selector(onClickCloseButton(_:)), for: .touchUpInside)
-        //set frame
-        button.frame = CGRect(x: 0, y: 0, width: 50, height: 32)
-        
-        let barButton = UIBarButtonItem(customView: button)
-        //assign button to navigationbar
-        self.navigationItem.rightBarButtonItem = barButton
-        
+//        let button = UIButton(type: .custom)
+//        //set image for button
+//        button.setImage(UIImage(named: "mm_flag.png"), for: .normal)
+//        //add function for button
+//        button.addTarget(self, action: #selector(onClickCloseButton(_:)), for: .touchUpInside)
+//        //set frame
+//        button.frame = CGRect(x: 0, y: 0, width: 50, height: 32)
+//        
+//        let barButton = UIBarButtonItem(customView: button)
+//        //assign button to navigationbar
+//        self.navigationItem.rightBarButtonItem = barButton
+//        
         self.title = "Login"
         self.lbForgetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickForgetPassword)))
         

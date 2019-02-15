@@ -22,7 +22,7 @@ class SecQuesConfirmModel: BaseModel {
         let rawData = [
             "siteActivationKey" : siteActivationKey
         ]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.selectedQuesList, rawData: rawData) { (result) in
+        let _ = super.performRequest(endPoint: ApiServiceEndPoint.resetSecQuesList, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
