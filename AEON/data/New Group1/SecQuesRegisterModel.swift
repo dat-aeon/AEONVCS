@@ -11,31 +11,6 @@ import SwiftyJSON
 
 class SecQuesRegisterModel: BaseModel {
     
-    func makeRegister(username:String,dob:String,nrc:String,phoneno:String,password:String,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
-        let rawData = [
-            "userName": username,
-            "dob": dob,
-            "nrc": nrc,
-            "phoneNo": phoneno,
-            "password": password
-        ]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.register, rawData: rawData) { (result) in
-            switch result{
-            case .success(let result):
-                let responseJsonData = JSON(result)
-                let responseValue  = try! responseJsonData.rawData()
-                if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
-                    success(registerResponse)
-                }else{
-                    failure("Cannot load any data")
-                }
-            case .failure(let error):
-                failure(error.localizedDescription)
-            }
-        }
-        
-    }
-    
     func getSecQuestionList(siteActivationKey: String, success: @escaping (SecQuesListResponse) -> Void, failure: @escaping (String) ->Void){
         
         let rawData = [Constants.SITE_ACTIVATION_KEY: siteActivationKey]

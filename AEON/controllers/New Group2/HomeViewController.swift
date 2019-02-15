@@ -24,9 +24,12 @@ class HomeViewController: BaseUIViewController {
     
     var containerIndex:Int = 1
     
+    var registerResponse:RegisterResponse?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.standard.set(registerResponse, forKey: Constants.REGISTER_RESPONSE)
         // setup side menu
         setupSideMenu()
         

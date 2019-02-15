@@ -14,7 +14,7 @@ class BaseModel {
     private var Manager : Alamofire.SessionManager = {
         // Create the server trust policies
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            "10.1.9.100:8081/assm/": .disableEvaluation
+            Constants.base_url: .disableEvaluation
         ]
         // Create custom manager
         let configuration = URLSessionConfiguration.default
@@ -43,14 +43,41 @@ class BaseModel {
         print("Request params :::::::::::\(rawData)")
         print("Request data :::::::::::\(request)")
         
-        
-        
         return Alamofire.request(request).responseJSON{ (response) in
             completion(response.result)
-
-           print("Response result :::::::::::\(response)")
-     
+            
+            print("Response result :::::::::::\(response)")
+            
+        }
+            
     }
-  
+    
+    func performRequest(endPoint:String,rawData:Data,completion:@escaping (Result<Any>)->Void) -> DataRequest {
+        
+        let urlString = Constants.base_url + endPoint
+        let url = URL(string: urlString)
+        var request        = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = rawData
+        print("Request params :::::::::::\(rawData)")
+        print("Request data :::::::::::\(request)")
+        return Alamofire.request(request).responseJSON{ (response) in
+            completion(response.result)
+            
+            print("Response result :::::::::::\(response)")
+            
+        }
+    }
+    
+    func performRequestWithImage(endPoint:String,imageData:Data,rawData:String,completion:@escaping (SessionManager.MultipartFormDataEncodingResult)->Void) -> Any {
+        let urlString = Constants.base_url + endPoint
+        
+        return Alamofire.upload(multipartFormData: { (multipartFormData) in
+                                multipartFormData.append(imageData, withName: "image",fileName: "\(Date().timeIntervalSince1970).png", mimeType: "image/png")
+                                multipartFormData.append(rawData.data(using: String.Encoding.utf8)!, withName: "memRegisterInfo")
+                            }, usingThreshold: UInt64.init(), to:urlString, method : .post) { (response) in
+                                completion(response)                            }
+    }
 }
-}
+

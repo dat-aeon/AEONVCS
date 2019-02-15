@@ -17,36 +17,20 @@ class SecQuesRegisterViewController: UIViewController {
     var numOfAnsCount: Int = 0
     var secQMy = [String]()
     var secQEng = [String]()
-    var questionList = [[String]]()
+    var questionList = [String]()
+    var secQuesList = [SecQuesListBean]()
+    var qaList = [SecQABean]()
     
     var imagePicker = UIImagePickerController()
     
+    var memberResponseData:CheckMemberResponse?
+    var registerRequestData:RegisterRequestBean?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadSecurityQuestionLIst()
 
-//        SecQuesRegisterViewModel.init().getSecQuesList(siteActivationKey: "12345678", success: { (result) in
-//
-//            self.numOfQuestion = result.numOfQuestion
-//            self.numOfAnsCount = result.numOfAnsCount
-//            self.secQEng = result.questionList[0]
-//            self.secQMy = result.questionList[1]
-//            self.questionList = result.questionList
-//            //switch Locale.currentLocale {
-//            //case .EN:
-//                //self.secQuesList = self.secQEng
-//            //case .MY:
-//                //self.secQuesList = self.secQMy
-//           // }
-//        }) { (error) in
-//            // Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
-//        }
-//
-        //secQuesList = SecQuesDataModel().getSecQuesList()
-        //secQuesConfirmList = SecQuesConfirmModel().getSecQuestConfirmation()
-        
-        self.numOfQuestion = 2
-        self.questionList = [["1","2"],["3","4"]]
-        
         self.tvSecQuesRegView.register(UINib(nibName: "SecQuesRegisterTableViewCell", bundle: nil), forCellReuseIdentifier: "SecQuesRegisterTableViewCell")
         self.tvSecQuesRegView.register(UINib(nibName: "SecQuesSaveTableViewCell", bundle: nil), forCellReuseIdentifier: "SecQuesSaveTableViewCell")
         
@@ -54,8 +38,56 @@ class SecQuesRegisterViewController: UIViewController {
         self.tvSecQuesRegView.dataSource = self
         self.tvSecQuesRegView.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillChange(notification : Notification) {
+        
+        guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            tvSecQuesRegView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardReact.height, right: 0)
+        } else {
+            tvSecQuesRegView.contentInset = UIEdgeInsets.zero
+        }
+        tvSecQuesRegView.scrollIndicatorInsets = tvSecQuesRegView.contentInset
+        
+    }
+    
+    @IBAction func onClickBackButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func loadSecurityQuestionLIst(){
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+        SecQuesRegisterViewModel.init().getSecQuesList(siteActivationKey: "12345678", success: { (result) in
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            self.numOfQuestion = result.numOfQuestion
+            self.numOfAnsCount = result.numOfAnsCount
+            self.secQEng = result.questionList[0]
+            self.secQMy = result.questionList[1]
+            self.secQuesList = result.secQuesList
+            switch Locale.currentLocale {
+            case .EN:
+                self.questionList = self.secQEng
+            case .MY:
+                self.questionList = self.secQMy
+            }
+            self.tvSecQuesRegView.reloadData()
+        }) { (error) in
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
+        }
+    }
 }
 
 extension SecQuesRegisterViewController:UITableViewDataSource{
@@ -64,7 +96,6 @@ extension SecQuesRegisterViewController:UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            print("number of cell:::::: \(self.numOfQuestion)")
             return self.numOfQuestion
         }
         return 1
@@ -72,21 +103,17 @@ extension SecQuesRegisterViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            print("Register cell:::::::::::")
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecQuesRegisterTableViewCell", for: indexPath) as! SecQuesRegisterTableViewCell
             cell.selectionStyle = .none
-            cell.setData(data: self.questionList)
-            //cell.setData(data: secQuesList[indexPath.row])
+            cell.setData(data: self.questionList,answerCount:self.numOfAnsCount)
+            cell.cellClickDelegate = self
             return cell
             
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "SecQuesSaveTableViewCell", for: indexPath) as! SecQuesSaveTableViewCell
         cell.selectionStyle = .none
-        //cell.setData(data: secQuesConfirmList[indexPath.row])
-        
         cell.delegate = self
         return cell
-        
     }
     
     func openCamera(imagePickerControllerDelegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate)
@@ -108,6 +135,9 @@ extension SecQuesRegisterViewController:UITableViewDataSource{
     
 }
 
+
+
+
 extension SecQuesRegisterViewController:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -116,33 +146,64 @@ extension SecQuesRegisterViewController:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0{
-            return CGFloat(self.view.frame.height/4)
+            return CGFloat(160.0)
             
         }
         return CGFloat(100.0)
     }
 }
 
-extension SecQuesRegisterViewController:SecQuesRegisterDelegate{
-    func onClickSecQuesList(secQuestion: String?, secAnswer: String?) {
-        
-    }
-    
-    func onClickSecQuesList() {
+extension SecQuesRegisterViewController:SecQuesRegisterCellClickDelegate{
+    func onClickSecQuesList(quesList: [String],cell:SecQuesRegisterTableViewCell) {
+        let action = UIAlertController.actionSheetWithItems(items: quesList, action: { (value)  in
+            cell.lblSecQuestion.text = value
+            print(value)
+        })
+        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(action, animated: true, completion: nil)
         
     }
 }
 
 extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
     func onClickSaveButton() {
-//        let memberValue:String = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) ?? ""
-//
-//        if memberValue == Constants.MEMBER {
-//        openCamera(imagePickerControllerDelegate: self)
-//        } else {
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
+        var secQuestionAndAnswer:[SecQABean] = []
+        for i in 0..<tvSecQuesRegView.numberOfRows(inSection: 0){
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = tvSecQuesRegView.cellForRow(at: indexPath) as! SecQuesRegisterTableViewCell
+            if !(cell.tfsecAnswer.text?.isEmpty)!{
+                if let selectedIndex = questionList.firstIndex(of: "\(cell.lblSecQuestion.text!)"){
+                    let selectedQuestionId = secQuesList[selectedIndex].secQuestionId
+                    let secQABean = SecQABean(questionId: selectedQuestionId, answer: cell.tfsecAnswer.text!)
+                    secQuestionAndAnswer.append(secQABean)
+                }
+            }else{
+                cell.tfsecAnswer.showError(message: "Enter Answer")
+                return
+            }
+        }
+        self.qaList = secQuestionAndAnswer
+        let memberValue:String = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) ?? ""
+        
+        if memberValue == Constants.MEMBER {
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberInfoPreviewViewController") as! UINavigationController
+            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+            vc.registerRequestData = self.registerRequestData
+            vc.profileImage = UIImage(named: "Image")!
+            vc.memberResponseData = self.memberResponseData!
+            vc.qaList = secQuestionAndAnswer
             self.present(navigationVC, animated: true, completion: nil)
-//        }
+//            openCamera(imagePickerControllerDelegate: self)
+        } else {
+            RegisterViewModel.init().makeRegisterNewMember(registerRequestData:registerRequestData!,memberResponseData: memberResponseData!, qaList:secQuestionAndAnswer , success: { (registerResponse) in
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
+                let vc = navigationVC.children.first as! HomeViewController
+                vc.registerResponse = registerResponse
+                self.present(navigationVC, animated: true, completion: nil)
+            }) { (error) in
+                Utils.showAlert(viewcontroller: self, title: "Register Failed", message: "You cannot register now.")
+            }
+        }
     }
     
 }
@@ -159,6 +220,14 @@ extension SecQuesRegisterViewController : UIImagePickerControllerDelegate, UINav
             //nextvc.image = pickedImage
             //present(nextvc)
              print("image is not null")
+            
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberInfoPreviewViewController") as! UINavigationController
+            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+            vc.registerRequestData = self.registerRequestData
+            vc.profileImage = pickedImage ?? UIImage(named: "Image")!
+            vc.memberResponseData = self.memberResponseData!
+            vc.qaList = self.qaList
+            self.present(navigationVC, animated: true, completion: nil)
         } else {
             print("image is null")
         }

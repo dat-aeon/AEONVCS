@@ -30,6 +30,7 @@ class MainViewController: BaseUIViewController {
     }
     
     @objc func onClickRegister(){
+//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuesRegisterViewController") as! UINavigationController
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }

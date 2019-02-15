@@ -28,6 +28,26 @@ extension UILabel {
     }
     
 }
+
+extension UITextField{
+    func showError(message:String){
+        self.layer.backgroundColor = UIColor(red:255.0/255.0, green:0.0/255.0, blue:0.0/255.0, alpha: 1.0).cgColor
+        self.attributedPlaceholder = NSAttributedString(string: message,
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+
+    }
+    func setMaxLength(maxLength:Int) {
+        self.tag = maxLength
+        addTarget(self, action: #selector(textfieldChanged(_:)), for: UIControl.Event.editingChanged)
+    }
+    
+    @objc private func textfieldChanged(_ textField: UITextField) {
+        guard let text = text else { return }
+        let trimmed = text.prefix(textField.tag)
+        self.text = String(trimmed)
+        
+    }
+}
 extension UIView {
     
     func visiblity(gone: Bool, dimension: CGFloat = 0.0, attribute: NSLayoutConstraint.Attribute = .height) -> Void {
@@ -74,4 +94,44 @@ extension UIViewController:NSURLConnectionDelegate{
 //        }
 //    }
     
+}
+
+extension UIAlertController {
+    static func actionSheetWithItems<A : Equatable>(items : [(title : String, value : A)], currentSelection : A? = nil, action : @escaping (A) -> Void) -> UIAlertController {
+        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        for (var title, value) in items {
+            if let selection = currentSelection, value == selection {
+                // Note that checkmark and space have a neutral text flow direction so this is correct for RTL
+                title = "✔︎ " + title
+            }
+            controller.addAction(
+                UIAlertAction(title: title, style: .default) {_ in
+                    action(value)
+                }
+            )
+        }
+        return controller
+    }
+    static func actionSheetWithItems(items : [(String)], currentSelection : String? = nil, action : @escaping (String) -> Void) -> UIAlertController {
+        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        for ( title) in items {
+            controller.addAction(
+                UIAlertAction(title: title, style: .default) {_ in
+                    action(title)
+                }
+            )
+        }
+        return controller
+    }
+    static func actionSheetWithItems(items : [(String)], action : @escaping (String) -> Void) -> UIAlertController {
+        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        for ( title) in items {
+            controller.addAction(
+                UIAlertAction(title: title, style: .default) {_ in
+                    action(title)
+                }
+            )
+        }
+        return controller
+    }
 }

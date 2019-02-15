@@ -25,6 +25,7 @@ class CustomerTypeViewController: UIViewController {
     @IBAction func onClickNewCustomer(_ sender:UIButton){
 //        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyAeonServiceViewController") as! UINavigationController
 //        self.present(navigationVC, animated: true, completion: nil)
+        Utils.showAlert(viewcontroller: self, title: "Unavailable Service", message: "Coming Soon")
     }
 
 }

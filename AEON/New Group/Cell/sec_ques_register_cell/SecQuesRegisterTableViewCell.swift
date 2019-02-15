@@ -8,19 +8,15 @@
 
 import UIKit
 
-class SecQuesRegisterTableViewCell: UITableViewCell {
+class SecQuesRegisterTableViewCell: UITableViewCell,UITextFieldDelegate {
 
     @IBOutlet weak var vsecQuesList: UIView!
     @IBOutlet weak var lblSecQuestion: UILabel!
     @IBOutlet weak var tfsecAnswer: UITextField!
     
-    var secQuesList = ["1","2","3","4","5"]
-    var selectedQues = "0"
-    var questionList = [[String]]()
-    var secQMy = [String]()
-    var secQEng = [String]()
+    var secQuesList = [String]()
     
-    var delegate: SecQuesRegisterDelegate?
+    var cellClickDelegate:SecQuesRegisterCellClickDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,34 +28,39 @@ class SecQuesRegisterTableViewCell: UITableViewCell {
         
         
         self.vsecQuesList.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickSecQuesList)))
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    func setData(data:[[String]]) {
-        self.questionList = data
+        
+        self.tfsecAnswer.delegate = self
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(didTapView))
+        tapRecognizer.cancelsTouchesInView = false
+        contentView.addGestureRecognizer(tapRecognizer)
+       
         
     }
     
+    @objc func didTapView() {
+        contentView.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func setData(data:[String],answerCount:Int) {
+        self.secQuesList = data
+        self.tfsecAnswer.setMaxLength(maxLength: answerCount)
+        if data.count>0{
+            self.lblSecQuestion.text = data[0]
+        }
+    }
+    
     @objc func onClickSecQuesList(){
-        let action = UIAlertController.actionSheetWithItems(items: secQuesList, currentSelection: selectedQues, action: { (value)  in
-                self.selectedQues = value
-            
-                self.lblSecQuestion.text = self.selectedQues
-                print(value)
-            })
-            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-            //Present the controller
-           //self.present(action, animated: true, completion: nil)
-        self.window?.rootViewController?.present(action, animated: true, completion: nil)
+        cellClickDelegate?.onClickSecQuesList(quesList: secQuesList,cell: self)
         
     }
 }
 
-protocol SecQuesRegisterDelegate {
-    func onClickSecQuesList(secQuestion:String?, secAnswer:String?)
+protocol SecQuesRegisterCellClickDelegate {
+    func onClickSecQuesList(quesList:[String],cell:SecQuesRegisterTableViewCell)
 }

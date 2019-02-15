@@ -65,27 +65,34 @@ struct RegisterResponse: Codable {
 }
 
 struct RegisterDataBean: Codable {
-    var id: Int = 0
-    var loginID: String? = "", name: String? = ""
-    var agencyID: Int?=0
-    var agencyName: String? = "", location: String?=""
-    var outvarID: Int?=0
-    var outvarName: String? = "", agencyOutvarID: String? = "", mobivaream: String? = "", nonMobivaream: String? = ""
-    var roleIDList:String? = ""
-    var groupID: Int? = 0
+    var customerId:String = ""
+    var customerNo:String = ""
+    var phoneNo:String = ""
+    var customerTypeId:String = ""
+    var userTypeId:String = ""
+    var name:String = ""
+    var dateOfBirth:String = ""
+    var nrcNo:String = ""
+    var status:String = ""
+    var photoPath:String = ""
+    var delFlag:String = ""
+    var password:String = ""
+    var custAgreementListDtoList:String = ""
     
     enum CodingKeys: String, CodingKey {
-        case id
-        case loginID = "loginId"
+        case customerId
+        case customerNo
+        case phoneNo
+        case customerTypeId
+        case userTypeId
         case name
-        case agencyID = "agencyId"
-        case agencyName, location
-        case outvarID = "outvarId"
-        case outvarName
-        case agencyOutvarID = "agencyOutvarId"
-        case mobivaream, nonMobivaream
-        case roleIDList = "roleIdList"
-        case groupID = "groupId"
+        case dateOfBirth
+        case nrcNo
+        case status
+        case photoPath
+        case delFlag
+        case password
+        case custAgreementListDtoList
     }
 }
 
@@ -98,4 +105,81 @@ struct RegisterRequestBean {
     var confirmPassword: String = ""
 }
 
+//Member Register Request Param Data
+struct RegisterExistedRequestData : Codable {
+    var name:String
+    var dateOfBirth:String
+    var nrcNo:String
+    var phoneNo:String
+    var password:String
+    var importCustomerId:Int
+    var customerNo:String
+    var photoPath:String
+    var securityAnsweredInfoList:[SecQABean]
+    var appUsageInfo:AppUsageInfoReqBean
+     enum CodingKeys: String, CodingKey {
+        case name
+        case dateOfBirth
+        case nrcNo
+        case phoneNo
+        case password
+        case importCustomerId
+        case customerNo
+        case photoPath
+        case securityAnsweredInfoList
+        case appUsageInfo
+        }
+//    init(name:String,dateOfBirth:String,nrcNo:String,phoneNo:String,password:String,importCustomerId:Int,customerNo:String,photoPath:String,secQAList:[SecQABean],appUsageInfo:AppUsageInfoReqBean) {
+//        self.name = name
+//        self.dateOfBirth = dateOfBirth
+//        self.nrcNo = nrcNo
+//        self.phoneNo = phoneNo
+//        self.password = password
+//        self.importCustomerId = importCustomerId
+//        self.customerNo = customerNo
+//        self.photoPath = photoPath
+//        self.securityAnsweredInfoList = secQAList
+//        self.appUsageInfo = appUsageInfo
+//    }
+}
+struct RegisterNewRequestData:Codable {
+    var name:String
+    var dateOfBirth:String
+    var nrcNo:String
+    var phoneNo:String
+    var password:String
+    var securityAnsweredInfoList:[SecQABean]
+    var appUsageInfo:AppUsageInfoReqBean
+    enum CodingKeys: String, CodingKey {
+        case name
+        case dateOfBirth
+        case nrcNo
+        case phoneNo
+        case password
+        case securityAnsweredInfoList
+        case appUsageInfo
+    }
+}
 
+struct AppUsageInfoReqBean:Codable{
+    var phoneModel:String
+    var manufacture:String
+    var sdk:String
+    var osType:String
+    var osVersion:String
+    var resolution:String
+    var instructionSet:String
+    var cpuArchitecture:String
+    var registrationTime:String
+    enum CodingKeys: String, CodingKey {
+        case phoneModel
+        case manufacture
+        case sdk
+        case osType
+        case osVersion
+        case resolution
+        case instructionSet
+        case cpuArchitecture
+        case registrationTime
+    }
+}

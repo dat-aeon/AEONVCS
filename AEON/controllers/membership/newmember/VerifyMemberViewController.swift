@@ -22,6 +22,7 @@ class VerifyMemberViewController: UIViewController {
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "PhotoTakingViewController") as! UINavigationController
         self.present(navigationVC, animated: true, completion: nil)
     }
+    
     @IBAction func onClickBackButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }

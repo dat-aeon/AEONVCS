@@ -42,6 +42,10 @@
 		6A6A99312207F0F8001C30D2 /* my_MM.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A6A99302207F0F8001C30D2 /* my_MM.strings */; };
 		6A6A99362207F54F001C30D2 /* CouponTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A99342207F54F001C30D2 /* CouponTableViewCell.swift */; };
 		6A6A99372207F54F001C30D2 /* CouponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A6A99352207F54F001C30D2 /* CouponTableViewCell.xib */; };
+		6A7DEE8F22165F1E00425071 /* CustomLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7DEE8E22165F1E00425071 /* CustomLoadingView.swift */; };
+		6A81F0CB22150E1C001725EA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A81F0CA22150E1C001725EA /* Extension.swift */; };
+		6A81F0CD22156005001725EA /* MemberInfoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A81F0CC22156005001725EA /* MemberInfoPreviewViewController.swift */; };
+		6A81F0CF221575F7001725EA /* NRCData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A81F0CE221575F7001725EA /* NRCData.swift */; };
 		6AC88E132206AE6D0062926F /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E122206AE6D0062926F /* LoginData.swift */; };
 		6AC88E152206AF020062926F /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E142206AF020062926F /* ApiService.swift */; };
 		6AC88E172206AF2D0062926F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88E162206AF2D0062926F /* Constants.swift */; };
@@ -132,6 +136,10 @@
 		6A6A99302207F0F8001C30D2 /* my_MM.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = my_MM.strings; sourceTree = "<group>"; };
 		6A6A99342207F54F001C30D2 /* CouponTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponTableViewCell.swift; sourceTree = "<group>"; };
 		6A6A99352207F54F001C30D2 /* CouponTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponTableViewCell.xib; sourceTree = "<group>"; };
+		6A7DEE8E22165F1E00425071 /* CustomLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingView.swift; sourceTree = "<group>"; };
+		6A81F0CA22150E1C001725EA /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		6A81F0CC22156005001725EA /* MemberInfoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoPreviewViewController.swift; sourceTree = "<group>"; };
+		6A81F0CE221575F7001725EA /* NRCData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRCData.swift; sourceTree = "<group>"; };
 		6AC88E122206AE6D0062926F /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		6AC88E142206AF020062926F /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		6AC88E162206AF2D0062926F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 			children = (
 				75A31E0422006C13002E7336 /* RegistrationViewController.swift */,
 				04BA7AC7221089D8006696E7 /* SecQuesRegisterViewController.swift */,
+				6A81F0CC22156005001725EA /* MemberInfoPreviewViewController.swift */,
 			);
 			path = register;
 			sourceTree = "<group>";
@@ -454,6 +463,7 @@
 				047F1610220DA1F70015CDEB /* RegisterData.swift */,
 				04BA7AC522107A9D006696E7 /* SecQuesListData.swift */,
 				04BA7ACF221319F7006696E7 /* UserSecQuesData.swift */,
+				6A81F0CE221575F7001725EA /* NRCData.swift */,
 			);
 			name = struct;
 			path = "New Group";
@@ -518,6 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				6AFEBE142205CF45006D2F81 /* UIExtension.swift */,
+				6A81F0CA22150E1C001725EA /* Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -526,6 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				6AC88E222206D6F70062926F /* CardView.swift */,
+				6A7DEE8E22165F1E00425071 /* CustomLoadingView.swift */,
 			);
 			path = customview;
 			sourceTree = "<group>";
@@ -785,9 +797,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A81F0CB22150E1C001725EA /* Extension.swift in Sources */,
 				75A31E0B22006EA7002E7336 /* VerifyMemberViewController.swift in Sources */,
 				75A31E0122006A89002E7336 /* ResetPasswordViewController.swift in Sources */,
 				752115DC22016193001BC94A /* EventNewViewController.swift in Sources */,
+				6A81F0CF221575F7001725EA /* NRCData.swift in Sources */,
 				6A3197A42203FF9E0031D86F /* NewsViewController.swift in Sources */,
 				6A31979D2203FF1F0031D86F /* InformationUpdateViewController.swift in Sources */,
 				75A31E0F22007341002E7336 /* MemberCardInfoViewController.swift in Sources */,
@@ -813,6 +827,7 @@
 				6AC88E272206D8580062926F /* MemberCardHeaderView.swift in Sources */,
 				75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */,
 				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
+				6A81F0CD22156005001725EA /* MemberInfoPreviewViewController.swift in Sources */,
 				6A3197BD220403140031D86F /* SecQuestionResetPasswordViewController.swift in Sources */,
 				6A6A992B2207F095001C30D2 /* BaseUIViewController.swift in Sources */,
 				753C8B9C21F9B670002E101B /* AEON.xcdatamodeld in Sources */,
@@ -852,6 +867,7 @@
 				6A3197B0220400970031D86F /* TermsAndConditionsViewController.swift in Sources */,
 				6A31979B2203FEF60031D86F /* SecurityQuestionUpdateViewController.swift in Sources */,
 				6AC88E152206AF020062926F /* ApiService.swift in Sources */,
+				6A7DEE8F22165F1E00425071 /* CustomLoadingView.swift in Sources */,
 				04BA7AC622107A9D006696E7 /* SecQuesListData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

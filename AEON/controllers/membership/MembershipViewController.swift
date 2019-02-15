@@ -17,7 +17,16 @@ class MembershipViewController: UIViewController {
     var containerIndex = 2
     override func viewDidLoad() {
         super.viewDidLoad()
+        let memberValue:String = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) ?? ""
+        
+        if memberValue == Constants.MEMBER {
+            containerIndex = 1
+        }else{
+            containerIndex = 2
+        }
         toggleContainer(position:containerIndex)
+        let registerResponse = UserDefaults.standard.object(forKey: Constants.REGISTER_RESPONSE)
+        print("Register Response \(String(describing: registerResponse))")
     }
 
     func toggleContainer(position:Int){

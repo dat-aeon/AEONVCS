@@ -11,6 +11,8 @@ import DatePickerDialog
 
 class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var svMemberRegister: UIScrollView!
+    
     @IBOutlet weak var tfName: UITextField?
     @IBOutlet weak var tfDob: UITextField?
     @IBOutlet weak var vDivision: UIView!
@@ -29,70 +31,52 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
     
     private var confirmPhoneView: UIView!
     
-//    var datePicker: UIDatePicker {
-//        get {
-//            let datePicker = UIDatePicker()
-//            datePicker.date = Date()
-//            datePicker.datePickerMode = .date
-//          datePicker.addTarget(self, action: #selector(dobDatePickerFromValueChanged), for: UIControl.Event.valueChanged)
-//            datePicker.backgroundColor = UIColor.white
-//            return datePicker
-//        }
-//    }
-    
     var divisionList = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14"]
-    var allTownShipList = [ ["1aa","sadfsdf","sdf"],
-                            ["2aa","sadfsdf","sdf"],
-                            ["3aa","sadfsdf","sdf"],
-                            ["4aa","sadfsdf","sdf"],
-                            ["5aa","sadfsdf","sdf"],
-                            ["6aa","sadfsdf","sdf"],
-                            ["7aa","sadfsdf","sdf"],
-                            ["8aa","sadfsdf","sdf"],
-                            ["9aa","sadfsdf","sdf"],
-                            ["10aa","sadfsdf","sdf"],
-                            ["11aa","sadfsdf","sdf"],
-                            ["12aa","sadfsdf","sdf"],
-                            ["13aa","sadfsdf","sdf"],
-                            ["14aa","sadfsdf","sdf"],]
+    var allTownShipList = [[String]]()
     var nrcTypeList  = ["(N)","(P)","(E)"]
-    var selectedNrcType = "(N)"
-    var selectedDivision = "1"
     var selectedTownshipList = [String]()
-    var selectedTownship = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //    self.btnRegister.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickRegister)))
 //
         //self.confirmPhoneView.isHidden = true
+        
+        
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+        RegisterViewModel.init().loadNrcData(success: { (result) in
+            RegisterViewModel.init().getNrcData(success: { (townshipList) in
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                self.allTownShipList = townshipList
+                self.selectedTownshipList = townshipList[0]
+                self.lblDivision.text = self.divisionList[0]
+                self.lblTownship.text = self.allTownShipList[0][0]
+                self.lblNrcType.text = self.nrcTypeList[0]
+            }) { (error) in
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                Utils.showAlert(viewcontroller: self, title: "Loading Error", message: error)
+            }
+        }) { (error) in
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            Utils.showAlert(viewcontroller: self, title: "Loading Failed", message: error)
+        }
+        
         tfDob?.delegate = self
         
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePicker.Mode.date
+        let calendar = Calendar(identifier: .gregorian)
+        
+        let currentDate = Date()
+        var components = DateComponents()
+        components.calendar = calendar
+        
+        components.year = -10
+        let maxDate = calendar.date(byAdding: components, to: currentDate)!
+        datePickerView.maximumDate = maxDate
+
         tfDob?.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(dobDatePickerFromValueChanged), for: UIControl.Event.valueChanged)
-        
-        let tapRecognizer = UITapGestureRecognizer()
-        tapRecognizer.addTarget(self, action: #selector(didTapView))
-        tapRecognizer.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tapRecognizer)
-        
-//        let datePicker: UIDatePicker = UIDatePicker()
-//
-//        // Posiiton date picket within a view
-//        datePicker.frame = CGRect(x: 10, y: 50, width: self.view.frame.width, height: 200)
-//
-//        // Set some of UIDatePicker properties
-//        datePicker.timeZone = NSTimeZone.local
-//        datePicker.backgroundColor = UIColor.white
-//        datePicker.datePickerMode = .date
-//
-//        // Add an event to call onDidChangeDate function when value is changed.
-//        datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
-       
-        // Add DataPicker to the view
-        //self.view.addSubview(datePicker)
         
         self.vTownship.layer.borderWidth = 1
         self.vTownship.layer.cornerRadius = 4 as CGFloat
@@ -110,14 +94,61 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
         vTownship.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickTownshipDropDown)))
         vNrcType.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickNrcTypeDropDown)))
         
-        selectedTownshipList = allTownShipList[Int(selectedDivision)!-1]
-        selectedTownship = allTownShipList[Int(selectedDivision)!-1][0]
-        selectedNrcType = nrcTypeList[0]
         
-        self.lblDivision.text = self.selectedDivision
-        self.lblTownship.text = self.selectedTownship
-        self.lblNrcType.text = self.selectedNrcType
+        tfName?.delegate = self
+        tfDob?.delegate = self
+        tfNrcNo?.delegate = self
+        tfPhoneNo?.delegate = self
+        tfPassword?.delegate = self
+        tfConPassword?.delegate = self
+        
+        tfNrcNo?.setMaxLength(maxLength: 6)
+        tfPassword?.setMaxLength(maxLength: 6)
+        tfConPassword?.setMaxLength(maxLength: 6)
+        
+        
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(didTapView))
+        tapRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapRecognizer)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillChange(notification : Notification) {
+        
+        guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            svMemberRegister.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardReact.height, right: 0)
+        } else {
+            svMemberRegister.contentInset = UIEdgeInsets.zero
+            
+        }
+        
+        svMemberRegister.scrollIndicatorInsets = svMemberRegister.contentInset
+        
+    }
+
+    
+    @objc func didTapView() {
+        self.view.endEditing(true)
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func onClickSave(_ sender: Any) {
@@ -125,50 +156,51 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
         var isError = false
         
          if self.tfName?.text?.isEmpty ?? true{
-            self.tfName?.layer.backgroundColor = UIColor(red:255.0/255.0, green:0.0/255.0, blue:0.0/255.0, alpha: 1.0).cgColor
-            self.tfName?.attributedPlaceholder = NSAttributedString(string: "Please input name",
-                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            self.tfName?.showError(message: "Please input name")
             isError = true
         }
         
         if self.tfDob?.text?.isEmpty ?? true{
-            self.tfDob?.layer.backgroundColor = UIColor(red:255.0/255.0, green:0.0/255.0, blue:0.0/255.0, alpha: 1.0).cgColor
-            self.tfDob?.attributedPlaceholder = NSAttributedString(string: "Please input your birthday",
-                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            self.tfDob?.showError(message: "Please input your birthday")
             isError = true
         }
         
         if self.tfNrcNo?.text?.isEmpty ?? true{
-            self.tfNrcNo?.layer.backgroundColor = UIColor(red:255.0/255.0, green:0.0/255.0, blue:0.0/255.0, alpha: 1.0).cgColor
-            self.tfNrcNo?.attributedPlaceholder = NSAttributedString(string: "Please input NRC No.",
-                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            self.tfNrcNo?.showError(message: "Please input NRC No.")
             isError = true
         }
         
         if self.tfPhoneNo?.text?.isEmpty ?? true{
-            self.tfPhoneNo?.layer.backgroundColor = UIColor(red:255.0/255.0, green:0.0/255.0, blue:0.0/255.0, alpha: 1.0).cgColor
-            self.tfPhoneNo?.attributedPlaceholder = NSAttributedString(string: "Please input phone no.",
-                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            self.tfPhoneNo?.showError(message: "Please input phone no.")
             isError = true
         }
         
         if self.tfPassword?.text?.isEmpty ?? true{
-            self.tfPassword?.layer.backgroundColor = UIColor(red:255.0/255.0, green:0.0/255.0, blue:0.0/255.0, alpha: 1.0).cgColor
-            self.tfPassword?.attributedPlaceholder = NSAttributedString(string: "Please input password",
-                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            self.tfPassword?.showError(message: "Please input password")
             isError = true
         }
         
         if self.tfConPassword?.text?.isEmpty ?? true{
-            self.tfConPassword?.layer.backgroundColor = UIColor(red:255.0/255.0, green:0.0/255.0, blue:0.0/255.0, alpha: 1.0).cgColor
-            self.tfConPassword?.attributedPlaceholder = NSAttributedString(string: "Please input confirm password",
-                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            self.tfConPassword?.showError(message: "Please input confirm password")
             isError = true
         }
         
-//        if isError {
-//            return
-//        }
+        if self.tfPassword?.text?.count ?? 0 > 5{
+            self.tfPassword?.showError(message: "Please input confirm password")
+            isError = true
+        }
+        if self.tfConPassword?.text?.count ?? 0 > 5 {
+            self.tfConPassword?.showError(message: "Please input confirm password")
+            isError = true
+        }
+        
+        if isError {
+            return
+        }else if self.tfPassword?.text != self.tfConPassword?.text{
+            self.tfConPassword?.text = ""
+            self.tfConPassword?.showError(message: "Not Match Password")
+            return
+        }
         //loadCustomViewIntoController()
         //return
         let divisionCode: String = (self.lblDivision?.text!)!
@@ -182,75 +214,33 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
         registerBean.name = (self.tfName?.text!)!
         registerBean.dob = (self.tfDob?.text!)!
         registerBean.nrc = nrc
+        registerBean.phoneNo = (self.tfPhoneNo?.text!)!
         registerBean.password = (self.tfPassword?.text!)!
         
-        let alertController = UIAlertController(title: "Title", message: "For Membership process, OTP code will be sent to your registered phone no (09xxxxxx258) .Click “OK” if your phone number has no changes.Click “Call Now” if your phone number has changes.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Title", message: "For Membership process, OTP code will be sent to your registered phone no (\(registerBean.phoneNo)) .Click “OK” if your phone number has no changes.Click “Call Now” if your phone number has changes.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-            //run your function here
-            self.goToSecQuesRegisterView()
+            self.checkMemberType(registerRequestData: registerBean)
         }))
         alertController.addAction(UIAlertAction(title: "Call Now", style: UIAlertAction.Style.default, handler: { action in
-            //run your function here
-            self.goToSecQuesRegisterView()
+            let phoneNumber = "0942332939239"
+            phoneNumber.makeCall()
         }))
-        
-        return
         self.present(alertController, animated: true, completion: nil)
-        
-        
-        RegisterViewModel.init().checkMember(registerBean: registerBean, success: { (result) in
-
-            if result.message == "MEMBER" {
-                
-                // save in user default
-                UserDefaults.standard.set(result.message, forKey: Constants.CUSTOMER_TYPE)
-                UserDefaults.standard.set(result.memberDataBean!.importCustomerInfoId, forKey: Constants.IMPORT_CUSTOMER_INFO_ID)
-                UserDefaults.standard.set(result.memberDataBean!.customerNo, forKey: Constants.IMPORT_CUSTOMER_NO)
-                UserDefaults.standard.set(result.memberDataBean!.name, forKey: Constants.IMPORT_CUSTOMER_NAME)
-                UserDefaults.standard.set(result.memberDataBean!.gender, forKey: Constants.IMPORT_GENDER)
-                UserDefaults.standard.set(result.memberDataBean!.phoneNo, forKey: Constants.IMPORT_PHONE_NO)
-                UserDefaults.standard.set(result.memberDataBean!.nrcNo, forKey: Constants.IMPORT_NRC_NO)
-                UserDefaults.standard.set(result.memberDataBean!.dateOfBirth, forKey: Constants.IMPORT_DOB)
-                UserDefaults.standard.set(result.memberDataBean!.salary, forKey: Constants.IMPORT_SALARY)
-                UserDefaults.standard.set(result.memberDataBean!.age, forKey: Constants.IMPORT_AGE)
-                UserDefaults.standard.set(result.memberDataBean!.companyName, forKey: Constants.IMPORT_COMPANY_NAME)
-                UserDefaults.standard.set(result.memberDataBean!.townshipAddress, forKey: Constants.IMPORT_ADDRESS)
-                UserDefaults.standard.set(result.memberDataBean!.status, forKey: Constants.IMPORT_STATUS)
-                UserDefaults.standard.set(result.memberDataBean!.custAgreementListResDaoList, forKey: Constants.IMPORT_CUSTOMER_NO)
-                // show pop up
-                let alertController = UIAlertController(title: "Title", message: "For Membership process, OTP code will be sent to your registered phone no (09xxxxxx258) .Click “OK” if your phone number has no changes.Click “Call Now” if your phone number has changes.", preferredStyle: .alert)
-//                let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
-//                let cancelAction = UIAlertAction(title: "Call Now", style: UIAlertAction.Style.cancel)
-//                alertController.addAction(okAction)
-//                alertController.addAction(cancelAction)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-                    //run your function here
-                    self.goToSecQuesRegisterView()
-                }))
-                alertController.addAction(UIAlertAction(title: "Call Now", style: UIAlertAction.Style.default, handler: { action in
-                    //run your function here
-                    self.goToSecQuesRegisterView()
-                }))
-                
-                self.present(alertController, animated: true, completion: nil)
-                
-                
-            } else {
-            // save in user default
-            UserDefaults.standard.set(result.message, forKey: Constants.CUSTOMER_TYPE)
-            }
-        }) { (error) in
-            // Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
-        }
-        goToSecQuesRegisterView()
-        
-        //let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestConfirmViewController") as! UINavigationController
-        //self.present(navigationVC, animated: true, completion: nil)
     }
     
-    private func goToSecQuesRegisterView(){
-        
+    private func checkMemberType(registerRequestData:RegisterRequestBean){
+        RegisterViewModel.init().checkMember(registerBean: registerRequestData, success: { (result) in
+                self.goToSecQuesRegisterView(result: result,registerRequestData:registerRequestData)
+        }) { (error) in
+             Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
+        }
+    }
+    
+    private func goToSecQuesRegisterView(result:CheckMemberResponse,registerRequestData:RegisterRequestBean){
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuesRegisterViewController") as! UINavigationController
+        let vc = navigationVC.children.first as! SecQuesRegisterViewController
+        vc.memberResponseData = result
+        vc.registerRequestData = registerRequestData
         self.present(navigationVC, animated: true, completion: nil)
     }
     
@@ -285,10 +275,6 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
         
         print("Selected value \(selectedDate)")
     }
-    @objc func didTapView() {
-        self.view.endEditing(true)
-    }
-    
     @objc func onClickDivisionDropDown(){
         openDivisionSelectionPopUp()
     }
@@ -302,14 +288,12 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
     }
     
     func openDivisionSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: divisionList, currentSelection: selectedDivision, action: { (value)  in
-            self.selectedDivision = value
-            
-            self.selectedTownshipList = self.allTownShipList[Int(self.selectedDivision)!-1]
-            self.selectedTownship = self.allTownShipList[Int(self.selectedDivision)!-1][0]
-            
-            self.lblDivision.text = self.selectedDivision
-            self.lblTownship.text = self.selectedTownship
+        let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
+            self.lblDivision.text = self.divisionList[Int(value)!-1]
+            if self.allTownShipList.count>Int(value)!{
+            self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
+            self.lblTownship.text = self.selectedTownshipList[0]
+            }
             print(value)
         })
         action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
@@ -318,9 +302,8 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
     }
     
     func openTownshipSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, currentSelection: selectedTownship, action: { (value)  in
+        let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
             self.lblTownship.text = value
-            self.selectedTownship = value
             print(value)
             
         })
@@ -330,9 +313,8 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
     }
     
     func openNrcTypeSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, currentSelection: selectedNrcType, action: { (value)  in
+        let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, action: { (value)  in
             self.lblNrcType.text = value
-            self.selectedNrcType = value
             print(value)
             
         })
@@ -341,32 +323,4 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
         self.present(action, animated: true, completion: nil)
     }
     
-}
-extension UIAlertController {
-    static func actionSheetWithItems<A : Equatable>(items : [(title : String, value : A)], currentSelection : A? = nil, action : @escaping (A) -> Void) -> UIAlertController {
-        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        for (var title, value) in items {
-            if let selection = currentSelection, value == selection {
-                // Note that checkmark and space have a neutral text flow direction so this is correct for RTL
-                title = "✔︎ " + title
-            }
-            controller.addAction(
-                UIAlertAction(title: title, style: .default) {_ in
-                    action(value)
-                }
-            )
-        }
-        return controller
-    }
-    static func actionSheetWithItems(items : [(String)], currentSelection : String? = nil, action : @escaping (String) -> Void) -> UIAlertController {
-        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        for ( title) in items {
-            controller.addAction(
-                UIAlertAction(title: title, style: .default) {_ in
-                    action(title)
-                }
-            )
-        }
-        return controller
-    }
 }

@@ -8,12 +8,15 @@
 
 import Foundation
 struct Constants {
-    //static var base_url:String = "https://ass.aeoncredit.com.mm/assm/"
-    static var base_url:String = "http://10.1.9.70:8081/assm/"
+    static var base_url:String = "https://ass.aeoncredit.com.mm/assm/"
+//    static var base_url:String = "http://10.1.9.70:8081/assm/"
     static var site_activation_key = "1234567"
     
     static var SITE_ACTIVATION_KEY = "siteActivationKey"
     
+    //PreDefine Data
+    static var NRC_TOWNSHIP_List = "nrc_township"
+    static var REGISTER_RESPONSE = "register_response"
     // User Register Data
     static var PHONE_NO = "phone_no"
     static var NRC = "nrc"
@@ -37,6 +40,7 @@ struct Constants {
     static var IMPORT_ADDRESS = "townshipAddress"
     static var IMPORT_STATUS = "status"
     static var IMPORT_AGREEMENT_NO_LIST = "agreementNoList"
+    
     // User Registered Information Data
     static var CUSTOMER_TYPE = "customerType"
     

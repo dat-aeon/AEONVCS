@@ -12,11 +12,29 @@ import Alamofire
 
 class RegisterModel:BaseModel {
     
+    func loadNRCData(success: @escaping ([String]) -> Void,failure: @escaping (String) -> Void) {
+        let rawData = ["siteActivationKey":"12345678"]
+        
+        let _ = super.performRequest(endPoint: ApiServiceEndPoint.nrcList, rawData: rawData) { (result) in
+            switch result{
+            case .success(let result):
+                if let resultDictionary = result as? Dictionary<String,String>{
+                    let townships = Array(resultDictionary.values.map{ $0 })
+                    success(townships)
+                }else{
+                    failure("Cannot load any data")
+                }
+            case .failure(let error):
+                failure(error.localizedDescription)
+            }
+        }
+        
+    }
     func checkMemberData(registerReqBean: RegisterRequestBean,success: @escaping (CheckMemberResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
-            "userName": registerReqBean.name,
-            "dob": registerReqBean.dob,
-            "nrc": registerReqBean.nrc,
+            "name": registerReqBean.name,
+            "dateOfBirth": registerReqBean.dob,
+            "nrcNo": registerReqBean.nrc,
             "phoneNo": registerReqBean.phoneNo,
             "password": registerReqBean.password
         ]
@@ -65,15 +83,8 @@ class RegisterModel:BaseModel {
         
     }
     
-    func makeRegister(username:String,dob:String,nrc:String,phoneno:String,password:String,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
-        let rawData = [
-            "userName": username,
-            "dob": dob,
-            "nrc": nrc,
-            "phoneNo": phoneno,
-            "password": password
-        ]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.register, rawData: rawData) { (result) in
+    func registerNew(rawData:Data,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
+        let _ = super.performRequest(endPoint: ApiServiceEndPoint.registerNew, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
@@ -87,6 +98,63 @@ class RegisterModel:BaseModel {
                 failure(error.localizedDescription)
             }
         }
+    }
+    
+    func registerExisted(rawData:String, imageData: Data,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
+//        let _ = super.performRequest(endPoint: ApiServiceEndPoint.registerExisted, rawData: rawData) { (result) in
+//            switch result{
+//            case .success(let result):
+//                let responseJsonData = JSON(result)
+//                let responseValue  = try! responseJsonData.rawData()
+//                if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
+//                    success(registerResponse)
+//                }else{
+//                    failure("Cannot load any data")
+//                }
+//            case .failure(let error):
+//                failure(error.localizedDescription)
+//            }
+//        }
         
+        let _ = super.performRequestWithImage(endPoint: ApiServiceEndPoint.registerExisted, imageData:imageData , rawData: rawData) { (response) in
+            switch response {
+            case .success(let upload, _, _):                                    upload.uploadProgress(closure: { (progress) in
+                print("Upload Progress: \(progress.fractionCompleted)")
+            })
+            
+            upload.responseJSON { response in
+                let api = response.result.value
+                if let result = api {
+//                    let json = JSON(result)
+//                    if json["code"].int ?? 0 == 200 {
+//                        self.ivProfile.sd_setImage(with: URL(string: json["data"].string!), placeholderImage: UIImage(named: "profile-placeholder"))
+//                        print(json["data"].string!)
+//
+//                    } else {
+//
+//                    }
+                    let responseJsonData = JSON(result)
+                    let responseValue  = try! responseJsonData.rawData()
+                    if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
+                        success(registerResponse)
+                    }else{
+                        failure("Cannot serialize data")
+                    }
+                } else {
+                    print(api)
+                    failure("Cannot Register")
+                }
+                
+            }
+            
+                break
+                
+            case .failure(let error):
+                print(error)
+                failure(error.localizedDescription)
+                break
+                
+            }
+        }
     }
 }
