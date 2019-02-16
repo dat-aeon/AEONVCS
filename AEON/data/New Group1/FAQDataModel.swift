@@ -50,20 +50,17 @@ class FAQDataModel: BaseModel{
         return data
     }
     
-    func getFaqData(loginId:String,success: @escaping (FAQCateoryDataBean) -> Void,failure: @escaping (String) -> Void){
+    func getFaqData(siteActivationKey:String,success: @escaping (FAQCateoryDataBean) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
-           // "loginID": loginId
-            "siteActivationKey" : loginId
+           "siteActivationKey" : siteActivationKey
         ]
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.faqList, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
-                
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
+                print("call data model result :::::::::::\(responseValue)")
                 
-                //if let loginResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
-                    
                 if let fAQCateoryDataBean:FAQCateoryDataBean = try? JSONDecoder().decode(FAQCateoryDataBean.self, from: responseValue){
                     success(fAQCateoryDataBean)
                     print("call data model :::::::::::\(fAQCateoryDataBean)")
@@ -71,6 +68,8 @@ class FAQDataModel: BaseModel{
                     //return fAQCateoryDataBean;
                 }else{
                     failure("Cannot load any data")
+                    print("call data model ::::::::::: JSON can't decode.")
+                    
                 }
             case .failure(let error):
                 failure(error.localizedDescription)

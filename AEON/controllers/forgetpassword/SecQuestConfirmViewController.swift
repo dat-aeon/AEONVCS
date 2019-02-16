@@ -91,9 +91,9 @@ extension SecQuestConfirmViewController:UITableViewDataSource{
             cell.lbQuesNo.text = String(indexPath.row)
             switch Locale.currentLocale {
             case .EN:
-                cell.lbQuestion.text = self.userQuestionList.questionList[indexPath.row].questionEN
+                cell.lbQuestion.text = ""//self.userQuestionList.questionList[indexPath.row].questionEN
             case .MY:
-                cell.lbQuestion.text = self.userQuestionList.questionList[indexPath.row].questionMM
+                cell.lbQuestion.text = ""//self.userQuestionList.questionList[indexPath.row].questionMM
             }
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "SecQuesConfirmTableViewCell", for: indexPath) as! SecQuesConfirmTableViewCell
@@ -195,8 +195,8 @@ extension SecQuestConfirmViewController:SecQuesConfirmDelegate{
                 isError = true
             } else {
                 let ans = sqCell.tfAnswer.text!
-                let que = self.userQuestionList.questionList[indexPath.row].questionEN
-                let queId = self.userQuestionList.questionList[indexPath.row].secQuesId
+                let que = ""//self.userQuestionList.questionList[indexPath.row].questionEN
+                let queId = 1//self.userQuestionList.questionList[indexPath.row].secQuesId
                 qaList.append(UserQABean(secQuesId: queId,question: que,answer: ans))
                 i+=1
             }
@@ -244,8 +244,8 @@ extension SecQuestConfirmViewController:SecQuesConfirmDelegate{
         
         SecQuesConfirmViewModel.init().makeConfirm(userConfirmBean: userSecQuesConfirmBean, success: { (result) in
             
-            self.numOfQuestion = result.numOfQuestion
-            self.userQuestionList = result.userSecQuesBeanList
+            //self.numOfQuestion = result.numOfQuestion
+            //self.userQuestionList = result.userSecQuesBeanList
             
             
             

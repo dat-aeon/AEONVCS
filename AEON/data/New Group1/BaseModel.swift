@@ -48,7 +48,7 @@ class BaseModel {
         return Alamofire.request(request).responseJSON{ (response) in
             completion(response.result)
 
-           print("Response result :::::::::::\(response)")
+           //print("Response result :::::::::::\(response)")
      
     }
   

@@ -38,13 +38,15 @@ class FAQViewController: BaseUIViewController {
             
         }
         
-        FAQViewModel.init().getFAQData(loginId: "Jue", success: { (result) in
+        FAQViewModel.init().getFAQData(siteActivationKey: "123456", success: { (resultEN,resultMM) in
+            
+            print("Result on Controller ::::::::::::::::: \(resultEN.count)")
             
             switch Locale.currentLocale {
             case .EN:
-                self.dataList = result
+                self.dataList = resultEN
             case .MY:
-                self.dataList = result
+                self.dataList = resultMM
             }
             self.tvFAQView.reloadData()
             

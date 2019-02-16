@@ -12,10 +12,10 @@ import SwiftyJSON
 
 class LoginModel:BaseModel {
     
-    func makeLogin(username:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
+    func makeLogin(phoneNo:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
-            "loginID": username,
-            "loginPassword": password
+            "phoneNo": phoneNo,
+            "password": password
         ]
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.login, rawData: rawData) { (result) in
             switch result{

@@ -51,7 +51,23 @@ class LoginViewController: BaseUIViewController {
         if (tfPhoneNumber.text?.isEmpty)! || (tfPassword.text?.isEmpty)!{
             Utils.showAlert(viewcontroller: self, title: "Login Error", message: "Phone Number or Password is empty")
         }else{
-            LoginViewModel.init().login(username: tfPhoneNumber.text!,password:tfPassword.text!, success: { (result) in
+            LoginViewModel.init().login(phoneNo: tfPhoneNumber.text!,password:tfPassword.text!, success: { (result) in
+                
+//                UserDefaults.standard.set(result.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
+//                UserDefaults.standard.set(result.customerNo, forKey: Constants.USER_INFO_CUSTOMER_NO)
+//                UserDefaults.standard.set(result.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
+//                UserDefaults.standard.set(result.customerTypeId, forKey: Constants.USER_INFO_CUSTOMER_TYPE_ID)
+//                UserDefaults.standard.set(result.userTypeId, forKey: Constants.USER_INFO_USER_TYPE_ID)
+//                UserDefaults.standard.set(result.name, forKey: Constants.USER_INFO_NAME)
+//                UserDefaults.standard.set(result.dateOfBirth, forKey: Constants.USER_INFO_DOB)
+//                UserDefaults.standard.set(result.nrcNo, forKey: Constants.USER_INFO_NRC)
+//                UserDefaults.standard.set(result.status, forKey: Constants.USER_INFO_STATUS)
+//                UserDefaults.standard.set(result.photoPath, forKey: Constants.USER_INFO_PHOTO_PATH)
+//                UserDefaults.standard.set(result.custAgreementListDtoList, forKey: Constants.USER_INFO_AGREEMENT_LIST)
+                
+                // LoginResponse Data
+                UserDefaults.standard.set(result, forKey: Constants.LOGIN_RESPONSE)
+                
                 let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
                 self.present(navigationVC, animated: true, completion: nil)
             }) { (error) in

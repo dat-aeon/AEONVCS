@@ -9,13 +9,15 @@
 import Foundation
 class LoginViewModel{
     
-    func login(username:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
-        LoginModel.init().makeLogin(username: username, password: password, success: { (result) in
-            if result.dataBean.id != 0{
+    func login(phoneNo:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
+        LoginModel.init().makeLogin(phoneNo: phoneNo, password: password, success: { (result) in
+           
+            if result.statusCode == 200 {
                 success(result)
-            }else{
-                failure(result.message)
+            } else {
+                failure(result.statusMessage)
             }
+            
         }) { (error) in
             failure(error)
         }
