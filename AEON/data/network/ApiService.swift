@@ -15,6 +15,7 @@ struct ApiServiceEndPoint {
     static var secQuesList = "registration/get_security_questions"
     static var faqList = "information/faq_info"
     static var nrcList = "information/nrc_info"
+    static var aboutUs = "information/about_us"
     
     //Register
     static var checkMember = "registration/check_member"
@@ -27,6 +28,7 @@ struct ApiServiceEndPoint {
     
     static var selectedQuesList = "security_questions"
     static var confirmUser = "confirm_info"
+    static var resetSecQuesList = "registration/get_security_questions"
     
     //Update Information
     static var userQAList = "updateuserinfo/get_security_questions"

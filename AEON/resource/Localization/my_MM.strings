@@ -8,9 +8,9 @@
 
 // HOME Screen
 "home.title" = "AEON";
-"home.login.button" = "LOGIN";
-"home.aboutus.button" = "ABOUT US";
-"home.faq.button" = "FAQ";
+"home.login.button" = "ဝင်မည်";
+"home.aboutus.button" = "AEONအကြောင်း";
+"home.faq.button" = "မေးလေ့ရှိသောမေးခွန်းများ";
 
 //LOGIN Screen
 "login.title" = "LOGIN";
@@ -25,78 +25,77 @@
 
 //RESET PASSWORD Screen
 "resetpass.title" = "လျှို့ဝှတ်နံပါတ်အားပြန်ပြင်ခြင်း";
-"resetpass.newpass.label" = "New Password *";
-"resetpass.conpass.label" = "Confirm New Password *";
-"resetpass.reset.button" = "RESET PASSWORD";
+"resetpass.newpass.label" = "လျှို့ဝှတ်နံပါတ်အသစ် *";
+"resetpass.conpass.label" = "အတည်ပြု လျှို့ဝှတ်နံပါတ်အသစ် *";
+"resetpass.reset.button" = "လျှို့ဝှတ်နံပါတ်ပြန်ပြင်မည်";
 
 //REGISTER Screen
-"register.title" = "REGISTRATION";
-"register.name.label" = "Name *";
-"register.dob.label" = "Date Of Birth *";
-"register.dob.holder" = "dd/MM/yyyy";
-"register.nrc.label" = "NRC No. *";
-"register.phoneno.label" = "Phone No. *";
-"register.phoneno.holder" = "09xxxxxxxx";
-"register.password.label" = "Password *";
-"register.password.holder" = "minimum 6 characters.";
-"register.conpassword.label" = "Confirm Password *";
-"register.save.button" = "SAVE";
+"register.title" = "အသစ်ဆောက်မည်";
+"register.name.label" = "နာမည် *";
+"register.dob.label" = "မွေးနေ့ *";
+"register.dob.holder" = "ရက်/လ/နှစ်";
+"register.nrc.label" = "မှတ်ပုံတင်နံပါတ် *";
+"register.phoneno.label" = "ဖုန်းနံပါတ် *";
+"register.phoneno.holder" = "၀၉xxxxxxxx";
+"register.password.label" = "လျှို့ဝှက်နံပါတ် *";
+"register.password.holder" = "စကားလုံး ၆ လုံး";
+"register.conpassword.label" = "အတည်ပြု လျှို့ဝှတ်နံပါတ် *";
+"register.save.button" = "တင်မည်";
 
 //CUSTOMERTYPE Screen
-"customertype.title" = "Customer Type";
-"customertype.oldcustomer.button" = "Customer Used AEON Services Before";
-"customertype.newcustomre.button" = "New Customer To Apply AEON Services";
+"customertype.title" = "MEMBER";
+"customertype.oldcustomer.button" = "Memberသို့အဆင့်မြင့်မည်";
 
 //SECURITYQUESTION REGISTER Screen
-"secquest.title" = "Security Question";
+"secquest.title" = "လုံခြုံရေးမေးခွန်း";
 "secquest.question.label" = "Q: " ;
 "secquest.answer.label" = "A: ";
-"secquest.save.button" = "SAVE";
+"secquest.save.button" = "သိမ်းမည်";
 
 //VERIFIACTION Screen
-"verify.title" = "Verification Member";
+"verify.title" = "Memberအချက်အလက်စီစစ်ခြင်း";
 "verify.agreementno.label" = "Agreement No. *";
 "verify.agreementno.holder" = "XXXX-X-XXXXXXXXXX-X";
-"verify.dob.label" = "Date Of Birth *";
-"verify.dob.holder" = "dd/MM/yyyy";
-"verify.nrc.label" = "NRC No. *";
-"verify.callnow.notice" = "If you don't know \"Agreement No\", please contact to AEON Customer Service.";
-"verify.callnow.button" = "CALL NOW";
-"verify.verify.button" = "VERIFY";
+"verify.dob.label" = "မွေးနေ့ *";
+"verify.dob.holder" = "ရက်/လ/နှစ်";
+"verify.nrc.label" = "မှတ်ပုံတင်နံပါတ် *";
+"verify.callnow.notice" = "\"Agreement No\"မမှတ်မိလျှင်, AEON Customer Service ဆီကျေးဇူးပြု၍ဆက်သွယ်ပါ";
+"verify.callnow.button" = "ယခုခေါ်မည်";
+"verify.verify.button" = "စီစစ်မည်";
 
 //PHOTO UPLOAD Screen
-"photoupload.title" = "PHOTO UPLOAD";
-"photoupload.announce.label" = "Your picture will be taken to issue the member card";
-"photoupload.notice1.label" = "Member card can use only for your AEON Service with this picture information.";
-"photoupload.notice2.label" = "This picture ";
-"photoupload.notice3.label" = "1. Save in your mobile phone and don't share to others.";
-"photoupload.notice4.label" = "2. Not change until you reinstall this application again.";
-"photoupload.notice5.label" = "3. To secure and verify your member card when you lost your phone.";
-"photoupload.upload.button" = "Setup Face Photo";
+"photoupload.title" = "ဓာတ်ပုံတင်ခြင်း";
+"photoupload.announce.label" = "သင့်ရဲ့ပုံသည် member card ထုတ်ရန်အတွက်ဖြစ်ပါသည်";
+"photoupload.notice1.label" = "Member card သည် ဒီရုပ်ပုံအချပ်အလက်နဲ့သာ AEON ဝန်ဆောင်မှုများအတွက်အသုံးပြုနိုင်ပါသည်";
+"photoupload.notice2.label" = "ဒီရုပ်ပုံသည် ";
+"photoupload.notice3.label" = "1. သင့်ရဲ့ဖုန်းအတွင်းသိမ်းထားပြီးတခြားသူများအားမမျှဝေထားပါ";
+"photoupload.notice4.label" = "2. သင်သည်နောက်တစ်ကြိမ်ဒီ application အား install လုပ်သည်အထိ မပြောင်းလဲပါ";
+"photoupload.notice5.label" = "3. သင်သည်သင်၏ဖုန်းကိုဆုံးရှုံးခဲ့ရသည့်အခါသင့်ရဲ့ Member card လုံခြုံရန်နှင့်အတည်ပြုရန်";
+"photoupload.upload.button" = "မျက်နှာဓာတ်ပုံရိုက်မည်";
 
 //PHOTO CONFIRMATION Screen
-"photoconfirm.title" = "Confirmation";
-"photoconfirm.confirm.title" = "Use this photo in member card?";
-"photoconfirm.confirm.confirm" = "Confirm";
-"photoconfirm.confirm.retry" = "Retry";
+"photoconfirm.title" = "ပုံအတည်ပြုခြင်း";
+"photoconfirm.confirm.title" = "Member card အတွက်ဒီဓာတ်ပုံကိုသုံးမလား?";
+"photoconfirm.confirm.confirm" = "သုံးမည်";
+"photoconfirm.confirm.retry" = "ပြန်ရိုက်မည်";
 
 //MEMBERSHIP Screen
 "membership.title" = "MEMBERSHIP";
-"membership.card2.photo.label" = "This photo can use for securing your member card. If you want to update this photo, please contact to AEON Customer Service.";
+"membership.card2.photo.label" = "ဒီဓာတ်ပုံကိုသင့်Member cardလုံခြုံရေးအတွက်အသုံးနိုင်သည်။ သင်သည်ဤဓာတ်ပုံကိုပြန်ပြင်လုပ်ဖို့လိုလျှင်, Aeon Customer ဝန်ဆောင်မှုမှဆက်သွယ်နိုင်ပါသည်။";
 
 //INFORMATION UPDATE Screen
-"infoupdate.title" = "Information Update";
-"infoupdate.tag1.title" = "SECURITY QUESTION UPDATE";
-"infoupdate.tag2.title" = "CUSTOMER INFO UPDATE";
-"infoupate.update.button" = "UPDATE";
+"infoupdate.title" = "သတင်းအချက်အလက်ပြန်ပြင်ခြင်း";
+"infoupdate.tag1.title" = "လုံခြုံရေးမေးခွန်းပြန်ပြင်ခြင်း";
+"infoupdate.tag2.title" = "သင့်အချက်အလက်ပြန်ပြင်ခြင်း";
+"infoupate.update.button" = "ပြန်ပြင်မည်";
 
 //CONTACTUS Screen
-"contactus.title" = "Contact Us";
-"contactus.tag1.title" = "HOTLINE PHONE";
-"contactus.tag2.title" = "MESSAGING";
-"contactus.callnow.button" = "CALL NOW";
+"contactus.title" = "AEONအားဆက်သွယ်ရန်";
+"contactus.tag1.title" = "HOTLINE ဖုန်း";
+"contactus.tag2.title" = "မက်ဆေ့ခ်ျပို့ရန်";
+"contactus.callnow.button" = "ယခုခေါ်မည်";
 
 //FAQ Screen
-"faq.title" = "FAQ";
-"faq.tag1.title" = "FAQ";
-"faq.tag2.title" = "TERMS & CONDITIONS";
+"faq.title" = "မေးလေ့ရှိသောမေးခွန်းများ";
+"faq.tag1.title" = "မေးလေ့ရှိသောမေးခွန်းများ";
+"faq.tag2.title" = "စည်းမျဉ်းများနဲ့အခြေအနေများ";

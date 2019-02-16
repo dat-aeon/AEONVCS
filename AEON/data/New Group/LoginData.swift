@@ -7,33 +7,30 @@
 //
 
 import Foundation
- struct LoginResponse: Codable {
-    let message: String
-    let dataBean: DataBean
- }
  
- struct DataBean: Codable {
-    let id: Int = 0
-    let loginID: String? = "", name: String? = ""
-    let agencyID: Int?=0
-    let agencyName: String? = "", location: String?=""
-    let outletID: Int?=0
-    let outletName: String? = "", agencyOutletID: String? = "", mobileTeam: String? = "", nonMobileTeam: String? = ""
-    let roleIDList:String? = ""
-    let groupID: Int? = 0
+ struct LoginResponse: Codable {
+    var statusCode:Int = 0
+    var statusMessage:String = ""
+    var customerId:Int = 0
+    var customerNo: String = ""
+    var phoneNo: String = ""
+    var customerTypeId: Int = 0
+    var userTypeId: Int = 0
+    var name: String = ""
+    var dateOfBirth: String = ""
+    var nrcNo: String = ""
+    var status: String = ""
+    var photoPath: String? = ""
+    var delFlag: Int = 0
+    var password: String = ""
+    var custAgreementListDtoList = [CustAgreementListDto]()
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case loginID = "loginId"
-        case name
-        case agencyID = "agencyId"
-        case agencyName, location
-        case outletID = "outletId"
-        case outletName
-        case agencyOutletID = "agencyOutletId"
-        case mobileTeam, nonMobileTeam
-        case roleIDList = "roleIdList"
-        case groupID = "groupId"
-    }
+ }
+
+ struct CustAgreementListDto : Codable{
+    var custAgreementId: Int = 0
+    var importCustomerId: Int = 0
+    var agreementNo: String = ""
+    var agreementStatus: String = ""
  }
 

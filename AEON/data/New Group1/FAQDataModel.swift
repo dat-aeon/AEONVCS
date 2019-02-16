@@ -50,17 +50,16 @@ class FAQDataModel: BaseModel{
         return data
     }
     
-    func getFaqData(loginId:String,success: @escaping (FAQCateoryDataBean) -> Void,failure: @escaping (String) -> Void){
+    func getFaqData(siteActivationKey:String,success: @escaping (FAQCateoryDataBean) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
-           // "loginID": loginId
-            "siteActivationKey" : loginId
+           "siteActivationKey" : siteActivationKey
         ]
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.faqList, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
-                
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
+                print("call data model result :::::::::::\(responseValue)")
                 
                 //if let loginResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
                 

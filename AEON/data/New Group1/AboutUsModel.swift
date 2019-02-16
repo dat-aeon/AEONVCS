@@ -1,8 +1,8 @@
 //
-//  LoginModel.swift
-//  AEON
+//  AboutUsModel.swift
+//  AEONVCS
 //
-//  Created by AcePlus101 on 2/3/19.
+//  Created by mac on 2/14/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
@@ -10,19 +10,18 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class LoginModel:BaseModel {
+class AboutUsModel:BaseModel {
     
-    func makeLogin(phoneNo:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
+    func getAboutUs(siteActivationKey:String,success: @escaping (AboutUsResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
-            "phoneNo": phoneNo,
-            "password": password
+            "siteActivationKey": siteActivationKey
         ]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.login, rawData: rawData) { (result) in
+        let _ = super.performRequest(endPoint: ApiServiceEndPoint.aboutUs, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                if let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: responseValue){
+                if let loginResponse = try? JSONDecoder().decode(AboutUsResponse.self, from: responseValue){
                     success(loginResponse)
                 }else{
                     failure("Cannot load any data")
