@@ -27,9 +27,16 @@ class SecurityQuestionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setData(data:SecurityQuestion) {
-        self.lbQuesNo.text = "Q" + data.index
-        self.lbQuestion.text = data.questionEng
-        self.lbAnsNo.text = "Ans"+data.index
+    func setData(data:UserQAResponse) {
+        self.lbQuesNo.text = "Q"
+        self.lbAnsNo.text = "Ans"
+        switch Locale.currentLocale {
+        case .MY:
+            self.lbQuestion.text = data.questionMM
+            break
+        case .EN:
+            self.lbQuestion.text = data.questionEN
+            break
+        }
     }
 }

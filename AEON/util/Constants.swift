@@ -8,7 +8,7 @@
 
 import Foundation
 struct Constants {
-    static var base_url:String = "https://ass.aeoncredit.com.mm/assm/"
+    static var base_url:String = "https://ass.aeoncredit.com.mm/vcsm/"
 //    static var base_url:String = "http://10.1.9.70:8081/assm/"
     static var site_activation_key = "1234567"
     
@@ -24,7 +24,7 @@ struct Constants {
     static var PASSWORD = "password"
     
     static var MEMBER = "MEMBER"
-    static var NON_MEMBER = "NON-MEMBER"
+    static var NON_MEMBER = "NON_MEMBER"
     
     // User Import Information Data
     static var IMPORT_CUSTOMER_INFO_ID = "customerInfoId"

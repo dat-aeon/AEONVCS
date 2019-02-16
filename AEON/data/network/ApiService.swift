@@ -11,19 +11,26 @@ struct ApiServiceEndPoint {
     //Login API end Point
     static var login = "appLogin"
     
+    //Information
+    static var secQuesList = "registration/get_security_questions"
+    static var faqList = "information/faq_info"
+    static var nrcList = "information/nrc_info"
+    
     //Register
     static var checkMember = "registration/check_member"
     static var registerNew = "registration/register_new"
     static var registerExisted = "registration/register_existed"
-    static var secQuesList = "registration/get_security_questions"
+    
+    static var checkRegisterVerifyNewMember = "registration/check_verify_new_member"
     static var registerVerifyNewMember = "registration/verify_new_member"
     
     
     static var selectedQuesList = "security_questions"
     static var confirmUser = "confirm_info"
     
-    //Information
-    static var faqList = "information/faq_info"
-    static var nrcList = "information/nrc_info"
+    //Update Information
+    static var userQAList = "updateuserinfo/get_security_questions"
+    static var updateUserQAList = "updateuserinfo/update_security_qas"
+    
     
 }

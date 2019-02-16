@@ -9,7 +9,7 @@
 import UIKit
 import DatePickerDialog
 
-class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
+class RegistrationViewController: BaseUIViewController {
     
     @IBOutlet weak var svMemberRegister: UIScrollView!
     
@@ -106,24 +106,10 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
         tfPassword?.setMaxLength(maxLength: 6)
         tfConPassword?.setMaxLength(maxLength: 6)
         
-        
-        let tapRecognizer = UITapGestureRecognizer()
-        tapRecognizer.addTarget(self, action: #selector(didTapView))
-        tapRecognizer.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tapRecognizer)
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
     
-    @objc func keyboardWillChange(notification : Notification) {
+    @objc override func keyboardWillChange(notification : Notification) {
         
         guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
@@ -140,17 +126,6 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
         
     }
 
-    
-    @objc func didTapView() {
-        self.view.endEditing(true)
-    }
-    
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     @IBAction func onClickSave(_ sender: Any) {
         
         var isError = false
@@ -185,15 +160,6 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
             isError = true
         }
         
-        if self.tfPassword?.text?.count ?? 0 > 5{
-            self.tfPassword?.showError(message: "Please input confirm password")
-            isError = true
-        }
-        if self.tfConPassword?.text?.count ?? 0 > 5 {
-            self.tfConPassword?.showError(message: "Please input confirm password")
-            isError = true
-        }
-        
         if isError {
             return
         }else if self.tfPassword?.text != self.tfConPassword?.text{
@@ -201,6 +167,18 @@ class RegistrationViewController: BaseUIViewController,UITextFieldDelegate {
             self.tfConPassword?.showError(message: "Not Match Password")
             return
         }
+        
+        if self.tfPassword?.text?.count ?? 0 < 6{
+            self.tfPassword?.text = ""
+            self.tfPassword?.showError(message: "mubst be 6 digits")
+            return
+        }
+        if self.tfConPassword?.text?.count ?? 0 < 6{
+            self.tfConPassword?.text = ""
+            self.tfConPassword?.showError(message: "must be 6 digits")
+            return
+        }
+        
         //loadCustomViewIntoController()
         //return
         let divisionCode: String = (self.lblDivision?.text!)!

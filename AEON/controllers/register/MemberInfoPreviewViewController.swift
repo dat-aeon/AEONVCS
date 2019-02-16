@@ -29,12 +29,15 @@ class MemberInfoPreviewViewController: UIViewController {
         
         if memberValue == Constants.MEMBER {
            //register existed member
+            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
             RegisterViewModel.init().makeRegisterExistedMember(registerRequestData: registerRequestData!, profileImage: profileImage ?? UIImage(named: "Image")!, memberResponseData: memberResponseData!, qaList: qaList, success: { (registerResponse) in
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                 let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
                 let vc = navigationVC.children.first as! HomeViewController
                 vc.registerResponse = registerResponse
                 self.present(navigationVC, animated: true, completion: nil)
             }) { (error) in
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                 Utils.showAlert(viewcontroller: self, title: "Register Failed", message: "You cannot register now.")
             }
         } else {

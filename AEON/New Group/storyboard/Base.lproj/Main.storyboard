@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hdG-SZ-4MN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EHv-1X-ERp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1311,7 +1311,7 @@
                                                         <rect key="frame" x="249" y="0.0" width="94" height="35"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gca-Gk-9Yr">
                                                         <rect key="frame" x="191" y="0.0" width="50" height="35"/>
@@ -1377,6 +1377,9 @@
                                                 <state key="normal" title="Call Now">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onClickCallNow:" destination="yMG-YN-H4V" eventType="touchUpInside" id="hH7-XI-t5y"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiW-hG-dp4">
                                                 <rect key="frame" x="0.0" y="338" width="343" height="35"/>
@@ -1389,7 +1392,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="onClickVerify:" destination="yMG-YN-H4V" eventType="touchUpInside" id="R2D-FU-SBp"/>
+                                                    <action selector="onClickVerifyButton:" destination="yMG-YN-H4V" eventType="touchUpInside" id="3Ag-8y-iEt"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1457,6 +1460,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnVerify" destination="qiW-hG-dp4" id="hKc-nv-Op7"/>
+                        <outlet property="lblDivision" destination="h32-Z4-EsX" id="D1Y-2F-QsY"/>
+                        <outlet property="lblNrcType" destination="CJm-mI-aR2" id="9o1-Cz-YJ5"/>
+                        <outlet property="lblTownship" destination="ERG-53-5B6" id="3pq-K3-Euq"/>
+                        <outlet property="svMemberRegisterVerify" destination="wNT-Jl-VGH" id="CB7-cp-ewM"/>
+                        <outlet property="tfAgreementNo" destination="DVo-gD-z2U" id="CEA-VT-MYV"/>
+                        <outlet property="tfDob" destination="sV2-s9-ftq" id="wpu-U7-HXz"/>
+                        <outlet property="tfNrcNo" destination="aTW-ce-1NN" id="mQp-rF-7tv"/>
+                        <outlet property="vDivision" destination="vGk-8U-5Vo" id="mLU-gq-RlT"/>
+                        <outlet property="vNrcType" destination="gca-Gk-9Yr" id="apB-eX-4FP"/>
+                        <outlet property="vTownship" destination="KXm-RL-dl6" id="0xW-ds-i9B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVy-A3-4sZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1520,7 +1533,7 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lgm-0j-cMV">
-                                <rect key="frame" x="0.0" y="28" width="375" height="49"/>
+                                <rect key="frame" x="8" y="28" width="359" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="f5E-H4-eAZ"/>
                                 </constraints>
@@ -1536,7 +1549,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Lgm-0j-cMV" firstAttribute="leading" secondItem="dK1-tr-FqF" secondAttribute="leading" id="44j-Tm-9Xi"/>
+                            <constraint firstItem="Lgm-0j-cMV" firstAttribute="leading" secondItem="dK1-tr-FqF" secondAttribute="leading" constant="8" id="44j-Tm-9Xi"/>
                             <constraint firstItem="dK1-tr-FqF" firstAttribute="bottom" secondItem="qSt-ct-lpq" secondAttribute="bottom" id="5wc-On-ksB"/>
                             <constraint firstItem="Lgm-0j-cMV" firstAttribute="top" secondItem="dK1-tr-FqF" secondAttribute="top" constant="8" id="Aax-GD-oal"/>
                             <constraint firstItem="qSt-ct-lpq" firstAttribute="leading" secondItem="dK1-tr-FqF" secondAttribute="leading" id="CIN-TS-uwf"/>
@@ -1545,7 +1558,7 @@
                             <constraint firstItem="vl0-3V-yTx" firstAttribute="leading" secondItem="dK1-tr-FqF" secondAttribute="leading" id="Ia9-Qk-6S4"/>
                             <constraint firstItem="vl0-3V-yTx" firstAttribute="top" secondItem="Lgm-0j-cMV" secondAttribute="bottom" constant="16" id="NsX-UW-VWe"/>
                             <constraint firstItem="vl0-3V-yTx" firstAttribute="trailing" secondItem="dK1-tr-FqF" secondAttribute="trailing" id="eU9-dj-mof"/>
-                            <constraint firstItem="dK1-tr-FqF" firstAttribute="trailing" secondItem="Lgm-0j-cMV" secondAttribute="trailing" id="fBn-a6-yPJ"/>
+                            <constraint firstItem="dK1-tr-FqF" firstAttribute="trailing" secondItem="Lgm-0j-cMV" secondAttribute="trailing" constant="8" id="fBn-a6-yPJ"/>
                             <constraint firstItem="qSt-ct-lpq" firstAttribute="top" secondItem="Lgm-0j-cMV" secondAttribute="bottom" constant="16" id="v92-oK-Inm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dK1-tr-FqF"/>
@@ -1731,6 +1744,9 @@
                                                 <state key="normal" title="Retry">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onClickRetryButton:" destination="uh7-nC-qBc" eventType="touchUpInside" id="LZb-wY-2m6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcH-zH-Tm6">
                                                 <rect key="frame" x="176.5" y="0.0" width="166.5" height="48"/>
@@ -1740,7 +1756,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="onClickTakePhoto:" destination="uh7-nC-qBc" eventType="touchUpInside" id="aqg-IR-mp0"/>
+                                                    <action selector="onClickConfirmButton:" destination="uh7-nC-qBc" eventType="touchUpInside" id="RXv-IE-CXM"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1772,9 +1788,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rsN-NI-Gdx"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Taking Photo" id="KZn-Vd-Omx"/>
+                    <navigationItem key="navigationItem" title="Taking Photo" id="KZn-Vd-Omx">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back-arrow-icon" id="oeI-Ne-gJB">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="onClickBackButton:" destination="uh7-nC-qBc" id="tnt-7a-N93"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btnTakePhoto" destination="BcH-zH-Tm6" id="shP-E5-0LX"/>
+                        <outlet property="ivProfileImage" destination="gt9-gb-Yxf" id="W2r-Ag-Qjn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2QX-gC-vDv" userLabel="First Responder" sceneMemberID="firstResponder"/>

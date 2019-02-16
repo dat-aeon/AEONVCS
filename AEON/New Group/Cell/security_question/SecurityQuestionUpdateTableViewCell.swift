@@ -30,10 +30,10 @@ class SecurityQuestionUpdateTableViewCell: UITableViewCell {
     }
     
     @IBAction func onClickUpdateButton(_ sender: UIButton) {
-        delegate?.onClickUpdateButton(password: tfPassword.text)
+        delegate?.onClickUpdateButton(cell: self)
     }
 }
 
 protocol SecurityQuestionUpdateDelegate {
-    func onClickUpdateButton(password:String?)
+    func onClickUpdateButton(cell:SecurityQuestionUpdateTableViewCell)
 }

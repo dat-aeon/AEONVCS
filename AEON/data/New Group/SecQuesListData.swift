@@ -8,6 +8,7 @@
 
 import Foundation
 
+//load Security Question & upload
 struct SecQuesListResponse: Codable {
     let numOfQuestion: Int
     let numOfAnsCount: Int
@@ -41,3 +42,4 @@ struct SecQABean:Codable {
     case answer = "answer"
     }
 }
+

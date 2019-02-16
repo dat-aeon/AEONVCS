@@ -8,9 +8,8 @@
 
 import UIKit
 
-class SecQuesRegisterViewController: UIViewController {
+class SecQuesRegisterViewController: BaseUIViewController {
 
-    @IBOutlet weak var barBackBtn: UIBarButtonItem!
     @IBOutlet weak var tvSecQuesRegView: UITableView!
     
     var numOfQuestion: Int = 0
@@ -20,8 +19,6 @@ class SecQuesRegisterViewController: UIViewController {
     var questionList = [String]()
     var secQuesList = [SecQuesListBean]()
     var qaList = [SecQABean]()
-    
-    var imagePicker = UIImagePickerController()
     
     var memberResponseData:CheckMemberResponse?
     var registerRequestData:RegisterRequestBean?
@@ -37,18 +34,10 @@ class SecQuesRegisterViewController: UIViewController {
         //open thid comment in real
         self.tvSecQuesRegView.dataSource = self
         self.tvSecQuesRegView.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+       
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillChange(notification : Notification) {
+ 
+    @objc override func keyboardWillChange(notification : Notification) {
         
         guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
@@ -116,23 +105,6 @@ extension SecQuesRegisterViewController:UITableViewDataSource{
         return cell
     }
     
-    func openCamera(imagePickerControllerDelegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate)
-    {
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.delegate = imagePickerControllerDelegate
-            imagePicker.sourceType = UIImagePickerController.SourceType.camera
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true)
-        } else {
-            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-    }
-    
-    
 }
 
 
@@ -186,29 +158,44 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
         let memberValue:String = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) ?? ""
         
         if memberValue == Constants.MEMBER {
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberInfoPreviewViewController") as! UINavigationController
-            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
-            vc.registerRequestData = self.registerRequestData
-            vc.profileImage = UIImage(named: "Image")!
-            vc.memberResponseData = self.memberResponseData!
-            vc.qaList = secQuestionAndAnswer
-            self.present(navigationVC, animated: true, completion: nil)
-//            openCamera(imagePickerControllerDelegate: self)
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberInfoPreviewViewController") as! UINavigationController
+//            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+//            vc.registerRequestData = self.registerRequestData
+//            vc.profileImage = UIImage(named: "Image")!
+//            vc.memberResponseData = self.memberResponseData!
+//            vc.qaList = secQuestionAndAnswer
+//            self.present(navigationVC, animated: true, completion: nil)
+            openCamera(imagePickerControllerDelegate: self)
         } else {
-            RegisterViewModel.init().makeRegisterNewMember(registerRequestData:registerRequestData!,memberResponseData: memberResponseData!, qaList:secQuestionAndAnswer , success: { (registerResponse) in
+            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+            RegisterViewModel.init().makeRegisterNewMember(registerRequestData:registerRequestData!,memberResponseData: memberResponseData!, qaList:secQuestionAndAnswer , success: { (newRegisterResponse) in
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                 let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
                 let vc = navigationVC.children.first as! HomeViewController
+                let registerResponse = RegisterResponse(
+                    customerId: "\(newRegisterResponse.customerId!)",
+                    customerNo: newRegisterResponse.customerNo ?? "",
+                    phoneNo: newRegisterResponse.phoneNo!,
+                    customerTypeId: "\(newRegisterResponse.customerTypeId!)",
+                    userTypeId: "\(newRegisterResponse.userTypeId!)",
+                    name: newRegisterResponse.name!,
+                    dateOfBirth: newRegisterResponse.dateOfBirth!,
+                    nrcNo: newRegisterResponse.nrcNo!,
+                    status: newRegisterResponse.status!,
+                    photoPath: newRegisterResponse.photoPath ?? "")
                 vc.registerResponse = registerResponse
+                
                 self.present(navigationVC, animated: true, completion: nil)
             }) { (error) in
-                Utils.showAlert(viewcontroller: self, title: "Register Failed", message: "You cannot register now.")
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                Utils.showAlert(viewcontroller: self, title: "Register Failed", message: error)
             }
         }
     }
     
 }
 
-extension SecQuesRegisterViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SecQuesRegisterViewController{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         

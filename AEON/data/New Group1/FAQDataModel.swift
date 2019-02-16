@@ -63,14 +63,18 @@ class FAQDataModel: BaseModel{
                 let responseValue  = try! responseJsonData.rawData()
                 
                 //if let loginResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
-                    
-                if let fAQCateoryDataBean:FAQCateoryDataBean = try? JSONDecoder().decode(FAQCateoryDataBean.self, from: responseValue){
-                    success(fAQCateoryDataBean)
-                    print("call data model :::::::::::\(fAQCateoryDataBean)")
-                    
-                    //return fAQCateoryDataBean;
-                }else{
-                    failure("Cannot load any data")
+                
+                do {
+                    if let fAQCateoryDataBean:FAQCateoryDataBean = try? JSONDecoder().decode(FAQCateoryDataBean.self, from: responseValue){
+                        success(fAQCateoryDataBean)
+                        print("call data model :::::::::::\(fAQCateoryDataBean)")
+                        
+                        //return fAQCateoryDataBean;
+                    }else{
+                        failure("Cannot load any data")
+                    }
+                } catch let error {
+                    print(error)
                 }
             case .failure(let error):
                 failure(error.localizedDescription)

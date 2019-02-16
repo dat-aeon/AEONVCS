@@ -83,16 +83,50 @@ class RegisterModel:BaseModel {
         
     }
     
-    func registerNew(rawData:Data,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
+    func checkVerifiedUserInfo(verifyUserInfo: CheckVerifyUserInfoRequest,success: @escaping (CheckVerifyUserInfoResponse) -> Void,failure: @escaping (String) -> Void){
+        let rawData = [
+            "agreementNo": verifyUserInfo.agreementNo,
+            "dateOfBirth": verifyUserInfo.dateOfBirth,
+            "nrcNo": verifyUserInfo.nrcNo,
+            "customerId":verifyUserInfo.customerId
+        ]
+        
+        let _ = super.performRequest(endPoint: ApiServiceEndPoint.checkRegisterVerifyNewMember, rawData: rawData) { (result) in
+            switch result{
+            case .success(let result):
+                let responseJsonData = JSON(result)
+                let responseValue  = try! responseJsonData.rawData()
+                if let checkMemberResponse = try? JSONDecoder().decode(CheckVerifyUserInfoResponse.self, from: responseValue){
+                    success(checkMemberResponse)
+                }else{
+                    failure("Cannot load any data")
+                }
+            case .failure(let error):
+                failure(error.localizedDescription)
+            }
+        }
+        
+    }
+    func registerNew(rawData:Data,success: @escaping (NewRegisterResponse) -> Void,failure: @escaping (String) -> Void){
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.registerNew, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
+                if let registerResponse = try? JSONDecoder().decode(NewRegisterResponse.self, from: responseValue){
+//                    if let agreementNoValue = try? responseJsonData["custAgreementListDtoList"] {
+//                        if let noList = try? agreementNoValue.encode(to: [CustomerAgreementData] as! Encoder.self) {
+//                            registerResponse.setAgreementNoList(list: noList)
+//                        } else {
+//                            registerResponse.setAgreementNoList(list: [])
+//                        }
+//
+//                    } else {
+//                        registerResponse.setAgreementNoList(list: [])
+//                    }
                     success(registerResponse)
                 }else{
-                    failure("Cannot load any data")
+                    failure("Json Serialization Error")
                 }
             case .failure(let error):
                 failure(error.localizedDescription)
@@ -101,21 +135,6 @@ class RegisterModel:BaseModel {
     }
     
     func registerExisted(rawData:String, imageData: Data,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
-//        let _ = super.performRequest(endPoint: ApiServiceEndPoint.registerExisted, rawData: rawData) { (result) in
-//            switch result{
-//            case .success(let result):
-//                let responseJsonData = JSON(result)
-//                let responseValue  = try! responseJsonData.rawData()
-//                if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
-//                    success(registerResponse)
-//                }else{
-//                    failure("Cannot load any data")
-//                }
-//            case .failure(let error):
-//                failure(error.localizedDescription)
-//            }
-//        }
-        
         let _ = super.performRequestWithImage(endPoint: ApiServiceEndPoint.registerExisted, imageData:imageData , rawData: rawData) { (response) in
             switch response {
             case .success(let upload, _, _):                                    upload.uploadProgress(closure: { (progress) in
