@@ -54,6 +54,8 @@ class HomeViewController: BaseUIViewController {
         if let dict = notification.userInfo as NSDictionary? {
             if let position = dict["position"] as? Int{
                 if position == 7{
+                    UserDefaults.standard.set(nil, forKey: Constants.LOGIN_RESPONSE)
+                    UserDefaults.standard.set(nil, forKey: Constants.REGISTER_RESPONSE)
                     let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController
                     self.present(navigationVC, animated: true, completion:nil)
                 }else{

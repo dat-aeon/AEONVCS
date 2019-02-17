@@ -44,8 +44,15 @@ struct FAQItem {
 }
 
 struct FAQResponse: Codable {
-    let message: String
+    let statusCode: String
+    let statusMessage: String
     let dataBean: FAQCateoryDataBean
+    
+    enum CodingKeys: String, CodingKey {
+        case statusCode = "statusCode"
+        case statusMessage = "statusMessage"
+        case dataBean = "faqInfoList"
+    }
 }
 
 typealias FAQCateoryDataBean = [FAQCateoryDataBeanElement]
@@ -58,13 +65,12 @@ struct FAQCateoryDataBeanElement: Codable {
 struct FAQInfoResInfoList: Codable {
     let faqID: Int
     let questionMM, questionEN, answerMM, answerEN: String
-    let categoryID, delFlag: Int
+    let categoryID:Int
     
     enum CodingKeys: String, CodingKey {
         case faqID = "faqId"
         case questionMM, questionEN, answerMM, answerEN
         case categoryID = "categoryId"
-        case delFlag
     }
 }
 //

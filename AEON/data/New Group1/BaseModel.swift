@@ -1,9 +1,9 @@
 //
-//  BaseModel.swift
-//  AEON
+// BaseModel.swift
+// AEON
 //
-//  Created by AcePlus101 on 2/3/19.
-//  Copyright © 2019 AEON microfinance. All rights reserved.
+// Created by AcePlus101 on 2/3/19.
+// Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
 import Foundation
@@ -11,52 +11,6 @@ import Alamofire
 import SwiftyJSON
 
 class BaseModel {
-    private var Manager : Alamofire.SessionManager = {
-        // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            Constants.base_url: .disableEvaluation
-        ]
-        // Create custom manager
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-        let man = Alamofire.SessionManager(
-            configuration: URLSessionConfiguration.default,
-            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-        )
-        return man
-    }()
-    
-//    func performRequest(endPoint:String, rawData:[String:String] , completion:@escaping (Result<Any>)->Void) -> Any {
-//        let json = JSON(rawData)
-//        let representation = json.rawString([.castNilToNSNull: true])
-//        print("Request params :::::::::::\(representation)")
-//        let parameters:Parameters = [
-//            "param_data": representation as Any
-//        ]
-//        let url:String = Constants.base_url + endPoint
-//        print("Url ====>\(url)")
-//        let headers:HTTPHeaders = ["Content-Type":"application/json"]
-//        return Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
-//            completion(response.result)
-//        }
-//
-//    }
-//
-//    func performRequest(endPoint:String, rawData:Data , completion:@escaping (Result<Any>)->Void) -> DataRequest {
-//        let json = JSON(rawData)
-//        let representation = json.rawString([.castNilToNSNull: true])
-//        print("Request params :::::::::::\(representation)")
-//        let parameters:Parameters = [
-//            "param_data": representation as Any
-//        ]
-//        let url:String = Constants.base_url + endPoint
-//        print("Url ====>\(url)")
-//        let headers:HTTPHeaders = ["Content-Type":"application/json"]
-//        return Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
-//            completion(response.result)
-//        }
-//
-//    }
     func performRequest(endPoint:String,rawData:[String:String],completion:@escaping (Result<Any>)->Void) -> DataRequest {
 
         let urlString = Constants.base_url + endPoint
@@ -115,4 +69,3 @@ class BaseModel {
         }
     }
 }
-

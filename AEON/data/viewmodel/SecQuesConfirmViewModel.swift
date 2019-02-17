@@ -23,7 +23,8 @@ class SecQuesConfirmViewModel{
         }
     }
     
-    func makeConfirm(userConfirmBean: UserSecQuesConfirmBean, success: @escaping (UserSecQuesResponse) -> Void,failure: @escaping (String) -> Void){
+    func makeConfirm(userConfirmBean: UserSecQuesConfirmBean, success: @escaping (ConfirmResponse) -> Void,failure: @escaping (String) -> Void){
+        
         var userConfirmRequest = UserSecQuesConfirmRequest()
         userConfirmRequest.nrcData = userConfirmBean.nrcData
         userConfirmRequest.phoneNo = userConfirmBean.phoneNo
@@ -37,11 +38,15 @@ class SecQuesConfirmViewModel{
             userQARequestList.append(userQARequest)
         
         }
-        userConfirmRequest.quesAnsBean = userQARequestList
+        userConfirmRequest.resetPwdAnsweredSecQuesList  = userQARequestList
         
         SecQuesConfirmModel.init().makeConfirm(userConfirmRequest: userConfirmRequest, success: { (result) in
             
-            success(result)
+            if result.statusCode == "200" {
+                success(result)
+            } else {
+                failure(result.statusMessage!)
+            }
         }) { (error) in
             failure(error)
         }

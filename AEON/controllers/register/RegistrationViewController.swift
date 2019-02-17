@@ -195,22 +195,24 @@ class RegistrationViewController: BaseUIViewController {
         registerBean.phoneNo = (self.tfPhoneNo?.text!)!
         registerBean.password = (self.tfPassword?.text!)!
         
-        let alertController = UIAlertController(title: "Title", message: "For Membership process, OTP code will be sent to your registered phone no (\(registerBean.phoneNo)) .Click “OK” if your phone number has no changes.Click “Call Now” if your phone number has changes.", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-            self.checkMemberType(registerRequestData: registerBean)
-        }))
-        alertController.addAction(UIAlertAction(title: "Call Now", style: UIAlertAction.Style.default, handler: { action in
-            let phoneNumber = "0942332939239"
-            phoneNumber.makeCall()
-        }))
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    private func checkMemberType(registerRequestData:RegisterRequestBean){
-        RegisterViewModel.init().checkMember(registerBean: registerRequestData, success: { (result) in
-                self.goToSecQuesRegisterView(result: result,registerRequestData:registerRequestData)
+        RegisterViewModel.init().checkMember(registerBean: registerBean, success: { (result) in
+            
+            if result.message == Constants.MEMBER{
+                let alertController = UIAlertController(title: "Title", message: "For Membership process, OTP code will be sent to your registered phone no (\(registerBean.phoneNo)) .Click “OK” if your phone number has no changes.Click “Call Now” if your phone number has changes.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                    self.goToSecQuesRegisterView(result: result,registerRequestData:registerBean)
+                }))
+                alertController.addAction(UIAlertAction(title: "Call Now", style: UIAlertAction.Style.default, handler: { action in
+                    let phoneNumber = "0942332939239"
+                    phoneNumber.makeCall()
+                }))
+                self.present(alertController, animated: true, completion: nil)
+            }else{
+                self.goToSecQuesRegisterView(result: result,registerRequestData:registerBean)
+            }
+            
         }) { (error) in
-             Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
+            Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
         }
     }
     

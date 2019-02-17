@@ -35,6 +35,11 @@ class MemberInfoPreviewViewController: BaseUIViewController {
                 let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
                 let vc = navigationVC.children.first as! HomeViewController
                 vc.registerResponse = registerResponse
+                
+                //set nil to response
+                UserDefaults.standard.set(nil, forKey: Constants.LOGIN_RESPONSE)
+                UserDefaults.standard.set(nil, forKey: Constants.REGISTER_RESPONSE)
+                
                 self.present(navigationVC, animated: true, completion: nil)
             }) { (error) in
                 CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)

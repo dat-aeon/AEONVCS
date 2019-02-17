@@ -178,6 +178,10 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
                     photoPath: newRegisterResponse.photoPath ?? "")
                 vc.registerResponse = registerResponse
                 
+                //set nil to response
+                UserDefaults.standard.set(nil, forKey: Constants.LOGIN_RESPONSE)
+                UserDefaults.standard.set(nil, forKey: Constants.REGISTER_RESPONSE)
+                
                 self.present(navigationVC, animated: true, completion: nil)
             }) { (error) in
                 CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)

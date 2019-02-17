@@ -10,21 +10,21 @@ import UIKit
 
 class HotlinePhoneNumberViewController: UIViewController {
 
+    @IBOutlet weak var lblPhoneNo: UILabel!
+    @IBOutlet weak var btnCallNow: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        HotlineViewModel.init().getHotlineData(siteActivationKey: Constants.SITE_ACTIVATION_KEY, success: { (result) in
+            
+            self.lblPhoneNo.text = result.hotLinePhone
+            
+        }) { (error) in
+            Utils.showAlert(viewcontroller: self, title: "Server is temporarily stopped now. Please contact to AEON.", message: error)
+        }
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func onClickCallNow(_ sender: UIButton) {
+        self.lblPhoneNo.text?.makeCall()
     }
-    */
-
 }

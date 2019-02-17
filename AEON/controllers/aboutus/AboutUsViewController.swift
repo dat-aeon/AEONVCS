@@ -45,8 +45,6 @@ class AboutUsViewController: UIViewController {
     
     @IBAction func onClickCallBtn(_ sender: UIButton) {
         
-        guard let number = URL(string: "tel://" + self.lblPhoneNo.text!) else { return }
-        print("call phone No \(number)")
-        UIApplication.shared.open(number)
+        self.lblPhoneNo.text?.makeCall()
     }
 }

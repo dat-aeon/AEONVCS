@@ -23,18 +23,6 @@ class LoginViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let button = UIButton(type: .custom)
-//        //set image for button
-//        button.setImage(UIImage(named: "mm_flag.png"), for: .normal)
-//        //add function for button
-//        button.addTarget(self, action: #selector(onClickCloseButton(_:)), for: .touchUpInside)
-//        //set frame
-//        button.frame = CGRect(x: 0, y: 0, width: 50, height: 32)
-//        
-//        let barButton = UIBarButtonItem(customView: button)
-//        //assign button to navigationbar
-//        self.navigationItem.rightBarButtonItem = barButton
-//        
         self.title = "Login"
         self.lbForgetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickForgetPassword)))
         
@@ -47,9 +35,9 @@ class LoginViewController: BaseUIViewController {
         
         switch Locale.currentLocale {
         case .EN:
-            bbLocaleFlag.image = UIImage(named: "mm_flag")
-        case .MY:
             bbLocaleFlag.image = UIImage(named: "en_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
         }
     }
     
@@ -102,6 +90,10 @@ class LoginViewController: BaseUIViewController {
 //                UserDefaults.standard.set(result.photoPath, forKey: Constants.USER_INFO_PHOTO_PATH)
 //                UserDefaults.standard.set(result.custAgreementListDtoList, forKey: Constants.USER_INFO_AGREEMENT_LIST)
                 
+                //set nil to response
+                UserDefaults.standard.set(nil, forKey: Constants.LOGIN_RESPONSE)
+                UserDefaults.standard.set(nil, forKey: Constants.REGISTER_RESPONSE)
+                
                 // LoginResponse Data
                 let jsonData = try? JSONEncoder().encode(result)
                 let jsonString = String(data: jsonData!, encoding: .utf8)!
@@ -147,6 +139,11 @@ class LoginViewController: BaseUIViewController {
                 if success{
                     //call api to check username and password
                     LoginViewModel.init().login(phoneNo: phone, password: password, success: { (result) in
+                        
+                        //set nil to response
+                        UserDefaults.standard.set(nil, forKey: Constants.LOGIN_RESPONSE)
+                        UserDefaults.standard.set(nil, forKey: Constants.REGISTER_RESPONSE)
+                        
                         let jsonData = try? JSONEncoder().encode(result)
                         let jsonString = String(data: jsonData!, encoding: .utf8)!
                         UserDefaults.standard.set(jsonString, forKey: Constants.LOGIN_RESPONSE)
