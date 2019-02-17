@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EHv-1X-ERp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EHv-1X-ERp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -214,7 +214,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="AEON" id="gbw-g5-OW6">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="events-icon" largeContentSizeImage="en_flag" id="fGT-gp-zxg">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="mm_flag" largeContentSizeImage="en_flag" id="fGT-gp-zxg">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
@@ -514,14 +514,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aeon_logo" translatesAutoresizingMaskIntoConstraints="NO" id="qnX-yj-Eg3">
-                                <rect key="frame" x="67.5" y="124" width="240" height="240"/>
+                                <rect key="frame" x="67.5" y="80" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="mrk-wd-Dor"/>
                                     <constraint firstAttribute="height" constant="240" id="uXl-jf-v0a"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vcg-bO-u2P">
-                                <rect key="frame" x="16" y="388" width="343" height="48"/>
+                                <rect key="frame" x="16" y="344" width="343" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KI4-VT-PTB">
                                         <rect key="frame" x="0.0" y="0.0" width="166.5" height="48"/>
@@ -692,6 +692,8 @@
                     <navigationItem key="navigationItem" title="Reset Password" id="e2T-lD-D53"/>
                     <connections>
                         <outlet property="btnResetPass" destination="Kht-m9-ler" id="WtH-fr-Ftc"/>
+                        <outlet property="tfConPassword" destination="pb3-0z-Zz9" id="atn-nD-VPb"/>
+                        <outlet property="tfPassword" destination="KPy-Sk-0Cw" id="79J-Jb-JeL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7S-Dz-2Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -790,6 +792,9 @@
                                                 <state key="normal" title="Call Now">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onClickCallNow:" destination="0l6-hM-1e2" eventType="touchUpInside" id="VhH-6Y-bju"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -828,6 +833,10 @@
                         <viewLayoutGuide key="safeArea" id="xht-kW-Rf1"/>
                     </view>
                     <navigationItem key="navigationItem" title="Contact Us" id="IyE-nO-8QJ"/>
+                    <connections>
+                        <outlet property="btnCallNow" destination="ND9-Po-1Xb" id="462-jq-vx5"/>
+                        <outlet property="lblPhoneNo" destination="lcH-vN-qJk" id="JaR-zF-xG3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOd-iS-jMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3166,15 +3175,6 @@ Because the content created by users is public to other users, a DMCA notice cla
             </objects>
             <point key="canvasLocation" x="-5025" y="-3040"/>
         </scene>
-        <!--Navigation Controller-->
-        <!-- <scene sceneID="Pxf-fS-DU0">
-            <objects>
-                <navigationController storyboardIdentifier="MemberInfoPreviewViewController" automaticallyAdjustsScrollViewInsets="NO" id="et0-Jg-yWx" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RhQ-Zg-cuk">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/> -->
         <!--ABOUT US-->
         <scene sceneID="X9v-Ds-Qrm">
             <objects>
@@ -3518,7 +3518,7 @@ Because the content created by users is public to other users, a DMCA notice cla
         <image name="phone-icon" width="48" height="48"/>
         <image name="register-icon" width="52" height="52"/>
         <image name="update-icon" width="32" height="32"/>
-        <image name="user-icon" width="24" height="24"/>
+        <image name="user-icon" width="48" height="48"/>
         <image name="visible-icon" width="48" height="48"/>
         <image name="website-icon" width="50" height="50"/>
     </resources>

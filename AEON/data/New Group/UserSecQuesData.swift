@@ -23,7 +23,7 @@ struct QuestionBean : Codable {
 struct UserSecQuesConfirmRequest : Codable{
     var phoneNo: String = ""
     var nrcData: String = ""
-    var quesAnsBean = [UserQABeanRequest]()
+    var resetPwdAnsweredSecQuesList = [UserQABeanRequest]()
 }
 
 struct UserQABeanRequest : Codable{
@@ -42,4 +42,11 @@ struct UserQABean{
     var secQuesId: Int = 0
     var question: String = ""
     var answer: String = ""
+}
+
+struct ConfirmResponse : Codable{
+    var statusCode: String?
+    var statusMessage: String?
+    var customerId: Int?
+    var userTypeId: Int?
 }

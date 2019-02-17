@@ -38,19 +38,21 @@ class FAQViewController: BaseUIViewController {
             
         }
         
-//        FAQViewModel.init().getFAQData(loginId: "Jue", success: { (result) in
-//            
-//            switch Locale.currentLocale {
-//            case .EN:
-//                self.dataList = result
-//            case .MY:
-//                self.dataList = result
-//            }
-//            self.tvFAQView.reloadData()
-//            
-//        }) { (error) in
-//            // Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
-//            }
+        FAQViewModel.init().getFAQData(siteActivationKey: "123456", success: { (resultEN,resultMM) in
+            
+            print("Result on Controller ::::::::::::::::: \(resultEN.count)")
+            
+            switch Locale.currentLocale {
+            case .EN:
+                self.dataList = resultEN
+            case .MY:
+                self.dataList = resultMM
+            }
+            self.tvFAQView.reloadData()
+            
+        }) { (error) in
+            // Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
+        }
         
         
         //dataList = FAQDataModel.init().getFAQHeaderListItemData()

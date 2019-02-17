@@ -50,7 +50,7 @@ class FAQDataModel: BaseModel{
         return data
     }
     
-    func getFaqData(siteActivationKey:String,success: @escaping (FAQCateoryDataBean) -> Void,failure: @escaping (String) -> Void){
+    func getFaqData(siteActivationKey:String,success: @escaping (FAQResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
            "siteActivationKey" : siteActivationKey
         ]
@@ -59,12 +59,12 @@ class FAQDataModel: BaseModel{
             case .success(let result):
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                print("call data model result :::::::::::\(responseValue)")
+                print("call data model result :::::::::::\(result)")
                 
                 //if let loginResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
                 
                 do {
-                    if let fAQCateoryDataBean:FAQCateoryDataBean = try? JSONDecoder().decode(FAQCateoryDataBean.self, from: responseValue){
+                    if let fAQCateoryDataBean:FAQResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
                         success(fAQCateoryDataBean)
                         print("call data model :::::::::::\(fAQCateoryDataBean)")
                         
@@ -72,9 +72,7 @@ class FAQDataModel: BaseModel{
                     }else{
                         failure("Cannot load any data")
                     }
-                } catch let error {
-                    print(error)
-                }
+                } 
             case .failure(let error):
                 failure(error.localizedDescription)
             }

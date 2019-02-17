@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		047F1611220DA1F70015CDEB /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F1610220DA1F70015CDEB /* RegisterData.swift */; };
+		0495E2EA22191D1F009A6FAB /* HotlineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495E2E922191D1F009A6FAB /* HotlineViewModel.swift */; };
+		0495E2EC22191D51009A6FAB /* HotlineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495E2EB22191D51009A6FAB /* HotlineData.swift */; };
+		0495E2EE22191DAA009A6FAB /* HotlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495E2ED22191DAA009A6FAB /* HotlineModel.swift */; };
+		0495E2F022197771009A6FAB /* ResetPasswordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495E2EF22197771009A6FAB /* ResetPasswordData.swift */; };
+		0495E2F2221978A7009A6FAB /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495E2F1221978A7009A6FAB /* ResetPasswordModel.swift */; };
+		0495E2F422197BF4009A6FAB /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495E2F322197BF4009A6FAB /* ResetPasswordViewModel.swift */; };
 		04A20AE622141F0000A7C1D9 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A20AE522141F0000A7C1D9 /* AboutUsViewController.swift */; };
 		04A20AE82215847D00A7C1D9 /* AboutUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A20AE72215847D00A7C1D9 /* AboutUsData.swift */; };
 		04A20AEA2215849400A7C1D9 /* AboutUsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A20AE92215849400A7C1D9 /* AboutUsModel.swift */; };
@@ -107,6 +113,12 @@
 
 /* Begin PBXFileReference section */
 		047F1610220DA1F70015CDEB /* RegisterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterData.swift; sourceTree = "<group>"; };
+		0495E2E922191D1F009A6FAB /* HotlineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotlineViewModel.swift; sourceTree = "<group>"; };
+		0495E2EB22191D51009A6FAB /* HotlineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotlineData.swift; sourceTree = "<group>"; };
+		0495E2ED22191DAA009A6FAB /* HotlineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotlineModel.swift; sourceTree = "<group>"; };
+		0495E2EF22197771009A6FAB /* ResetPasswordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordData.swift; sourceTree = "<group>"; };
+		0495E2F1221978A7009A6FAB /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
+		0495E2F322197BF4009A6FAB /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		04A20AE522141F0000A7C1D9 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		04A20AE72215847D00A7C1D9 /* AboutUsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsData.swift; sourceTree = "<group>"; };
 		04A20AE92215849400A7C1D9 /* AboutUsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsModel.swift; sourceTree = "<group>"; };
@@ -436,6 +448,8 @@
 				04BA7ACD221317B5006696E7 /* SecQuesConfirmViewModel.swift */,
 				6A276CD82217C6B6002C87E0 /* UpdateInfoViewModel.swift */,
 				04A20AEB221584A100A7C1D9 /* AboutUsViewModel.swift */,
+				0495E2E922191D1F009A6FAB /* HotlineViewModel.swift */,
+				0495E2F322197BF4009A6FAB /* ResetPasswordViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -491,6 +505,8 @@
 				6A81F0CE221575F7001725EA /* NRCData.swift */,
 				6A276CDC2217CA2C002C87E0 /* UpdateInfoData.swift */,
 				04A20AE72215847D00A7C1D9 /* AboutUsData.swift */,
+				0495E2EB22191D51009A6FAB /* HotlineData.swift */,
+				0495E2EF22197771009A6FAB /* ResetPasswordData.swift */,
 			);
 			name = struct;
 			path = "New Group";
@@ -506,6 +522,8 @@
 				04F0023022094E67007A9ACF /* RegisterModel.swift */,
 				04BA7AC122105B72006696E7 /* SecQuesConfirmModel.swift */,
 				04A20AE92215849400A7C1D9 /* AboutUsModel.swift */,
+				0495E2ED22191DAA009A6FAB /* HotlineModel.swift */,
+				0495E2F1221978A7009A6FAB /* ResetPasswordModel.swift */,
 			);
 			name = model;
 			path = "New Group1";
@@ -836,12 +854,14 @@
 				6A31979D2203FF1F0031D86F /* InformationUpdateViewController.swift in Sources */,
 				75A31E0F22007341002E7336 /* MemberCardInfoViewController.swift in Sources */,
 				752115DE220161AC001BC94A /* ApplyAeonServiceViewController.swift in Sources */,
+				0495E2F2221978A7009A6FAB /* ResetPasswordModel.swift in Sources */,
 				04A20AEA2215849400A7C1D9 /* AboutUsModel.swift in Sources */,
 				6A3197AE2204007E0031D86F /* FAQViewController.swift in Sources */,
 				047F1611220DA1F70015CDEB /* RegisterData.swift in Sources */,
 				6A3197992203FE770031D86F /* MemberCardInfoTwoViewController.swift in Sources */,
 				6AC88E192206AFC50062926F /* BaseModel.swift in Sources */,
 				75A31DFF220069F5002E7336 /* SecQuestConfirmViewController.swift in Sources */,
+				0495E2EA22191D1F009A6FAB /* HotlineViewModel.swift in Sources */,
 				04BA7AC222105B72006696E7 /* SecQuesConfirmModel.swift in Sources */,
 				6A3197A02203FF830031D86F /* CouponViewController.swift in Sources */,
 				04A20AEC221584A100A7C1D9 /* AboutUsViewModel.swift in Sources */,
@@ -852,6 +872,7 @@
 				6AC88E1C2206B0A10062926F /* LoginModel.swift in Sources */,
 				6AC88E342206E5E90062926F /* SecurityQuestionUpdateTableViewCell.swift in Sources */,
 				6A3197B5220401310031D86F /* MembershipViewController.swift in Sources */,
+				0495E2EC22191D51009A6FAB /* HotlineData.swift in Sources */,
 				75A31DF92200026C002E7336 /* LoginViewController.swift in Sources */,
 				75A31E0522006C13002E7336 /* RegistrationViewController.swift in Sources */,
 				6A6A99362207F54F001C30D2 /* CouponTableViewCell.swift in Sources */,
@@ -859,6 +880,7 @@
 				75A31E0922006E40002E7336 /* CustomerInfoUpdateViewController.swift in Sources */,
 				6AC88E272206D8580062926F /* MemberCardHeaderView.swift in Sources */,
 				75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */,
+				0495E2EE22191DAA009A6FAB /* HotlineModel.swift in Sources */,
 				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
 				6A81F0CD22156005001725EA /* MemberInfoPreviewViewController.swift in Sources */,
 				6A3197BD220403140031D86F /* SecQuestionResetPasswordViewController.swift in Sources */,
@@ -870,6 +892,7 @@
 				6AC88E172206AF2D0062926F /* Constants.swift in Sources */,
 				6AC88E132206AE6D0062926F /* LoginData.swift in Sources */,
 				6AC88E232206D6F70062926F /* CardView.swift in Sources */,
+				0495E2F022197771009A6FAB /* ResetPasswordData.swift in Sources */,
 				6A276CDB2217C6DE002C87E0 /* UpdateInfoModel.swift in Sources */,
 				04BA7ACB22111C88006696E7 /* SecQuesSaveTableViewCell.swift in Sources */,
 				6AC88E1E2206BBC50062926F /* LoginViewModel.swift in Sources */,
@@ -896,6 +919,7 @@
 				753C8B9621F9B670002E101B /* ViewController.swift in Sources */,
 				753C8B9421F9B670002E101B /* AppDelegate.swift in Sources */,
 				6A6A99292207F042001C30D2 /* Locale.swift in Sources */,
+				0495E2F422197BF4009A6FAB /* ResetPasswordViewModel.swift in Sources */,
 				6AFEBE172205D975006D2F81 /* FAQDataModel.swift in Sources */,
 				6AFEBE0F2205CEC8006D2F81 /* FAQTableViewCell.swift in Sources */,
 				752115E122019378001BC94A /* SecQuesConfirmTableViewCell.swift in Sources */,

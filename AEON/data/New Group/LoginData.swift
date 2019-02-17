@@ -12,7 +12,7 @@ import Foundation
     var statusCode:Int = 0
     var statusMessage:String = ""
     var customerId:Int = 0
-    var customerNo: String = ""
+    var customerNo: String? = ""
     var phoneNo: String = ""
     var customerTypeId: Int = 0
     var userTypeId: Int = 0
@@ -23,7 +23,7 @@ import Foundation
     var photoPath: String? = ""
     var delFlag: Int = 0
     var password: String = ""
-    var custAgreementListDtoList = [CustAgreementListDto]()
+    var custAgreementListDtoList = [CustAgreementListDto?]()
     
  }
 

@@ -17,7 +17,7 @@ class FAQViewModel{
     func getFAQData(siteActivationKey:String ,success: @escaping ([FAQHeaderListItem],[FAQHeaderListItem]) -> Void,failure: @escaping (String) -> Void){
         FAQDataModel.init().getFaqData(siteActivationKey: siteActivationKey, success: { (result) in
             
-            self.faqDataList = result
+            self.faqDataList = result.dataBean
             
             for catagoryData in self.faqDataList {
                 

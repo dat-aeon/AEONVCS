@@ -22,6 +22,9 @@ class SecQuesConfirmTableViewCell: UITableViewCell {
     
     var delegate :SecQuesConfirmDelegate?
     
+    var divisionList = [String]()
+    var townshipList = [String]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -47,12 +50,6 @@ class SecQuesConfirmTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func setData(data:SecurityQuestionConfirm) {
-        self.tfPhoneNo.text = data.phoneNo
-        self.tfNrcNo.text = data.nrcNumber
-       
     }
     
     @objc func onClickDivision(){

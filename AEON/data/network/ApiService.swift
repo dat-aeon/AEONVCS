@@ -16,6 +16,7 @@ struct ApiServiceEndPoint {
     static var faqList = "information/faq_info"
     static var nrcList = "information/nrc_info"
     static var aboutUs = "information/about_us"
+    static var hotline = "information/hotline"
     
     //Register
     static var checkMember = "registration/check_member"
@@ -27,7 +28,8 @@ struct ApiServiceEndPoint {
     
     
     static var selectedQuesList = "security_questions"
-    static var confirmUser = "confirm_info"
+    static var confirmUser = "resetpassword/confirm_info"
+    static var changePassword = "resetpassword/password_change"
     static var resetSecQuesList = "registration/get_security_questions"
     
     //Update Information

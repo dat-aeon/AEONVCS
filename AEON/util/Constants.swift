@@ -8,8 +8,9 @@
 
 import Foundation
 struct Constants {
-    static var base_url:String = "https://ass.aeoncredit.com.mm/vcsm/"
+    //static var base_url:String = "https://ass.aeoncredit.com.mm/vcsm/"
 //    static var base_url:String = "http://10.1.9.70:8081/assm/"
+    static var base_url:String = "http://10.1.9.100:8081/vcsm/"
     static var site_activation_key = "1234567"
     
     static var SITE_ACTIVATION_KEY = "siteActivationKey"
