@@ -18,12 +18,26 @@ class RegisterModel:BaseModel {
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.nrcList, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
-                if let resultDictionary = result as? Dictionary<String,String>{
-                    let townships = Array(resultDictionary.values.map{ $0 })
-                    success(townships)
+                if let responseJsonData = JSON(result).array{
+                var nrcList = [String]()
+                 responseJsonData.forEach({ (response) in
+                    if let data = response.string{
+                        nrcList.append(data)
+                    }
+                 })
+                success(nrcList)
                 }else{
-                    failure("Cannot load any data")
+                   failure("Cannot load any data")
                 }
+//                if let resultDictionary = result as? [(String)]{
+//                    let sortDict = resultDictionary.sorted(by: { (k1,v1)-> Bool in
+//                        return k1.key < v1.key                    })
+//                    let townships = resultDictionary.values.map{ $0 }.sorted()
+//                    let townships = resultDictionary.va
+//                    success(townships)
+//                }else{
+//                    failure("Cannot load any data")
+//                }
             case .failure(let error):
                 failure(error.localizedDescription)
             }
@@ -76,6 +90,10 @@ class RegisterModel:BaseModel {
                 }else{
                     failure("Cannot load any data")
                 }
+                
+//                let checkMemberResponse = CheckMemberResponse.parseToCheckMemberResponse(responseJsonData)
+//                success(checkMemberResponse)
+                
             case .failure(let error):
                 failure(error.localizedDescription)
             }

@@ -36,10 +36,9 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self)
     }
-}
-
-//Locale Change Functions
-extension BaseUIViewController{
+    
+    
+    //Locale Change Functions Start
     @objc func localeChanged() {
         reloadDataIfVCVisible()
     }
@@ -66,7 +65,9 @@ extension BaseUIViewController{
         }
         NotificationCenter.default.post(NSNotification.init(name: NSNotification.Name(Locale.ChangeNotification), object: nil) as Notification)
     }
+    //Locale Change Functions End
 }
+
 //Keyboard Show Hide Functions
 extension BaseUIViewController{
     @objc func keyboardWillChange(notification : Notification) {

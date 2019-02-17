@@ -158,13 +158,6 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
         let memberValue:String = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) ?? ""
         
         if memberValue == Constants.MEMBER {
-//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberInfoPreviewViewController") as! UINavigationController
-//            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
-//            vc.registerRequestData = self.registerRequestData
-//            vc.profileImage = UIImage(named: "Image")!
-//            vc.memberResponseData = self.memberResponseData!
-//            vc.qaList = secQuestionAndAnswer
-//            self.present(navigationVC, animated: true, completion: nil)
             openCamera(imagePickerControllerDelegate: self)
         } else {
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
@@ -215,6 +208,14 @@ extension SecQuesRegisterViewController{
             vc.memberResponseData = self.memberResponseData!
             vc.qaList = self.qaList
             self.present(navigationVC, animated: true, completion: nil)
+            
+            //            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberInfoPreviewViewController") as! UINavigationController
+            //            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+            //            vc.registerRequestData = self.registerRequestData
+            //            vc.profileImage = UIImage(named: "Image")!
+            //            vc.memberResponseData = self.memberResponseData!
+            //            vc.qaList = secQuestionAndAnswer
+            //            self.present(navigationVC, animated: true, completion: nil)
         } else {
             print("image is null")
         }

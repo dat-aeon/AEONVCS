@@ -42,6 +42,11 @@
 		6A3197B0220400970031D86F /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197AF220400970031D86F /* TermsAndConditionsViewController.swift */; };
 		6A3197B5220401310031D86F /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197B4220401310031D86F /* MembershipViewController.swift */; };
 		6A3197BD220403140031D86F /* SecQuestionResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3197BC220403140031D86F /* SecQuestionResetPasswordViewController.swift */; };
+		6A69822F221955B900840561 /* BioMetricRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A69822E221955B900840561 /* BioMetricRegisterViewController.swift */; };
+		6A698237221974FA00840561 /* SideMenuHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A698235221974FA00840561 /* SideMenuHeaderTableViewCell.swift */; };
+		6A698238221974FA00840561 /* SideMenuHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A698236221974FA00840561 /* SideMenuHeaderTableViewCell.xib */; };
+		6A69823C2219775E00840561 /* SideMenuListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A69823A2219775E00840561 /* SideMenuListTableViewCell.swift */; };
+		6A69823D2219775E00840561 /* SideMenuListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A69823B2219775E00840561 /* SideMenuListTableViewCell.xib */; };
 		6A6A99272207F00D001C30D2 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A99262207F00D001C30D2 /* Localizable.swift */; };
 		6A6A99292207F042001C30D2 /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A99282207F042001C30D2 /* Locale.swift */; };
 		6A6A992B2207F095001C30D2 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A992A2207F095001C30D2 /* BaseUIViewController.swift */; };
@@ -143,6 +148,11 @@
 		6A3197AF220400970031D86F /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		6A3197B4220401310031D86F /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		6A3197BC220403140031D86F /* SecQuestionResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuestionResetPasswordViewController.swift; sourceTree = "<group>"; };
+		6A69822E221955B900840561 /* BioMetricRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioMetricRegisterViewController.swift; sourceTree = "<group>"; };
+		6A698235221974FA00840561 /* SideMenuHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		6A698236221974FA00840561 /* SideMenuHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		6A69823A2219775E00840561 /* SideMenuListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuListTableViewCell.swift; sourceTree = "<group>"; };
+		6A69823B2219775E00840561 /* SideMenuListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuListTableViewCell.xib; sourceTree = "<group>"; };
 		6A6A99262207F00D001C30D2 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		6A6A99282207F042001C30D2 /* Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
 		6A6A992A2207F095001C30D2 /* BaseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +392,32 @@
 			path = "New Group3";
 			sourceTree = "<group>";
 		};
+		6A69822D2219556600840561 /* biometric */ = {
+			isa = PBXGroup;
+			children = (
+				6A69822E221955B900840561 /* BioMetricRegisterViewController.swift */,
+			);
+			path = biometric;
+			sourceTree = "<group>";
+		};
+		6A6982302219732800840561 /* sidemenu_header */ = {
+			isa = PBXGroup;
+			children = (
+				6A698235221974FA00840561 /* SideMenuHeaderTableViewCell.swift */,
+				6A698236221974FA00840561 /* SideMenuHeaderTableViewCell.xib */,
+			);
+			path = sidemenu_header;
+			sourceTree = "<group>";
+		};
+		6A6982392219774100840561 /* sidemenu_list */ = {
+			isa = PBXGroup;
+			children = (
+				6A69823A2219775E00840561 /* SideMenuListTableViewCell.swift */,
+				6A69823B2219775E00840561 /* SideMenuListTableViewCell.xib */,
+			);
+			path = sidemenu_list;
+			sourceTree = "<group>";
+		};
 		6A6A99252207EFFE001C30D2 /* locale */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +654,7 @@
 		75A31DF522000182002E7336 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A69822D2219556600840561 /* biometric */,
 				04A20AE422141ED300A7C1D9 /* aboutus */,
 				6A3197BB220402520031D86F /* login */,
 				6A3197BA2204020F0031D86F /* home */,
@@ -647,6 +684,8 @@
 		75C9F39121FD9C3100D65E0A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6A6982392219774100840561 /* sidemenu_list */,
+				6A6982302219732800840561 /* sidemenu_header */,
 				04BA7ABC2210373E006696E7 /* sec_ques_register_cell */,
 				6A6A99322207F4A8001C30D2 /* event_news_coupon */,
 				6AC88E2D2206E3540062926F /* security_question */,
@@ -755,10 +794,12 @@
 				6AC88E282206D8580062926F /* MemberCardHeaderView.xib in Resources */,
 				04BA7ACC22111C88006696E7 /* SecQuesSaveTableViewCell.xib in Resources */,
 				6AFEBE0C2205CEAD006D2F81 /* FAQHeaderView.xib in Resources */,
+				6A698238221974FA00840561 /* SideMenuHeaderTableViewCell.xib in Resources */,
 				7561955E21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib in Resources */,
 				6A6A992F2207F0E8001C30D2 /* en.strings in Resources */,
 				6A6A99372207F54F001C30D2 /* CouponTableViewCell.xib in Resources */,
 				04BA7AC022103796006696E7 /* SecQuesRegisterTableViewCell.xib in Resources */,
+				6A69823D2219775E00840561 /* SideMenuListTableViewCell.xib in Resources */,
 				752115E222019378001BC94A /* SecQuesConfirmTableViewCell.xib in Resources */,
 				75C9F39621FD9C8A00D65E0A /* QR_codeViewCell.xib in Resources */,
 			);
@@ -849,6 +890,7 @@
 				6A6A99272207F00D001C30D2 /* Localizable.swift in Sources */,
 				04A20AE622141F0000A7C1D9 /* AboutUsViewController.swift in Sources */,
 				752115DA22016146001BC94A /* HomeViewController.swift in Sources */,
+				6A69823C2219775E00840561 /* SideMenuListTableViewCell.swift in Sources */,
 				6AC88E1C2206B0A10062926F /* LoginModel.swift in Sources */,
 				6AC88E342206E5E90062926F /* SecurityQuestionUpdateTableViewCell.swift in Sources */,
 				6A3197B5220401310031D86F /* MembershipViewController.swift in Sources */,
@@ -860,6 +902,7 @@
 				6AC88E272206D8580062926F /* MemberCardHeaderView.swift in Sources */,
 				75C9F39521FD9C8A00D65E0A /* QR_codeViewCell.swift in Sources */,
 				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
+				6A69822F221955B900840561 /* BioMetricRegisterViewController.swift in Sources */,
 				6A81F0CD22156005001725EA /* MemberInfoPreviewViewController.swift in Sources */,
 				6A3197BD220403140031D86F /* SecQuestionResetPasswordViewController.swift in Sources */,
 				6A6A992B2207F095001C30D2 /* BaseUIViewController.swift in Sources */,
@@ -890,6 +933,7 @@
 				04BA7AC4221076DF006696E7 /* SecQuesRegisterViewModel.swift in Sources */,
 				75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */,
 				04F0022F22094D21007A9ACF /* RegisterViewModel.swift in Sources */,
+				6A698237221974FA00840561 /* SideMenuHeaderTableViewCell.swift in Sources */,
 				04F0023322094FCF007A9ACF /* FAQViewModel.swift in Sources */,
 				6A3197AC220400700031D86F /* FaqAndTermsConditionViewController.swift in Sources */,
 				04F0023122094E67007A9ACF /* RegisterModel.swift in Sources */,

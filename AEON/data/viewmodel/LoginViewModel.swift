@@ -12,10 +12,10 @@ class LoginViewModel{
     func login(phoneNo:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
         LoginModel.init().makeLogin(phoneNo: phoneNo, password: password, success: { (result) in
            
-            if result.statusCode == 200 {
+            if result.statusCode == "200" {
                 success(result)
             } else {
-                failure(result.statusMessage)
+                failure(result.statusMessage ?? "Cannot Login")
             }
             
         }) { (error) in

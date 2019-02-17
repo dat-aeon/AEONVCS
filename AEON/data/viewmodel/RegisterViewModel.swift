@@ -45,8 +45,8 @@ class RegisterViewModel{
         RegisterModel.init().checkMemberData(registerReqBean: registerBean
             , success: { (result) in
                 if result.statusCode == "200" {
-                    if result.message.isEmpty {
-                        failure(result.message)
+                    if (result.message?.isEmpty)! {
+                        failure(result.message ?? "Cannot Register")
                     }else{
                         if result.message == Constants.MEMBER{
                             // save in user default
@@ -76,7 +76,7 @@ class RegisterViewModel{
                         }
                     }
                 }else if result.statusCode == "500"{
-                    failure(result.statusMessage!)
+                    failure(result.statusMessage ?? "Invalid Member")
                 }else{
                     failure("Invalid Member")
                 }
@@ -163,7 +163,7 @@ class RegisterViewModel{
     //MAKE EXISTED MEMBER REGISTER
     func makeRegisterExistedMember(registerRequestData:RegisterRequestBean,profileImage:UIImage,memberResponseData:CheckMemberResponse,qaList:[SecQABean],success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = getRegisterExistedRequestData(registerRequestData:registerRequestData,memberResponseData: memberResponseData, qaList: qaList)
-        RegisterModel.init().registerExisted(rawData:rawData,imageData:profileImage.pngData()!, success: { (result) in
+        RegisterModel.init().registerExisted(rawData:rawData,imageData:profileImage.jpegData(compressionQuality: 1)!, success: { (result) in
             if result.statusCode == "200"{
                 success(result)
             }else{

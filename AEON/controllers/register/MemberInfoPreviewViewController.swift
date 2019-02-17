@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class MemberInfoPreviewViewController: UIViewController {
+class MemberInfoPreviewViewController: BaseUIViewController {
 
     var registerRequestData:RegisterRequestBean?
     var profileImage:UIImage?
@@ -46,5 +46,27 @@ class MemberInfoPreviewViewController: UIViewController {
     }
     
     @IBAction func onClickRetryButton(_ sender: UIButton) {
+        self.openCamera(imagePickerControllerDelegate: self)
     }
+    
+    @IBAction func onClickBackButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension MemberInfoPreviewViewController{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        if let pickedImage = info[.editedImage] as? UIImage {
+            self.ivProfile.image = pickedImage
+        } else {
+            print("image is null")
+        }
+        
+    }
+    
 }

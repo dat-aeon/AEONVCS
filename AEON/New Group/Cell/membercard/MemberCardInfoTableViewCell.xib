@@ -57,7 +57,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="ivQRCode" destination="vWD-d1-1r5" id="Gg5-k4-jxl"/>
-                <outlet property="lblAggrementNo" destination="S6j-Hn-0Qd" id="0Ij-Zz-2GQ"/>
+                <outlet property="lblAgreementNo" destination="S6j-Hn-0Qd" id="HRD-HX-oPz"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="201.04947526236884"/>
         </tableViewCell>

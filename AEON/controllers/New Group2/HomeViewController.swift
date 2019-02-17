@@ -29,10 +29,11 @@ class HomeViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let jsonData = try? JSONEncoder().encode(registerResponse)
-        let jsonString = String(data: jsonData!, encoding: .utf8)!
-                        UserDefaults.standard.set(jsonString, forKey: Constants.REGISTER_RESPONSE)
-        
+        if let registerResponseData = registerResponse{
+            let jsonData = try? JSONEncoder().encode(registerResponseData)
+            let jsonString = String(data: jsonData!, encoding: .utf8)!
+            UserDefaults.standard.set(jsonString, forKey: Constants.REGISTER_RESPONSE)
+        }
 
 //        UserDefaults.standard.set(registerResponse, forKey: Constants.REGISTER_RESPONSE)
         // setup side menu

@@ -14,15 +14,15 @@ class MembershipViewController: UIViewController {
     
     @IBOutlet weak var cvMemberCardInfo: UIView!
     
-    var containerIndex = 2
+    var containerIndex = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         let memberValue:String = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) ?? ""
         
         if memberValue == Constants.MEMBER {
-            containerIndex = 1
-        }else{
             containerIndex = 2
+        }else{
+            containerIndex = 1
         }
         toggleContainer(position:containerIndex)
         let registerResponse = UserDefaults.standard.object(forKey: Constants.REGISTER_RESPONSE)

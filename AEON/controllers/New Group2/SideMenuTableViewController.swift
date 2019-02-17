@@ -8,14 +8,37 @@
 
 import UIKit
 import SideMenu
+import SwiftyJSON
 
 class SideMenuTableViewController: UITableViewController {
+
+    var registerResponse:RegisterResponse?
+    var loginResponse:LoginResponse?
+    
+    var menuItemList:[MenuItem] = []
+
     override func viewDidLoad() {
+        let menuItem1 = MenuItem(image: "user-icon", name: "MemberShip")
+        let menuItem2 = MenuItem(image: "update-icon", name: "Information Update")
+        let menuItem3 = MenuItem(image: "message-icon", name: "Apply Aeon Services")
+        let menuItem4 = MenuItem(image: "events-icon", name: "Event & News")
+        let menuItem5 = MenuItem(image: "phone-icon", name: "Contact Us")
+        let menuItem6 = MenuItem(image: "help-primary-icon", name: "FAQ")
+        let menuItem7 = MenuItem(image: "logout-icon", name: "Logout")
+        menuItemList.append(menuItem1)
+        menuItemList.append(menuItem2)
+        menuItemList.append(menuItem3)
+        menuItemList.append(menuItem4)
+        menuItemList.append(menuItem5)
+        menuItemList.append(menuItem6)
+        menuItemList.append(menuItem7)
        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tableView.register(UINib(nibName: "SideMenuHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuHeaderTableViewCell")
+        tableView.register(UINib(nibName: "SideMenuListTableViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuListTableViewCell")
         // refresh cell blur effect in case it changed
         tableView.reloadData()
         
@@ -28,13 +51,15 @@ class SideMenuTableViewController: UITableViewController {
             return
         }
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0);
+       
+        let registerResponseString = UserDefaults.standard.string(forKey: Constants.REGISTER_RESPONSE)
         
+        registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: JSON(parseJSON: registerResponseString ?? "").rawData())
         
-        // Set up a cool background image for demo purposes
-        //        let imageView = UIImageView(image: UIImage(named: "background"))
-        //        imageView.contentMode = .scaleAspectFit
-        //        imageView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        //        tableView.backgroundView = imageView
+        let loginResponseString = UserDefaults.standard.string(forKey: Constants.LOGIN_RESPONSE)
+        
+        loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: JSON(parseJSON: loginResponseString ?? "").rawData())
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,11 +76,39 @@ class SideMenuTableViewController: UITableViewController {
         }
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath) as! UITableViewVibrantCell
-        cell.blurEffectStyle = SideMenuManager.default.menuBlurEffectStyle
+//        if indexPath.row == 0 {
+//            let cell = super.tableView(tableView, cellForRowAt: indexPath) as! SideMenuHeaderTableViewCell
+//            cell.blurEffectStyle = SideMenuManager.default.menuBlurEffectStyle
+//            cell.selectionStyle = .none
+//            return cell
+//        }
+//        let cell = super.tableView(tableView, cellForRowAt: indexPath) as! SideMenuListTableViewCell
+//        cell.blurEffectStyle = SideMenuManager.default.menuBlurEffectStyle
+//        return cell
+        
         if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuHeaderTableViewCell") as! SideMenuHeaderTableViewCell
+            cell.blurEffectStyle = SideMenuManager.default.menuBlurEffectStyle
             cell.selectionStyle = .none
+            var photoUrl = ""
+            var name = ""
+            var customerNo = ""
+            if let registerData = registerResponse{
+                photoUrl = registerData.photoPath ?? ""
+                name = registerData.name ?? ""
+                customerNo = registerData.customerNo ?? ""
+            }
+            if let loginData = loginResponse{
+                photoUrl = loginData.photoPath ?? ""
+                name = loginData.name ?? ""
+                customerNo = loginData.customerNo ?? ""
+            }
+            cell.setData(photoUrl: photoUrl,name: name,customerNo: customerNo)
+            return cell
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuListTableViewCell") as! SideMenuListTableViewCell
+        cell.blurEffectStyle = SideMenuManager.default.menuBlurEffectStyle
+        cell.setData(data:self.menuItemList[indexPath.row-1])
         return cell
     }
     
@@ -69,4 +122,20 @@ class SideMenuTableViewController: UITableViewController {
         NotificationCenter.default.post(NSNotification.init(name: NSNotification.Name("ChangeContainer"), object: nil, userInfo:indexDataDict) as Notification)
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.menuItemList.count+1
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return 230
+        }
+        return 45
+    }
+    
+}
+
+struct MenuItem {
+    var image:String
+    var name:String
 }

@@ -11,13 +11,17 @@ import UIKit
 class MemberCardInfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var ivQRCode: UIImageView!
-    @IBOutlet weak var lblAggrementNo: UILabel!
+    @IBOutlet weak var lblAgreementNo: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let data =  "www.aeon.com.mm \n \(lblAggrementNo.text ?? "")"
-        let qrCode = Utils.init().generateQRCode(data:data)
-        ivQRCode.image = qrCode
+    }
+    
+    func setData(data:CustomerAgreementData){
+        let qrData =  "www.aeon.com.mm \n \(data.agreementNo ?? "")"
+        let qrCode = Utils.init().generateQRCode(data:qrData)
+        self.ivQRCode.image = qrCode
+        self.lblAgreementNo.text = data.agreementNo
     }
     
 }

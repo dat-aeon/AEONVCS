@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct RegisterRequestBean {
     var name: String = ""
@@ -21,24 +22,43 @@ struct RegisterRequestBean {
 struct CheckMemberResponse : Codable {
     var statusCode:String? = ""
     var statusMessage:String? = ""
-    var message: String = ""
-    var memberDataBean: MemberDataBean? = nil
+    var message: String? = ""
+    var memberDataBean: MemberDataBean?
+    enum CodingKeys:String,CodingKey{
+        case statusCode
+        case statusMessage
+        case message
+        case memberDataBean = "checkMemInfoResBean"
+    }
+    
+    static func parseToCheckMemberResponse(_ data : JSON) -> CheckMemberResponse {
+        let dictData = data.dictionary
+        var checkMemberResponse = CheckMemberResponse()
+        checkMemberResponse.statusCode = dictData!["statusCode"]?.string
+        checkMemberResponse.statusMessage = dictData!["statusMessage"]?.string
+        checkMemberResponse.message = dictData!["message"]?.string
+        if let memberData = dictData!["checkMemInfoResBean"]?.string{
+            checkMemberResponse.memberDataBean = MemberDataBean.parseToMemberDataBean(JSON(parseJSON: memberData))
+        }
+        return checkMemberResponse
+        
+    }
 }
 
 struct MemberDataBean : Codable {
-    var importCustomerInfoId: Int = 0
-    var customerNo: String = ""
-    var name: String = ""
-    var gender: Int = 0
-    var phoneNo: String = ""
-    var nrcNo: String = ""
-    var dateOfBirth: String = ""
-    var salary: String = ""
-    var age: Int = 0
-    var companyName: String = ""
-    var townshipAddress: String = ""
-    var status: String = ""
-    var custAgreementListResDaoList :[CustAgreementListResDao]? = nil
+    var importCustomerInfoId: Int? = 0
+    var customerNo: String? = ""
+    var name: String? = ""
+    var gender: Int? = 0
+    var phoneNo: String? = ""
+    var nrcNo: String? = ""
+    var dateOfBirth: String? = ""
+    var salary: String? = ""
+    var age: Int? = 0
+    var companyName: String? = ""
+    var townshipAddress: String? = ""
+    var status: String? = ""
+    var custAgreementListResDaoList :[CustAgreementListResDao]? = []
     
     enum CodingKeys: String, CodingKey {
         case importCustomerInfoId = "importCustomerInfoId"
@@ -55,19 +75,55 @@ struct MemberDataBean : Codable {
         case status = "status"
         case custAgreementListResDaoList = "custAgreementListResDaoList"
     }
+    
+    static func parseToMemberDataBean(_ data : JSON) -> MemberDataBean {
+        
+        var memberDataBean = MemberDataBean()
+        memberDataBean.importCustomerInfoId = data["importCustomerInfoId"].int
+        memberDataBean.customerNo = data["customerNo"].string
+        memberDataBean.name = data["name"].string
+        memberDataBean.gender = data["gender"].int
+        memberDataBean.phoneNo = data["phoneNo"].string
+        memberDataBean.nrcNo = data["nrcNo"].string
+        memberDataBean.dateOfBirth = data["dateOfBirth"].string
+        memberDataBean.salary = data["salary"].string
+        memberDataBean.age = data["age"].int
+        memberDataBean.companyName = data["companyName"].string
+        memberDataBean.townshipAddress = data["townshipAddress"].string
+        memberDataBean.status = data["status"].string
+        if let agreementDatas = data["custAgreementListResDaoList"].array{
+            var agreementList : [CustAgreementListResDao] = []
+            agreementDatas.forEach({ (agreementData) in
+                agreementList.append(CustAgreementListResDao.parseToCustAgreementListResDao(agreementData))
+            })
+            memberDataBean.custAgreementListResDaoList = agreementList
+        }
+        
+        return memberDataBean
+        
+    }
 }
 
 struct CustAgreementListResDao : Codable {
-    var custAgreementId:Int = 0
-    var importCustomerId = 0
-    var agreementNo:String = ""
-    var agreementStatus:String = ""
+    var custAgreementId:Int? = 0
+    var importCustomerId:Int? = 0
+    var agreementNo:String? = ""
+    var agreementStatus:String? = ""
     
     enum CodingKeys: String, CodingKey {
         case custAgreementId = "custAgreementId"
         case importCustomerId = "importCustomerId"
         case agreementNo = "agreementNo"
         case agreementStatus = "agreementStatus"
+    }
+    
+    static func parseToCustAgreementListResDao(_ data : JSON) -> CustAgreementListResDao {
+        var custAgreementListResDao = CustAgreementListResDao()
+        custAgreementListResDao.custAgreementId = data["custAgreementId"].int
+        custAgreementListResDao.importCustomerId = data["importCustomerId"].int
+        custAgreementListResDao.agreementNo = data["agreementNo"].string
+        custAgreementListResDao.agreementStatus = data["agreementStatus"].string
+        return custAgreementListResDao
     }
 }
 
@@ -138,19 +194,19 @@ struct NewRegisterResponse: Codable {
 struct RegisterResponse: Codable {
     var statusCode:String? = ""
     var statusMessage:String? = ""
-    var customerId:String? = ""
+    var customerId:Int? = 0
     var customerNo:String? = ""
     var phoneNo:String? = ""
-    var customerTypeId:String? = ""
-    var userTypeId:String? = ""
+    var customerTypeId:Int? = 0
+    var userTypeId:Int? = 0
     var name:String? = ""
     var dateOfBirth:String? = ""
     var nrcNo:String? = ""
     var status:String? = ""
     var photoPath:String? = ""
-    var delFlag:String? = ""
+    var delFlag:Int? = 0
     var password:String? = ""
-    var custAgreementListDtoList:[CustomerAgreementData]? = [CustomerAgreementData]()
+    var custAgreementListDtoList:[CustomerAgreementData]?
     
     enum CodingKeys: String, CodingKey {
         case statusCode
@@ -170,38 +226,38 @@ struct RegisterResponse: Codable {
         case custAgreementListDtoList
     }
     init(customerId:String,customerNo:String,phoneNo:String,customerTypeId:String,userTypeId:String,name:String,dateOfBirth:String,nrcNo:String,status:String,photoPath:String) {
-        self.customerId = customerId
+        self.customerId = Int(customerId) ?? 0
         self.customerNo = customerNo
         self.phoneNo = phoneNo
-        self.customerTypeId = customerTypeId
-        self.userTypeId = userTypeId
+        self.customerTypeId = Int(customerTypeId) ?? 0
+        self.userTypeId = Int(userTypeId) ?? 0
         self.name = name
         self.dateOfBirth = dateOfBirth
         self.nrcNo = nrcNo
         self.status = status
         self.photoPath = photoPath
     }
-    
-    mutating func mapFrom(customerId:String,customerNo:String,phoneNo:String,customerTypeId:String,userTypeId:String,name:String,dateOfBirth:String,nrcNo:String,status:String,photoPath:String)->RegisterResponse{
-        self.customerId = customerId
-        self.customerNo = customerNo
-        self.phoneNo = phoneNo
-        self.customerTypeId = customerTypeId
-        self.userTypeId = userTypeId
-        self.name = name
-        self.dateOfBirth = dateOfBirth
-        self.nrcNo = nrcNo
-        self.status = status
-        self.photoPath = photoPath
-        return self
-    }
+//
+//    mutating func mapFrom(customerId:String,customerNo:String,phoneNo:String,customerTypeId:String,userTypeId:String,name:String,dateOfBirth:String,nrcNo:String,status:String,photoPath:String)->RegisterResponse{
+//        self.customerId = customerId
+//        self.customerNo = customerNo
+//        self.phoneNo = phoneNo
+//        self.customerTypeId = customerTypeId
+//        self.userTypeId = userTypeId
+//        self.name = name
+//        self.dateOfBirth = dateOfBirth
+//        self.nrcNo = nrcNo
+//        self.status = status
+//        self.photoPath = photoPath
+//        return self
+//    }
 }
 
 struct CustomerAgreementData:Codable{
-    var custAgreementId:String
-    var importCustomerId:String
-    var agreementNo:String
-    var agreementStatus:String
+    var custAgreementId:Int? = 0
+    var importCustomerId:Int? = 0
+    var agreementNo:String? = ""
+    var agreementStatus:String? = ""
     enum CodingKeys: String, CodingKey{
         case custAgreementId
         case importCustomerId
@@ -212,16 +268,16 @@ struct CustomerAgreementData:Codable{
 
 //Member Register Request Param Data
 struct RegisterExistedRequestData : Codable {
-    var name:String
-    var dateOfBirth:String
-    var nrcNo:String
-    var phoneNo:String
-    var password:String
-    var importCustomerId:Int
-    var customerNo:String
-    var photoPath:String
-    var securityAnsweredInfoList:[SecQABean]
-    var appUsageInfo:AppUsageInfoReqBean
+    var name:String? = ""
+    var dateOfBirth:String? = ""
+    var nrcNo:String? = ""
+    var phoneNo:String? = ""
+    var password:String? = ""
+    var importCustomerId:Int? = 0
+    var customerNo:String? = ""
+    var photoPath:String? = ""
+    var securityAnsweredInfoList:[SecQABean]?
+    var appUsageInfo:AppUsageInfoReqBean?
      enum CodingKeys: String, CodingKey {
         case name
         case dateOfBirth
