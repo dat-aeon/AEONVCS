@@ -46,7 +46,7 @@ class FAQViewModel{
             }
             success(self.dataEnList,self.dataMyList)
             
-            print("call View Model :::::::::::\(self.dataEnList.count)")
+            //print("call View Model :::::::::::\(self.dataEnList.count)")
             
             
         }) { (error) in

@@ -3,6 +3,7 @@ PODS:
   - DatePickerDialog (2.0)
   - Kingfisher (5.1.0)
   - SideMenu (5.0.3)
+  - SwiftGifOrigin (1.7.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -10,6 +11,7 @@ DEPENDENCIES:
   - DatePickerDialog
   - Kingfisher
   - SideMenu
+  - SwiftGifOrigin
   - SwiftyJSON
 
 SPEC REPOS:
@@ -18,6 +20,7 @@ SPEC REPOS:
     - DatePickerDialog
     - Kingfisher
     - SideMenu
+    - SwiftGifOrigin
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -25,8 +28,9 @@ SPEC CHECKSUMS:
   DatePickerDialog: 5e1c24d9fe6506cd45dbc573eed7b0a251b1c09d
   Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
+  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 2522c745b2fc252c045d9e6bb9d5f245362b199f
+PODFILE CHECKSUM: d4fa75a3f7e8ea1fce50974500df5f348160c566
 
 COCOAPODS: 1.5.3

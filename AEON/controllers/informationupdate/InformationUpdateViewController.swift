@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InformationUpdateViewController: UIViewController {
+class InformationUpdateViewController: BaseUIViewController {
 
     @IBOutlet weak var cvSecurityQuestionUpdate: UIView!
     @IBOutlet weak var cvCustomerInfoUpdate: UIView!
@@ -40,5 +40,9 @@ class InformationUpdateViewController: UIViewController {
         }
     }
     
-
+    @objc override func updateViews() {
+        super.updateViews()
+//        self.lblMemberLabel.text = "membership.card2.photo.label".localized
+//        
+    }
 }

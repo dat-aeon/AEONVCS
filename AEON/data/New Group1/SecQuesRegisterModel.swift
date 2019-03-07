@@ -23,7 +23,7 @@ class SecQuesRegisterModel: BaseModel {
                 if let secQuesListResponse = try? JSONDecoder().decode(SecQuesListResponse.self, from: responseValue){
                     success(secQuesListResponse)
                 }else{
-                    failure("Cannot load any data")
+                    failure("JSON parsing error.")
                 }
             case .failure(let error):
                 failure(error.localizedDescription)

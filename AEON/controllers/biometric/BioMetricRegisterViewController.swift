@@ -12,15 +12,33 @@ import LocalAuthentication
 class BioMetricRegisterViewController: BaseUIViewController {
 
     @IBOutlet weak var svBioMetricVerify: UIScrollView!
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var tfPhone: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var lbWarning: UILabel!
+    @IBOutlet weak var lbWarningText: UILabel!
+    @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tfPhone.delegate = self
         tfPassword.delegate = self
-
+        
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.lblTitle.text = "biometric.title".localized
+        self.tfPhone.placeholder = "biometric.phoneno.holder".localized
+        self.tfPassword.placeholder = "biometric.password.holder".localized
+        self.btnSubmit.setTitle("biometric.submit.button".localized, for: UIControl.State.normal)
+        self.lbWarning.text = "biometric.warning.title".localized
+        self.lbWarningText.text = "biometric.warning.text".localized
     }
+    
     @IBAction func onClickSubmitButton(_ sender: UIButton) {
         guard let phone = tfPhone.text else{
             return
@@ -36,6 +54,25 @@ class BioMetricRegisterViewController: BaseUIViewController {
         }) { (error) in
             Utils.showAlert(viewcontroller: self, title: "Verification Failed", message: error)
         }
+    }
+    @IBAction func onClickLocaleChange(_ sender: UIBarButtonItem) {
+         super.updateLocale()
+    }
+    
+    @objc override func updateViews() {
+        super.updateViews()
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.lblTitle.text = "biometric.title".localized
+        self.tfPhone.placeholder = "login.phoneno.holder".localized
+        self.tfPassword.placeholder = "login.password.holder".localized
+        self.btnSubmit.setTitle("biometric.submit.button".localized, for: UIControl.State.normal)
+        self.lbWarning.text = "biometric.warning.title".localized
+        self.lbWarningText.text = "biometric.warning.text".localized
     }
     
     func authenticateBioMetricData(phone:String,password:String){

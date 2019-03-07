@@ -59,18 +59,18 @@ class FAQDataModel: BaseModel{
             case .success(let result):
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                print("call data model result :::::::::::\(result)")
+                //print("call data model result :::::::::::\(result)")
                 
                 //if let loginResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
                 
                 do {
                     if let fAQCateoryDataBean:FAQResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
                         success(fAQCateoryDataBean)
-                        print("call data model :::::::::::\(fAQCateoryDataBean)")
+                        //print("call data model :::::::::::\(fAQCateoryDataBean)")
                         
                         //return fAQCateoryDataBean;
                     }else{
-                        failure("Cannot load any data")
+                        failure("Json parse FAQ error")
                     }
                 } 
             case .failure(let error):

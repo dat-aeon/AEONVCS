@@ -25,7 +25,8 @@ class RegisterViewModel{
     func getNrcData(success:@escaping ([[String]]) -> Void,failure: @escaping (String) -> Void) {
         var allTownShipList = [[String]]()
         let townships = UserDefaults.standard.array(forKey: Constants.NRC_TOWNSHIP_List) as! [String]
-        if townships.count>0{
+        print("Township size \(townships.count)")
+        if townships.count > 0{
             for township in townships{
                 var townshipList = township.components(separatedBy: ",")
                 townshipList[0].removeFirst()
@@ -33,6 +34,7 @@ class RegisterViewModel{
                 print("\(townshipList.count)")
                 allTownShipList.append(townshipList)
             }
+            print("Prepared township size \(allTownShipList.count)")
             success(allTownShipList)
         }else{
             failure("Cannot Load Township List")
@@ -45,40 +47,12 @@ class RegisterViewModel{
         RegisterModel.init().checkMemberData(registerReqBean: registerBean
             , success: { (result) in
                 if result.statusCode == "200" {
-                    if (result.message?.isEmpty)! {
-                        failure(result.message ?? "Cannot Register")
-                    }else{
-                        if result.message == Constants.MEMBER{
-                            // save in user default
-                            UserDefaults.standard.set(result.message, forKey: Constants.CUSTOMER_TYPE)
-                            UserDefaults.standard.set(result.memberDataBean!.importCustomerInfoId, forKey: Constants.IMPORT_CUSTOMER_INFO_ID)
-                            UserDefaults.standard.set(result.memberDataBean!.customerNo, forKey: Constants.IMPORT_CUSTOMER_NO)
-                            UserDefaults.standard.set(result.memberDataBean!.name, forKey: Constants.IMPORT_CUSTOMER_NAME)
-                            UserDefaults.standard.set(result.memberDataBean!.gender, forKey: Constants.IMPORT_GENDER)
-                            UserDefaults.standard.set(result.memberDataBean!.phoneNo, forKey: Constants.IMPORT_PHONE_NO)
-                            UserDefaults.standard.set(result.memberDataBean!.nrcNo, forKey: Constants.IMPORT_NRC_NO)
-                            UserDefaults.standard.set(result.memberDataBean!.dateOfBirth, forKey: Constants.IMPORT_DOB)
-                            UserDefaults.standard.set(result.memberDataBean!.salary, forKey: Constants.IMPORT_SALARY)
-                            UserDefaults.standard.set(result.memberDataBean!.age, forKey: Constants.IMPORT_AGE)
-                            UserDefaults.standard.set(result.memberDataBean!.companyName, forKey: Constants.IMPORT_COMPANY_NAME)
-                            UserDefaults.standard.set(result.memberDataBean!.townshipAddress, forKey: Constants.IMPORT_ADDRESS)
-                            UserDefaults.standard.set(result.memberDataBean!.status, forKey: Constants.IMPORT_STATUS)
-                            UserDefaults.standard.set(result.memberDataBean!.custAgreementListResDaoList, forKey: Constants.IMPORT_CUSTOMER_NO)
-                            
-                            success(result)
-                        }else if result.message == Constants.NON_MEMBER {
-                            // save in user default
-                            UserDefaults.standard.set(result.message, forKey: Constants.CUSTOMER_TYPE)
-                            
-                            success(result)
-                        }else{
-                            failure("Invalid Member")
-                        }
-                    }
+                    success(result)
+                    
                 }else if result.statusCode == "500"{
-                    failure(result.statusMessage ?? "Invalid Member")
+                    failure(result.message ?? "Server error occurs.")
                 }else{
-                    failure("Invalid Member")
+                    failure("Server error occurs.")
                 }
         }) { (error) in
             failure(error)
@@ -90,12 +64,10 @@ class RegisterViewModel{
         
         RegisterModel.init().checkVerifiedUserInfo(verifyUserInfo: verifyUserRequest
             , success: { (result) in
-                if result.responseStatus.isEmpty {
-                    failure(result.responseStatus)
+                if result.statusCode.isEmpty {
+                    failure("Server error")
                 }else{
-                    if result.responseStatus == Constants.MEMBER{
-                        success(result)
-                    }else if result.responseStatus == Constants.NON_MEMBER {
+                    if result.verifyStatus == Constants.VALID_MEMBER{
                         success(result)
                     }else{
                         failure("Invalid Member Information")
@@ -122,16 +94,19 @@ class RegisterViewModel{
     
     //GET REQUEST DATA FOR NEW MEMBER
     func getRegisterNewRequestData(registerRequestData:RegisterRequestBean,qaList:[SecQABean])->Data{
-            let  appUsageInfo = AppUsageInfoReqBean(
-                phoneModel: "a",
-                manufacture: "a",
-                sdk: "a",
-                osType: "a",
-                osVersion: "a",
-                resolution: "a",
-                instructionSet: "a",
-                cpuArchitecture: "a",
-                registrationTime: "a")
+        let osVersion = "\(ProcessInfo().operatingSystemVersion.majorVersion).\(ProcessInfo().operatingSystemVersion.minorVersion).\(ProcessInfo().operatingSystemVersion.patchVersion)"
+        let cpuArch = MemoryLayout<Int>.size == MemoryLayout<Int32>.size ? 32 : 64
+        
+        let  appUsageInfo = AppUsageInfoReqBean(
+            phoneModel: UIDevice.modelName,
+            manufacture: "-",
+            sdk: "-",
+            osType: "-",
+            osVersion: osVersion,
+            resolution: "\(UIScreen.main.bounds.width) x \(UIScreen.main.bounds.height)",
+            instructionSet: "-",
+            cpuArchitecture: "\(cpuArch)",
+            registrationTime: "-")
             
         _ = UserDefaults.standard.string(forKey: "password")
             let existedMemberRequestData = RegisterNewRequestData(
@@ -176,16 +151,19 @@ class RegisterViewModel{
     
     //GET REQUEST DATA FOR EXISTED MEMBER
     func getRegisterExistedRequestData(registerRequestData:RegisterRequestBean,memberResponseData:CheckMemberResponse,qaList:[SecQABean])->String{
+        let osVersion = "\(ProcessInfo().operatingSystemVersion.majorVersion).\(ProcessInfo().operatingSystemVersion.minorVersion).\(ProcessInfo().operatingSystemVersion.patchVersion)"
+        let cpuArch = MemoryLayout<Int>.size == MemoryLayout<Int32>.size ? 32 : 64
+        
         let  appUsageInfo = AppUsageInfoReqBean(
-            phoneModel: "a",
-            manufacture: "a",
-            sdk: "a",
-            osType: "a",
-            osVersion: "a",
-            resolution: "a",
-            instructionSet: "a",
-            cpuArchitecture: "a",
-            registrationTime: "a")
+            phoneModel: UIDevice.modelName,
+            manufacture: "-",
+            sdk: "-",
+            osType: "-",
+            osVersion: osVersion,
+            resolution: "\(UIScreen.main.bounds.width) x \(UIScreen.main.bounds.height)",
+            instructionSet: "-",
+            cpuArchitecture: "\(cpuArch)",
+            registrationTime: "-")
         
         let password = registerRequestData.password
         let existedMemberRequestData = RegisterExistedRequestData(
@@ -217,11 +195,32 @@ class RegisterViewModel{
         return ""
     }
     
-    
     //MAKE EXISTED MEMBER REGISTER
     func updateRegisterNewMember(customerNo:String,profileImage:UIImage,memberResponseData:CheckMemberResponse,qaList:[SecQABean],success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
         
         RegisterModel.init().registerExisted(rawData:customerNo,imageData:profileImage.pngData()!, success: { (result) in
+            if result.statusCode == "200"{
+                success(result)
+            }else{
+                failure(result.statusMessage!)
+            }
+        }) { (error) in
+            failure(error)
+        }
+    }
+    
+    //MAKE VERIFY MEMBER REGISTER
+    func updateVerifiedNewMember(customerId:String,customerNo:String,profileImage:UIImage ,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
+        
+        let rawData = [
+            "customerId" : customerId,
+            "customerNo" : customerNo
+        ]
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try! jsonEncoder.encode(rawData)
+        let verifyData = String(data: jsonData, encoding: String.Encoding.utf8)
+        
+        RegisterModel.init().registerVerifyMember(rawData:verifyData!,imageData:profileImage.pngData()!, success: { (result) in
             if result.statusCode == "200"{
                 success(result)
             }else{

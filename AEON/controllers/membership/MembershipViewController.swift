@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class MembershipViewController: UIViewController {
 
     @IBOutlet weak var cvCustomerType: UIView!
@@ -17,7 +17,15 @@ class MembershipViewController: UIViewController {
     var containerIndex = 1
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Start MembershipViewController :::::::::::::::")
+        
+        let registerResponseString = UserDefaults.standard.string(forKey: Constants.REGISTER_RESPONSE)
+        
+        let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: JSON(parseJSON: registerResponseString ?? "").rawData())
+        
+        
         let memberValue:String = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) ?? ""
+        print("MembershipViewController ::::: memberValue \(memberValue)")
         
         if memberValue == Constants.MEMBER {
             containerIndex = 2
@@ -25,7 +33,6 @@ class MembershipViewController: UIViewController {
             containerIndex = 1
         }
         toggleContainer(position:containerIndex)
-        let registerResponse = UserDefaults.standard.object(forKey: Constants.REGISTER_RESPONSE)
         print("Register Response \(String(describing: registerResponse))")
     }
 

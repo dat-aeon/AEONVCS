@@ -17,6 +17,8 @@ class SecQuesConfirmTableViewCell: UITableViewCell {
     @IBOutlet weak var vNrcType: UIView!
     @IBOutlet weak var lblNrcType: UILabel!
     @IBOutlet weak var tfNrcNo: UITextField!
+    @IBOutlet weak var lblPhoneNo: UILabel!
+    @IBOutlet weak var lblNrcNo: UILabel!
     @IBOutlet weak var tfPhoneNo: UITextField!
     @IBOutlet weak var btnConfirm: UIButton!
     

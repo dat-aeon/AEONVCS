@@ -14,6 +14,12 @@ class MainViewController: BaseUIViewController {
     @IBOutlet weak var vRegisterButton: UIView!
     @IBOutlet weak var vAboutUsButton: UIView!
     @IBOutlet weak var vFAQButton: UIView!
+    @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
+    
+    @IBOutlet weak var lblLoginBtn: UILabel!
+    @IBOutlet weak var lblRegisterBtn: UILabel!
+    @IBOutlet weak var lblAboutUsBtn: UILabel!
+    @IBOutlet weak var lblFAQbtn: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +28,31 @@ class MainViewController: BaseUIViewController {
         self.vRegisterButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickRegister)))
         self.vAboutUsButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickAboutUs)))
         self.vFAQButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickFAQ)))
+        
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+    }
+    
+    @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
+        super.updateLocale()
+    }
+    @objc override func updateViews() {
+        super.updateViews()
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.title = "home.title".localized
+        self.lblLoginBtn.text = "home.login.button".localized
+        self.lblRegisterBtn.text = "home.register.button".localized
+        self.lblAboutUsBtn.text = "home.aboutus.button".localized
+        self.lblFAQbtn.text = "home.faq.button".localized
     }
     
     @objc func onClickLogin(){

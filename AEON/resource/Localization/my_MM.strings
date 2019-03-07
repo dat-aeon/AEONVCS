@@ -6,9 +6,15 @@
   Copyright © 2019 AEON microfinance. All rights reserved.
 */
 
+// INSTALLATION Screen
+"terms.title" = "AEON Microfinance (Myanmar) Mobile Application သုံးစြဲျခင္းဆိုင္ရာစည္းကမ္းခ်က္မ်ား";
+"terms.switch.label" = "လက္ခံပါသည္";
+"terms.ok.button" = "OK";
+
 // HOME Screen
 "home.title" = "AEON";
 "home.login.button" = "ဝင်မည်";
+"home.register.button" = "အသစ်ဆောက်မည်";
 "home.aboutus.button" = "AEONအကြောင်း";
 "home.faq.button" = "မေးလေ့ရှိသောမေးခွန်းများ";
 
@@ -18,6 +24,27 @@
 "login.password.holder" = "လျှို့ဝှက်နံပါတ်";
 "login.login.button" = "ဝင်မည်";
 "login.forgetpassword.link" ="ဖုန်းနံပါတ်မေ့ခဲ့လျှင်?";
+
+//BIOMETRIC Screen
+"biometric.title" = "Fingerprint Register";
+"biometric.phoneno.holder" = "ဖုန်းနံပါတ်";
+"biometric.password.holder" = "လျှို့ဝှက်နံပါတ်";
+"biometric.warning.title" = "သတိပေးချက် *";
+"biometric.warning.text" = "We will use your all of biometric data to login to your account.So,you will not let other people to save biometric data in your device. (Add your message to user)";
+"biometric.submit.button" = "တင်သွင်းသည်";
+
+// WELCOME SCREEN
+"welcome.label" = "ၾကိဳဆိုပါ၏";
+
+// SIDE MENU
+"sidemenu.home" = "Home";
+"sidemenu.membership" = "Membership";
+"sidemenu.infoupdate" = "သတင်းအချက်အလက်ပြန်ပြင်ခြင်း";
+"sidemenu.aeonservice" = "AEON ဝန်ဆောင်မှုများ";
+"sidemenu.eventsandnews" = "သတင်းများ";
+"sidemenu.contactus" = "AEONအားဆက်သွယ်ရန်";
+"sidemenu.faq" = "မေးလေ့ရှိသောမေးခွန်းများ";
+"sidemenu.logout" = "ျပန္ထြက္မည္";
 
 //SECURITYQUESTION CONFIRMATION Screen
 "secquestconfirm.title" ="လုံခြုံရေးမေးခွန်းကိုအတည်ပြုခြင်း";
@@ -31,7 +58,9 @@
 
 //REGISTER Screen
 "register.title" = "အသစ်ဆောက်မည်";
+"register.title.label" = "SELF REGISTRATION";
 "register.name.label" = "နာမည် *";
+"register.name.holder" = "နာမည်...";
 "register.dob.label" = "မွေးနေ့ *";
 "register.dob.holder" = "ရက်/လ/နှစ်";
 "register.nrc.label" = "မှတ်ပုံတင်နံပါတ် *";
@@ -44,7 +73,7 @@
 
 //CUSTOMERTYPE Screen
 "customertype.title" = "MEMBER";
-"customertype.oldcustomer.button" = "Memberသို့အဆင့်မြင့်မည်";
+"customertype.newcustomer.button" = "Memberသို့အဆင့်မြင့်မည်";
 
 //SECURITYQUESTION REGISTER Screen
 "secquest.title" = "လုံခြုံရေးမေးခွန်း";
@@ -76,8 +105,16 @@
 //PHOTO CONFIRMATION Screen
 "photoconfirm.title" = "ပုံအတည်ပြုခြင်း";
 "photoconfirm.confirm.title" = "Member card အတွက်ဒီဓာတ်ပုံကိုသုံးမလား?";
-"photoconfirm.confirm.confirm" = "သုံးမည်";
-"photoconfirm.confirm.retry" = "ပြန်ရိုက်မည်";
+"photoconfirm.confirm.button" = "သုံးမည်";
+"photoconfirm.retry.button" = "ပြန်ရိုက်မည်";
+
+// OTP CODE Screen
+"otp.title" = "OTP Code အတည်ပြုခြင်း";
+"otp.send.button" = "OTP Code ပို့မည်";
+"otp.resend.button" = "OTP Code ပို့ရန်";
+
+// WELCOME Screen
+"welcome.title" = "WELCOME";
 
 //MEMBERSHIP Screen
 "membership.title" = "MEMBERSHIP";
@@ -88,6 +125,12 @@
 "infoupdate.tag1.title" = "လုံခြုံရေးမေးခွန်းပြန်ပြင်ခြင်း";
 "infoupdate.tag2.title" = "သင့်အချက်အလက်ပြန်ပြင်ခြင်း";
 "infoupate.update.button" = "ပြန်ပြင်မည်";
+
+// AEON SERVICE Screen
+"aeonservice.title" = "AEON ဝန်ဆောင်မှုများ";
+
+// EVENTS & NEWS Screen
+"eventnews.title" = "သတင်းများ";
 
 //CONTACTUS Screen
 "contactus.title" = "AEONအားဆက်သွယ်ရန်";

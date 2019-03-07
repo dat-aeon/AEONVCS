@@ -13,8 +13,12 @@ class RegistrationViewController: BaseUIViewController {
     
     @IBOutlet weak var svMemberRegister: UIScrollView!
     
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tfName: UITextField?
+    @IBOutlet weak var lblDob: UILabel!
     @IBOutlet weak var tfDob: UITextField?
+    @IBOutlet weak var lblNrcNo: UILabel!
     @IBOutlet weak var vDivision: UIView!
     @IBOutlet weak var lblDivision: UILabel!
     @IBOutlet weak var vTownship: UIView!
@@ -22,12 +26,16 @@ class RegistrationViewController: BaseUIViewController {
     @IBOutlet weak var vNrcType: UIView!
     @IBOutlet weak var lblNrcType: UILabel!
     @IBOutlet weak var tfNrcNo: UITextField?
+    @IBOutlet weak var lblPhoneNo: UILabel!
     @IBOutlet weak var tfPhoneNo: UITextField?
+    @IBOutlet weak var lblPassword: UILabel!
     @IBOutlet weak var tfPassword: UITextField?
+    @IBOutlet weak var lblConfirmPassword: UILabel!
     @IBOutlet weak var tfConPassword: UITextField?
     
     @IBOutlet weak var imgDatepicker: UIButton!
     @IBOutlet weak var btnRegister: UIButton!
+    @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     
     private var confirmPhoneView: UIView!
     
@@ -35,6 +43,7 @@ class RegistrationViewController: BaseUIViewController {
     var allTownShipList = [[String]]()
     var nrcTypeList  = ["(N)","(P)","(E)"]
     var selectedTownshipList = [String]()
+    var hotlineNo: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +51,9 @@ class RegistrationViewController: BaseUIViewController {
 //
         //self.confirmPhoneView.isHidden = true
         
-        
+        self.tfName?.becomeFirstResponder()
+        self.tfNrcNo?.keyboardType = UIKeyboardType.numberPad
+        self.tfPhoneNo?.keyboardType = UIKeyboardType.phonePad
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         RegisterViewModel.init().loadNrcData(success: { (result) in
             RegisterViewModel.init().getNrcData(success: { (townshipList) in
@@ -54,11 +65,40 @@ class RegistrationViewController: BaseUIViewController {
                 self.lblNrcType.text = self.nrcTypeList[0]
             }) { (error) in
                 CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                Utils.showAlert(viewcontroller: self, title: "Loading Error", message: error)
+//                Utils.showAlert(viewcontroller: self, title: "Loading Error", message: error)
+//                weak var pvc = self.presentingViewController
+//                self.dismiss(animated: true, completion: {
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "ServiceUnavailableViewController") as! UINavigationController
+                    self.present(navigationVC, animated: true, completion: nil)
+                    
+               // })
             }
         }) { (error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            Utils.showAlert(viewcontroller: self, title: "Loading Failed", message: error)
+//            Utils.showAlert(viewcontroller: self, title: "Loading Failed", message: error)
+//            weak var pvc = self.presentingViewController
+//            self.dismiss(animated: true, completion: {
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "ServiceUnavailableViewController") as! UINavigationController
+                self.present(navigationVC, animated: true, completion: nil)
+                
+           // })
+        }
+        
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+        HotlineViewModel.init().getHotlineData(siteActivationKey: Constants.SITE_ACTIVATION_KEY, success: { (result) in
+            
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            self.hotlineNo = result.hotLinePhone
+            
+        }) { (error) in
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+//            Utils.showAlert(viewcontroller: self, title: "Loading Error", message: Messages.SERVER_ERROR)
+//            weak var pvc = self.presentingViewController
+//            self.dismiss(animated: true, completion: {
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "ServiceUnavailableViewController") as! UINavigationController
+                self.present(navigationVC, animated: true, completion: nil)
+                
+           // })
         }
         
         tfDob?.delegate = self
@@ -106,8 +146,45 @@ class RegistrationViewController: BaseUIViewController {
         tfPassword?.setMaxLength(maxLength: 6)
         tfConPassword?.setMaxLength(maxLength: 6)
         
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.lblTitle.text = "register.title.label".localized
+        self.lblName.text = "register.name.label".localized
+        self.tfName?.placeholder = "register.name.holder".localized
+        self.lblDob.text = "register.dob.label".localized
+        self.tfDob?.placeholder = "register.dob.holder".localized
+        self.lblNrcNo.text = "register.nrc.label".localized
+        self.lblPhoneNo.text = "register.phoneno.label".localized
+        self.lblPassword.text = "register.password.label".localized
+        self.lblConfirmPassword.text = "register.conpassword.label".localized
+        self.btnRegister.setTitle("register.save.button".localized, for: UIControl.State.normal)
     }
-    
+    @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
+        super.updateLocale()
+    }
+    @objc override func updateViews() {
+        super.updateViews()
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.lblTitle.text = "register.title.label".localized
+        self.lblName.text = "register.name.label".localized
+        self.tfName?.placeholder = "register.name.holder".localized
+        self.lblDob.text = "register.dob.label".localized
+        self.tfDob?.placeholder = "register.dob.holder".localized
+        self.lblNrcNo.text = "register.nrc.label".localized
+        self.lblPhoneNo.text = "register.phoneno.label".localized
+        self.lblPassword.text = "register.password.label".localized
+        self.lblConfirmPassword.text = "register.conpassword.label".localized
+        self.btnRegister.setTitle("register.save.button".localized, for: UIControl.State.normal)
+    }
     
     @objc override func keyboardWillChange(notification : Notification) {
         
@@ -131,54 +208,53 @@ class RegistrationViewController: BaseUIViewController {
         var isError = false
         
          if self.tfName?.text?.isEmpty ?? true{
-            self.tfName?.showError(message: "Please input name")
+            self.tfName?.showError(message: Messages.NAME_EMPTY_ERROR)
             isError = true
         }
         
         if self.tfDob?.text?.isEmpty ?? true{
-            self.tfDob?.showError(message: "Please input your birthday")
+            self.tfDob?.showError(message: Messages.DOB_EMPTY_ERROR)
             isError = true
         }
         
         if self.tfNrcNo?.text?.isEmpty ?? true{
-            self.tfNrcNo?.showError(message: "Please input NRC No.")
+            self.tfNrcNo?.showError(message: Messages.NRC_EMPTY_ERROR)
+            isError = true
+            
+        } else if self.tfNrcNo?.text?.count ?? 0 < 6 {
+            self.tfNrcNo?.text = ""
+            self.tfNrcNo?.showError(message: Messages.NRC_LENGTH_ERROR)
             isError = true
         }
         
         if self.tfPhoneNo?.text?.isEmpty ?? true{
-            self.tfPhoneNo?.showError(message: "Please input phone no.")
+            self.tfPhoneNo?.showError(message: Messages.PHONE_REG_EMPTY_ERROR)
             isError = true
         }
         
         if self.tfPassword?.text?.isEmpty ?? true{
-            self.tfPassword?.showError(message: "Please input password")
+            self.tfPassword?.showError(message: Messages.PASSWORD_EMPTY_ERROR)
             isError = true
+            
+        } else if self.tfPassword?.text?.count ?? 0 < 6{
+            self.tfPassword?.text = ""
+            self.tfPassword?.showError(message: Messages.PASSWORD_LENGTH_ERROR)
+            return
         }
         
         if self.tfConPassword?.text?.isEmpty ?? true{
-            self.tfConPassword?.showError(message: "Please input confirm password")
+            self.tfConPassword?.showError(message: Messages.CON_PASSWORD_EMPTY_ERROR)
             isError = true
+            
+        }else if self.tfPassword?.text != self.tfConPassword?.text{
+            self.tfConPassword?.text = ""
+            self.tfConPassword?.showError(message: Messages.PASSWORD_NOT_MATCH_ERROR)
+            return
         }
         
         if isError {
             return
-        }else if self.tfPassword?.text != self.tfConPassword?.text{
-            self.tfConPassword?.text = ""
-            self.tfConPassword?.showError(message: "Not Match Password")
-            return
         }
-        
-        if self.tfPassword?.text?.count ?? 0 < 6{
-            self.tfPassword?.text = ""
-            self.tfPassword?.showError(message: "mubst be 6 digits")
-            return
-        }
-        if self.tfConPassword?.text?.count ?? 0 < 6{
-            self.tfConPassword?.text = ""
-            self.tfConPassword?.showError(message: "must be 6 digits")
-            return
-        }
-        
         //loadCustomViewIntoController()
         //return
         let divisionCode: String = (self.lblDivision?.text!)!
@@ -195,24 +271,73 @@ class RegistrationViewController: BaseUIViewController {
         registerBean.phoneNo = (self.tfPhoneNo?.text!)!
         registerBean.password = (self.tfPassword?.text!)!
         
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         RegisterViewModel.init().checkMember(registerBean: registerBean, success: { (result) in
             
-            if result.message == Constants.MEMBER{
-                let alertController = UIAlertController(title: "Title", message: "For Membership process, OTP code will be sent to your registered phone no (\(registerBean.phoneNo)) .Click “OK” if your phone number has no changes.Click “Call Now” if your phone number has changes.", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-                    self.goToSecQuesRegisterView(result: result,registerRequestData:registerBean)
-                }))
-                alertController.addAction(UIAlertAction(title: "Call Now", style: UIAlertAction.Style.default, handler: { action in
-                    let phoneNumber = "0942332939239"
-                    phoneNumber.makeCall()
-                }))
-                self.present(alertController, animated: true, completion: nil)
-            }else{
-                self.goToSecQuesRegisterView(result: result,registerRequestData:registerBean)
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            
+            if (result.message?.isEmpty)! {
+                //failure(result.message ?? "Cannot Register")
+                Utils.showAlert(viewcontroller: self, title: "Register Error", message: result.statusMessage!)
+                
+            } else {
+                if result.message == Constants.PHONE_DUPLICATE {
+                    //failure(result.message ?? "PH_DUPLICATE")
+                    Utils.showAlert(viewcontroller: self, title: "Register Failed", message: Messages.PHONE_DUPLICATE_ERROR)
+                    
+                } else if result.message == Constants.NRC_DUPLICATE {
+                    //failure(result.message ?? "PH_DUPLICATE")
+                    Utils.showAlert(viewcontroller: self, title: "Register Failed", message: Messages.NRC_DUPLICATE_ERROR)
+                    
+                } else if result.message == Constants.NRC_PH_DUPLICATE {
+                    //failure(result.message ?? "PH_DUPLICATE")
+                    Utils.showAlert(viewcontroller: self, title: "Register Failed", message: Messages.REGISTER_DUPLICATE_ERROR)
+                    
+                } else{
+                    if result.message == Constants.MEMBER{
+                        // save in user default
+                        UserDefaults.standard.set(result.message, forKey: Constants.CUSTOMER_TYPE)
+                        UserDefaults.standard.set(result.memberDataBean!.importCustomerInfoId, forKey: Constants.IMPORT_CUSTOMER_INFO_ID)
+                        UserDefaults.standard.set(result.memberDataBean!.customerNo, forKey: Constants.IMPORT_CUSTOMER_NO)
+                        UserDefaults.standard.set(result.memberDataBean!.name, forKey: Constants.IMPORT_CUSTOMER_NAME)
+                        UserDefaults.standard.set(result.memberDataBean!.gender, forKey: Constants.IMPORT_GENDER)
+                        UserDefaults.standard.set(result.memberDataBean!.phoneNo, forKey: Constants.IMPORT_PHONE_NO)
+                        UserDefaults.standard.set(result.memberDataBean!.nrcNo, forKey: Constants.IMPORT_NRC_NO)
+                        UserDefaults.standard.set(result.memberDataBean!.dateOfBirth, forKey: Constants.IMPORT_DOB)
+                        UserDefaults.standard.set(result.memberDataBean!.salary, forKey: Constants.IMPORT_SALARY)
+                        UserDefaults.standard.set(result.memberDataBean!.age, forKey: Constants.IMPORT_AGE)
+                        UserDefaults.standard.set(result.memberDataBean!.companyName, forKey: Constants.IMPORT_COMPANY_NAME)
+                        UserDefaults.standard.set(result.memberDataBean!.townshipAddress, forKey: Constants.IMPORT_ADDRESS)
+                        UserDefaults.standard.set(result.memberDataBean!.status, forKey: Constants.IMPORT_STATUS)
+                        UserDefaults.standard.set(result.memberDataBean!.custAgreementListResDaoList, forKey: Constants.IMPORT_CUSTOMER_NO)
+                        
+                        let alertController = UIAlertController(title: "Title", message: "For Membership process, OTP code will be sent to your registered phone no (\(result.memberDataBean!.phoneNo ?? "09")) .Click “OK” if your phone number has no changes.Click “Call Now” if your phone number has changes.", preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                            self.goToSecQuesRegisterView(result: result,registerRequestData:registerBean)
+                        }))
+                        alertController.addAction(UIAlertAction(title: "Call Now", style: UIAlertAction.Style.default, handler: { action in
+                            self.hotlineNo.makeCall()
+                        }))
+                        self.present(alertController, animated: true, completion: nil)
+                        
+                    }else if result.message == Constants.NON_MEMBER {
+                        // save in user default
+                        UserDefaults.standard.set(result.message, forKey: Constants.CUSTOMER_TYPE)
+                        self.goToSecQuesRegisterView(result: result,registerRequestData:registerBean)
+                    }
+                }
             }
             
         }) { (error) in
-            Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+//            Utils.showAlert(viewcontroller: self, title: "Register Error", message: error)
+//
+//            weak var pvc = self.presentingViewController
+//            self.dismiss(animated: true, completion: {
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "ServiceUnavailableViewController") as! UINavigationController
+                self.present(navigationVC, animated: true, completion: nil)
+                
+           // })
         }
     }
     
@@ -268,39 +393,88 @@ class RegistrationViewController: BaseUIViewController {
     }
     
     func openDivisionSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
-            self.lblDivision.text = self.divisionList[Int(value)!-1]
-            if self.allTownShipList.count>Int(value)!{
-            self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
-            self.lblTownship.text = self.selectedTownshipList[0]
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            
+            let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
+                self.lblDivision.text = self.divisionList[Int(value)!-1]
+                if self.allTownShipList.count >= Int(value)!{
+                self.selectedTownshipList = self.allTownShipList[Int(value)! - 1]
+                self.lblTownship.text = self.selectedTownshipList[0]
+                }
+                print(value)
+                print("\(self.selectedTownshipList)")
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = self.lblDivision
             }
-            print(value)
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+        } else {
+            let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
+                self.lblDivision.text = self.divisionList[Int(value)!-1]
+                if self.allTownShipList.count >= Int(value)!{
+                    self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
+                    self.lblTownship.text = self.selectedTownshipList[0]
+                }
+                print(value)
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+        }
     }
     
     func openTownshipSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
-            self.lblTownship.text = value
-            print(value)
+        if UIDevice.current.userInterfaceIdiom == .pad {
             
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
+                self.lblTownship.text = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = self.lblTownship
+            }
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+        } else {
+            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
+                self.lblTownship.text = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+        }
     }
     
     func openNrcTypeSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, action: { (value)  in
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            
+            let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, action: { (value)  in
             self.lblNrcType.text = value
             print(value)
-            
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+        
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = self.lblNrcType
+            }
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+        } else {
+            let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, action: { (value)  in
+                self.lblNrcType.text = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+        }
     }
     
 }

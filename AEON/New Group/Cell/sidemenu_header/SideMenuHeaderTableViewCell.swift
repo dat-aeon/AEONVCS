@@ -28,8 +28,13 @@ class SideMenuHeaderTableViewCell: UITableViewVibrantCell {
     }
     
     func setData(photoUrl:String,name:String,customerNo:String){
-        let profileUrl = URL(string:Constants.photo_base_url+photoUrl)
-        self.ivProfile.kf.setImage(with: profileUrl)
+        if photoUrl.isEmpty{
+            let image:UIImage  = UIImage(named: "user-icon")!
+            self.ivProfile.image = image
+        } else {
+            let profileUrl = URL(string:photoUrl)
+            self.ivProfile.kf.setImage(with: profileUrl)
+        }
         self.lblName.text = name
         self.lblCustomerNo.text = customerNo
     }

@@ -7,9 +7,15 @@
  
 */
 
+// INSTALLATION Screen
+"terms.title" = "Terms and Conditions of AEON Microfinance (Myanmar) Mobile Application";
+"terms.switch.label" = "Accept";
+"terms.ok.button" = "OK";
+
 // HOME Screen
 "home.title" = "AEON";
 "home.login.button" = "LOGIN";
+"home.register.button" = "REGISTER";
 "home.aboutus.button" = "ABOUT US";
 "home.faq.button" = "FAQ";
 
@@ -19,6 +25,27 @@
 "login.password.holder" = "Password";
 "login.login.button" = "LOGIN";
 "login.forgetpassword.link" ="Forget Password?";
+
+//BIOMETRIC Screen
+"biometric.title" = "Fingerprint Register";
+"biometric.phoneno.holder" = "Enter Phone Number";
+"biometric.password.holder" = "Enter Password";
+"biometric.warning.title" = "Warning *";
+"biometric.warning.text" = "We will use your all of biometric data to login to your account.So,you will not let other people to save biometric data in your device. (Add your message to user)";
+"biometric.submit.button" = "SUBMIT";
+
+// WELCOME SCREEN
+"welcome.label" = "WELCOME TO";
+
+// SIDE MENU
+"sidemenu.home" = "Home";
+"sidemenu.membership" = "Membership";
+"sidemenu.infoupdate" = "Information Update";
+"sidemenu.aeonservice" = "Apply Aeon Service";
+"sidemenu.eventsandnews" = "Events & News";
+"sidemenu.contactus" = "Contact Us";
+"sidemenu.faq" = "FAQ";
+"sidemenu.logout" = "Logout";
 
 //SECURITYQUESTION CONFIRMATION Screen
 "secquestconfirm.title" ="Security Question Confirmation";
@@ -32,7 +59,9 @@
 
 //REGISTER Screen
 "register.title" = "REGISTRATION";
+"register.title.label" = "SELF REGISTRATION";
 "register.name.label" = "Name *";
+"register.name.holder" = "Name...";
 "register.dob.label" = "Date Of Birth *";
 "register.dob.holder" = "dd/MM/yyyy";
 "register.nrc.label" = "NRC No. *";
@@ -45,16 +74,15 @@
 
 //CUSTOMERTYPE Screen
 "customertype.title" = "Customer Type";
-"customertype.oldcustomer.button" = "Customer Used AEON Services Before";
-"customertype.newcustomre.button" = "New Customer To Apply AEON Services";
+"customertype.newcustomer.button" = "Upgrade to MEMBER";
 
 //SECURITYQUESTION REGISTER Screen
-"secquest.title" = "Security Question";
+"secquest.title" = "Security Question Registration";
 "secquest.question.label" = "Q: " ;
 "secquest.answer.label" = "A: ";
 "secquest.save.button" = "SAVE";
 
-//VERIFIACTION Screen
+//VERIFICATION Screen
 "verify.title" = "Verification Member";
 "verify.agreementno.label" = "Agreement No. *";
 "verify.agreementno.holder" = "XXXX-X-XXXXXXXXXX-X";
@@ -78,8 +106,16 @@
 //PHOTO CONFIRMATION Screen
 "photoconfirm.title" = "Confirmation";
 "photoconfirm.confirm.title" = "Use this photo in member card?";
-"photoconfirm.confirm.confirm" = "Confirm";
-"photoconfirm.confirm.retry" = "Retry";
+"photoconfirm.confirm.button" = "Confirm";
+"photoconfirm.retry.button" = "Retry";
+
+// OTP CODE Screen
+"otp.title" = "OTP Confirmation";
+"otp.send.button" = "SEND OTP";
+"otp.resend.button" = "RESEND OTP AGAIN";
+
+// WELCOME Screen
+"welcome.title" = "WELCOME";
 
 //MEMBERSHIP Screen
 "membership.title" = "MEMBERSHIP";
@@ -90,6 +126,12 @@
 "infoupdate.tag1.title" = "SECURITY QUESTION UPDATE";
 "infoupdate.tag2.title" = "CUSTOMER INFO UPDATE";
 "infoupate.update.button" = "UPDATE";
+
+// AEON SERVICE Screen
+"aeonservice.title" = "AEON Services";
+
+// EVENTS & NEWS Screen
+"eventnews.title" = "EVENTS & NEWS";
 
 //CONTACTUS Screen
 "contactus.title" = "Contact Us";

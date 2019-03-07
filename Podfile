@@ -11,5 +11,5 @@ target 'AEONVCS' do
   pod 'Kingfisher'
   pod 'SideMenu'
   pod 'DatePickerDialog'
-
+  pod 'SwiftGifOrigin'
 end

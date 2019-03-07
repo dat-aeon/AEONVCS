@@ -22,6 +22,8 @@ class LoginViewController: BaseUIViewController {
     
     
     override func viewDidLoad() {
+        
+        print("Start LoginViewController :::::::::::::::")
         super.viewDidLoad()
         self.title = "Login"
         self.lbForgetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickForgetPassword)))
@@ -32,12 +34,15 @@ class LoginViewController: BaseUIViewController {
         
         tfPhoneNumber.delegate = self
         tfPassword.delegate = self
+        tfPhoneNumber.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+        tfPhoneNumber.becomeFirstResponder()
+        tfPhoneNumber.keyboardType = UIKeyboardType.phonePad
         
         switch Locale.currentLocale {
         case .EN:
-            bbLocaleFlag.image = UIImage(named: "en_flag")
-        case .MY:
             bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
         }
     }
     
@@ -73,25 +78,49 @@ class LoginViewController: BaseUIViewController {
     }
         
     @IBAction func onClickLogin(_ sender:UIButton){
-        if (tfPhoneNumber.text?.isEmpty)! || (tfPassword.text?.isEmpty)!{
-            Utils.showAlert(viewcontroller: self, title: "Login Error", message: "Phone Number or Password is empty")
+        var isError = false
+        
+        if (self.tfPhoneNumber?.text?.isEmpty)!{
+            self.tfPhoneNumber?.showError(message: Messages.PHONE_EMPTY_ERROR)
+            isError = true
+        } else {
+            if ((self.tfPhoneNumber.text?.count)! < 9) {
+                self.tfPhoneNumber?.showError(message: Messages.PHONE_LENGTH_ERROR)
+                self.tfPhoneNumber.text = Constants.BLANK
+                isError = true
+            }
+        }
+        
+        if (self.tfPassword?.text?.isEmpty)!{
+            self.tfPassword?.showError(message: Messages.PASSWORD_EMPTY_ERROR)
+            isError = true
+        }
+        
+        if (isError) {
+            return
         }else{
+            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
             LoginViewModel.init().login(phoneNo: tfPhoneNumber.text!,password:tfPassword.text!, success: { (result) in
                 
-//                UserDefaults.standard.set(result.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
-//                UserDefaults.standard.set(result.customerNo, forKey: Constants.USER_INFO_CUSTOMER_NO)
-//                UserDefaults.standard.set(result.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
-//                UserDefaults.standard.set(result.customerTypeId, forKey: Constants.USER_INFO_CUSTOMER_TYPE_ID)
-//                UserDefaults.standard.set(result.userTypeId, forKey: Constants.USER_INFO_USER_TYPE_ID)
-//                UserDefaults.standard.set(result.name, forKey: Constants.USER_INFO_NAME)
-//                UserDefaults.standard.set(result.dateOfBirth, forKey: Constants.USER_INFO_DOB)
-//                UserDefaults.standard.set(result.nrcNo, forKey: Constants.USER_INFO_NRC)
-//                UserDefaults.standard.set(result.status, forKey: Constants.USER_INFO_STATUS)
-//                UserDefaults.standard.set(result.photoPath, forKey: Constants.USER_INFO_PHOTO_PATH)
-//                UserDefaults.standard.set(result.custAgreementListDtoList, forKey: Constants.USER_INFO_AGREEMENT_LIST)
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                let loginResponse: LoginResponse? = result
+                if (result.customerNo ?? "").isEmpty {
+                    UserDefaults.standard.set(Constants.NON_MEMBER, forKey: Constants.CUSTOMER_TYPE)
+                } else {
+                    UserDefaults.standard.set(Constants.MEMBER, forKey: Constants.CUSTOMER_TYPE)
+                }
+                print("RESULT CUSTOMER-ID:::::::: \(result.customerId ?? 0)")
+                UserDefaults.standard.set(result.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
+                UserDefaults.standard.set(self.generateCurrentTimeStamp(), forKey : Constants.LOGIN_TIME)
+                print("CUSTOMER-ID:::::::: \(String(describing: UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)))")
                 
                 //set nil to response
-                UserDefaults.standard.set(nil, forKey: Constants.LOGIN_RESPONSE)
+                if let loginResponseData = loginResponse{
+                    let jsonData = try? JSONEncoder().encode(loginResponseData)
+                    let jsonString = String(data: jsonData!, encoding: .utf8)!
+                    UserDefaults.standard.set(jsonString, forKey: Constants.LOGIN_RESPONSE)
+                }
+                
                 UserDefaults.standard.set(nil, forKey: Constants.REGISTER_RESPONSE)
                 
                 // LoginResponse Data
@@ -102,6 +131,7 @@ class LoginViewController: BaseUIViewController {
                 let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
                 self.present(navigationVC, animated: true, completion: nil)
             }) { (error) in
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                 Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
             }
         }
@@ -138,8 +168,10 @@ class LoginViewController: BaseUIViewController {
                 
                 if success{
                     //call api to check username and password
+                    CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                     LoginViewModel.init().login(phoneNo: phone, password: password, success: { (result) in
                         
+                        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                         //set nil to response
                         UserDefaults.standard.set(nil, forKey: Constants.LOGIN_RESPONSE)
                         UserDefaults.standard.set(nil, forKey: Constants.REGISTER_RESPONSE)
@@ -151,6 +183,7 @@ class LoginViewController: BaseUIViewController {
                         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
                         self.present(navigationVC, animated: true, completion: nil)
                     }) { (error) in
+                        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                         Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
                     }
                     
@@ -210,5 +243,11 @@ class LoginViewController: BaseUIViewController {
         
         svMemberLogin.scrollIndicatorInsets = svMemberLogin.contentInset
         
+    }
+    
+    override func generateCurrentTimeStamp () -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        return (formatter.string(from: Date()) as NSString) as String
     }
 }

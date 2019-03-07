@@ -12,8 +12,12 @@ class VerifyMemberViewController: BaseUIViewController {
 
     
     @IBOutlet weak var svMemberRegisterVerify: UIScrollView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblAgreementNo: UILabel!
     @IBOutlet weak var tfAgreementNo: UITextField?
+    @IBOutlet weak var lblDob: UILabel!
     @IBOutlet weak var tfDob: UITextField?
+    @IBOutlet weak var lblNrcNo: UILabel!
     @IBOutlet weak var vDivision: UIView!
     @IBOutlet weak var lblDivision: UILabel!
     @IBOutlet weak var vTownship: UIView!
@@ -21,16 +25,23 @@ class VerifyMemberViewController: BaseUIViewController {
     @IBOutlet weak var vNrcType: UIView!
     @IBOutlet weak var lblNrcType: UILabel!
     @IBOutlet weak var tfNrcNo: UITextField?
+    @IBOutlet weak var btnCallNow: UIButton!
     @IBOutlet weak var btnVerify: UIButton!
+    @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     
     var divisionList = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
     var allTownShipList = [[String]]()
     var nrcTypeList  = ["(N)","(P)","(E)"]
     var selectedTownshipList = [String]()
     
+    var customerId : String? = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("Start VerifyMemberViewController :::::::::::::::")
+        
+        self.customerId = UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         RegisterViewModel.init().loadNrcData(success: { (result) in
             RegisterViewModel.init().getNrcData(success: { (townshipList) in
@@ -86,8 +97,22 @@ class VerifyMemberViewController: BaseUIViewController {
         tfAgreementNo?.delegate = self
         tfDob?.delegate = self
         tfNrcNo?.delegate = self
-   
         tfNrcNo?.setMaxLength(maxLength: 6)
+        
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.lblTitle.text = "verify.title".localized
+        self.lblAgreementNo.text = "verify.agreementno.label".localized
+        self.tfAgreementNo?.placeholder = "verify.agreeementno.holder".localized
+        self.lblDob.text = "verify.dob.label".localized
+        self.tfDob?.placeholder = "verify.dob.holder".localized
+        self.lblNrcNo.text = "verify.nrc.label".localized
+        self.btnCallNow.setTitle("verify.callnow.button".localized, for: UIControl.State.normal)
+        self.btnVerify.setTitle("verify.verify.button".localized, for: UIControl.State.normal)
     }
     
     @objc override func keyboardWillChange(notification : Notification) {
@@ -105,6 +130,27 @@ class VerifyMemberViewController: BaseUIViewController {
         
         svMemberRegisterVerify.scrollIndicatorInsets = svMemberRegisterVerify.contentInset
         
+    }
+    @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
+        super.updateLocale()
+    }
+    
+    @objc override func updateViews() {
+        super.updateViews()
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.lblTitle.text = "verify.title".localized
+        self.lblAgreementNo.text = "verify.agreementno.label".localized
+        self.tfAgreementNo?.placeholder = "verify.agreeementno.holder".localized
+        self.lblDob.text = "verify.dob.label".localized
+        self.tfDob?.placeholder = "verify.dob.holder".localized
+        self.lblNrcNo.text = "verify.nrc.label".localized
+        self.btnCallNow.setTitle("verify.callnow.button".localized, for: UIControl.State.normal)
+        self.btnVerify.setTitle("verify.verify.button".localized, for: UIControl.State.normal)
     }
     
     @objc func dobDatePickerFromValueChanged(sender:UIDatePicker) {
@@ -127,39 +173,109 @@ class VerifyMemberViewController: BaseUIViewController {
     }
     
     func openDivisionSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
-            self.lblDivision.text = self.divisionList[Int(value)!-1]
-            if self.allTownShipList.count>Int(value)!{
-                self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
-                self.lblTownship.text = self.selectedTownshipList[0]
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
+                self.lblDivision.text = self.divisionList[Int(value)!-1]
+                if self.allTownShipList.count>=Int(value)!{
+                    self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
+                    self.lblTownship.text = self.selectedTownshipList[0]
+                }
+                print(value)
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = self.view
             }
-            print(value)
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+            
+//            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+//            //Present the controller
+//            self.present(action, animated: true, completion: nil)
+        
+        } else {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                
+                let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
+                    self.lblDivision.text = self.divisionList[Int(value)!-1]
+                    if self.allTownShipList.count>=Int(value)!{
+                        self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
+                        self.lblTownship.text = self.selectedTownshipList[0]
+                    }
+                    print(value)
+                })
+                action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                if let popoverPresentationController = action.popoverPresentationController {
+                    popoverPresentationController.sourceView = self.view
+                }
+//                action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+//                //Present the controller
+//                self.present(action, animated: true, completion: nil)
+                
+            } else {
+                let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
+                    self.lblDivision.text = self.divisionList[Int(value)!-1]
+                    if self.allTownShipList.count>=Int(value)!{
+                        self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
+                        self.lblTownship.text = self.selectedTownshipList[0]
+                    }
+                    print(value)
+                })
+                action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                //Present the controller
+                self.present(action, animated: true, completion: nil)
+            }
+        }
     }
     
     func openTownshipSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
-            self.lblTownship.text = value
-            print(value)
-            
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
+                self.lblTownship.text = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = self.view
+            }
+        } else {
+            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
+                self.lblTownship.text = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+        }
+//        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+//        //Present the controller
+//        self.present(action, animated: true, completion: nil)
     }
     
     func openNrcTypeSelectionPopUp() {
-        let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, action: { (value)  in
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, action: { (value)  in
             self.lblNrcType.text = value
             print(value)
             
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = self.view
+            }
+        } else {
+            let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, action: { (value)  in
+                self.lblNrcType.text = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+            
+        }
     }
     
     @IBAction func onClickCallNow(_ sender: UIButton) {
@@ -184,9 +300,8 @@ class VerifyMemberViewController: BaseUIViewController {
         if self.tfNrcNo?.text?.isEmpty ?? true{
             self.tfNrcNo?.showError(message: "Please input NRC No.")
             isError = true
-        }
-        
-        if self.tfNrcNo?.text?.count ?? 0 < 6{
+            
+        } else if self.tfNrcNo?.text?.count ?? 0 < 6{
             self.tfNrcNo?.text = ""
             self.tfNrcNo?.showError(message: "must be 6 digits")
             isError = true
@@ -208,15 +323,18 @@ class VerifyMemberViewController: BaseUIViewController {
         let verifyUserInfoRequest = CheckVerifyUserInfoRequest(
             agreementNo: (self.tfAgreementNo?.text)!,
             dob: (self.tfDob?.text!)!,
-            nrcNo: nrc,
-            customerId: "")
+            nrcNo: nrc)
         
         RegisterViewModel.init().checkVerifyUserInfo(verifyUserRequest: verifyUserInfoRequest, success: { (result) in
             
-            Utils.showAlert(viewcontroller: self, title: "Check Result", message: "\(result.responseStatus) - \(result.customerNo)", action: {
-                self.openCamera(imagePickerControllerDelegate: self)
-            })
-
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestionVerifyViewController") as! UINavigationController
+            let vc = navigationVC.children.first as! SecQuestionVerifyViewController
+            vc.verifyData.agreementNo = verifyUserInfoRequest.agreementNo
+            vc.verifyData.customerNo = result.customerNo
+            vc.verifyData.dateOfBirth = verifyUserInfoRequest.dateOfBirth
+            vc.verifyData.nrcNo = verifyUserInfoRequest.nrcNo
+            self.present(navigationVC, animated: true, completion: nil)
+            
         }) { (error) in
             Utils.showAlert(viewcontroller: self, title: "Failed", message: error)
         }

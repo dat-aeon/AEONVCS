@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SecQuestConfirmViewController: UIViewController {
+class SecQuestConfirmViewController: BaseUIViewController {
 
     @IBOutlet weak var secQuesTableView: UITableView!
     @IBOutlet weak var btnBack: UIBarButtonItem!
+    @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     
     var secQuesList = [SecQuesListBean]()
     var numOfQuestion = 0
@@ -30,6 +31,9 @@ class SecQuestConfirmViewController: UIViewController {
     var secQEng = [String]()
     var questionList = [String]()
     
+    var phoneNoLabel:String = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +47,7 @@ class SecQuestConfirmViewController: UIViewController {
                 self.selectedDivision = self.divisionList[0]
                 self.selectedTownship = self.allTownShipList[0][0]
                 self.selectedNrcType = self.nrcTypeList[0]
+                self.secQuesTableView.reloadData()
             }) { (error) in
                 CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                 Utils.showAlert(viewcontroller: self, title: "Loading Error", message: error)
@@ -59,16 +64,31 @@ class SecQuestConfirmViewController: UIViewController {
         self.secQuesTableView.dataSource = self
         self.secQuesTableView.delegate = self
         
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+            self.questionList = self.secQEng
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+            self.questionList = self.secQMy
+        }
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print("Appear SecQuestConfirmViewController :::::::::::::::")
+        loadSecurityQuestionLIst()
+        
+    }
     private func loadSecurityQuestionLIst(){
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         SecQuesRegisterViewModel.init().getSecQuesList(siteActivationKey: "12345678", success: { (result) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             self.numOfQuestion = result.numOfQuestion
             self.numOfAnsChar = result.numOfAnsCount
-            self.secQEng = result.questionList[0]
-            self.secQMy = result.questionList[1]
+            self.secQEng = result.questionList[1]
+            self.secQMy = result.questionList[0]
             self.secQuesList = result.secQuesList
             switch Locale.currentLocale {
             case .EN:
@@ -87,6 +107,40 @@ class SecQuestConfirmViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
    
+    @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
+        super.updateLocale()
+    }
+    
+    @objc override func updateViews() {
+        super.updateViews()
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+            self.questionList = self.secQEng
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+            self.questionList = self.secQMy
+        }
+        self.secQuesTableView.reloadData()
+    }
+    
+    @objc override func keyboardWillChange(notification : Notification) {
+        
+        guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            secQuesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardReact.height, right: 0)
+        } else {
+            secQuesTableView.contentInset = UIEdgeInsets.zero
+            
+        }
+        
+        secQuesTableView.scrollIndicatorInsets = secQuesTableView.contentInset
+        
+    }
+
 }
 
 extension SecQuestConfirmViewController:UITableViewDataSource{
@@ -112,6 +166,13 @@ extension SecQuestConfirmViewController:UITableViewDataSource{
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "SecQuesConfirmTableViewCell", for: indexPath) as! SecQuesConfirmTableViewCell
         cell.selectionStyle = .none
+        cell.lblPhoneNo.text = "register.phoneno.label".localized
+        cell.tfPhoneNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+        cell.lblNrcNo.text = "register.nrc.label".localized
+        cell.btnConfirm.setTitle("secquestconfirm.confrim.button".localized, for: UIControl.State.normal)
+        cell.lblDivision.text = self.selectedDivision
+        cell.lblTownship.text = self.selectedTownship
+        cell.lblNrcType.text = self.selectedNrcType
         cell.delegate = self
         return cell
         
@@ -122,13 +183,26 @@ extension SecQuestConfirmViewController:UITableViewDataSource{
 
 extension SecQuestConfirmViewController:SecQuesRegisterCellClickDelegate{
     func onClickSecQuesList(quesList: [String],cell:SecQuesRegisterTableViewCell) {
-        let action = UIAlertController.actionSheetWithItems(items: quesList, action: { (value)  in
-            cell.lblSecQuestion.text = value
-             print(value)
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        self.present(action, animated: true, completion: nil)
-
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let action = UIAlertController.actionSheetWithItems(items: quesList, action: { (value)  in
+                cell.lblSecQuestion.text = value
+                print(value)
+            })
+            //Present the controller
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = cell.lblSecQuestion
+            }
+            self.present(action, animated: true, completion: nil)
+            
+        } else {
+            let action = UIAlertController.actionSheetWithItems(items: quesList, action: { (value)  in
+                cell.lblSecQuestion.text = value
+                 print(value)
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            self.present(action, animated: true, completion: nil)
+        }
     }
 }
 
@@ -154,21 +228,41 @@ extension SecQuestConfirmViewController:SecQuesConfirmDelegate{
         let indexPath = IndexPath(row:row-1, section: 1)
         let conCell = secQuesTableView.cellForRow(at: indexPath) as! SecQuesConfirmTableViewCell
         
-        let action = UIAlertController.actionSheetWithItems(items: divisionList, currentSelection: selectedDivision, action: { (value)  in
-            self.selectedDivision = value
+        if UIDevice.current.userInterfaceIdiom == .pad {
             
-            self.selectedTownshipList = self.allTownShipList[Int(self.selectedDivision)!-1]
-            self.selectedTownship = self.allTownShipList[Int(self.selectedDivision)!-1][0]
+            let action = UIAlertController.actionSheetWithItems(items: divisionList, currentSelection: selectedDivision, action: { (value)  in
+                self.selectedDivision = value
+                
+                self.selectedTownshipList = self.allTownShipList[Int(self.selectedDivision)!-1]
+                self.selectedTownship = self.allTownShipList[Int(self.selectedDivision)!-1][0]
+                
+                conCell.lblDivision.text = self.selectedDivision
+                conCell.lblTownship.text = self.selectedTownship
+                print(conCell.tfPhoneNo.text as Any)
+            })
+             //Present the controller
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = conCell.lblDivision
+            }
+            self.present(action, animated: true, completion: nil)
             
-            let defaultData: LoginResponse = UserDefaults.standard.object(forKey: Constants.LOGIN_RESPONSE) as! LoginResponse
-            conCell.tfPhoneNo.text = defaultData.phoneNo
-            conCell.lblDivision.text = self.selectedDivision
-            conCell.lblTownship.text = self.selectedTownship
-            print(defaultData.phoneNo)
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+        } else {
+            let action = UIAlertController.actionSheetWithItems(items: divisionList, currentSelection: selectedDivision, action: { (value)  in
+                self.selectedDivision = value
+                
+                self.selectedTownshipList = self.allTownShipList[Int(self.selectedDivision)!-1]
+                self.selectedTownship = self.allTownShipList[Int(self.selectedDivision)!-1][0]
+                
+                conCell.lblDivision.text = self.selectedDivision
+                conCell.lblTownship.text = self.selectedTownship
+                print(conCell.tfPhoneNo.text as Any)
+            })
+            
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+        }
     }
     
     func onClickTownship() {
@@ -176,15 +270,33 @@ extension SecQuestConfirmViewController:SecQuesConfirmDelegate{
         let indexPath = IndexPath(row:row-1, section: 1)
         let conCell = secQuesTableView.cellForRow(at: indexPath) as! SecQuesConfirmTableViewCell
         
-        let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, currentSelection: selectedTownship, action: { (value)  in
-            conCell.lblTownship.text = value
-            self.selectedTownship = value
-            print(value)
+        if UIDevice.current.userInterfaceIdiom == .pad {
             
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, currentSelection: selectedTownship, action: { (value)  in
+                conCell.lblTownship.text = value
+                self.selectedTownship = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = conCell.lblTownship
+            }
+            self.present(action, animated: true, completion: nil)
+            
+        } else {
+            
+            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, currentSelection: selectedTownship, action: { (value)  in
+                conCell.lblTownship.text = value
+                self.selectedTownship = value
+                print(value)
+            })
+            
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+            
+        }
     }
     
     func onClickNrcType() {
@@ -192,21 +304,39 @@ extension SecQuestConfirmViewController:SecQuesConfirmDelegate{
         let indexPath = IndexPath(row:row-1, section: 1)
         let conCell = secQuesTableView.cellForRow(at: indexPath) as! SecQuesConfirmTableViewCell
         
-        let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, currentSelection: selectedNrcType, action: { (value)  in
-            conCell.lblNrcType.text = value
-            self.selectedNrcType = value
-            print(value)
+        if UIDevice.current.userInterfaceIdiom == .pad {
             
-        })
-        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        //Present the controller
-        self.present(action, animated: true, completion: nil)
+            let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, currentSelection: selectedNrcType, action: { (value)  in
+                conCell.lblNrcType.text = value
+                self.selectedNrcType = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            if let popoverPresentationController = action.popoverPresentationController {
+                popoverPresentationController.sourceView = conCell.lblNrcType
+            }
+
+        } else {
+            let action = UIAlertController.actionSheetWithItems(items: nrcTypeList, currentSelection: selectedNrcType, action: { (value)  in
+                conCell.lblNrcType.text = value
+                self.selectedNrcType = value
+                print(value)
+                
+            })
+            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+            
+        }
     }
     
     
     func onClickConfirm() {
         
+        var secIdList:[Int] = []
         var qaList = [UserQABean]()
+        var selectedQuestionId : Int = 0
         var phoneNo:String = ""
         var nrcData: String = ""
         var i = 0
@@ -222,14 +352,24 @@ extension SecQuestConfirmViewController:SecQuesConfirmDelegate{
                 print("sec cell error)\(i)")
                 
             } else {
+                
                 let ans = sqCell.tfsecAnswer.text!
                 let que = sqCell.lblSecQuestion.text!
                 if let selectedIndex = questionList.firstIndex(of: "\(sqCell.lblSecQuestion.text!)"){
-                    let selectedQuestionId = secQuesList[selectedIndex].secQuestionId
+                    selectedQuestionId = secQuesList[selectedIndex].secQuestionId
                     qaList.append(UserQABean(secQuesId: selectedQuestionId,question: que,answer: ans))
                 }
                 
             }
+            if i != 0 {
+                if secIdList.contains(selectedQuestionId) {
+                    sqCell.tfsecAnswer.text = Constants.BLANK
+                    sqCell.tfsecAnswer.showError(message: "Question is same.")
+                    return
+                }
+            }
+            secIdList.append(selectedQuestionId)
+            
              i += 1
         }
         

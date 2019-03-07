@@ -18,6 +18,8 @@ class LoginModel:BaseModel {
             "password": password
         ]
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.login, rawData: rawData) { (result) in
+            
+            print("Response result :::::::::::\(result)")
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
@@ -25,7 +27,7 @@ class LoginModel:BaseModel {
                 if let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: responseValue){
                     success(loginResponse)
                 }else{
-                    failure("Cannot load any data")
+                    failure("JSON can't decode")
                 }
             case .failure(let error):
                 failure(error.localizedDescription)

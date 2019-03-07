@@ -27,7 +27,7 @@ class SideMenuListTableViewCell: UITableViewVibrantCell {
     
     func setData(data:MenuItem){
         self.ivMenuImage.image = UIImage(named: data.image)
-        self.lblMenuName.text = data.name
+        self.lblMenuName.text = data.name.localized
     }
     
 }

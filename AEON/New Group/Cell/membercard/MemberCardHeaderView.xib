@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,45 +19,45 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="201.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t3S-S8-7H1">
+                        <rect key="frame" x="16" y="11" width="288" height="180"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aeon_logo" translatesAutoresizingMaskIntoConstraints="NO" id="nk0-wb-dgH">
-                        <rect key="frame" x="120" y="8" width="80" height="80"/>
+                        <rect key="frame" x="120" y="16" width="80" height="80"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="IvK-ZM-cRr"/>
                             <constraint firstAttribute="width" constant="80" id="seh-Bo-lRx"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jue Jue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-Fe-D3M">
-                        <rect key="frame" x="125" y="104" width="70.5" height="24"/>
+                        <rect key="frame" x="125" y="112" width="70.5" height="24"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                         <color key="textColor" red="0.76862745099999996" green="0.18039215689999999" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7778-32322323-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKw-Vx-Ste">
-                        <rect key="frame" x="96.5" y="136" width="127.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="76" y="144" width="168.5" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" red="0.76862745099999996" green="0.18039215689999999" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*This customer number is not agreement number." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azG-Wi-chV">
-                        <rect key="frame" x="19.5" y="162" width="281" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.043511284722222224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="t3S-S8-7H1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="52E-gF-evZ"/>
                     <constraint firstItem="nk0-wb-dgH" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="7jI-nV-aHs"/>
+                    <constraint firstItem="t3S-S8-7H1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="HRc-Px-jvZ"/>
                     <constraint firstItem="eAe-Fe-D3M" firstAttribute="top" secondItem="nk0-wb-dgH" secondAttribute="bottom" constant="16" id="NhO-6f-DB1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="t3S-S8-7H1" secondAttribute="trailing" id="Wjg-Kn-jbg"/>
                     <constraint firstItem="rKw-Vx-Ste" firstAttribute="top" secondItem="eAe-Fe-D3M" secondAttribute="bottom" constant="8" id="eoU-X4-QrQ"/>
-                    <constraint firstItem="azG-Wi-chV" firstAttribute="top" secondItem="rKw-Vx-Ste" secondAttribute="bottom" constant="8" id="nZc-ip-afe"/>
                     <constraint firstItem="eAe-Fe-D3M" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="p5G-Bu-c0t"/>
-                    <constraint firstItem="azG-Wi-chV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="pKh-vG-ecl"/>
-                    <constraint firstItem="nk0-wb-dgH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="qcW-Vi-tUD"/>
+                    <constraint firstItem="nk0-wb-dgH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="qcW-Vi-tUD"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="t3S-S8-7H1" secondAttribute="bottom" id="sbh-0l-Kjx"/>
                     <constraint firstItem="rKw-Vx-Ste" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="zOF-yB-FqZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="ivBackgroundGif" destination="t3S-S8-7H1" id="qv8-0D-dnd"/>
                 <outlet property="ivProfile" destination="nk0-wb-dgH" id="QXX-pY-MfC"/>
                 <outlet property="lblCustomerNo" destination="rKw-Vx-Ste" id="cW5-av-8IV"/>
                 <outlet property="lblName" destination="eAe-Fe-D3M" id="jL1-d4-aAb"/>
@@ -66,6 +66,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="aeon_logo" width="291" height="302"/>
+        <image name="aeon_logo" width="218.25" height="226.5"/>
     </resources>
 </document>

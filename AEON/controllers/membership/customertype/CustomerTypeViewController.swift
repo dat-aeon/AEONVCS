@@ -8,13 +8,15 @@
 
 import UIKit
 
-class CustomerTypeViewController: UIViewController {
+class CustomerTypeViewController: BaseUIViewController {
 
     @IBOutlet weak var btnUsedCustomer: UIButton!
-    @IBOutlet weak var btnNewCustomer: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.btnUsedCustomer.setTitle("customertype.newcustomer.button".localized, for: UIControl.State.normal)
+        print("Start CustomerTypeViewController :::::::::::::::")
+        
     }
     
     @IBAction  func onClickUsedCustomer(_ sender:UIButton){
@@ -22,10 +24,10 @@ class CustomerTypeViewController: UIViewController {
         self.present(navigationVC, animated: true, completion: nil)
     }
 
-    @IBAction func onClickNewCustomer(_ sender:UIButton){
-//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyAeonServiceViewController") as! UINavigationController
-//        self.present(navigationVC, animated: true, completion: nil)
-        Utils.showAlert(viewcontroller: self, title: "Unavailable Service", message: "Coming Soon")
+    
+    @objc override func updateViews() {
+        super.updateViews()
+        self.btnUsedCustomer.setTitle("customertype.newcustomer.button".localized, for: UIControl.State.normal)
+        
     }
-
 }

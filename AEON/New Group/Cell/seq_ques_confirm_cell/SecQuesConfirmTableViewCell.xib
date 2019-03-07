@@ -203,7 +203,9 @@
             <connections>
                 <outlet property="btnConfirm" destination="edb-lz-SF0" id="E8S-dl-Sj8"/>
                 <outlet property="lblDivision" destination="Ioz-6k-dMq" id="Ke4-Wa-JSv"/>
+                <outlet property="lblNrcNo" destination="ton-ff-nKE" id="2Vu-6b-CVn"/>
                 <outlet property="lblNrcType" destination="w9Q-Mm-pqi" id="5hK-gj-6Xw"/>
+                <outlet property="lblPhoneNo" destination="F0D-AZ-fYw" id="3E4-7y-KRa"/>
                 <outlet property="lblTownship" destination="Wos-TC-meF" id="dy0-LB-GNT"/>
                 <outlet property="tfNrcNo" destination="Lep-5E-E7J" id="kol-rT-uyO"/>
                 <outlet property="tfPhoneNo" destination="AkQ-pi-0Eq" id="W3o-fI-qeX"/>

@@ -15,39 +15,61 @@ class MemberInfoPreviewViewController: BaseUIViewController {
     var profileImage:UIImage?
     var memberResponseData:CheckMemberResponse?
     var qaList:[SecQABean] = []
+    var registerResponse:RegisterResponse?
     
+    @IBOutlet weak var btnRetry: UIButton!
+    @IBOutlet weak var btnConfirm: UIButton!
     @IBOutlet weak var ivProfile: UIImageView!
+    @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ivProfile.image = profileImage
-
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.btnRetry.setTitle("photoconfirm.retry.button".localized, for: UIControl.State.normal)
+        self.btnConfirm.setTitle("photoconfirm.confirm.button".localized, for: UIControl.State.normal)
     }
 
     @IBAction func onClickConfirmButton(_ sender: UIButton) {
-        let memberValue:String = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) ?? ""
         
-        if memberValue == Constants.MEMBER {
-           //register existed member
-            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-            RegisterViewModel.init().makeRegisterExistedMember(registerRequestData: registerRequestData!, profileImage: profileImage ?? UIImage(named: "Image")!, memberResponseData: memberResponseData!, qaList: qaList, success: { (registerResponse) in
-                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UINavigationController
-                let vc = navigationVC.children.first as! HomeViewController
-                vc.registerResponse = registerResponse
-                
-                //set nil to response
-                UserDefaults.standard.set(nil, forKey: Constants.LOGIN_RESPONSE)
-                UserDefaults.standard.set(nil, forKey: Constants.REGISTER_RESPONSE)
-                
-                self.present(navigationVC, animated: true, completion: nil)
-            }) { (error) in
-                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                Utils.showAlert(viewcontroller: self, title: "Register Failed", message: "You cannot register now.")
-            }
-        } else {
-            //register new member
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+        OTPViewModel.init().sendOTPRequest(siteActivationKey: Constants.SITE_ACTIVATION_KEY, phoneNo: (self.registerRequestData?.phoneNo)!, success: { (result) in
+
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "OTPRegisterViewController") as! UINavigationController
+            let vc = navigationVC.children.first as! OTPRegisterViewController
+            vc.registerRequestData = self.registerRequestData
+            vc.memberResponseData = self.memberResponseData!
+            vc.qaList = self.qaList
+            vc.otpCode = result.otpCode
+            vc.profileImage = self.ivProfile.image
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            self.present(navigationVC, animated: true, completion: nil)
+            
+        }) { (error) in
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            Utils.showAlert(viewcontroller: self, title: "OTP send Failed", message: error)
         }
+        
+    }
+    @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
+        super.updateLocale()
+    }
+    
+    @objc override func updateViews() {
+        super.updateViews()
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.btnRetry.setTitle("photoconfirm.retry.button", for: UIControl.State.normal)
+        self.btnConfirm.setTitle("photoconfirm.confirm.button", for: UIControl.State.normal)
     }
     
     @IBAction func onClickRetryButton(_ sender: UIButton) {

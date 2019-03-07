@@ -10,10 +10,13 @@ import Foundation
 class UpdateInfoViewModel{
     
     //LOAD USER QA LIST
-    func loadUserQAList(success:@escaping ([UserQAResponse]) -> Void,failure: @escaping (String) -> Void){
-        let customerId = ""
-        UpdateInfoModel.init().loadUserQAList(customerId: customerId, success: { (result) in
-            success(result)
+    func loadUserQAList(customerId:String,success:@escaping ([UserQAList]) -> Void,failure: @escaping (String) -> Void){
+        UpdateInfoModel.init().loadUserQAListRequest(customerId: customerId, success: { (result) in
+            if result.statusCode == "200" {
+                success(result.secQAUpdateInfoResDtoList)
+            } else {
+            failure(result.statusMessage)
+            }
         }) { (error) in
             failure(error)
         }
@@ -21,10 +24,27 @@ class UpdateInfoViewModel{
     
     
     //UPDATE USER QA LIST
-    func updateUserQAList(success:@escaping (UpdateUserQAResponse) -> Void,failure: @escaping (String) -> Void){
-        let rawData = Data()
-        UpdateInfoModel.init().updateUserQAList(rawData: rawData, success: { (result) in
-            success(result)
+    func updateUserQAList(updateUserQABean : UpdateUserBean ,success:@escaping (UpdateUserQAResponse) -> Void,failure: @escaping (String) -> Void){
+        
+        var updateUserBeanRequest = UpdateUserQARequest()
+        updateUserBeanRequest.customerId = updateUserQABean.customerId
+        updateUserBeanRequest.password = updateUserQABean.password
+        
+        var userQARequestList = [SecurityQAUpdateInfo]()
+        for userQABean in updateUserQABean.securityQAUpdateInfo {
+            var userQARequest = SecurityQAUpdateInfo()
+            userQARequest.secQuesId = userQABean.secQuesId
+            userQARequest.custSecQuesId = userQABean.custSecQuesId
+            userQARequest.answer = userQABean.answer
+            userQARequestList.append(userQARequest)
+        }
+        updateUserBeanRequest.securityQAUpdateInfo = userQARequestList
+        UpdateInfoModel.init().updateUserQAListRequest(updateUserBeanRequest: updateUserBeanRequest, success: { (result) in
+            if result.statusCode == "200" {
+                success(result)
+            } else {
+                failure(result.statusMessage)
+            }
         }) { (error) in
             failure(error)
         }

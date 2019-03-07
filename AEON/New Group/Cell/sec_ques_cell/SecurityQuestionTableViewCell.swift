@@ -11,6 +11,7 @@ import UIKit
 class SecurityQuestionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var secQuesView: UIView!
+    @IBOutlet weak var ivQuestion: UIView!
     @IBOutlet weak var lbQuesNo: UILabel!
     @IBOutlet weak var lbQuestion: UILabel!
     @IBOutlet weak var lbAnsNo: UILabel!
@@ -18,7 +19,10 @@ class SecurityQuestionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.ivQuestion.layer.borderWidth = 1
+        self.ivQuestion.layer.cornerRadius = 4 as CGFloat
+        self.ivQuestion.layer.borderColor = UIColor(red:205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha: 1.0).cgColor
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,9 +31,9 @@ class SecurityQuestionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setData(data:UserQAResponse) {
-        self.lbQuesNo.text = "Q"
-        self.lbAnsNo.text = "Ans"
+    func setData(data:UserQAList) {
+        self.lbQuesNo.text = "Q:"
+        self.lbAnsNo.text = "Ans:"
         switch Locale.currentLocale {
         case .MY:
             self.lbQuestion.text = data.questionMM
@@ -38,5 +42,6 @@ class SecurityQuestionTableViewCell: UITableViewCell {
             self.lbQuestion.text = data.questionEN
             break
         }
+        self.tfAnswer.text = data.answer
     }
 }

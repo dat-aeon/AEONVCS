@@ -13,7 +13,7 @@ class SecQuesRegisterTableViewCell: UITableViewCell,UITextFieldDelegate {
     @IBOutlet weak var vsecQuesList: UIView!
     @IBOutlet weak var lblSecQuestion: UILabel!
     @IBOutlet weak var tfsecAnswer: UITextField!
-    
+ 
     var secQuesList = [String]()
     
     var cellClickDelegate:SecQuesRegisterCellClickDelegate?
@@ -34,7 +34,7 @@ class SecQuesRegisterTableViewCell: UITableViewCell,UITextFieldDelegate {
         tapRecognizer.addTarget(self, action: #selector(didTapView))
         tapRecognizer.cancelsTouchesInView = false
         contentView.addGestureRecognizer(tapRecognizer)
-       
+        
         
     }
     

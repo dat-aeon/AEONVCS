@@ -10,16 +10,31 @@ import UIKit
 
 class ResetPasswordViewController: BaseUIViewController {
 
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblPassword: UILabel!
     @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var lblConPassword: UILabel!
     @IBOutlet weak var tfConPassword: UITextField!
     @IBOutlet weak var btnResetPass: UIButton!
+    @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     
     var customerId : Int?
     var userTypeId : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.lblTitle.text = "resetpass.title".localized
+        self.lblPassword.text = "resetpass.newpass.label".localized
+        self.lblConPassword.text = "resetpass.conpass.label".localized
+        self.btnResetPass.setTitle("resetpass.reset.button".localized, for: UIControl.State.normal)
+        
         print("Pass data :::::::::: \(String(describing: customerId)) \(String(describing: userTypeId))")
     }
     
@@ -67,4 +82,22 @@ class ResetPasswordViewController: BaseUIViewController {
        
     }
 
+    @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
+        super.updateLocale()
+    }
+    
+    @objc override func updateViews() {
+        super.updateViews()
+        switch Locale.currentLocale {
+        case .EN:
+            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        case .MY:
+            bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.lblTitle.text = "resetpass.title".localized
+        self.lblPassword.text = "resetpass.newpass.label".localized
+        self.lblConPassword.text = "resetpass.conpass.label".localized
+        self.btnResetPass.setTitle("resetpass.reset.button".localized, for: UIControl.State.normal)
+        
+    }
 }

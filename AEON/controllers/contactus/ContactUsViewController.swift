@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactUsViewController: UIViewController {
+class ContactUsViewController: BaseUIViewController {
 
     @IBOutlet weak var cvHotLine: UIView!
     @IBOutlet weak var cvMessaging: UIView!

@@ -53,33 +53,6 @@ class RegisterModel:BaseModel {
             "password": registerReqBean.password
         ]
         
-//        var memberData = CheckMemberResponse()
-//        let message = "MEMBER"
-//        var dataBean = MemberDataBean()
-//        dataBean.age = 16
-//        dataBean.companyName = "DAT"
-//        dataBean.customerNo = "12334-123456-09"
-//        dataBean.dateOfBirth = "6-1-1993"
-//        dataBean.gender = 0
-//        dataBean.name = "Jue"
-//        dataBean.nrcNo = "12/LALALA(N)123456"
-//        dataBean.phoneNo = "0912345678"
-//        dataBean.salary = "100000"
-//        dataBean.status = "1"
-//        dataBean.townshipAddress = "Yangon"
-//
-//        var agreementList: CustAgreementListResDao? = nil
-//        agreementList?.agreementNo = "1234-123456-00"
-//        agreementList?.agreementStatus = "1"
-//        agreementList?.custAgreementId = 1
-//        agreementList?.importCustomerId = 1
-//        dataBean.custAgreementListResDaoList = [agreementList] as? [CustAgreementListResDao]
-//
-//        memberData?.message = message
-//        memberData?.memberDataBean = dataBean
-//        print("\(memberData)")
-//        success(memberData)
-//
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.checkMember, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
@@ -105,8 +78,7 @@ class RegisterModel:BaseModel {
         let rawData = [
             "agreementNo": verifyUserInfo.agreementNo,
             "dateOfBirth": verifyUserInfo.dateOfBirth,
-            "nrcNo": verifyUserInfo.nrcNo,
-            "customerId":verifyUserInfo.customerId
+            "nrcNo": verifyUserInfo.nrcNo
         ]
         
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.checkRegisterVerifyNewMember, rawData: rawData) { (result) in
@@ -178,7 +150,53 @@ class RegisterModel:BaseModel {
                         failure("Cannot serialize data")
                     }
                 } else {
-                    print(api)
+                    print(api!)
+                    failure("Cannot Register")
+                }
+                
+            }
+            
+                break
+                
+            case .failure(let error):
+                print(error)
+                failure(error.localizedDescription)
+                break
+                
+            }
+        }
+    }
+    
+    //Verify Member Register
+    func registerVerifyMember(rawData:String, imageData: Data,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
+        let _ = super.performRequestWithImage(endPoint: ApiServiceEndPoint.registVerifyMember, imageData:imageData , rawData: rawData) { (response) in
+            
+            print("Verify Member result::::: \(response)")
+            switch response {
+            case .success(let upload, _, _):                                    upload.uploadProgress(closure: { (progress) in
+                print("Upload Progress: \(progress.fractionCompleted)")
+            })
+            
+            upload.responseJSON { response in
+                let api = response.result.value
+                if let result = api {
+                    //                    let json = JSON(result)
+                    //                    if json["code"].int ?? 0 == 200 {
+                    //                        self.ivProfile.sd_setImage(with: URL(string: json["data"].string!), placeholderImage: UIImage(named: "profile-placeholder"))
+                    //                        print(json["data"].string!)
+                    //
+                    //                    } else {
+                    //
+                    //                    }
+                    let responseJsonData = JSON(result)
+                    let responseValue  = try! responseJsonData.rawData()
+                    if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
+                        success(registerResponse)
+                    }else{
+                        failure("Cannot serialize data")
+                    }
+                } else {
+                    print(api!)
                     failure("Cannot Register")
                 }
                 

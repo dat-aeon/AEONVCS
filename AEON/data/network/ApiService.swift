@@ -10,6 +10,7 @@ import Foundation
 struct ApiServiceEndPoint {
     //Login API end Point
     static var login = "login/do_login"
+    static var logout = "login/do_logout"
     
     //Information
     static var secQuesList = "registration/get_security_questions"
@@ -22,11 +23,15 @@ struct ApiServiceEndPoint {
     static var checkMember = "registration/check_member"
     static var registerNew = "registration/register_new"
     static var registerExisted = "registration/register_existed"
+    static var otpRequest = "registration/otp_request"
     
+    //Verify
     static var checkRegisterVerifyNewMember = "registration/check_verify_new_member"
     static var registerVerifyNewMember = "registration/verify_new_member"
+    static var verifyQAList = "registration/verify_answer"
+    static var registVerifyMember = "registration/verify_new_member"
     
-    
+    //Reset Password
     static var selectedQuesList = "security_questions"
     static var confirmUser = "resetpassword/confirm_info"
     static var changePassword = "resetpassword/password_change"
@@ -35,6 +40,10 @@ struct ApiServiceEndPoint {
     //Update Information
     static var userQAList = "updateuserinfo/get_security_questions"
     static var updateUserQAList = "updateuserinfo/update_security_qas"
+    
+    //Events & News
+    static var couponInfo = "eventsandnews/show_coupon_info"
+    static var couponUpdate = "eventsandnews/use_coupon_info"
     
     
 }

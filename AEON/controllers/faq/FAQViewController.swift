@@ -11,6 +11,8 @@ import UIKit
 class FAQViewController: BaseUIViewController {
     @IBOutlet weak var tvFAQView: UITableView!
     var dataList = [FAQHeaderListItem]()
+    var dataListMM = [FAQHeaderListItem]()
+    var dataListEN = [FAQHeaderListItem]()
     
     //var faqDataList = [FAQCateoryDataBeanElement]()
     
@@ -19,7 +21,7 @@ class FAQViewController: BaseUIViewController {
         super.viewDidLoad()
         if showNavBar {
             self.view.backgroundColor = UIColor(netHex: 0xB70081)
-            let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 40, width: self.view.frame.width, height: 48))
+            let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 25, width: self.view.frame.width, height: 48))
             navBar.tintColor = UIColor.white
             navBar.barTintColor = UIColor(netHex: 0xB70081)
             navBar.backgroundColor = UIColor(netHex: 0xB70081)
@@ -41,6 +43,8 @@ class FAQViewController: BaseUIViewController {
         FAQViewModel.init().getFAQData(siteActivationKey: "123456", success: { (resultEN,resultMM) in
             
             print("Result on Controller ::::::::::::::::: \(resultEN.count)")
+            self.dataListEN = resultEN
+            self.dataListMM = resultMM
             
             switch Locale.currentLocale {
             case .EN:
@@ -87,7 +91,25 @@ class FAQViewController: BaseUIViewController {
 //
 //        tvFAQView.tableHeaderView = headerView
 //    }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        FAQViewModel.init().getFAQData(siteActivationKey: "123456", success: { (resultEN,resultMM) in
+            
+            print("Appear FAQViewController ::::::::::::::::: \(resultEN.count)")
+            self.dataListEN = resultEN
+            self.dataListMM = resultMM
+            
+            switch Locale.currentLocale {
+            case .EN:
+                self.dataList = resultEN
+            case .MY:
+                self.dataList = resultMM
+            }
+            self.tvFAQView.reloadData()
+            
+        }) { (error) in
+            // Utils.showAlert(viewcontroller: self, title: "Login Error", message: error)
+        }
     }
     
     func reloadSections(section:Int) {
@@ -96,6 +118,16 @@ class FAQViewController: BaseUIViewController {
         self.tvFAQView?.endUpdates()
     }
     
+    @objc override func updateViews() {
+        super.updateViews()
+        switch Locale.currentLocale {
+        case .EN:
+            self.dataList = self.dataListEN
+        case .MY:
+            self.dataList = self.dataListMM
+        }
+        self.tvFAQView.reloadData()
+    }
 }
 
 extension FAQViewController:UITableViewDataSource{

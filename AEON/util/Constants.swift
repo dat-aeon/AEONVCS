@@ -8,9 +8,9 @@
 
 import Foundation
 struct Constants {
-    static var base_url:String = "https://ass.aeoncredit.com.mm/vcsm/"
-    static var photo_base_url:String = "https://ass.aeoncredit.com.mm/vcsm/"
-//    static var base_url:String = "http://10.1.9.70:8081/assm/"
+    static var base_url:String = "https://ass.aeoncredit.com.mm/assm/"
+    static var photo_base_url:String = "https://ass.aeoncredit.com.mm/assm/"
+    //static var base_url:String = "http://10.1.9.100:8081/vcsm/"
     static var site_activation_key = "1234567"
     
     static var SITE_ACTIVATION_KEY = "siteActivationKey"
@@ -26,6 +26,11 @@ struct Constants {
     
     static var MEMBER = "MEMBER"
     static var NON_MEMBER = "NON_MEMBER"
+    static var DUPLICATE_DATA = "DUPLICATE_DATA"
+    static var PHONE_DUPLICATE = "PH_DUPLICATE"
+    static var NRC_DUPLICATE = "NRC_DUPLICATE"
+    static var NRC_PH_DUPLICATE = "NRC_PH_DUPLICATE"
+    static var VALID_MEMBER = "VALID"
     
     // User Import Information Data
     static var IMPORT_CUSTOMER_INFO_ID = "customer_info_id"
@@ -60,7 +65,8 @@ struct Constants {
     static var USER_INFO_AGREEMENT_LIST = "user_agreement_list"
     
     static var LOGIN_RESPONSE = "login_response"
+    static var BLANK = ""
     
-    
-    
+    static var IS_ALREADY_ACCEPT = "is_first_install"
+    static var LOGIN_TIME = "LOGIN_TIME"
 }

@@ -18,13 +18,14 @@ class SideMenuTableViewController: UITableViewController {
     var menuItemList:[MenuItem] = []
 
     override func viewDidLoad() {
-        let menuItem1 = MenuItem(image: "user-icon", name: "MemberShip")
-        let menuItem2 = MenuItem(image: "update-icon", name: "Information Update")
-        let menuItem3 = MenuItem(image: "message-icon", name: "Apply Aeon Services")
-        let menuItem4 = MenuItem(image: "events-icon", name: "Event & News")
-        let menuItem5 = MenuItem(image: "phone-icon", name: "Contact Us")
-        let menuItem6 = MenuItem(image: "help-primary-icon", name: "FAQ")
-        let menuItem7 = MenuItem(image: "logout-icon", name: "Logout")
+        let menuItem1 = MenuItem(image: "address-icon", name: "sidemenu.home")
+        let menuItem2 = MenuItem(image: "user-icon", name: "sidemenu.membership")
+        let menuItem3 = MenuItem(image: "update-icon", name: "sidemenu.infoupdate")
+        let menuItem4 = MenuItem(image: "message-icon", name: "sidemenu.aeonservice")
+        let menuItem5 = MenuItem(image: "events-icon", name: "sidemenu.eventsandnews")
+        let menuItem6 = MenuItem(image: "phone-icon", name: "sidemenu.contactus")
+        let menuItem7 = MenuItem(image: "help-primary-icon", name: "sidemenu.faq")
+        let menuItem8 = MenuItem(image: "logout-icon", name: "sidemenu.logout")
         menuItemList.append(menuItem1)
         menuItemList.append(menuItem2)
         menuItemList.append(menuItem3)
@@ -32,7 +33,8 @@ class SideMenuTableViewController: UITableViewController {
         menuItemList.append(menuItem5)
         menuItemList.append(menuItem6)
         menuItemList.append(menuItem7)
-       
+        menuItemList.append(menuItem8)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,6 +43,7 @@ class SideMenuTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "SideMenuListTableViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuListTableViewCell")
         // refresh cell blur effect in case it changed
         tableView.reloadData()
+        tableView.tableFooterView = UIView()
         
         if #available(iOS 11.0, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never

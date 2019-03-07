@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,41 +22,41 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdk-ST-oFq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="142.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23424-23423-234-234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlz-wq-zu0">
-                                <rect key="frame" x="8" y="113.5" width="304" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadpool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfa-tH-eIp">
-                                <rect key="frame" x="8" y="84.5" width="304" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="3wa-7l-aAA">
-                                <rect key="frame" x="8" y="16.5" width="64" height="64"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-icon" translatesAutoresizingMaskIntoConstraints="NO" id="3wa-7l-aAA">
+                                <rect key="frame" x="8" y="19.5" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="JUz-Pf-hpa"/>
                                     <constraint firstAttribute="height" constant="64" id="bAX-VV-9zs"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadpool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfa-tH-eIp">
+                                <rect key="frame" x="8" y="88.5" width="304" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23424-23423-234-234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlz-wq-zu0">
+                                <rect key="frame" x="8" y="114" width="304" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aeon_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Fcv-r8-ajp">
-                                <rect key="frame" x="232" y="9.5" width="80" height="80"/>
+                                <rect key="frame" x="248" y="19.5" width="64" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="RvZ-zk-UOy"/>
-                                    <constraint firstAttribute="width" constant="80" id="qVJ-Fb-g8N"/>
+                                    <constraint firstAttribute="height" constant="64" id="RvZ-zk-UOy"/>
+                                    <constraint firstAttribute="width" constant="64" id="qVJ-Fb-g8N"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Vfa-tH-eIp" secondAttribute="trailing" constant="8" id="71X-np-wzc"/>
-                            <constraint firstItem="jlz-wq-zu0" firstAttribute="top" secondItem="Vfa-tH-eIp" secondAttribute="bottom" constant="8" id="T4g-P5-mWf"/>
+                            <constraint firstItem="Vfa-tH-eIp" firstAttribute="top" secondItem="Fcv-r8-ajp" secondAttribute="bottom" constant="5" id="Cqo-sf-cwN"/>
                             <constraint firstAttribute="bottom" secondItem="jlz-wq-zu0" secondAttribute="bottom" constant="8" id="TNb-0v-Msq"/>
                             <constraint firstAttribute="trailing" secondItem="jlz-wq-zu0" secondAttribute="trailing" constant="8" id="aec-eY-33M"/>
-                            <constraint firstItem="Vfa-tH-eIp" firstAttribute="top" secondItem="3wa-7l-aAA" secondAttribute="bottom" constant="4" id="bfe-V5-A0e"/>
-                            <constraint firstItem="jlz-wq-zu0" firstAttribute="top" secondItem="Fcv-r8-ajp" secondAttribute="bottom" constant="24" id="gyA-H8-Yaj"/>
+                            <constraint firstItem="jlz-wq-zu0" firstAttribute="top" secondItem="Vfa-tH-eIp" secondAttribute="bottom" constant="5" id="bbT-Dg-7RP"/>
+                            <constraint firstItem="Vfa-tH-eIp" firstAttribute="top" secondItem="3wa-7l-aAA" secondAttribute="bottom" constant="5" id="brj-bb-uSF"/>
                             <constraint firstItem="3wa-7l-aAA" firstAttribute="leading" secondItem="zdk-ST-oFq" secondAttribute="leading" constant="8" id="meB-2h-6wh"/>
                             <constraint firstAttribute="trailing" secondItem="Fcv-r8-ajp" secondAttribute="trailing" constant="8" id="tQg-O1-o1q"/>
                             <constraint firstItem="jlz-wq-zu0" firstAttribute="leading" secondItem="zdk-ST-oFq" secondAttribute="leading" constant="8" id="wcM-R6-j0C"/>
@@ -81,7 +81,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Image" width="48" height="48"/>
-        <image name="aeon_logo" width="291" height="302"/>
+        <image name="aeon_logo" width="218.25" height="226.5"/>
+        <image name="user-icon" width="48" height="48"/>
     </resources>
 </document>

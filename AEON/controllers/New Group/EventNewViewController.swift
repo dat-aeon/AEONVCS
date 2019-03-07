@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventNewViewController: UIViewController {
+class EventNewViewController: BaseUIViewController {
 
     @IBOutlet weak var cvCupon: UIView!
     

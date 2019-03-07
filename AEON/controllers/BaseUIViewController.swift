@@ -66,6 +66,22 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.post(NSNotification.init(name: NSNotification.Name(Locale.ChangeNotification), object: nil) as Notification)
     }
     //Locale Change Functions End
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+        
+        print("we are in the background...")
+    }
+    
+    func applicationWillTerminate(application: UIApplication) {
+        
+        print("we have terminated")
+    }
+    
+    func generateCurrentTimeStamp () -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        return (formatter.string(from: Date()) as NSString) as String
+    }
 }
 
 //Keyboard Show Hide Functions
@@ -93,11 +109,57 @@ extension BaseUIViewController : UIImagePickerControllerDelegate, UINavigationCo
             imagePicker.delegate = imagePickerControllerDelegate
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.allowsEditing = true
+            
+            let mainView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height-200))
+            let dimX = mainView.frame.size.width - mainView.frame.size.height
+            let frame             = CGRect.init(x: dimX/2, y: 0, width: mainView.frame.size.height, height: mainView.frame.size.height)
+            let blockView         = UIImageView.init(frame: frame)
+            //blockView.contentMode = .scaleAspectFit
+            blockView.image       = UIImage(named: "camera-grid")
+            //mainView.backgroundColor = UIColor.blue
+            //blockView.backgroundColor = UIColor.red
+            let textFrame        = CGRect.init(x: 0, y: mainView.frame.size.height-50, width: mainView.frame.size.height, height: 50)
+            let textView         = UILabel.init(frame: textFrame)
+            textView.text        = "Please don't have glass on your face during the photo shoot."
+            textView.textColor = UIColor.red
+            textView.backgroundColor = UIColor.white
+            textView.font = UIFont.systemFont(ofSize: 15)
+            textView.numberOfLines = 0
+            mainView.addSubview(blockView)
+            mainView.addSubview(textView)
+            imagePicker.cameraOverlayView = mainView
+            print("allow camera \(dimX) +\(mainView.frame.size.width) + \(mainView.frame.size.height)")
             self.present(imagePicker, animated: true)
         } else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            
+            imagePicker.delegate = imagePickerControllerDelegate
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = true
+            
+            let mainView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height-200))
+            let dimX = mainView.frame.size.width - mainView.frame.size.height
+            let frame             = CGRect.init(x: dimX/2, y: 0, width: mainView.frame.size.height, height: mainView.frame.size.height)
+            let blockView         = UIImageView.init(frame: frame)
+            //blockView.contentMode = .scaleAspectFit
+            blockView.image       = UIImage(named: "camera-grid")
+            //mainView.backgroundColor = UIColor.blue
+            //blockView.backgroundColor = UIColor.red
+            let textFrame        = CGRect.init(x: 0, y: mainView.frame.size.height-50, width: mainView.frame.size.height, height: 50)
+            let textView         = UILabel.init(frame: textFrame)
+            textView.text        = "Please don't have glass on your face during the photo shoot."
+            textView.textColor = UIColor.red
+            textView.backgroundColor = UIColor.white
+            textView.font = UIFont.systemFont(ofSize: 15)
+            textView.numberOfLines = 0
+            mainView.addSubview(blockView)
+            mainView.addSubview(textView)
+            imagePicker.cameraOverlayView = mainView
+            print("not allow camera")
+            
+            self.present(imagePicker, animated: true)
         }
         
     }

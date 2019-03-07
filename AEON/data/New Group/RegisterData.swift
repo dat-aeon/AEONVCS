@@ -105,24 +105,30 @@ struct MemberDataBean : Codable {
 }
 
 struct CustAgreementListResDao : Codable {
-    var custAgreementId:Int? = 0
-    var importCustomerId:Int? = 0
+    var custAgreementId:String? = ""
+    var importCustomerId:String? = ""
     var agreementNo:String? = ""
-    var agreementStatus:String? = ""
+    var qrShow:String? = ""
+    var financialAmt:String? = ""
+    var financialTerm:String? = ""
     
     enum CodingKeys: String, CodingKey {
         case custAgreementId = "custAgreementId"
         case importCustomerId = "importCustomerId"
         case agreementNo = "agreementNo"
-        case agreementStatus = "agreementStatus"
+        case qrShow = "qrShow"
+        case financialAmt = "financialAmt"
+        case financialTerm = "financialTerm"
     }
     
     static func parseToCustAgreementListResDao(_ data : JSON) -> CustAgreementListResDao {
         var custAgreementListResDao = CustAgreementListResDao()
-        custAgreementListResDao.custAgreementId = data["custAgreementId"].int
-        custAgreementListResDao.importCustomerId = data["importCustomerId"].int
+        custAgreementListResDao.custAgreementId = data["custAgreementId"].string
+        custAgreementListResDao.importCustomerId = data["importCustomerId"].string
         custAgreementListResDao.agreementNo = data["agreementNo"].string
-        custAgreementListResDao.agreementStatus = data["agreementStatus"].string
+        custAgreementListResDao.qrShow = data["qrShow"].string
+        custAgreementListResDao.financialAmt = data["financialAmt"].string
+        custAgreementListResDao.financialTerm = data["financialTerm"].string
         return custAgreementListResDao
     }
 }
@@ -254,15 +260,23 @@ struct RegisterResponse: Codable {
 }
 
 struct CustomerAgreementData:Codable{
-    var custAgreementId:Int? = 0
-    var importCustomerId:Int? = 0
-    var agreementNo:String? = ""
-    var agreementStatus:String? = ""
+//    var custAgreementId:String? = ""
+//    var importCustomerId:String? = ""
+//    var agreementNo:String? = ""
+//    var qrShow:String? = ""
+//    var financialAmt:String? = ""
+//    var financialTerm:String? = ""
+//
+    var custAgreementId, importCustomerId, agreementNo, qrShow: String
+    var financialAmt, financialTerm: String
+    
     enum CodingKeys: String, CodingKey{
         case custAgreementId
         case importCustomerId
         case agreementNo
-        case agreementStatus
+        case qrShow
+        case financialAmt
+        case financialTerm
     }
 }
 
@@ -350,26 +364,34 @@ struct CheckVerifyUserInfoRequest: Codable{
     var agreementNo:String
     var dateOfBirth:String
     var nrcNo:String
-    var customerId:String
     enum CodingKeys: String, CodingKey {
         case agreementNo
         case dateOfBirth
         case nrcNo
-        case customerId
     }
-    init(agreementNo:String,dob:String,nrcNo:String,customerId:String) {
+    init(agreementNo:String,dob:String,nrcNo:String) {
         self.agreementNo = agreementNo
         self.dateOfBirth = dob
         self.nrcNo = nrcNo
-        self.customerId = customerId
     }
 }
 struct CheckVerifyUserInfoResponse: Codable{
-    var responseStatus:String
+    var statusCode:String
+    var statusMessage: String
     var customerNo:String
+    var verifyStatus:String
     enum CodingKeys: String, CodingKey{
-        case responseStatus
+        case statusCode
+        case statusMessage
         case customerNo
+        case verifyStatus
     }
 
+}
+
+struct VerifyUserInfoBean {
+    var agreementNo:String = ""
+    var dateOfBirth:String = ""
+    var nrcNo:String = ""
+    var customerNo: String = ""
 }

@@ -25,14 +25,11 @@ class BaseModel {
         } catch let error {
             print("Error : \(error.localizedDescription)")
         }
-        print("Request params :::::::::::\(rawData)")
+        print("Request params for [String:String]:::::::::::\(rawData)")
         print("Request data :::::::::::\(request)")
 
         return Alamofire.request(request).responseJSON{ (response) in
             completion(response.result)
-
-            print("Response result :::::::::::\(response)")
-
         }
 
     }

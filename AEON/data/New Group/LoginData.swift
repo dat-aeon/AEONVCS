@@ -11,7 +11,7 @@ import Foundation
  struct LoginResponse: Codable {
     var statusCode:String? = ""
     var statusMessage:String? = ""
-    var customerId:Int? = 0
+    var customerId:Int! = 0
     var customerNo: String? = ""
     var phoneNo: String? = ""
     var customerTypeId: Int? = 0
@@ -24,5 +24,15 @@ import Foundation
     var delFlag: Int? = 0
     var password: String? = ""
     var custAgreementListDtoList:[CustomerAgreementData]? = []
-    
  }
+
+ struct LogoutResponse: Codable {
+    var statusCode:String? = ""
+    var statusMessage:String? = ""
+ }
+
+ struct LogoutRequest: Codable {
+    var customerId:String? = ""
+    var statusMessage:String? = ""
+ }
+
