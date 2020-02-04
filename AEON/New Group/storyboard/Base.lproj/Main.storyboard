@@ -68,7 +68,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xf-yc-BSr">
-                                                                <rect key="frame" x="56.5" y="75" width="51" height="30"/>
+                                                                <rect key="frame" x="52.5" y="75" width="58.5" height="30"/>
                                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="19"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -98,7 +98,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGISTER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9yt-6D-IxT">
-                                                                <rect key="frame" x="5" y="75" width="153.5" height="30"/>
+                                                                <rect key="frame" x="5" y="75" width="153.5" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="19"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -161,7 +161,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaR-kv-0C6">
-                                                                <rect key="frame" x="5" y="75" width="153.5" height="30"/>
+                                                                <rect key="frame" x="5" y="75" width="153.5" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="19"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -298,17 +298,17 @@
                                         <rect key="frame" x="0.0" y="188" width="375" height="300"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZi-DQ-fXB">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-icon" translatesAutoresizingMaskIntoConstraints="NO" id="a4w-8M-Cc2">
-                                                        <rect key="frame" x="16" y="7" width="32" height="32"/>
+                                                        <rect key="frame" x="16" y="15" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="55u-bG-dwZ"/>
                                                             <constraint firstAttribute="width" constant="32" id="Ohg-cx-kBA"/>
                                                         </constraints>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone No." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52G-gf-MQS">
-                                                        <rect key="frame" x="64" y="3" width="247" height="40"/>
+                                                        <rect key="frame" x="64" y="11" width="247" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="l70-rd-BR0"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="mjV-Ge-Lbp"/>
@@ -330,7 +330,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Er-O7-pgG">
-                                                <rect key="frame" x="0.0" y="81" width="375" height="60"/>
+                                                <rect key="frame" x="0.0" y="92.5" width="375" height="60"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password-icon" translatesAutoresizingMaskIntoConstraints="NO" id="2yE-sP-HVP">
                                                         <rect key="frame" x="16" y="14" width="32" height="32"/>
@@ -373,7 +373,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfo-gb-nbn">
-                                                <rect key="frame" x="0.0" y="174.5" width="375" height="125.5"/>
+                                                <rect key="frame" x="0.0" y="181" width="375" height="119"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prp-nL-5Mw">
                                                         <rect key="frame" x="16" y="16" width="343" height="48"/>
@@ -398,7 +398,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget Password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgE-kZ-lxH">
-                                                        <rect key="frame" x="123.5" y="83" width="128" height="26.5"/>
+                                                        <rect key="frame" x="118.5" y="83" width="138.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                                         <color key="textColor" red="0.82406836750000001" green="0.1919207275" blue="0.63621109720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -418,13 +418,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLj-gh-xds">
-                                                <rect key="frame" x="64" y="45.5" width="48" height="20.5"/>
+                                                <rect key="frame" x="64" y="62" width="52.5" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="13"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edS-H4-Lr1">
-                                                <rect key="frame" x="64" y="144" width="48" height="20.5"/>
+                                                <rect key="frame" x="64" y="155.5" width="52.5" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="13"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -634,7 +634,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vcg-bO-u2P">
-                                <rect key="frame" x="16" y="400.5" width="343" height="48"/>
+                                <rect key="frame" x="16" y="394" width="343" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KI4-VT-PTB">
                                         <rect key="frame" x="0.0" y="0.0" width="166.5" height="48"/>
@@ -674,7 +674,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use this photo in member card?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNF-2W-s2J">
-                                <rect key="frame" x="71.5" y="364" width="232" height="26.5"/>
+                                <rect key="frame" x="65.5" y="364" width="244.5" height="20"/>
                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -732,7 +732,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VT-HH-KQo">
-                                        <rect key="frame" x="112.5" y="149.5" width="150" height="35"/>
+                                        <rect key="frame" x="112.5" y="137.5" width="150" height="35"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="RIq-ae-Hej"/>
@@ -753,7 +753,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIw-Ra-H2r">
-                                        <rect key="frame" x="112.5" y="216.5" width="150" height="35"/>
+                                        <rect key="frame" x="112.5" y="204.5" width="150" height="35"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="fr0-3r-gAM"/>
@@ -774,19 +774,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcT-zw-G3T">
-                                        <rect key="frame" x="169.5" y="283.5" width="36.5" height="23.5"/>
+                                        <rect key="frame" x="168.5" y="271.5" width="38.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTP Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofg-Oa-Hvn">
-                                        <rect key="frame" x="16" y="32" width="343" height="26.5"/>
+                                        <rect key="frame" x="16" y="32" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter OTP Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O7Y-ZX-6o8">
-                                        <rect key="frame" x="112.5" y="74.5" width="150" height="40"/>
+                                        <rect key="frame" x="112.5" y="68" width="150" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CCl-NP-6xX"/>
                                             <constraint firstAttribute="width" constant="150" id="XWG-v1-eXt"/>
@@ -795,7 +795,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oph-3R-1fK">
-                                        <rect key="frame" x="162" y="117.5" width="51.5" height="22"/>
+                                        <rect key="frame" x="159" y="111" width="57" height="16.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -862,7 +862,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kBX-LM-Nwa">
-                                        <rect key="frame" x="16" y="90.5" width="343" height="48"/>
+                                        <rect key="frame" x="16" y="84" width="343" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="ov9-6S-kdC"/>
                                         </constraints>
@@ -873,7 +873,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQ2-vw-ihQ">
-                                        <rect key="frame" x="16" y="173.5" width="343" height="48"/>
+                                        <rect key="frame" x="16" y="161.5" width="343" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="wjC-JN-BnZ"/>
                                         </constraints>
@@ -884,7 +884,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZv-Hv-CeU">
-                                        <rect key="frame" x="16" y="262.5" width="343" height="26.5"/>
+                                        <rect key="frame" x="16" y="245" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.043511284720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -893,7 +893,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLD-1H-Pb9">
-                                        <rect key="frame" x="16" y="305" width="343" height="96.5"/>
+                                        <rect key="frame" x="16" y="281" width="343" height="96.5"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">We will use your all of biometric data to login to your account.So,you will not let other people to save biometric data in your device. (Add your message to user)</string>
@@ -910,7 +910,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwJ-fz-RWW">
-                                        <rect key="frame" x="16" y="425.5" width="343" height="48"/>
+                                        <rect key="frame" x="16" y="401.5" width="343" height="48"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="FSq-cM-MAz"/>
@@ -930,7 +930,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fingerprint Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-Wr-Unh">
-                                        <rect key="frame" x="16" y="32" width="343" height="26.5"/>
+                                        <rect key="frame" x="16" y="32" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -939,13 +939,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmf-c8-jsi">
-                                        <rect key="frame" x="16" y="141.5" width="343" height="22"/>
+                                        <rect key="frame" x="16" y="135" width="343" height="16.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uF-UE-WrV">
-                                        <rect key="frame" x="16" y="224.5" width="343" height="22"/>
+                                        <rect key="frame" x="16" y="212.5" width="343" height="16.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -1110,7 +1110,7 @@
                                 <rect key="frame" x="10" y="607" width="355" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTS-GR-ivD">
-                                        <rect key="frame" x="152" y="11" width="51.5" height="28.5"/>
+                                        <rect key="frame" x="149.5" y="14.5" width="56" height="21"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="18"/>
                                         <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1354,19 +1354,19 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCf-oM-Ou7">
-                                        <rect key="frame" x="16" y="20" width="343" height="34.5"/>
+                                        <rect key="frame" x="16" y="20" width="343" height="26"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="22"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Phone No. *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fua-Ni-qZR">
-                                        <rect key="frame" x="16" y="74.5" width="343" height="26.5"/>
+                                        <rect key="frame" x="16" y="66" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="09xxxxxxxxx" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="lQj-th-WJu">
-                                        <rect key="frame" x="16" y="106" width="343" height="35"/>
+                                        <rect key="frame" x="16" y="91" width="343" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="rw9-sj-p6w"/>
                                         </constraints>
@@ -1374,13 +1374,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="NRC No. *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTq-Rs-Btm">
-                                        <rect key="frame" x="16" y="186" width="343" height="26.5"/>
+                                        <rect key="frame" x="16" y="165.5" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gv1-Gh-BBu">
-                                        <rect key="frame" x="16" y="217.5" width="343" height="35"/>
+                                        <rect key="frame" x="16" y="190.5" width="343" height="35"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLd-av-STr">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
@@ -1475,7 +1475,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTP-8o-n5h">
-                                        <rect key="frame" x="16" y="297.5" width="343" height="40"/>
+                                        <rect key="frame" x="16" y="265" width="343" height="40"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Ooc-c6-95R"/>
@@ -1494,13 +1494,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xY3-CY-ziS">
-                                        <rect key="frame" x="16" y="144" width="343" height="22"/>
+                                        <rect key="frame" x="16" y="129" width="343" height="16.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1P-65-LQU">
-                                        <rect key="frame" x="16" y="255.5" width="343" height="22"/>
+                                        <rect key="frame" x="16" y="228.5" width="343" height="16.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -1766,10 +1766,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Joc-lc-3Nr">
-                                        <rect key="frame" x="10" y="82" width="355" height="752.5"/>
+                                        <rect key="frame" x="10" y="82" width="355" height="665"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Name *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRq-MO-WVv">
-                                                <rect key="frame" x="8" y="0.0" width="339" height="23.5"/>
+                                                <rect key="frame" x="8" y="0.0" width="339" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1778,7 +1778,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please type your Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5qy-Eh-gif">
-                                                <rect key="frame" x="8" y="28.5" width="339" height="35"/>
+                                                <rect key="frame" x="8" y="22.5" width="339" height="35"/>
                                                 <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="WYl-YH-iTi"/>
@@ -1790,13 +1790,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtL-ws-jok">
-                                                <rect key="frame" x="8" y="66.5" width="339" height="23.5"/>
+                                                <rect key="frame" x="8" y="60.5" width="339" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Date of Birth *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWc-VP-FaB">
-                                                <rect key="frame" x="8" y="100" width="339" height="23.5"/>
+                                                <rect key="frame" x="8" y="88" width="339" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1805,7 +1805,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="dd-MM-yyyy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="roM-dD-ico">
-                                                <rect key="frame" x="8" y="151.5" width="339" height="35"/>
+                                                <rect key="frame" x="8" y="127.5" width="339" height="35"/>
                                                 <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="j2C-oA-0la"/>
@@ -1817,7 +1817,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="NRC No. *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfa-7k-m1m">
-                                                <rect key="frame" x="8" y="221.5" width="339" height="23.5"/>
+                                                <rect key="frame" x="8" y="192" width="339" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1826,7 +1826,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-NB-wSc">
-                                                <rect key="frame" x="8" y="250" width="339" height="35"/>
+                                                <rect key="frame" x="8" y="214.5" width="339" height="35"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtD-yy-s3x">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
@@ -1928,7 +1928,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone No. *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbz-qV-37i">
-                                                <rect key="frame" x="8" y="320" width="339" height="23.5"/>
+                                                <rect key="frame" x="8" y="279" width="339" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1937,7 +1937,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="09xxxxxxxxx" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="JOH-aW-puO">
-                                                <rect key="frame" x="8" y="348.5" width="339" height="35"/>
+                                                <rect key="frame" x="8" y="301.5" width="339" height="35"/>
                                                 <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="8JI-98-rFB"/>
@@ -1946,7 +1946,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Password *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVw-aC-fB1">
-                                                <rect key="frame" x="8" y="418.5" width="339" height="23.5"/>
+                                                <rect key="frame" x="8" y="366" width="339" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1955,7 +1955,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="eg. name@123" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kkz-O9-Nhy">
-                                                <rect key="frame" x="8" y="447" width="339" height="35"/>
+                                                <rect key="frame" x="8" y="388.5" width="339" height="35"/>
                                                 <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="hjD-SC-b9f"/>
@@ -1964,7 +1964,7 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Confirm Password *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNx-rg-BVI">
-                                                <rect key="frame" x="8" y="517" width="339" height="23.5"/>
+                                                <rect key="frame" x="8" y="453" width="339" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1973,7 +1973,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please type your password again." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qqR-4e-XNl">
-                                                <rect key="frame" x="8" y="545.5" width="339" height="35"/>
+                                                <rect key="frame" x="8" y="475.5" width="339" height="35"/>
                                                 <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="yPy-QC-oYI"/>
@@ -1982,7 +1982,7 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1y-Un-IrQ">
-                                                <rect key="frame" x="8" y="688.5" width="339" height="48"/>
+                                                <rect key="frame" x="8" y="601" width="339" height="48"/>
                                                 <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="GJG-OT-clx"/>
@@ -2002,43 +2002,43 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Password should include Number, Characters and Special Characters." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ig9-SN-tif">
-                                                <rect key="frame" x="8" y="625.5" width="339" height="47"/>
+                                                <rect key="frame" x="8" y="550" width="339" height="35"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqW-jp-LVy">
-                                                <rect key="frame" x="8" y="189.5" width="339" height="22"/>
+                                                <rect key="frame" x="8" y="165.5" width="339" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZO-CH-YGg">
-                                                <rect key="frame" x="8" y="288" width="339" height="22"/>
+                                                <rect key="frame" x="8" y="252.5" width="339" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myq-EN-6gH">
-                                                <rect key="frame" x="8" y="386.5" width="339" height="22"/>
+                                                <rect key="frame" x="8" y="339.5" width="339" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awn-jO-DLg">
-                                                <rect key="frame" x="8" y="485" width="339" height="22"/>
+                                                <rect key="frame" x="8" y="426.5" width="339" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOO-ox-9Lb">
-                                                <rect key="frame" x="8" y="583.5" width="339" height="22"/>
+                                                <rect key="frame" x="8" y="513.5" width="339" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="(Age should be above 18)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hm-5P-QEP">
-                                                <rect key="frame" x="8" y="125" width="339" height="25"/>
+                                                <rect key="frame" x="8" y="107" width="339" height="19"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -2226,13 +2226,13 @@
                                         <rect key="frame" x="10" y="72" width="355" height="559"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreement No. *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhO-W1-sTZ">
-                                                <rect key="frame" x="0.0" y="16" width="355" height="25"/>
+                                                <rect key="frame" x="0.0" y="16" width="355" height="19"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="16"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVo-gD-z2U">
-                                                <rect key="frame" x="0.0" y="46" width="355" height="35"/>
+                                                <rect key="frame" x="0.0" y="40" width="355" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="4W5-S1-pIg"/>
                                                 </constraints>
@@ -2240,13 +2240,13 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJJ-mt-HTy">
-                                                <rect key="frame" x="0.0" y="122" width="355" height="25"/>
+                                                <rect key="frame" x="0.0" y="110.5" width="355" height="19"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="16"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your birthday.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sV2-s9-ftq">
-                                                <rect key="frame" x="0.0" y="182" width="355" height="35"/>
+                                                <rect key="frame" x="0.0" y="158.5" width="355" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="EnT-LJ-B8U"/>
                                                 </constraints>
@@ -2254,13 +2254,13 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="NRC No. *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOg-uh-zBW">
-                                                <rect key="frame" x="0.0" y="258" width="355" height="25"/>
+                                                <rect key="frame" x="0.0" y="229" width="355" height="19"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="16"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7m-ab-yG0">
-                                                <rect key="frame" x="0.0" y="288" width="355" height="35"/>
+                                                <rect key="frame" x="0.0" y="253" width="355" height="35"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGk-8U-5Vo">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
@@ -2353,13 +2353,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btX-sX-ryH">
-                                                <rect key="frame" x="0.0" y="364" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="323.5" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-ed-1tr">
-                                                <rect key="frame" x="235" y="476" width="120" height="40"/>
+                                                <rect key="frame" x="235" y="423.5" width="120" height="40"/>
                                                 <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="1l2-s3-5AX"/>
@@ -2380,7 +2380,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiW-hG-dp4">
-                                                <rect key="frame" x="0.0" y="364" width="355" height="48"/>
+                                                <rect key="frame" x="0.0" y="323.5" width="355" height="48"/>
                                                 <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="3cA-8y-p7w"/>
@@ -2399,31 +2399,31 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73k-MJ-Pmy">
-                                                <rect key="frame" x="0.0" y="84" width="347" height="22"/>
+                                                <rect key="frame" x="0.0" y="78" width="347" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrO-fm-C8D">
-                                                <rect key="frame" x="0.0" y="220" width="347" height="22"/>
+                                                <rect key="frame" x="0.0" y="196.5" width="347" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yW-dp-hsw">
-                                                <rect key="frame" x="0.0" y="326" width="355" height="22"/>
+                                                <rect key="frame" x="0.0" y="291" width="355" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="(Age should be above 18)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3G-ed-KPz">
-                                                <rect key="frame" x="0.0" y="152" width="355" height="25"/>
+                                                <rect key="frame" x="0.0" y="134.5" width="355" height="19"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you forgot &quot;Aggreement No.&quot;, please contact to AEON Customer Service." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3St-zI-cGx">
-                                                <rect key="frame" x="0.0" y="421" width="355" height="47"/>
+                                                <rect key="frame" x="0.0" y="380.5" width="355" height="35"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2612,10 +2612,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxq-CZ-LCE" customClass="CardView" customModule="AEONMember4" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="179" width="300" height="309.5"/>
+                                <rect key="frame" x="37.5" y="190.5" width="300" height="286"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvP-0t-cXL">
-                                        <rect key="frame" x="16" y="154.5" width="268" height="33"/>
+                                        <rect key="frame" x="16" y="131" width="268" height="33"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="Pui-G6-E8X"/>
@@ -2635,7 +2635,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvo-Md-Naq">
-                                        <rect key="frame" x="174" y="258" width="110" height="33"/>
+                                        <rect key="frame" x="174" y="234.5" width="110" height="33"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="BMi-71-d1Q"/>
@@ -2656,7 +2656,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click “Call Now” if your phone number has changes." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bud-1M-wDb">
-                                        <rect key="frame" x="57" y="195.5" width="227" height="55"/>
+                                        <rect key="frame" x="57" y="172" width="227" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="jdA-5C-Oaa"/>
                                         </constraints>
@@ -2685,14 +2685,14 @@
                                         </constraints>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconWarning" translatesAutoresizingMaskIntoConstraints="NO" id="qLe-vk-R1v">
-                                        <rect key="frame" x="25" y="200.5" width="24" height="26"/>
+                                        <rect key="frame" x="25" y="177" width="24" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="RcR-H6-g1x"/>
                                             <constraint firstAttribute="width" constant="24" id="jXZ-xD-IVR"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nub-jt-sB2">
-                                        <rect key="frame" x="25" y="49" width="246" height="93.5"/>
+                                        <rect key="frame" x="25" y="49" width="246" height="70"/>
                                         <string key="text">For Membership process, OTP code will be sent to your registered phone no (09000000000) .Click “OK” if your phone number has no changes.</string>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -2901,7 +2901,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViF-Ai-8UZ">
-                                                <rect key="frame" x="16" y="334.5" width="279" height="149.5"/>
+                                                <rect key="frame" x="16" y="326" width="279" height="158"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">This photo is the identification for your member card. If you want to change this, photo, please contact to System Administrator.</string>
@@ -2915,7 +2915,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member No" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDp-6B-GQc">
-                                                <rect key="frame" x="101.5" y="290" width="108.5" height="34.5"/>
+                                                <rect key="frame" x="97" y="290" width="117" height="26"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="22"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -2989,13 +2989,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use this photo in member card?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvx-HV-Fmc">
-                                        <rect key="frame" x="16" y="296" width="343" height="26.5"/>
+                                        <rect key="frame" x="16" y="296" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TLj-7b-JGH">
-                                        <rect key="frame" x="16" y="330.5" width="343" height="48"/>
+                                        <rect key="frame" x="16" y="324" width="343" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vA-lP-6qZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="166.5" height="48"/>
@@ -3240,20 +3240,20 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="en_flag_3480" translatesAutoresizingMaskIntoConstraints="NO" id="JfR-k1-JeA">
-                                        <rect key="frame" x="112.5" y="240.5" width="150" height="100"/>
+                                        <rect key="frame" x="112.5" y="234" width="150" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="NXo-fc-OvI"/>
                                             <constraint firstAttribute="height" constant="100" id="eZL-n6-PSe"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose default language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdW-CX-wuG">
-                                        <rect key="frame" x="16" y="50" width="343" height="26.5"/>
+                                        <rect key="frame" x="16" y="50" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mm_flag_2000" translatesAutoresizingMaskIntoConstraints="NO" id="QAy-5Z-QMO">
-                                        <rect key="frame" x="112.5" y="108.5" width="150" height="100"/>
+                                        <rect key="frame" x="112.5" y="102" width="150" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="ZcT-z4-DXh"/>
                                             <constraint firstAttribute="height" constant="100" id="vsq-ZO-Qiw"/>
@@ -3664,13 +3664,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME TO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSv-lL-aNM">
-                                        <rect key="frame" x="16" y="182" width="343" height="37.5"/>
+                                        <rect key="frame" x="16" y="182" width="343" height="28"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="24"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AEON MICROFINANCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-ms-EGt">
-                                        <rect key="frame" x="16" y="251.5" width="343" height="36"/>
+                                        <rect key="frame" x="16" y="242" width="343" height="27"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="23"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -4430,7 +4430,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Picture will be taken to issue the member card" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGq-Er-wYN">
-                                        <rect key="frame" x="16" y="16" width="343" height="72"/>
+                                        <rect key="frame" x="16" y="16" width="343" height="54"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="23"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -4439,7 +4439,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJL-R7-6aH">
-                                        <rect key="frame" x="16" y="107" width="343" height="35"/>
+                                        <rect key="frame" x="16" y="89" width="343" height="35"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="kei-mQ-hHM"/>
@@ -4458,7 +4458,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Card can use only for your AEON Service with this picture information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-7X-3jv">
-                                        <rect key="frame" x="16" y="174" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="156" width="343" height="33"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -4467,25 +4467,25 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Picture" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D8-gb-Xh2">
-                                        <rect key="frame" x="16" y="234" width="343" height="23.5"/>
+                                        <rect key="frame" x="16" y="205" width="343" height="17.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Save in your mobile phone and don't share to others." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgY-28-6RJ">
-                                        <rect key="frame" x="16" y="265.5" width="343" height="22"/>
+                                        <rect key="frame" x="16" y="230.5" width="343" height="33"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Not change until you reinstall this application." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxw-gL-anh">
-                                        <rect key="frame" x="16" y="295.5" width="343" height="22"/>
+                                        <rect key="frame" x="16" y="271.5" width="343" height="16.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. To secure and verify your member card when you lost your phone." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahT-GG-uab">
-                                        <rect key="frame" x="16" y="325.5" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="296" width="343" height="33"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -4885,7 +4885,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaQ-b0-j8b">
-                                                        <rect key="frame" x="35" y="10" width="140" height="25"/>
+                                                        <rect key="frame" x="35" y="13" width="140" height="19"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -4898,7 +4898,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Non-mobile Shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAS-9a-rws">
-                                                        <rect key="frame" x="35" y="42" width="140" height="25"/>
+                                                        <rect key="frame" x="35" y="45" width="140" height="19"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -4930,7 +4930,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AEON Office" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pox-A2-uiM">
-                                                        <rect key="frame" x="35" y="11" width="140" height="25"/>
+                                                        <rect key="frame" x="35" y="14" width="140" height="19"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -4943,7 +4943,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiple shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-Xd-gLf">
-                                                        <rect key="frame" x="35" y="41" width="140" height="25"/>
+                                                        <rect key="frame" x="35" y="44" width="140" height="19"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -5077,12 +5077,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9z-bt-41Z">
-                                        <rect key="frame" x="16" y="117.5" width="343" height="0.0"/>
+                                        <rect key="frame" x="16" y="94" width="343" height="0.0"/>
                                         <attributedString key="attributedText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms and conditions of AEON Microfinance (Myanmar) Mobile Application" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2s-Q5-khE">
-                                        <rect key="frame" x="16" y="8" width="343" height="93.5"/>
+                                        <rect key="frame" x="16" y="8" width="343" height="70"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="20"/>
                                         <color key="textColor" red="0.76862745099999996" green="0.18039215689999999" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -5246,21 +5246,21 @@
                                 <rect key="frame" x="62.5" y="258.5" width="250" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Coupon Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qV-XN-6AA">
-                                        <rect key="frame" x="16" y="20" width="218" height="30"/>
+                                        <rect key="frame" x="16" y="20" width="218" height="22.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="19"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R3I-C6-oD4">
-                                        <rect key="frame" x="16" y="58" width="218" height="34"/>
+                                        <rect key="frame" x="16" y="50.5" width="218" height="47.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="cWt-yW-KIs">
-                                        <rect key="frame" x="16" y="101" width="218" height="37"/>
+                                        <rect key="frame" x="16" y="107" width="218" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmo-tG-Ef2">
-                                                <rect key="frame" x="0.0" y="0.0" width="108.5" height="37"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="108.5" height="31"/>
                                                 <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                                 <state key="normal" title="Cancel">
@@ -5276,7 +5276,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puF-UW-sCN">
-                                                <rect key="frame" x="109.5" y="0.0" width="108.5" height="37"/>
+                                                <rect key="frame" x="109.5" y="0.0" width="108.5" height="31"/>
                                                 <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                                 <state key="normal" title="OK">
@@ -5358,20 +5358,20 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovT-wp-j0M">
-                                        <rect key="frame" x="10" y="184.5" width="355" height="132.5"/>
+                                        <rect key="frame" x="10" y="158.5" width="355" height="99.5"/>
                                         <string key="text">Dear value customer, We would like to announce that on 14th February 2019 AEON loan disbursement service is available at new AEON counter located at "Royal Mingalar (Mandalay) for our value customers.</string>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aeon_promo" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXp-oP-GPN">
-                                        <rect key="frame" x="10" y="369" width="355" height="200"/>
+                                        <rect key="frame" x="10" y="304" width="355" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" identifier="promoHeight" id="0By-II-sp8"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBS-YA-yoP" customClass="CardView" customModule="AEONMember4" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="589" width="355" height="200"/>
+                                        <rect key="frame" x="10" y="524" width="355" height="200"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0KI-bc-hXW" customClass="GMSMapView">
                                                 <rect key="frame" x="5" y="5" width="345" height="190"/>
@@ -5388,19 +5388,19 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Education Loan | Easy Apply &amp; Lean and Quick Processing" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Teb-2h-tBT">
-                                        <rect key="frame" x="10" y="50" width="355" height="78"/>
+                                        <rect key="frame" x="10" y="50" width="355" height="58.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="25"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09-04-2019 5:17 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A74-Tr-PgD">
-                                        <rect key="frame" x="10" y="138" width="355" height="26.5"/>
+                                        <rect key="frame" x="10" y="118.5" width="355" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJ4-cC-4n9">
-                                        <rect key="frame" x="10" y="324.5" width="355" height="36"/>
+                                        <rect key="frame" x="10" y="265.5" width="355" height="30"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
@@ -5482,32 +5482,32 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Education Loan | Easy Apply Apply" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSM-bm-Iz6">
-                                        <rect key="frame" x="10" y="50" width="355" height="78"/>
+                                        <rect key="frame" x="10" y="50" width="355" height="58.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="25"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09-04-2019 5:17 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="har-2C-dDP">
-                                        <rect key="frame" x="10" y="138" width="355" height="26.5"/>
+                                        <rect key="frame" x="10" y="118.5" width="355" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqX-pT-mex">
-                                        <rect key="frame" x="10" y="184.5" width="355" height="132.5"/>
+                                        <rect key="frame" x="10" y="158.5" width="355" height="99.5"/>
                                         <string key="text">Dear value customer, We would like to announce that on 14th February 2019 AEON loan disbursement service is available at new AEON counter located at "Royal Mingalar (Mandalay) for our value customers.</string>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_one" translatesAutoresizingMaskIntoConstraints="NO" id="Vqu-nU-2a9">
-                                        <rect key="frame" x="10" y="370" width="355" height="200"/>
+                                        <rect key="frame" x="10" y="305" width="355" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="Ml9-ue-y5g"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWi-jU-BUG" customClass="CardView" customModule="AEONMember4" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="590" width="355" height="200"/>
+                                        <rect key="frame" x="10" y="525" width="355" height="200"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="boB-8o-zVe" customClass="GMSMapView">
                                                 <rect key="frame" x="5" y="5" width="345" height="190"/>
@@ -5524,7 +5524,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="al1-Gr-cHa">
-                                        <rect key="frame" x="10" y="324.5" width="355" height="36"/>
+                                        <rect key="frame" x="10" y="265.5" width="355" height="30"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
@@ -5867,10 +5867,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bP4-Ln-TVx">
-                                        <rect key="frame" x="16" y="112" width="343" height="31.5"/>
+                                        <rect key="frame" x="16" y="112" width="343" height="23.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About AEON Microfinance Myanmar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhb-Im-Y6G">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="31.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="20"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -5886,7 +5886,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVH-yt-r8w">
-                                        <rect key="frame" x="16" y="148.5" width="343" height="28"/>
+                                        <rect key="frame" x="16" y="140.5" width="343" height="28"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBN-SL-SsD">
                                                 <rect key="frame" x="0.0" y="5" width="343" height="18"/>
@@ -5911,14 +5911,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHe-tE-TB3">
-                                        <rect key="frame" x="16" y="184.5" width="343" height="1"/>
+                                        <rect key="frame" x="16" y="176.5" width="343" height="1"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="lYP-Tt-dsJ"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSu-GG-9pN">
-                                        <rect key="frame" x="16" y="193.5" width="343" height="48"/>
+                                        <rect key="frame" x="16" y="185.5" width="343" height="48"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Uib-n7-htg">
                                                 <rect key="frame" x="0.0" y="8" width="32" height="32"/>
@@ -5972,14 +5972,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxA-X7-2QY">
-                                        <rect key="frame" x="16" y="249.5" width="343" height="1"/>
+                                        <rect key="frame" x="16" y="241.5" width="343" height="1"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="2vS-is-G7x"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mjU-S7-QG7">
-                                        <rect key="frame" x="16" y="258.5" width="343" height="42.5"/>
+                                        <rect key="frame" x="16" y="250.5" width="343" height="36"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-icon" translatesAutoresizingMaskIntoConstraints="NO" id="xE8-i0-TFO">
                                                 <rect key="frame" x="0.0" y="8" width="32" height="32"/>
@@ -5989,7 +5989,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.facebook.com" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgf-R5-3Hm">
-                                                <rect key="frame" x="40" y="8" width="295" height="26.5"/>
+                                                <rect key="frame" x="40" y="8" width="295" height="20"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6006,14 +6006,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83x-L1-7MX">
-                                        <rect key="frame" x="16" y="309" width="343" height="1"/>
+                                        <rect key="frame" x="16" y="294.5" width="343" height="1"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="1D6-Uk-rIv"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SyV-n3-SkL">
-                                        <rect key="frame" x="16" y="318" width="343" height="42.5"/>
+                                        <rect key="frame" x="16" y="303.5" width="343" height="36"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="website-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bv4-SY-OZQ">
                                                 <rect key="frame" x="0.0" y="8" width="32" height="32"/>
@@ -6023,7 +6023,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.aeonmicrofinance.com " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xl-TN-pRi">
-                                                <rect key="frame" x="40" y="8" width="295" height="26.5"/>
+                                                <rect key="frame" x="40" y="8" width="295" height="20"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6040,14 +6040,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cr-co-BD8">
-                                        <rect key="frame" x="16" y="368.5" width="343" height="1"/>
+                                        <rect key="frame" x="16" y="347.5" width="343" height="1"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="3YS-4b-cGi"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psK-3c-f6W">
-                                        <rect key="frame" x="16" y="377.5" width="343" height="36.5"/>
+                                        <rect key="frame" x="16" y="356.5" width="343" height="36.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="address-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Wra-Ci-0SS">
                                                 <rect key="frame" x="0.0" y="8" width="32" height="32"/>
@@ -6314,12 +6314,59 @@
                                     <constraint firstItem="wDk-98-OwO" firstAttribute="top" secondItem="Wl6-a4-Xr8" secondAttribute="bottom" constant="8" id="yaj-Ui-CoW"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vM-td-yeJ" customClass="CardView" customModule="AEONMember4" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="258.5" width="250" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello Aeon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqL-Xp-mGK">
+                                        <rect key="frame" x="8" y="16" width="234" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jPS-Qq-rvI">
+                                        <rect key="frame" x="8" y="53" width="234" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYo-Ez-sHR">
+                                        <rect key="frame" x="8" y="103" width="234" height="30"/>
+                                        <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onTouchNext:" destination="e1l-Cf-gaJ" eventType="touchUpInside" id="8bb-P4-QdW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EqL-Xp-mGK" secondAttribute="trailing" constant="8" id="4Zo-qR-431"/>
+                                    <constraint firstAttribute="trailing" secondItem="jPS-Qq-rvI" secondAttribute="trailing" constant="8" id="7YB-em-akB"/>
+                                    <constraint firstAttribute="height" constant="150" id="D5o-K2-Vcg"/>
+                                    <constraint firstItem="EqL-Xp-mGK" firstAttribute="top" secondItem="0vM-td-yeJ" secondAttribute="top" constant="16" id="E16-V9-HlU"/>
+                                    <constraint firstItem="yYo-Ez-sHR" firstAttribute="leading" secondItem="0vM-td-yeJ" secondAttribute="leading" constant="8" id="H55-0M-IN8"/>
+                                    <constraint firstItem="jPS-Qq-rvI" firstAttribute="leading" secondItem="0vM-td-yeJ" secondAttribute="leading" constant="8" id="ID2-bR-4s5"/>
+                                    <constraint firstItem="jPS-Qq-rvI" firstAttribute="top" secondItem="EqL-Xp-mGK" secondAttribute="bottom" constant="16" id="Jxy-vf-der"/>
+                                    <constraint firstItem="yYo-Ez-sHR" firstAttribute="top" secondItem="jPS-Qq-rvI" secondAttribute="bottom" constant="16" id="Xc7-a0-YM5"/>
+                                    <constraint firstAttribute="width" constant="250" id="ZTC-hK-11G"/>
+                                    <constraint firstAttribute="trailing" secondItem="yYo-Ez-sHR" secondAttribute="trailing" constant="8" id="fHU-Bt-vBd"/>
+                                    <constraint firstItem="EqL-Xp-mGK" firstAttribute="leading" secondItem="0vM-td-yeJ" secondAttribute="leading" constant="8" id="kTi-5x-Pcf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HPg-Bl-IoX" firstAttribute="bottom" secondItem="ftl-6f-qYG" secondAttribute="bottom" id="3VT-Qa-snD"/>
+                            <constraint firstItem="0vM-td-yeJ" firstAttribute="centerX" secondItem="0gF-7I-iT8" secondAttribute="centerX" id="6t1-8x-XpW"/>
                             <constraint firstItem="ftl-6f-qYG" firstAttribute="leading" secondItem="HPg-Bl-IoX" secondAttribute="leading" id="Bus-gb-5Gt"/>
                             <constraint firstItem="ftl-6f-qYG" firstAttribute="top" secondItem="HPg-Bl-IoX" secondAttribute="top" id="CUQ-pV-pw0"/>
+                            <constraint firstItem="0vM-td-yeJ" firstAttribute="centerY" secondItem="0gF-7I-iT8" secondAttribute="centerY" id="Hfj-19-qEo"/>
                             <constraint firstItem="HPg-Bl-IoX" firstAttribute="trailing" secondItem="ftl-6f-qYG" secondAttribute="trailing" id="nvU-PY-YH4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HPg-Bl-IoX"/>
@@ -6334,11 +6381,14 @@
                     <connections>
                         <outlet property="bbLoaleFlag" destination="GAG-tv-zmc" id="vWF-Hv-aXo"/>
                         <outlet property="btnAgree" destination="EZM-Nj-m38" id="RlI-Qt-vJr"/>
+                        <outlet property="btnNext" destination="yYo-Ez-sHR" id="Ogt-a1-nS2"/>
+                        <outlet property="dialogView" destination="0vM-td-yeJ" id="jaM-LT-d4p"/>
                         <outlet property="lblSwitch" destination="CWU-5m-rAF" id="huz-bO-fj7"/>
                         <outlet property="lblTermsCon" destination="DZ2-1Y-WL5" id="YaH-cN-ddx"/>
                         <outlet property="lblTitle" destination="rcu-ZW-95G" id="2fA-X8-QNR"/>
                         <outlet property="svTermsCon" destination="D0n-I0-0Px" id="1LB-Ha-eTg"/>
                         <outlet property="swAgree" destination="RuV-pc-ftz" id="vwG-Oz-KLF"/>
+                        <outlet property="wholeView" destination="ftl-6f-qYG" id="Cpx-3u-fXW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGr-gD-KXQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6357,7 +6407,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your picture will be taken to issue the member card." textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZD-wq-Dq1">
-                                        <rect key="frame" x="16" y="16" width="343" height="72"/>
+                                        <rect key="frame" x="16" y="16" width="343" height="54"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="23"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -6366,7 +6416,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDS-u9-4s7">
-                                        <rect key="frame" x="16" y="110.5" width="343" height="35"/>
+                                        <rect key="frame" x="16" y="92.5" width="343" height="35"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Ndh-kf-csW"/>
@@ -6386,7 +6436,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Card can use only for your AEON Service with this picture information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfV-4j-Uu0">
-                                        <rect key="frame" x="16" y="177.5" width="343" height="47"/>
+                                        <rect key="frame" x="16" y="159.5" width="343" height="35"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -6395,7 +6445,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Picture" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3C7-Ni-Xmz">
-                                        <rect key="frame" x="16" y="240.5" width="343" height="26.5"/>
+                                        <rect key="frame" x="16" y="210.5" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -6404,7 +6454,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Save in your mobile phone and don't share to others." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EN-Uz-OQa">
-                                        <rect key="frame" x="16" y="275" width="343" height="47"/>
+                                        <rect key="frame" x="16" y="238.5" width="343" height="35"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -6413,7 +6463,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Not change until you reinstall this application." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEC-L8-nkp">
-                                        <rect key="frame" x="16" y="330" width="343" height="23.5"/>
+                                        <rect key="frame" x="16" y="281.5" width="343" height="17.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -6422,7 +6472,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. To secure and verify your member card when you lost your phone." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xft-pk-XSh">
-                                        <rect key="frame" x="16" y="361.5" width="343" height="47"/>
+                                        <rect key="frame" x="16" y="307" width="343" height="35"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -6980,37 +7030,37 @@
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aeon_promo" translatesAutoresizingMaskIntoConstraints="NO" id="txz-nr-NCT">
-                                        <rect key="frame" x="10" y="212.5" width="355" height="200"/>
+                                        <rect key="frame" x="10" y="185" width="355" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="Tk1-NW-7Wn"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6t-Eg-eHA">
-                                        <rect key="frame" x="10" y="45" width="355" height="161"/>
+                                        <rect key="frame" x="10" y="45" width="355" height="133.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qct-kQ-r2E">
-                                                <rect key="frame" x="5" y="10" width="345" height="31.5"/>
+                                                <rect key="frame" x="5" y="10" width="345" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="20"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Address Address Address Address Address " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXS-0e-K46">
-                                                <rect key="frame" x="5" y="51.5" width="345" height="53"/>
+                                                <rect key="frame" x="5" y="43.5" width="345" height="40"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXA-ac-oUP">
-                                                <rect key="frame" x="0.0" y="119.5" width="355" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="98.5" width="355" height="20"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Phone -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7F-i7-3h0">
-                                                        <rect key="frame" x="5" y="0.0" width="58.5" height="26.5"/>
+                                                        <rect key="frame" x="5" y="0.0" width="60.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09234555" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGn-OB-fhY">
-                                                        <rect key="frame" x="78.5" y="0.0" width="276.5" height="26.5"/>
+                                                        <rect key="frame" x="80.5" y="0.0" width="274.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -7045,7 +7095,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Sau-6S-wjf">
-                                        <rect key="frame" x="10" y="419" width="355" height="118.5"/>
+                                        <rect key="frame" x="10" y="391.5" width="355" height="118.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvV-xg-PQd">
                                                 <rect key="frame" x="0.0" y="0.0" width="175" height="118.5"/>
@@ -7727,6 +7777,53 @@
             </objects>
             <point key="canvasLocation" x="-15249" y="-907"/>
         </scene>
+        <!--Contact Ph No View Controller-->
+        <scene sceneID="wGr-cz-9EM">
+            <objects>
+                <viewController storyboardIdentifier="ContactPhNoViewController" modalPresentationStyle="fullScreen" id="jOR-i7-lOH" customClass="ContactPhNoViewController" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lxt-qs-rij">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello Aeon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZR-ph-qOa">
+                                <rect key="frame" x="8" y="8" width="234" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GJr-m0-lez">
+                                <rect key="frame" x="8" y="45" width="234" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJb-fY-7OB">
+                                <rect key="frame" x="8" y="95" width="234" height="30"/>
+                                <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Forward">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KJb-fY-7OB" firstAttribute="trailing" secondItem="GJr-m0-lez" secondAttribute="trailing" id="6qI-zU-E3J"/>
+                            <constraint firstItem="KJb-fY-7OB" firstAttribute="leading" secondItem="GJr-m0-lez" secondAttribute="leading" id="K98-WY-Vw1"/>
+                            <constraint firstItem="NZR-ph-qOa" firstAttribute="leading" secondItem="Zkv-HK-MdO" secondAttribute="leading" constant="8" id="LgN-0g-As7"/>
+                            <constraint firstItem="Zkv-HK-MdO" firstAttribute="trailing" secondItem="NZR-ph-qOa" secondAttribute="trailing" constant="8" id="PIe-tj-BLb"/>
+                            <constraint firstItem="NZR-ph-qOa" firstAttribute="top" secondItem="Zkv-HK-MdO" secondAttribute="top" constant="8" id="S8u-zW-X69"/>
+                            <constraint firstItem="KJb-fY-7OB" firstAttribute="top" secondItem="GJr-m0-lez" secondAttribute="bottom" constant="16" id="lDa-l2-zZH"/>
+                            <constraint firstItem="GJr-m0-lez" firstAttribute="top" secondItem="NZR-ph-qOa" secondAttribute="bottom" constant="16" id="m74-QS-xL0"/>
+                            <constraint firstItem="GJr-m0-lez" firstAttribute="trailing" secondItem="NZR-ph-qOa" secondAttribute="trailing" id="pJQ-6I-aru"/>
+                            <constraint firstItem="GJr-m0-lez" firstAttribute="leading" secondItem="NZR-ph-qOa" secondAttribute="leading" id="vuQ-tE-7FZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zkv-HK-MdO"/>
+                    </view>
+                    <size key="freeformSize" width="250" height="150"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eyt-GR-Sfs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6786" y="-3029"/>
+        </scene>
         <!--Loan Calculator View Controller-->
         <scene sceneID="0Vx-8j-EvL">
             <objects>
@@ -7757,7 +7854,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kix-Yc-I4k">
-                                <rect key="frame" x="0.0" y="88.5" width="375" height="173.5"/>
+                                <rect key="frame" x="0.0" y="88.5" width="375" height="168.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Hsn-uq-ZUi">
                                         <rect key="frame" x="5" y="2" width="365" height="50"/>
@@ -7828,7 +7925,7 @@
                                         <rect key="frame" x="5" y="79" width="365" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loan Term" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TDy-I9-cg9">
-                                                <rect key="frame" x="9" y="0.0" width="59.5" height="43"/>
+                                                <rect key="frame" x="9" y="0.0" width="61" height="43"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7837,7 +7934,7 @@
                                                 </variation>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Esw-Rb-u1w">
-                                                <rect key="frame" x="70.5" y="0.0" width="295.5" height="43"/>
+                                                <rect key="frame" x="72" y="0.0" width="294" height="43"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Mhh-Ak-TcW">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -7930,7 +8027,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCq-TA-O8m">
-                                        <rect key="frame" x="8" y="54" width="359" height="19"/>
+                                        <rect key="frame" x="8" y="54" width="359" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="35" id="M1c-wO-sOi"/>
                                         </constraints>
@@ -7972,7 +8069,7 @@
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5G-zo-0WU">
-                                <rect key="frame" x="5" y="269.5" width="365" height="343"/>
+                                <rect key="frame" x="5" y="264.5" width="365" height="343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Processing Fee" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b56-Ug-yIC">
                                         <rect key="frame" x="8" y="8" width="210" height="67.5"/>
@@ -8170,7 +8267,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="he3-Qk-o4M">
-                                <rect key="frame" x="5" y="615.5" width="365" height="171.5"/>
+                                <rect key="frame" x="5" y="610.5" width="365" height="171.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Repayment Amount" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUf-C2-B9r">
                                         <rect key="frame" x="8" y="27.5" width="209.5" height="54.5"/>
@@ -8356,10 +8453,10 @@
                                         <rect key="frame" x="9" y="57" width="317" height="317"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="MSk-Ej-gOH">
-                                                <rect key="frame" x="11" y="12" width="285" height="45"/>
+                                                <rect key="frame" x="11" y="12" width="285" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJw-YO-gQL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="285" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="285" height="16.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="285" id="nj3-iM-HtM"/>
                                                         </constraints>
@@ -8368,7 +8465,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqi-V5-TBU">
-                                                        <rect key="frame" x="0.0" y="23" width="285" height="22"/>
+                                                        <rect key="frame" x="0.0" y="17.5" width="285" height="16.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="285" id="K3B-7K-ZtU"/>
                                                         </constraints>
@@ -8379,10 +8476,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="F2R-RT-kdc">
-                                                <rect key="frame" x="12" y="72" width="285" height="45"/>
+                                                <rect key="frame" x="12" y="72" width="285" height="67"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jk-zX-RB7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="285" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="285" height="16.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="285" id="Z1t-M8-TxA"/>
                                                         </constraints>
@@ -8391,7 +8488,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHP-k4-x6P">
-                                                        <rect key="frame" x="0.0" y="23" width="285" height="22"/>
+                                                        <rect key="frame" x="0.0" y="17.5" width="285" height="49.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="285" id="b0g-G9-zSn"/>
                                                         </constraints>
@@ -8402,16 +8499,16 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q81-Wu-6CZ">
-                                                <rect key="frame" x="11" y="129" width="142.5" height="54"/>
+                                                <rect key="frame" x="11" y="151" width="142.5" height="43"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45X-sP-da1">
-                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wQ-R9-Mw7">
-                                                        <rect key="frame" x="0.0" y="26" width="143" height="22"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="143" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -8429,16 +8526,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9p-DL-KvN">
-                                                <rect key="frame" x="166" y="129" width="142.5" height="54"/>
+                                                <rect key="frame" x="166" y="151" width="142.5" height="43"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ul1-gX-qNa">
-                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vr1-j8-wv9">
-                                                        <rect key="frame" x="0.0" y="26" width="143" height="22"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="143" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -8456,16 +8553,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIb-fE-SWv">
-                                                <rect key="frame" x="11" y="191" width="142.5" height="54"/>
+                                                <rect key="frame" x="11" y="202" width="142.5" height="43"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5N-Wd-yN5">
-                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQT-wK-SBI">
-                                                        <rect key="frame" x="0.0" y="26" width="143" height="22"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="143" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -8484,16 +8581,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAr-Bc-Lnb">
-                                                <rect key="frame" x="166" y="191" width="142.5" height="54"/>
+                                                <rect key="frame" x="166" y="202" width="142.5" height="43"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Down" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvt-av-LUI">
-                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAA-IS-iZM">
-                                                        <rect key="frame" x="0.0" y="26" width="143" height="22"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="143" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -8513,13 +8610,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yax-iU-0LD">
                                                 <rect key="frame" x="12" y="253" width="142.5" height="54"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loan-Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fv-Ta-XQ1">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loan-Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fv-Ta-XQ1">
                                                         <rect key="frame" x="0.0" y="2" width="142.5" height="22"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt2-yD-kEs">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt2-yD-kEs">
                                                         <rect key="frame" x="0.0" y="26" width="143" height="22"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -8541,13 +8638,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnO-y0-aJ8">
                                                 <rect key="frame" x="167" y="253" width="142.5" height="54"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invoice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yd4-Co-Mdy">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Invoice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yd4-Co-Mdy">
                                                         <rect key="frame" x="0.0" y="2" width="142.5" height="22"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZA-aH-1Qh">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZA-aH-1Qh">
                                                         <rect key="frame" x="0.0" y="26" width="143" height="22"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -8604,7 +8701,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itx-dx-lTw">
-                                        <rect key="frame" x="9" y="392" width="151" height="41"/>
+                                        <rect key="frame" x="9" y="392" width="151" height="33"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="18"/>
                                         <state key="normal" title="Confirm">
@@ -8615,7 +8712,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKV-ha-tYa">
-                                        <rect key="frame" x="175" y="392" width="151" height="41"/>
+                                        <rect key="frame" x="175" y="392" width="151" height="33"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="18"/>
                                         <state key="normal" title="Cancel">
@@ -8696,19 +8793,19 @@
                                 <rect key="frame" x="30" y="30" width="315" height="607"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1Z-4h-5Wj">
-                                        <rect key="frame" x="10" y="10" width="295" height="453"/>
+                                        <rect key="frame" x="10" y="10" width="295" height="460.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Em3-eh-USZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="221.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="213.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRP-8x-nbT">
-                                                        <rect key="frame" x="0.0" y="8" width="295" height="31.5"/>
+                                                        <rect key="frame" x="0.0" y="8" width="295" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="20"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K40-uf-xAu">
-                                                        <rect key="frame" x="0.0" y="55.5" width="295" height="110"/>
+                                                        <rect key="frame" x="0.0" y="47.5" width="295" height="110"/>
                                                         <attributedString key="attributedText">
                                                             <fragment>
                                                                 <string key="content">I have a scroll view and an image view behind it and I am populating it with nibs. I am using autolayout. I have a bottom space to superview and a top space to superview on both of the views. </string>
@@ -8722,14 +8819,14 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aam-Xa-fZx">
-                                                        <rect key="frame" x="0.0" y="170.5" width="295" height="41"/>
+                                                        <rect key="frame" x="0.0" y="162.5" width="295" height="41"/>
                                                         <subviews>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1pE-e5-9ct">
                                                                 <rect key="frame" x="5" y="5" width="51" height="31"/>
                                                                 <color key="onTintColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </switch>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPa-aW-wxt">
-                                                                <rect key="frame" x="70" y="7.5" width="209" height="26.5"/>
+                                                                <rect key="frame" x="70" y="10.5" width="209" height="20"/>
                                                                 <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -8770,7 +8867,7 @@
                                         </constraints>
                                     </scrollView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Enter Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qh-gE-LvC">
-                                        <rect key="frame" x="16" y="473" width="283" height="30"/>
+                                        <rect key="frame" x="16" y="480.5" width="283" height="22.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="19"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>

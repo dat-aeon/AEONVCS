@@ -10,6 +10,7 @@ import UIKit
 
 class TermsConditionAgreeViewController: BaseUIViewController {
 
+    @IBOutlet weak var wholeView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var svTermsCon: UIScrollView!
     @IBOutlet weak var lblTermsCon: UILabel!
@@ -17,12 +18,16 @@ class TermsConditionAgreeViewController: BaseUIViewController {
     @IBOutlet weak var swAgree: UISwitch!
     @IBOutlet weak var btnAgree: UIButton!
     @IBOutlet weak var bbLoaleFlag: UIBarButtonItem!
+    @IBOutlet weak var dialogView: CardView!
+    @IBOutlet weak var btnNext: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.btnAgree.isEnabled = false
         self.btnAgree.alpha = 0.5
         self.swAgree.isOn = false
+        
+        dialogView.isHidden = true
         
         let maxSize = CGSize(width: svTermsCon.frame.size.width, height: svTermsCon.frame.size.height)
         let size = lblTermsCon.sizeThatFits(maxSize)
@@ -46,7 +51,33 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         self.lblTitle.attributedText = Utils.setLineSpacing(data: lblTitle.text!)
         self.lblTermsCon.attributedText = Utils.setLineSpacing(data: lblTermsCon.text!)
         //print("\(mmText.count)")
+        
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "touchHappen")
+        
+        self.wholeView.addGestureRecognizer(tap)
+        
     }
+    
+    @IBAction func onTouchNext(_ sender: Any) {
+        
+                UserDefaults.standard.set(true, forKey: Constants.IS_ALREADY_ACCEPT)
+                UserDefaults.standard.set(true, forKey: Constants.IS_FIRST_INSTALL)
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+        
+    }
+    @objc func touchHappen(){
+        dialogView.isHidden = true
+        
+        wholeView.alpha = 1
+        btnAgree.isUserInteractionEnabled = true
+        swAgree.isUserInteractionEnabled = true
+        
+    }
+    
+    
     @objc func switchIsChanged(mySwitch: UISwitch) {
         super.updateViews()
         if mySwitch.isOn {
@@ -83,11 +114,22 @@ class TermsConditionAgreeViewController: BaseUIViewController {
     
     @IBAction func onClickAgreeBtn(_ sender: UIButton) {
         
-        UserDefaults.standard.set(true, forKey: Constants.IS_ALREADY_ACCEPT)
-        UserDefaults.standard.set(true, forKey: Constants.IS_FIRST_INSTALL)
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
-        navigationVC.modalPresentationStyle = .overFullScreen
-        self.present(navigationVC, animated: true, completion: nil)
+//        UserDefaults.standard.set(true, forKey: Constants.IS_ALREADY_ACCEPT)
+//        UserDefaults.standard.set(true, forKey: Constants.IS_FIRST_INSTALL)
+//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+//        navigationVC.modalPresentationStyle = .overFullScreen
+//        self.present(navigationVC, animated: true, completion: nil)
+        
+        wholeView.alpha = 0.5
+        btnAgree.isUserInteractionEnabled = false
+        swAgree.isUserInteractionEnabled = false
+        
+        dialogView.isHidden = false
+        dialogView.isUserInteractionEnabled = true
+        
+        
+        
+        
     }
     
     @objc func setTermsConsLabel(){
