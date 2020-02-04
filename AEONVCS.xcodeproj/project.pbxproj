@@ -67,6 +67,7 @@
 		0467B3062257694900E23EE5 /* NRCpopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467B3052257694900E23EE5 /* NRCpopupViewController.swift */; };
 		0467B30A22576B3D00E23EE5 /* NrcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467B30822576B3D00E23EE5 /* NrcTableViewCell.swift */; };
 		0467B30B22576B3D00E23EE5 /* NrcTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0467B30922576B3D00E23EE5 /* NrcTableViewCell.xib */; };
+		047837B023E95C09009E9DD1 /* ContactPhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047837AF23E95C09009E9DD1 /* ContactPhNoViewController.swift */; };
 		047F1611220DA1F70015CDEB /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F1610220DA1F70015CDEB /* RegisterData.swift */; };
 		048E1F612370082C004E0863 /* ApplicationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E1F602370082C004E0863 /* ApplicationListVC.swift */; };
 		048E1F6423700C29004E0863 /* cellApplicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E1F6323700C29004E0863 /* cellApplicationList.swift */; };
@@ -307,6 +308,7 @@
 		0467B3052257694900E23EE5 /* NRCpopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRCpopupViewController.swift; sourceTree = "<group>"; };
 		0467B30822576B3D00E23EE5 /* NrcTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NrcTableViewCell.swift; sourceTree = "<group>"; };
 		0467B30922576B3D00E23EE5 /* NrcTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NrcTableViewCell.xib; sourceTree = "<group>"; };
+		047837AF23E95C09009E9DD1 /* ContactPhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPhNoViewController.swift; sourceTree = "<group>"; };
 		047F1610220DA1F70015CDEB /* RegisterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterData.swift; sourceTree = "<group>"; };
 		048E1F602370082C004E0863 /* ApplicationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListVC.swift; sourceTree = "<group>"; };
 		048E1F6323700C29004E0863 /* cellApplicationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellApplicationList.swift; sourceTree = "<group>"; };
@@ -611,6 +613,14 @@
 				0467B30922576B3D00E23EE5 /* NrcTableViewCell.xib */,
 			);
 			path = nrc_cell;
+			sourceTree = "<group>";
+		};
+		047837AE23E95B9D009E9DD1 /* contactPhNo */ = {
+			isa = PBXGroup;
+			children = (
+				047837AF23E95C09009E9DD1 /* ContactPhNoViewController.swift */,
+			);
+			path = contactPhNo;
 			sourceTree = "<group>";
 		};
 		048E1F6223700C0D004E0863 /* aeon_application_list_cell */ = {
@@ -1178,6 +1188,7 @@
 		75A31DF522000182002E7336 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				047837AE23E95B9D009E9DD1 /* contactPhNo */,
 				C16C63DF238C3DC2004E24C1 /* agentChannel */,
 				045811A62362B56100E3C2DA /* digitalApplication */,
 				04645751230FCAFC00ABF2F4 /* loancalculator */,
@@ -1614,6 +1625,7 @@
 				6A276CD92217C6B6002C87E0 /* UpdateInfoViewModel.swift in Sources */,
 				04F21ACF221CF90300597FED /* RegisterPhotoUploadViewController.swift in Sources */,
 				045811B22362B56100E3C2DA /* LoanConfirmationVC.swift in Sources */,
+				047837B023E95C09009E9DD1 /* ContactPhNoViewController.swift in Sources */,
 				04C2FC27228295C300137CC3 /* MessagingPhotoPopupViewController.swift in Sources */,
 				75A31DF72200020E002E7336 /* MainViewController.swift in Sources */,
 				04C3B31522522801005B54EB /* InfoUpdateForPh1ViewController.swift in Sources */,
@@ -1835,7 +1847,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS;
 				PRODUCT_NAME = AEONMember4;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1859,7 +1871,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS;
 				PRODUCT_NAME = AEONMember4;
 				PROVISIONING_PROFILE_SPECIFIER = "";
