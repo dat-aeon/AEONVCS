@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pyidaungsu-Regular.ttf">
+            <string>PyidaungsuBook</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="175" id="KGk-i7-Jjw" customClass="SecQuesRegisterTableViewCell" customModule="AEONVCS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="197" id="KGk-i7-Jjw" customClass="SecQuesRegisterTableViewCell" customModule="AEONVCS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="404" height="197"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="404" height="174.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="404" height="197"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLT-c5-y6H">
-                        <rect key="frame" x="20" y="11" width="364" height="153"/>
+                        <rect key="frame" x="15" y="11" width="374" height="175"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWH-Ua-scv">
                                 <rect key="frame" x="0.0" y="16" width="40" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHD-tU-bNQ">
-                                        <rect key="frame" x="24" y="0.0" width="16" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="25" y="0.0" width="15" height="50"/>
+                                        <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                         <color key="textColor" red="0.82406836750000001" green="0.1919207275" blue="0.63621109720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -44,16 +47,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWU-5g-Ae0">
-                                <rect key="frame" x="48" y="16" width="308" height="50"/>
+                                <rect key="frame" x="48" y="16" width="318" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favorite food?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWH-8q-SMK">
-                                        <rect key="frame" x="5" y="16" width="274" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWH-8q-SMK">
+                                        <rect key="frame" x="5" y="25" width="284" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expand-small-icon" translatesAutoresizingMaskIntoConstraints="NO" id="pBf-fj-pg9">
-                                        <rect key="frame" x="284" y="17" width="16" height="16"/>
+                                        <rect key="frame" x="294" y="17" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="16" id="rfh-wg-zH2"/>
                                             <constraint firstAttribute="height" constant="16" id="rwh-Dr-ru4"/>
@@ -75,7 +78,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ans:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gI-Be-aQg">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -91,12 +94,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQl-Wp-ahK">
-                                <rect key="frame" x="48" y="82" width="308" height="50"/>
+                                <rect key="frame" x="48" y="82" width="318" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gqP-xR-RUR">
-                                        <rect key="frame" x="0.0" y="10" width="308" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="8" width="318" height="34"/>
+                                        <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -108,18 +110,27 @@
                                     <constraint firstItem="gqP-xR-RUR" firstAttribute="centerY" secondItem="hQl-Wp-ahK" secondAttribute="centerY" id="yvm-JS-6PD"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBB-6k-lfX">
+                                <rect key="frame" x="48" y="132" width="318" height="0.0"/>
+                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
+                                <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iWH-Ua-scv" firstAttribute="top" secondItem="pLT-c5-y6H" secondAttribute="top" constant="16" id="9v2-5e-cJd"/>
                             <constraint firstItem="hQl-Wp-ahK" firstAttribute="leading" secondItem="ZM6-EL-uuE" secondAttribute="trailing" constant="8" id="BYw-vo-fUZ"/>
+                            <constraint firstAttribute="trailing" secondItem="fBB-6k-lfX" secondAttribute="trailing" constant="8" id="C3j-jZ-Wpf"/>
                             <constraint firstItem="ZM6-EL-uuE" firstAttribute="top" secondItem="iWH-Ua-scv" secondAttribute="bottom" constant="16" id="De8-WZ-l3G"/>
+                            <constraint firstItem="fBB-6k-lfX" firstAttribute="leading" secondItem="pLT-c5-y6H" secondAttribute="leading" constant="48" id="EcE-NX-hQv"/>
                             <constraint firstItem="ZM6-EL-uuE" firstAttribute="leading" secondItem="pLT-c5-y6H" secondAttribute="leading" id="FAs-8O-Vgs"/>
                             <constraint firstAttribute="trailing" secondItem="hQl-Wp-ahK" secondAttribute="trailing" constant="8" id="LQd-0n-E32"/>
                             <constraint firstAttribute="trailing" secondItem="KWU-5g-Ae0" secondAttribute="trailing" constant="8" id="OyO-8X-V17"/>
                             <constraint firstItem="KWU-5g-Ae0" firstAttribute="top" secondItem="pLT-c5-y6H" secondAttribute="top" constant="16" id="cmN-f9-yLg"/>
                             <constraint firstItem="KWU-5g-Ae0" firstAttribute="leading" secondItem="iWH-Ua-scv" secondAttribute="trailing" constant="8" id="hym-Xl-tdy"/>
                             <constraint firstItem="hQl-Wp-ahK" firstAttribute="top" secondItem="KWU-5g-Ae0" secondAttribute="bottom" constant="16" id="juj-8z-sgW"/>
+                            <constraint firstItem="fBB-6k-lfX" firstAttribute="top" secondItem="hQl-Wp-ahK" secondAttribute="bottom" id="r70-XN-jqE"/>
                             <constraint firstItem="iWH-Ua-scv" firstAttribute="leading" secondItem="pLT-c5-y6H" secondAttribute="leading" id="vkn-gA-qgi"/>
                         </constraints>
                     </view>
@@ -133,14 +144,17 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="lbMessage" destination="fBB-6k-lfX" id="6vl-oV-GJH"/>
+                <outlet property="lblAnsNo" destination="5gI-Be-aQg" id="03s-zG-8pf"/>
+                <outlet property="lblQuesNo" destination="aHD-tU-bNQ" id="Q0l-Cf-BBt"/>
                 <outlet property="lblSecQuestion" destination="XWH-8q-SMK" id="fXb-kf-R0H"/>
                 <outlet property="tfsecAnswer" destination="gqP-xR-RUR" id="rSq-Hz-XNl"/>
                 <outlet property="vsecQuesList" destination="KWU-5g-Ae0" id="euv-mZ-GKr"/>
             </connections>
-            <point key="canvasLocation" x="80" y="85.007496251874073"/>
+            <point key="canvasLocation" x="80" y="94.902548725637189"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="expand-small-icon" width="48" height="48"/>
+        <image name="expand-small-icon" width="24" height="24"/>
     </resources>
 </document>

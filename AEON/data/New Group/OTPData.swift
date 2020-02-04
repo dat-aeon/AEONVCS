@@ -14,7 +14,10 @@ struct OTPRequest{
 }
 
 struct OTPResponse : Codable{
-    let statusCode: String
-    let statusMessage: String
+    let status: String
+    let data: OTPData
+    
+}
+struct OTPData : Codable {
     let otpCode: String
 }

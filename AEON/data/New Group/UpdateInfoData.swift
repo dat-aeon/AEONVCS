@@ -8,25 +8,37 @@
 
 import Foundation
 
-struct UserQAResponse:Codable {
-    var statusCode: String
-    var statusMessage: String
+struct UserQAResponse: Codable {
+    var status: String?
+    var data: UserSECResponse?
+}
+
+struct UserSECResponse:Codable {
+    var numOfSECQues, numOfAnsChar: Int?
     var secQAUpdateInfoResDtoList:[UserQAList]
+    
+    enum CodingKeys:String,CodingKey {
+        case numOfSECQues = "numOfSecQues"
+        case numOfAnsChar = "numOfAnsChar"
+        case secQAUpdateInfoResDtoList = "customerSecurityQuestionDtoList"
+    }
 }
 
 struct UserQAList:Codable{
-    var custSecQuesId:Int
-    var answer:String
-    var secQuestionId:Int
-    var questionMM:String
-    var questionEN:String
+    var custSecQuesId:Int?
+    var secQuesId:Int?
+    var customerId:Int?
+    var answer:String?
+    var questionMM:String?
+    var questionEN:String?
 
     enum CodingKeys:String,CodingKey {
         case custSecQuesId
+        case secQuesId
         case answer
-        case secQuestionId
-        case questionMM
-        case questionEN
+        case customerId
+        case questionMM = "questionMyan"
+        case questionEN = "questionEng"
     }
 }
 
@@ -37,18 +49,16 @@ struct UpdateUserQARequest:Codable{
     enum CodingKeys: String,CodingKey {
         case customerId;
         case password;
-        case securityQAUpdateInfo
+        case securityQAUpdateInfo = "securityQuestionAnswerReqDtoList"
     }
 }
 
 struct SecurityQAUpdateInfo:Codable {
-    var custSecQuesId:String = ""
     var answer:String = ""
     var secQuesId:String = ""
     enum CodingKeys: String,CodingKey{
-        case custSecQuesId
         case answer
-        case secQuesId
+        case secQuesId = "secQuesId"
     }
 }
 

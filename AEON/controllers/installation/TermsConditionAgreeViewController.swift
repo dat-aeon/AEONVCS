@@ -2,7 +2,7 @@
 //  TermsConditionViewController.swift
 //  AEONVCS
 //
-//  Created by mac on 2/25/19.
+//  Created by Khin Yadanar Thein on 2/25/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
@@ -37,23 +37,26 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         case .MY:
             self.bbLoaleFlag.image = UIImage(named: "en_flag")
             self.lblTermsCon.text = mmText
-            print("\(mmText.count)")
+            //print("\(mmText.count)")
         }
         self.lblTitle.text = "terms.title".localized
-        lblSwitch.text = "terms.switch.label".localized
+        self.lblSwitch.text = "terms.switch.label".localized
         
-        print("\(mmText.count)")
+        self.lblTermsCon.font = UIFont(name: "PyidaungsuBook", size: 18)
+        self.lblTitle.attributedText = Utils.setLineSpacing(data: lblTitle.text!)
+        self.lblTermsCon.attributedText = Utils.setLineSpacing(data: lblTermsCon.text!)
+        //print("\(mmText.count)")
     }
     @objc func switchIsChanged(mySwitch: UISwitch) {
         super.updateViews()
         if mySwitch.isOn {
             self.btnAgree.isEnabled = true
             self.btnAgree.alpha = 1.0
-            print("switch is on")
+            //print("switch is on")
         } else {
             self.btnAgree.isEnabled = false
             self.btnAgree.alpha = 0.5
-            print("switch is off")
+            //print("switch is off")
         }
     }
     @IBAction func onClickeLocaleChange(_ sender: UIBarButtonItem) {
@@ -72,14 +75,18 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         }
         self.lblTitle.text = "terms.title".localized
         lblSwitch.text = "terms.switch.label".localized
+        self.lblTitle.attributedText = Utils.setLineSpacing(data: lblTitle.text!)
+        self.lblTermsCon.attributedText = Utils.setLineSpacing(data: lblTermsCon.text!)
         
-        print("\(mmText.count)")
+        //print("\(mmText.count)")
     }
     
     @IBAction func onClickAgreeBtn(_ sender: UIButton) {
         
         UserDefaults.standard.set(true, forKey: Constants.IS_ALREADY_ACCEPT)
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController
+        UserDefaults.standard.set(true, forKey: Constants.IS_FIRST_INSTALL)
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+        navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
     
@@ -91,6 +98,9 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         case .MY:
             self.lblTermsCon.text = mmText
         }
+        self.lblTermsCon.attributedText = Utils.setLineSpacing(data: lblTermsCon.text!)
+        self.lblTitle.attributedText = Utils.setLineSpacing(data: lblTitle.text!)
+        
     }
     
     let engText:String = """
@@ -99,21 +109,34 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         
         2. Agreement on Service Usage
             In using the online service, the customer hereby acknowledges,agrees and accepts as follows:
+
         2.1 The customer agrees to abide by and be liable to AEON under the terms and conditions prescribed herein, on Application and Website including the terms and conditions to be further prescribed or amended by AEON as it deems appropriate, which shall form part of these terms and conditions.
+
         2.2 The customer agrees that any transaction made via the online service after logging in using Username, Password specifically granted to the customer, including customer verification of identifying identity and confirming transaction of the customer shall be deemed as correctly and validly made by the customer. Upon confirming the transaction, the transaction shall be legally binding on the customer and can be cited as evidence without any other evidence bearing the customer’s signature required. In this regard, the customer waives the right to object or challenge AEON against any such transaction executed via the online service and the accuracy thereof.
+
         2.3 AEON reserves the right to provide all or some features of the mobile application during the service hours announced on Website or Application. The mobile application’s features available on Website and Application may be different. AEON may consider to configure, remove or add any features at any time as it deems appropriate.
+
         2.4 The customer agrees and acknowledges that AEON may not be able to provide the online service in the event of breakdown, malfunction, improvement or reparation of the computer system, component, telecommunication system and relevant network system or any force majeure events.
+
         2.5 AEON reserves the right to suspend or stop the online service temporarily or permanently at any time with notice to the customer as necessary or on reasonable basis.
          
         3. Conditions of Use
         For security in using the Online Service, the customer agrees:
+
         3.1 To ensure that the computer terminal, equipment and other electronic communication devices, connection to internet network and/or web browser used to access the Online Service have adequate capacity and have been installed with protection against computer viruses, malwares and any other deceptive programs designed to destroy or restrict accession to data and other threats, as well as meet the standard specifications set by AEON.
+
         3.2 To be careful in accessing to and filling out information concerning member card, personal information and other information of the customer.
+
         3.3 To protect and keep confidential personal information, the Username, Password as assigned to the customer by AEON and those changed afterwards.
+
         3.4 Not to leave the computer terminal, equipment and /or other electronic communication devices which are logged in unattended and to log off the online service every time after use.
+
         3.5 In the event that the customer accesses to the mobile application using shared computers, shared electronic communication devices and/or public internet network the customer agrees to be responsible for all damages incurred by the customer, AEON and any other person should there be any unauthorized access to or any transaction being executed through the mobile application, or personal information of the customer or other AEON’s customers being revealed. In this regard, AEON reserves the right to suspend the mobile application, whether in whole or in part, for so long as and in the event that the customer accesses to the mobile application in such manner or through such or other connection AEON deems unsecured.
+
         3.6 If the Password of the customer is lost, stolen or if the customer suspects that other person may know or be able to guess them, the customer shall promptly change the Password by the method as prescribed by AEON. It shall be sole responsibility of the customer to do so. Failure to do so will result in liability to the customer for all transactions and all losses and damages occurred.
+
         3.7 In the event of error while using or transacting via the Online Service, the customer shall inform AEON in writing within 7 days from the date of such error, otherwise it shall be deemed that the transaction executed is correct and valid.
+
         In reporting error, the customer shall prepare and send to AEON a letter informing at least the following details:
         3.7.1 Date and time of the transaction;
         3.7.2 Location of the computer terminal, equipment or the electronic communication devices used and type of internet network connection;
@@ -122,21 +145,30 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         3.7.5 Description of the error and reference code (if any)
          
         4. Protection of Customer Security
-        AEON reserves the right to suspend the Online Service if repeatedly entered wrong Username, Password over the number of times allowed by AEON. In such case, transaction on process shall be immediately cancelled and the customer shall not be able to claim for any damages which may arise therefrom. To resume the Online Service, the customer can Call Center of AEON at 01-9345-466 during working days and hours.
+        AEON reserves the right to suspend the Online Service if repeatedly entered wrong Username, Password over the number of times allowed by AEON. In such case, transaction on process shall be immediately cancelled and the customer shall not be able to claim for any damages which may arise therefrom. To resume the Online Service, the customer can Call Center of AEON at 09-9697-12111 during working days and hours.
          
         5. No Warranty
         The information and materials contained in Application and Website, including text, graphics, links or other items are provided on "as is" and "as available" basis. AEON does not warrant the accuracy, adequacy or completeness of the information and materials, and expressly disclaims liability for errors or omissions in providing information and materials. No warranty of any kind, implied, expressed or statutory including but not limited to the warranties of non-infringement of third party rights and title, merchantability, fitness for a particular purpose and freedom from computer virus, is given in conjunction therewith.
          
         6. Exemption of Liability
         In no event shall AEON be liable for any losses, damages including without limitation direct, indirect, special, incidental or consequential damages or difficulties incurred by the customer from using or transacting via the Online Service including in the following cases:
-            6.1 The customer discloses his/her Username, Password to other person so as to allow such other person to login and execute transactions on his/her behalf, including to use the Online Service for illegal purpose.
+            
+        6.1 The customer discloses his/her Username, Password to other person so as to allow such other person to login and execute transactions on his/her behalf, including to use the Online Service for illegal purpose.
+
         6.2 Any cause attributable to deliberate act or negligence on the part of the customer.
+
         6.3 Non-compliance by the customer with the terms and conditions of the Online Service including manuals and guidelines for using the Online Service issued by AEON, or any applicable laws and regulations.
+
         6.4 Any error occurred from change or cancellation of the instruction and/or information transmitted to the Online Service or failure of performance, error, omission, interruption, defect, delay in operation or transmission of the system and/or web browser and/or the internet service provider or telephone network provider of the customer or AEON.
+
         6.5 Cyber intrusion and/or attack by any person or group of person on any hardware, software and/or components relating to the Online Service, including release of program that may be harmful to system such as Virus, Trojan Horses and Worms which may affect the operation of the Online Service.
+
         6.6 Damage and/or inability to use the system, program and/or equipment for using the Online Service whether it be of AEON or other person, including but not limited to damage and/or error of the system, program, computer server system, electricity supply system, telecommunication devices, electricity devices, telephone line and/or telecommunication network system and/or any part of electronic system occurs.
+
         6.7 Any loss of data in the course of transmission whether via the Online Service system or other system of AEON or other system of the customer or internet service provider.
+
         6.8 Any damage caused by fire, earthquake, flood, accidents, riots, protests, civil disturbances, war, closure of business or strikes, disruption of electricity or services provided by the internet service provider, or other force majeure beyond the control of AEON and AEON is prevented from providing the Online Service.
+
         In those cases under clauses 6.1 – 6.3, the customer agrees to be responsible for any and all damages suffered by AEON and any other persons.
          
         7. Service Fees
@@ -144,6 +176,7 @@ class TermsConditionAgreeViewController: BaseUIViewController {
          
         8. Information
         8.1 The customer agrees that AEON may contact, inquire, maintain, collect, disclose and use any or all information concerning the customer as necessary and appropriate or as AEON deems beneficial to the customer in receiving information on other products and/or services.
+
         8.2 In case that AEON is required to disclose financial information or transaction or other information related to  the Online Service usage of the customer to any agencies pursuant to the provisions of laws, orders, or rules and regulations issued by any competent or regulating authorities  or disclosure is made for the benefit of the Online Service provision or for such other purpose as AEON deems appropriate, the customer agrees and consents AEON to disclose and/or report information and transaction of the customer in all respects, and agrees that such consent shall continue to be valid regardless of the customer’s terminating subscription to the Online Service, the Online Service account, or loan account or credit card account has been closed.
          
         9. Communication
@@ -154,122 +187,129 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         10.1 AEON has the right to cancel the Online Service without notifying the customer in the following events:
         (1) the customer has not logged in the Online Service for more than 1 year from the subscription date or from the date last logged in.
         (2) the customer breaches any terms and conditions of the Online Service including failure to pay service fee, charges or expenses in relation to any services of AEON for whatsoever reasons.
-            10.2 AEON has the right to cancel any features of the Online Service without prior notice.
-            10.3 The customer may cancel the Online Service by notifying AEON in the prescribed manner. Upon cancellation, any transaction in process shall be cancelled immediately.
-            11. Other Conditions
-            11.1 If any terms and conditions contained herein is invalid, contrary to law or becomes unenforceable, the invalidity, contradiction and unenforceability of such part shall not affect or prejudice the validity and enforceability of the remaining terms and conditions.
-            11.2 In the course of the Online Service usage, if there is any agreement on supplementary service of any kind between AEON and the customer, the customer agrees that the supplementary service shall be part of the Online Service. These terms and conditions shall be applied to the Online Service and terms and conditions of the supplementary service shall be regarded as additional terms and conditions and form part of these terms and conditions. In case of conflict, these terms and conditions shall prevail with respect to the Online Service and the terms and conditions for supplementary service shall prevail with respect to the supplementary service.
+
+        10.2 AEON has the right to cancel any features of the Online Service without prior notice.
+
+        10.3 The customer may cancel the Online Service by notifying AEON in the prescribed manner. Upon cancellation, any transaction in process shall be cancelled immediately.
+
+        11. Other Conditions
+        11.1 If any terms and conditions contained herein is invalid, contrary to law or becomes unenforceable, the invalidity, contradiction and unenforceability of such part shall not affect or prejudice the validity and enforceability of the remaining terms and conditions.
+
+        11.2 In the course of the Online Service usage, if there is any agreement on supplementary service of any kind between AEON and the customer, the customer agrees that the supplementary service shall be part of the Online Service. These terms and conditions shall be applied to the Online Service and terms and conditions of the supplementary service shall be regarded as additional terms and conditions and form part of these terms and conditions. In case of conflict, these terms and conditions shall prevail with respect to the Online Service and the terms and conditions for supplementary service shall prevail with respect to the supplementary service.
+
         11.3 The customer may print out the transaction confirmation page for his/her own record.
+
         11.4 In case these terms and conditions differ from the terms and conditions of other services provided by AEON, these terms and conditions shall be prevailed for the Online Service only.
+
         11.5 No delay, omission or waiver of exercising any rights or remedies as conferred by laws and these terms and conditions by AEON shall impair such rights or remedies or constitute a waiver thereof, nor shall any single or partial delay, omission or waiver of exercising of such rights or remedies preclude any other or further exercise thereof or the exercise of any other rights or remedies or be regarded as waiver or consent by AEON for the customer to proceed with any actions.
+
         11.6 The customer and AEON agree that these terms and conditions shall be subject to and be interpreted in accordance with and governed by the laws of Myanmar and that Myanmar court shall have exclusive jurisdiction over disputes arisen from the Online Service and its supplementary services.
         """
     
     let mmText: String = """
-    (၁) ၀န္ေဆာင္မႈႏွင့္ဆက္စပ္ေသာအေထြေထြ သတင္းအခ်က္အလက္မ်ား
+        (၁) ဝန်ဆောင်မှုနှင့်ဆက်စပ်သောအထွေထွေ သတင်းအချက်အလက်များ
 
-    AEON Microfinance (Myanmar) Co.Ltd. (AEON) ၏ Customer မ်ားအတြက္ AEON Microfinance (Myanmar) Mobile Application သည္ Customer ၏အခ်က္အလက္မ်ားအား မိုဘိုင္းဖုန္း၊တက္ဘလက္ႏွင့္ အီရြန္၀က္ဆိုဒ္မွ တဆင့္ ေလွ်ာက္ထားမွဳ.မ်ားကို စစ္ေဆးရန္ႏွင့္ အျခားေသာ၀န္ေဆာင္မႈမ်ားကိုလည္း ေဆာင္႐ြက္ႏိုင္ရန္ျဖစ္ပါသည္။
+            AEON Microfinance (Myanmar) Co.Ltd. (AEON) ၏ Customer များအတွက် AEON Microfinance (Myanmar) Mobile Application သည် Customer ၏အချက်အလက်များအား မိုဘိုင်းဖုန်း၊တက်ဘလက်နှင့် အီရွန်ဝက်ဆိုဒ်မှ တဆင့် လျှောက်ထားမှု.များကို စစ်ဆေးရန်နှင့် အခြားသောဝန်ဆောင်မှုများကိုလည်း ဆောင်ရွက်နိုင်ရန်ဖြစ်ပါသည်။
 
-    (၂) ၀န္ေဆာင္မႈအသုံးျပဳျခင္းဆိုင္ရာ သေဘာတူညီမႈ
+        (၂) ဝန်ဆောင်မှုအသုံးပြုခြင်းဆိုင်ရာ သဘောတူညီမှု
 
-    Online Services အား အသုံးျပဳျခင္းျဖင့္ Customerသည္ ေအာက္ပါအခ်က္အလက္မ်ားအား သိရွိ နားလည္ သေဘာတူ လက္ခံပါသည္။
+        Online Services အား အသုံးပြုခြင်းဖြင့် Customerသည် အောက်ပါအချက်အလက်များအား သိရှိ နားလည် သဘောတူ လက်ခံပါသည်။
 
-    ၂.၁ ) Customer သည္ Application ေပၚတြင္လည္းေကာင္း၊ Website ေပၚတြင္လည္းေကာင္း Company မွ ေနာင္တြင္ အခါအားေလ်ာ္စြာ ျပင္ဆင္မည့္ သင့္ေလ်ာ္သည့္ စည္းကမ္းခ်က္မ်ားကို လည္း ယခု ေဖာ္ျပထားေသာ စည္းကမ္းခ်က္မ်ား၏ အစိတ္အပိုင္းတစ္ခုအေနျဖင့္ ဆက္လက္ တည္ရွိေနမည္ ျဖစ္ေၾကာင္း သေဘာတူညီပါသည္္။
+        ၂.၁ ) Customer သည် Application ပေါ်တွင်လည်းကောင်း၊ Website ပေါ်တွင်လည်းကောင်း Company မှ နောင်တွင် အခါအားလျော်စွာ ပြင်ဆင်မည့် သင့်လျော်သည့် စည်းကမ်းချက်များကို လည်း ယခု ဖော်ပြထားသော စည်းကမ်းချက်များ၏ အစိတ်အပိုင်းတစ်ခုအနေဖြင့် ဆက်လက် တည်ရှိနေမည် ဖြစ်ကြောင်း သဘောတူညီပါသည််။
 
-    ၂.၂) Customerသည္ မည္သည့္ ေဆာင္ရြက္ခ်က္မွဳမ်ိဳးကိုမဆို လုပ္ေဆာင္ရန္ ၎အား ေပးအပ္ထားေသာ User Name, Password ျဖင့္ Online Service သို႔ ၀င္ေရာက္ ေဆာင္ရြက္ ခ်က္မ်ားအား ကိုယ္တိုင္ ကိုယ္ပိုင္သေဘာဆႏၵျဖင့္ေဆာင္႐ြက္ျခင္းျဖစ္သည္ဟုသတ္မွတ္ပါသည္။
-    ေဆာင္႐ြက္မွွဳ.မ်ားအား အတည္ျပဳၿပီးပါက Customer၏ ေဆာင္႐ြက္မွဳ.မ်ားအား တရား၀င္ သက္ေသ အေထာက္ထားအျဖစ္ သတ္မွတ္ထားျခင္းျဖစ္သျဖင့္ Customer၏ ထိုးၿမဲလက္မွတ္အား ရယူရန္ မလိုအပ္ေတာ့ပါ။
-    ဤအေၾကာင္းအရာႏွင့္ ပတ္သတ္၍ Customer သည္ Online Services အသုံးျပဳေသာ မည္သည့္၀န္ေဆာင္မႈႏွင့္ပတ္သတ္၍ AEON အား ကန္႔ကြက္ျခင္း တရားစြဲဆိုခြင့္ မရွိေစရပါ။
+        ၂.၂) Customerသည် မည်သည့် ဆောင်ရွက်ချက်မှုမျိုးကိုမဆို လုပ်ဆောင်ရန် ၎င်းအား ပေးအပ်ထားသော User Name, Password ဖြင့် Online Service သို့ ဝင်ရောက် ဆောင်ရွက် ချက်များအား ကိုယ်တိုင် ကိုယ်ပိုင်သဘောဆန္ဒဖြင့်ဆောင်ရွက်ခြင်းဖြစ်သည်ဟုသတ်မှတ်ပါသည်။ဆောင်ရွက်မှှု.များအား အတည်ပြုပြီးပါက Customer၏ ဆောင်ရွက်မှု.များအား တရားဝင် သက်သေ အထောက်ထားအဖြစ် သတ်မှတ်ထားခြင်းဖြစ်သဖြင့် Customer၏ ထိုးမြဲလက်မှတ်အား ရယူရန် မလိုအပ်တော့ပါ။ဤအကြောင်းအရာနှင့် ပတ်သတ်၍ Customer သည် Online Services အသုံးပြုသော မည်သည့်ဝန်ဆောင်မှုနှင့်ပတ်သတ်၍ AEON အား ကန့်ကွက်ခြင်း တရားစွဲဆိုခွင့် မရှိစေရပါ။
 
-    ၂.၃) AEON သည္ ၀န္ေဆာင္မႈ႕ ေပးသည့္ အခ်ိန္အတြင္း Mobile Application (သို႔) ဝဘ္ဆိုဒ္၏ ၀န္ေဆာင္မႈ အားလုံး (သို႔) အခ်ိဳ႕ အစိတ္အပိုင္းမ်ားအား ျပင္ဆင္စီစဥ္ ေဆာင္႐ြက္ႏိုင္ခြင့္ ရွိသည္။
-    Mobile Applicationတြင္ ပါဝင္ေသာ ဝန္ေဆာင္မႈမ်ားႏွင့္ ဝဘ္ဆိုဒ္တြင္ပါဝင္ေသာ ဝန္ေဆာင္မႈမ်ား အၾကားတစ္ခါတရံ ကြဲလြဲမႈမ်ားရွိႏိုင္ပါသည္။ AEONသည္ မည္သည့္အခ်ိန္တြင္မဆို ဝန္ေဆာင္မႈ မ်ားအား သင့္ေတာ္သလို အသစ္ထည့္သြင္းျခင္း၊ ပယ္ဖ်က္ျခင္း၊ ျပင္ဆင္ျခင္းမ်ားအား ျပဳလုပ္ႏိုင္ ပါသည္။
-    ၂.၄) ကြန္ပ်ဴတာစနစ္ခ်ိဳ.ယြင္းမွဳ.၊ ဆက္သြယ္ေရးဆိုင္ရာခ်ိဳ.ယြင္းမွဳ.၊ ကြန္ယက္ပိုင္းဆိုင္ရာ ခ်ိဳ.ယြင္းမွဳ.၊ အျခားေသာ သဘာဝေဘးအႏၲရာယ္မ်ားေၾကာင့္ Online Service အလုပ္မလုပ္ျခင္း မ်ားရွိပါက  Customer အေနျဖင့္ နားလည္ ခြင့္လြတ္ရန္ သေဘာတူပါသည္။
+        ၂.၃) AEON သည် ဝန်ဆောင်မှု့ ပေးသည့် အချိန်အတွင်း Mobile Application (သို့) ဝဘ်ဆိုဒ်၏ ဝန်ဆောင်မှု အားလုံး (သို့) အချို့ အစိတ်အပိုင်းများအား ပြင်ဆင်စီစဉ် ဆောင်ရွက်နိုင်ခွင့် ရှိသည်။Mobile Applicationတွင် ပါဝင်သော ဝန်ဆောင်မှုများနှင့် ဝဘ်ဆိုဒ်တွင်ပါဝင်သော ဝန်ဆောင်မှုများ အကြားတစ်ခါတရံ ကွဲလွဲမှုများရှိနိုင်ပါသည်။ AEONသည် မည်သည့်အချိန်တွင်မဆို ဝန်ဆောင်မှု များအား သင့်တော်သလို အသစ်ထည့်သွင်းခြင်း၊ ပယ်ဖျက်ခြင်း၊ ပြင်ဆင်ခြင်းများအား ပြုလုပ်နိုင် ပါသည်။
 
-    ၂.၅) AEON သည္ Customer အား ႀကိဳတင္အသိေပးရန္လိုအပ္ပါက အသိေပးၿပီး Online Service ကို ယာယီေသာ္လည္းေကာင္း၊ အျမဲတမ္းေသာ္လည္းေကာင္း ရပ္ဆိုင္းႏိုင္ခြင့္ရွိပါသည္။
+        ၂.၄) ကွန်ပျူတာစနစ်ချို.ယွင်းမှု.၊ ဆက်သွယ်ရေးဆိုင်ရာချို.ယွင်းမှု.၊ ကွန်ယက်ပိုင်းဆိုင်ရာ ချို.ယွင်းမှု.၊ အခြားသော သဘာဝဘေးအန္တရာယ်များကြောင့် Online Service အလုပ်မလုပ်ခြင်း များရှိပါက  Customer အနေဖြင့် နားလည် ခွင့်လွတ်ရန် သဘောတူပါသည်။
 
-    ၃) မိုဘိုင္းအသုံးျပဳျခင္းဆိုင္ရာ သတ္မွတ္ခ်က္မ်ား
-    Mobile Application အသုံးျပဳရာတြင္ လုံၿခဳံေရးအလို႔ငွာ ေအာက္ပါအခ်က္မ်ားအား Customer မွ လိုက္နာေဆာင္ရြက္ရန္ သေဘာတူညီပါသည္-
+        ၂.၅) AEON သည် Customer အား ကြိုတင်အသိပေးရန်လိုအပ်ပါက အသိပေးပြီး Online Service ကို ယာယီသော်လည်းကောင်း၊ အမြဲတမ်းသော်လည်းကောင်း ရပ်ဆိုင်းနိုင်ခွင့်ရှိပါသည်။
 
-    ၃.၁) Online Service အား အသုံးျပဳရာတြင္ အသုံးျပဳေသာ ဆက္သြယ္ေရးစက္ပစၥည္းမ်ား၊ ကြန္ပ်ဴတာမ်ား၊ ကြန္ယက္မ်ား၊ ဝဘ္ဘေရာက္ဇာမ်ားသည္ ဗိုင္းရပ္စ္မ်ားႏွင့္ အျခားေသာ အခ်က္အလက္အားေႏွာက္ယွက္ေဖာက္ထြင္းႏိုင္သည့္ ပ႐ိုဂရမ္မ်ားမွ အကာအကြယ္ရရွိေအာင္ ေဆာင္႐ြက္ထားရန္လိုအပ္ၿပီး AEON ၏သတ္မွတ္စံႏႈန္းမ်ားႏွင့္လည္း ကိုက္ညီရပါမည္။
+        ၃) မိုဘိုင်းအသုံးပြုခြင်းဆိုင်ရာ သတ်မှတ်ချက်များ
+        Mobile Application အသုံးပြုရာတွင် လုံခြုံရေးအလို့ငှာ အောက်ပါအချက်များအား Customer မှ လိုက်နာဆောင်ရွက်ရန် သဘောတူညီပါသည်-
 
-    ၃.၂) Customer ၏ အဖြဲ႕ဝင္ကဒ္၊ ကိုယ္ေရးကိုယ္တာႏွင့္ အျခားေသာအခ်က္အလက္မ်ားအား ျဖည့္စြက္ျခင္း၊ ရယူျခင္းမ်ားျပဳလုပ္ရာတြင္ ဂ႐ုျပဳေဆာင္႐ြက္ရန္ လိုအပ္ပါသည္။
+        ၃.၁) Online Service အား အသုံးပြုရာတွင် အသုံးပြုသော ဆက်သွယ်ရေးစက်ပစ္စည်းများ၊ ကွန်ပျူတာများ၊ ကွန်ယက်များ၊ ဝဘ်ဘရောက်ဇာများသည် ဗိုင်းရပ်စ်များနှင့် အခြားသော အချက်အလက်အားနှောက်ယှက်ဖောက်ထွင်းနိုင်သည့် ပရိုဂရမ်များမှ အကာအကွယ်ရရှိအောင် ဆောင်ရွက်ထားရန်လိုအပ်ပြီး AEON ၏သတ်မှတ်စံနှုန်းများနှင့်လည်း ကိုက်ညီရပါမည်။
 
-    ၃.၃) AEON မွ Customer သို႔ေပးအပ္ထားေသာ Username, Password ႏွင့္ ျပင္ဆင္ ေျပာင္းလဲလိုက္ေသာ Password မ်ားအား လုံၿခဳံစြာ ထိန္းသိမ္းထားရပါမည္။
+        ၃.၂) Customer ၏ အဖွဲ့ဝင်ကဒ်၊ ကိုယ်ရေးကိုယ်တာနှင့် အခြားသောအချက်အလက်များအား ဖြည့်စွက်ခြင်း၊ ရယူခြင်းများပြုလုပ်ရာတွင် ဂရုပြုဆောင်ရွက်ရန် လိုအပ်ပါသည်။
 
-    ၃.၄) အသုံးျပဳေသာဆက္သြယ္ေရးစက္ပစၥည္းမ်ား၊ ကြန္ပ်ဴတာမ်ားအားLogin ဝင္ေရာက္လ်က္ အေနအထားျဖင့္ ထြက္ခြာျခင္း မျပဳလုပ္ရန္ႏွင့္ Mobile Application အား အသုံးျပဳၿပီးတိုင္း Log out ျပဳလုပ္ရပါမည္။
+        ၃.၃) AEON မှ Customer သို့ပေးအပ်ထားသော Username, Password နှင့် ပြင်ဆင် ပြောင်းလဲလိုက်သော Password များအား လုံခြုံစွာ ထိန်းသိမ်းထားရပါမည်။
 
-    ၃.၅) မွ်ေဝ၍ အသုံးျပဳေသာ ဆက္သြယ္ေရးစက္ပစၥည္းမ်ား၊ ကြန္ပ်ဴတာမ်ား၊ အမ်ားသုံး အင္တာနက္ ကြန္ယက္မ်ား အသုံးျပဳျခင္းအတြက္ Customer, AEON, အျခားသူ တစ္ဦးဦးေၾကာင့္ ျဖစ္ေပၚလာေသာ ခြင့္ျပဳခ်က္မရွိသည့္ ဝန္ေဆာင္မႈ အသုံးခ် ေဆာင္႐ြက္ျခင္း၊ Customer၏ ကိုယ္ေရးအခ်က္အလက္ ေပါက္ၾကားျခင္း၊ အျခားေသာ AEON Customerမ်ား၏ အခ်က္ အလက္မ်ား ေပါက္ၾကားျခင္း စသည့္ မည္သည့္ ထိခိုက္နစ္နာမွဳ.မ်ိဳးကိုမဆို Customer မွ အျပည့္အဝ တာဝန္ယူရန္ သေဘာတူညီပါသည္။ ဤအေၾကာင္းအရာႏွင့္ ဆက္စပ္၍ လုံၿခဳံမႈမရွိဟု ယူဆရေသာ ခ်ိတ္ဆက္မႈႏွင့္ Customer၏ Mobile Application အသုံးခ်ခြင့္အား တစ္စိတ္တစ္ပိုင္းေသာ္လည္းေကာင္း၊ အျပည့္အဝေသာ္လည္းေကာင္း ရပ္ဆိုင္းရန္ AEON တြင္ အခြင့္ ရွိပါသည္။
-    ၃.၆) အကယ္၍ Customer ၏ Password သည္ ေပ်ာက္ဆုံးျခင္း၊ အခိုးခံရျခင္း၊ အျခားသူတစ္ဦးက သိရွိျခင္း (သို႔) ခန္႔မွန္းနိင္သည္ဟု ယူဆရပါက AEON မွၫႊန္ၾကားထားသည့္ နည္းလမ္းအတိုင္း Password အား ခ်က္ျခင္း ေျပာင္းလဲရပါမည္။ ထိုသို႔ ျပဳလုပ္ရန္မွာ Customer ၏ တာဝန္သာ ျဖစ္ပါသည္။ ထိုသို႔ ျပဳလုပ္ရန္ ပ်က္ကြက္ပါက Customer အတြက္ ဆုံးရွုဳံးမွဳ.ႏွင့္ ထိခိုက္နစ္နာမႈမ်ား အတြက္ Customer တြင္သာ တာ၀န္ရွိပါမည္။
+        ၃.၄) အသုံးပြုသောဆက်သွယ်ရေးစက်ပစ္စည်းများ၊ ကွန်ပျူတာများအားLogin ဝင်ရောက်လျက် အနေအထားဖြင့် ထွက်ခွာခြင်း မပြုလုပ်ရန်နှင့် Mobile Application အား အသုံးပြုပြီးတိုင်း Log out ပြုလုပ်ရပါမည်။
 
-    ၃.၇) Online Service အသုံးျပဳ၍ ဝန္ေဆာင္မႈမ်ားအား ေဆာင္႐ြက္ရာတြင္ အမွားအယြင္း တစုံတရာျဖစ္ေပၚလာပါက Customer အေနျဖင့္ ျဖစ္ပြားသည့္ေန႔မွ (၇)ရက္အတြင္း AEON သို႔ စာျဖင့္ အေၾကာင္းၾကားရပါမည္။ ထိုသို႔မဟုတ္ပါက ေဆာင္႐ြက္မႈအား မွန္ကန္ အက်ဳံးဝင္သည္ဟု ယူဆေဆာင္႐ြက္သြားပါမည္။
-    အေၾကာင္းၾကားစာတြင္ ေအာက္ပါ အေသးစိတ္ အခ်က္မ်ား ပါဝင္ရပါမည္-
+        ၃.၅) မျှဝေ၍ အသုံးပြုသော ဆက်သွယ်ရေးစက်ပစ္စည်းများ၊ ကွန်ပျူတာများ၊ အများသုံး အင်တာနက် ကွန်ယက်များ အသုံးပြုခြင်းအတွက် Customer, AEON, အခြားသူ တစ်ဦးဦးကြောင့် ဖြစ်ပေါ်လာသော ခွင့်ပြုချက်မရှိသည့် ဝန်ဆောင်မှု အသုံးချ ဆောင်ရွက်ခြင်း၊ Customer၏ ကိုယ်ရေးအချက်အလက် ပေါက်ကြားခြင်း၊ အခြားသော AEON Customerများ၏ အချက် အလက်များ ပေါက်ကြားခြင်း စသည့် မည်သည့် ထိခိုက်နစ်နာမှု.မျိုးကိုမဆို Customer မှ အပြည့်အဝ တာဝန်ယူရန် သဘောတူညီပါသည်။ ဤအကြောင်းအရာနှင့် ဆက်စပ်၍ လုံခြုံမှုမရှိဟု ယူဆရသော ချိတ်ဆက်မှုနှင့် Customer၏ Mobile Application အသုံးချခွင့်အား တစ်စိတ်တစ်ပိုင်းသော်လည်းကောင်း၊ အပြည့်အဝသော်လည်းကောင်း ရပ်ဆိုင်းရန် AEON တွင် အခွင့် ရှိပါသည်။
 
-    ၃.၇.၁)    ဝန္ေဆာင္မႈ ေဆာင္႐ြက္သည့္ ေန႔စြဲ ႏွင့္ အခ်ိန္
-    ၃.၇.၂) အသုံးျပဳေသာ ဆက္သြယ္ေရးစက္ပစၥည္းမ်ား၊ ကြန္ပ်ဴတာမ်ား၏ တည္ေနရာႏွင့္  ခ်ိတ္ဆက္ေသာ အင္တာနက္ ကြန္ယက္အမ်ိဳးအစား
-    ၃.၇.၃)    အဖြဲ႕ဝင္၏ ဂဏန္း၁၆လုံးပါ အဖြဲ.၀င္ကတ္ျပားနံပါတ္၊ အမည္၊ ဆက္သြယ္ရန္ဖုန္း
-    ၃.၇.၄)    ေဆာင္႐ြက္ခဲ့သည့္ ဝန္ေဆာင္မႈ အမ်ိဳးအစား
-    ၃.၇.၅)    အမွားအယြင္းျဖစ္ပြားစဥ္ ေဖာ္ျပခဲ့ေသာစာသားႏွင့္ အၫႊန္းကုဒ္ (ပါရွိပါက)
+        ၃.၆) အကယ်၍ Customer ၏ Password သည် ပျောက်ဆုံးခြင်း၊ အခိုးခံရခြင်း၊ အခြားသူတစ်ဦးက သိရှိခြင်း (သို့) ခန့်မှန်းနိင်သည်ဟု ယူဆရပါက AEON မှညွှန်ကြားထားသည့် နည်းလမ်းအတိုင်း Password အား ချက်ခြင်း ပြောင်းလဲရပါမည်။ ထိုသို့ ပြုလုပ်ရန်မှာ Customer ၏ တာဝန်သာ ဖြစ်ပါသည်။ ထိုသို့ ပြုလုပ်ရန် ပျက်ကွက်ပါက Customer အတွက် ဆုံးရှုုံးမှု.နှင့် ထိခိုက်နစ်နာမှုများ အတွက် Customer တွင်သာ တာဝန်ရှိပါမည်။
 
-    ၄) Customer ၏ လုံၿခဳံေရးအတြက္ အကာအကြယ္မ်ား
+        ၃.၇) Online Service အသုံးပြု၍ ဝန်ဆောင်မှုများအား ဆောင်ရွက်ရာတွင် အမှားအယွင်း တစုံတရာဖြစ်ပေါ်လာပါက Customer အနေဖြင့် ဖြစ်ပွားသည့်နေ့မှ (၇)ရက်အတွင်း AEON သို့ စာဖြင့် အကြောင်းကြားရပါမည်။ ထိုသို့မဟုတ်ပါက ဆောင်ရွက်မှုအား မှန်ကန် အကျုံးဝင်သည်ဟု ယူဆဆောင်ရွက်သွားပါမည်။
+        အကြောင်းကြားစာတွင် အောက်ပါ အသေးစိတ် အချက်များ ပါဝင်ရပါမည်-
 
-    AEONမွ ခြင့္ျပဳထားေသာ Username မွားယြင္းအသုံးျပဳျခင္းႏွင့္ခြင့္ျပဳထားေသာ အၾကိမ္အေရ အတြက္ထက္ ပို၍ Password အား ဆက္တိုက္ျဖည့္စြက္ပါက Online Service အား AEON မွ ရပ္ဆိုင္းပိုင္ခြင့္ရွိပါသည္။ထိုသို.ရပ္ဆိုင္းမွဳ.မ်ားအတြက္ Customerတြင္ထိခိုက္မွဳ.ရွိပါကCustomer  အေနျဖင့္ AEONသို. ေတာင္းဆိုပိုင္ခြင့္ မရွိပါ။
-    Online Service အား ျပန္လည္ အသုံးျပဳႏိုင္ရန္ Customer အေနျဖင့္ AEON ၏ Call Center ဖုန္းနံပါတ္ 01-93 45 466 သို႔ အလုပ္ခ်ိန္အတြင္း ဆက္သြယ္ႏိုင္ပါသည္။
+        ၃.၇.၁)    ဝန်ဆောင်မှု ဆောင်ရွက်သည့် နေ့စွဲ နှင့် အချိန်
+        ၃.၇.၂) အသုံးပြုသော ဆက်သွယ်ရေးစက်ပစ္စည်းများ၊ ကွန်ပျူတာများ၏ တည်နေရာနှင့်  ချိတ်ဆက်သော အင်တာနက် ကွန်ယက်အမျိုးအစား
+        ၃.၇.၃)    အဖွဲ့ဝင်၏ ဂဏန်း၁၆လုံးပါ အဖွဲ.ဝင်ကတ်ပြားနံပါတ်၊ အမည်၊ ဆက်သွယ်ရန်ဖုန်း
+        ၃.၇.၄)    ဆောင်ရွက်ခဲ့သည့် ဝန်ဆောင်မှု အမျိုးအစား
+        ၃.၇.၅)    အမှားအယွင်းဖြစ်ပွားစဉ် ဖော်ပြခဲ့သောစာသားနှင့် အညွှန်းကုဒ် (ပါရှိပါက)
 
-    ၅) တာ၀န္ခံမွဳ.မွ ကင္းလြတ္ျခင္း
+        ၄) Customer ၏ လုံခြုံရေးအတွက် အကာအကွယ်များ
 
-    Mobile Application ႏွင့္ ဝဘ္ဆိုဒ္တြင္ပါရွိေသာ စာသား၊ပုံ၊လင့္ခ္ႏွင့္ အျခားေသာ အခ်က္ အလက္မ်ားမွာ အရွိအတိုင္းရရွိႏိုင္မည့္ အတိုင္းအတာအထိသာ ေဖာ္ျပထားသည္ျဖစ္ရာ  တိက်ေသခ်ာမႈ၊ ျပည့္စုံလုံေလာက္မႈႏွင့္ ပတ္သက္၍ AEON မွ အာမ မခံ၊ တာ၀န္မယူသလို ၎ေဖာ္ျပပါ အခ်က္အလက္ ပါဝင္မႈမ်ားႏွင့္ပတ္သက္၍ မွားယြင္းျခင္း ပ်က္ကြက္ျခင္းမ်ား အတြက္လည္း AEON တြင္တာဝန္မရွိပါ။
+        AEONမှ ခွင့်ပြုထားသော Username မှားယွင်းအသုံးပြုခြင်းနှင့်ခွင့်ပြုထားသော အကြိမ်အရေ အတွက်ထက် ပို၍ Password အား ဆက်တိုက်ဖြည့်စွက်ပါက Online Service အား AEON မှ ရပ်ဆိုင်းပိုင်ခွင့်ရှိပါသည်။ထိုသို.ရပ်ဆိုင်းမှု.များအတွက် Customerတွင်ထိခိုက်မှု.ရှိပါကCustomer  အနေဖြင့် AEONသို. တောင်းဆိုပိုင်ခွင့် မရှိပါ။Online Service အား ပြန်လည် အသုံးပြုနိုင်ရန် Customer အနေဖြင့် AEON ၏ Call Center ဖုန်းနံပါတ် 09-9697-12111 သို့ အလုပ်ချိန်အတွင်း ဆက်သွယ်နိုင်ပါသည်။
 
-    ၆)တာဝန္မရွိျခင္းႏွင့္ တာ၀န္ယူမွဳ.မွ ကင္းလြတ္ျခင္း။
+        ၅) တာဝန်ခံမှု.မှ ကင်းလွတ်ခြင်း
 
-    ေအာက္ပါကိစၥရပ္မ်ား အပါအဝင္ customerမွ တိုက္႐ိုက္ေသာ္လည္းေကာင္း၊ သြယ္ဝိုက္၍ ေသာ္လည္းေကာင္း တမင္ရည္႐ြယ္၍ေသာ္လည္းေကာင္း မရည္႐ြယ္ပဲ မေတာ္တဆေသာ္ လည္းေကာင္း၊ အြန္လိုင္းဝန္ေဆာင္မႈအား အသုံးျပဳ၍ ေဆာင္႐ြက္မႈေၾကာင့္ ျဖစ္ေပၚလာသည့္ ေနာက္ဆက္တြဲ ပ်က္စီးမည့္ မည္သည့္ ဆုံးရႈံးမႈ၊ ထိခိုက္မႈ၊ နစ္နာမႈ မ်ားအတြက္ AEON တြင္ တာဝန္မရွိေစရပါ-
+        Mobile Application နှင့် ဝဘ်ဆိုဒ်တွင်ပါရှိသော စာသား၊ပုံ၊လင့်ခ်နှင့် အခြားသော အချက် အလက်များမှာ အရှိအတိုင်းရရှိနိုင်မည့် အတိုင်းအတာအထိသာ ဖော်ပြထားသည်ဖြစ်ရာ  တိကျသေချာမှု၊ ပြည့်စုံလုံလောက်မှုနှင့် ပတ်သက်၍ AEON မှ အာမ မခံ၊ တာဝန်မယူသလို ၎င်းဖော်ပြပါ အချက်အလက် ပါဝင်မှုများနှင့်ပတ်သက်၍ မှားယွင်းခြင်း ပျက်ကွက်ခြင်းများ အတွက်လည်း AEON တွင်တာဝန်မရှိပါ။
 
-    ၆.၁) Customer သည္ ၎၏ Username, Password တို႔အား အျခားသူ တစ္ဦးဦးအား ေဖာ္ျပသျဖင့္ ၎မွ Customer ၏ ကိုယ္စား ဝန္ေဆာင္မႈမ်ားအား တရားဥပေဒႏွင့္ မလြတ္ကင္းေသာ ကိစၥရပ္မ်ားအား ရည္ရြယ္ခ်က္ျဖင့္ ေဆာင္ရြက္ျခင္း။
+        ၆)တာဝန်မရှိခြင်းနှင့် တာဝန်ယူမှု.မှ ကင်းလွတ်ခြင်း။
 
-    ၆.၂) Customer ၏ တမင္သက္သက္ေသာ္လည္းေကာင္း ေပါ့ပ်က္စြာေသာ္လည္းေကာင္း လုပ္ေဆာင္မႈေၾကာင့္ျဖစ္ပ်က္ေသာ မည္သည့္ အေၾကာင္းကိစၥရပ္မ်ားမဆို။
+        အောက်ပါကိစ္စရပ်များ အပါအဝင် customerမှ တိုက်ရိုက်သော်လည်းကောင်း၊ သွယ်ဝိုက်၍ သော်လည်းကောင်း တမင်ရည်ရွယ်၍သော်လည်းကောင်း မရည်ရွယ်ပဲ မတော်တဆသော် လည်းကောင်း၊ အွန်လိုင်းဝန်ဆောင်မှုအား အသုံးပြု၍ ဆောင်ရွက်မှုကြောင့် ဖြစ်ပေါ်လာသည့် နောက်ဆက်တွဲ ပျက်စီးမည့် မည်သည့် ဆုံးရှုံးမှု၊ ထိခိုက်မှု၊ နစ်နာမှု များအတွက် AEON တွင် တာဝန်မရှိစေရပါ-
 
-    ၆.၃) AEON မွ ထုတ္ေဝထားေသာ အြန္လိုင္းဝန္ေဆာင္မႈအတြက္ လက္စြဲႏွင့္ လမ္းၫႊန္ခ်က္မ်ား၊ စည္းမ်ဥ္းႏွင့္ သတ္မွတ္ခ်က္မ်ားကို Customer မွ လိုက္နာရန္ ပ်က္ကြက္ျခင္း မ်ားေၾကာင့္ ျဖစ္ေပၚလာေသာ ျပဌာန္းထားသည့္ ဥပေဒမ်ား၊ စည္းမ်ဥ္းမ်ားႏွင့္ မကိုက္ညီေသာ ကိစၥရပ္မ်ား။
+        ၆.၁) Customer သည် ၎င်း၏ Username, Password တို့အား အခြားသူ တစ်ဦးဦးအား ဖော်ပြသဖြင့် ၎င်းမှ Customer ၏ ကိုယ်စား ဝန်ဆောင်မှုများအား တရားဥပဒေနှင့် မလွတ်ကင်းသော ကိစ္စရပ်များအား ရည်ရွယ်ချက်ဖြင့် ဆောင်ရွက်ခြင်း။
 
-    ၆.၄) လမ္းၫႊန္ခ်က္မ်ားေျပာင္းလဲျခင္း၊ ပယ္ဖ်က္ျခင္း(သို.မဟုတ္) ၊ Online Servcie အလုပ္ မလုပ္ျခင္း အမွားႏွင့္ က်န္ခဲ့ျခင္းမ်ား၊ ေႏွာင့္ယွက္မွဳ.မ်ား ၾကန္.ၾကာမွဳ.မ်ား အတြက္ တာ၀န္မရွိပါ။
+        ၆.၂) Customer ၏ တမင်သက်သက်သော်လည်းကောင်း ပေါ့ပျက်စွာသော်လည်းကောင်း လုပ်ဆောင်မှုကြောင့်ဖြစ်ပျက်သော မည်သည့် အကြောင်းကိစ္စရပ်များမဆို။
 
-    ၆.၅) အြန္လိုင္းအသုံးျပဳသည့္ Hardware, Software မ်ားအားျပင္ပ ပုဂိိိဳလ္တစ္ဦး(သို.) ပုဂိဳလ္တစ္စုမွ တိုက္ခိုက္ျခင္းေၾကာင့္ ျဖစ္ေပၚလာမည့္ ထိခိုက္မွဳ.မ်ား။
+        ၆.၃) AEON မှ ထုတ်ဝေထားသော အွန်လိုင်းဝန်ဆောင်မှုအတွက် လက်စွဲနှင့် လမ်းညွှန်ချက်များ၊ စည်းမျဉ်းနှင့် သတ်မှတ်ချက်များကို Customer မှ လိုက်နာရန် ပျက်ကွက်ခြင်း များကြောင့် ဖြစ်ပေါ်လာသော ပြဌာန်းထားသည့် ဥပဒေများ၊ စည်းမျဉ်းများနှင့် မကိုက်ညီသော ကိစ္စရပ်များ။
 
-    ၆.၆) အြန္လိုင္းအသုံးျပဳရာတြင္ ကြန္ပ်ဴတာခ်ိဳ.ယြင္းျခင္း၊ လွ်ပ္စစ္စနစ္ခ်ိဳ.ယြင္းျခင္း၊ ဆက္သြယ္ေရး စနစ္ခ်ိဳ.ယြင္းျခင္း၊ လွ်ပ္စစ္ပစၥည္းမ်ား ခ်ိဳ.ယြင္းျခင္း၊ တယ္လီဖုန္းဆက္သြယ္ေရး လိုင္းမ်ား ခ်ိဳ.ယြင္းျခင္းေၾကာင့္ ျဖစ္ေပၚလာနိဳင္သည့္ ဆုံးရွဳံးမွဳ.မ်ား။
+        ၆.၄) လမ်းညွှန်ချက်များပြောင်းလဲခြင်း၊ ပယ်ဖျက်ခြင်း(သို.မဟုတ်) ၊ Online Servcie အလုပ် မလုပ်ခြင်း အမှားနှင့် ကျန်ခဲ့ခြင်းများ၊ နှောင့်ယှက်မှု.များ ကြန်.ကြာမှု.များ အတွက် တာဝန်မရှိပါ။
 
-    ၇)ဝန္ေဆာင္ခ
-    အြန္လိုင္းဝန္ေဆာင္မႈအား အသုံးျပဳရာတြင္ AEON မွ သတ္မွတ္ထားေသာ  ၀န္ေဆာင္ခႏွင့္ အျခားေသာ ကုန္က်စရိတ္မ်ား ေပးေဆာင္ရန္ Customer မွ သေဘာတူပါသည္။(လက္ရွိတြင္ အြန္လိုင္း ဝန္ေဆာင္ခ ေပးရန္မလိုပါ။)
+        ၆.၅) အွန်လိုင်းအသုံးပြုသည့် Hardware, Software များအားပြင်ပ ပုဂိိိုလ်တစ်ဦး(သို.) ပုဂိုလ်တစ်စုမှ တိုက်ခိုက်ခြင်းကြောင့် ဖြစ်ပေါ်လာမည့် ထိခိုက်မှု.များ။
+
+        ၆.၆) အွန်လိုင်းအသုံးပြုရာတွင် ကွန်ပျူတာချို.ယွင်းခြင်း၊ လျှပ်စစ်စနစ်ချို.ယွင်းခြင်း၊ ဆက်သွယ်ရေး စနစ်ချို.ယွင်းခြင်း၊ လျှပ်စစ်ပစ္စည်းများ ချို.ယွင်းခြင်း၊ တယ်လီဖုန်းဆက်သွယ်ရေး လိုင်းများ ချို.ယွင်းခြင်းကြောင့် ဖြစ်ပေါ်လာနိုင်သည့် ဆုံးရှုံးမှု.များ။
+
+        ၇)ဝန်ဆောင်ခ
+        အွန်လိုင်းဝန်ဆောင်မှုအား အသုံးပြုရာတွင် AEON မှ သတ်မှတ်ထားသော  ဝန်ဆောင်ခနှင့် အခြားသော ကုန်ကျစရိတ်များ ပေးဆောင်ရန် Customer မှ သဘောတူပါသည်။(လက်ရှိတွင် အွန်လိုင်း ဝန်ဆောင်ခ ပေးရန်မလိုပါ။)
 
 
-    ၈)သတင္းအခ်က္အလက္မ်ားအသုံးျပဳျခင္း။
-    ၈.၁)  Customer ႏွင့္ ပတ္သက္ဆက္စပ္ေသာ အခ်က္အလက္မ်ားမွ သင့္ေတာ္သလို၊ လိုအပ္သလို (သို႔) အားလုံးအား အဆက္အသြယ္လုပ္ျခင္း၊ ထိန္းသိမ္းျခင္း၊ စုေဆာင္းျခင္း၊ ေဖာ္ျပျခင္းႏွင့္ Customer အတြက္ အက်ိဳးရွိမည္ဟု AEON မွယူဆေသာ အျခား ထုတ္ကုန္ႏွင့္ ဝန္ေဆာင္မႈမ်ားတြင္ အသုံးခ်ျခင္းအား Customer မွ သေဘာတူညီပါသည္။
+        ၈)သတင်းအချက်အလက်များအသုံးပြုခြင်း။
+        ၈.၁)  Customer နှင့် ပတ်သက်ဆက်စပ်သော အချက်အလက်များမှ သင့်တော်သလို၊ လိုအပ်သလို (သို့) အားလုံးအား အဆက်အသွယ်လုပ်ခြင်း၊ ထိန်းသိမ်းခြင်း၊ စုဆောင်းခြင်း၊ ဖော်ပြခြင်းနှင့် Customer အတွက် အကျိုးရှိမည်ဟု AEON မှယူဆသော အခြား ထုတ်ကုန်နှင့် ဝန်ဆောင်မှုများတွင် အသုံးချခြင်းအား Customer မှ သဘောတူညီပါသည်။
 
-    ၈.၂) ဥပေဒအရေသာ္လည္းေကာင္း၊ အြန္လိုင္းဝန္ေဆာင္မႈအတြက္ အက်ိဳးရွိသည္ဟု ယူဆ၍ေသာ္ လည္းေကာင္း၊ Customer ၏ အခ်က္အလက္မ်ားႏွင့္တကြ ဝန္ေဆာင္မႈအား အသုံးျပဳထားသည့္ ေဆာင္႐ြက္မႈမ်ားအား AEON မွ လိုအပ္ပါက ထုတ္ေဖာ္ျပသရန္ Customer မွ သေဘာတူညီ ပါသည္။
+        ၈.၂) ဥပဒေအရသော်လည်းကောင်း၊ အွန်လိုင်းဝန်ဆောင်မှုအတွက် အကျိုးရှိသည်ဟု ယူဆ၍သော် လည်းကောင်း၊ Customer ၏ အချက်အလက်များနှင့်တကွ ဝန်ဆောင်မှုအား အသုံးပြုထားသည့် ဆောင်ရွက်မှုများအား AEON မှ လိုအပ်ပါက ထုတ်ဖော်ပြသရန် Customer မှ သဘောတူညီ ပါသည်။
 
-    ၉)ဆက္သြယ္ေဆာင္ရြက္ျခင္းမ်ား
-    AEON သည္ Customer မွ ေနာက္ဆုံးသတင္းေပးထားေသာ ဖုန္းနံပါတ္၊ လိပ္စာ၊ အီးေမးလ္ စသည္တို႔ျဖင့္ ဆက္သြယ္ႏိုင္ပါသည္။ AEON မွ ဖုန္း၊ အီးေမးလ္၊ ဝဘ္ဆိုဒ္၊ ေဆာ့ဝဲလ္၊ SMS၊ စာတိုက္မွတဆင့္ စာပို႔ျခင္းတို႔အား AEON မွ Customer သို.အသိေပးသည္ဟုယူဆ၍ AEON (သို႔) အျခားသူမ်ား၊ အဖြဲ႕အစည္းမ်ား၏ ေၾကာ္ျငာမ်ား၊ ဝန္ေဆာင္မႈမ်ားႏွင့္ထုတ္ကုန္မ်ား ေဈးကြက္ ျမႇင့္တင္ျခင္းအလို႔ငွာ ဆက္သြယ္ေဆာင္႐ြက္ျခင္းမ်ားအား Customer မွ ခြင့္ျပဳ သေဘာတူပါသည္။
+        ၉)ဆက်သွယ်ဆောင်ရွက်ခြင်းများ
+        AEON သည် Customer မှ နောက်ဆုံးသတင်းပေးထားသော ဖုန်းနံပါတ်၊ လိပ်စာ၊ အီးမေးလ် စသည်တို့ဖြင့် ဆက်သွယ်နိုင်ပါသည်။ AEON မှ ဖုန်း၊ အီးမေးလ်၊ ဝဘ်ဆိုဒ်၊ ဆော့ဝဲလ်၊ SMS၊ စာတိုက်မှတဆင့် စာပို့ခြင်းတို့အား AEON မှ Customer သို.အသိပေးသည်ဟုယူဆ၍ AEON (သို့) အခြားသူများ၊ အဖွဲ့အစည်းများ၏ ကြော်ငြာများ၊ ဝန်ဆောင်မှုများနှင့်ထုတ်ကုန်များ ဈေးကွက် မြှင့်တင်ခြင်းအလို့ငှာ ဆက်သွယ်ဆောင်ရွက်ခြင်းများအား Customer မှ ခွင့်ပြု သဘောတူပါသည်။
 
-    ၁၀)ဝန္ေဆာင္မႈအား ပယ္ဖ်က္ျခင္း
+        ၁၀)ဝန်ဆောင်မှုအား ပယ်ဖျက်ခြင်း
 
-    ၁၀.၁)ေအာက္ပါ အေျခအေနမ်ားတြင္ AEONသည္ Customerအား ၾကိဳတင္အသိေပး သေဘာ တူညီမွဳ.မရယူပဲ မည္သည့္ အစိတ္အပိုင္းမဆို အသိမေပးပဲ အြန္လိုင္း ဝန္ေဆာင္မႈအား ပယ္ဖ်က္ ႏိုင္ခြင့္ရွိသည္-
+        ၁၀.၁)အောက်ပါ အခြေအနေများတွင် AEONသည် Customerအား ကြိုတင်အသိပေး သဘော တူညီမှု.မရယူပဲ မည်သည့် အစိတ်အပိုင်းမဆို အသိမပေးပဲ အွန်လိုင်း ဝန်ဆောင်မှုအား ပယ်ဖျက် နိုင်ခွင့်ရှိသည်-
 
-    က) Customerသည္ မွတ္ပုံတင္သည့္ေန႔ (သို႔) ေနာက္ဆုံးဝင္ေရာက္သည့္ေန႔မွ အြန္လိုင္း ဝန္ေဆာင္မႈအား တႏွစ္ေက်ာ္အသံုးမျပဳျခင္း။
+        က) Customerသည် မှတ်ပုံတင်သည့်နေ့ (သို့) နောက်ဆုံးဝင်ရောက်သည့်နေ့မှ အွန်လိုင်း ဝန်ဆောင်မှုအား တနှစ်ကျော်အသုံးမပြုခြင်း။
 
-    ခ ) မည္သည့္ အေၾကာင္းျပခ်က္ႏွင့္မဆို AEON အားေပးေခ်ရမည့္ ဝန္ေဆာင္မႈ အဖိုးအခမ်ားႏွင့္ အျခားကုန္က်စားရိတ္မ်ား မေပးသြင္းျခင္းအပါအဝင္ အြန္လိုင္းဝန္ေဆာင္မႈ၏ စည္းမ်ဥ္း စည္းကမ္း ခ်က္မ်ားအား Customer မွ လိုက္နာရန္ပ်က္ကြက္ျခင္း။
+        ခ ) မည်သည့် အကြောင်းပြချက်နှင့်မဆို AEON အားပေးချေရမည့် ဝန်ဆောင်မှု အဖိုးအခများနှင့် အခြားကုန်ကျစားရိတ်များ မပေးသွင်းခြင်းအပါအဝင် အွန်လိုင်းဝန်ဆောင်မှု၏ စည်းမျဉ်း စည်းကမ်း ချက်များအား Customer မှ လိုက်နာရန်ပျက်ကွက်ခြင်း။
 
-    ၁၀.၂) အြန္လိုင္းဝန္ေဆာင္မႈမွ မည္သည့္ ဝန္ေဆာင္မႈ အစိတ္အပိုင္းကိုမဆို ၾကိဳတင္ အေၾကာင္း မၾကားပဲ AEON မွပယ္ဖ်က္ ႏိုင္ခြင့္ရွိသည္။
+        ၁၀.၂) အွန်လိုင်းဝန်ဆောင်မှုမှ မည်သည့် ဝန်ဆောင်မှု အစိတ်အပိုင်းကိုမဆို ကြိုတင် အကြောင်း မကြားပဲ AEON မှပယ်ဖျက် နိုင်ခွင့်ရှိသည်။
 
-    ၁၀.၃) Customerသည္ AEON အား သတ္မွတ္ထားေသာနည္းလည္းမ်ားႏွင့္အညီ အေၾကာင္းၾကား ပါက အြန္လိုင္းဝန္ေဆာင္မႈအား ပယ္ဖ်က္၊ ရပ္စဲႏိုင္ပါသည္။
+        ၁၀.၃) Customerသည် AEON အား သတ်မှတ်ထားသောနည်းလည်းများနှင့်အညီ အကြောင်းကြား ပါက အွန်လိုင်းဝန်ဆောင်မှုအား ပယ်ဖျက်၊ ရပ်စဲနိုင်ပါသည်။
 
-    ၁၁)အျခား အေျခအေနမ်ား
+        ၁၁)အခြား အခြေအနေများ
 
-    ၁၁.၁) ဤစည္းကမ္းခ်က္မ်ားထဲတြင္ပါဝင္ေသာ စည္းကမ္းခ်က္တစ္ခုခုသည္ မွန္ကန္မွဳ.မရွိျခင္း၊ ဥပေဒႏွင့္ ညီညႊတ္မွဳ.မရွိျခင္း (သို႔) ေဆာင္႐ြက္ရန္ အဆင္မေျပျဖစ္လာျခင္းမ်ား ရွိလာပါကလည္း၊ ၎ စည္းကမ္းခ်က္ အစိတ္အပိုင္းသည္ က်န္ရွိသည့္ စည္းကမ္းခ်က္မ်ား၏ မွန္ကန္မႈႏွင့္ ေဆာင္႐ြက္ႏိုင္မႈတို႔အား သက္ေရာက္ႏိုင္ေစျခင္းမရွိေစရပါ။
+        ၁၁.၁) ဤစည်းကမ်းချက်များထဲတွင်ပါဝင်သော စည်းကမ်းချက်တစ်ခုခုသည် မှန်ကန်မှု.မရှိခြင်း၊ ဥပဒေနှင့် ညီညွှတ်မှု.မရှိခြင်း (သို့) ဆောင်ရွက်ရန် အဆင်မပြေဖြစ်လာခြင်းများ ရှိလာပါကလည်း၊ ၎င်း စည်းကမ်းချက် အစိတ်အပိုင်းသည် ကျန်ရှိသည့် စည်းကမ်းချက်များ၏ မှန်ကန်မှုနှင့် ဆောင်ရွက်နိုင်မှုတို့အား သက်ရောက်နိုင်စေခြင်းမရှိစေရပါ။
 
-    ၁၁.၂)အြန္လိုင္းဝန္ေဆာင္မႈအား အသုံးျပဳေနစဥ္ AEON ႏွင့္ Customer အၾကား သေဘာတူညီမႈ တခုခုအရ  ထပ္ေဆာင္းဝန္ေဆာင္မႈေပးရာတြင္ ၎ထပ္ေဆာင္းဝန္ေဆာင္မႈသည္ အြန္လိုင္း ဝန္ေဆာင္မႈ၏ အစိတ္အပိုင္းတစ္ခုအေနအျဖင့္ Customer မွ သေဘာတူညီပါသည္။အျငင္းပြားမႈ တစုံတရာျဖစ္ပြားလာပါက မူလအြန္လိုင္းဝန္ေဆာင္မႈႏွင့္ ပတ္သက္လ်င္ အြန္လိုင္းဝန္ေဆာင္မႈ၏ စည္းကမ္းခ်က္သည္ အတည္ျဖစ္ၿပီး ထပ္တိုးဝန္ေဆာင္မႈႏွင့္ပတ္သက္လ်င္ ထပ္တိုးဝန္ေဆာင္မႈ၏ စည္းကမ္းခ်က္သည္ အတည္ျဖစ္ပါသည္။
+        ၁၁.၂)အွန်လိုင်းဝန်ဆောင်မှုအား အသုံးပြုနေစဉ် AEON နှင့် Customer အကြား သဘောတူညီမှု တခုခုအရ  ထပ်ဆောင်းဝန်ဆောင်မှုပေးရာတွင် ၎င်းထပ်ဆောင်းဝန်ဆောင်မှုသည် အွန်လိုင်း ဝန်ဆောင်မှု၏ အစိတ်အပိုင်းတစ်ခုအနေအဖြင့် Customer မှ သဘောတူညီပါသည်။အငြင်းပွားမှု တစုံတရာဖြစ်ပွားလာပါက မူလအွန်လိုင်းဝန်ဆောင်မှုနှင့် ပတ်သက်လျင် အွန်လိုင်းဝန်ဆောင်မှု၏ စည်းကမ်းချက်သည် အတည်ဖြစ်ပြီး ထပ်တိုးဝန်ဆောင်မှုနှင့်ပတ်သက်လျင် ထပ်တိုးဝန်ဆောင်မှု၏ စည်းကမ်းချက်သည် အတည်ဖြစ်ပါသည်။
 
-    ၁၁.၃) Customerသည္ ၎၏ ဝန္ေဆာင္မႈ ေဆာင္႐ြက္သည့္အတြက္ အတည္ျပဳ မွတ္တမ္းမ်ားအား ပုံႏွိပ္၍ သိမ္းဆည္းထားႏိုင္ပါသည္။
+        ၁၁.၃) Customerသည် ၎င်း၏ ဝန်ဆောင်မှု ဆောင်ရွက်သည့်အတွက် အတည်ပြု မှတ်တမ်းများအား ပုံနှိပ်၍ သိမ်းဆည်းထားနိုင်ပါသည်။
 
-    ၁၁.၄)အကယ္၍ ဤစည္းကမ္းခ်က္မ်ားသည္ AEON၏ အျခားေသာ ဝန္ေဆာင္မႈမ်ား၏ စည္းကမ္းခ်က္မ်ားႏွင့္ ကြဲျပားမႈမ်ားရွိပါက ဤစည္းကမ္းခ်က္မ်ားသည္ အြန္လိုင္းဝန္ေဆာင္မႈ အတြက္သာ သီးသန္.ျဖစ္ရပါမည္။
+        ၁၁.၄)အကယ်၍ ဤစည်းကမ်းချက်များသည် AEON၏ အခြားသော ဝန်ဆောင်မှုများ၏ စည်းကမ်းချက်များနှင့် ကွဲပြားမှုများရှိပါက ဤစည်းကမ်းချက်များသည် အွန်လိုင်းဝန်ဆောင်မှု အတွက်သာ သီးသန်.ဖြစ်ရပါမည်။
 
-    ၁၁.၅) အျငင္းပြားမႈတစုံတရာ ျဖစ္ပြားပါက AEON အေနျဖင့္ Customer ႏွင့္ ပတ္သက္၍ အေရးယူေဆာင္႐ြက္မႈ တစုံတရာျပဳလုပ္ရာတြင္ ဥပေဒအရ ခြင့္ျပဳထားေသာ မည္သည့္ အခြင့္အေရး၊ ကုစားမႈမ်ားေၾကာင့္မွ် ေႏွာင့္ေႏွးျခင္း၊ ပ်က္ကြက္ျခင္း၊ ပယ္ဖ်က္ျခင္းမရွိပဲ AEON ၏ ဤ ေဖာ္ျပပါ စည္းကမ္းခ်က္မ်ားအတိုင္းသာ ေဆာင္႐ြက္ႏိုင္ပါမည္။
+        ၁၁.၅) အငြင်းပွားမှုတစုံတရာ ဖြစ်ပွားပါက AEON အနေဖြင့် Customer နှင့် ပတ်သက်၍ အရေးယူဆောင်ရွက်မှု တစုံတရာပြုလုပ်ရာတွင် ဥပဒေအရ ခွင့်ပြုထားသော မည်သည့် အခွင့်အရေး၊ ကုစားမှုများကြောင့်မျှ နှောင့်နှေးခြင်း၊ ပျက်ကွက်ခြင်း၊ ပယ်ဖျက်ခြင်းမရှိပဲ AEON ၏ ဤ ဖော်ပြပါ စည်းကမ်းချက်များအတိုင်းသာ ဆောင်ရွက်နိုင်ပါမည်။
 
-    ၁၁.၆) အြန္လိုင္းဝန္ေဆာင္မႈႏွင့္ ၎၏ ထပ္တိုးဝန္ေဆာင္မႈမ်ားမွ ျဖစ္ေပၚလာႏိုင္သည့္ အျငင္းပြားမႈမ်ား အေပၚတြင္ ျမန္မာႏိုင္ငံ၏ ဥပေဒမ်ားႏွင့္အညီ ျမန္မာနိဳင္ငံအတြင္းရွိ တရား႐ုံးမ်ားတြင္သာ ဤစည္းကမ္းခ်က္မ်ားအရ တရားစီရင္မွဳ.ကို Customer ႏွင့္ AEON မွ သေဘာတူညီပါသည္။
+        ၁၁.၆) အွန်လိုင်းဝန်ဆောင်မှုနှင့် ၎င်း၏ ထပ်တိုးဝန်ဆောင်မှုများမှ ဖြစ်ပေါ်လာနိုင်သည့် အငြင်းပွားမှုများ အပေါ်တွင် မြန်မာနိုင်ငံ၏ ဥပဒေများနှင့်အညီ မြန်မာနိုင်ငံအတွင်းရှိ တရားရုံးများတွင်သာ ဤစည်းကမ်းချက်များအရ တရားစီရင်မှု.ကို Customer နှင့် AEON မှ သဘောတူညီပါသည်။
 """
+
 }

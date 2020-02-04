@@ -29,8 +29,13 @@ struct VerifySecQAUpdateInfo:Codable {
 }
 
 struct UserSecQuesVerifyRequest : Codable{
-    var customerId: String = ""
+    var customerId: Int = 0
     var secQuesList = [UserQAVerifyList]()
+    
+    enum CodingKeys: String,CodingKey {
+        case customerId
+        case secQuesList = "securityQuestionAnswerReqDtoList"
+    }
 }
 
 struct UserQAVerifyList : Codable{
@@ -51,6 +56,6 @@ struct UserQAVerifyBean{
 }
 
 struct UserQAVerifyResponse:Codable {
-    var statusCode: String
-    var statusMessage: String
+    var status: String?
+    var messageCode: String?
 }

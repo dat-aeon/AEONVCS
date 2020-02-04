@@ -11,7 +11,6 @@ import UIKit
 class FAQHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var lblFaqMainQuestion: UILabel!
-    
     @IBOutlet weak var imgDropDown: UIImageView!
     
     var section = 0

@@ -14,10 +14,10 @@ class OTPModel:BaseModel {
     
     func sendOTP(siteActivationKey:String, phoneNo:String,success: @escaping (OTPResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
-            "siteActivationKey": siteActivationKey,
+            //"siteActivationKey": siteActivationKey,
             "phoneNo" : phoneNo
         ]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.otpRequest, rawData: rawData) { (result) in
+        let _ = super.requestPOSTWithoutToken(endPoint: ApiServiceEndPoint.otpRequest, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
@@ -25,10 +25,11 @@ class OTPModel:BaseModel {
                 if let otpResponse = try? JSONDecoder().decode(OTPResponse.self, from: responseValue){
                     success(otpResponse)
                 }else{
-                    failure("JSON parse error")
+                    failure(Constants.JSON_FAILURE)
                 }
             case .failure(let error):
-                failure(error.localizedDescription)
+                print("OTP send error",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
         

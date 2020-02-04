@@ -13,19 +13,21 @@ import SwiftyJSON
 class RegisterViewModel{
     
     //LOAD NRC DATA
-    func loadNrcData(success:@escaping (String) -> Void,failure: @escaping (String) -> Void){
-        RegisterModel.init().loadNRCData(success: { (result) in
-            UserDefaults.standard.set(result, forKey: Constants.NRC_TOWNSHIP_List)
-            success("")
+    func loadNrcData(success:@escaping ([[String]]) -> Void,failure: @escaping (String) -> Void){
+        RegisterModel.init().loadNRCData(siteActivationKey: Constants.site_activation_key ,success: { (result) in
+            //UserDefaults.standard.set(result, forKey: Constants.NRC_TOWNSHIP_List)
+            success(result)
+            
         }, failure: { (error) in
             failure(error)
         })
     }
+    
     //GET NRC DATA
     func getNrcData(success:@escaping ([[String]]) -> Void,failure: @escaping (String) -> Void) {
         var allTownShipList = [[String]]()
         let townships = UserDefaults.standard.array(forKey: Constants.NRC_TOWNSHIP_List) as! [String]
-        print("Township size \(townships.count)")
+        
         if townships.count > 0{
             for township in townships{
                 var townshipList = township.components(separatedBy: ",")
@@ -46,46 +48,68 @@ class RegisterViewModel{
         
         RegisterModel.init().checkMemberData(registerReqBean: registerBean
             , success: { (result) in
-                if result.statusCode == "200" {
-                    success(result)
-                    
-                }else if result.statusCode == "500"{
-                    failure(result.message ?? "Server error occurs.")
-                }else{
-                    failure("Server error occurs.")
-                }
+                success(result)
+                
         }) { (error) in
             failure(error)
         }
     }
     
     //CHECK VERIFY USER INFO
-    func checkVerifyUserInfo(verifyUserRequest: CheckVerifyUserInfoRequest, success: @escaping (CheckVerifyUserInfoResponse) -> Void, failure: @escaping (String) -> Void){
+    func checkVerifyUserInfo(verifyUserRequest: CheckVerifyUserInfoRequest,token: String,refreshToken: String, success: @escaping (CheckVerifyUserInfoResponse) -> Void, failure: @escaping (String) -> Void){
         
-        RegisterModel.init().checkVerifiedUserInfo(verifyUserInfo: verifyUserRequest
+        RegisterModel.init().checkVerifiedUserInfo(verifyUserInfo: verifyUserRequest, token: token
             , success: { (result) in
-                if result.statusCode.isEmpty {
-                    failure("Server error")
-                }else{
-                    if result.verifyStatus == Constants.VALID_MEMBER{
-                        success(result)
-                    }else{
-                        failure("Invalid Member Information")
-                    }
-                }
+                
+                success(result)
+                
         }) { (error) in
+            if error == Constants.EXPIRE_TOKEN {
+                LoginAuthModel.init().refereshToken(refreshToken: refreshToken, success: { (result) in
+                    
+                    if result.status == Constants.STATUS_200 {
+                        var token = TokenBean()
+                        token.accessToken = result.data.access_token
+                        token.refreshToken = result.data.refresh_token
+                        token.tokenType = result.data.token_type
+                        token.scope = result.data.scope
+                        token.expireIn = result.data.expire_in
+                        
+                        let jsonData = try? JSONEncoder().encode(result)
+                        let jsonString = String(data: jsonData!, encoding: .utf8)!
+                        UserDefaults.standard.set(jsonString, forKey: Constants.TOKEN_DATA)
+                        
+                        RegisterModel.init().checkVerifiedUserInfo(verifyUserInfo: verifyUserRequest, token: token.accessToken!
+                            , success: { (result) in
+                            
+                            success(result)
+                            
+                        }) { (error) in
+                            failure(Constants.EXPIRE_TOKEN)
+                        }
+                        
+                    } else {
+                        failure(Constants.EXPIRE_TOKEN)
+                    }
+                    
+                }) { (error) in
+                    failure(Constants.EXPIRE_TOKEN)
+                }
+            }
             failure(error)
         }
     }
     
     //MAKE NEW MEMBER REGISTER
-    func makeRegisterNewMember(registerRequestData:RegisterRequestBean,memberResponseData:CheckMemberResponse,qaList:[SecQABean],success: @escaping (NewRegisterResponse) -> Void,failure: @escaping (String) -> Void){
+    func  makeRegisterNewMember(registerRequestData:RegisterRequestBean,memberResponseData:CheckMemberResponse,qaList:[SecQABean],success: @escaping (NewRegisterResponse) -> Void,failure: @escaping (String) -> Void){
+        
         let rawData = getRegisterNewRequestData(registerRequestData:registerRequestData, qaList: qaList)
+        
         RegisterModel.init().registerNew(rawData:rawData, success: { (result) in
-            if result.statusCode == "200"{
+            if result.status == Constants.STATUS_200{
                 success(result)
-            }else{
-                failure(result.statusMessage!)
+            } else{
+                failure(Constants.SERVER_INTERNAL_FAILURE)
             }
         }) { (error) in
             failure(error)
@@ -101,7 +125,7 @@ class RegisterViewModel{
             phoneModel: UIDevice.modelName,
             manufacture: "-",
             sdk: "-",
-            osType: "-",
+            osType: "iOS",
             osVersion: osVersion,
             resolution: "\(UIScreen.main.bounds.width) x \(UIScreen.main.bounds.height)",
             instructionSet: "-",
@@ -136,13 +160,17 @@ class RegisterViewModel{
         }
     
     //MAKE EXISTED MEMBER REGISTER
-    func makeRegisterExistedMember(registerRequestData:RegisterRequestBean,profileImage:UIImage,memberResponseData:CheckMemberResponse,qaList:[SecQABean],success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
-        let rawData = getRegisterExistedRequestData(registerRequestData:registerRequestData,memberResponseData: memberResponseData, qaList: qaList)
-        RegisterModel.init().registerExisted(rawData:rawData,imageData:profileImage.jpegData(compressionQuality: 1)!, success: { (result) in
-            if result.statusCode == "200"{
+    func makeRegisterExistedMember(registerRequestData:RegisterRequestBean,profileImage:UIImage,memberResponseData:CheckMemberResponse,qaList:[SecQABean],success: @escaping (NewRegisterResponse) -> Void,failure: @escaping (String) -> Void){
+        
+        let rawData = getRegisterExistedRequestData(registerRequestData:registerRequestData,memberResponseData: memberResponseData, qaList: qaList, profileImage: profileImage)
+        
+        RegisterModel.init().registerExisted(rawData : rawData, success: { (result) in
+            if result.status == Constants.STATUS_200 {
+                print("view model", result)
                 success(result)
+                
             }else{
-                failure(result.statusMessage!)
+                failure(result.status!)
             }
         }) { (error) in
             failure(error)
@@ -150,7 +178,8 @@ class RegisterViewModel{
     }
     
     //GET REQUEST DATA FOR EXISTED MEMBER
-    func getRegisterExistedRequestData(registerRequestData:RegisterRequestBean,memberResponseData:CheckMemberResponse,qaList:[SecQABean])->String{
+    func getRegisterExistedRequestData(registerRequestData:RegisterRequestBean,memberResponseData:CheckMemberResponse,qaList:[SecQABean], profileImage: UIImage)->Data{
+        
         let osVersion = "\(ProcessInfo().operatingSystemVersion.majorVersion).\(ProcessInfo().operatingSystemVersion.minorVersion).\(ProcessInfo().operatingSystemVersion.patchVersion)"
         let cpuArch = MemoryLayout<Int>.size == MemoryLayout<Int32>.size ? 32 : 64
         
@@ -158,23 +187,22 @@ class RegisterViewModel{
             phoneModel: UIDevice.modelName,
             manufacture: "-",
             sdk: "-",
-            osType: "-",
+            osType: "iOS",
             osVersion: osVersion,
             resolution: "\(UIScreen.main.bounds.width) x \(UIScreen.main.bounds.height)",
             instructionSet: "-",
             cpuArchitecture: "\(cpuArch)",
             registrationTime: "-")
         
-        let password = registerRequestData.password
+        let imageData:NSData = profileImage.pngData()! as NSData
+        let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        
         let existedMemberRequestData = RegisterExistedRequestData(
-            name: memberResponseData.memberDataBean?.name ?? "",
-            dateOfBirth: memberResponseData.memberDataBean?.dateOfBirth ?? "",
-            nrcNo: memberResponseData.memberDataBean?.nrcNo ?? "",
-            phoneNo: memberResponseData.memberDataBean?.phoneNo ?? "",
-            password: password ,
-            importCustomerId: memberResponseData.memberDataBean?.importCustomerInfoId ?? 0,
-            customerNo: memberResponseData.memberDataBean?.customerNo ?? "",
-            photoPath: "",
+            dateOfBirth: registerRequestData.dob,
+            nrcNo: registerRequestData.nrc,
+            phoneNo: registerRequestData.phoneNo,
+            password: registerRequestData.password ,
+            photoPath: imageBase64,
             securityAnsweredInfoList: qaList,
             appUsageInfo:appUsageInfo)
         
@@ -182,52 +210,96 @@ class RegisterViewModel{
 //        print("Request ParamData \(requestParamData)")
         do {
             let jsonData = try JSONEncoder().encode(existedMemberRequestData)
-            let jsonString = String(data: jsonData, encoding: .utf8)!
-            print("Encode \(jsonString)")
-            
-            // and decode it back
-//            let decodedSentences = try JSONDecoder().decode(RegisterExistedRequestData.self, from: jsonData)
-//            print("Decode \(decodedSentences)")
-            
-            return jsonString
+            //let jsonString = String(data: jsonData, encoding: .utf8)!
+            //print("Encode \(jsonString)")
+
+//            // and decode it back
+////            let decodedSentences = try JSONDecoder().decode(RegisterExistedRequestData.self, from: jsonData)
+////            print("Decode \(decodedSentences)")
+
+            return jsonData
         } catch { print("Error \(error)") }
-        
-        return ""
+
+        return Data()
     }
     
     //MAKE EXISTED MEMBER REGISTER
     func updateRegisterNewMember(customerNo:String,profileImage:UIImage,memberResponseData:CheckMemberResponse,qaList:[SecQABean],success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
         
-        RegisterModel.init().registerExisted(rawData:customerNo,imageData:profileImage.pngData()!, success: { (result) in
-            if result.statusCode == "200"{
+//        RegisterModel.init().registerExisted(rawData:customerNo, success: { (result) in
+//            if result.statusCode == "200"{
+//                success(result)
+//            }else{
+//                failure(result.statusMessage!)
+//            }
+//        }) { (error) in
+//            failure(error)
+//        }
+    }
+    
+    //MAKE VERIFY MEMBER REGISTER
+    func updateVerifiedNewMember(customerId:String, customerNo:String, profileImage:UIImage , phoneNo:String, token:String, refreshToken:String, success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
+        
+        let imageData:NSData = profileImage.pngData()! as NSData
+        let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        
+        let rawData = [
+            "customerId" : customerId,
+            "customerNo" : customerNo,
+            "photoByte" : imageBase64
+        ]
+        
+        let jsonEncoder = JSONEncoder()
+        let verifyData = try! jsonEncoder.encode(rawData)
+        //let verifyData = String(data: jsonData, encoding: String.Encoding.utf8)
+        
+        RegisterModel.init().registerVerifyMember(rawData:verifyData, token: token, success: { (result) in
+            if result.status == Constants.STATUS_200 {
                 success(result)
-            }else{
-                failure(result.statusMessage!)
+                
+            } else {
+                failure(result.status)
             }
+            
         }) { (error) in
+            
+            if error == Constants.EXPIRE_TOKEN {
+                LoginAuthModel.init().refereshToken(refreshToken: refreshToken, success: { (result) in
+                    
+                    if result.status == Constants.STATUS_200 {
+                        var token = TokenBean()
+                        token.accessToken = result.data.access_token
+                        token.refreshToken = result.data.refresh_token
+                        token.tokenType = result.data.token_type
+                        token.scope = result.data.scope
+                        token.expireIn = result.data.expire_in
+                        
+                        let jsonData = try? JSONEncoder().encode(result)
+                        let jsonString = String(data: jsonData!, encoding: .utf8)!
+                        UserDefaults.standard.set(jsonString, forKey: Constants.TOKEN_DATA)
+                        
+                        RegisterModel.init().registerVerifyMember(rawData:verifyData,token: token.accessToken!, success: { (result) in
+                            if result.status == Constants.STATUS_200 {
+                                success(result)
+                                
+                            } else {
+                                failure(result.status)
+                            }
+                            
+                        }) { (error) in
+                            failure(error)
+                        }
+                        
+                    } else {
+                        failure(result.status ?? "FAILED")
+                    }
+                    
+                }) { (error) in
+                    failure(Constants.EXPIRE_TOKEN)
+                }
+            }
             failure(error)
         }
     }
     
-    //MAKE VERIFY MEMBER REGISTER
-    func updateVerifiedNewMember(customerId:String,customerNo:String,profileImage:UIImage ,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
-        
-        let rawData = [
-            "customerId" : customerId,
-            "customerNo" : customerNo
-        ]
-        let jsonEncoder = JSONEncoder()
-        let jsonData = try! jsonEncoder.encode(rawData)
-        let verifyData = String(data: jsonData, encoding: String.Encoding.utf8)
-        
-        RegisterModel.init().registerVerifyMember(rawData:verifyData!,imageData:profileImage.pngData()!, success: { (result) in
-            if result.statusCode == "200"{
-                success(result)
-            }else{
-                failure(result.statusMessage!)
-            }
-        }) { (error) in
-            failure(error)
-        }
-    }
 }

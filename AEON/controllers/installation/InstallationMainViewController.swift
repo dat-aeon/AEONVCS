@@ -2,7 +2,7 @@
 //  InstallationMainViewController.swift
 //  AEONVCS
 //
-//  Created by mac on 2/26/19.
+//  Created by Khin Yadanar Thein on 2/26/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
@@ -21,7 +21,8 @@ class InstallationMainViewController: BaseUIViewController {
         if isFirstOpen {
             toggleContainer(position: 2)
         } else {
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+            navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion: nil)
         }
     }

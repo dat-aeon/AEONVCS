@@ -2,7 +2,7 @@
 //  MemberCardInfoTwoViewController.swift
 //  AEON
 //
-//  Created by AcePlus101 on 2/1/19.
+//  Created by Khin Yadanar Thein on 2/1/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
@@ -12,36 +12,46 @@ import SwiftyJSON
 class MemberCardInfoTwoViewController: BaseUIViewController {
     
     @IBOutlet weak var ivProfile: UIImageView!
+    @IBOutlet weak var lbMemberNo: UILabel!
     @IBOutlet weak var lblMemberLabel: UILabel!
     @IBOutlet weak var ivBackgroundGif: UIImageView!
-    var registerResponse:RegisterResponse?
-    var loginResponse:LoginResponse?
+    
+    var sessionInfo:SessionDataBean?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("MemberCardInfoTwoViewController:::::::::")
-        let registerResponseString = UserDefaults.standard.string(forKey: Constants.REGISTER_RESPONSE)
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: JSON(parseJSON: registerResponseString ?? "").rawData())
-        
-        let loginResponseString = UserDefaults.standard.string(forKey: Constants.LOGIN_RESPONSE)
-        
-        loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: JSON(parseJSON: loginResponseString ?? "").rawData())
-        
-        var photoPath = Constants.BLANK
-        if let registerData = registerResponse{
-            photoPath += registerData.photoPath ?? ""
+        let customerType = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE)
+        if customerType == Constants.MEMBER {
+            //            print("MemberCardInfoTwoViewController:::::::::")
+            
+            let sessionInfoString = UserDefaults.standard.string(forKey: Constants.SESSION_INFO)
+            
+            sessionInfo = try? JSONDecoder().decode(SessionDataBean.self, from: JSON(parseJSON: sessionInfoString ?? "").rawData())
+            
+            var photoPath = Constants.PROFILE_PHOTO_URL
+            
+            if sessionInfo?.customerNo != nil{
+                photoPath += (sessionInfo?.photoPath)!
+                let photoUrl = URL(string: photoPath)
+                //                print("MemberCardInfoTwoViewController photo URL \(String(describing: photoUrl))")
+                self.ivProfile.kf.indicatorType = .activity
+                self.ivProfile.kf.setImage(with: photoUrl)
+                
+            }
+            
+            print("memberNoValid : \(sessionInfo?.memberNoValid)")
+            self.lblMemberLabel.text = "membership.card2.photo.label".localized
+            self.lbMemberNo.text = sessionInfo!.memberNoValid! ? "\(sessionInfo?.memberNo ?? "")" : ""
+            
+            //self.ivBackgroundGif.loadGif(asset: "Aeon-Animate-1")
+            self.ivBackgroundGif.loadGif(asset: "AEON-gif")
         }
-        if let loginData = loginResponse{
-            photoPath += loginData.photoPath ?? ""
-        }
-        let photoUrl = URL(string: photoPath)
-        print("MemberCardInfoTwoViewController photo URL \(String(describing: photoUrl))")
-        self.ivProfile.kf.setImage(with: photoUrl)
-        
-        self.lblMemberLabel.text = "membership.card2.photo.label".localized
-        
-        self.ivBackgroundGif.loadGif(asset: "background-gif")
     }
 
     @objc override func updateViews() {

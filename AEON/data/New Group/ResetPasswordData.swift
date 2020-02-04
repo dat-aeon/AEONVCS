@@ -20,3 +20,9 @@ struct ResetPasswordResponse : Codable{
     var customerId:Int
     var userTypeId:Int
 }
+struct ForceChangePasswordRequest : Codable {
+    var phoneNo:String
+    var nrcNo:String
+    var password:String
+    
+}

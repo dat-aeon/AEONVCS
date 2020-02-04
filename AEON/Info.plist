@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -26,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -35,9 +37,22 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>add reason</string>
+	<string>to take photo for profile picture and sending application form.</string>
 	<key>NSFaceIDUsageDescription</key>
-	<string>add reason</string>
+	<string>to login with biometric data.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>to show the location of agent shops near user place in time.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>to show the location of agent shops near user place in time.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>to show the location of agent shops near user place in time.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>to take photo for profile picture and sending application form.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Pyidaungsu-Regular.ttf</string>
+		<string>Pyidaungsu-Bold.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

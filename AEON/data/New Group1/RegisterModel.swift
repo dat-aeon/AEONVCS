@@ -12,34 +12,30 @@ import Alamofire
 
 class RegisterModel:BaseModel {
     
-    func loadNRCData(success: @escaping ([String]) -> Void,failure: @escaping (String) -> Void) {
-        let rawData = ["siteActivationKey":"12345678"]
+    func loadNRCData(siteActivationKey: String,success: @escaping ([[String]]) -> Void,failure: @escaping (String) -> Void) {
+        let rawData = ["siteActivationKey":siteActivationKey]
         
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.nrcList, rawData: rawData) { (result) in
+        let _ = super.requestGETWithoutToken(endPoint: ApiServiceEndPoint.nrcList, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
-                if let responseJsonData = JSON(result).array{
-                var nrcList = [String]()
-                 responseJsonData.forEach({ (response) in
-                    if let data = response.string{
-                        nrcList.append(data)
+
+                let responseJsonData = JSON(result)
+                let responseValue  = try! responseJsonData.rawData()
+                if let nrcResponse = try? JSONDecoder().decode(NRCResponse.self, from: responseValue){
+                    //success(checkMemberResponse)
+                    var townshipList = [[String]]()
+                    for data in nrcResponse.data {
+                        townshipList.append(data.townshipCodeList)
+                        print("\(townshipList.count)", data.townshipCodeList)
                     }
-                 })
-                success(nrcList)
+                    success(townshipList)
                 }else{
-                   failure("Cannot load any data")
+                    failure(Constants.JSON_FAILURE)
                 }
-//                if let resultDictionary = result as? [(String)]{
-//                    let sortDict = resultDictionary.sorted(by: { (k1,v1)-> Bool in
-//                        return k1.key < v1.key                    })
-//                    let townships = resultDictionary.values.map{ $0 }.sorted()
-//                    let townships = resultDictionary.va
-//                    success(townships)
-//                }else{
-//                    failure("Cannot load any data")
-//                }
-            case .failure(let error):
-                failure(error.localizedDescription)
+
+            case .failure( _):
+                //print("NRC error", error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
         
@@ -53,163 +49,305 @@ class RegisterModel:BaseModel {
             "password": registerReqBean.password
         ]
         
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.checkMember, rawData: rawData) { (result) in
+        let _ = super.requestPOSTWithoutToken(endPoint: ApiServiceEndPoint.checkMember, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
-                let responseJsonData = JSON(result)
-                let responseValue  = try! responseJsonData.rawData()
-                if let checkMemberResponse = try? JSONDecoder().decode(CheckMemberResponse.self, from: responseValue){
-                    success(checkMemberResponse)
-                }else{
-                    failure("Cannot load any data")
-                }
                 
-//                let checkMemberResponse = CheckMemberResponse.parseToCheckMemberResponse(responseJsonData)
-//                success(checkMemberResponse)
+                let response = result as AnyObject
+                //print("check member response : ", response)
+                
+                var checkResponse = CheckMemberResponse()
+                checkResponse.data = MemberData()
+                if response["status"] as! String == Constants.STATUS_200 {
+                    checkResponse.status = response["status"] as? String
+                    let data = response["data"] as AnyObject
+                    if (data["memberStatus"] as? String == Constants.MEMBER) {
+                        checkResponse.data?.memberStatus = data["memberStatus"] as? String
+                        checkResponse.data?.memberPhoneNo = data["memberPhoneNo"] as? String
+                        checkResponse.data?.hotlinePhone = data["hotlinePhone"] as? String
+                        
+                    } else {
+                        checkResponse.data?.memberStatus = data["memberStatus"] as? String
+                        checkResponse.data?.memberPhoneNo = Constants.BLANK
+                        checkResponse.data?.hotlinePhone = Constants.BLANK
+                    }
+                    
+                } else {
+                    checkResponse.data?.messageCode = response["messageCode"] as? String
+                    checkResponse.data?.message = response["message"] as? String
+                }
+                success(checkResponse)
+                
+//                let responseJsonData = JSON(result)
+//                let responseValue  = try! responseJsonData.rawData()
+//                if let checkMemberResponse = try? JSONDecoder().decode(CheckMemberResponse.self, from: responseValue){
+//                    success(checkMemberResponse)
+//                }else{
+//                    failure(Constants.JSON_FAILURE)
+//                }
                 
             case .failure(let error):
-                failure(error.localizedDescription)
+                print("Check Member error",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
         
     }
     
-    func checkVerifiedUserInfo(verifyUserInfo: CheckVerifyUserInfoRequest,success: @escaping (CheckVerifyUserInfoResponse) -> Void,failure: @escaping (String) -> Void){
+    func checkVerifiedUserInfo(verifyUserInfo: CheckVerifyUserInfoRequest, token: String,success: @escaping (CheckVerifyUserInfoResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
             "agreementNo": verifyUserInfo.agreementNo,
             "dateOfBirth": verifyUserInfo.dateOfBirth,
-            "nrcNo": verifyUserInfo.nrcNo
+            "nrcNo": verifyUserInfo.nrcNo,
+            "customerId" : verifyUserInfo.customerId
         ]
-        
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.checkRegisterVerifyNewMember, rawData: rawData) { (result) in
+        let token = [
+            "access_token" : token
+        ]
+        let _ = super.requestDataWithToken(endPoint: ApiServiceEndPoint.checkRegisterVerifyNewMember, rawData: rawData, token: token) { (result) in
             switch result{
             case .success(let result):
-                let responseJsonData = JSON(result)
-                let responseValue  = try! responseJsonData.rawData()
-                if let checkMemberResponse = try? JSONDecoder().decode(CheckVerifyUserInfoResponse.self, from: responseValue){
-                    success(checkMemberResponse)
-                }else{
-                    failure("Cannot load any data")
+                
+                let response = result as AnyObject
+                //print("register response : ", response)
+                
+                var verifyInfo = CheckVerifyUserInfoResponse()
+                verifyInfo.data = VerifyData()
+                let data = response["data"] as AnyObject
+                
+                if Constants.STATUS_200 == response["status"] as? String {
+                    verifyInfo.status = response["status"] as? String
+                    verifyInfo.data?.verifyStatus = data["verifyStatus"] as? String
+                    verifyInfo.data?.customerNo = data["customerNo"] as? String
+                    success (verifyInfo)
+                    
+                } else if Constants.STATUS_500 == response["status"] as? String {
+                    verifyInfo.data?.verifyStatus = data["messageCode"] as? String
+                    success (verifyInfo)
+                    
+                } else if Constants.STATUS_500 == response["error"] as? String {
+                    failure(response["error"] as! String)
+                    
+                }else {
+                    failure(Constants.JSON_FAILURE)
                 }
+                
+//                let responseJsonData = JSON(result)
+//                let responseValue  = try! responseJsonData.rawData()
+//                if let checkMemberResponse = try? JSONDecoder().decode(CheckVerifyUserInfoResponse.self, from: responseValue){
+//                    success(checkMemberResponse)
+//                }else{
+//                    failure(Constants.JSON_FAILURE)
+//                }
             case .failure(let error):
-                failure(error.localizedDescription)
+                //print("Verify User error",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
         
     }
+    
     func registerNew(rawData:Data,success: @escaping (NewRegisterResponse) -> Void,failure: @escaping (String) -> Void){
         let _ = super.performRequest(endPoint: ApiServiceEndPoint.registerNew, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
-                let responseJsonData = JSON(result)
-                let responseValue  = try! responseJsonData.rawData()
-                if let registerResponse = try? JSONDecoder().decode(NewRegisterResponse.self, from: responseValue){
-//                    if let agreementNoValue = try? responseJsonData["custAgreementListDtoList"] {
-//                        if let noList = try? agreementNoValue.encode(to: [CustomerAgreementData] as! Encoder.self) {
-//                            registerResponse.setAgreementNoList(list: noList)
-//                        } else {
-//                            registerResponse.setAgreementNoList(list: [])
-//                        }
-//
-//                    } else {
-//                        registerResponse.setAgreementNoList(list: [])
-//                    }
-                    success(registerResponse)
-                }else{
-                    failure("Json Serialization Error")
+                
+                let response = result as AnyObject
+                //print("register response : ", response)
+                
+                if response["status"] as! String == Constants.STATUS_200 {
+                    let data = response["data"] as AnyObject
+                    var newRegister = NewRegisterResponse()
+                    newRegister.data = NewRegisterData()
+                    newRegister.status = response["status"] as? String
+                    newRegister.data?.customerId = data["customerId"] as? Int
+                    success (newRegister)
+                    
+                } else {
+                    failure(Constants.JSON_FAILURE)
                 }
+                
+//                let responseJsonData = JSON(result)
+//                let responseValue  = try! responseJsonData.rawData()
+//                if let registerResponse = try? JSONDecoder().decode(NewRegisterResponse.self, from: responseValue){
+//
+//                    success(registerResponse)
+//                    print("model", registerResponse )
+//                }else{
+//                    failure(Constants.JSON_FAILURE)
+//                }
             case .failure(let error):
-                failure(error.localizedDescription)
+                //print("Register New error",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
     }
     
-    func registerExisted(rawData:String, imageData: Data,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
-        let _ = super.performRequestWithImage(endPoint: ApiServiceEndPoint.registerExisted, imageData:imageData , rawData: rawData) { (response) in
-            switch response {
-            case .success(let upload, _, _):                                    upload.uploadProgress(closure: { (progress) in
-                print("Upload Progress: \(progress.fractionCompleted)")
-            })
-            
-            upload.responseJSON { response in
-                let api = response.result.value
-                if let result = api {
-//                    let json = JSON(result)
-//                    if json["code"].int ?? 0 == 200 {
-//                        self.ivProfile.sd_setImage(with: URL(string: json["data"].string!), placeholderImage: UIImage(named: "profile-placeholder"))
-//                        print(json["data"].string!)
-//
-//                    } else {
-//
-//                    }
-                    let responseJsonData = JSON(result)
-                    let responseValue  = try! responseJsonData.rawData()
-                    if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
-                        success(registerResponse)
-                    }else{
-                        failure("Cannot serialize data")
-                    }
+    func registerExisted(rawData: Data,success: @escaping (NewRegisterResponse) -> Void,failure: @escaping (String) -> Void){
+        
+        let _ = super.performRequest(endPoint: ApiServiceEndPoint.registerExisted, rawData: rawData) { (result) in
+            switch result{
+            case .success(let result):
+                
+                let response = result as AnyObject
+                //print("register response : ", response)
+                
+                if response["status"] as! String == Constants.STATUS_200 {
+                    let data = response["data"] as AnyObject
+                    var newRegister = NewRegisterResponse()
+                    newRegister.data = NewRegisterData()
+                    newRegister.status = response["status"] as? String
+                    newRegister.data?.customerId = data["customerId"] as? Int
+                    success (newRegister)
+                    
                 } else {
-                    print(api!)
-                    failure("Cannot Register")
+                    failure(Constants.SERVER_INTERNAL_FAILURE)
                 }
-                
-            }
-            
-                break
-                
             case .failure(let error):
-                print(error)
-                failure(error.localizedDescription)
-                break
-                
+                //print("Register New error",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
+        
+//        let _ = super.performRequestWithImage(endPoint: ApiServiceEndPoint.registerExisted, imageData:imageData , rawData: rawData) { (response) in
+//            switch response {
+//            case .success(let upload, _, _):
+//                upload.uploadProgress(closure: { (progress) in
+//                print("Upload Progress: \(progress.fractionCompleted)")
+//            })
+//            
+//            upload.responseJSON { response in
+//                let api = response.result.value
+//                if let result = api {
+//
+//                    let responseJsonData = JSON(result)
+//                    let responseValue  = try! responseJsonData.rawData()
+//                    if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
+//                        print("success", registerResponse)
+//                        success(registerResponse)
+//                    }else{
+//                        failure(Constants.JSON_FAILURE)
+//                    }
+//                } else {
+//                    
+//                    failure(Constants.SERVER_FAILURE)
+//                }
+//            }
+//            break
+//                
+//            case .failure(let error):
+//                print("Register Existed error",error)
+//                failure(Constants.SERVER_FAILURE)
+//                break
+//                
+//            }
+//        }
     }
     
     //Verify Member Register
-    func registerVerifyMember(rawData:String, imageData: Data,success: @escaping (RegisterResponse) -> Void,failure: @escaping (String) -> Void){
-        let _ = super.performRequestWithImage(endPoint: ApiServiceEndPoint.registVerifyMember, imageData:imageData , rawData: rawData) { (response) in
-            
-            print("Verify Member result::::: \(response)")
-            switch response {
-            case .success(let upload, _, _):                                    upload.uploadProgress(closure: { (progress) in
-                print("Upload Progress: \(progress.fractionCompleted)")
-            })
-            
-            upload.responseJSON { response in
-                let api = response.result.value
-                if let result = api {
-                    //                    let json = JSON(result)
-                    //                    if json["code"].int ?? 0 == 200 {
-                    //                        self.ivProfile.sd_setImage(with: URL(string: json["data"].string!), placeholderImage: UIImage(named: "profile-placeholder"))
-                    //                        print(json["data"].string!)
-                    //
-                    //                    } else {
-                    //
-                    //                    }
-                    let responseJsonData = JSON(result)
-                    let responseValue  = try! responseJsonData.rawData()
-                    if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
-                        success(registerResponse)
-                    }else{
-                        failure("Cannot serialize data")
+    func registerVerifyMember(rawData:Data,token:String, success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
+        let token = [
+            "access_token" : token
+        ]
+        let _ = super.requestDataObjWithToken(endPoint: ApiServiceEndPoint.registVerifyMember, rawData: rawData, token: token) { (result) in
+            switch result{
+            case .success(let result):
+                
+                let response = result as AnyObject
+                //print("verify register response : ", response)
+                
+                if Constants.STATUS_200 == response["status"] as? String {
+                    let data = response["data"] as AnyObject
+                    var loginResponse = LoginResponse()
+                    if (data["customerNo"]) != nil {
+                        loginResponse.data.customerNo = data["customerNo"] as? String
+                        loginResponse.data.photoPath = data["photoPath"] as? String
+                        loginResponse.data.memberNo = data["memberNo"] as? String
+                        if loginResponse.data.memberNo != nil && loginResponse.data.memberNo != Constants.BLANK {
+                            loginResponse.data.memberNo?.insert(separator: "-", every: 4)
+                        }
+                        loginResponse.data.customerAgreementDtoList = [CustomerAgreementDtoList]()
+                        if let agreeList = data["customerAgreementDtoList"] as? [AnyObject] {
+                            for agree in agreeList {
+                                var cust = CustomerAgreementDtoList()
+                                //let agree:NSObject = agreeList as! NSObject
+                                cust.agreementNo = agree.value(forKey: "agreementNo") as? String
+                                cust.custAgreementId = agree.value(forKey: "custAgreementId") as? Int
+                                cust.financialAmt = agree.value(forKey: "financialAmt") as? Int
+                                cust.financialStatus = agree.value(forKey: "financialStatus") as? Int
+                                cust.financialTerm = agree.value(forKey: "financialTerm") as? Int
+                                cust.importCustomerId = agree.value(forKey: "importCustomerId") as? Int
+                                cust.qrShow = agree.value(forKey: "qrShow") as? Int
+                                loginResponse.data.customerAgreementDtoList?.append(cust)
+                            }
+                        }
+                    } else {
+                        loginResponse.data.customerNo = Constants.BLANK
+                        loginResponse.data.photoPath = Constants.BLANK
+                        loginResponse.data.customerAgreementDtoList = [CustomerAgreementDtoList]()
                     }
+                    loginResponse.data.customerId = data["customerId"] as? Int
+                    loginResponse.data.customerTypeId = data["customerTypeId"] as? Int
+                    loginResponse.data.dateOfBirth = data["dateOfBirth"] as? String
+                    loginResponse.data.name = data["name"] as? String
+                    loginResponse.data.nrcNo = data["nrcNo"] as? String
+                    loginResponse.data.phoneNo = data["phoneNo"] as? String
+                    loginResponse.data.userTypeId = data["userTypeId"] as? Int
+                    loginResponse.data.hotlinePhone = data["hotlinePhone"] as? String
+                    loginResponse.status = response["status"] as! String
+                    loginResponse.data.memberNoValid = data["memberNoValid"] as? Bool
+                    
+                    success(loginResponse)
+                    
+                } else if Constants.STATUS_500 == response["status"] as? String {
+                    failure(response["message"] as! String)
+                    
+                } else if Constants.EXPIRE_TOKEN == response["error"] as? String {
+                    failure(response["error"] as! String)
+                    
                 } else {
-                    print(api!)
-                    failure("Cannot Register")
+                    failure(Constants.JSON_FAILURE)
                 }
-                
-            }
-            
-                break
-                
             case .failure(let error):
-                print(error)
-                failure(error.localizedDescription)
-                break
-                
+                //print("Register New error",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
+        
+//        let _ = super.performRequestWithImage(endPoint: ApiServiceEndPoint.registVerifyMember, imageData:imageData , rawData: rawData) { (response) in
+//
+//            print("Verify Member result::::: \(response)")
+//            switch response {
+//            case .success(let upload, _, _):
+//                upload.uploadProgress(closure: { (progress) in
+//                print("Upload Progress: \(progress.fractionCompleted)")
+//            })
+//
+//            upload.responseJSON { response in
+//                let api = response.result.value
+//                if let result = api {
+//
+//                    let responseJsonData = JSON(result)
+//                    let responseValue  = try! responseJsonData.rawData()
+//                    if let registerResponse = try? JSONDecoder().decode(RegisterResponse.self, from: responseValue){
+//                        success(registerResponse)
+//                    }else{
+//                        failure(Constants.JSON_FAILURE)
+//                    }
+//                } else {
+//                    print(api!)
+//                    failure(Constants.SERVER_FAILURE)
+//                }
+//
+//            }
+//            break
+//
+//            case .failure(let error):
+//                print("Register Verify Member error",error.localizedDescription)
+//                failure(Constants.SERVER_FAILURE)
+//                break
+//
+//            }
+//        }
     }
 }

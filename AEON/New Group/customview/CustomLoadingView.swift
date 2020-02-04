@@ -2,7 +2,7 @@
 //  CustomLoadingView.swift
 //  AEONVCS
 //
-//  Created by AcePlus101 on 2/15/19.
+//  Created by Khin Yadanar Thein on 2/15/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 

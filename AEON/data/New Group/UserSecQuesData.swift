@@ -22,8 +22,9 @@ struct QuestionBean : Codable {
 
 struct UserSecQuesConfirmRequest : Codable{
     var phoneNo: String = ""
-    var nrcData: String = ""
-    var resetPwdAnsweredSecQuesList = [UserQABeanRequest]()
+    var nrcNo: String = ""
+    var securityQuestionAnswerReqDtoList = [UserQABeanRequest]()
+    
 }
 
 struct UserQABeanRequest : Codable{
@@ -50,3 +51,4 @@ struct ConfirmResponse : Codable{
     var customerId: Int?
     var userTypeId: Int?
 }
+

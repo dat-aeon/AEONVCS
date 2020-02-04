@@ -2,7 +2,7 @@
 //  SecQuesVerifyBtnTableViewCell.swift
 //  AEONVCS
 //
-//  Created by mac on 2/18/19.
+//  Created by Khin Yadanar Thein on 2/18/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
@@ -15,13 +15,10 @@ class SecQuesVerifyBtnTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     @IBAction func onClickVerifyConfirmBtn(_ sender: UIButton) {

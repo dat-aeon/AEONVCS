@@ -15,11 +15,7 @@ class FAQTableViewCell: UITableViewCell {
     
     var faqItem = FAQItem() {
         didSet {
-            //            guard let item = faqItem.isCollapsed else {
-            //                return
-            //            }
-            //            lblFaqMainQuestion?.text = item.question
-            //            setCollapsed(collapsed: !faqItem.isCollapsed)
+            
         }
     }
     var section:Int = 0
@@ -42,11 +38,6 @@ class FAQTableViewCell: UITableViewCell {
     }
     
     func setCollapsed(collapsed: Bool) {
-        //         if faqItem.isCollapsed {
-        //            self.lblAnswer.isHidden = false
-        //        }else{
-        //            self.lblAnswer.isHidden = true
-        //        }
         ivDropdown?.rotate(collapsed ? .pi : 0.0)
     }
     
@@ -54,10 +45,8 @@ class FAQTableViewCell: UITableViewCell {
         self.faqItem = faqItem
         setCollapsed(collapsed: faqItem.isCollapsed)
         self.lblSubQuestion.text = faqItem.subQuestion
-        self.lblAnswer.text = faqItem.answer
         
         let questionHeight = lblSubQuestion.heightForLabel(text: faqItem.subQuestion, width: self.frame.width)
-        let answerHeight = lblAnswer.heightForLabel(text: faqItem.answer, width: self.frame.width)
         
         var questionFrame = self.lblSubQuestion.frame
         questionFrame.size.height = questionHeight
@@ -66,19 +55,13 @@ class FAQTableViewCell: UITableViewCell {
         var questionHeaderFrame = self.lblSubQuestion.superview?.frame
         questionHeaderFrame!.size.height = questionHeight+32
         self.lblSubQuestion.superview?.frame = questionHeaderFrame!
-        //        self.lblAnswer?.visiblity(gone: true, dimension: CGFloat(0.0))
-        //
-        //        var contentFrame = self.frame
-        //        contentFrame.size.height = questionHeight+16
-        //        self.frame = contentFrame
         
         if faqItem.isCollapsed {
-            //            var labelFrame = self.lblAnswer.frame
-            //            labelFrame.size.height = answerHeight
-            //            self.lblAnswer.frame = labelFrame
-            //
+            self.lblAnswer.text = faqItem.answer
+            let answerHeight = lblAnswer.heightForLabel(text: faqItem.answer, width: self.frame.width)
+            
             self.ivDropdown.image = UIImage(named: "collapse")
-            //            ivDropdown?.rotate(.pi)
+            self.lblAnswer.isHidden = false
             self.lblAnswer?.visiblity(gone: false, dimension: CGFloat(answerHeight))
             
             var contentFrame = self.frame
@@ -87,20 +70,17 @@ class FAQTableViewCell: UITableViewCell {
             
         }
         else {
-            //            var labelFrame = self.lblAnswer.frame
-            //            labelFrame.size.height = 0
-            //            self.lblAnswer.frame = labelFrame
-            
+           
             var contentFrame = self.frame
             contentFrame.size.height = questionHeight+32
             self.frame = contentFrame
             
             self.ivDropdown.image = UIImage(named: "expand")
-            //        ivDropdown?.rotate(0.0)
+            self.lblAnswer.isHidden = true
             self.lblAnswer?.visiblity(gone: true, dimension: CGFloat(0.0))
             
-            
         }
+        self.lblAnswer.layoutIfNeeded()
     }
     
 }

@@ -15,12 +15,20 @@ class CustomerTypeViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.btnUsedCustomer.setTitle("customertype.newcustomer.button".localized, for: UIControl.State.normal)
-        print("Start CustomerTypeViewController :::::::::::::::")
+//        print("Start CustomerTypeViewController :::::::::::::::")
         
     }
     
     @IBAction  func onClickUsedCustomer(_ sender:UIButton){
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "VerifyMemberViewController") as! UINavigationController
+        
+        // check network
+        if Network.reachability.isReachable == false {
+            Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+            return
+        }
+        
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UINavigationController
+        navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
 

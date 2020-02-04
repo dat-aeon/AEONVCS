@@ -6,10 +6,26 @@ target 'AEONVCS' do
   use_frameworks!
 
   # Pods for AEON
-  pod 'Alamofire'
+  pod 'Alamofire'	
+  pod 'AlamofireImage'	
   pod 'SwiftyJSON'
   pod 'Kingfisher'
   pod 'SideMenu'
   pod 'DatePickerDialog'
   pod 'SwiftGifOrigin'
+  pod 'ReachabilitySwift'
+  pod 'SwiftWebSocket'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'PaddingLabel'
+  pod 'SearchTextField'
+  pod 'Starscream'
+
+  #DA Stepped Progress Bar
+  pod "FlexibleSteppedProgressBar"
+  pod 'SwipeMenuViewController'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+
+  pod 'IQKeyboardManagerSwift'
+
 end

@@ -54,27 +54,24 @@ class FAQDataModel: BaseModel{
         let rawData = [
            "siteActivationKey" : siteActivationKey
         ]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.faqList, rawData: rawData) { (result) in
+        let _ = super.requestGETWithoutToken(endPoint: ApiServiceEndPoint.faqList, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                //print("call data model result :::::::::::\(result)")
-                
-                //if let loginResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
+                //print("Response result :::::::::::\(result)")
                 
                 do {
                     if let fAQCateoryDataBean:FAQResponse = try? JSONDecoder().decode(FAQResponse.self, from: responseValue){
                         success(fAQCateoryDataBean)
-                        //print("call data model :::::::::::\(fAQCateoryDataBean)")
                         
-                        //return fAQCateoryDataBean;
                     }else{
-                        failure("Json parse FAQ error")
+                        failure(Constants.JSON_FAILURE)
                     }
                 } 
             case .failure(let error):
-                failure(error.localizedDescription)
+                print("FAQ loading error", error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
         

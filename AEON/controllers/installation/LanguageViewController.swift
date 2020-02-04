@@ -2,13 +2,13 @@
 //  LanguageViewController.swift
 //  AEONVCS
 //
-//  Created by mac on 2/25/19.
+//  Created by Khin Yadanar Thein on 2/25/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
 import UIKit
 
-class LanguageViewController: BaseUIViewController {
+class LanguageViewController: UIViewController {
 
     @IBOutlet weak var ivMyanmarFlag: UIImageView!
     @IBOutlet weak var ivEnglishFlag: UIImageView!
@@ -16,15 +16,21 @@ class LanguageViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let isFirstOpen:Bool = UserDefaults.standard.bool(forKey: Constants.IS_ALREADY_ACCEPT)
-        
-        // if user already accept Terms & Conditions
-        if isFirstOpen {
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController
-            self.present(navigationVC, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            
+            let isFirstOpen:Bool = UserDefaults.standard.bool(forKey: Constants.IS_ALREADY_ACCEPT)
+            
+            // if user already accept Terms & Conditions
+            if isFirstOpen {
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+            }
+            
+            self.ivMyanmarFlag.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickMMFlag)))
+            self.ivEnglishFlag.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickENGFlag)))
+            
         }
-         self.ivMyanmarFlag.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickMMFlag)))
-        self.ivEnglishFlag.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickENGFlag)))
         
     }
     
@@ -32,7 +38,8 @@ class LanguageViewController: BaseUIViewController {
         
         Locale.currentLocale = .MY
         
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsConditionAgreeViewController") as! UINavigationController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.TERMS_CONS_AGREE_VIEW_CONTROLLER) as! UINavigationController
+        navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
     
@@ -40,7 +47,8 @@ class LanguageViewController: BaseUIViewController {
         
         Locale.currentLocale = .EN
         
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsConditionAgreeViewController") as! UINavigationController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.TERMS_CONS_AGREE_VIEW_CONTROLLER) as! UINavigationController
+        navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
     

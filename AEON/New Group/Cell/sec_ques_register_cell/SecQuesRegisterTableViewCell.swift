@@ -11,10 +11,18 @@ import UIKit
 class SecQuesRegisterTableViewCell: UITableViewCell,UITextFieldDelegate {
 
     @IBOutlet weak var vsecQuesList: UIView!
+    @IBOutlet weak var lblQuesNo: UILabel!
     @IBOutlet weak var lblSecQuestion: UILabel!
+    @IBOutlet weak var lblAnsNo: UILabel!
     @IBOutlet weak var tfsecAnswer: UITextField!
- 
+    @IBOutlet weak var lbMessage: UILabel!
+    
+    // Error message Language control
+    var answerMesgLocale : String?
+    
+    
     var secQuesList = [String]()
+    var rowIndex: Int = 0
     
     var cellClickDelegate:SecQuesRegisterCellClickDelegate?
     
@@ -35,7 +43,6 @@ class SecQuesRegisterTableViewCell: UITableViewCell,UITextFieldDelegate {
         tapRecognizer.cancelsTouchesInView = false
         contentView.addGestureRecognizer(tapRecognizer)
         
-        
     }
     
     @objc func didTapView() {
@@ -47,20 +54,20 @@ class SecQuesRegisterTableViewCell: UITableViewCell,UITextFieldDelegate {
         return true
     }
     
-    func setData(data:[String],answerCount:Int) {
+    func setData(data:[String],answerCount:Int, row:Int) {
         self.secQuesList = data
-        self.tfsecAnswer.setMaxLength(maxLength: answerCount)
-        if data.count>0{
-            self.lblSecQuestion.text = data[0]
-        }
+        self.rowIndex = row
+        
+        //self.tfsecAnswer.setMaxLength(maxLength: answerCount)
+        
     }
     
     @objc func onClickSecQuesList(){
-        cellClickDelegate?.onClickSecQuesList(quesList: secQuesList,cell: self)
+        cellClickDelegate?.onClickSecQuesList(quesList: secQuesList,cell: self, row: self.rowIndex)
         
     }
 }
 
 protocol SecQuesRegisterCellClickDelegate {
-    func onClickSecQuesList(quesList:[String],cell:SecQuesRegisterTableViewCell)
+    func onClickSecQuesList(quesList:[String],cell:SecQuesRegisterTableViewCell, row: Int)
 }

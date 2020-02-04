@@ -9,10 +9,16 @@
 import Foundation
 
 //load Security Question & upload
-struct SecQuesListResponse: Codable {
-    let numOfQuestion: Int
-    let numOfAnsCount: Int
-    let secQuesList: [SecQuesListBean]
+struct SECQuesListResponse: Codable {
+    var status: String?
+    var data: SecQuesListData?
+}
+
+struct SecQuesListData: Codable {
+    var numOfQuestion: Int?
+    var numOfAnsCount: Int?
+    var secQuesList: [SecQuesListBean]?
+    
     enum CodingKeys: String, CodingKey {
         case numOfQuestion = "numOfSecQues"
         case numOfAnsCount = "numOfAnsChar"
@@ -21,10 +27,9 @@ struct SecQuesListResponse: Codable {
 }
 
 struct SecQuesListBean: Codable {
-    let secQuestionId: Int
-    let questionMM: String
-    let questionEN: String
-    let delFlag: Int = 0
+    var secQuestionId: Int?
+    var questionMM: String?
+    var questionEN: String?
 }
 
 struct SecQuesRegisterBean {

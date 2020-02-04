@@ -7,6 +7,17 @@
 //
 
 import Foundation
-struct NRCResponse {
+struct NRCResponse: Codable {
+    let status: String
+    let data: [NRCData]
+}
+
+struct NRCData: Codable {
+    let stateId: Int
+    let townshipCodeList: [String]
     
+    enum CodingKeys: String, CodingKey {
+        case stateId = "stateId"
+        case townshipCodeList
+    }
 }

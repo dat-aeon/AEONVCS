@@ -2,7 +2,7 @@
 //  InformationUpdateViewController.swift
 //  AEON
 //
-//  Created by AcePlus101 on 2/1/19.
+//  Created by Khin Yadanar Thein on 2/1/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
@@ -12,12 +12,15 @@ class InformationUpdateViewController: BaseUIViewController {
 
     @IBOutlet weak var cvSecurityQuestionUpdate: UIView!
     @IBOutlet weak var cvCustomerInfoUpdate: UIView!
-    
+    @IBOutlet weak var segInfroUpdate: UISegmentedControl!
     
     var containerIndex = 1
     override func viewDidLoad() {
         super.viewDidLoad()
+        segInfroUpdate.setTitle("infoupdate.tag1.title".localized, forSegmentAt: 0)
+        segInfroUpdate.setTitle("infoupdate.tag2.title".localized, forSegmentAt: 1)
         toggleContainer(position:containerIndex)
+        
     }
     @IBAction func onClickInformationUpdateSegmented(_ sender: UISegmentedControl) {
          toggleContainer(position: sender.selectedSegmentIndex+1)
@@ -42,7 +45,7 @@ class InformationUpdateViewController: BaseUIViewController {
     
     @objc override func updateViews() {
         super.updateViews()
-//        self.lblMemberLabel.text = "membership.card2.photo.label".localized
-//        
+        segInfroUpdate.setTitle("infoupdate.tag1.title".localized, forSegmentAt: 0)
+        segInfroUpdate.setTitle("infoupdate.tag2.title".localized, forSegmentAt: 1)
     }
 }

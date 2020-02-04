@@ -16,18 +16,20 @@ class MemberCardHeaderView: UITableViewCell {
     @IBOutlet weak var ivProfile: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblCustomerNo: UILabel!
+    @IBOutlet weak var lbMemberNo: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.backgroundColor = UIColor.clear
         //self.ivProfile.loadGif(name: "background-gif")
     }
     
-    func setData(name:String,customerNo:String){
+    func setData(name:String,customerNo:String , memberNo:String){
         self.lblName.text = name
         self.lblCustomerNo.text = customerNo
-        self.ivBackgroundGif.loadGif(asset: "DIR")
-        //self.ivProfile.loadGif(asset: "background-gif")
+        self.lbMemberNo.text = Constants.BLANK
+        //self.ivBackgroundGif.loadGif(asset: "Aeon-Animate-1")
+        //self.ivBackgroundGif.loadGif(asset: "AEON-gif")
         
 //        let imageData = try! Data(contentsOf: Bundle.main.url(forResource: "background-gif", withExtension: "gif")!)
 //        let gifImage = UIImage.gif(data: imageData)

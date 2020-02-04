@@ -16,20 +16,31 @@ class HotlineModel:BaseModel {
         let rawData = [
             "siteActivationKey": siteActivationKey
         ]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.hotline, rawData: rawData) { (result) in
+        let _ = super.requestGETWithoutToken(endPoint: ApiServiceEndPoint.hotline, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                if let loginResponse = try? JSONDecoder().decode(HotlineResponse.self, from: responseValue){
-                    success(loginResponse)
+                if let hotlineResponse = try? JSONDecoder().decode(HotlineResponse.self, from: responseValue){
+                    success(hotlineResponse)
                 }else{
-                    failure("JSON parse error")
+                    failure(Constants.JSON_FAILURE)
                 }
             case .failure(let error):
-                failure(error.localizedDescription)
+                print("hotline error",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
+    }
+    
+    
+    
+    func requestGETWithoutToken(endPoint:String,rawData:[String:String],completion:@escaping (String)->Void) -> String {
+        
+        //write something
+        return endPoint
         
     }
+    
+    
 }

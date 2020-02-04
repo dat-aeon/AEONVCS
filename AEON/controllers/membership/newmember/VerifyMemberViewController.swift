@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import SearchTextField
 
 class VerifyMemberViewController: BaseUIViewController {
 
@@ -15,52 +17,111 @@ class VerifyMemberViewController: BaseUIViewController {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblAgreementNo: UILabel!
     @IBOutlet weak var tfAgreementNo: UITextField?
+    @IBOutlet weak var lbAgreeErrorMessage: UILabel!
+    
     @IBOutlet weak var lblDob: UILabel!
+    @IBOutlet weak var lbAgeNotification: UILabel!
     @IBOutlet weak var tfDob: UITextField?
+    @IBOutlet weak var lbDobErrorMessage: UILabel!
+    
+    @IBOutlet weak var tfTownshipAutoText: SearchTextField!
+    
     @IBOutlet weak var lblNrcNo: UILabel!
     @IBOutlet weak var vDivision: UIView!
     @IBOutlet weak var lblDivision: UILabel!
-    @IBOutlet weak var vTownship: UIView!
-    @IBOutlet weak var lblTownship: UILabel!
+    //@IBOutlet weak var vTownship: UIView!
+    //@IBOutlet weak var lblTownship: UILabel!
     @IBOutlet weak var vNrcType: UIView!
     @IBOutlet weak var lblNrcType: UILabel!
     @IBOutlet weak var tfNrcNo: UITextField?
+    @IBOutlet weak var lbNrcNoErrorMessage: UILabel!
+    
     @IBOutlet weak var btnCallNow: UIButton!
     @IBOutlet weak var btnVerify: UIButton!
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
+    
+    @IBOutlet weak var lblNotify: UILabel!
     
     var divisionList = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
     var allTownShipList = [[String]]()
     var nrcTypeList  = ["(N)","(P)","(E)"]
     var selectedTownshipList = [String]()
     
-    var customerId : String? = ""
+    var customerId : String! = ""
+    var hotlinePhone: String!
+    var tokenInfo: TokenData?
+    var sessionInfo : SessionDataBean?
+    
+    // Error message language control
+    var agreeMesgLocale:String?
+    var dobMesgLocale : String?
+    var nrcMesgLocale : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Start VerifyMemberViewController :::::::::::::::")
+//        print("Start VerifyMemberViewController :::::::::::::::")
         
-        self.customerId = UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        self.lbAgreeErrorMessage.text = Constants.BLANK
+        self.lbDobErrorMessage.text = Constants.BLANK
+        self.lbNrcNoErrorMessage.text = Constants.BLANK
         
-        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        RegisterViewModel.init().loadNrcData(success: { (result) in
-            RegisterViewModel.init().getNrcData(success: { (townshipList) in
-                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                self.allTownShipList = townshipList
-                self.selectedTownshipList = townshipList[0]
-                self.lblDivision.text = self.divisionList[0]
-                self.lblTownship.text = self.allTownShipList[0][0]
-                self.lblNrcType.text = self.nrcTypeList[0]
-            }) { (error) in
-                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                Utils.showAlert(viewcontroller: self, title: "Loading Error", message: error)
-            }
-        }) { (error) in
-            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            Utils.showAlert(viewcontroller: self, title: "Loading Failed", message: error)
+        // check network
+        if Network.reachability.isReachable == false {
+            super.networkConnectionError()
+            return
         }
         
-        tfDob?.delegate = self
+        //autocomplete
+        self.tfTownshipAutoText.theme.cellHeight = 40
+        self.tfTownshipAutoText.maxResultsListHeight = 300
+        self.tfTownshipAutoText.startVisible = true
+        self.tfTownshipAutoText.theme.font = UIFont.systemFont(ofSize: 14)
+        self.tfTownshipAutoText.theme.fontColor = UIColor(red:183.0/255.0, green:0.0/255.0, blue:129.0/255.0, alpha: 1.0)
+        self.tfTownshipAutoText.theme.bgColor = UIColor.groupTableViewBackground
+        self.tfTownshipAutoText.theme.separatorColor = UIColor.lightGray
+        self.svMemberRegisterVerify.delegate = self
+        
+        // focus cousor
+        DispatchQueue.main.async {
+            self.tfAgreementNo?.becomeFirstResponder()
+        }
+        self.tfAgreementNo?.keyboardType = UIKeyboardType.numbersAndPunctuation
+        self.tfNrcNo?.keyboardType = UIKeyboardType.numberPad
+        self.customerId = UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        
+        let sessionInfoString = UserDefaults.standard.string(forKey: Constants.SESSION_INFO)
+        sessionInfo = try? JSONDecoder().decode(SessionDataBean.self, from: JSON(parseJSON: sessionInfoString ?? "").rawData())
+        
+        self.hotlinePhone = sessionInfo?.hotlineNo
+        
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+        RegisterViewModel.init().loadNrcData(success: { (townshipList) in
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            self.allTownShipList = townshipList
+            self.selectedTownshipList = townshipList[0]
+            self.lblDivision.text = self.divisionList[0]
+            //self.lblTownship.text = self.allTownShipList[0][0]
+            self.lblNrcType.text = self.nrcTypeList[0]
+            self.tfTownshipAutoText.filterStrings(self.selectedTownshipList)
+            
+        }) { (error) in
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            if error == Constants.JSON_FAILURE {
+                let alertController = UIAlertController(title: Constants.SERVER_ERROR_TITLE, message: error, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.CUSTOMER_TYPE_VIEW_CONTROLLER) as! UINavigationController
+                    navigationVC.modalPresentationStyle = .overFullScreen
+                    self.present(navigationVC, animated: true, completion: nil)
+                }))
+                self.present(alertController, animated: true, completion: nil)
+                
+            } else {
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+            }
+        }
+        
         
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePicker.Mode.date
@@ -70,16 +131,16 @@ class VerifyMemberViewController: BaseUIViewController {
         var components = DateComponents()
         components.calendar = calendar
         
-        components.year = -10
+        //components.year = -10
         let maxDate = calendar.date(byAdding: components, to: currentDate)!
         datePickerView.maximumDate = maxDate
         
         tfDob?.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(dobDatePickerFromValueChanged), for: UIControl.Event.valueChanged)
         
-        self.vTownship.layer.borderWidth = 1
-        self.vTownship.layer.cornerRadius = 4 as CGFloat
-        self.vTownship.layer.borderColor = UIColor(red:205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha: 1.0).cgColor
+//        self.vTownship.layer.borderWidth = 1
+//        self.vTownship.layer.cornerRadius = 4 as CGFloat
+//        self.vTownship.layer.borderColor = UIColor(red:205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha: 1.0).cgColor
         
         self.vDivision.layer.borderWidth = 1
         self.vDivision.layer.cornerRadius = 4 as CGFloat
@@ -90,7 +151,7 @@ class VerifyMemberViewController: BaseUIViewController {
         self.vNrcType.layer.borderColor = UIColor(red:205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha: 1.0).cgColor
         
     vDivision.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickDivisionDropDown)))
-    vTownship.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickTownshipDropDown)))
+    //vTownship.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickTownshipDropDown)))
     vNrcType.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickNrcTypeDropDown)))
         
         
@@ -98,6 +159,7 @@ class VerifyMemberViewController: BaseUIViewController {
         tfDob?.delegate = self
         tfNrcNo?.delegate = self
         tfNrcNo?.setMaxLength(maxLength: 6)
+        tfAgreementNo?.setMaxLength(maxLength: 19)
         
         switch Locale.currentLocale {
         case .EN:
@@ -105,14 +167,17 @@ class VerifyMemberViewController: BaseUIViewController {
         case .MY:
             bbLocaleFlag.image = UIImage(named: "en_flag")
         }
+        self.title = "membership.title".localized
         self.lblTitle.text = "verify.title".localized
         self.lblAgreementNo.text = "verify.agreementno.label".localized
-        self.tfAgreementNo?.placeholder = "verify.agreeementno.holder".localized
+        self.tfAgreementNo?.placeholder = "verify.agreementno.holder".localized
         self.lblDob.text = "verify.dob.label".localized
         self.tfDob?.placeholder = "verify.dob.holder".localized
+        self.lbAgeNotification.text = "register.dob.restrict.label".localized
         self.lblNrcNo.text = "verify.nrc.label".localized
         self.btnCallNow.setTitle("verify.callnow.button".localized, for: UIControl.State.normal)
         self.btnVerify.setTitle("verify.verify.button".localized, for: UIControl.State.normal)
+        self.lblNotify.text = "verify.warning.notify".localized
     }
     
     @objc override func keyboardWillChange(notification : Notification) {
@@ -143,14 +208,22 @@ class VerifyMemberViewController: BaseUIViewController {
         case .MY:
             bbLocaleFlag.image = UIImage(named: "en_flag")
         }
+        self.title = "membership.title".localized
         self.lblTitle.text = "verify.title".localized
         self.lblAgreementNo.text = "verify.agreementno.label".localized
-        self.tfAgreementNo?.placeholder = "verify.agreeementno.holder".localized
+        self.tfAgreementNo?.placeholder = "verify.agreementno.holder".localized
         self.lblDob.text = "verify.dob.label".localized
         self.tfDob?.placeholder = "verify.dob.holder".localized
+        self.lbAgeNotification.text = "register.dob.restrict.label".localized
         self.lblNrcNo.text = "verify.nrc.label".localized
         self.btnCallNow.setTitle("verify.callnow.button".localized, for: UIControl.State.normal)
         self.btnVerify.setTitle("verify.verify.button".localized, for: UIControl.State.normal)
+        
+        self.lbAgreeErrorMessage.text = self.agreeMesgLocale?.localized
+        self.lbNrcNoErrorMessage.text = self.nrcMesgLocale?.localized
+        self.lbDobErrorMessage.text = self.dobMesgLocale?.localized
+        
+        self.lblNotify.text = "verify.warning.notify".localized
     }
     
     @objc func dobDatePickerFromValueChanged(sender:UIDatePicker) {
@@ -161,14 +234,23 @@ class VerifyMemberViewController: BaseUIViewController {
     }
     
     @objc func onClickDivisionDropDown(){
+        self.tfDob?.resignFirstResponder()
+        self.tfAgreementNo?.resignFirstResponder()
+        self.tfNrcNo?.resignFirstResponder()
         openDivisionSelectionPopUp()
     }
     
     @objc func onClickTownshipDropDown(){
+        self.tfDob?.resignFirstResponder()
+        self.tfAgreementNo?.resignFirstResponder()
+        self.tfNrcNo?.resignFirstResponder()
         openTownshipSelectionPopUp()
     }
     
     @objc func onClickNrcTypeDropDown(){
+        self.tfDob?.resignFirstResponder()
+        self.tfAgreementNo?.resignFirstResponder()
+        self.tfNrcNo?.resignFirstResponder()
         openNrcTypeSelectionPopUp()
     }
     
@@ -178,80 +260,72 @@ class VerifyMemberViewController: BaseUIViewController {
                 self.lblDivision.text = self.divisionList[Int(value)!-1]
                 if self.allTownShipList.count>=Int(value)!{
                     self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
-                    self.lblTownship.text = self.selectedTownshipList[0]
+                    //self.lblTownship.text = self.selectedTownshipList[0]
+                    self.tfTownshipAutoText.filterStrings(self.selectedTownshipList)
+                    self.tfTownshipAutoText.text = Constants.BLANK
                 }
                 print(value)
             })
-            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
             if let popoverPresentationController = action.popoverPresentationController {
                 popoverPresentationController.sourceView = self.view
             }
             //Present the controller
             self.present(action, animated: true, completion: nil)
             
-//            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-//            //Present the controller
-//            self.present(action, animated: true, completion: nil)
-        
         } else {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                
-                let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
-                    self.lblDivision.text = self.divisionList[Int(value)!-1]
-                    if self.allTownShipList.count>=Int(value)!{
-                        self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
-                        self.lblTownship.text = self.selectedTownshipList[0]
-                    }
-                    print(value)
-                })
-                action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-                if let popoverPresentationController = action.popoverPresentationController {
-                    popoverPresentationController.sourceView = self.view
+            
+            let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
+                self.lblDivision.text = self.divisionList[Int(value)!-1]
+                if self.allTownShipList.count>=Int(value)!{
+                    self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
+                    //self.lblTownship.text = self.selectedTownshipList[0]
+                    self.tfTownshipAutoText.filterStrings(self.selectedTownshipList)
+                    self.tfTownshipAutoText.text = Constants.BLANK
                 }
-//                action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-//                //Present the controller
-//                self.present(action, animated: true, completion: nil)
-                
-            } else {
-                let action = UIAlertController.actionSheetWithItems(items: divisionList, action: { (value)  in
-                    self.lblDivision.text = self.divisionList[Int(value)!-1]
-                    if self.allTownShipList.count>=Int(value)!{
-                        self.selectedTownshipList = self.allTownShipList[Int(value)!-1]
-                        self.lblTownship.text = self.selectedTownshipList[0]
-                    }
-                    print(value)
-                })
-                action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-                //Present the controller
-                self.present(action, animated: true, completion: nil)
-            }
+                print(value)
+            })
+            action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
+            //Present the controller
+            self.present(action, animated: true, completion: nil)
+            
         }
     }
     
     func openTownshipSelectionPopUp() {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
-                self.lblTownship.text = value
-                print(value)
-                
-            })
-            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-            if let popoverPresentationController = action.popoverPresentationController {
-                popoverPresentationController.sourceView = self.view
-            }
-        } else {
-            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
-                self.lblTownship.text = value
-                print(value)
-                
-            })
-            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-            //Present the controller
-            self.present(action, animated: true, completion: nil)
-        }
-//        action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-//        //Present the controller
-//        self.present(action, animated: true, completion: nil)
+//        if UIDevice.current.userInterfaceIdiom == .pad {
+//            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
+//                self.lblTownship.text = value
+//                print(value)
+//
+//            })
+//            action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
+//            if let popoverPresentationController = action.popoverPresentationController {
+//                popoverPresentationController.sourceView = self.view
+//            }
+//        } else {
+//            let action = UIAlertController.actionSheetWithItems(items: selectedTownshipList, action: { (value)  in
+//                self.lblTownship.text = value
+//                print(value)
+//
+//            })
+//            action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
+//            //Present the controller
+//            self.present(action, animated: true, completion: nil)
+//        }
+
+        let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.NRC_POPUP_VIEW_CONTROLLER) as! NRCpopupViewController
+        popupVC.modalPresentationStyle = .overCurrentContext
+        popupVC.modalTransitionStyle = .crossDissolve
+        popupVC.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+        let pVC = popupVC.popoverPresentationController
+        pVC?.permittedArrowDirections = .any
+        
+        self.definesPresentationContext = true
+        popupVC.townshipDelegate = self
+        popupVC.townshipList = self.selectedTownshipList
+        self.present(popupVC, animated: true, completion: nil)
+        
     }
     
     func openNrcTypeSelectionPopUp() {
@@ -261,7 +335,7 @@ class VerifyMemberViewController: BaseUIViewController {
             print(value)
             
             })
-            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
             if let popoverPresentationController = action.popoverPresentationController {
                 popoverPresentationController.sourceView = self.view
             }
@@ -271,7 +345,7 @@ class VerifyMemberViewController: BaseUIViewController {
                 print(value)
                 
             })
-            action.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
             //Present the controller
             self.present(action, animated: true, completion: nil)
             
@@ -279,32 +353,88 @@ class VerifyMemberViewController: BaseUIViewController {
     }
     
     @IBAction func onClickCallNow(_ sender: UIButton) {
-        "0992384242".makeCall()
+        self.hotlinePhone.makeCall()
     }
     
     
     @IBAction func onClickVerifyButton(_ sender: UIButton) {
         
+        // check network
+        if Network.reachability.isReachable == false {
+            Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+            return
+        }
+        
         var isError = false
+        // not to overwrite error message
+        var isNRCError = false
         
-        if self.tfAgreementNo?.text?.isEmpty ?? true{
-            self.tfAgreementNo?.showError(message: "Please input agreement no")
-            isError = true
-        }
-        
-        if self.tfDob?.text?.isEmpty ?? true{
-            self.tfDob?.showError(message: "Please input your birthday")
-            isError = true
-        }
-        
-        if self.tfNrcNo?.text?.isEmpty ?? true{
-            self.tfNrcNo?.showError(message: "Please input NRC No.")
+        // Validate Agreement No.
+        if self.tfAgreementNo?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
+            self.lbAgreeErrorMessage.text = Messages.AGREEMENT_NO_EMPTY_ERROR.localized
+            self.agreeMesgLocale = Messages.AGREEMENT_NO_EMPTY_ERROR
             isError = true
             
-        } else if self.tfNrcNo?.text?.count ?? 0 < 6{
-            self.tfNrcNo?.text = ""
-            self.tfNrcNo?.showError(message: "must be 6 digits")
+        }else if !Utils.isAgreementNoValidate(agreementNo: (self.tfAgreementNo?.text)!){
+            self.lbAgreeErrorMessage.text = Messages.AGREEMENT_NO_LENGTH_ERROR.localized
+            self.agreeMesgLocale = Messages.AGREEMENT_NO_LENGTH_ERROR
             isError = true
+            
+        } else {
+            self.lbAgreeErrorMessage.text = Constants.BLANK
+            self.agreeMesgLocale = Constants.BLANK
+        }
+        
+        // Validate Date of Birth
+        if self.tfDob?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
+            self.lbDobErrorMessage.text = Messages.DOB_EMPTY_ERROR.localized
+            self.dobMesgLocale = Messages.DOB_EMPTY_ERROR
+            isError = true
+            
+        } else if !Utils.isDobValidate(dob: (self.tfDob?.text)!){
+            self.lbDobErrorMessage.text = Messages.DOB_FORMAT_ERROR.localized
+            self.dobMesgLocale = Messages.DOB_FORMAT_ERROR
+            isError = true
+            
+        } else {
+            self.lbDobErrorMessage.text = Constants.BLANK
+            self.dobMesgLocale = Constants.BLANK
+        }
+        
+        if self.tfTownshipAutoText.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
+            self.lbNrcNoErrorMessage.text = Messages.NRC_TOWNSHIP_EMPTY_ERROR.localized
+            self.nrcMesgLocale = Messages.NRC_TOWNSHIP_EMPTY_ERROR
+            isError = true
+            isNRCError = true
+            
+        } else if !self.selectedTownshipList.contains(self.tfTownshipAutoText.text!){
+            self.lbNrcNoErrorMessage.text = Messages.NRC_TOWNSHIP_INVALID_ERROR.localized
+            self.nrcMesgLocale = Messages.NRC_TOWNSHIP_INVALID_ERROR
+            isError = true
+            isNRCError = true
+            
+        } else {
+            self.lbNrcNoErrorMessage.text = Constants.BLANK
+            self.nrcMesgLocale = Constants.BLANK
+            isNRCError = false
+        }
+        
+        // Validate Nrc No.
+        if self.tfNrcNo?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
+            self.lbNrcNoErrorMessage.text = Messages.NRC_NO_EMPTY_ERROR.localized
+            self.nrcMesgLocale = Messages.NRC_NO_EMPTY_ERROR
+            isError = true
+            
+        } else if !Utils.isNrcNoValidate(nrcNo: (self.tfNrcNo?.text)!){
+            self.lbNrcNoErrorMessage.text = Messages.NRC_LENGTH_ERROR.localized
+            self.nrcMesgLocale = Messages.NRC_LENGTH_ERROR
+            isError = true
+            
+        } else {
+            if !isNRCError {
+                self.nrcMesgLocale = Constants.BLANK
+                self.lbNrcNoErrorMessage.text = Constants.BLANK
+            }
         }
         
         if isError {
@@ -313,7 +443,7 @@ class VerifyMemberViewController: BaseUIViewController {
         //loadCustomViewIntoController()
         //return
         let divisionCode: String = (self.lblDivision?.text!)!
-        let townshipCode: String = (self.lblTownship?.text!)!
+        let townshipCode: String = (self.tfTownshipAutoText?.text!)!
         let nrcType: String = (self.lblNrcType?.text!)!
         let nrcNo: String = (self.tfNrcNo?.text!)!
         
@@ -322,21 +452,58 @@ class VerifyMemberViewController: BaseUIViewController {
         
         let verifyUserInfoRequest = CheckVerifyUserInfoRequest(
             agreementNo: (self.tfAgreementNo?.text)!,
-            dob: (self.tfDob?.text!)!,
-            nrcNo: nrc)
+            dob: super.changeYMDformat(date: (self.tfDob?.text!)!),
+            nrcNo: nrc,
+            customerId: self.customerId)
         
-        RegisterViewModel.init().checkVerifyUserInfo(verifyUserRequest: verifyUserInfoRequest, success: { (result) in
+        let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
+        tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
+        
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+        RegisterViewModel.init().checkVerifyUserInfo(verifyUserRequest: verifyUserInfoRequest, token: (tokenInfo?.access_token)!, refreshToken: (tokenInfo?.refresh_token)!, success: { (result) in
             
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SecQuestionVerifyViewController") as! UINavigationController
-            let vc = navigationVC.children.first as! SecQuestionVerifyViewController
-            vc.verifyData.agreementNo = verifyUserInfoRequest.agreementNo
-            vc.verifyData.customerNo = result.customerNo
-            vc.verifyData.dateOfBirth = verifyUserInfoRequest.dateOfBirth
-            vc.verifyData.nrcNo = verifyUserInfoRequest.nrcNo
-            self.present(navigationVC, animated: true, completion: nil)
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            
+            if result.data?.verifyStatus == Constants.VALID_MEMBER{
+                //success(result)
+            
+                //let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SEC_QUEST_VERIFY_VIEW_CONTROLLER) as! UINavigationController
+                //let vc = navigationVC.children.first as! SecQuestionVerifyViewController
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
+                let vc = navigationVC.children.first as! PhotoUploadViewController
+                vc.verifyData.agreementNo = verifyUserInfoRequest.agreementNo
+                vc.verifyData.customerNo = (result.data?.customerNo)!
+                vc.verifyData.dateOfBirth = verifyUserInfoRequest.dateOfBirth
+                vc.verifyData.nrcNo = verifyUserInfoRequest.nrcNo
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+                
+            } else if result.data?.verifyStatus == Constants.INVALID_MEMBER_INFO {
+                Utils.showAlert(viewcontroller: self, title: Constants.VERIFY_FAILED_TITIE, message: Messages.VERIFY_INVALID_ERROR.localized)
+                
+            } else if result.data?.verifyStatus == Constants.INVALID_MEMBER {
+                Utils.showAlert(viewcontroller: self, title: Constants.VERIFY_FAILED_TITIE, message: Messages.VERIFY_INVALID_ERROR.localized)
+                
+            } else {
+                Utils.showAlert(viewcontroller: self, title: Constants.VERIFY_FAILED_TITIE, message: Messages.AGREENO_INVALID_ERROR.localized)
+                
+            }
             
         }) { (error) in
-            Utils.showAlert(viewcontroller: self, title: "Failed", message: error)
+            
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            if error == Constants.SERVER_FAILURE {
+                
+            } else if error == Constants.EXPIRE_TOKEN {
+                Utils.showExpireAlert(viewcontroller: self, title: Constants.VERIFY_FAILED_TITIE, message: Messages.EXPIRE_TOKEN_ERROR.localized)
+                
+            } else {
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+                
+            }
+            
         }
     }
     
@@ -346,37 +513,15 @@ class VerifyMemberViewController: BaseUIViewController {
     
 }
 
-extension VerifyMemberViewController {
+extension VerifyMemberViewController: TownshipSelectDelegate {
+    func onClickTownshipCode(townshipCode: String) {
+        //self.lblTownship.text = townshipCode
+    }
+}
+
+extension VerifyMemberViewController: UIScrollViewDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        self.dismiss(animated: true, completion: nil)
-        
-        if let pickedImage = info[.editedImage] as? UIImage {
-            //            self.ivPreview.image = pickedImage
-            //nextvc.data = previousData
-            //nextvc.image = pickedImage
-            //present(nextvc)
-            print("image is not null")
-            
-//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberInfoPreviewViewController") as! UINavigationController
-//            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
-//            vc.registerRequestData = self.registerRequestData
-//            vc.profileImage = pickedImage ?? UIImage(named: "Image")!
-//            vc.memberResponseData = self.memberResponseData!
-//            vc.qaList = self.qaList
-//            self.present(navigationVC, animated: true, completion: nil)
-            
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "PhotoTakingViewController") as! UINavigationController
-            let vc = navigationVC.children.first as! PhotoTakingViewController
-            //            vc.registerRequestData = self.registerRequestData
-            vc.profileImage = pickedImage 
-            vc.customerNo = ""
-            self.present(navigationVC, animated: true, completion: nil)
-            
-        } else {
-            print("image is null")
-        }
-        
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.tfTownshipAutoText.hideResultsList()
     }
 }

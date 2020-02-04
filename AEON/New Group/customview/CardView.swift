@@ -2,7 +2,7 @@
 //  CardView.swift
 //  AEON
 //
-//  Created by AcePlus101 on 2/3/19.
+//  Created by Khin Yadanar Thein on 2/3/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 

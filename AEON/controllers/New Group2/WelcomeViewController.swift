@@ -17,6 +17,12 @@ class WelcomeViewController: BaseUIViewController {
 
         //self.ivLogo.loadGif(asset: "DIR")
         self.lblWelcome.text = "welcome.label".localized
+        
     }
 
+    
+    @objc override func updateViews() {
+        super.updateViews()
+        self.lblWelcome.text = "welcome.label".localized
+    }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AboutUsResponse : Codable{
+struct AboutUsResponse1 : Codable{
     let statusCode: String
     let statusMessage: String
     let companyInfoId: Int
@@ -19,4 +19,21 @@ struct AboutUsResponse : Codable{
     let socialMediaAddress: String
     let aboutCompanyEn: String
     let aboutCompanyMm: String
+}
+
+struct AboutUsResponse: Codable {
+    let status: String
+    let data: CompanyInfo
+}
+
+struct CompanyInfo: Codable {
+    let companyInfoId: Int?
+    let addressEn, addressMm, hotlinePhone: String
+    let webAddress, socialMediaAddress: String
+    let aboutCompanyEn, aboutCompanyMm: String
+    
+    enum CodingKeys: String, CodingKey {
+        case companyInfoId = "companyInfoId"
+        case addressEn, addressMm, hotlinePhone, webAddress, socialMediaAddress, aboutCompanyEn, aboutCompanyMm
+    }
 }

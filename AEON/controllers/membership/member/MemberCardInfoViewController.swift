@@ -11,10 +11,10 @@ import UIKit
 class MemberCardInfoViewController: UIViewController {
 
     @IBOutlet weak var cvCardInfoOne: UIView!
-    
     @IBOutlet weak var cvCardInfoTwo: UIView!
     
     var containerIndex = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         toggleContainer(position:containerIndex)

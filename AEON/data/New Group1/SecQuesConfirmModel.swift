@@ -40,32 +40,57 @@ class SecQuesConfirmModel: BaseModel {
 
     func makeConfirm(userConfirmRequest: UserSecQuesConfirmRequest,success: @escaping (ConfirmResponse) -> Void,failure: @escaping (String) -> Void){
         
-        let jsonEncoder = JSONEncoder()
-        let jsonData = try! jsonEncoder.encode(userConfirmRequest.resetPwdAnsweredSecQuesList)
-        let qaString = String(data: jsonData, encoding: String.Encoding.utf8)
-
-        let rawData = [
-            "phoneNo" : userConfirmRequest.phoneNo,
-            "nrcNo" : userConfirmRequest.nrcData,
-            "resetPwdAnsweredSecQuesList" : qaString
-        ]
-        print("RAW data::::::::::\(rawData)")
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.confirmUser, rawData: rawData as! [String : String]) { (result) in
+        let rawData = getResetConfrimRequestData(resetConfirmRequest: userConfirmRequest)
+        //print("RAW data::::::::::\(rawData)")
+        let _ = super.performRequest(endPoint: ApiServiceEndPoint.confirmUser, rawData: rawData) { (result) in
             switch result{
             case .success(let result):
-                let responseJsonData = JSON(result)
-                let responseValue  = try! responseJsonData.rawData()
-                if let userQuesResponse = try? JSONDecoder().decode(ConfirmResponse.self, from: responseValue){
-                    success(userQuesResponse)
-                }else{
-                    failure("Cannot load any data")
+                
+                let response = result as AnyObject
+                //print("login response : ", response)
+                
+                var confirmResponse = ConfirmResponse()
+                
+                if Constants.STATUS_200 == response["status"] as? String  {
+                    let data = response["data"] as AnyObject
+                    confirmResponse.statusCode = response["status"] as? String
+                    confirmResponse.customerId = data["customerId"] as? Int
+                    confirmResponse.userTypeId = data["userTypeId"] as? Int
+                    
+                } else {
+                    confirmResponse.statusCode = response["messageCode"] as? String
+                    
                 }
+                success(confirmResponse)
+//                let responseJsonData = JSON(result)
+//                let responseValue  = try! responseJsonData.rawData()
+//                if let userQuesResponse = try? JSONDecoder().decode(ConfirmResponse.self, from: responseValue){
+//                    success(userQuesResponse)
+//                }else{
+//                    failure(Constants.JSON_FAILURE)
+//                }
             case .failure(let error):
-                failure(error.localizedDescription)
+                print("Sec Confirm error",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
     }
 }
+
+//GET REQUEST DATA FOR NEW MEMBER
+func getResetConfrimRequestData(resetConfirmRequest: UserSecQuesConfirmRequest)->Data{
+    
+    do {
+        let jsonData = try JSONEncoder().encode(resetConfirmRequest)
+        let jsonString = String(data: jsonData, encoding: .utf8)!
+       // print("Encode \(jsonString)")
+        
+        return jsonData
+    } catch { print("Error \(error)") }
+    
+    return Data()
+}
+
 struct SecurityQuestionConfirm {
     var phoneNo: String!
     var nrcDivision: String!

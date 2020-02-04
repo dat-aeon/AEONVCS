@@ -2,7 +2,7 @@
 //  CustomGIFView.swift
 //  AEONVCS
 //
-//  Created by mac on 2/26/19.
+//  Created by Khin Yadanar Thein on 2/26/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 

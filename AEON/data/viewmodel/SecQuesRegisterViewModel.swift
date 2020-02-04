@@ -14,19 +14,24 @@ class SecQuesRegisterViewModel{
     func getSecQuesList(siteActivationKey: String, success: @escaping (SecQuesRegisterBean) -> Void,failure: @escaping (String) -> Void){
         SecQuesRegisterModel.init().getSecQuestionList(siteActivationKey: siteActivationKey, success: { (result) in
            
-            var secQuesListMM = [String]()
-            var secQuesListEN = [String]()
+            if result.status == Constants.STATUS_200 {
+                var secQuesListMM = [String]()
+                var secQuesListEN = [String]()
+                
+                for dataBean in (result.data?.secQuesList)! {
+                    secQuesListMM.append(dataBean.questionMM!)
+                    secQuesListEN.append(dataBean.questionEN!)
+                }
+                
+                self.questionList.append(secQuesListMM)
+                self.questionList.append(secQuesListEN)
+                
+                let secQuesRegisterBean = SecQuesRegisterBean(numOfQuestion: (result.data?.numOfQuestion)!, numOfAnsCount: (result.data?.numOfAnsCount)!, questionList: self.questionList,secQuesList: (result.data?.secQuesList)!)
+                success(secQuesRegisterBean)
             
-            for dataBean in result.secQuesList {
-                secQuesListMM.append(dataBean.questionMM)
-                secQuesListEN.append(dataBean.questionEN)
+            } else {
+                failure(Constants.SERVER_INTERNAL_FAILURE)
             }
-            
-            self.questionList.append(secQuesListMM)
-            self.questionList.append(secQuesListEN)
-            
-            let secQuesRegisterBean = SecQuesRegisterBean(numOfQuestion: result.numOfQuestion, numOfAnsCount: result.numOfAnsCount, questionList: self.questionList,secQuesList: result.secQuesList)
-            success(secQuesRegisterBean)
         }) { (error) in
             failure(error)
         }

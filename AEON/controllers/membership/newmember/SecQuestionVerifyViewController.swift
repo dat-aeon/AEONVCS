@@ -2,65 +2,82 @@
 //  SecQuestionResetPasswordViewController.swift
 //  AEON
 //
-//  Created by AcePlus101 on 2/1/19.
+//  Created by Khin Yadanar Thein on 2/1/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
 import UIKit
+import SwiftyJSON
 
 class SecQuestionVerifyViewController: BaseUIViewController {
     @IBOutlet weak var tvSecQuesVerifyView: UITableView!
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
+    @IBOutlet weak var bbBack: UIBarButtonItem!
     
     var verifyData  = VerifyUserInfoBean()
     var userQAList:[UserQAList] = []
     var customerId:Int = 0
+    var verifyCell:[SecQuesVerifyQATableViewCell]!
+    var tokenInfo: TokenData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Start SecQuestionVerifyViewController :::::::::::::::")
-        self.tvSecQuesVerifyView.register(UINib(nibName: "SecurityQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "SecurityQuestionTableViewCell")
+        // check network
+        if Network.reachability.isReachable == false {
+            super.networkConnectionError()
+            return
+        }
+        self.title = "membership.title".localized
         
-        self.tvSecQuesVerifyView.register(UINib(nibName: "SecQuesVerifyBtnTableViewCell", bundle: nil), forCellReuseIdentifier: "SecQuesVerifyBtnTableViewCell")
+//        print("Start SecQuestionVerifyViewController :::::::::::::::")
+        self.tvSecQuesVerifyView.register(UINib(nibName: CommonNames.SEC_QUEST_REG_HEADER_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.SEC_QUEST_REG_HEADER_TABLE_CELL)
+        
+        self.tvSecQuesVerifyView.register(UINib(nibName: CommonNames.SEC_QUES_VERIFY_QA_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.SEC_QUES_VERIFY_QA_TABLE_CELL)
+        
+        self.tvSecQuesVerifyView.register(UINib(nibName: CommonNames.SEC_QUEST_VERIFY_BTN_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.SEC_QUEST_VERIFY_BTN_TABLE_CELL)
         
         self.tvSecQuesVerifyView.dataSource = self
         self.tvSecQuesVerifyView.delegate = self
+        self.tvSecQuesVerifyView.tableFooterView = UIView()
         
         self.customerId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
         
+        let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
+        tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
+        
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        UpdateInfoViewModel.init().loadUserQAList(customerId: "\(customerId)" ,success: { (result) in
+        UpdateInfoViewModel.init().loadUserQAList(customerId: "\(customerId)", token: (tokenInfo?.access_token)!, refreshToken: (tokenInfo?.refresh_token)! ,success: { (result) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            self.userQAList = result
+            self.userQAList = (result.data?.secQAUpdateInfoResDtoList)!
             self.tvSecQuesVerifyView.reloadData()
+            self.verifyCell = [SecQuesVerifyQATableViewCell](repeating: SecQuesVerifyQATableViewCell(), count: self.userQAList.count)
             
-            print("User QA list for Verify \(self.userQAList.count)")
+//            print("User QA list for Verify \(self.userQAList.count)")
         }) { (error) in
-            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            Utils.showAlert(viewcontroller: self, title: "Security Question Verify Failed", message: error)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        print("Appear SecQuestionVerifyViewController :::::::::::::::")
-        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        UpdateInfoViewModel.init().loadUserQAList(customerId: "\(customerId)" ,success: { (result) in
-            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            self.userQAList = result
-            self.tvSecQuesVerifyView.reloadData()
             
-            print("User QA list for Verify \(self.userQAList.count)")
-        }) { (error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            Utils.showAlert(viewcontroller: self, title: "Security Question Verify Failed", message: error)
+            
+            if error == Constants.SERVER_FAILURE {
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+            
+            } else {
+                let alertController = UIAlertController(title: Constants.LOADING_ERROR_TITLE, message: error, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UINavigationController
+                    navigationVC.modalPresentationStyle = .overFullScreen
+                    self.present(navigationVC, animated: true, completion: nil)
+                }))
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
-
     }
     
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
         super.updateLocale()
+         self.tvSecQuesVerifyView.reloadData()
     }
     
     @objc override func updateViews() {
@@ -71,10 +88,11 @@ class SecQuestionVerifyViewController: BaseUIViewController {
         case .MY:
             bbLocaleFlag.image = UIImage(named: "en_flag")
         }
-        self.tvSecQuesVerifyView.reloadData()
+        self.title = "membership.title".localized
+       
     }
     
-    @IBAction func onClickCloseButton(_ sender: UIBarButtonItem) {
+    @IBAction func onClickBackBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -88,21 +106,21 @@ class SecQuestionVerifyViewController: BaseUIViewController {
             tvSecQuesVerifyView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardReact.height, right: 0)
         } else {
             tvSecQuesVerifyView.contentInset = UIEdgeInsets.zero
-            
         }
-        
         tvSecQuesVerifyView.scrollIndicatorInsets = tvSecQuesVerifyView.contentInset
         
     }
-
+    
 }
 
 extension SecQuestionVerifyViewController:UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {
+        if section == 0 {
+            return 1
+        }else if section == 2 {
             return 1
         }
         return self.userQAList.count
@@ -110,21 +128,36 @@ extension SecQuestionVerifyViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SecurityQuestionTableViewCell", for: indexPath) as! SecurityQuestionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.SEC_QUEST_REG_HEADER_TABLE_CELL, for: indexPath) as! SecQuesRegHeaderTableViewCell
+            cell.lblHeader.text = "secquestconfirm.title".localized
+            return cell
+            
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.SEC_QUES_VERIFY_QA_TABLE_CELL, for: indexPath) as! SecQuesVerifyQATableViewCell
             cell.selectionStyle = .none
-            cell.setData(data: self.userQAList[indexPath.row])
+            cell.setData(data: self.userQAList[indexPath.row], err_message: Constants.BLANK, answerCount: 0)
             switch Locale.currentLocale {
             case .EN:
                 cell.lbQuestion.text = self.userQAList[indexPath.row].questionEN
             case .MY:
                 cell.lbQuestion.text = self.userQAList[indexPath.row].questionMM
             }
-            cell.tfAnswer.text = Constants.BLANK
+            
+            //cell.tfAnswer.text = Constants.BLANK
+//            if indexPath.row == 0 {
+//                cell.tfAnswer.becomeFirstResponder()
+//            }
+            cell.lbQuesNo.text = "Q\(indexPath.row+1):"
+            cell.lbAnsNo.text = "Ans\(indexPath.row+1):"
+            cell.lbMessage.text = cell.answerMesgLocale?.localized
+            self.verifyCell[indexPath.row] = cell
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SecQuesVerifyBtnTableViewCell", for: indexPath) as! SecQuesVerifyBtnTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.SEC_QUEST_VERIFY_BTN_TABLE_CELL, for: indexPath) as! SecQuesVerifyBtnTableViewCell
         cell.selectionStyle = .none
         cell.delegate = self
+        cell.btnVerifyConfirm.setTitle("verify.secque.confirm.button".localized, for: UIControl.State.normal)
+
         return cell
     }
 }
@@ -135,6 +168,8 @@ extension SecQuestionVerifyViewController:UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0{
+            return CGFloat(70.0)
+        } else if indexPath.section == 1{
             return CGFloat(150.0)
         }
         return CGFloat(100.0)
@@ -143,49 +178,81 @@ extension SecQuestionVerifyViewController:UITableViewDelegate{
 
 extension SecQuestionVerifyViewController:SecurityQuestionVerifyDelegate{
     func onClickVerifyConfirmBtn (cell: SecQuesVerifyBtnTableViewCell) {
+        
+        // check network
+        if Network.reachability.isReachable == false {
+            Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+            return
+        }
+        
         var qaList = [UserQABean]()
-        var i = 0
-        while i < tvSecQuesVerifyView.numberOfRows(inSection: 0){
-            let indexPath = IndexPath(row: i, section: 0)
-            let cell = tvSecQuesVerifyView.cellForRow(at: indexPath) as! SecurityQuestionTableViewCell
-            if !(cell.tfAnswer.text?.isEmpty)! {
+        var isError = false
+        
+        //var i = 0
+        //while i < tvSecQuesVerifyView.numberOfRows(inSection: 0){
+        for i in 0..<self.verifyCell.count{
+            //let indexPath = IndexPath(row: i, section: 0)
+            //let cell = tvSecQuesVerifyView.cellForRow(at: indexPath) as! SecurityQuestionTableViewCell
+            let cell = self.verifyCell[i]
+            if (cell.tfAnswer.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! {
+                //cell.tfAnswer.showError(message: Messages.ANSWER_EMPTY_ERROR)
+                cell.tfAnswer.text = Constants.BLANK
+                cell.lbMessage.text = Messages.ANSWER_EMPTY_ERROR.localized
+                cell.answerMesgLocale = Messages.ANSWER_EMPTY_ERROR
+                isError = true
+                
+            } else{
+                cell.lbMessage.text = Constants.BLANK
+                cell.answerMesgLocale = Constants.BLANK
                 let answer = cell.tfAnswer.text
                 let que = cell.lbQuestion.text!
-                let selectedQuestionId = userQAList[i].secQuestionId
+                let selectedQuestionId = userQAList[i].secQuesId!
                 qaList.append(UserQABean(secQuesId: selectedQuestionId,question: que,answer: answer!))
-            }else{
-                cell.tfAnswer.showError(message: "Answer is empty")
-                return
             }
-            i+=1
+            //i+=1
+        }
+        if isError {
+            return
         }
         var userSecQuesVerifyBean = UserSecQuesVerifyBean()
         userSecQuesVerifyBean.customerId = "\(self.customerId)"
         userSecQuesVerifyBean.quesAnsBean = qaList
-                
+        
+        let phoneNo = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+        let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
+        tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
+        
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        SecQuesVerifyViewModel.init().makeVerify(userConfirmBean: userSecQuesVerifyBean, success: {(result) in
+        SecQuesVerifyViewModel.init().makeVerify(userConfirmBean: userSecQuesVerifyBean, phoneNo: phoneNo!, token: (tokenInfo?.access_token)!, refreshToken: (tokenInfo?.refresh_token)!, success: {(result) in
+            
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             
-//            Utils.showAlert(viewcontroller: self, title: "Check Result", message: "\(result.statusMessage) - \(self.verifyData.customerNo)", action: {self.openCamera(imagePickerControllerDelegate: self)})
-            
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "PhotoUploadViewController") as! UINavigationController
-            let vc = navigationVC.children.first as! PhotoUploadViewController
-            vc.verifyData = self.verifyData
-            self.present(navigationVC, animated: true, completion: nil)
+            if result.status == Constants.STATUS_200 {
+
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
+                let vc = navigationVC.children.first as! PhotoUploadViewController
+                vc.verifyData = self.verifyData
+                vc.isPhotoUpdate = false
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+                
+            } else {
+                Utils.showAlert(viewcontroller: self, title: Constants.VERIFY_FAILED_TITIE, message: Messages.VERIFY_INVALID_ANSWER.localized)
+            }
             
         }) {(error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            Utils.showAlert(viewcontroller: self, title: "Failed", message: error)
+            
+            if error == Constants.SERVER_FAILURE {
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+                
+            } else {
+                Utils.showAlert(viewcontroller: self, title: Constants.VERIFY_FAILED_TITIE, message: error)
+            }
+            
         }
         
-//        UpdateInfoViewModel.init().updateUserQAList(success: { (result) in
-//            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-//            Utils.showAlert(viewcontroller: self, title: "Updated Status", message: result.updateStatus)
-//
-//        }) { (error) in
-//            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-//            Utils.showAlert(viewcontroller: self, title: "Failed", message: error)
-//        }
     }
 }

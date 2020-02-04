@@ -2,58 +2,71 @@
 //  SecurityQuestionUpdateViewController.swift
 //  AEON
 //
-//  Created by AcePlus101 on 2/1/19.
+//  Created by Khin Yadanar Thein on 2/1/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
 import UIKit
+import SwiftyJSON
 
 class SecurityQuestionUpdateViewController: BaseUIViewController {
 
     @IBOutlet weak var tvSecurityQuestionUpdate: UITableView!
+    
     var userQAList:[UserQAList] = []
     var customerId:Int = 0
+    var tokenInfo : TokenData?
+    var updateCells:[SecurityQuestionTableViewCell]!
     
     override func viewDidLoad() {
-        print("Start SecurityQuestionUpdateViewController :::::::::::::::")
+//        print("Start SecurityQuestionUpdateViewController :::::::::::::::")
         super.viewDidLoad()
-        self.tvSecurityQuestionUpdate.register(UINib(nibName: "SecurityQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "SecurityQuestionTableViewCell")
         
-        self.tvSecurityQuestionUpdate.register(UINib(nibName: "SecurityQuestionUpdateTableViewCell", bundle: nil), forCellReuseIdentifier: "SecurityQuestionUpdateTableViewCell")
+        // check network
+        if Network.reachability.isReachable == false {
+            Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+            return
+        }
+        
+        self.tvSecurityQuestionUpdate.register(UINib(nibName: CommonNames.SECURITY_QUESTION_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.SECURITY_QUESTION_TABLE_CELL)
+        
+        self.tvSecurityQuestionUpdate.register(UINib(nibName: CommonNames.SECURITY_QUESTION_UPDATE_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.SECURITY_QUESTION_UPDATE_TABLE_CELL)
         
         self.tvSecurityQuestionUpdate.dataSource = self
         self.tvSecurityQuestionUpdate.delegate = self
         
         self.customerId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
         
+        let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
+        tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
+        
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        UpdateInfoViewModel.init().loadUserQAList(customerId: "\(customerId)" ,success: { (result) in
+        UpdateInfoViewModel.init().loadUserQAList(customerId: "\(customerId)", token: (tokenInfo?.access_token)!, refreshToken: (tokenInfo?.refresh_token)!,success: { (result) in
+            
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            self.userQAList = result
+            self.userQAList = (result.data?.secQAUpdateInfoResDtoList)!
+            self.updateCells = [SecurityQuestionTableViewCell](repeating: SecurityQuestionTableViewCell(), count: self.userQAList.count)
             self.tvSecurityQuestionUpdate.reloadData()
             
-            print("User QA list \(self.userQAList.count)")
+//            print("User QA list \(self.userQAList.count)")
         }) { (error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            Utils.showAlert(viewcontroller: self, title: "Info Update Loading Failed", message: error)
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
+            navigationVC.modalPresentationStyle = .overFullScreen
+            self.present(navigationVC, animated: true, completion: nil)
         }
+        
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        print("Appear SecurityQuestionUpdateViewController :::::::::::::::")
-        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        UpdateInfoViewModel.init().loadUserQAList(customerId: "\(customerId)" ,success: { (result) in
-            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            self.userQAList = result
-            self.tvSecurityQuestionUpdate.reloadData()
-            
-            print("User QA list \(self.userQAList.count)")
-        }) { (error) in
-            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            Utils.showAlert(viewcontroller: self, title: "Info Update Loading Failed", message: error)
-        }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
     }
+    
     
     @objc override func updateViews() {
         super.updateViews()
@@ -91,14 +104,23 @@ extension SecurityQuestionUpdateViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SecurityQuestionTableViewCell", for: indexPath) as! SecurityQuestionTableViewCell
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.SECURITY_QUESTION_TABLE_CELL, for: indexPath) as! SecurityQuestionTableViewCell
             cell.selectionStyle = .none
-            cell.setData(data: self.userQAList[indexPath.row])
+            //cell.setData(data: self.userQAList[indexPath.row])
+            cell.lbQuesNo.text = "Q\(indexPath.row + 1):"
+            cell.lbAnsNo.text = "Ans\(indexPath.row + 1):"
+            if(cell.tfAnswer.text?.isEmpty ?? false) {
+                cell.tfAnswer.text = self.userQAList[indexPath.row].answer
+            }
+            updateCells[indexPath.row] = cell
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SecurityQuestionUpdateTableViewCell", for: indexPath) as! SecurityQuestionUpdateTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.SECURITY_QUESTION_UPDATE_TABLE_CELL, for: indexPath) as! SecurityQuestionUpdateTableViewCell
         cell.selectionStyle = .none
         cell.delegate = self
+        cell.tfPassword.setMaxLength(maxLength: 6)
+        cell.btnUpdate.setTitle("infoupate.update.button".localized, for: UIButton.State.normal)
         return cell
     }
     
@@ -120,38 +142,55 @@ extension SecurityQuestionUpdateViewController:UITableViewDelegate{
 extension SecurityQuestionUpdateViewController:SecurityQuestionUpdateDelegate{
     func onClickUpdateButton(cell: SecurityQuestionUpdateTableViewCell) {
         if (cell.tfPassword.text?.isEmpty)!{
-            cell.tfPassword.showError(message: "Password is empty")
-        }else{
+            cell.lbMessage.text = Messages.PASSWORD_EMPTY_ERROR.localized
+            //cell.tfPassword.showError(message: Messages.PASSWORD_EMPTY_ERROR)
+        
+        } else{
+            cell.lbMessage.text = Constants.BLANK
+            
             var answerList = [String]()
             var qaList = [UpdateUserQABean]()
-            for i in 0..<tvSecurityQuestionUpdate.numberOfRows(inSection: 0){
-                let indexPath = IndexPath(row: i, section: 0)
-                let cell = tvSecurityQuestionUpdate.cellForRow(at: indexPath) as! SecurityQuestionTableViewCell
-                if !(cell.tfAnswer.text?.isEmpty)! {
-                    let answer = cell.tfAnswer.text
-                    let cusQuesId = self.userQAList[i].custSecQuesId
-                    let quesId = self.userQAList[i].secQuestionId
+            //for i in 0..<tvSecurityQuestionUpdate.numberOfRows(inSection: 0){
+            for i in 0..<updateCells.count {
+//                let indexPath = IndexPath(row: i, section: 0)
+//                let cell = tvSecurityQuestionUpdate.cellForRow(at: indexPath) as! SecurityQuestionTableViewCell
+                let qcell = updateCells[i]
+                if !(qcell.tfAnswer.text?.isEmpty)! {
+                    print("\(self.userQAList.count) + \(updateCells.count)")
+                    let answer = qcell.tfAnswer.text
+                    let cusQuesId = self.userQAList[i].custSecQuesId!
+                    let quesId = self.userQAList[i].secQuesId!
                     answerList.append(answer!)
                     qaList.append(UpdateUserQABean(custSecQuesId :"\(cusQuesId)", answer: answer!, secQuesId: "\(quesId)"))
                 }else{
-                    cell.tfAnswer.showError(message: "Answer is empty")
+                    qcell.tfAnswer.showError(message: Messages.ANSWER_EMPTY_ERROR.localized)
                     return
                 }
             }
-            let updUserBean = UpdateUserBean(customerId: "\( self.customerId)", password: cell.tfPassword.text!, securityQAUpdateInfo: qaList)
+            //let updUserBean = UpdateUserBean(customerId: "\( self.customerId)", password: cell.tfPassword.text!, securityQAUpdateInfo: qaList)
             
-            
-            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-            UpdateInfoViewModel.init().updateUserQAList(updateUserQABean :updUserBean ,success: { (result) in
-                
-                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                Utils.showAlert(viewcontroller: self, title: "Updated Status", message: result.updateStatus)
-            }) { (error) in
-                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                Utils.showAlert(viewcontroller: self, title: "Failed", message: error)
+            // check network
+            if Network.reachability.isReachable == false {
+                Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+                return
             }
+            
+            //CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+//            UpdateInfoViewModel.init().updateUserQAList(updateUserQABean :updUserBean ,success: { (result) in
+//
+//                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+//                if result.updateStatus == Constants.UPDATE_OK {
+//                    Utils.showAlert(viewcontroller: self, title: "Update Success", message: Messages.UPDATE_INFO_SUCCESS)
+//                    cell.tfPassword.text = Constants.BLANK
+//                } else {
+//                Utils.showAlert(viewcontroller: self, title: "Update Failed", message: Messages.INCORRECT_PASSWORD_ERROR)
+//                }
+//            }) { (error) in
+//                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+//                //Utils.showAlert(viewcontroller: self, title: "Failed", message: error)
+//                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
+//                self.present(navigationVC, animated: true, completion: nil)
+//            }
         }
     }
-    
-    
 }

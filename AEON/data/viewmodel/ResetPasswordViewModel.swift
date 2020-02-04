@@ -9,13 +9,19 @@
 import Foundation
 class ResetPasswordViewModel{
     
-    func changePassword(resetRequest:ResetPasswordRequest,success: @escaping (ResetPasswordResponse) -> Void,failure: @escaping (String) -> Void){
+    func changePassword(resetRequest:ResetPasswordRequest,success: @escaping (String) -> Void,failure: @escaping (String) -> Void){
         ResetPasswordModel.init().makeResetPassword(resetPasswordRequest: resetRequest, success: { (result) in
-            if result.statusCode == "200" {
-                success(result)
-            } else {
-                failure(result.statusMessage!)
-            }
+            
+            success(result)
+                
+        }) { (error) in
+            failure(error)
+        }
+    }
+    
+    func forceChangePassword(forceRequest:ForceChangePasswordRequest,success: @escaping (String) -> Void,failure: @escaping (String) -> Void){
+        ResetPasswordModel.init().makeForceChangePassword(forcePasswordRequest: forceRequest, success: { (result) in
+            
             success(result)
             
         }) { (error) in

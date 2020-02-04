@@ -7,8 +7,11 @@
 //
 
 import Foundation
-struct HotlineResponse : Codable{
-    let statusCode: String
-    let statusMessage: String
-    let hotLinePhone: String
+struct HotlineResponse: Codable {
+    let status: String
+    let data: HotlineData
+}
+
+struct HotlineData: Codable {
+    let hotlinePhone: String
 }

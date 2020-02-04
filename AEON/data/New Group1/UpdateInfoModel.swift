@@ -10,29 +10,40 @@ import Foundation
 import SwiftyJSON
 class UpdateInfoModel:BaseModel {
     
-    func loadUserQAListRequest(customerId:String,success: @escaping (UserQAResponse) -> Void,failure: @escaping (String) -> Void){
-        let rawData = ["customerId":customerId]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.userQAList, rawData: rawData) { (result) in
-            print("Update Info Response result :::::::::::\(result)")
+    func loadUserQAListRequest(customerId:String, token: String, success: @escaping (UserQAResponse) -> Void,failure: @escaping (String) -> Void){
+        let rawData = [
+            "customerId":customerId
+        ]
+        let token = [
+            "access_token" : token
+        ]
+        let _ = super.requestDataWithToken(endPoint: ApiServiceEndPoint.userQAList, rawData: rawData, token: token) { (result) in
+            
             switch result{
             case .success(let result):
+                
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                if let checkMemberResponse = try? JSONDecoder().decode(UserQAResponse.self, from: responseValue){
-                    success(checkMemberResponse)
-                }else{
-                    failure("JSON can't decode")
+                if let userQAResponse = try? JSONDecoder().decode(UserQAResponse.self, from: responseValue){
+                    success(userQAResponse)
+                    
+                } else if let expireTokenResponse = try? JSONDecoder().decode(InvalidTokenResponse.self, from: responseValue){
+                    failure(expireTokenResponse.error)
+                    
+                }else  {
+                    failure(Constants.JSON_FAILURE)
                 }
                 break
             case .failure(let error):
-                failure(error.localizedDescription)
+                print("User QA list loading error", error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
                 break
             }
         }
     }
     
     
-    func updateUserQAListRequest(updateUserBeanRequest : UpdateUserQARequest,success: @escaping (UpdateUserQAResponse) -> Void,failure: @escaping (String) -> Void){
+    func updateUserQAListRequest(updateUserBeanRequest : UpdateUserQARequest, token: String,success: @escaping (String) -> Void,failure: @escaping (String) -> Void){
         
 //        let jsonEncoder = JSONEncoder()
 //        let jsonData = try! jsonEncoder.encode(updateUserBeanRequest.securityQAUpdateInfo)
@@ -44,18 +55,33 @@ class UpdateInfoModel:BaseModel {
 //            "securityQAUpdateInfo": qaString
 //        ]
         let rawData = getUpdateUserRequestData(updateUserBeanRequest: updateUserBeanRequest)
-        
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.updateUserQAList, rawData: rawData) { (result) in
+        let token = [
+            "access_token" : token
+        ]
+        let _ = super.requestDataObjWithToken(endPoint: ApiServiceEndPoint.updateUserQAList, rawData: rawData, token: token) { (result) in
             switch result{
             case .success(let result):
-                let responseJsonData = JSON(result)
-                let responseValue  = try! responseJsonData.rawData()
-                if let updateResponse = try? JSONDecoder().decode(UpdateUserQAResponse.self, from: responseValue){
-                    success(updateResponse)
-                }else{
-                    failure("JSON parse Update User Error")
+                
+                let response = result as AnyObject
+                //print("login response : ", response)
+                
+                if response["status"] as! String == Constants.STATUS_200 {
+                    success(response["status"] as! String)
+                    
+                } else if response["status"] as! String == Constants.STATUS_500 {
+                    success(response["messageCode"] as! String)
+                } else {
+                    failure(Constants.EXPIRE_TOKEN)
                 }
-                break
+            
+//                let responseJsonData = JSON(result)
+//                let responseValue  = try! responseJsonData.rawData()
+//                if let updateResponse = try? JSONDecoder().decode(UpdateUserQAResponse.self, from: responseValue){
+//                    success(updateResponse)
+//                }else{
+//                    failure("JSON parse Update User Error")
+//                }
+//                break
             case .failure(let error):
                 failure(error.localizedDescription)
                 break

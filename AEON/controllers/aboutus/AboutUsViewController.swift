@@ -2,7 +2,7 @@
 //  AboutUsViewController.swift
 //  AEONVCS
 //
-//  Created by mac on 2/13/19.
+//  Created by Khin Yadanar Thein on 2/13/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
@@ -24,6 +24,20 @@ class AboutUsViewController: BaseUIViewController {
         super.viewDidLoad()
 
         print("Start AboutUsViewController :::::::::::::::")
+        // dismiss if network is off
+        if Network.reachability.isReachable == false {
+            super.networkConnectionError()
+            return
+        }
+        switch Locale.currentLocale {
+        case .EN:
+            self.bbLocaleFlag.image = UIImage(named: "mm_flag")
+            
+        case .MY:
+            self.bbLocaleFlag.image = UIImage(named: "en_flag")
+        }
+        self.title = "aboutus.title".localized
+        
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         AboutUsViewModel.init().getAboutUsData(siteActivationKey: Constants.SITE_ACTIVATION_KEY, success: { (result) in
             
@@ -31,29 +45,53 @@ class AboutUsViewController: BaseUIViewController {
             switch Locale.currentLocale {
             case .EN:
                 self.bbLocaleFlag.image = UIImage(named: "mm_flag")
-                self.lblDescription.text = result.aboutCompanyEn
-                self.lblAddress.text = result.addressEn
+                self.lblDescription.text = result.data.aboutCompanyEn
+                self.lblAddress.text = result.data.addressEn
                 
             case .MY:
                 self.bbLocaleFlag.image = UIImage(named: "en_flag")
-                self.lblDescription.text = result.aboutCompanyMm
-                self.lblAddress.text = result.addressMm
+                self.lblDescription.text = result.data.aboutCompanyMm
+                self.lblAddress.text = result.data.addressMm
                 
             }
             self.lblDescription.numberOfLines = 0
-            self.lblPhoneNo.text = result.hotLinePhone
+            
+            self.setLineSpacing(data: self.lblDescription.text!)
+            
+            self.lblPhoneNo.text = result.data.hotlinePhone
             self.lblPhoneNo.numberOfLines = 0
-            self.lblFacebookLink.text = result.socialMediaAddress
+            self.lblFacebookLink.text = result.data.socialMediaAddress
             self.lblFacebookLink.numberOfLines = 0
-            self.lblWebsiteLink.text = result.webAddress
+            self.lblWebsiteLink.text = result.data.webAddress
             self.lblWebsiteLink.numberOfLines = 0
             self.lblAddress.numberOfLines = 0
-            self.lblAddress.lineBreakMode = .byWordWrapping
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            
         }) { (error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            Utils.showAlert(viewcontroller: self, title: "Server is temporarily stopped now. Please contact to AEON.", message: error)
+            if error == Constants.SERVER_FAILURE {
+                // service unavailable
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
+                navigationVC.modalPresentationStyle = .overFullScreen
+                self.present(navigationVC, animated: true, completion: nil)
+                
+            } else {
+                // server internal error
+                let alertController = UIAlertController(title: Constants.SERVER_ERROR_TITLE, message: error, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+                    navigationVC.modalPresentationStyle = .overFullScreen
+                    self.present(navigationVC, animated: true, completion: nil)
+                }))
+                self.present(alertController, animated: true, completion: nil)
+                
+            }
         }
+        
+        self.lblFacebookLink.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickSocialLink)))
+        self.lblWebsiteLink.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickWebsiteLink)))
+        
+        
     }
     
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
@@ -65,15 +103,18 @@ class AboutUsViewController: BaseUIViewController {
         switch Locale.currentLocale {
         case .EN:
             bbLocaleFlag.image = UIImage(named: "mm_flag")
-            self.lblDescription.text = self.aboutUsData.aboutCompanyEn
-            self.lblAddress.text = self.aboutUsData.addressEn
+            self.lblDescription.text = self.aboutUsData.data.aboutCompanyEn
+            self.lblAddress.text = self.aboutUsData.data.addressEn
+            setLineSpacing(data: self.lblDescription.text!)
             
         case .MY:
             bbLocaleFlag.image = UIImage(named: "en_flag")
-            self.lblDescription.text = self.aboutUsData.aboutCompanyMm
-            self.lblAddress.text = self.aboutUsData.addressMm
-            
+            self.lblDescription.text = self.aboutUsData.data.aboutCompanyMm
+            self.lblAddress.text = self.aboutUsData.data.addressMm
+            setLineSpacing(data: self.lblDescription.text!)
         }
+        self.title = "aboutus.title".localized
+        
     }
     @IBAction func onClickBackBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -83,4 +124,23 @@ class AboutUsViewController: BaseUIViewController {
         
         self.lblPhoneNo.text?.makeCall()
     }
+    
+    @objc func setLineSpacing(data:String) {
+        let attributedString = NSMutableAttributedString(string: data)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 7
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        // *** Set Attributed String to your label ***
+        self.lblDescription.attributedText = attributedString
+        
+    }
+    
+    @objc func onClickSocialLink(){
+        super.openUrl(urlString: self.lblFacebookLink.text!)
+    }
+
+    @objc func onClickWebsiteLink(){
+        super.openUrl(urlString: self.lblWebsiteLink.text!)
+    }
+    
 }

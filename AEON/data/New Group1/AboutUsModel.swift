@@ -16,18 +16,19 @@ class AboutUsModel:BaseModel {
         let rawData = [
             "siteActivationKey": siteActivationKey
         ]
-        let _ = super.performRequest(endPoint: ApiServiceEndPoint.aboutUs, rawData: rawData) { (result) in
+        let _ = super.requestGETWithoutToken(endPoint: ApiServiceEndPoint.aboutUs, rawData: [:]) { (result) in
             switch result{
             case .success(let result):
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                if let loginResponse = try? JSONDecoder().decode(AboutUsResponse.self, from: responseValue){
-                    success(loginResponse)
+                if let aboutUsResponse = try? JSONDecoder().decode(AboutUsResponse.self, from: responseValue){
+                    success(aboutUsResponse)
                 }else{
-                    failure("Cannot load any data")
+                    failure(Constants.JSON_FAILURE)
                 }
             case .failure(let error):
-                failure(error.localizedDescription)
+                print("AboutUs error ",error.localizedDescription)
+                failure(Constants.SERVER_FAILURE)
             }
         }
         

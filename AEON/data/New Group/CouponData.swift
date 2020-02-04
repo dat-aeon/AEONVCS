@@ -14,43 +14,34 @@ struct CouponRequest{
 }
 
 struct CouponResponse : Codable{
-    let statusCode: String
-    let statusMessage: String
-    let couponInfoResBeanList: [CouponResBean]?
+    let status: String
+    let data: [CouponResBean]?
     
-    enum CodingKeys: String,CodingKey{
-        case statusCode
-        case statusMessage
-        case couponInfoResBeanList = "couponInfoResBeanList"
-    }
 }
 
 struct CouponResBean : Codable{
-    let couponId: String
-    let shopId: String
+    let couponId: Int
     let couponCode: String
     let couponNameMM: String
     let couponNameEN: String
     let descriptionMM: String
     let descriptionEN: String
-    let specialEventMM: String
-    let specialEventEN: String
-    let couponAmount: String
-    let goodsPrice: String
+    let specialEventMM: String?
+    let specialEventEN: String?
+    let couponAmount: Int
+    let goodsPrice: Int
     let startTime: String
     let expiredTime: String
     let discountUnit: String
     let unuseImagePath: String
     let useImagePath: String
-    let couponPassword: String
-    let totalNum: String
-    let customerId: String
+    let totalNo: Int
+    let customerId: Int
     let status: String
 }
 
-struct CouponBean {
+struct CouponBean : Codable {
     var couponId: String = ""
-    var shopId: String = ""
     var couponCode: String = ""
     var couponNameMM: String = ""
     var couponNameEN: String = ""
@@ -65,7 +56,6 @@ struct CouponBean {
     var discountUnit: String = ""
     var unuseImagePath: String = ""
     var useImagePath: String = ""
-    var couponPassword: String = ""
     var totalNum: String = ""
     var customerId: String = ""
     var status: String = ""
@@ -83,12 +73,10 @@ struct CouponUpdateResponse : Codable{
     let statusCode: String
     let statusMessage: String
     let couponId: String
-    let shopId: String
     
     enum CodingKeys: String,CodingKey{
         case statusCode
         case statusMessage
         case couponId
-        case shopId
     }
 }

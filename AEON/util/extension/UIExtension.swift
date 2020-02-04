@@ -2,7 +2,7 @@
 //  UIExtension.swift
 //  AEON
 //
-//  Created by AcePlus101 on 2/2/19.
+//  Created by Khin Yadanar Thein on 2/2/19.
 //  Copyright © 2019 AEON microfinance. All rights reserved.
 //
 
@@ -134,4 +134,41 @@ extension UIAlertController {
         }
         return controller
     }
+}
+
+public extension UIDevice {
+    
+    var iPhone: Bool {
+        return UIDevice().userInterfaceIdiom == .phone
+    }
+    
+    enum ScreenType: String {
+        case iPhone4
+        case iPhone5
+        case iPhone6
+        case iPhone6Plus
+        case iPhoneX
+        case iPhoneXR
+        case Unknown
+    }
+    var screenType: ScreenType {
+        guard iPhone else { return .Unknown}
+        switch UIScreen.main.nativeBounds.height {
+        case 960:
+            return .iPhone4
+        case 1136:
+            return .iPhone5
+        case 1334:
+            return .iPhone6
+        case 1792:
+            return .iPhoneXR
+        case 2208, 1920:
+            return .iPhone6Plus
+        case 2436:
+            return .iPhoneX
+        default:
+            return .Unknown
+        }
+    }
+    
 }

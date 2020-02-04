@@ -11,10 +11,10 @@ class OTPViewModel{
     
     func sendOTPRequest(siteActivationKey:String,phoneNo:String,success: @escaping (OTPResponse) -> Void,failure: @escaping (String) -> Void){
         OTPModel.init().sendOTP(siteActivationKey: siteActivationKey, phoneNo: phoneNo, success: { (result) in
-            if result.statusCode == "200" {
+            if result.status == Constants.STATUS_200 {
                 success(result)
             } else {
-                failure(result.statusMessage)
+                failure(Constants.SERVER_INTERNAL_FAILURE)
             }
             
         }) { (error) in
