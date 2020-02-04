@@ -13,6 +13,7 @@ struct Constants {
     static let socket_url:String = "wss://ass.aeoncredit.com.mm/vcschat"
     static var assm_base_url :String = "https://ass.aeoncredit.com.mm/assm2/"
     static let at_socket_url:String = "wss://ass.aeoncredit.com.mm/vcsplchat"
+    static let free_chat_socket_url:String = "wss://ass.aeoncredit.com.mm/free-chat-server"
     static var daso_url:String = "https://ass.aeoncredit.com.mm/daso/"
     
 //    static var base_url:String = "https://amf.aeoncredit.com.mm/daso/"

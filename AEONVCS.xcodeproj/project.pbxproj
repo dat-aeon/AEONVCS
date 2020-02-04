@@ -243,6 +243,8 @@
 		C16C63DE238C3980004E24C1 /* AgentChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63DD238C3980004E24C1 /* AgentChannel.swift */; };
 		C16C63E1238C3DEF004E24C1 /* AgentChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */; };
 		C16C63E3238C3E01004E24C1 /* AgentChannelPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */; };
+		EF38F9FB23E968AD00E85262 /* HomeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FA23E968AD00E85262 /* HomeNewViewController.swift */; };
+		EF38F9FD23E96ACB00E85262 /* FreeChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */; };
 		FD8DA56F3D523C6E51A4049E /* Pods_AEONVCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F80EDB55A064FA0ADE2A0 /* Pods_AEONVCS.framework */; };
 /* End PBXBuildFile section */
 
@@ -489,6 +491,8 @@
 		C16C63DD238C3980004E24C1 /* AgentChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannel.swift; sourceTree = "<group>"; };
 		C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelViewController.swift; sourceTree = "<group>"; };
 		C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelPopupViewController.swift; sourceTree = "<group>"; };
+		EF38F9FA23E968AD00E85262 /* HomeNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeNewViewController.swift; path = emplate/HomeNewViewController.swift; sourceTree = "<group>"; };
+		EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -739,6 +743,7 @@
 		6A3197A52203FFE40031D86F /* contactus */ = {
 			isa = PBXGroup;
 			children = (
+				EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */,
 				75A31E0222006B80002E7336 /* ContactUsViewController.swift */,
 				6A3197A62204000F0031D86F /* HotlinePhoneNumberViewController.swift */,
 				6A3197A8220400290031D86F /* MessagingViewController.swift */,
@@ -838,6 +843,7 @@
 		6A3197BA2204020F0031D86F /* home */ = {
 			isa = PBXGroup;
 			children = (
+				EF38F9FA23E968AD00E85262 /* HomeNewViewController.swift */,
 				752115D1220158BE001BC94A /* SideMenuTableViewController.swift */,
 				752115D922016146001BC94A /* HomeViewController.swift */,
 				04D322A22223CBE4006BE0CB /* WelcomeViewController.swift */,
@@ -1489,6 +1495,7 @@
 				6A81F0CF221575F7001725EA /* NRCData.swift in Sources */,
 				0450FE6223A9ED75009D518E /* cellPurchaseImages.swift in Sources */,
 				04BFA42222F141800004FAB9 /* OutletInfoViewModel.swift in Sources */,
+				EF38F9FB23E968AD00E85262 /* HomeNewViewController.swift in Sources */,
 				04104EA1222639060068748D /* DeviceInfo.swift in Sources */,
 				04BB5EDA2292E9270091D768 /* AppLockData.swift in Sources */,
 				04BB5EDE2292ECA20091D768 /* AppLockCheckViewModel.swift in Sources */,
@@ -1624,6 +1631,7 @@
 				0421286F22ECA56C003252F8 /* OutletDetailViewController.swift in Sources */,
 				6AFEBE052205CDDA006D2F81 /* FAQ.swift in Sources */,
 				04C2B4F422E9954F00074309 /* PhotoUpdateModel.swift in Sources */,
+				EF38F9FD23E96ACB00E85262 /* FreeChatViewController.swift in Sources */,
 				04B3D7092224EFD300276A07 /* CustomGIFView.swift in Sources */,
 				04A718AD226ECAA3001683A6 /* PromotionTableViewCell.swift in Sources */,
 				6A3197A72204000F0031D86F /* HotlinePhoneNumberViewController.swift in Sources */,

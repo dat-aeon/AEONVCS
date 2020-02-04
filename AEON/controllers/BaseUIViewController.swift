@@ -21,6 +21,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
     
     var socket = WebSocket(url: URL(string: Constants.socket_url)!, protocols: ["chat"])
     var at_socket = WebSocket(url: URL(string: Constants.at_socket_url)!, protocols: ["chat"])
+    var free_chat_socket_url = WebSocket(url: URL(string: Constants.free_chat_socket_url)!, protocols: ["chat"])
     
     static let baseController = BaseUIViewController()
     
