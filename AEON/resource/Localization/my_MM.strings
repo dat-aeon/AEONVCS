@@ -10,6 +10,7 @@
 "terms.title" = "AEON Microfinance (Myanmar) Mobile Application သုံးစွဲခြင်းဆိုင်ရာစည်းကမ်းချက်များ";
 "terms.switch.label" = "လက်ခံပါသည်";
 "terms.ok.button" = "OK";
+"terms.ReqPhNo" = "AEONနှင့်ဆက်သွယ်ရန် ဖုန်းနံပါတ်ထည့်ပေးပါ။";
 
 // HOME Screen
 "home.title" = "AEON";
@@ -544,3 +545,19 @@
 "loanconfirm.term.label" = "ချေးငွေသဘောတူကတိစာချုပ်၏ စည်းကမ်းချက်များ";
 "loanconfirm.term.switch.label" = "သဘောတူပါသည်";
 
+//How to use
+"howtouse.title.label" = "AEON Member App အသုံးပြုနည်း";
+"howtouse.des.label" = "ဤဗီဒီယိုမှ AEON Member App မည်သို့အသုံးပြုရမည်ကိုသင်ယူနိုင်ပါသည်။";
+
+//Main and Home Layout
+"main.loancalculator" = "ချေးငွေတွက်ချက်ခြင်း";
+"main.register" = "မှတ်ပုံတင်မည်";
+"main.goodnews" = "သတင်း";
+"main.findus" = "ဆိုင်များ";
+"main.ourservice" = "AEON မှဝန်ဆောင်မှုများ";
+"main.announcement" = "ကြေညာချက်";
+"main.howtouse" = "အသုံးပြုနည်း";
+"main.share" = "မျှဝေမည်";
+"main.customerservice" = "ဆက်သွယ်ရန်";
+"main.askproduct" = "ပစ္စည်းမေးရန်";
+"main.informationupdate" = "အချက်အလက်ပြင်ဆင်ခြင်း";

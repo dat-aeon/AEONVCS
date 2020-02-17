@@ -12,6 +12,16 @@ import Starscream
 
 class MessagingViewController: BaseUIViewController {
 
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarCusType: UILabel!
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
+    
+    
     @IBOutlet weak var tvMessagingView: UITableView!
     @IBOutlet weak var lbHotline: UILabel!
     @IBOutlet weak var btnHotline: UIImageView!
@@ -37,6 +47,16 @@ class MessagingViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
         
         self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)!
         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
@@ -85,9 +105,34 @@ class MessagingViewController: BaseUIViewController {
         UserDefaults.standard.set(false, forKey: Constants.MESSAGE_SOCKET_CLOSE)
         
         self.btnSendMesg.setTitle("messaging.send.button".localized, for: UIControl.State.normal)
+        
+        if (UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME) == nil) {
+                   self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+                   self.lblBarName.text = ""
+                   self.lblBarCusType.text = "Lv.1 : Application user"
+               }else{
+                   self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+                              self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+                    self.lblBarCusType.text = "Lv.2 : Login user"
+               }
+        
         self.isDidLoad = true
     }
     
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -128,6 +173,12 @@ class MessagingViewController: BaseUIViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UserDefaults.standard.set(true, forKey: Constants.MESSAGE_SOCKET_CLOSE)
+        super.socket.disconnect()
+    }
+    
     @objc func onClickHotline(){
         self.lbHotline.text?.makeCall()
     }
@@ -153,6 +204,8 @@ class MessagingViewController: BaseUIViewController {
         if self.tfTypeMessage.text != Constants.BLANK {
             //self.messagingSocket.send("msg:\(self.tfTypeMessage.text!)op_send_flag:0message_type:0")
             //self.messagingSocket.send("ChangeFinishFlagByMobile:\(self.senderName)")
+            
+            print("message socket send")
             super.socket.write(string: "msg:\(self.tfTypeMessage.text!)op_send_flag:0message_type:0")
             super.socket.write(string: "ChangeFinishFlagByMobile:\(self.senderName)")
         }
@@ -264,14 +317,14 @@ extension MessagingViewController: ImagePickerDelegate {
 extension MessagingViewController : WebSocketDelegate {
     
     func webSocketOpen() {
-//        print("message socket opened")
+        print("message socket opened")
         super.socket.write(string: "userName:\(self.senderName)userId:\(self.senderId)")
         super.socket.write(string: "cr:\(self.senderName)or:userWithAgency:")
         
     }
     
     func webSocketClose(_ code: Int, reason: String, wasClean: Bool) {
-//        print("message socket close", reason)
+        print("message socket close", reason)
         let isClose = UserDefaults.standard.bool(forKey: Constants.MESSAGE_SOCKET_CLOSE)
         if isClose {
             super.socket.disconnect()
@@ -333,7 +386,7 @@ extension MessagingViewController : WebSocketDelegate {
                     if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
                         
                         let type = jsonData["type"] as! String
-                        //print("type", type)
+                        print("type", type)
                         
                         if (type == "room"){
                             // chat room is open and get message list
@@ -473,11 +526,11 @@ extension MessagingViewController : WebSocketDelegate {
                             
                             let messageMenu = UserDefaults.standard.integer(forKey: Constants.MESSAGING_MENU)
                             
-                            if messageMenu == 11 {
-                                UserDefaults.standard.set(true, forKey: Constants.MESSAGE_SOCKET_CLOSE)
-                                super.socket.disconnect()
-                                return
-                            }
+//                            if messageMenu == 11 {
+//                                UserDefaults.standard.set(true, forKey: Constants.MESSAGE_SOCKET_CLOSE)
+//                                super.socket.disconnect()
+//                                return
+//                            }
                             // retrieve unread message list
                             var unreadArray = UserDefaults.standard.array(forKey: Constants.UNREAD_MESSAGE_ARRAY)  as? [Int] ?? [Int]()
                             
@@ -506,13 +559,13 @@ extension MessagingViewController : WebSocketDelegate {
                                     messageBean.isReceiveMesg = true
                                     
                                     //check if segment is message
-                                    if messageMenu == 8 {
+//                                    if messageMenu == 8 {
                                         super.socket.write(string: "ChangeReadFlagWithMsgId:\((data.value(forKey: "message_id") as? Int)!)")
-                                    } else {
-                                        unreadArray.append((data.value(forKey: "message_id") as? Int)!)
-                                        UserDefaults.standard.set(unreadArray, forKey: Constants.UNREAD_MESSAGE_ARRAY)
-                                        UserDefaults.standard.set(0, forKey: Constants.UNREAD_MESSAGE_COUNT)
-                                    }
+//                                    } else {
+//                                        unreadArray.append((data.value(forKey: "message_id") as? Int)!)
+//                                        UserDefaults.standard.set(unreadArray, forKey: Constants.UNREAD_MESSAGE_ARRAY)
+//                                        UserDefaults.standard.set(0, forKey: Constants.UNREAD_MESSAGE_COUNT)
+//                                    }
                                 } else {
                                     messageBean.isReceiveMesg = false
                                 }

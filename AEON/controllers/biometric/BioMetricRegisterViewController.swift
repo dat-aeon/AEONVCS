@@ -11,6 +11,11 @@ import LocalAuthentication
 import SwiftyJSON
 
 class BioMetricRegisterViewController: BaseUIViewController {
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
 
     @IBOutlet weak var svBioMetricVerify: UIScrollView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -34,6 +39,15 @@ class BioMetricRegisterViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+        
         tfPhone.delegate = self
         tfPassword.delegate = self
         
@@ -126,6 +140,22 @@ class BioMetricRegisterViewController: BaseUIViewController {
          super.updateLocale()
     }
     
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+    
+    
     @objc override func updateViews() {
         super.updateViews()
         switch Locale.currentLocale {
@@ -166,11 +196,12 @@ class BioMetricRegisterViewController: BaseUIViewController {
                         self.isAlreadyLogin = false
                         
                          DispatchQueue.main.async {
-                            let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-                            let vc = navVC.children.first as! HomePageViewController
+//                            let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                            let vc = navVC.children.first as! HomePageViewController
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
                             vc.sessionDataBean = self.sessionData
-                            navVC.modalPresentationStyle = .overFullScreen
-                            self.present(navVC, animated: true, completion: nil)
+                            vc.modalPresentationStyle = .overFullScreen
+                            self.present(vc, animated: true, completion: nil)
                         }
                     } else {
 //                        let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
@@ -214,11 +245,13 @@ class BioMetricRegisterViewController: BaseUIViewController {
                 let alertController = UIAlertController(title: Constants.VERIFY_FAILED_TITIE, message: Messages.BIOMETRIC_VERIFY_FAILED_ERROR.localized, preferredStyle: .alert) //
                 let okAction = UIAlertAction(title: Constants.OK, style: .cancel, handler: { action in
                     
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-                    let vc = navigationVC.children.first as! HomePageViewController
+//                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                    let vc = navigationVC.children.first as! HomePageViewController
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
                     vc.sessionDataBean = self.sessionData
-                    navigationVC.modalPresentationStyle = .overFullScreen
-                    self.present(navigationVC, animated: true, completion: nil)
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true, completion: nil)
+            
                     
                 })
                 alertController.addAction(okAction)
@@ -283,6 +316,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
             }
             UserDefaults.standard.set(result.data.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
             UserDefaults.standard.set(result.data.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
+            UserDefaults.standard.set(result.data.name, forKey: Constants.USER_INFO_NAME)
             UserDefaults.standard.set(Utils.generateLogoutTime(), forKey : Constants.LOGIN_TIME)
             UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
             UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)
@@ -294,11 +328,13 @@ class BioMetricRegisterViewController: BaseUIViewController {
             let sessionString = String(data: sessionJson!, encoding: .utf8)!
             UserDefaults.standard.set(sessionString, forKey: Constants.SESSION_INFO)
             
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! HomePageViewController
-            vc.sessionDataBean = sessionData
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! HomePageViewController
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+            vc.sessionDataBean = self.sessionData
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
             
         }) { (error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
@@ -321,11 +357,13 @@ class BioMetricRegisterViewController: BaseUIViewController {
     
     @IBAction func onClickBackButton(_ sender: UIBarButtonItem) {
         if self.isAlreadyLogin {
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! HomePageViewController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! HomePageViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
             vc.sessionDataBean = self.sessionData
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+            
             
         } else {
             self.dismiss(animated: true, completion: nil)

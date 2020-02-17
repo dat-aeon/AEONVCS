@@ -11,6 +11,7 @@
 "terms.title" = "Terms and Conditions of AEON Microfinance (Myanmar) Mobile Application";
 "terms.switch.label" = "Accept";
 "terms.ok.button" = "OK";
+"terms.ReqPhNo" = "Please input your Phone Number to contact with AEON";
 
 // HOME Screen
 "home.title" = "AEON";
@@ -558,3 +559,20 @@
 // Terms & Condition
 "loanconfirm.term.label" = "Loan Contract of Terms & Conditions";
 "loanconfirm.term.switch.label" = "I agree";
+
+//How to use
+"howtouse.title.label" = "How to use AEON Member App";
+"howtouse.des.label" = "You can learn how to use AEON Member app from this video.";
+
+//Main and Home Layout
+"main.loancalculator" = "Loan Calculator";
+"main.register" = "Register";
+"main.goodnews" = "Good News";
+"main.findus" = "Find Us";
+"main.ourservice" = "Our Service";
+"main.announcement" = "Announcement";
+"main.howtouse" = "How to use";
+"main.share" = "Share";
+"main.customerservice" = "Customer Service";
+"main.askproduct" = "Ask Product";
+"main.informationupdate" = "Information Update";

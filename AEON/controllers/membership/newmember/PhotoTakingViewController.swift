@@ -11,7 +11,11 @@ import SwiftyJSON
 import AVFoundation
 
 class PhotoTakingViewController: BaseUIViewController {
-
+    
+    
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
     var profileImage:UIImage?
     var customerNo:String?
     var customerId:String?
@@ -21,6 +25,11 @@ class PhotoTakingViewController: BaseUIViewController {
     var tokenInfo: TokenData?
     var imagePicker: ImagePicker!
     
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
+    
+    
     @IBOutlet weak var ivProfileImage: UIImageView!
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     @IBOutlet weak var lblConfirmTitle: UILabel!
@@ -29,6 +38,18 @@ class PhotoTakingViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+        self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+       
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+        
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
         
         switch Locale.currentLocale {
         case .EN:
@@ -43,6 +64,17 @@ class PhotoTakingViewController: BaseUIViewController {
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
         self.title = "sidemenu.membership".localized
+    }
+    
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,7 +187,15 @@ class PhotoTakingViewController: BaseUIViewController {
 //                    vc.sessionDataBean = sessionInfo
 //
 //                    self.present(navigationVC, animated: true, completion: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+                                        vc.modalPresentationStyle = .overFullScreen
+                                        vc.sessionDataBean = sessionInfo
+                    
+                                        self.present(vc, animated: true, completion: nil)
+                    
+                    
+//                    self.dismiss(animated: true, completion: nil)
                 })
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)

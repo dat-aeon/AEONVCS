@@ -23,6 +23,12 @@ class ResetPasswordViewController: BaseUIViewController {
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     @IBOutlet weak var lbPasswordWarning: UILabel!
     
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    
     var customerId : Int?
     var userTypeId : Int?
     var phoneNo : String?
@@ -35,6 +41,15 @@ class ResetPasswordViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
         
         self.lbPassErrorMessage.text = Constants.BLANK
         self.lbConPassErrorMessage.text = Constants.BLANK
@@ -54,6 +69,22 @@ class ResetPasswordViewController: BaseUIViewController {
         //  print("Pass data :::::::::: \(String(describing: customerId)) \(String(describing: userTypeId))")
         
     }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     func isErrorExist() -> Bool {
         var isError = false
@@ -129,7 +160,8 @@ class ResetPasswordViewController: BaseUIViewController {
                     
                     let alertController = UIAlertController(title: "Update Success", message: "Your password is successfully changed. Please login again.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+//                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! UIViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion: nil)
                         
@@ -173,7 +205,8 @@ class ResetPasswordViewController: BaseUIViewController {
                     
                     let alertController = UIAlertController(title: "Update Success", message: "Your password is successfully changed. Please login again.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+//                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! UIViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion: nil)
                         

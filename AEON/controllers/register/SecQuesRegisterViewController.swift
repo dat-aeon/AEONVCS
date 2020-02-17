@@ -10,7 +10,15 @@ import UIKit
 import SwiftyJSON
 
 class SecQuesRegisterViewController: BaseUIViewController {
-
+    
+    
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    
     @IBOutlet weak var tvSecQuesRegView: UITableView!
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     
@@ -31,6 +39,17 @@ class SecQuesRegisterViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
+        
         // check network
         if Network.reachability.isReachable == false {
             self.networkConnectionError()
@@ -47,12 +66,31 @@ class SecQuesRegisterViewController: BaseUIViewController {
         self.tvSecQuesRegView.dataSource = self
         self.tvSecQuesRegView.delegate = self
         self.tvSecQuesRegView.tableFooterView = UIView()
+        
+         self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
     }
     
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
         super.updateLocale()
         self.tvSecQuesRegView.reloadData()
     }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
+    
     
     @objc override func updateViews() {
         super.updateViews()
@@ -331,13 +369,14 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
         if memberValue == Constants.MEMBER {
             //openCamera(imagePickerControllerDelegate: self)
             
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.REGISTER_PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! RegisterPhotoUploadViewController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.REGISTER_PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! RegisterPhotoUploadViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.REGISTER_PHOTO_UPLOAD_VIEW_CONTROLLER) as! RegisterPhotoUploadViewController
             vc.registerRequestData = self.registerRequestData
             vc.memberResponseData = self.memberResponseData!
             vc.qaList = self.qaList
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
 
             
             //testing
@@ -468,14 +507,17 @@ extension SecQuesRegisterViewController{
 
 //             print("image is not null")
             
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! MemberInfoPreviewViewController
+            
             vc.registerRequestData = self.registerRequestData
             vc.profileImage = pickedImage
             vc.memberResponseData = self.memberResponseData!
             vc.qaList = self.qaList
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
             
         } else {
 //            print("image is null")

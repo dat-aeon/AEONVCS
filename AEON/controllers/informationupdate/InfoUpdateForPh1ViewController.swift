@@ -10,7 +10,15 @@ import UIKit
 import SwiftyJSON
 
 class InfoUpdateForPh1ViewController: BaseUIViewController {
-
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
+    
+    
     @IBOutlet weak var tvSecurityQuestionUpdate: UITableView!
     
     var userQAList:[UserQAList] = []
@@ -26,6 +34,18 @@ class InfoUpdateForPh1ViewController: BaseUIViewController {
     override func viewDidLoad() {
 //        print("Start SecurityQuestionUpdateViewController :::::::::::::::")
         super.viewDidLoad()
+        
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+               self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
         
         // check network
         if Network.reachability.isReachable == false {
@@ -49,6 +69,21 @@ class InfoUpdateForPh1ViewController: BaseUIViewController {
         self.tvSecurityQuestionUpdate.delegate = self
         self.tvSecurityQuestionUpdate.tableFooterView = UIView()
         
+    }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {

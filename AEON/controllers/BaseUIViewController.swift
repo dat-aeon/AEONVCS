@@ -29,8 +29,8 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes =
-        [NSAttributedString.Key.foregroundColor: UIColor.white,
-         NSAttributedString.Key.font: UIFont(name: "PyidaungsuBook-Bold", size: 21)!]
+            [NSAttributedString.Key.foregroundColor: UIColor.white,
+             NSAttributedString.Key.font: UIFont(name: "PyidaungsuBook-Bold", size: 21)!]
         
         //Locale Change Observer
         NotificationCenter.default.addObserver(self, selector: #selector(localeChanged), name: NSNotification.Name(Locale.ChangeNotification), object: nil)
@@ -52,27 +52,27 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         
         // Network connection Observer
         NotificationCenter.default.addObserver(self,
-                         selector: #selector(statusManager),
-                         name: .flagsChanged,
-                         object: nil)
+                                               selector: #selector(statusManager),
+                                               name: .flagsChanged,
+                                               object: nil)
         updateUserInterface()
-
+        
         //self.printfont()
         
     }
     
     func updateUserInterface() {
         if !Network.reachability.isReachable {
-        
+            
             //view.backgroundColor = .red
             Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
-        
+            
         }
-//        print("Reachability Summary")
-//        print("Status:", Network.reachability.status)
-//        print("HostName:", Network.reachability.hostname ?? "nil")
-//        print("Reachable:", Network.reachability.isReachable)
-//        print("Wifi:", Network.reachability.isReachableViaWiFi)
+        //        print("Reachability Summary")
+        //        print("Status:", Network.reachability.status)
+        //        print("HostName:", Network.reachability.hostname ?? "nil")
+        //        print("Reachable:", Network.reachability.isReachable)
+        //        print("Wifi:", Network.reachability.isReachableViaWiFi)
     }
     
     @objc func statusManager(_ notification: Notification) {
@@ -82,18 +82,18 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
     @objc func applicationWillResignActive() {
         let lastUseTime = Utils.generateLogoutTime()
         UserDefaults.standard.set(lastUseTime, forKey: Constants.LAST_USED_TIME)
-//        print("App is inactive.")
-//        print("Lastest Time: ", lastUseTime)
+        //        print("App is inactive.")
+        //        print("Lastest Time: ", lastUseTime)
         
     }
     
     @objc public func applicationWillEnterForeground() {
-//        print("App is active.")
+        //        print("App is active.")
         
         let sessionTime = 180.0
         let lastUsedTime = UserDefaults.standard.string(forKey: Constants.LAST_USED_TIME)
         let currentTime = Utils.generateLogoutTime()
-//        print("Lastest Time: ", lastUsedTime ?? Constants.BLANK)
+        //        print("Lastest Time: ", lastUsedTime ?? Constants.BLANK)
         
         if lastUsedTime != nil && lastUsedTime != Constants.BLANK {
             let formatter = DateFormatter()
@@ -121,7 +121,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
                     UserDefaults.standard.set(false, forKey: CommonNames.VERSION_ALERT_SHOWN)
                     
                     if (customerId != nil && logoutTime != nil && logoutTime != Constants.BLANK) {
-//                        print("Session::\(customerId ?? "0") + \(logoutTime ?? "00")")
+                        //                        print("Session::\(customerId ?? "0") + \(logoutTime ?? "00")")
                         
                         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                         
@@ -139,10 +139,14 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
                             UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
                             self.socket.disconnect()
                             
-                            let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
-                            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
-                             navigationVC.modalPresentationStyle = .overFullScreen
+                            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+                            navigationVC.modalPresentationStyle = .overFullScreen
                             self.present(navigationVC, animated: true, completion:nil)
+                            //
+                            //                            let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
+                            //                            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! UINavigationController
+                            //                             navigationVC.modalPresentationStyle = .overFullScreen
+                            //                            self.present(navigationVC, animated: true, completion:nil)
                             return
                         }
                         
@@ -163,9 +167,11 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
                             UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
                             self.socket.disconnect()
                             
-                            let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
-                            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
-                             navigationVC.modalPresentationStyle = .overFullScreen
+                            //                            let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
+                            //                            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+                            //                             navigationVC.modalPresentationStyle = .overFullScreen
+                            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+                            navigationVC.modalPresentationStyle = .overFullScreen
                             
                             let currVC = self.presentingViewController
                             self.dismiss(animated: true, completion: {
@@ -185,8 +191,11 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
                             UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
                             self.socket.disconnect()
                             
-                            let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
-                            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+                            //                            let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
+                            //                            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+                            //                             navigationVC.modalPresentationStyle = .overFullScreen
+                            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+                            navigationVC.modalPresentationStyle = .overFullScreen
                             
                             let currVC = self.presentingViewController
                             self.dismiss(animated: true, completion: {
@@ -224,7 +233,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
         
-//        print("Remove observer.")
+        //        print("Remove observer.")
     }
     
     
@@ -252,6 +261,25 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
             Locale.currentLocale = .MY
         case .MY:
             Locale.currentLocale = .EN
+        }
+        NotificationCenter.default.post(NSNotification.init(name: NSNotification.Name(Locale.ChangeNotification), object: nil) as Notification)
+    }
+    
+    
+    public func NewupdateLocale(flag : Int){
+        //        switch Locale.currentLocale {
+        //        case .EN:
+        //            Locale.currentLocale = .MY
+        //        case .MY:
+        //            Locale.currentLocale = .EN
+        switch flag {
+        case 1:
+            Locale.currentLocale = .MY
+        case 2:
+            Locale.currentLocale = .EN
+        default:
+            Locale.currentLocale = .MY
+            
         }
         NotificationCenter.default.post(NSNotification.init(name: NSNotification.Name(Locale.ChangeNotification), object: nil) as Notification)
     }
@@ -288,7 +316,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         
         return myString
     }
-   
+    
     // Change date format
     func changeMessageDateformat ( date: String) -> String{
         let formatter = DateFormatter()
@@ -321,7 +349,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
             let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
             let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
-             navigationVC.modalPresentationStyle = .overFullScreen
+            navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion: nil)
         }))
         
@@ -342,7 +370,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         } else {
             newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
         }
-//        print("new size", newSize)
+        //        print("new size", newSize)
         // This is the rect that we've calculated out and this is what is actually used below
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
         
@@ -358,7 +386,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
     func printfont() {
         for family in UIFont.familyNames {
             print("\(family)")
-
+            
             for name in UIFont.fontNames(forFamilyName: family) {
                 print("   \(name)")
             }
@@ -392,7 +420,7 @@ extension BaseUIViewController : UIImagePickerControllerDelegate, UINavigationCo
             registerImagePicker.sourceType = UIImagePickerController.SourceType.camera
             registerImagePicker.allowsEditing = true
             
-//            print("allow camera")
+            //            print("allow camera")
             let mainView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height-200))
             let dimX = mainView.frame.size.width - mainView.frame.size.height
             let frame             = CGRect.init(x: dimX/2, y: 0, width: mainView.frame.size.height, height: mainView.frame.size.height)
@@ -411,7 +439,7 @@ extension BaseUIViewController : UIImagePickerControllerDelegate, UINavigationCo
             mainView.addSubview(blockView)
             mainView.addSubview(textView)
             registerImagePicker.cameraOverlayView = mainView
-//            print("allow camera \(dimX) +\(mainView.frame.size.width) + \(mainView.frame.size.height)")
+            //            print("allow camera \(dimX) +\(mainView.frame.size.width) + \(mainView.frame.size.height)")
             self.present(registerImagePicker, animated: true)
             
         } else {
@@ -422,7 +450,7 @@ extension BaseUIViewController : UIImagePickerControllerDelegate, UINavigationCo
             registerImagePicker.delegate = imagePickerControllerDelegate
             registerImagePicker.sourceType = UIImagePickerController.SourceType.camera
             registerImagePicker.allowsEditing = true
-//            print("not allow camera")
+            //            print("not allow camera")
             
             self.present(registerImagePicker, animated: true)
         }
@@ -435,7 +463,7 @@ extension BaseUIViewController : UIImagePickerControllerDelegate, UINavigationCo
             messageImagePicker.delegate = imagePickerControllerDelegate
             messageImagePicker.sourceType = UIImagePickerController.SourceType.camera
             messageImagePicker.allowsEditing = true
-//            print("allow camera")
+            //            print("allow camera")
             
             self.present(messageImagePicker, animated: true)
             
@@ -447,7 +475,7 @@ extension BaseUIViewController : UIImagePickerControllerDelegate, UINavigationCo
             messageImagePicker.delegate = imagePickerControllerDelegate
             messageImagePicker.sourceType = UIImagePickerController.SourceType.camera
             messageImagePicker.allowsEditing = true
-//            print("not allow camera")
+            //            print("not allow camera")
             
             self.present(messageImagePicker, animated: true)
         }

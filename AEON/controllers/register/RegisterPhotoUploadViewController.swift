@@ -10,7 +10,14 @@ import UIKit
 import AVFoundation
 
 class RegisterPhotoUploadViewController: BaseUIViewController {
-
+    
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    
     @IBOutlet weak var btnUpload: UIButton!
     @IBOutlet weak var bbBackBtn: UIBarButtonItem!
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
@@ -31,6 +38,16 @@ class RegisterPhotoUploadViewController: BaseUIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
+        
         switch Locale.currentLocale {
         case .EN:
             bbLocaleFlag.image = UIImage(named: "mm_flag")
@@ -64,6 +81,22 @@ class RegisterPhotoUploadViewController: BaseUIViewController {
     @IBAction func onClickBackBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     @objc override func updateViews() {
         super.updateViews()
@@ -168,14 +201,16 @@ extension RegisterPhotoUploadViewController: ImagePickerDelegate {
 //            print("resize image width & height", resizeImage.size.width, resizeImage.size.height)
             
             // trasmit the data to next ViewController
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+            
+             let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! MemberInfoPreviewViewController
             vc.registerRequestData = self.registerRequestData
             vc.profileImage = resizeImage
             vc.memberResponseData = self.memberResponseData!
             vc.qaList = self.qaList
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
             
         } else {
 //            print("image is null")
@@ -194,14 +229,15 @@ extension RegisterPhotoUploadViewController {
             
 //            print("image is not null")
             
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! MemberInfoPreviewViewController
+             let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MEMBER_INFO_PREVIEW_VIEW_CONTROLLER) as! MemberInfoPreviewViewController
             vc.registerRequestData = self.registerRequestData
             vc.profileImage = pickedImage 
             vc.memberResponseData = self.memberResponseData!
             vc.qaList = self.qaList
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
             
         } else {
 //            print("image is null")

@@ -12,6 +12,13 @@ import SearchTextField
 
 class RegistrationViewController: BaseUIViewController {
     
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    
+    
     @IBOutlet weak var svMemberRegister: UIScrollView!
     
     @IBOutlet weak var lblTitle: UILabel!
@@ -78,6 +85,16 @@ class RegistrationViewController: BaseUIViewController {
         super.viewDidLoad()
 //    self.btnRegister.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickRegister)))
 //
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
+        
         self.tfNrcNo?.setMaxLength(maxLength: 6)
         tfPhoneNo?.setMaxLength(maxLength: 11)
         tfPassword?.setMaxLength(maxLength: 16)
@@ -93,6 +110,8 @@ class RegistrationViewController: BaseUIViewController {
         
         DispatchQueue.main.async {
             self.tfName?.becomeFirstResponder()
+            
+             self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
         }
 //        self.tfName?.keyboardType = UIKeyboardType.namePhonePad
         self.tfName?.autocapitalizationType = .allCharacters
@@ -221,6 +240,23 @@ class RegistrationViewController: BaseUIViewController {
         
         
     }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -530,12 +566,14 @@ class RegistrationViewController: BaseUIViewController {
     }
     
     private func goToSecQuesRegisterView(result:CheckMemberResponse,registerRequestData:RegisterRequestBean){
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SEC_QUES_REGISTER_VIEW_CONTROLLER) as! UINavigationController
-        let vc = navigationVC.children.first as! SecQuesRegisterViewController
+//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SEC_QUES_REGISTER_VIEW_CONTROLLER) as! UINavigationController
+//        let vc = navigationVC.children.first as! SecQuesRegisterViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SEC_QUES_REGISTER_VIEW_CONTROLLER) as! SecQuesRegisterViewController
+//               let vc = navigationVC.children.first as! SecQuesRegisterViewController
         vc.memberResponseData = result
         vc.registerRequestData = registerRequestData
-        navigationVC.modalPresentationStyle = .overFullScreen
-        self.present(navigationVC, animated: true, completion: nil)
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func didPressButtonFromCustomView(sender:UIButton) {

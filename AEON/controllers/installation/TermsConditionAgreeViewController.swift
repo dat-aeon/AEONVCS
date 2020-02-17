@@ -9,7 +9,11 @@
 import UIKit
 
 class TermsConditionAgreeViewController: BaseUIViewController {
-
+    
+    
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
     @IBOutlet weak var wholeView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var svTermsCon: UIScrollView!
@@ -20,12 +24,25 @@ class TermsConditionAgreeViewController: BaseUIViewController {
     @IBOutlet weak var bbLoaleFlag: UIBarButtonItem!
     @IBOutlet weak var dialogView: CardView!
     @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var tfFirstTimePhone: UITextField!
+    @IBOutlet weak var lbErrorMsg: UILabel!
+    @IBOutlet weak var lblRequestPhNo: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.btnAgree.isEnabled = false
         self.btnAgree.alpha = 0.5
         self.swAgree.isOn = false
+        
+        
+         self.lbErrorMsg.text = Constants.BLANK
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
         
         dialogView.isHidden = true
         
@@ -46,11 +63,15 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         }
         self.lblTitle.text = "terms.title".localized
         self.lblSwitch.text = "terms.switch.label".localized
+        self.lblRequestPhNo.text = "terms.ReqPhNo".localized
         
         self.lblTermsCon.font = UIFont(name: "PyidaungsuBook", size: 18)
         self.lblTitle.attributedText = Utils.setLineSpacing(data: lblTitle.text!)
+        self.lblRequestPhNo.attributedText = Utils.setLineSpacing(data: lblRequestPhNo.text!)
         self.lblTermsCon.attributedText = Utils.setLineSpacing(data: lblTermsCon.text!)
         //print("\(mmText.count)")
+        
+        self.tfFirstTimePhone.keyboardType = .numberPad
         
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "touchHappen")
@@ -59,11 +80,30 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         
     }
     
+
+
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
+    
     @IBAction func onTouchNext(_ sender: Any) {
+        
+        if isErrorExist() {
+            return
+        }
         
                 UserDefaults.standard.set(true, forKey: Constants.IS_ALREADY_ACCEPT)
                 UserDefaults.standard.set(true, forKey: Constants.IS_FIRST_INSTALL)
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+        UserDefaults.standard.set(self.tfFirstTimePhone.text, forKey: Constants.FIRST_TIME_PHONE)
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! UIViewController
                 navigationVC.modalPresentationStyle = .overFullScreen
                 self.present(navigationVC, animated: true, completion: nil)
         
@@ -109,6 +149,9 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         self.lblTitle.attributedText = Utils.setLineSpacing(data: lblTitle.text!)
         self.lblTermsCon.attributedText = Utils.setLineSpacing(data: lblTermsCon.text!)
         
+        self.lblRequestPhNo.text = "terms.ReqPhNo".localized
+        self.lblRequestPhNo.attributedText = Utils.setLineSpacing(data: lblRequestPhNo.text!)
+        
         //print("\(mmText.count)")
     }
     
@@ -142,8 +185,50 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         }
         self.lblTermsCon.attributedText = Utils.setLineSpacing(data: lblTermsCon.text!)
         self.lblTitle.attributedText = Utils.setLineSpacing(data: lblTitle.text!)
+         self.lblRequestPhNo.attributedText = Utils.setLineSpacing(data: lblRequestPhNo.text!)
         
     }
+    
+    func isErrorExist() -> Bool{
+        
+        var isError = false
+        
+        if self.tfFirstTimePhone?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
+            self.tfFirstTimePhone?.text = Constants.BLANK
+            self.lbErrorMsg.text = Messages.PHONE_REG_EMPTY_ERROR.localized
+//            self.phoneMesgLocale = Messages.PHONE_REG_EMPTY_ERROR
+            isError = true
+            
+        } else if !Utils.isPhoneValidate(phoneNo: (self.tfFirstTimePhone?.text)!){
+            // validate phone no format
+            self.lbErrorMsg.text = Messages.PHONE_REG_LENGTH_ERROR.localized
+//            self.phoneMesgLocale = Messages.PHONE_REG_LENGTH_ERROR
+            isError = true
+            
+        } else {
+//            self.phoneMesgLocale = Constants.BLANK
+            self.lbErrorMsg.text = Constants.BLANK
+        }
+        
+        return isError
+    }
+    
+    @objc override func keyboardWillChange(notification : Notification) {
+        guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        if notification.name == UIResponder.keyboardWillShowNotification {
+//            wholeView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardReact.height, right: 0)
+            
+        } else {
+//            wholeView.contentInset = UIEdgeInsets.zero
+        }
+//        wholeView.scrollIndicatorInsets = svMemberRegister.contentInset
+    }
+    
+    
+    
+    
     
     let engText:String = """
         1. General Information of the Service

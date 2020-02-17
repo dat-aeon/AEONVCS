@@ -79,6 +79,23 @@ class Utils{
         return myString
     }
     
+    
+    static func newchangeDMYDateformat ( date: String?) -> String{
+                let strconstant = "2019-10-16T17:30:00.000+0000"
+        let formatter = DateFormatter()
+        //        self.convertDateFormatterOh(date: strconstant)
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let convertDate = formatter.date(from: date ?? strconstant)
+        
+        formatter.dateFormat = "dd-MM-yyyy"
+        let myString = formatter.string(from: convertDate!)
+        
+        
+        
+        return myString
+    }
+    
     static func changeYMDDateformat ( date: String) -> String{
         //        let strconstant = "2019-10-16T17:30:00.000+0000"
         //        self.convertDateFormatterOh(date: strconstant)
@@ -301,6 +318,7 @@ class Utils{
                         }
                         UserDefaults.standard.set(result.data.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
                         UserDefaults.standard.set(result.data.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
+                        UserDefaults.standard.set(result.data.name, forKey: Constants.USER_INFO_NAME)
                         UserDefaults.standard.set(self.generateLogoutTime(), forKey : Constants.LOGIN_TIME)
                         UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
                         UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)

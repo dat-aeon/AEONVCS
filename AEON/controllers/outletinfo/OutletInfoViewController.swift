@@ -10,14 +10,30 @@ import UIKit
 
 class OutletInfoViewController: BaseUIViewController {
 
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
     @IBOutlet weak var segOutletInfo: UISegmentedControl!
     @IBOutlet weak var cvOutletMap: UIView!
     @IBOutlet weak var cvOutletList: UIView!
+    
+    
+    @IBOutlet weak var lblBarCusType: UILabel!
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
     
     var containerIndex = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
 
         self.updateViews()
         
@@ -27,7 +43,35 @@ class OutletInfoViewController: BaseUIViewController {
         
         toggleContainer(position:containerIndex)
         
+        
+        if (UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME) == nil) {
+            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+            self.lblBarName.text = ""
+            self.lblBarCusType.text = "Lv.1 : Application user"
+        }else{
+            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+                       self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+             self.lblBarCusType.text = "Lv.2 : Login user"
+        }
+        
+        
     }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     override func updateViews() {
         super.updateViews()

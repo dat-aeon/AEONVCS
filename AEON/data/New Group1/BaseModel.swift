@@ -530,4 +530,20 @@ class BaseModel {
         }
     }
     
+    //call getVideo file path
+    func getVideoFilePath(endPoint:String,rawData:[String:String],completion:@escaping (Result<Any>)->Void) -> DataRequest {
+        
+        let urlString = Constants.base_url + endPoint
+        
+        let url = URL(string: urlString)
+        var request        = URLRequest(url: url!)
+       request.httpMethod = ApiServiceEndPoint.GET_METHOD
+        request.setValue(ApiServiceEndPoint.APPLICATION_JSON, forHTTPHeaderField: ApiServiceEndPoint.CONTENT_TYPE)
+        request.timeoutInterval = 180
+        
+         return Alamofire.request(request).responseJSON{ (response) in
+                   completion(response.result)
+               }
+    }
+    
 }

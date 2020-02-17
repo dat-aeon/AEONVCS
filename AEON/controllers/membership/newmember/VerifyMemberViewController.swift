@@ -11,7 +11,14 @@ import SwiftyJSON
 import SearchTextField
 
 class VerifyMemberViewController: BaseUIViewController {
-
+    
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
     
     @IBOutlet weak var svMemberRegisterVerify: UIScrollView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -60,6 +67,15 @@ class VerifyMemberViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print("Start VerifyMemberViewController :::::::::::::::")
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
         
         self.lbAgreeErrorMessage.text = Constants.BLANK
         self.lbDobErrorMessage.text = Constants.BLANK
@@ -178,6 +194,10 @@ class VerifyMemberViewController: BaseUIViewController {
         self.btnCallNow.setTitle("verify.callnow.button".localized, for: UIControl.State.normal)
         self.btnVerify.setTitle("verify.verify.button".localized, for: UIControl.State.normal)
         self.lblNotify.text = "verify.warning.notify".localized
+        
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+        self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+        
     }
     
     @objc override func keyboardWillChange(notification : Notification) {
@@ -199,6 +219,23 @@ class VerifyMemberViewController: BaseUIViewController {
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
         super.updateLocale()
     }
+    
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     @objc override func updateViews() {
         super.updateViews()
@@ -467,16 +504,26 @@ class VerifyMemberViewController: BaseUIViewController {
             if result.data?.verifyStatus == Constants.VALID_MEMBER{
                 //success(result)
             
+                /**
+                                    previous code comment
+                 */
                 //let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SEC_QUEST_VERIFY_VIEW_CONTROLLER) as! UINavigationController
                 //let vc = navigationVC.children.first as! SecQuestionVerifyViewController
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
-                let vc = navigationVC.children.first as! PhotoUploadViewController
+                
+                /**
+                                            Comment by me to change NavigationVC to UIVC
+                 */
+//                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
+//                let vc = navigationVC.children.first as! PhotoUploadViewController
+                
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! PhotoUploadViewController
                 vc.verifyData.agreementNo = verifyUserInfoRequest.agreementNo
                 vc.verifyData.customerNo = (result.data?.customerNo)!
                 vc.verifyData.dateOfBirth = verifyUserInfoRequest.dateOfBirth
                 vc.verifyData.nrcNo = verifyUserInfoRequest.nrcNo
-                navigationVC.modalPresentationStyle = .overFullScreen
-                self.present(navigationVC, animated: true, completion: nil)
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
                 
             } else if result.data?.verifyStatus == Constants.INVALID_MEMBER_INFO {
                 Utils.showAlert(viewcontroller: self, title: Constants.VERIFY_FAILED_TITIE, message: Messages.VERIFY_INVALID_ERROR.localized)

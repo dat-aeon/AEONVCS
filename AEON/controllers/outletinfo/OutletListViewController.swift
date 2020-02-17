@@ -57,7 +57,7 @@ class OutletListViewController: BaseUIViewController {
         self.isDidLoad = true
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 20.0, repeats: true, block: { timer in
-            print("FIRE!!!")
+            //print("FIRE!!!")
 //            self.locationManager.startUpdatingLocation()
 //            self.locationManager.stopUpdatingLocation()
             self.reload = true

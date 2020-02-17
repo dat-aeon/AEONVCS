@@ -11,10 +11,15 @@ import SwiftyJSON
 import Starscream
 
 class FreeChatViewController: BaseUIViewController {
-
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    
     @IBOutlet weak var tvMessagingView: UITableView!
-    @IBOutlet weak var lbHotline: UILabel!
-    @IBOutlet weak var btnHotline: UIImageView!
+//    @IBOutlet weak var lbHotline: UILabel!
+//    @IBOutlet weak var btnHotline: UIImageView!
     @IBOutlet weak var vSendview: UIView!
     @IBOutlet weak var btnSendImg: UIButton!
     @IBOutlet weak var tfTypeMessage: UITextField!
@@ -35,12 +40,38 @@ class FreeChatViewController: BaseUIViewController {
 //    let messagingSocket = WebSocket(Constants.socket_url)
 //    var socket = WebSocket(url: URL(string: Constants.socket_url)!, protocols: ["chat"])
     
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO) ?? "09423696548"
-        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? 0
-        self.senderId = 589
+//        self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO) ?? "09423696548"
+        
+        var AutomessageBean = MessageBean()
+        
+        AutomessageBean.message="Welcome From AEON service! This chat room message will not save in your device and will not show old message."
+        AutomessageBean.isReceiveMesg = true
+        
+        self.messageBeanList.append(AutomessageBean)
+        
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+        
+        
+        
+        self.senderName = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09423696548"
+        
+//        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? 0
+//        self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
+        self.senderId = 100
+        print("SenderId \(self.senderId)")
+        
+        
         // initialize for camera image picker
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
 
@@ -60,8 +91,8 @@ class FreeChatViewController: BaseUIViewController {
         let sessionInfoString = UserDefaults.standard.string(forKey: Constants.SESSION_INFO)
         sessionInfo = try? JSONDecoder().decode(SessionDataBean.self, from: JSON(parseJSON: sessionInfoString ?? "").rawData())
 
-        self.lbHotline.text = sessionInfo?.hotlineNo
-        self.btnHotline.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickHotline)))
+//        self.lbHotline.text = sessionInfo?.hotlineNo
+//        self.btnHotline.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(onClickHotline)))
 
         UserDefaults.standard.set(0, forKey: Constants.UNREAD_MESSAGE_COUNT)
 
@@ -84,11 +115,29 @@ class FreeChatViewController: BaseUIViewController {
         // open the socket
         UserDefaults.standard.set(false, forKey: Constants.MESSAGE_SOCKET_CLOSE)
 
-        self.btnSendMesg.setTitle("messaging.send.button".localized, for: UIControl.State.normal)
+        self.btnSendImg.setTitle("messaging.send.button".localized, for: UIControl.State.normal)
         self.isDidLoad = true
+        
+         self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+    }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
     }
     
     
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //super.free_chat_socket_url.send("unReadMessageList:")
@@ -129,7 +178,7 @@ class FreeChatViewController: BaseUIViewController {
     }
     
     @objc func onClickHotline(){
-        self.lbHotline.text?.makeCall()
+//        self.lbHotline.text?.makeCall()
     }
 
     @IBAction func onClickSendImgBtn(_ sender: UIButton) {
@@ -138,7 +187,7 @@ class FreeChatViewController: BaseUIViewController {
 
     @objc override func updateViews() {
         super.updateViews()
-        self.btnSendMesg.setTitle("messaging.send.button".localized, for: UIControl.State.normal)
+        self.btnSendImg.setTitle("messaging.send.button".localized, for: UIControl.State.normal)
     }
     // send message
     @IBAction func sendMessage(_ sender: UIButton) {

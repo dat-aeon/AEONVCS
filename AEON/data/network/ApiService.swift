@@ -64,7 +64,9 @@ struct ApiServiceEndPoint {
     static var couponUpdate = "coupon-info/use-coupon-info"
     
     static var promoInfo = "promotions-info/promotions-info-list"
+    static var newpromoInfo = "free-token/promotions-info-list"
     static var newsInfo = "news-info/news-info-list"
+    static var newnewsInfo = "free-token/news-info-list"
     
     //Version Update
     static var newVersionInfo = "mobile-version-config/check-update-status"
@@ -76,7 +78,8 @@ struct ApiServiceEndPoint {
     static var outletInfo = "outlet-info/outlet-info-list"
     
     // Loan Calculator
-    static var loanCalculator = "loan-calculator/loan-calculate"
+    static var loanCalculator = "free-token/loan-calculate"
+    //static var loanCalculator = "loan-calculator/loan-calculate"
     
     //Check Password
     static var checkPasswordToVerifyUser = "customer-info-manage/check-password"
@@ -105,4 +108,8 @@ struct ApiServiceEndPoint {
     static var producttypelist = "information/product-type-list"
     
     static var cityTownshipInfoList = "information/city-township-info-list"
+    
+    static var videofilepath = "information/get-how-to-use-video-file-name"
+    
+    static var roomsync = "free-message/room-sync"
 }

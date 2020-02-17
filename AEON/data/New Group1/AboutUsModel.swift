@@ -33,4 +33,31 @@ class AboutUsModel:BaseModel {
         }
         
     }
+    
+    func getVideoPath(siteActivationKey:String,success: @escaping (VideoFileResponse) -> Void,failure: @escaping (String) -> Void){
+        let rawData = [
+            "siteActivationKey": siteActivationKey
+        ]
+       
+        
+               let _ = super.getVideoFilePath(endPoint: ApiServiceEndPoint.videofilepath, rawData: [:]) { (result) in
+                   switch result{
+                   case .success(let result):
+                       let responseJsonData = JSON(result)
+                       let responseValue  = try! responseJsonData.rawData()
+                       if let videofilerResponse = try? JSONDecoder().decode(VideoFileResponse.self, from: responseValue){
+                           success(videofilerResponse)
+                       }else{
+                           failure(Constants.JSON_FAILURE)
+                       }
+                   case .failure(let error):
+                       print("AboutUs error ",error.localizedDescription)
+                       failure(Constants.SERVER_FAILURE)
+                   }
+               }
+    }
+    
+    
+    
+    
 }

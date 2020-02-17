@@ -14,6 +14,14 @@ class SecQuestionVerifyViewController: BaseUIViewController {
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     @IBOutlet weak var bbBack: UIBarButtonItem!
     
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
+    
+    
     var verifyData  = VerifyUserInfoBean()
     var userQAList:[UserQAList] = []
     var customerId:Int = 0
@@ -22,6 +30,15 @@ class SecQuestionVerifyViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
         
         // check network
         if Network.reachability.isReachable == false {
@@ -66,19 +83,40 @@ class SecQuestionVerifyViewController: BaseUIViewController {
             } else {
                 let alertController = UIAlertController(title: Constants.LOADING_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UINavigationController
+//                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UINavigationController
+                     let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UIViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))
                 self.present(alertController, animated: true, completion: nil)
             }
         }
+        
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+        self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
     }
     
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
         super.updateLocale()
          self.tvSecQuesVerifyView.reloadData()
     }
+    
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     @objc override func updateViews() {
         super.updateViews()
@@ -229,12 +267,14 @@ extension SecQuestionVerifyViewController:SecurityQuestionVerifyDelegate{
             
             if result.status == Constants.STATUS_200 {
 
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
-                let vc = navigationVC.children.first as! PhotoUploadViewController
+//                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
+//                let vc = navigationVC.children.first as! PhotoUploadViewController
+                let vc = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! PhotoUploadViewController
+                
                 vc.verifyData = self.verifyData
                 vc.isPhotoUpdate = false
-                navigationVC.modalPresentationStyle = .overFullScreen
-                self.present(navigationVC, animated: true, completion: nil)
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
                 
             } else {
                 Utils.showAlert(viewcontroller: self, title: Constants.VERIFY_FAILED_TITIE, message: Messages.VERIFY_INVALID_ANSWER.localized)

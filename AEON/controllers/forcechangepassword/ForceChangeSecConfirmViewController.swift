@@ -11,6 +11,14 @@ import UIKit
 
 class ForceChangeSecConfirmViewController: BaseUIViewController {
     
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    
+    
     @IBOutlet weak var bbClose: UIBarButtonItem!
     @IBOutlet weak var bbFlag: UIBarButtonItem!
     
@@ -37,6 +45,15 @@ class ForceChangeSecConfirmViewController: BaseUIViewController {
         
         loadSecurityQuestionLIst()
         
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+        
         if Network.reachability.isReachable == false {
             super.networkConnectionError()
             return
@@ -59,6 +76,8 @@ class ForceChangeSecConfirmViewController: BaseUIViewController {
             bbFlag.image = UIImage(named: "en_flag")
             self.questionList = self.secQMy
         }
+        
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
         
     }
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
@@ -113,6 +132,22 @@ class ForceChangeSecConfirmViewController: BaseUIViewController {
             }
         }
     }
+    
+    @objc func onTapBack() {
+          print("click")
+           self.dismiss(animated: true, completion: nil)
+       }
+       @objc func onTapMMLocale() {
+          print("click")
+           super.NewupdateLocale(flag: 1)
+           updateViews()
+       }
+       @objc func onTapEngLocale() {
+          print("click")
+           super.NewupdateLocale(flag: 2)
+           updateViews()
+       }
+
 
     @objc override func updateViews() {
         super.updateViews()
@@ -350,14 +385,15 @@ extension ForceChangeSecConfirmViewController : ForgetConfirmDelegate {
                 
             } else {
                 
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! UINavigationController
-                let vc = navigationVC.children.first as! ResetPasswordViewController
+//                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! UINavigationController
+//                let vc = navigationVC.children.first as! ResetPasswordViewController
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! ResetPasswordViewController
                 vc.customerId = result.customerId
                 vc.userTypeId = result.userTypeId
                 vc.phoneNo = self.phoneNo!
                 vc.isAppLock = false
-                navigationVC.modalPresentationStyle = .overFullScreen
-                self.present(navigationVC, animated: true, completion: nil)
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
             }
         }) { (error) in
             // Service error

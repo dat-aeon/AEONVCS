@@ -11,6 +11,17 @@ import SwiftyJSON
 
 class NewsViewController: BaseUIViewController {
 
+    
+//    @IBOutlet weak var barView: UIStackView!
+    
+//    @IBOutlet weak var imgBack: UIImageView!
+//    @IBOutlet weak var imgMMlocale: UIImageView!
+//    @IBOutlet weak var imgEnglocale: UIImageView!
+//
+//    @IBOutlet weak var lblBarCusType: UILabel!
+//    @IBOutlet weak var lblBarPhNo: UILabel!
+//    @IBOutlet weak var lblBarName: UILabel!
+    
     @IBOutlet weak var tvNews: UITableView!
     
     var newsList = [NewsInfoBean]()
@@ -19,18 +30,43 @@ class NewsViewController: BaseUIViewController {
     var tokenInfo: TokenData?
     var isDidLoad = false
     
+    
+    @IBOutlet weak var newsControllerBarHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
+        
+        
         self.reloadNewsList()
         
         self.tvNews.register(UINib(nibName: CommonNames.NEWS_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.NEWS_TABLE_CELL)
         self.tvNews.dataSource = self
         self.tvNews.delegate = self
         self.tvNews.tableFooterView = UIView()
+       
+        
+        
+        
         self.isDidLoad = true
         
        
+    }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
     }
     
     @objc override func updateViews() {
@@ -41,6 +77,13 @@ class NewsViewController: BaseUIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        if(UserDefaults.standard.integer(forKey: Constants.togoodnewsfrom) == 2){
+//             self.barView.visiblity(gone: true)
+//        }else{
+//             self.barView.visiblity(gone: false)
+//        }
+        
         if isDidLoad {
             isDidLoad = false
         } else {
@@ -54,7 +97,8 @@ class NewsViewController: BaseUIViewController {
         tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
         
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        NewsViewModel.init().getNewsRequest(tokenInfo: tokenInfo!,  success: { (result) in
+//        NewsViewModel.init().getNewsRequest(tokenInfo: tokenInfo!,  success: { (result) in
+         NewsViewModel.init().getNewNewsRequest( success: { (result) in
             
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             self.newsList = result

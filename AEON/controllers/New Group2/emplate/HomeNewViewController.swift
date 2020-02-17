@@ -9,8 +9,11 @@
 import Foundation
 import UIKit
 
-class HomeNewViewController: BaseUIViewController {
+import SwiftyJSON
+import Starscream
 
+class HomeNewViewController: BaseUIViewController {
+    
     @IBOutlet weak var memberShipView: CardView!
     @IBOutlet weak var customerServiceView: CardView!
     @IBOutlet weak var loanCalculatorView: CardView!
@@ -23,9 +26,51 @@ class HomeNewViewController: BaseUIViewController {
     @IBOutlet weak var informationUpdateView: CardView!
     @IBOutlet weak var facebookView: CardView!
     @IBOutlet weak var shareView: CardView!
+    @IBOutlet weak var lblLogOut: UILabel!
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
+    
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblMembership: UILabel!
+    @IBOutlet weak var lblCustomerService: UILabel!
+    @IBOutlet weak var lblLoanCalculaotr: UILabel!
+    @IBOutlet weak var lblAnnouncement: UILabel!
+    @IBOutlet weak var lblAskproduct: UILabel!
+    @IBOutlet weak var lblGoodnews: UILabel!
+    @IBOutlet weak var lblHowtouse: UILabel!
+    @IBOutlet weak var lblOurService: UILabel!
+    @IBOutlet weak var lblFindus: UILabel!
+    @IBOutlet weak var lblInformationUpdate: UILabel!
+    @IBOutlet weak var lblShare: UILabel!
+    
+    
+    var customerType : String?
+    
+    var sessionDataBean : SessionDataBean?
+    
+    var senderName: String?
+    var senderId: Int?
+    
+    //AT websocket
+    var socketReq : SocketReqBean?
+    var param : SocketParam?
+    
+    var vidoeFilePath : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateViews()
+        
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+        
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+        
         self.memberShipView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMemberShipView)))
         self.customerServiceView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapCustomerServiceView)))
         self.loanCalculatorView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapLoanCalculatorView)))
@@ -38,60 +83,418 @@ class HomeNewViewController: BaseUIViewController {
         self.informationUpdateView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapInformationUpdateView)))
         self.facebookView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapFacebookView)))
         self.shareView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapShareView)))
+        
+        self.lblLogOut.isUserInteractionEnabled = true
+        self.lblLogOut.addGestureRecognizer(UITapGestureRecognizer(target: self, action:
+            #selector(onTapLogOut)))
+        
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+        self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+        
+        
+        
+        if let sessionData = sessionDataBean{
+            let jsonData = try? JSONEncoder().encode(sessionData)
+            let jsonString = String(data: jsonData!, encoding: .utf8)!
+            UserDefaults.standard.set(jsonString, forKey: Constants.SESSION_INFO)
+        }
+        self.customerType = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE)
+        //print("Home Page session data ::::::::::::::: \(String(describing: sessionDataBean))")
+        
+        //        switch Locale.currentLocale {
+        //        case .EN:
+        //            bbLocaleFlag.image = UIImage(named: "mm_flag")
+        //        case .MY:
+        //            bbLocaleFlag.image = UIImage(named: "en_flag")
+        //        }
+        
+        self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)!
+        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        super.socket.delegate = self
+        if !super.socket.isConnected {
+            super.socket.connect()
+            
+        }
+        self.socketReq = SocketReqBean()
+        self.param = SocketParam()
+        super.at_socket.delegate = self
+        if !super.at_socket.isConnected {
+            super.at_socket.connect()
+        }
+        param!.customerId = self.senderId!
+        param!.phoneNo = self.senderName!
+        param!.roomName = self.senderName!
+        
+        
+        // session timeout
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applicationWillResignActive),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applicationWillEnterForeground),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(dismissKeyboard), name: NSNotification.Name("dismissKeyboard"), object:nil)
+        
+        
+    }
+    
+    @objc func dismissKeyboard() {
+        DispatchQueue.main.async {
+            self.view.endEditing(true)
+        }
+        print("call dismisskeyboard")
+    }
+    
+    @objc func onTapMMLocale() {
+        print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+        print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+    
+    
+    @objc override func updateViews() {
+        super.updateViews()
+        self.lblMembership.text = "sidemenu.membership".localized
+        self.lblCustomerService.text = "contactus.title".localized
+        self.lblLoanCalculaotr.text = "main.loancalculator".localized
+        self.lblAnnouncement.text = "main.announcement".localized
+        self.lblAskproduct.text = "main.askproduct".localized
+        self.lblGoodnews.text = "main.goodnews".localized
+        self.lblHowtouse.text = "main.howtouse".localized
+        self.lblOurService.text = "main.ourservice".localized
+        self.lblFindus.text = "main.findus".localized
+        self.lblInformationUpdate.text = "main.informationupdate".localized
+        self.lblShare.text = "main.share".localized
+    }
+    
+    func roomSync() {
+        
     }
     
     @objc func onTapMemberShipView() {
         print("click")
-        self.performSegue(withIdentifier: "FreeChatViewController", sender: self)
+        
+        if self.customerType == Constants.MEMBER {
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberShipNewViewController") as! UIViewController
+            navigationVC.modalPresentationStyle = .overFullScreen
+            self.present(navigationVC, animated: true, completion: nil)
+        } else {
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "CustomerTypeViewController") as! UIViewController
+            navigationVC.modalPresentationStyle = .overFullScreen
+            self.present(navigationVC, animated: true, completion: nil)
+        }
+        
+        
     }
     
-     @objc func onTapCustomerServiceView() {
+    @objc func onTapCustomerServiceView() {
         print("click")
-        self.performSegue(withIdentifier: "FreeChatViewController", sender: self)
-     }
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MessagingViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
+    }
     
     @objc func onTapLoanCalculatorView() {
         print("click")
-        self.performSegue(withIdentifier: "FreeChatViewController", sender: self)
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoanCalculatorViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapAnnouncementView() {
-        print("click")
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "PromotionViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapAskProductView() {
         print("click")
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "AgentChannelViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapGoodNewsView() {
         print("click")
+        
+        UserDefaults.standard.set(2, forKey: Constants.togoodnewsfrom)
+        
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "EventNewViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapHowToUseView() {
         print("click")
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HowToUseViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapOurServiceView() {
-        print("click")
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FaqAndTermsConditionViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapFindUsView() {
         print("click")
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "OutletInfoViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
     
     @objc func onTapInformationUpdateView() {
         print("click")
+        
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.INFORMATION_UPDATE_VIEW_CONTROLLER) as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
+        
     }
     
     @objc func onTapFacebookView() {
         print("click")
+        UIApplication.tryURL(urls: [
+            "fb://profile/116374146706", // App
+            "https://www.facebook.com/AeonMicrofinance/" // Website if app fails
+        ])
     }
     
     @objc func onTapShareView() {
         print("click")
+        
+        let shareText = "Hi, I can get you a rewards! Just register using this referral code 01234, or use this link: http://ananda.com/rewards"
+        
+        let messageVC = CustomMessageActivity(message:shareText)
+        let vc = UIActivityViewController(activityItems: [shareText],   applicationActivities: [messageVC])
+        vc.excludedActivityTypes = [UIActivity.ActivityType.init(rawValue: "com.linkedin.LinkedIn.ShareExtension"),.message]
+        
+        vc.completionWithItemsHandler = { activity, success, items, error in
+            if !success{
+                print("cancelled")
+                return
+            }
+            
+        }
+        present(vc, animated: true)
+        
+    }
+    
+    @objc func onTapLogOut(){
+        
+        print("logout")
+        
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+        //               UserDefaults.standard.set(position, forKey: Constants.MESSAGING_MENU)
+        
+        let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+        let logoutTime = Utils.generateLogoutTime()
+        
+        print("\(customerId) + \(logoutTime)")
+        UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
+        //self.menuSocket.close()
+        //super.messagingSocket.close()
+        UserDefaults.standard.set(false, forKey: CommonNames.VERSION_ALERT_SHOWN)
+        
+        // check network
+        if Network.reachability.isReachable == false {
+            //print("socket close for logout")
+            
+            UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
+            UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)
+            UserDefaults.standard.set(Utils.generateLogoutTime(), forKey: Constants.LAST_USED_TIME)
+            UserDefaults.standard.set(nil, forKey: Constants.USED_COUPON_LIST)
+            
+            UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
+            UserDefaults.standard.set(true, forKey: Constants.MESSAGE_SOCKET_CLOSE)
+            super.socket.disconnect()
+            
+            UserDefaults.standard.set(true, forKey: Constants.AT_MENU_SOCKET_CLOSE)
+            UserDefaults.standard.set(true, forKey: Constants.AT_MESSAGE_SOCKET_CLOSE)
+            super.at_socket.disconnect()
+            
+            //                   let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+            //                   navigationVC.modalPresentationStyle = .overFullScreen
+            //                   self.present(navigationVC, animated: true, completion:nil)
+            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+            navigationVC.modalPresentationStyle = .overFullScreen
+            self.present(navigationVC, animated: true, completion:nil)
+            return
+        }
+        
+        let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
+        let tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
+        
+        LogoutViewModel.init().logout(customerId: customerId, logoutTime: logoutTime, tokenInfo: tokenInfo!, success: { (result) in
+            
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            UserDefaults.standard.set(nil, forKey: Constants.LOGIN_TIME)
+            UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)
+            UserDefaults.standard.set(nil, forKey: Constants.TOKEN_DATA)
+            UserDefaults.standard.set(nil, forKey: Constants.HOTLINE_NO)
+            UserDefaults.standard.set(true, forKey: Constants.IS_LOGOUT)
+            UserDefaults.standard.set(nil, forKey: Constants.USER_INFO_NAME)
+            UserDefaults.standard.set(Constants.BLANK, forKey: Constants.LAST_USED_TIME)
+            UserDefaults.standard.set(nil, forKey: Constants.USED_COUPON_LIST)
+            
+            //print("socket close for logout")
+            UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
+            UserDefaults.standard.set(true, forKey: Constants.MESSAGE_SOCKET_CLOSE)
+            super.socket.disconnect()
+            
+            UserDefaults.standard.set(true, forKey: Constants.AT_MENU_SOCKET_CLOSE)
+            UserDefaults.standard.set(true, forKey: Constants.AT_MESSAGE_SOCKET_CLOSE)
+            super.at_socket.disconnect()
+            
+            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+            navigationVC.modalPresentationStyle = .overFullScreen
+            self.present(navigationVC, animated: true, completion:nil)
+            
+        }) { (error) in
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            //Utils.showAlert(viewcontroller: self, title: "Logout Failed", message: error)
+            UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)
+            UserDefaults.standard.set(nil, forKey: Constants.TOKEN_DATA)
+            UserDefaults.standard.set(nil, forKey: Constants.HOTLINE_NO)
+            UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
+            UserDefaults.standard.set(Utils.generateLogoutTime(), forKey: Constants.LAST_USED_TIME)
+            UserDefaults.standard.set(nil, forKey: Constants.USED_COUPON_LIST)
+            
+            //print("socket close for logout")
+            UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
+            UserDefaults.standard.set(true, forKey: Constants.MESSAGE_SOCKET_CLOSE)
+            super.socket.disconnect()
+            
+            UserDefaults.standard.set(true, forKey: Constants.AT_MENU_SOCKET_CLOSE)
+            UserDefaults.standard.set(true, forKey: Constants.AT_MESSAGE_SOCKET_CLOSE)
+            super.at_socket.disconnect()
+            
+//            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+//            navigationVC.modalPresentationStyle = .overFullScreen
+//            self.present(navigationVC, animated: true, completion:nil)
+            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+            navigationVC.modalPresentationStyle = .overFullScreen
+            self.present(navigationVC, animated: true, completion:nil)
+            return
+        }
+        
+        
     }
     
     
     
+}
+
+extension HomeNewViewController : WebSocketDelegate {
+    func webSocketOpen() {
+        
+    }
+    
+    func webSocketClose(_ code: Int, reason: String, wasClean: Bool) {
+        
+    }
+    
+    func websocketDidConnect(socket: WebSocketClient) {
+        
+        //print("socket opened home page : \(self.senderName!)userId:\(self.senderId!)")
+        super.socket.write(string: "userName:\(self.senderName!)userId:\(self.senderId!)")
+        super.socket.write(string: "cr:\(self.senderName!)or:userWithAgency:")
+        UserDefaults.standard.set(false, forKey: Constants.MENU_SOCKET_CLOSE)
+        
+        // Agent Channel
+        self.socketReq!.param = param!
+        self.socketReq!.api = "socket-connect"
+        let socketJson = try? JSONEncoder().encode(socketReq)
+        let socketString = String(data: socketJson!, encoding: .utf8)!
+        print(socketString)
+        super.at_socket.write(string: socketString)
+        UserDefaults.standard.set(false, forKey: Constants.AT_MENU_SOCKET_CLOSE)
+        
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        //print("socket onMessage \(message as? String)")
+        if let text = text as? String {
+            //print("recv: \(text)")
+            do{
+                if let json = text.data(using: String.Encoding.utf8){
+                    if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
+                        
+                        let type = jsonData["type"] as! String
+                        print("type", type)
+                        
+                        if (type == "room"){
+                            super.socket.write(string: "unReadMesgCount:")
+                            
+                        } else if (type == "unReadMesgCountForMobile") {
+                            let data = jsonData["data"] as! NSObject
+                            let count = data.value(forKey: "count") as? String
+                            //print("message count:", count!)
+                            UserDefaults.standard.set(Int(count ?? "0"), forKey: Constants.UNREAD_MESSAGE_COUNT)
+                            
+                        }
+                        
+                        if (type == "at-room"){
+                            
+                            self.socketReq!.param = self.param!
+                            self.socketReq!.api = "get-unread-message-count"
+                            
+                            let socketJson = try? JSONEncoder().encode(socketReq)
+                            let socketString = String(data: socketJson!, encoding: .utf8)!
+                            print(socketString)
+                            super.at_socket.write(string: socketString)
+                            
+                        } else if (type == "get-unread-message-count") {
+                            let count = jsonData["data"] as! String
+                            UserDefaults.standard.set(Int(count), forKey: Constants.AT_UNREAD_MESSAGE_COUNT)
+                            
+                        }
+                    }
+                }
+            }catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        //print("socket did disconnect")
+        // print("menu socket disconnect \(String(describing: error))")
+        
+        let isClose = UserDefaults.standard.bool(forKey: Constants.MENU_SOCKET_CLOSE)
+        if isClose {
+            super.socket.disconnect()
+            //print("socket close permenant")
+            
+        } else {
+            super.socket.connect()
+        }
+        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+        
+        let atIsClose = UserDefaults.standard.bool(forKey: Constants.AT_MENU_SOCKET_CLOSE)
+        if atIsClose {
+            super.at_socket.disconnect()
+            //print("socket close permenant")
+            
+        } else {
+            super.at_socket.connect()
+        }
+        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+        
+    }
 }

@@ -13,6 +13,14 @@ import GoogleMaps
 
 class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    @IBOutlet weak var lblBarCusType: UILabel!
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
+    
     @IBOutlet weak var tvAgentChannel: UITableView!
     @IBOutlet weak var btSendToAgent: UIButton!
     @IBOutlet weak var popupBackView: UIView!
@@ -64,9 +72,19 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
+        
         // for max length of textview
         txtAddText.delegate = self
         txtAddress.delegate = self
+        
         
         let sessionInfoString = UserDefaults.standard.string(forKey: Constants.SESSION_INFO)
         sessionInfo = try? JSONDecoder().decode(SessionDataBean.self, from: JSON(parseJSON: sessionInfoString ?? "").rawData())
@@ -107,6 +125,19 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
         UserDefaults.standard.set(false, forKey: Constants.AT_MESSAGE_SOCKET_CLOSE)
         
         self.btSendToAgent.setTitle("agentchannel.open.button".localized, for: UIControl.State.normal)
+        
+        
+        if (UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME) == nil) {
+                   self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+                   self.lblBarName.text = ""
+                   self.lblBarCusType.text = "Lv.1 : Application user"
+               }else{
+                   self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+                              self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+                    self.lblBarCusType.text = "Lv.2 : Login user"
+               }
+        
+        
         self.isDidLoad = true
         
         
@@ -171,6 +202,21 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
         }
     }
     
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+    
     @objc override func updateViews() {
         super.updateViews()
         self.btSendToAgent.setTitle("agentchannel.open.button".localized, for: UIControl.State.normal)
@@ -231,8 +277,8 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     // Timer for Reload message
     @objc func reloadMessage(){
         //print("reload message")
-        let messageMenu = UserDefaults.standard.integer(forKey: Constants.MESSAGING_MENU)
-        if messageMenu == 10 {
+        //let messageMenu = UserDefaults.standard.integer(forKey: Constants.MESSAGING_MENU)
+        //if messageMenu == 10 {
             if(self.count > 0) {
                 self.count -= 1
                 
@@ -245,10 +291,16 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
                 super.at_socket.write(string: socketString)
                 self.count = 13
             }
-        } else {
-            self.countTimer.invalidate()
-        }
+//        } else {
+//            self.countTimer.invalidate()
+//        }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.countTimer.invalidate()
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfChars = newText.count // for Swift use count(newText)
@@ -480,7 +532,7 @@ extension AgentChannelViewController : WebSocketDelegate {
                     if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
                         
                         let type = jsonData["type"] as! String
-                        //print("type", type)
+                        print("type", type)
                         
                         if (type == "at-room"){
                             // get messages
@@ -799,11 +851,12 @@ extension AgentChannelViewController:UITableViewDelegate{
 }
 
 extension AgentChannelViewController : CallAgentDelegate {
-    func onClickCallAgent(phoneNo: String , agentId : Int) {
+    func onClickCallAgent(phoneNo: String , agentId : Int, messageId : Int) {
         phoneNo.makeCall()
         
         self.socketReq.api = "update-call-count"
         self.socketReq.param.agentId = agentId
+        self.socketReq.param.messageId = messageId
         let socketJson = try? JSONEncoder().encode(socketReq)
         let socketString = String(data: socketJson!, encoding: .utf8)!
         print(socketString)

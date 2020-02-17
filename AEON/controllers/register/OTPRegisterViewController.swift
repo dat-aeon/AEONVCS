@@ -11,6 +11,11 @@ import SwiftyJSON
 
 class OTPRegisterViewController: BaseUIViewController {
     
+    
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    
     var registerRequestData:RegisterRequestBean?
     var profileImage:UIImage?
     var memberResponseData:CheckMemberResponse?
@@ -39,6 +44,16 @@ class OTPRegisterViewController: BaseUIViewController {
         
         //Utils.showAlert(viewcontroller: self, title: "YOUR OTP", message: self.otpCode!)
         
+        
+        
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+        
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
+        
         self.btnResend.isEnabled = false
         self.btnResend.alpha = 0.5
         self.countTimer = Timer.scheduledTimer(timeInterval: 1 ,
@@ -61,6 +76,7 @@ class OTPRegisterViewController: BaseUIViewController {
         self.lbOTPMessage.text = Constants.BLANK
         self.isValid = true
         
+         self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
         
     }
     
@@ -80,6 +96,19 @@ class OTPRegisterViewController: BaseUIViewController {
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
         super.updateLocale()
     }
+    
+   
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     @objc override func updateViews() {
         super.updateViews()

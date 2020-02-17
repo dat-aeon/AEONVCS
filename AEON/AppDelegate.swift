@@ -47,6 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         
+        if UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) != nil {
+           let stor = UIStoryboard.init(name: "Main", bundle: nil)
+            let mainNewViewController = stor.instantiateViewController(withIdentifier: "MainNewViewController") as! UIViewController
+//            let nav = UINavigationController(rootViewController: mainNewViewController)
+//            nav.navigationBar.isHidden = true
+            self.window?.rootViewController = mainNewViewController
+        }
+        
         return true
     }
 

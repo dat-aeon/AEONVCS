@@ -11,6 +11,16 @@ import SwiftyJSON
 
 class LoanCalculatorViewController: BaseUIViewController {
     
+    
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    @IBOutlet weak var imgBack: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
+    @IBOutlet weak var lblBarCusType: UILabel!
+    
+    
     @IBOutlet weak var colviewLoanTerm: UICollectionView!
     @IBOutlet weak var viewLoanAmt: UIView! {
         didSet {
@@ -184,8 +194,29 @@ class LoanCalculatorViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        self.imgMMlocale.isUserInteractionEnabled = true
+              self.imgEnglocale.isUserInteractionEnabled = true
+              self.imgBack.isUserInteractionEnabled = true
+              
+              self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+              self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+              self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        
         // Do any additional setup after loading the view.
         self.setupView()
+        
+        if (UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME) == nil) {
+            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+            self.lblBarName.text = ""
+            self.lblBarCusType.text = "Lv.1 : Application user"
+        }else{
+            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+                       self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+             self.lblBarCusType.text = "Lv.2 : Login user"
+        }
+        
     }
     
     func setupView() {
@@ -198,7 +229,7 @@ class LoanCalculatorViewController: BaseUIViewController {
         
         self.txtLoanAmt.addTarget(self, action: #selector(textFieldDidChange(_:)),
                             for: UIControl.Event.editingChanged)
-        self.txtLoanAmt.setMaxLength(maxLength: 7)
+        self.txtLoanAmt.setMaxLength(maxLength: 9)
         
     }
     
@@ -238,7 +269,28 @@ class LoanCalculatorViewController: BaseUIViewController {
             self.heightWarningLoanTerm.constant = 0
         }
 
+          
+        
     }
+    
+    @objc func onTapBack() {
+                 print("click")
+                  self.dismiss(animated: true, completion: nil)
+              }
+    
+     @objc func onTapMMLocale() {
+              print("click")
+               super.NewupdateLocale(flag: 1)
+    //           changeLocale()
+            updateViews()
+           }
+           @objc func onTapEngLocale() {
+              print("click")
+               super.NewupdateLocale(flag: 2)
+    //           changeLocale()
+            updateViews()
+           }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -272,6 +324,9 @@ class LoanCalculatorViewController: BaseUIViewController {
         self.viewPaymentFee.isHidden = true
     }
     
+    @IBAction func closeTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     func showResultView() {
         self.viewPaymentFee.isHidden = false
         self.viewCompulsory.isHidden = false
@@ -308,10 +363,12 @@ class LoanCalculatorViewController: BaseUIViewController {
         self.selectedTerm = -1
         self.colviewLoanTerm.reloadData()
         
-        let totalString = "\(textField.text ?? "")"
-        let removedComma = totalString.replacingOccurrences(of: ",", with: "")
-        self.txtLoanAmt.text = Int(removedComma)?.thousandsFormat
-        self.refreshLoanTerm(amt: removedComma)
+        if textField.text!.count < 9 {
+            let totalString = "\(textField.text ?? "")"
+            let removedComma = totalString.replacingOccurrences(of: ",", with: "")
+            self.txtLoanAmt.text = Int(removedComma)?.thousandsFormat
+            self.refreshLoanTerm(amt: removedComma)
+        }
 //        self.checkAmountisValid(amt: removedComma, isCalculating: false)
     }
     
@@ -500,7 +557,7 @@ class LoanCalculatorViewController: BaseUIViewController {
         print("loan Request Amt: \(loanRequest.financeAmount) Term: \(loanRequest.loanTerm) motorcycle: \(loanRequest.motorCycleLoanFlag)")
         
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        LoanCalculatorViewModel.init().executeLoanCalculator(tokenInfo: tokenInfo!, calculatorInfo: loanRequest, success: { (result) in
+        LoanCalculatorViewModel.init().executeLoanCalculator(calculatorInfo: loanRequest, success: { (result) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             self.returnedLoanResult = result
             self.showCalculatorResult()

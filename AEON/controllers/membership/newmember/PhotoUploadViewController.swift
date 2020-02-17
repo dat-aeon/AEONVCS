@@ -11,7 +11,16 @@ import AVFoundation
 import SwiftyJSON
 
 class PhotoUploadViewController: BaseUIViewController {
-
+    
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    @IBOutlet weak var lblBarName: UILabel!
+    
+    
     @IBOutlet weak var lblAnnounce: UILabel!
     @IBOutlet weak var lblNotice1: UILabel!
     @IBOutlet weak var lblNotice2: UILabel!
@@ -31,7 +40,9 @@ class PhotoUploadViewController: BaseUIViewController {
     
     var imagePicker: ImagePicker!
     
-    var navToPhotoTakingView: UINavigationController!
+//    var navToPhotoTakingView: UINavigationController!
+//    var photoTakingView: PhotoTakingViewController!
+    var navToPhotoTakingView: UIViewController!
     var photoTakingView: PhotoTakingViewController!
     
     var tokenInfo : TokenData?
@@ -39,6 +50,18 @@ class PhotoUploadViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+        self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
 
         switch Locale.currentLocale {
         case .EN:
@@ -67,8 +90,11 @@ class PhotoUploadViewController: BaseUIViewController {
         // initialize for camera image picker
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
-        self.navToPhotoTakingView = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as? UINavigationController
-        self.photoTakingView = (self.navToPhotoTakingView.children.first as! PhotoTakingViewController)
+//        self.navToPhotoTakingView = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as? UINavigationController
+//        self.photoTakingView = (self.navToPhotoTakingView.children.first as! PhotoTakingViewController)
+        
+        self.photoTakingView = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as? PhotoTakingViewController
+
         NotificationCenter.default.addObserver(self, selector: #selector(dismissPhotoTakingView), name: NSNotification.Name(rawValue: "dismissPhotoTakingView"), object: nil)
     }
     
@@ -78,6 +104,22 @@ class PhotoUploadViewController: BaseUIViewController {
         self.isAlreadyCapture = false
        
     }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         if isAlreadyCapture {
@@ -298,17 +340,19 @@ extension PhotoUploadViewController: ImagePickerDelegate {
 //                self.present(navigationVC, animated: true, completion: { () -> Void in
 //                    self.dismiss(animated: true, completion: nil)
 //                })
-                self.navToPhotoTakingView.modalPresentationStyle = .overFullScreen
-                self.present(self.navToPhotoTakingView, animated: true, completion: nil)
+                self.photoTakingView.modalPresentationStyle = .overFullScreen
+                self.present(self.photoTakingView, animated: true, completion: nil)
                 
             } else {
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as! UINavigationController
-                let vc = navigationVC.children.first as! PhotoTakingViewController
+//                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as! UINavigationController
+//                let vc = navigationVC.children.first as! PhotoTakingViewController
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as! PhotoTakingViewController
                 vc.profileImage = resizeImage
                 vc.customerNo = self.verifyData.customerNo
                 vc.isPhotoUpdate = false
-                navigationVC.modalPresentationStyle = .overFullScreen
-                self.present(navigationVC, animated: true, completion: nil)
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
                 
             }
             
@@ -332,13 +376,14 @@ extension PhotoUploadViewController {
             //present(nextvc)
 //            print("image is not null")
             
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! PhotoTakingViewController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! PhotoTakingViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PHOTO_TAKING_VIEW_CONTROLLER) as! PhotoTakingViewController
             //            vc.registerRequestData = self.registerRequestData
             vc.profileImage = pickedImage
             vc.customerNo = self.verifyData.customerNo
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
             
         } else {
 //            print("image is null")

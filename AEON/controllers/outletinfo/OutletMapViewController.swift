@@ -29,11 +29,13 @@ class OutletMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.ivMarkerMobile.tintColor = UIColor.blue
-        //self.ivMarkerNonMobile.tintColor = UIColor.green
-//        self.ivMarkerPersonal.tintColor = UIColor.red
-        self.ivMarkerNonMobile.tintColor = UIColor.yellow
-        self.ivMarkerMultipleLoan.tintColor = UIColor.orange
+        self.ivMarkerMobile.image = UIImage(named: "marker-mobile128")
+        self.ivMarkerNonMobile.image = UIImage(named: "marker-nonmobile128")
+        self.ivMarkerMultipleLoan.image = UIImage(named: "marker-multiple")
+        //self.ivMarkerMobile.tintColor = UIColor.blue
+        //self.ivMarkerPersonal.tintColor = UIColor.red
+        //self.ivMarkerNonMobile.tintColor = UIColor.yellow
+        //self.ivMarkerMultipleLoan.tintColor = UIColor.orange
 
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         OutletInfoViewModel.init().getOutletData(success: { (result) in
@@ -86,26 +88,28 @@ class OutletMapViewController: UIViewController {
                 
             } else {
                 if outletInfo.roleType == 1 {
-                    //marker.icon = UIImage(named: "marker-mobile")
-                    marker.icon = GMSMarker.markerImage(with: UIColor.blue)
+                    marker.icon = ivMarkerMobile.image
+                    //marker.icon = GMSMarker.markerImage(with: UIColor.blue)
                     
                 } else if outletInfo.roleType == 2 {
-                    //marker.icon = UIImage(named: "marker-nonmobile")
-                    marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
+                    marker.icon = ivMarkerNonMobile.image
+                    //marker.icon = GMSMarker.markerImage(with: UIColor.systemYellow)
                     
                 } else if outletInfo.roleType == 3 {
                     //marker.icon = UIImage(named: "marker-personal")
-                    marker.icon = GMSMarker.markerImage(with: UIColor.red)
+                    //marker.icon = ivMarkerMultipleLoan.image
+                     marker.icon = GMSMarker.markerImage(with: UIColor.red)
                     
                 }
                 else if outletInfo.roleType == 4 {
                     //marker.icon = UIImage(named: "marker-motorcycle")
-                    marker.icon = GMSMarker.markerImage(with: UIColor.green)
+                    marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
 
                 }
                 else if outletInfo.roleType == 5 {
                     //marker.icon = UIImage(named: "marker-motorcycle")
-                    marker.icon = GMSMarker.markerImage(with: UIColor.orange)
+                    marker.icon = ivMarkerMultipleLoan.image
+                    //marker.icon = GMSMarker.markerImage(with: UIColor.orange)
                 }
             }
             //marker.icon = UIImage(named: "camera-capture")

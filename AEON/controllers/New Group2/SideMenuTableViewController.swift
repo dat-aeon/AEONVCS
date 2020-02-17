@@ -190,11 +190,12 @@ class SideMenuTableViewController: UITableViewController {
 
 extension SideMenuTableViewController : ProfileImageClickDelegate {
     func onClickProfileImage() {
-        let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
-        let vc = navigationVC.children.first as! PhotoUploadViewController
+//        let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! UINavigationController
+//        let vc = navigationVC.children.first as! PhotoUploadViewController
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.PHOTO_UPLOAD_VIEW_CONTROLLER) as! PhotoUploadViewController
         vc.isPhotoUpdate = true
-        navigationVC.modalPresentationStyle = .overFullScreen
-        self.present(navigationVC, animated: true, completion: nil)
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
         
     }
 }

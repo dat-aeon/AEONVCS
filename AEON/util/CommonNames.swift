@@ -21,6 +21,8 @@ struct CommonNames {
     static var BIOMETRIC_VIEW_CONTROLLER = "BioMetricRegisterViewController"
     
     // Main
+    static var HOME_NEW_VIEW_CONTROLLER = "HomeNewViewController"
+    static var MAIN_NEW_VIEW_CONTROLLER = "MainNewViewController"
     static var MAIN_VIEW_CONTROLLER = "MainViewController"
     static var ABOUT_US_VIEW_CONTROLLER = "AboutUsViewController"
     static var FAQ_MAIN_VIEW_CONTROLLER = "FAQMainViewController"

@@ -13,6 +13,12 @@ import SearchTextField
 
 class ForceChangePhoneConfirmViewController: BaseUIViewController {
 
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    
     @IBOutlet weak var bbClose: UIBarButtonItem!
     @IBOutlet weak var bbFlag: UIBarButtonItem!
     
@@ -47,6 +53,16 @@ class ForceChangePhoneConfirmViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+
         
         self.tfNrcNo?.keyboardType = UIKeyboardType.numberPad
         self.tfPhoneNo?.keyboardType = UIKeyboardType.numberPad
@@ -145,6 +161,23 @@ class ForceChangePhoneConfirmViewController: BaseUIViewController {
     @IBAction func onClickFlag(_ sender: UIBarButtonItem) {
         super.updateLocale()
     }
+    
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     @objc override func updateViews() {
         super.updateViews()
@@ -364,23 +397,27 @@ class ForceChangePhoneConfirmViewController: BaseUIViewController {
                 
             } else {
                 if result.lockStatus == 0 {
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_SEC_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
-                    let vc = navigationVC.children.first as! ForceChangeSecConfirmViewController
+//                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_SEC_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
+//                    let vc = navigationVC.children.first as! ForceChangeSecConfirmViewController
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_SEC_CONFIRM_VIEW_CONTROLLER) as! ForceChangeSecConfirmViewController
                     vc.phoneNo = phoneNo
                     vc.nrcNo = nrc
                     vc.hotlinePhone = result.hotlinePhone
                     vc.custQuesCount = result.custQuesCount
-                    navigationVC.modalPresentationStyle = .overFullScreen
-                    self.present(navigationVC, animated: true, completion: nil)
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true, completion: nil)
                     
                 } else {
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! UINavigationController
-                    let vc = navigationVC.children.first as! ResetPasswordViewController
+//                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! UINavigationController
+//                    let vc = navigationVC.children.first as! ResetPasswordViewController
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! ResetPasswordViewController
+                    
                     vc.phoneNo = phoneNo
                     vc.nrcNo = nrc
                     vc.isAppLock = true
-                    navigationVC.modalPresentationStyle = .overFullScreen
-                    self.present(navigationVC, animated: true, completion: nil)
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true, completion: nil)
                     
                 }
             }

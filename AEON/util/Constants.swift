@@ -242,4 +242,13 @@ struct Constants {
     static var typeResidenceList = ["Owner","Parental","Rental","Relative","Hostel/Other"]
     
     static var livingWithList = ["Parent", "Sponse", "Relative", "Friend", "Alone"]
+    
+    // First Time PhNo Constant
+    
+    static var FIRST_TIME_PHONE = "FIRST_TIME_PHONE"
+    static var FREECUS_INFO_ID = "FREECUS_INFO_ID"
+    
+    // To goodnews From
+    
+    static var togoodnewsfrom = "TO_GOODNEWS_FROM"
 }

@@ -554,13 +554,14 @@ extension SecQuestConfirmViewController : SecQuesConfirmDelegate, TownshipSelect
                 
             } else {
                 
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! UINavigationController
-                let vc = navigationVC.children.first as! ResetPasswordViewController
+//                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! UINavigationController
+//                let vc = navigationVC.children.first as! ResetPasswordViewController
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.RESET_PASSWORD_VIEW_CONTROLLER) as! ResetPasswordViewController
                 vc.customerId = result.customerId
                 vc.userTypeId = result.userTypeId
                 vc.phoneNo = phoneNo
-                navigationVC.modalPresentationStyle = .overFullScreen
-                self.present(navigationVC, animated: true, completion: nil)
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
             }
         }) { (error) in
             // Service error

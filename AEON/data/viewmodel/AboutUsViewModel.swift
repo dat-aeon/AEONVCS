@@ -23,4 +23,20 @@ class AboutUsViewModel{
             failure(error)
         }
     }
+    
+    func getVideoFilePath(siteActivationKey:String,success: @escaping (VideoFileResponse) -> Void,failure: @escaping (String) -> Void){
+        AboutUsModel.init().getVideoPath(siteActivationKey: siteActivationKey, success: { (result) in
+           
+            if result.status == Constants.STATUS_200 {
+                success(result)
+            
+            } else {
+                failure(Constants.SERVER_FAILURE)
+            }
+           
+        }) { (error) in
+            failure(error)
+        }
+    }
+    
 }

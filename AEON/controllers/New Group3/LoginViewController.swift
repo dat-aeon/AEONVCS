@@ -12,6 +12,7 @@ import Reachability
 
 class LoginViewController: BaseUIViewController {
 
+    
     @IBOutlet weak var svMemberLogin: UIScrollView!
     @IBOutlet weak var tfPhoneNumber: UITextField!
     @IBOutlet weak var lbPhoneMessage: UILabel!
@@ -27,6 +28,8 @@ class LoginViewController: BaseUIViewController {
     var passwordMesgLocale : String?
     
     override func viewDidLoad() {
+        
+        self.svMemberLogin.isScrollEnabled = false
         
         print("Start LoginViewController :::::::::::::::")
         super.viewDidLoad()
@@ -98,11 +101,11 @@ class LoginViewController: BaseUIViewController {
         }
         //self.title = "Login"
         self.lbForgetPass.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickForgetPassword)))
-        
+
         self.ivPasswordVisible.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickPasswordVisible)))
-    
+
         self.ivBiometric.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickBioMetricIcon)))
-        
+
         tfPhoneNumber.delegate = self
         tfPassword.delegate = self
         tfPhoneNumber.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
@@ -241,6 +244,7 @@ class LoginViewController: BaseUIViewController {
                 }
                 UserDefaults.standard.set(result.data.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
                 UserDefaults.standard.set(result.data.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
+                UserDefaults.standard.set(result.data.name, forKey: Constants.USER_INFO_NAME)
                 UserDefaults.standard.set(Utils.generateLogoutTime(), forKey : Constants.LOGIN_TIME)
                 UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
                 UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)
@@ -253,11 +257,14 @@ class LoginViewController: BaseUIViewController {
                 let sessionString = String(data: sessionJson!, encoding: .utf8)!
                 UserDefaults.standard.set(sessionString, forKey: Constants.SESSION_INFO)
                 
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-                let vc = navigationVC.children.first as! HomePageViewController
-                vc.sessionDataBean = sessionData
-                navigationVC.modalPresentationStyle = .fullScreen
-                self.present(navigationVC, animated: true, completion: nil)
+//                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+               
+                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+                                
+                                
+                                vc.sessionDataBean = sessionData
+                                vc.modalPresentationStyle = .fullScreen
+                                self.present(vc, animated: true, completion: nil)
                 
                 // login with access token
                 //self.LoginWithToken(token: result.access_token!, refreshToken: result.refresh_token!)
@@ -282,7 +289,8 @@ class LoginViewController: BaseUIViewController {
     }
     
     func gotoForceChangePhVerify() {
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
+//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
@@ -314,6 +322,7 @@ class LoginViewController: BaseUIViewController {
             }
             UserDefaults.standard.set(result.data.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
             UserDefaults.standard.set(result.data.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
+            UserDefaults.standard.set(result.data.name, forKey: Constants.USER_INFO_NAME)
             UserDefaults.standard.set(Utils.generateLogoutTime(), forKey : Constants.LOGIN_TIME)
             UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
             UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)
@@ -342,7 +351,8 @@ class LoginViewController: BaseUIViewController {
             super.networkConnectionError()
             
         } else {
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UIViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion: nil)
         }
@@ -362,13 +372,15 @@ class LoginViewController: BaseUIViewController {
         
         if phone != nil && password != nil{
 //            self.authenticateBioMetricData(phone: phone!, password: password!)
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! BioMetricRegisterViewController
-            vc.isUpdate = true
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! BioMetricRegisterViewController
+//            vc.isUpdate = true
+             let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! BioMetricRegisterViewController
+            navigationVC.isUpdate = true
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion: nil)
         }else{
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! UINavigationController
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! BioMetricRegisterViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion: nil)
         }
@@ -422,6 +434,7 @@ class LoginViewController: BaseUIViewController {
                         }
                         UserDefaults.standard.set(result.data.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
                         UserDefaults.standard.set(result.data.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
+                        UserDefaults.standard.set(result.data.name, forKey: Constants.USER_INFO_NAME)
                         UserDefaults.standard.set(Utils.generateLogoutTime(), forKey : Constants.LOGIN_TIME)
                         UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
                         UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)

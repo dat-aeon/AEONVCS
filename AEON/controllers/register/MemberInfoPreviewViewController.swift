@@ -10,7 +10,13 @@ import UIKit
 import SwiftyJSON
 
 class MemberInfoPreviewViewController: BaseUIViewController {
-
+    
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    @IBOutlet weak var lblBarPhNo: UILabel!
+    
     var registerRequestData:RegisterRequestBean?
     var profileImage:UIImage?
     var memberResponseData:CheckMemberResponse?
@@ -27,6 +33,15 @@ class MemberInfoPreviewViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+        
         self.ivProfile.image = profileImage
         switch Locale.currentLocale {
         case .EN:
@@ -41,6 +56,8 @@ class MemberInfoPreviewViewController: BaseUIViewController {
         // initialize for camera image picker
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
+         self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+        
     }
 
     @IBAction func onClickConfirmButton(_ sender: UIButton) {
@@ -54,16 +71,19 @@ class MemberInfoPreviewViewController: BaseUIViewController {
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         OTPViewModel.init().sendOTPRequest(siteActivationKey: Constants.SITE_ACTIVATION_KEY, phoneNo: (self.memberResponseData?.data?.memberPhoneNo)!, success: { (result) in
 
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.OTP_REGISTER_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! OTPRegisterViewController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.OTP_REGISTER_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! OTPRegisterViewController
+            
+             let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.OTP_REGISTER_VIEW_CONTROLLER) as! OTPRegisterViewController
+            
             vc.registerRequestData = self.registerRequestData
             vc.memberResponseData = self.memberResponseData!
             vc.qaList = self.qaList
             vc.otpCode = result.data.otpCode
             vc.profileImage = self.ivProfile.image
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
             
         }) { (error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
@@ -82,6 +102,22 @@ class MemberInfoPreviewViewController: BaseUIViewController {
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
         super.updateLocale()
     }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+    }
+
     
     @objc override func updateViews() {
         super.updateViews()

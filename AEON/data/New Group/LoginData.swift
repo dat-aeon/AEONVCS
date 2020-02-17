@@ -93,7 +93,7 @@ import SwiftyJSON
  
  struct AgreementInfo: Codable {
     var custAgreementId, importCustomerId, daApplicationInfoId: Int?
-    var agreementNo, applicationNo,encodeStringForQr : String?
+    var agreementNo, applicationNo,encodeStringForQr,lastPaymentDate : String?
     var qrShow, financialStatus, financialAmt, financialTerm: Int?
     
     enum CodingKeys: String, CodingKey {

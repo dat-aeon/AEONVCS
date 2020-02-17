@@ -1361,7 +1361,7 @@ class LoanConfirmationVC: BaseUIViewController {
         print("loan Request Amt: \(loanRequest.financeAmount) Term: \(loanRequest.loanTerm) motorcycle: \(loanRequest.motorCycleLoanFlag)")
         
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        LoanCalculatorViewModel.init().executeLoanCalculator(tokenInfo: tokenInfo!, calculatorInfo: loanRequest, success: { (result) in
+        LoanCalculatorViewModel.init().executeLoanCalculator(calculatorInfo: loanRequest, success: { (result) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             self.showLoanResult(loanResult: result)
             
