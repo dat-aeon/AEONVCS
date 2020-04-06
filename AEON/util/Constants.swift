@@ -16,9 +16,13 @@ struct Constants {
     static let free_chat_socket_url:String = "wss://ass.aeoncredit.com.mm/free-chat-server"
     static var daso_url:String = "https://ass.aeoncredit.com.mm/daso/"
     
-//    static var base_url:String = "https://amf.aeoncredit.com.mm/daso/"
+//    static var base_url:String = "https://amf.aeoncredit.com.mm/vcsm2/"
+//    static var daso_url:String = "https://amf.aeoncredit.com.mm/vcsm2/"
+//
 //    static let socket_url:String = "wss://amf.aeoncredit.com.mm/vcschat"
 //    static var assm_base_url :String = "https://amf.aeoncredit.com.mm/assm2/"
+//    static let at_socket_url:String = "wss://amf.aeoncredit.com.mm/vcsplchat"
+//    static let free_chat_socket_url:String = "wss://amf.aeoncredit.com.mm/free-chat-server"
     
     static var site_activation_key = "12345678"
     
@@ -162,6 +166,7 @@ struct Constants {
     static var BIOMETRIC_PASSWORD = "bio_password"
     static let BIOMETRIC_REGISTER_TOKEN = "BIOMETRIC_REGISTER_TOKEN"
     static let LOGIN_SUCCESS_TITLE = "Login Success"
+    static let BIOMETRIC_FAILED_TITLE = "Biometric Login Failed"
     
     //Confirm Password
     static var NOT_EXIST_CUSTOMER_INFO = "NOT_EXIST_CUSTOMER_INFO"
@@ -170,7 +175,9 @@ struct Constants {
     // Messsaging
     static let LOW_QUALITY_IMAGE_250 = 262145;    //0.25MB.
     static let MEDIUM_QUALITY_IMAGE_500 = 524289; //0.5MB.
+    static let HIGH_QUALITY_IMAGE_1000 = 1048576; //1.0MB.
     static let HIGH_QUALITY_IMAGE_1500 = 1572865; //1.5MB.
+    static let HIGH_QUALITY_IMAGE_2000 = 2097152 // 2.0MB.
     static let HIGH_QUALITY_IMAGE_3000 = 3145728; //3.0MB.
     static let HIGH_QUALITY_IMAGE_5000 = 5242880; //5.0MB.
     static let HIGH_QUALITY_IMAGE_6000 = 6291456; //6.0MB.
@@ -251,4 +258,7 @@ struct Constants {
     // To goodnews From
     
     static var togoodnewsfrom = "TO_GOODNEWS_FROM"
+    
+    // Share link
+    static var AEON_SHARE_LINK = "Let me recommend you this application\n\n https://apps.apple.com/pe/app/aeon-myanmar-app/id1462606788?l=en\n\n"
 }

@@ -83,7 +83,7 @@ class OTPRegisterViewController: BaseUIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.showOTPCode()
+        //self.showOTPCode()
     }
     
     func showOTPCode() {
@@ -203,6 +203,7 @@ class OTPRegisterViewController: BaseUIViewController {
                 
                 UserDefaults.standard.set(result.data.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
                 UserDefaults.standard.set(result.data.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
+                 UserDefaults.standard.set(result.data.name, forKey: Constants.USER_INFO_NAME)
                 UserDefaults.standard.set(super.generateCurrentTimeStamp(), forKey : Constants.LOGIN_TIME)
                 UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
                 UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)
@@ -220,21 +221,24 @@ class OTPRegisterViewController: BaseUIViewController {
                 let alert = UIAlertController(title: Constants.LOGIN_SUCCESS_TITLE, message: Messages.BIOMETRIC_REGISTER_INFO.localized, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: Constants.OK, style: .default, handler: { action in
                     
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! UINavigationController
-                    let vc = navigationVC.children.first as! BioMetricRegisterViewController
+//                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! UINavigationController
+//                    let vc = navigationVC.children.first as! BioMetricRegisterViewController
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! BioMetricRegisterViewController
                     vc.isAlreadyLogin = true
                     vc.sessionData = sessionData
-                    navigationVC.modalPresentationStyle = .overFullScreen
-                    self.present(navigationVC, animated: true, completion: nil)
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true, completion: nil)
                     
                 })
                 let cancelAction = UIAlertAction(title: Constants.CANCEL, style: .cancel, handler: { action in
                     
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-                    let vc = navigationVC.children.first as! HomePageViewController
+//                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                    let vc = navigationVC.children.first as! HomePageViewController
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                     vc.sessionDataBean = sessionData
-                    navigationVC.modalPresentationStyle = .overFullScreen
-                    self.present(navigationVC, animated: true, completion: nil)
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true, completion: nil)
                     
                 })
                 alert.addAction(okAction)
@@ -244,7 +248,7 @@ class OTPRegisterViewController: BaseUIViewController {
                 
             }) { (error) in
                 CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                 navigationVC.modalPresentationStyle = .overFullScreen
                 self.present(navigationVC, animated: true, completion: nil)
                 
@@ -293,7 +297,7 @@ class OTPRegisterViewController: BaseUIViewController {
         OTPViewModel.init().sendOTPRequest(siteActivationKey: Constants.SITE_ACTIVATION_KEY, phoneNo: (self.registerRequestData?.phoneNo)!, success: { (result) in
             
             self.otpCode = result.data.otpCode
-            self.showOTPCode()
+            //self.showOTPCode()
             self.isValid = true
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             self.count = 120

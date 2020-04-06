@@ -36,8 +36,8 @@ class CheckPasswordPopupVC: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.btnOK.isEnabled = false
-        self.btnOK.alpha = 0.5
+//        self.btnOK.isEnabled = false
+//        self.btnOK.alpha = 0.5
         self.swAgree.isOn = false
         
          NotificationCenter.default.addObserver(self, selector: #selector(doForceDismissCoupon), name: NSNotification.Name(rawValue: "doForceDismissCoupon"), object: nil)

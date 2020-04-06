@@ -104,11 +104,13 @@ class MemberShipNewViewController: BaseUIViewController {
     @objc func onTapMMLocale() {
        print("click")
         super.NewupdateLocale(flag: 1)
+        tvMemberShipNew.reloadData()
 //        changeLocale()
     }
     @objc func onTapEngLocale() {
        print("click")
         super.NewupdateLocale(flag: 2)
+        tvMemberShipNew.reloadData()
 //        changeLocale()
     }
     
@@ -192,30 +194,32 @@ extension MemberShipNewViewController:UITableViewDataSource{
 
             cell.imgCamera.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickImage)))
             
-            cell.setData(photoUrl: self.photoUrl,name: name,customerNo: customerNo, customerId: customerId)
+            cell.setData(photoUrl: self.photoUrl,name: name,customerNo: customerNo, customerId: customerId,memberId: sessionInfo?.memberNo)
             
             return cell
         }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "newMemberWarningTextTableViewCell") as! newMemberWarningTextTableViewCell
             
+            cell.setData()
+            
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "newMemberShipTableViewCell", for: indexPath) as! newMemberShipTableViewCell
-//        cell.delegate = self
+        cell.delegate = self
 //        cell.btnAgreementList.tag = indexPath.row
 //        cell.btnQRcode.tag = indexPath.row
-        cell.setData(data:self.agreementNoList[indexPath.row])
+        cell.setData(data:self.agreementNoList[indexPath.row],index: indexPath.row)
         return cell
     }
     
 }
 extension MemberShipNewViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0{
-            return CGFloat(258.0)
+            return CGFloat(267.0)
         }else if indexPath.section == 2{
             return CGFloat(70.0)
         }
@@ -223,12 +227,11 @@ extension MemberShipNewViewController:UITableViewDelegate{
 //        tableView.rowHeight = UITableView.automaticDimension
 //        tableView.estimatedRowHeight = 160
         if agreementNoList[indexPath.row].qrShow == 2 {
-            return CGFloat(146)
+            return CGFloat(146.0)
             
         }else{
-             return CGFloat(146.0)
+             return CGFloat(70)
         }
-        return CGFloat(100.0)
     }
 }
 

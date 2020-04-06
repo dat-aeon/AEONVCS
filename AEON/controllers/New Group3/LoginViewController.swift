@@ -57,7 +57,9 @@ class LoginViewController: BaseUIViewController {
                         UserDefaults.standard.set(nil, forKey: Constants.TOKEN_DATA)
                         UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
                         //UserDefaults.standard.set(self.generateLogoutTime(), forKey: Constants.LAST_USED_TIME)
-                        let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+//                        let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+//                        navigationVC.modalPresentationStyle = .overFullScreen
+                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion:nil)
                         return
@@ -74,6 +76,7 @@ class LoginViewController: BaseUIViewController {
                         UserDefaults.standard.set(true, forKey: Constants.IS_LOGOUT)
                         UserDefaults.standard.set(Constants.BLANK, forKey: Constants.LAST_USED_TIME)
                         print("Logout success")
+                        
                     }) { (error) in
                         print("Login error", error)
                         CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
@@ -86,7 +89,9 @@ class LoginViewController: BaseUIViewController {
                         UserDefaults.standard.set(Utils.generateLogoutTime(), forKey: Constants.LAST_USED_TIME)
                         let alertController = UIAlertController(title: Constants.SERVER_ERROR_TITLE, message: error, preferredStyle: .alert)
                         alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+//                            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+//                            navigationVC.modalPresentationStyle = .overFullScreen
+                            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                             navigationVC.modalPresentationStyle = .overFullScreen
                             self.present(navigationVC, animated: true, completion: nil)
                         }))
@@ -235,7 +240,7 @@ class LoginViewController: BaseUIViewController {
                 sessionData.customerAgreementDtoList = result.data.customerAgreementDtoList
                 sessionData.memberNoValid = result.data.memberNoValid
                 
-                print("valid : \(result.data.memberNoValid)")
+                //print("valid : \(result.data.memberNoValid)")
                 
                 if result.data.customerTypeId == 2 {
                     UserDefaults.standard.set(Constants.NON_MEMBER, forKey: Constants.CUSTOMER_TYPE)
@@ -259,7 +264,7 @@ class LoginViewController: BaseUIViewController {
                 
 //                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
                
-                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                                 
                                 
                                 vc.sessionDataBean = sessionData
@@ -290,7 +295,7 @@ class LoginViewController: BaseUIViewController {
     
     func gotoForceChangePhVerify() {
 //        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UIViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! ForceChangePhoneConfirmViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
@@ -334,11 +339,12 @@ class LoginViewController: BaseUIViewController {
             let jsonString = String(data: jsonData!, encoding: .utf8)!
             UserDefaults.standard.set(jsonString, forKey: Constants.SESSION_INFO)
             
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-            let vc = navigationVC.children.first as! HomePageViewController
+//            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//            let vc = navigationVC.children.first as! HomePageViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
             vc.sessionDataBean = sessionData
-            navigationVC.modalPresentationStyle = .fullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
             
         }) { (error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
@@ -352,14 +358,14 @@ class LoginViewController: BaseUIViewController {
             
         } else {
 //            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UIViewController
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! ForceChangePhoneConfirmViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion: nil)
         }
     }
 
     @IBAction func onClickCloseButton(_ sender: UIBarButtonItem) {
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
         
@@ -446,11 +452,12 @@ class LoginViewController: BaseUIViewController {
                         let sessionString = String(data: sessionJson!, encoding: .utf8)!
                         UserDefaults.standard.set(sessionString, forKey: Constants.SESSION_INFO)
                         
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-                        let vc = navigationVC.children.first as! HomePageViewController
+//                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                        let vc = navigationVC.children.first as! HomePageViewController
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                         vc.sessionDataBean = sessionData
-                        navigationVC.modalPresentationStyle = .fullScreen
-                        self.present(navigationVC, animated: true, completion: nil)
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: true, completion: nil)
                         
                     }) { (error) in
                         CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
@@ -458,7 +465,7 @@ class LoginViewController: BaseUIViewController {
                         let alert = UIAlertController(title: Constants.LOGIN_FAILED_TITIE, message: Messages.BIOMETRIC_FAILED_ERROR.localized, preferredStyle: .alert)
                         let okAction = UIAlertAction(title: Constants.OK, style: .default, handler: { action in
                             
-                            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! UINavigationController
+                            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! BioMetricRegisterViewController
                             let vc = navigationVC.children.first as! BioMetricRegisterViewController
                             vc.isUpdate = true
                             navigationVC.modalPresentationStyle = .overFullScreen
@@ -473,7 +480,7 @@ class LoginViewController: BaseUIViewController {
                     
                     if phone == "Constants.phoneNumber" &&
                         password == "Constants.password"{
-                        let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+                        let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                         navVC.modalPresentationStyle = .overFullScreen
                         self.present(navVC, animated: true, completion: nil)
                     }

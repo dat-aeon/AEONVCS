@@ -125,7 +125,7 @@ class VerifyMemberViewController: BaseUIViewController {
             if error == Constants.JSON_FAILURE {
                 let alertController = UIAlertController(title: Constants.SERVER_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.CUSTOMER_TYPE_VIEW_CONTROLLER) as! UINavigationController
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.CUSTOMER_TYPE_VIEW_CONTROLLER) as! CustomerTypeViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))

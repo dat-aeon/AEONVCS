@@ -33,7 +33,7 @@ class ServiceUnavailableViewController: UIViewController {
         
 //        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
         
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! UIViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! MainNewViewController
          navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
         

@@ -23,6 +23,8 @@ class BioMetricRegisterViewController: BaseUIViewController {
     @IBOutlet weak var lbPhoneMessage: UILabel!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var lbPasswordMessage: UILabel!
+    @IBOutlet weak var lblBarPhoneNo: UILabel!
+    @IBOutlet weak var lblBarLevel: UILabel!
     @IBOutlet weak var lbWarning: UILabel!
     @IBOutlet weak var lbWarningText: UILabel!
     @IBOutlet weak var btnSubmit: UIButton!
@@ -66,8 +68,11 @@ class BioMetricRegisterViewController: BaseUIViewController {
         }
         if self.isUpdate {
             self.lblTitle.text = "biometric.update.title".localized
+            self.tfPhone.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
         } else {
             self.lblTitle.text = "biometric.register.title".localized
+            self.lblBarPhoneNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+            
         }
         
         self.tfPhone.placeholder = "biometric.phoneno.holder".localized
@@ -142,7 +147,22 @@ class BioMetricRegisterViewController: BaseUIViewController {
     
     @objc func onTapBack() {
        print("click")
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        
+//        if(UserDefaults.standard.bool(forKey: Constants.IS_BIO_LOGIN))
+        
+       // let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
+        
+        if (self.isAlreadyLogin) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
+            vc.sessionDataBean = self.sessionData
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+        }else{
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        
     }
     @objc func onTapMMLocale() {
        print("click")
@@ -198,7 +218,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
                          DispatchQueue.main.async {
 //                            let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
 //                            let vc = navVC.children.first as! HomePageViewController
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                             vc.sessionDataBean = self.sessionData
                             vc.modalPresentationStyle = .overFullScreen
                             self.present(vc, animated: true, completion: nil)
@@ -231,6 +251,10 @@ class BioMetricRegisterViewController: BaseUIViewController {
                             message = "Face ID/Touch ID may not be configured"
                         }
                         print(message);
+                        if !self.isAlreadyLogin {
+                            UserDefaults.standard.set(nil, forKey: Constants.TOKEN_DATA)
+                        }
+                        
                     } else {
                         // Fallback on earlier versions
                     }
@@ -240,6 +264,10 @@ class BioMetricRegisterViewController: BaseUIViewController {
         }else{
             
             if "\(authError?.code ?? 0)" == "-6" {
+
+                if !self.isAlreadyLogin {
+                    UserDefaults.standard.set(nil, forKey: Constants.TOKEN_DATA)
+                }
                 self.presentSettings()
             } else {
                 let alertController = UIAlertController(title: Constants.VERIFY_FAILED_TITIE, message: Messages.BIOMETRIC_VERIFY_FAILED_ERROR.localized, preferredStyle: .alert) //
@@ -247,7 +275,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
                     
 //                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
 //                    let vc = navigationVC.children.first as! HomePageViewController
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                     vc.sessionDataBean = self.sessionData
                     vc.modalPresentationStyle = .overFullScreen
                     self.present(vc, animated: true, completion: nil)
@@ -261,6 +289,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
     }
     
     func presentSettings() {
+        
         let alertController = UIAlertController(title: "To Allow Biometric Access, Go to Settings",
                                                 message: "",
                                                 preferredStyle: .alert)
@@ -331,7 +360,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
 //            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
 //            let vc = navigationVC.children.first as! HomePageViewController
             
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
             vc.sessionDataBean = self.sessionData
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true, completion: nil)
@@ -342,7 +371,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
             let alert = UIAlertController(title: Constants.LOGIN_FAILED_TITIE, message: Messages.BIOMETRIC_FAILED_ERROR.localized, preferredStyle: .alert)
             let okAction = UIAlertAction(title: Constants.OK, style: .default, handler: { (action) in
                 
-                let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! LoginViewController
                 navVC.modalPresentationStyle = .overFullScreen
                 self.present(navVC, animated: true, completion: nil)
 
@@ -359,7 +388,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
         if self.isAlreadyLogin {
 //            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
 //            let vc = navigationVC.children.first as! HomePageViewController
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
             vc.sessionDataBean = self.sessionData
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true, completion: nil)

@@ -22,6 +22,7 @@ class OutletDetailViewController: BaseUIViewController {
     @IBOutlet weak var vMapNavigateBtn: UIView!
     @IBOutlet weak var lbMapNav: UILabel!
     
+    @IBOutlet weak var labelCallPhone: UILabel!
     var currentLocation : CLLocation?
     
     var outletInfo : OutletInfoBean?
@@ -38,6 +39,7 @@ class OutletDetailViewController: BaseUIViewController {
             lbName.text = self.outletInfo?.outletName
             lbAddress.text = self.outletInfo?.address
             lbPhone.text = self.outletInfo?.phoneNo
+            labelCallPhone.text = self.outletInfo?.phoneNo
             
             if self.outletInfo?.phoneNo != nil {
                 self.vCallNow.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickCallNow)))

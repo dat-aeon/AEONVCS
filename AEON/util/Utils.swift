@@ -12,6 +12,17 @@ import LocalAuthentication
 import SwiftyJSON
 
 class Utils{
+    
+    static func setLineSpacing(data:String , label : UILabel) {
+        let attributedString = NSMutableAttributedString(string: data)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        paragraphStyle.lineSpacing = 8
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        // *** Set Attributed String to your label ***
+        label.attributedText = attributedString
+        
+    }
     static func showAlert(viewcontroller:UIViewController,title:String,message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: Constants.OK, style: .default, handler: nil)
@@ -53,7 +64,7 @@ class Utils{
             UserDefaults.standard.set(Constants.BLANK, forKey: Constants.LAST_USED_TIME)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             viewcontroller.present(navigationVC, animated: true, completion: nil)
             
@@ -79,22 +90,22 @@ class Utils{
         return myString
     }
     
-    
+    // user for Membership Last repayment date
     static func newchangeDMYDateformat ( date: String?) -> String{
-                let strconstant = "2019-10-16T17:30:00.000+0000"
+        
         let formatter = DateFormatter()
-        //        self.convertDateFormatterOh(date: strconstant)
         // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let convertDate = formatter.date(from: date ?? strconstant)
+        formatter.locale = Foundation.Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 23400)
+        let convertDate = formatter.date(from: date!)
         
         formatter.dateFormat = "dd-MM-yyyy"
         let myString = formatter.string(from: convertDate!)
-        
-        
-        
+
         return myString
     }
+    
     
     static func changeYMDDateformat ( date: String) -> String{
         //        let strconstant = "2019-10-16T17:30:00.000+0000"
@@ -330,11 +341,12 @@ class Utils{
                         let jsonString = String(data: jsonData!, encoding: .utf8)!
                         UserDefaults.standard.set(jsonString, forKey: Constants.SESSION_INFO)
                         
-                        let navigationVC = viewController.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-                        let vc = navigationVC.children.first as! HomePageViewController
+//                        let navigationVC = viewController.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                        let vc = navigationVC.children.first as! HomePageViewController
+                        let vc = viewController.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
                         vc.sessionDataBean = sessionData
-                        navigationVC.modalPresentationStyle = .overFullScreen
-                        viewController.present(navigationVC, animated: true, completion: nil)
+                        vc.modalPresentationStyle = .overFullScreen
+                        viewController.present(vc, animated: true, completion: nil)
                         
                         
                     }) { (error) in
@@ -349,7 +361,8 @@ class Utils{
                             //                            let vc = navigationVC.children.first as! BioMetricRegisterViewController
                             //                            vc.isUpdate = true
                             
-                            let navigationVC = viewController.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+//                            let navigationVC = viewController.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                            let navigationVC = viewController.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! MainNewViewController
                             navigationVC.modalPresentationStyle = .overFullScreen
                             viewController.present(navigationVC, animated: true, completion: nil)
                             
@@ -362,7 +375,8 @@ class Utils{
                     
                     if phone == "Constants.phoneNumber" &&
                         password == "Constants.password" {
-                        let navVC = viewController.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                        let navVC = viewController.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+                        let navVC = viewController.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
                         navVC.modalPresentationStyle = .overFullScreen
                         viewController.present(navVC, animated: true, completion: nil)
                     }
@@ -483,4 +497,5 @@ extension StringProtocol where Self: RangeReplaceableCollection {
         string.insert(separator: separator, every: n)
         return string
     }
+    
 }

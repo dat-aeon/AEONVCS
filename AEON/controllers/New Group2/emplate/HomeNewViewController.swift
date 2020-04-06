@@ -46,6 +46,14 @@ class HomeNewViewController: BaseUIViewController {
     @IBOutlet weak var lblShare: UILabel!
     
     
+    @IBOutlet weak var loanApplicationView: CardView!
+    @IBOutlet weak var loanAppView: CardView!
+    
+    @IBOutlet weak var loanApplyBtn: UIButton!
+    
+    @IBOutlet weak var contactAppLabel: UILabel!
+    @IBOutlet weak var unReadAskProductLabel: UILabel!
+    @IBOutlet weak var loanApplicationStatusBtn: UIButton!
     var customerType : String?
     
     var sessionDataBean : SessionDataBean?
@@ -59,11 +67,17 @@ class HomeNewViewController: BaseUIViewController {
     
     var vidoeFilePath : String = ""
     
+  
+    @IBAction func loanViewHidePress(_ sender: UITapGestureRecognizer) {
+        loanAppView.isHidden = true
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+        uiSetup()
+        loanAppView.isHidden = true
         updateViews()
-        
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
         
@@ -83,6 +97,7 @@ class HomeNewViewController: BaseUIViewController {
         self.informationUpdateView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapInformationUpdateView)))
         self.facebookView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapFacebookView)))
         self.shareView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapShareView)))
+        self.loanApplicationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTaploanApplicationView)))
         
         self.lblLogOut.isUserInteractionEnabled = true
         self.lblLogOut.addGestureRecognizer(UITapGestureRecognizer(target: self, action:
@@ -110,20 +125,20 @@ class HomeNewViewController: BaseUIViewController {
         
         self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)!
         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
-        super.socket.delegate = self
-        if !super.socket.isConnected {
-            super.socket.connect()
-            
-        }
-        self.socketReq = SocketReqBean()
-        self.param = SocketParam()
-        super.at_socket.delegate = self
-        if !super.at_socket.isConnected {
-            super.at_socket.connect()
-        }
-        param!.customerId = self.senderId!
-        param!.phoneNo = self.senderName!
-        param!.roomName = self.senderName!
+//        super.socket.delegate = self
+//        if !super.socket.isConnected {
+//            super.socket.connect()
+//            
+//        }
+//        self.socketReq = SocketReqBean()
+//        self.param = SocketParam()
+//        super.at_socket.delegate = self
+//        if !super.at_socket.isConnected {
+//            super.at_socket.connect()
+//        }
+//        param!.customerId = self.senderId!
+//        param!.phoneNo = self.senderName!
+//        param!.roomName = self.senderName!
         
         
         // session timeout
@@ -159,25 +174,78 @@ class HomeNewViewController: BaseUIViewController {
         super.NewupdateLocale(flag: 2)
         updateViews()
     }
+    @objc func onTaploanApplicationView() {
+        
+        loanAppView.isHidden = false
+        
+    }
     
+    
+    
+    func uiSetup() {
+        loanApplyBtn.layer.borderColor  = UIColor.orange.cgColor
+               loanApplyBtn.layer.backgroundColor = UIColor.white.cgColor
+                      loanApplyBtn.layer.cornerRadius = 5
+                      loanApplyBtn.layer.masksToBounds = true
+                      loanApplyBtn.layer.borderWidth = 1
+               
+               loanApplicationStatusBtn.layer.borderColor  = UIColor.orange.cgColor
+                      loanApplicationStatusBtn.layer.backgroundColor = UIColor.white.cgColor
+                             loanApplicationStatusBtn.layer.cornerRadius = 5
+                             loanApplicationStatusBtn.layer.masksToBounds = true
+                             loanApplicationStatusBtn.layer.borderWidth = 1
+        
+        unReadAskProductLabel.layer.cornerRadius = unReadAskProductLabel.frame.size.height / 2
+               unReadAskProductLabel.layer.masksToBounds = true
+               unReadAskProductLabel?.layer.borderColor = UIColor.red.cgColor
+               unReadAskProductLabel?.layer.borderWidth = 1.0
+               contactAppLabel.layer.cornerRadius = contactAppLabel.frame.size.height / 2
+               contactAppLabel.layer.masksToBounds = true
+               contactAppLabel?.layer.borderColor = UIColor.red.cgColor
+               contactAppLabel?.layer.borderWidth = 1.0
+    }
+   
+    @IBAction func loanApplyBtnPress(_ sender: UIButton) {
+        
+               let storyboard = UIStoryboard(name: "DA", bundle: nil)
+                              let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.APPLY_LOAN_NAV)
+                              applyLoanNav.modalPresentationStyle = .overFullScreen
+                              self.present(applyLoanNav, animated: true, completion: nil)
+        loanAppView.isHidden = true
+    }
     
     @objc override func updateViews() {
         super.updateViews()
         self.lblMembership.text = "sidemenu.membership".localized
-        self.lblCustomerService.text = "contactus.title".localized
-        self.lblLoanCalculaotr.text = "main.loancalculator".localized
+        
+        Utils.setLineSpacing(data: "contactus.title".localized, label: lblCustomerService)
+        //self.lblCustomerService.text = "contactus.title".localized
+        Utils.setLineSpacing(data: "main.loancalculator".localized, label: lblLoanCalculaotr)
+        //self.lblLoanCalculaotr.text = "main.loancalculator".localized
+        
         self.lblAnnouncement.text = "main.announcement".localized
         self.lblAskproduct.text = "main.askproduct".localized
         self.lblGoodnews.text = "main.goodnews".localized
         self.lblHowtouse.text = "main.howtouse".localized
         self.lblOurService.text = "main.ourservice".localized
         self.lblFindus.text = "main.findus".localized
-        self.lblInformationUpdate.text = "main.informationupdate".localized
+        Utils.setLineSpacing(data: "main.informationupdate".localized, label: lblInformationUpdate)
+        //self.lblInformationUpdate.text = "main.informationupdate".localized
         self.lblShare.text = "main.share".localized
+        self.lblLogOut.text = "sidemenu.logout".localized
+        self.loanApplyBtn.titleLabel?.text = "loanApplyBtn".localized
     }
     
     func roomSync() {
         
+    }
+    func askProductUnread() {
+        let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+        askProductModel.init().askProductSync(customerId: customerId, success: { (result) in
+            print(result)
+        }) { (error) in
+            print(error)
+        }
     }
     
     @objc func onTapMemberShipView() {
@@ -262,6 +330,20 @@ class HomeNewViewController: BaseUIViewController {
         self.present(navigationVC, animated: true, completion: nil)
         
     }
+    @IBAction func onTappedAppInquiry(_ sender: Any) {
+
+        let storyboard = UIStoryboard(name: "DA", bundle: nil)
+        let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.INQUIRY_LOAN_NAV) 
+        if #available(iOS 13.0, *) {
+            applyLoanNav.modalPresentationStyle = .none
+        } else {
+            // Fallback on earlier versions
+        }
+         self.present(applyLoanNav, animated: true, completion: nil)
+       // performSegue(withIdentifier: CommonNames.APPLICATION_LIST_VC, sender: nil)
+        loanAppView.isHidden = true
+         
+    }
     
     @objc func onTapFacebookView() {
         print("click")
@@ -274,10 +356,10 @@ class HomeNewViewController: BaseUIViewController {
     @objc func onTapShareView() {
         print("click")
         
-        let shareText = "Hi, I can get you a rewards! Just register using this referral code 01234, or use this link: http://ananda.com/rewards"
+        let shareText = Constants.AEON_SHARE_LINK
         
-        let messageVC = CustomMessageActivity(message:shareText)
-        let vc = UIActivityViewController(activityItems: [shareText],   applicationActivities: [messageVC])
+        //let messageVC = CustomMessageActivity(message:shareText)
+        let vc = UIActivityViewController(activityItems: [shareText],   applicationActivities: nil)
         vc.excludedActivityTypes = [UIActivity.ActivityType.init(rawValue: "com.linkedin.LinkedIn.ShareExtension"),.message]
         
         vc.completionWithItemsHandler = { activity, success, items, error in
@@ -287,13 +369,17 @@ class HomeNewViewController: BaseUIViewController {
             }
             
         }
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if let popoverPresentationController = vc.popoverPresentationController {
+                popoverPresentationController.sourceView = self.shareView
+                
+            }
+        }
         present(vc, animated: true)
         
     }
     
     @objc func onTapLogOut(){
-        
-        print("logout")
         
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         //               UserDefaults.standard.set(position, forKey: Constants.MESSAGING_MENU)
@@ -327,7 +413,7 @@ class HomeNewViewController: BaseUIViewController {
             //                   let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
             //                   navigationVC.modalPresentationStyle = .overFullScreen
             //                   self.present(navigationVC, animated: true, completion:nil)
-            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion:nil)
             return
@@ -383,7 +469,7 @@ class HomeNewViewController: BaseUIViewController {
 //            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
 //            navigationVC.modalPresentationStyle = .overFullScreen
 //            self.present(navigationVC, animated: true, completion:nil)
-            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion:nil)
             return
@@ -396,105 +482,107 @@ class HomeNewViewController: BaseUIViewController {
     
 }
 
-extension HomeNewViewController : WebSocketDelegate {
-    func webSocketOpen() {
-        
-    }
-    
-    func webSocketClose(_ code: Int, reason: String, wasClean: Bool) {
-        
-    }
-    
-    func websocketDidConnect(socket: WebSocketClient) {
-        
-        //print("socket opened home page : \(self.senderName!)userId:\(self.senderId!)")
-        super.socket.write(string: "userName:\(self.senderName!)userId:\(self.senderId!)")
-        super.socket.write(string: "cr:\(self.senderName!)or:userWithAgency:")
-        UserDefaults.standard.set(false, forKey: Constants.MENU_SOCKET_CLOSE)
-        
-        // Agent Channel
-        self.socketReq!.param = param!
-        self.socketReq!.api = "socket-connect"
-        let socketJson = try? JSONEncoder().encode(socketReq)
-        let socketString = String(data: socketJson!, encoding: .utf8)!
-        print(socketString)
-        super.at_socket.write(string: socketString)
-        UserDefaults.standard.set(false, forKey: Constants.AT_MENU_SOCKET_CLOSE)
-        
-    }
-    
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        //print("socket onMessage \(message as? String)")
-        if let text = text as? String {
-            //print("recv: \(text)")
-            do{
-                if let json = text.data(using: String.Encoding.utf8){
-                    if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
-                        
-                        let type = jsonData["type"] as! String
-                        print("type", type)
-                        
-                        if (type == "room"){
-                            super.socket.write(string: "unReadMesgCount:")
-                            
-                        } else if (type == "unReadMesgCountForMobile") {
-                            let data = jsonData["data"] as! NSObject
-                            let count = data.value(forKey: "count") as? String
-                            //print("message count:", count!)
-                            UserDefaults.standard.set(Int(count ?? "0"), forKey: Constants.UNREAD_MESSAGE_COUNT)
-                            
-                        }
-                        
-                        if (type == "at-room"){
-                            
-                            self.socketReq!.param = self.param!
-                            self.socketReq!.api = "get-unread-message-count"
-                            
-                            let socketJson = try? JSONEncoder().encode(socketReq)
-                            let socketString = String(data: socketJson!, encoding: .utf8)!
-                            print(socketString)
-                            super.at_socket.write(string: socketString)
-                            
-                        } else if (type == "get-unread-message-count") {
-                            let count = jsonData["data"] as! String
-                            UserDefaults.standard.set(Int(count), forKey: Constants.AT_UNREAD_MESSAGE_COUNT)
-                            
-                        }
-                    }
-                }
-            }catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        
-    }
-    
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        //print("socket did disconnect")
-        // print("menu socket disconnect \(String(describing: error))")
-        
-        let isClose = UserDefaults.standard.bool(forKey: Constants.MENU_SOCKET_CLOSE)
-        if isClose {
-            super.socket.disconnect()
-            //print("socket close permenant")
-            
-        } else {
-            super.socket.connect()
-        }
-        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-        
-        let atIsClose = UserDefaults.standard.bool(forKey: Constants.AT_MENU_SOCKET_CLOSE)
-        if atIsClose {
-            super.at_socket.disconnect()
-            //print("socket close permenant")
-            
-        } else {
-            super.at_socket.connect()
-        }
-        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-        
-    }
-}
+
+
+//extension HomeNewViewController : WebSocketDelegate {
+//    func webSocketOpen() {
+//
+//    }
+//
+//    func webSocketClose(_ code: Int, reason: String, wasClean: Bool) {
+//
+//    }
+//
+//    func websocketDidConnect(socket: WebSocketClient) {
+//
+//        //print("socket opened home page : \(self.senderName!)userId:\(self.senderId!)")
+//        super.socket.write(string: "userName:\(self.senderName!)userId:\(self.senderId!)")
+//        super.socket.write(string: "cr:\(self.senderName!)or:userWithAgency:")
+//        UserDefaults.standard.set(false, forKey: Constants.MENU_SOCKET_CLOSE)
+//
+//        // Agent Channel
+//        self.socketReq!.param = param!
+//        self.socketReq!.api = "socket-connect"
+//        let socketJson = try? JSONEncoder().encode(socketReq)
+//        let socketString = String(data: socketJson!, encoding: .utf8)!
+//        print(socketString)
+//        super.at_socket.write(string: socketString)
+//        UserDefaults.standard.set(false, forKey: Constants.AT_MENU_SOCKET_CLOSE)
+//
+//    }
+//
+//    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+//        //print("socket onMessage \(message as? String)")
+//        if let text = text as? String {
+//            //print("recv: \(text)")
+//            do{
+//                if let json = text.data(using: String.Encoding.utf8){
+//                    if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
+//
+//                        let type = jsonData["type"] as! String
+//                        print("type", type)
+//
+//                        if (type == "room"){
+//                            super.socket.write(string: "unReadMesgCount:")
+//
+//                        } else if (type == "unReadMesgCountForMobile") {
+//                            let data = jsonData["data"] as! NSObject
+//                            let count = data.value(forKey: "count") as? String
+//                            //print("message count:", count!)
+//                            UserDefaults.standard.set(Int(count ?? "0"), forKey: Constants.UNREAD_MESSAGE_COUNT)
+//
+//                        }
+//
+//                        if (type == "at-room"){
+//
+//                            self.socketReq!.param = self.param!
+//                            self.socketReq!.api = "get-unread-message-count"
+//
+//                            let socketJson = try? JSONEncoder().encode(socketReq)
+//                            let socketString = String(data: socketJson!, encoding: .utf8)!
+//                            print(socketString)
+//                            super.at_socket.write(string: socketString)
+//
+//                        } else if (type == "get-unread-message-count") {
+//                            let count = jsonData["data"] as! String
+//                            UserDefaults.standard.set(Int(count), forKey: Constants.AT_UNREAD_MESSAGE_COUNT)
+//
+//                        }
+//                    }
+//                }
+//            }catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+//
+//    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+//
+//    }
+//
+//    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+//        //print("socket did disconnect")
+//        // print("menu socket disconnect \(String(describing: error))")
+//
+//        let isClose = UserDefaults.standard.bool(forKey: Constants.MENU_SOCKET_CLOSE)
+//        if isClose {
+//            super.socket.disconnect()
+//            //print("socket close permenant")
+//
+//        } else {
+//            super.socket.connect()
+//        }
+//        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+//
+//        let atIsClose = UserDefaults.standard.bool(forKey: Constants.AT_MENU_SOCKET_CLOSE)
+//        if atIsClose {
+//            super.at_socket.disconnect()
+//            //print("socket close permenant")
+//
+//        } else {
+//            super.at_socket.connect()
+//        }
+//        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+//
+//    }
+//}

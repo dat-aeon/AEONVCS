@@ -45,6 +45,7 @@ class ForceChangeSecConfirmViewController: BaseUIViewController {
         
         loadSecurityQuestionLIst()
         
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
         
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
@@ -123,7 +124,7 @@ class ForceChangeSecConfirmViewController: BaseUIViewController {
             } else {
                 let alertController = UIAlertController(title: Constants.CONFIRM_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))
@@ -141,11 +142,13 @@ class ForceChangeSecConfirmViewController: BaseUIViewController {
           print("click")
            super.NewupdateLocale(flag: 1)
            updateViews()
+        self.tvSecQuesView.reloadData()
        }
        @objc func onTapEngLocale() {
           print("click")
            super.NewupdateLocale(flag: 2)
            updateViews()
+        self.tvSecQuesView.reloadData()
        }
 
 

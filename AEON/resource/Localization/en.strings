@@ -576,3 +576,9 @@
 "main.customerservice" = "Customer Service";
 "main.askproduct" = "Ask Product";
 "main.informationupdate" = "Information Update";
+
+//MemberShip
+"membership.warningtext" = "If you have any concerned about last reveived day, please contact to AEON";
+
+"membership.lastReceiveday" = "Last Received Day : ";
+

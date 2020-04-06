@@ -28,6 +28,7 @@ class PhotoTakingViewController: BaseUIViewController {
     
     @IBOutlet weak var lblBarPhNo: UILabel!
     @IBOutlet weak var lblBarName: UILabel!
+    @IBOutlet weak var lblBarLevel: UILabel!
     
     
     @IBOutlet weak var ivProfileImage: UIImageView!
@@ -39,13 +40,16 @@ class PhotoTakingViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        if self.isPhotoUpdate {
+            lblBarLevel.text = "Lv3 : Member User"
+        } else {
+            lblBarLevel.text = "Lv2 : Login User"
+        }
         self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
         self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
        
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
-        
         
         self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
         self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
@@ -188,7 +192,7 @@ class PhotoTakingViewController: BaseUIViewController {
 //
 //                    self.present(navigationVC, animated: true, completion: nil)
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                                         vc.modalPresentationStyle = .overFullScreen
                                         vc.sessionDataBean = sessionInfo
                     
@@ -214,7 +218,8 @@ class PhotoTakingViewController: BaseUIViewController {
                     
                     let okAction = UIAlertAction(title: Constants.OK, style: .default, handler: nil)
                     let backAction = UIAlertAction(title: Constants.BACK, style: .default, handler: { action in
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion: nil)
                     })
@@ -257,13 +262,14 @@ class PhotoTakingViewController: BaseUIViewController {
                 let alert = UIAlertController(title: Constants.UPGRADE_MEMBER_SUCCESS_TITLE, message: Messages.UPGRADE_SUCCESS.localized + sessionData.phoneNo! + Messages.UPGRADE_SUCCESS_2.localized, preferredStyle: .alert)
                 
                 let okAction = UIAlertAction(title: Constants.OK, style: .default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-                    let vc = navigationVC.children.first as! HomePageViewController
+//                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                    let vc = navigationVC.children.first as! HomePageViewController
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                     vc.sessionDataBean = sessionData
                     
                     //                print("Verify Register Response ::::::::::\(result.data.customerAgreementDtoList?.count ?? 0)")
-                    navigationVC.modalPresentationStyle = .overFullScreen
-                    self.present(navigationVC, animated: true, completion: nil)
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true, completion: nil)
                 })
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
@@ -282,7 +288,8 @@ class PhotoTakingViewController: BaseUIViewController {
                     
                     let okAction = UIAlertAction(title: Constants.OK, style: .default, handler: nil)
                     let backAction = UIAlertAction(title: Constants.BACK, style: .default, handler: { action in
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+                      let navigationVC =  self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion: nil)
                     })

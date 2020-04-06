@@ -45,7 +45,7 @@ class CustomerTypeViewController: BaseUIViewController {
         }
         
 //        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UINavigationController
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UIViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! VerifyMemberViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }

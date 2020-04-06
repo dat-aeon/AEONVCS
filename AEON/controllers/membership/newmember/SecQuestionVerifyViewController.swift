@@ -84,7 +84,7 @@ class SecQuestionVerifyViewController: BaseUIViewController {
                 let alertController = UIAlertController(title: Constants.LOADING_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
 //                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UINavigationController
-                     let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! UIViewController
+                     let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.VERIFY_MEMBER_VIEW_CONTROLLER) as! VerifyMemberViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))

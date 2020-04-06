@@ -21,7 +21,7 @@ class InstallationMainViewController: BaseUIViewController {
         if isFirstOpen {
             toggleContainer(position: 2)
         } else {
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion: nil)
         }

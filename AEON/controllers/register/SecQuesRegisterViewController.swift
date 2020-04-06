@@ -83,11 +83,13 @@ class SecQuesRegisterViewController: BaseUIViewController {
        print("click")
         super.NewupdateLocale(flag: 1)
         updateViews()
+        tvSecQuesRegView.reloadData()
     }
     @objc func onTapEngLocale() {
        print("click")
         super.NewupdateLocale(flag: 2)
         updateViews()
+        tvSecQuesRegView.reloadData()
     }
 
     
@@ -127,7 +129,7 @@ class SecQuesRegisterViewController: BaseUIViewController {
     }
     
     @IBAction func onClickBackButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     private func loadSecurityQuestionLIst(){
@@ -164,7 +166,7 @@ class SecQuesRegisterViewController: BaseUIViewController {
             } else {
                 let alertController = UIAlertController(title: Constants.LOADING_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.REGISTER_VIEW_CONTROLLER) as! UINavigationController
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.REGISTER_VIEW_CONTROLLER) as! RegistrationViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))
@@ -223,11 +225,11 @@ extension SecQuesRegisterViewController:UITableViewDataSource{
             
             registerCells[indexPath.row] = cell
 //            print("register cell",indexPath.row, cell.rowIndex)
-            if indexPath.row == 0 {
-                DispatchQueue.main.async {
-                    cell.tfsecAnswer.becomeFirstResponder()
-                }
-            }
+//            if indexPath.row == 0 {
+//                DispatchQueue.main.async {
+//                    cell.tfsecAnswer.becomeFirstResponder()
+//                }
+//            }
             return cell
             
         }
@@ -433,6 +435,7 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
                     
                     UserDefaults.standard.set(result.data.customerId, forKey: Constants.USER_INFO_CUSTOMER_ID)
                     UserDefaults.standard.set(result.data.phoneNo, forKey: Constants.USER_INFO_PHONE_NO)
+                     UserDefaults.standard.set(result.data.name, forKey: Constants.USER_INFO_NAME)
                     UserDefaults.standard.set(super.generateCurrentTimeStamp(), forKey : Constants.LOGIN_TIME)
                     UserDefaults.standard.set(false, forKey: Constants.IS_LOGOUT)
                     UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)
@@ -449,23 +452,25 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
                     let alert = UIAlertController(title: Constants.LOGIN_SUCCESS_TITLE, message: Messages.BIOMETRIC_REGISTER_INFO.localized, preferredStyle: .alert)
                     let okAction = UIAlertAction(title: Constants.OK, style: .default, handler: { action in
                         
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! UINavigationController
-                        let vc = navigationVC.children.first as! BioMetricRegisterViewController
+//                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! UINavigationController
+//                        let vc = navigationVC.children.first as! BioMetricRegisterViewController
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.BIOMETRIC_VIEW_CONTROLLER) as! BioMetricRegisterViewController
                         vc.isAlreadyLogin = true
                         vc.sessionData = sessionData
                         
                         print("security Q : to Login")
-                        navigationVC.modalPresentationStyle = .overFullScreen
-                        self.present(navigationVC, animated: true, completion: nil)
+                        vc.modalPresentationStyle = .overFullScreen
+                        self.present(vc, animated: true, completion: nil)
                         
                     })
                     let cancelAction = UIAlertAction(title: Constants.CANCEL, style: .cancel, handler: { action in
                         
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
-                        let vc = navigationVC.children.first as! HomePageViewController
+//                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+//                        let vc = navigationVC.children.first as! HomePageViewController
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                         vc.sessionDataBean = sessionData
-                        navigationVC.modalPresentationStyle = .overFullScreen
-                        self.present(navigationVC, animated: true, completion: nil)
+                        vc.modalPresentationStyle = .overFullScreen
+                        self.present(vc, animated: true, completion: nil)
                         
                     })
                     alert.addAction(okAction)
@@ -474,7 +479,7 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
                     
                 }) { (error) in
                     CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                     

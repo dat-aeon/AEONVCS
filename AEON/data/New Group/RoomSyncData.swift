@@ -9,13 +9,26 @@
 import Foundation
 import SwiftyJSON
 
+//struct RoomSyncResponse: Codable {
+//    let status: String = ""
+//    let data = RoomSynceDatum()
+//}
+//
+//struct RoomSynceDatum: Codable {
+//    let freeCustomerInfoID: Int = 0
+//
+//    enum CodingKeys: String, CodingKey {
+//        case freeCustomerInfoID = "freeCustomerInfoId"
+//    }
+//}
+
 struct RoomSyncResponse: Codable {
-    let status: String = ""
-    let data = RoomSynceDatum()
+    let status: String
+    let data : RoomSynceDatum
 }
 
 struct RoomSynceDatum: Codable {
-    let freeCustomerInfoID: Int = 0
+    let freeCustomerInfoID: Int
 
     enum CodingKeys: String, CodingKey {
         case freeCustomerInfoID = "freeCustomerInfoId"

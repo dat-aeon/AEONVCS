@@ -37,6 +37,7 @@ class GoodNewsViewController: BaseUIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             
+            
 
             self.imgBack.isUserInteractionEnabled = true
             

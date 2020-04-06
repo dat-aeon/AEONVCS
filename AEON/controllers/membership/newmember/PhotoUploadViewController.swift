@@ -20,6 +20,7 @@ class PhotoUploadViewController: BaseUIViewController {
     @IBOutlet weak var lblBarPhNo: UILabel!
     @IBOutlet weak var lblBarName: UILabel!
     
+    @IBOutlet weak var lblBarLevel: UILabel!
     
     @IBOutlet weak var lblAnnounce: UILabel!
     @IBOutlet weak var lblNotice1: UILabel!
@@ -53,6 +54,12 @@ class PhotoUploadViewController: BaseUIViewController {
         
         self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
         self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+        
+        if self.isPhotoUpdate {
+            lblBarLevel.text = "Lv3 : Member User"
+        } else {
+            lblBarLevel.text = "Lv2 : Login User"
+        }
         
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
@@ -164,7 +171,7 @@ class PhotoUploadViewController: BaseUIViewController {
 //        self.openCustomCamera(imagePickerControllerDelegate: self)
         
         if self.isPhotoUpdate {
-            let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.CHECK_PASSWORD_POPUP_VC) as! CheckPasswordPopupVC
+            let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.COUPON_POPUP_VIEW_CONTROLLER) as! CouponPopupViewController
             popupVC.modalPresentationStyle = .overCurrentContext
             popupVC.modalTransitionStyle = .crossDissolve
             popupVC.preferredContentSize = CGSize(width: 400, height: 300)
@@ -178,7 +185,7 @@ class PhotoUploadViewController: BaseUIViewController {
             
             self.definesPresentationContext = true
             popupVC.delegate = self
-            popupVC.titleString = "Enter Password"
+            popupVC.lblTitle.text = "Enter Password"
             self.present(popupVC, animated: true, completion: nil)
         } else {
             self.checkPermission()
@@ -220,6 +227,7 @@ class PhotoUploadViewController: BaseUIViewController {
             AVCaptureDevice.requestAccess(for: .video) { success in
                 if success {
                     print("Permission granted, proceed")
+                    self.imagePicker.present(from: UIButton())
                 } else {
                     print("Permission denied")
                 }
@@ -243,7 +251,7 @@ class PhotoUploadViewController: BaseUIViewController {
         present(alertController, animated: true)
     }
     
-    func doPasswordVerification(strPassword: String, popup: UIViewController) {
+    func doPasswordVerification(strPassword: UITextField, popup: UIViewController) {
         
         let cusID = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
         
@@ -251,7 +259,7 @@ class PhotoUploadViewController: BaseUIViewController {
         tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
         
         let verifyUserInfoRequest = CheckPasswordRequest(
-            customerId: cusID, password: "\(strPassword)"
+            customerId: cusID, password: "\(strPassword.text!)"
             )
         
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
@@ -265,8 +273,10 @@ class PhotoUploadViewController: BaseUIViewController {
                 self.checkCameraAccess()
                 
             } else {
-                Utils.showAlert(viewcontroller: self, title: Constants.CHECK_PASSWORD_FAILED_TITIE, message: "")
-                
+//                Utils.showAlert(viewcontroller: self, title: Constants.CHECK_PASSWORD_FAILED_TITIE, message: "")
+                strPassword.text = Constants.BLANK
+                strPassword.attributedPlaceholder = NSAttributedString(string: "Password is wrong.",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             }
             
         }) { (error) in
@@ -392,10 +402,15 @@ extension PhotoUploadViewController {
     }
 }
 
-extension PhotoUploadViewController: CheckPasswordPopupButtonDelegate {
+extension PhotoUploadViewController: PopupButtonDelegate {
     func onClickOkBtn(password: UITextField, popUpView: UIViewController) {
         if password.text!.count > 0 {
-            self.doPasswordVerification(strPassword: "\(password.text ?? "")", popup: popUpView)
+            self.doPasswordVerification(strPassword: password, popup: popUpView)
+        
+        } else {
+            //password.placeholder = "Please enter password."
+            password.attributedPlaceholder = NSAttributedString(string: "Please enter password.",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         }
     }
     

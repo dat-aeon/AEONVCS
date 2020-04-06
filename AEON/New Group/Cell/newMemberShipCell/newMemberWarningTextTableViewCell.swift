@@ -9,10 +9,15 @@
 import UIKit
 
 class newMemberWarningTextTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var lblWarningText: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func setData() {
+        self.lblWarningText.text = "membership.warningtext".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

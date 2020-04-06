@@ -191,10 +191,14 @@ class LoanCalculatorViewController: BaseUIViewController {
     
     var heightViewCalculate = 0
     
+    let MINIMUM_AMOUNT = 100000
+    let MAXIMUM_AMOUNT = 2000000
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.heightWarningLoanTerm.constant = 0
+        self.lblWarningLoanTerm.isHidden = true
         
         self.imgMMlocale.isUserInteractionEnabled = true
               self.imgEnglocale.isUserInteractionEnabled = true
@@ -207,14 +211,17 @@ class LoanCalculatorViewController: BaseUIViewController {
         // Do any additional setup after loading the view.
         self.setupView()
         
-        if (UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME) == nil) {
-            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
-            self.lblBarName.text = ""
-            self.lblBarCusType.text = "Lv.1 : Application user"
-        }else{
+        if let _ = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME) {
             self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
                        self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
              self.lblBarCusType.text = "Lv.2 : Login user"
+            
+        }else{
+            
+            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+            self.lblBarName.text = ""
+            self.lblBarCusType.text = "Lv.1 : Application user"
+            
         }
         
     }
@@ -240,7 +247,6 @@ class LoanCalculatorViewController: BaseUIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        print("viewdidlayoutsubview")
         if self.txtLoanAmt.text!.count == 0 {
             if self.isCalculatingWithNoLoanAmount {
                
@@ -265,6 +271,7 @@ class LoanCalculatorViewController: BaseUIViewController {
         
         if !self.isLoanTermSelected {
             self.heightWarningLoanTerm.constant = self.lblWarningLoanTerm.requiredHeight + 5
+            self.lblWarningLoanTerm.isHidden = false
         } else {
             self.heightWarningLoanTerm.constant = 0
         }
@@ -274,19 +281,16 @@ class LoanCalculatorViewController: BaseUIViewController {
     }
     
     @objc func onTapBack() {
-                 print("click")
-                  self.dismiss(animated: true, completion: nil)
+                 self.dismiss(animated: true, completion: nil)
               }
     
      @objc func onTapMMLocale() {
-              print("click")
-               super.NewupdateLocale(flag: 1)
+              super.NewupdateLocale(flag: 1)
     //           changeLocale()
             updateViews()
            }
            @objc func onTapEngLocale() {
-              print("click")
-               super.NewupdateLocale(flag: 2)
+              super.NewupdateLocale(flag: 2)
     //           changeLocale()
             updateViews()
            }
@@ -396,12 +400,12 @@ class LoanCalculatorViewController: BaseUIViewController {
                 self.isWarningShowing = true
                 self.loanTerms = []
                 
-            } else if number < 50000 {
+            } else if number < MINIMUM_AMOUNT {
                 self.lblWarning.text = "loan.warning_minimum".localized
                 print("lblWarnign Size : \(self.lblWarning.requiredHeight)")
                 self.isWarningShowing = true
                 self.loanTerms = []
-            } else if number >= 50000 && number <= 150000 {
+            } else if number >= MINIMUM_AMOUNT && number <= 150000 {
                 let tempArray = self.loanTerms
                 if self.isMotorcycleOn {
                     self.loanTerms = self.motorCycleLoanTerm
@@ -468,10 +472,10 @@ class LoanCalculatorViewController: BaseUIViewController {
                 
                 self.loanTerms = []
                 
-            } else if number < 50000 {
+            } else if number < MINIMUM_AMOUNT {
                 
                 self.loanTerms = []
-            } else if number >= 50000 && number <= 150000 {
+            } else if number >= MINIMUM_AMOUNT && number <= 150000 {
                 let tempArray = self.loanTerms
                 if self.isMotorcycleOn {
                     self.loanTerms = self.motorCycleLoanTerm

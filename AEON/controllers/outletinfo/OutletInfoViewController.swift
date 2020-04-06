@@ -36,10 +36,19 @@ class OutletInfoViewController: BaseUIViewController {
         self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
 
         self.updateViews()
+        let segAttributes: NSDictionary = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont(name: "PyidaungsuBook", size: 14)!
+        ]
+        let segAttributes1: NSDictionary = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont(name: "PyidaungsuBook", size: 14)!
+        ]
         
-        let font = UIFont(name: "PyidaungsuBook", size: 14)
-        segOutletInfo.setTitleTextAttributes([NSAttributedString.Key.font: font],
-                                                for: .normal)
+        segOutletInfo.setTitleTextAttributes(segAttributes as? [NSAttributedString.Key : Any],
+                                             for: .normal)
+        segOutletInfo.setTitleTextAttributes(segAttributes as? [NSAttributedString.Key : Any],
+                                             for: .selected)
         
         toggleContainer(position:containerIndex)
         

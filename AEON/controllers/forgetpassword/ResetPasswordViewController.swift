@@ -28,6 +28,7 @@ class ResetPasswordViewController: BaseUIViewController {
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
     
+    @IBOutlet weak var lblBarPhoneNo: UILabel!
     
     var customerId : Int?
     var userTypeId : Int?
@@ -42,6 +43,7 @@ class ResetPasswordViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.lblBarPhoneNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -161,7 +163,7 @@ class ResetPasswordViewController: BaseUIViewController {
                     let alertController = UIAlertController(title: "Update Success", message: "Your password is successfully changed. Please login again.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
 //                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! UIViewController
+                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion: nil)
                         
@@ -206,7 +208,7 @@ class ResetPasswordViewController: BaseUIViewController {
                     let alertController = UIAlertController(title: "Update Success", message: "Your password is successfully changed. Please login again.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
 //                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! UIViewController
+                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion: nil)
                         

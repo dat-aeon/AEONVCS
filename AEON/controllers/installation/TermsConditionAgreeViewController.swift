@@ -74,7 +74,7 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         self.tfFirstTimePhone.keyboardType = .numberPad
         
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "touchHappen")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector(("touchHappen")))
         
         self.wholeView.addGestureRecognizer(tap)
         
@@ -103,12 +103,16 @@ class TermsConditionAgreeViewController: BaseUIViewController {
                 UserDefaults.standard.set(true, forKey: Constants.IS_ALREADY_ACCEPT)
                 UserDefaults.standard.set(true, forKey: Constants.IS_FIRST_INSTALL)
         UserDefaults.standard.set(self.tfFirstTimePhone.text, forKey: Constants.FIRST_TIME_PHONE)
-                let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! UIViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                 navigationVC.modalPresentationStyle = .overFullScreen
                 self.present(navigationVC, animated: true, completion: nil)
         
     }
     @objc func touchHappen(){
+        
+        self.wholeView.endEditing(true)
+        self.dialogView.endEditing(true)
+        
         dialogView.isHidden = true
         
         wholeView.alpha = 1

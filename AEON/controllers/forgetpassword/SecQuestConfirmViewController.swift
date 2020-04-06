@@ -11,6 +11,11 @@ import SwiftyJSON
 
 class SecQuestConfirmViewController: BaseUIViewController {
     
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
+    
+    
     @IBOutlet weak var secQuesTableView: UITableView!
     @IBOutlet weak var btnBack: UIBarButtonItem!
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
@@ -44,6 +49,14 @@ class SecQuestConfirmViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.imgBack.isUserInteractionEnabled = true
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        
+         self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+        
         loadSecurityQuestionLIst()
         
         if Network.reachability.isReachable == false {
@@ -65,7 +78,7 @@ class SecQuestConfirmViewController: BaseUIViewController {
             if error == Constants.JSON_FAILURE {
                 let alertController = UIAlertController(title: Constants.SERVER_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))
@@ -131,7 +144,7 @@ class SecQuestConfirmViewController: BaseUIViewController {
             } else {
                 let alertController = UIAlertController(title: Constants.CONFIRM_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))
@@ -149,6 +162,24 @@ class SecQuestConfirmViewController: BaseUIViewController {
         super.updateLocale()
         self.secQuesTableView.reloadData()
     }
+    
+    @objc func onTapBack() {
+       print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func onTapMMLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 1)
+        updateViews()
+        secQuesTableView.reloadData()
+    }
+    @objc func onTapEngLocale() {
+       print("click")
+        super.NewupdateLocale(flag: 2)
+        updateViews()
+        secQuesTableView.reloadData()
+    }
+    
     
     @objc override func updateViews() {
         super.updateViews()

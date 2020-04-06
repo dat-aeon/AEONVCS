@@ -161,7 +161,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
                             UserDefaults.standard.set(true, forKey: Constants.IS_LOGOUT)
                             UserDefaults.standard.set(Constants.BLANK, forKey: Constants.LAST_USED_TIME)
                             UserDefaults.standard.set(nil, forKey: Constants.USED_COUPON_LIST)
-                            
+                            UserDefaults.standard.set(nil, forKey: Constants.USER_INFO_NAME)
                             UserDefaults.standard.set(8, forKey: Constants.MESSAGING_MENU)
                             UserDefaults.standard.set(true, forKey: Constants.MESSAGE_SOCKET_CLOSE)
                             UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
@@ -316,6 +316,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         
         return myString
     }
+
     
     // Change date format
     func changeMessageDateformat ( date: String) -> String{
@@ -348,7 +349,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         let alertController = UIAlertController(title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
             let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
-            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion: nil)
         }))

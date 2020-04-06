@@ -40,7 +40,17 @@ class NewsTableViewCell: UITableViewCell {
             self.lbContent.text = newsInfoBean.contentEng
             break
         }
-        self.lbDate.text = newsInfoBean.displayDate
+//        self.lbDate.text = newsInfoBean.displayDate
+        print("DDate\(newsInfoBean.displayDate ?? "Hello")")
+         if (newsInfoBean.displayDate != nil) {
+                   self.lbDate.text = self.changegoodnewsDateformat(date : newsInfoBean.publishedFromDate ?? "2019-06-18T17:30:00.000+0000")
+               }else{
+            
+            self.lbDate.text = "-"
+            
+        }
+       
+        
         self.lbReadMore.text = "eventnews.readmore.label".localized
         let photoUrl = URL(string:Constants.NEWS_PHOTO_URL + newsInfoBean.imagePath!)
         
@@ -68,5 +78,17 @@ class NewsTableViewCell: UITableViewCell {
 //        }
         
     }
-    
+    func changegoodnewsDateformat ( date: String) -> String{
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        formatter.locale = Foundation.Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 23400)
+        let convertDate = formatter.date(from: date)
+        
+        formatter.dateFormat = "dd-MM-yyyy"
+        let myString = formatter.string(from: convertDate!)
+        
+        return myString
+    }
 }

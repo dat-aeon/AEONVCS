@@ -8,16 +8,27 @@
 
 import UIKit
 
+
+
 class newMemberShipHeaderTableViewCell: UITableViewCell {
+    
+    var sessionInfo : SessionDataBean?
 
     @IBOutlet weak var lblCustomerId: UILabel!
     @IBOutlet weak var imgCamera: UIImageView!
     @IBOutlet weak var lblMemberId: UILabel!
     @IBOutlet weak var ivProfileImage: UIImageView!
     
+    
+    
+  
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+       
+        
     }
     
 //    func setData(name:String,customerNo:String , memberNo:String){
@@ -26,7 +37,9 @@ class newMemberShipHeaderTableViewCell: UITableViewCell {
 //
 //        }
     
-    func setData(photoUrl:String,name:String,customerNo:String , customerId : Int){
+    func setData(photoUrl:String,name:String,customerNo:String , customerId : Int, memberId : String?){
+        
+      
         
         print("photo ::: \(photoUrl)")
         if photoUrl.isEmpty{
@@ -45,8 +58,11 @@ class newMemberShipHeaderTableViewCell: UITableViewCell {
             self.imgCamera.isHidden = false
         }
 //        self.lblName.text = name
-        self.lblMemberId.text = customerNo
+//        self.lblMemberId.text = "\(customerId)"
+        
+         self.lblMemberId.text = memberId
         self.lblCustomerId.text = "\(customerNo)"
+      //  self.lbReadMore.text = "eventnews.readmore.label".localized
     }
     
 

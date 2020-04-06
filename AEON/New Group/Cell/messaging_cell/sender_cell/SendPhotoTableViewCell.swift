@@ -25,7 +25,6 @@ class SendPhotoTableViewCell: UITableViewCell {
     }
     
     func setData(messageBean: MessageBean){
-        print("send time : \(messageBean.sendTime)")
         self.lbSendDate.text = messageBean.sendTime
         let photoUrl = URL(string:messageBean.message ?? "")
         //print("photo path", photoUrl?.absoluteString as Any)

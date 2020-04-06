@@ -44,7 +44,7 @@
 "sidemenu.infoupdate" = "မိမိအချက်အလက်များ ပြင်ဆင်ခြင်း";
 "sidemenu.aeonservice" = "AEON မှ ဝန်ဆောင်မှုများ";
 "sidemenu.eventsandnews" = "အစီအစဉ် နှင့်သတင်းများ";
-"sidemenu.contactus" = "AEONအားဆက်သွယ်ရန်";
+"sidemenu.contactus" = "AEON\nအားဆက်သွယ်ရန်";
 "sidemenu.faq" = "မေးလေ့ရှိသော မေးခွန်းများ";
 "sidemenu.nearby" = "အနီးအနား ဆိုင်များ ရှာရန်";
 "sidemenu.logout" = "ထွက်မည်";
@@ -155,7 +155,7 @@
 "eventnews.readmore.label" = "ဆက်လက်ဖတ်ရှုရန်";
 
 //CONTACTUS Screen
-"contactus.title" = "AEON အားဆက်သွယ်ရန်";
+"contactus.title" = "AEON အား\nဆက်သွယ်ရန်";
 "contactus.tag1.title" = "HOTLINE ဖုန်း";
 "contactus.tag2.title" = "မက်ဆေ့ပို့ရန်";
 "contactus.callnow.button" = "ဆက်သွယ်ရန်";
@@ -187,7 +187,7 @@
 "loan.motor_cycle" = "Motor Cycle ချေးငွေ";
 "loan.loan_term" = "ချေးငွေကာလ";
 "loan.fee" = "ဝန်ဆောင်ခ";
-"loan.total_repay" = "ပြန်လည်ပေးသွင်းရမည့်ပမာဏ(စုစုပေါင်း)";
+"loan.total_repay" = "ပြန်လည်ပေးသွင်းရမည့်ပမာဏ\n(စုစုပေါင်း)";
 "loan.first_repay" = "ပထမအရစ် ပေးဆပ်ရမည့်ပမာဏ";
 "loan.monthly_repay" = "လစဉ်ပြန်လည်ပေးဆပ်ရမည့်ပမာဏ";
 "loan.last_payment" = "နောက်ဆုံးပေးဆပ်ရမည့်ပမာဏ";
@@ -550,14 +550,17 @@
 "howtouse.des.label" = "ဤဗီဒီယိုမှ AEON Member App မည်သို့အသုံးပြုရမည်ကိုသင်ယူနိုင်ပါသည်။";
 
 //Main and Home Layout
-"main.loancalculator" = "ချေးငွေတွက်ချက်ခြင်း";
+"main.loancalculator" = "ချေးငွေ\nတွက်ချက်ခြင်း";
 "main.register" = "မှတ်ပုံတင်မည်";
 "main.goodnews" = "သတင်း";
 "main.findus" = "ဆိုင်များ";
-"main.ourservice" = "AEON မှဝန်ဆောင်မှုများ";
+"main.ourservice" = "AEON မှ\nဝန်ဆောင်မှုများ";
 "main.announcement" = "ကြေညာချက်";
 "main.howtouse" = "အသုံးပြုနည်း";
 "main.share" = "မျှဝေမည်";
 "main.customerservice" = "ဆက်သွယ်ရန်";
 "main.askproduct" = "ပစ္စည်းမေးရန်";
-"main.informationupdate" = "အချက်အလက်ပြင်ဆင်ခြင်း";
+"main.informationupdate" = "အချက်အလက်\nပြင်ဆင်ခြင်း";
+
+"membership.warningtext" = "သင်​၏နောက်ဆုံးငွေပေးချေမှုရက်စွဲနှင့်ပတ်သက်၍ ကွဲလွဲမှုများရှိပါက AEONသို့ဆက်သွယ်ပါ။";
+"membership.lastReceiveday" = "နောက်ဆုံးငွေပေးချေမှုရက်စွဲ : ";

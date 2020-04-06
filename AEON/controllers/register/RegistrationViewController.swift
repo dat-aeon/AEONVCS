@@ -150,7 +150,7 @@ class RegistrationViewController: BaseUIViewController {
             if error == Constants.JSON_FAILURE {
                 let alertController = UIAlertController(title: Constants.SERVER_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))
@@ -568,12 +568,31 @@ class RegistrationViewController: BaseUIViewController {
     private func goToSecQuesRegisterView(result:CheckMemberResponse,registerRequestData:RegisterRequestBean){
 //        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SEC_QUES_REGISTER_VIEW_CONTROLLER) as! UINavigationController
 //        let vc = navigationVC.children.first as! SecQuesRegisterViewController
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SEC_QUES_REGISTER_VIEW_CONTROLLER) as! SecQuesRegisterViewController
-//               let vc = navigationVC.children.first as! SecQuesRegisterViewController
-        vc.memberResponseData = result
-        vc.registerRequestData = registerRequestData
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+        
+//        self.present(vc, animated: true, completion: nil)
+//        let applyVC = storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as! RegistrationViewController
+//        self.dismiss(animated: true, completion: {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.SEC_QUES_REGISTER_VIEW_CONTROLLER) as! SecQuesRegisterViewController
+            vc.memberResponseData = result
+            vc.registerRequestData = registerRequestData
+            vc.modalPresentationStyle = .overFullScreen
+        
+        if UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE) == Constants.NON_MEMBER {
+            self.present(vc, animated: true, completion: nil)
+            
+        } else {
+            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+
+                topController.dismiss(animated: true, completion: {
+                    self.present(vc,  animated: true, completion: nil)
+                })
+                
+            }
+        }
+        
     }
     
     @objc func didPressButtonFromCustomView(sender:UIButton) {
@@ -772,7 +791,8 @@ extension RegistrationViewController: UIScrollViewDelegate {
 extension RegistrationViewController : AnnouncePopupButtonDelegate {
     func onClickOkBtn(checkMemberReponse: CheckMemberResponse, registerBean: RegisterRequestBean) {
         self.goToSecQuesRegisterView(result: checkMemberResponse!,registerRequestData:registerBean)
-
+ 
+        
     }
     
     func onClickCallNow() {

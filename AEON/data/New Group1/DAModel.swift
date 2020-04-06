@@ -2023,6 +2023,14 @@ class DAModel: BaseModel {
                                 qr = qrstatus
                             }
                             agreement.qrShow = qr
+                            
+                            
+                            var lastPaymentdate = ""
+                            if let lastPaymentDate = item["lastPaymentDate"] as? String {
+                                lastPaymentdate = lastPaymentDate
+                            }
+                            agreement.lastPaymentDate = lastPaymentdate
+                           
                             agreementlist.append(agreement)
                         }
                     }

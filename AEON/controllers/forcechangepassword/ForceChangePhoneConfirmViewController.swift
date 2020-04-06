@@ -18,6 +18,8 @@ class ForceChangePhoneConfirmViewController: BaseUIViewController {
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
     
+    @IBOutlet weak var lblBarLevel: UILabel!
+    @IBOutlet weak var lblBarPhoneNo: UILabel!
     
     @IBOutlet weak var bbClose: UIBarButtonItem!
     @IBOutlet weak var bbFlag: UIBarButtonItem!
@@ -54,6 +56,7 @@ class ForceChangePhoneConfirmViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.lblBarPhoneNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
         
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
@@ -103,7 +106,7 @@ class ForceChangePhoneConfirmViewController: BaseUIViewController {
             if error == Constants.JSON_FAILURE {
                 let alertController = UIAlertController(title: Constants.SERVER_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                     navigationVC.modalPresentationStyle = .overFullScreen
                     self.present(navigationVC, animated: true, completion: nil)
                 }))

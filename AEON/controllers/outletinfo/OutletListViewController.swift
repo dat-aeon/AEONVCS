@@ -107,7 +107,7 @@ class OutletListViewController: BaseUIViewController {
                 //print("\(outletInfo.outletName)outlet: \(outletInfo.isAeonOutlet)")
                 if outletInfo.latitude != nil && outletInfo.longitude != nil {
                     let outletCoordinate = CLLocation(latitude: outletInfo.latitude ?? 0.0, longitude: outletInfo.longitude ?? 0.0)
-                    print("outlet coordinate ", outletCoordinate)
+                    //print("outlet coordinate ", outletCoordinate)
                     //print("my coordinate ", self.currentLocation)
 
                 

@@ -39,6 +39,7 @@ class RegisterPhotoUploadViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true

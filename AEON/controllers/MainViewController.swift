@@ -189,7 +189,7 @@ class MainViewController: BaseUIViewController {
     func gotoLoginPage() {
         
         UserDefaults.standard.set(false, forKey: Constants.IS_BIO_LOGIN)
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! UINavigationController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.LOGIN_VIEW_CONTROLLER) as! LoginViewController
          navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
@@ -200,7 +200,7 @@ class MainViewController: BaseUIViewController {
             return
         }
         
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.REGISTER_VIEW_CONTROLLER) as! UINavigationController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.REGISTER_VIEW_CONTROLLER) as! RegistrationViewController
          navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
@@ -211,7 +211,7 @@ class MainViewController: BaseUIViewController {
             return
         }
         
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.ABOUT_US_VIEW_CONTROLLER) as! UINavigationController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.ABOUT_US_VIEW_CONTROLLER) as! AboutUsViewController
          navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
@@ -222,7 +222,7 @@ class MainViewController: BaseUIViewController {
             return
         }
         
-        let faqVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FAQ_MAIN_VIEW_CONTROLLER) as! UINavigationController
+        let faqVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FAQ_MAIN_VIEW_CONTROLLER) as! FAQMainViewController
          faqVC.modalPresentationStyle = .overFullScreen
         //faqVC.showNavBar = true
         self.present(faqVC, animated: true, completion: nil)
@@ -289,7 +289,7 @@ class MainViewController: BaseUIViewController {
                         let sessionString = String(data: sessionJson!, encoding: .utf8)!
                         UserDefaults.standard.set(sessionString, forKey: Constants.SESSION_INFO)
                         
-                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                         let vc = navigationVC.children.first as! HomePageViewController
                         vc.sessionDataBean = sessionData
                          navigationVC.modalPresentationStyle = .overFullScreen
@@ -322,7 +322,7 @@ class MainViewController: BaseUIViewController {
                     
                     if phone == "Constants.phoneNumber" &&
                         password == "Constants.password"{
-                        let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_PAGE_VIEW_CONTROLLER) as! UINavigationController
+                        let navVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
                          navVC.modalPresentationStyle = .overFullScreen
                         self.present(navVC, animated: true, completion: nil)
                     }
@@ -397,7 +397,7 @@ class MainViewController: BaseUIViewController {
     
     func gotoForceChangePhVerify() {
 //        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UINavigationController
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! UIViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.FORCE_CHANGE_PHONE_CONFIRM_VIEW_CONTROLLER) as! ForceChangePhoneConfirmViewController
          navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }

@@ -51,7 +51,14 @@ class PromotionPopupViewController: BaseUIViewController {
             self.lblContent.text = promoBean?.contentEng
             break
         }
-        self.lblDate.text = promoBean?.displayDate
+//        self.lblDate.text = promoBean?.displayDate
+        if (promoBean?.displayDate != nil) {
+            self.lblDate.text = self.changegoodnewsDateformat(date : promoBean?.publishedFromDate ?? "2019-06-18T17:30:00.000+0000")
+               }else{
+            
+            self.lblDate.text = "-"
+            
+        }
         
         let photoPath = promoBean?.imagePath ?? Constants.BLANK
         let photoUrl = URL(string:Constants.PROMOTION_PHOTO_URL + photoPath)
@@ -211,6 +218,20 @@ extension PromotionPopupViewController: CLLocationManagerDelegate {
 //        print("Promotion ::: current location (\(location.coordinate.latitude) , \(location.coordinate.longitude))")
         CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
         
+    }
+    
+    func changegoodnewsDateformat ( date: String) -> String{
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        formatter.locale = Foundation.Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 23400)
+        let convertDate = formatter.date(from: date)
+        
+        formatter.dateFormat = "dd-MM-yyyy"
+        let myString = formatter.string(from: convertDate!)
+        
+        return myString
     }
 }
 

@@ -112,4 +112,9 @@ struct ApiServiceEndPoint {
     static var videofilepath = "information/get-how-to-use-video-file-name"
     
     static var roomsync = "free-message/room-sync"
+    
+    //ask product
+    
+    static var askproductunread = "free-token/get-ask-product-unread-count?"
+    
 }

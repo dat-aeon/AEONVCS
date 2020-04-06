@@ -93,13 +93,14 @@ import SwiftyJSON
  
  struct AgreementInfo: Codable {
     var custAgreementId, importCustomerId, daApplicationInfoId: Int?
-    var agreementNo, applicationNo,encodeStringForQr,lastPaymentDate : String?
+    var agreementNo, applicationNo,lastPaymentDate,encodeStringForQr: String?
     var qrShow, financialStatus, financialAmt, financialTerm: Int?
+//    var lastPaymentDate : Date?
     
     enum CodingKeys: String, CodingKey {
         case custAgreementId = "custAgreementId"
         case importCustomerId = "importCustomerId"
         case daApplicationInfoId = "daApplicationInfoId"
-        case agreementNo, qrShow, financialStatus, financialAmt, financialTerm, applicationNo,encodeStringForQr
+        case agreementNo, qrShow, financialStatus, financialAmt, financialTerm, applicationNo,encodeStringForQr,lastPaymentDate
     }
  }

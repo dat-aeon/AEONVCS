@@ -35,6 +35,7 @@
 		0421286B22ECA52D003252F8 /* OutletMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421286A22ECA52D003252F8 /* OutletMapViewController.swift */; };
 		0421286D22ECA558003252F8 /* OutletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421286C22ECA558003252F8 /* OutletListViewController.swift */; };
 		0421286F22ECA56C003252F8 /* OutletDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421286E22ECA56C003252F8 /* OutletDetailViewController.swift */; };
+		042777F22401A11A00F0324C /* FirstTimePhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042777F12401A11A00F0324C /* FirstTimePhoneViewController.swift */; };
 		0428A0AE2359657E001BB980 /* Pyidaungsu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0428A0AC2359657E001BB980 /* Pyidaungsu-Bold.ttf */; };
 		0428A0AF2359657E001BB980 /* Pyidaungsu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0428A0AD2359657E001BB980 /* Pyidaungsu-Regular.ttf */; };
 		0450FE6223A9ED75009D518E /* cellPurchaseImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450FE6123A9ED75009D518E /* cellPurchaseImages.swift */; };
@@ -73,6 +74,7 @@
 		047837B023E95C09009E9DD1 /* ContactPhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047837AF23E95C09009E9DD1 /* ContactPhNoViewController.swift */; };
 		047837B323EA6F8E009E9DD1 /* MainNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047837B223EA6F8E009E9DD1 /* MainNewViewController.swift */; };
 		047F1611220DA1F70015CDEB /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F1610220DA1F70015CDEB /* RegisterData.swift */; };
+		0481007D23FD12E70005515D /* Pods_AEONVCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F80EDB55A064FA0ADE2A0 /* Pods_AEONVCS.framework */; };
 		048E1F612370082C004E0863 /* ApplicationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E1F602370082C004E0863 /* ApplicationListVC.swift */; };
 		048E1F6423700C29004E0863 /* cellApplicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E1F6323700C29004E0863 /* cellApplicationList.swift */; };
 		0495E2EA22191D1F009A6FAB /* HotlineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495E2E922191D1F009A6FAB /* HotlineViewModel.swift */; };
@@ -259,9 +261,13 @@
 		C16C63DE238C3980004E24C1 /* AgentChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63DD238C3980004E24C1 /* AgentChannel.swift */; };
 		C16C63E1238C3DEF004E24C1 /* AgentChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */; };
 		C16C63E3238C3E01004E24C1 /* AgentChannelPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */; };
+		ED387DB8243AF1E500F8DD8A /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */; };
+		ED387DBA243B17FF00F8DD8A /* askProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DB9243B17FF00F8DD8A /* askProductViewModel.swift */; };
+		ED387DBC243B1E8F00F8DD8A /* askProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DBB243B1E8F00F8DD8A /* askProductData.swift */; };
+		ED387DBE243B218D00F8DD8A /* askProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DBD243B218D00F8DD8A /* askProductModel.swift */; };
+		ED9D95C12436FA7C00B52D74 /* LoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */; };
 		EF38F9FB23E968AD00E85262 /* HomeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FA23E968AD00E85262 /* HomeNewViewController.swift */; };
 		EF38F9FD23E96ACB00E85262 /* FreeChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */; };
-		FD8DA56F3D523C6E51A4049E /* Pods_AEONVCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F80EDB55A064FA0ADE2A0 /* Pods_AEONVCS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -293,6 +299,7 @@
 		0421286A22ECA52D003252F8 /* OutletMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutletMapViewController.swift; sourceTree = "<group>"; };
 		0421286C22ECA558003252F8 /* OutletListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutletListViewController.swift; sourceTree = "<group>"; };
 		0421286E22ECA56C003252F8 /* OutletDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutletDetailViewController.swift; sourceTree = "<group>"; };
+		042777F12401A11A00F0324C /* FirstTimePhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimePhoneViewController.swift; sourceTree = "<group>"; };
 		0428A0AC2359657E001BB980 /* Pyidaungsu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pyidaungsu-Bold.ttf"; sourceTree = "<group>"; };
 		0428A0AD2359657E001BB980 /* Pyidaungsu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pyidaungsu-Regular.ttf"; sourceTree = "<group>"; };
 		0450FE6123A9ED75009D518E /* cellPurchaseImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellPurchaseImages.swift; sourceTree = "<group>"; };
@@ -491,7 +498,7 @@
 		752115E022019378001BC94A /* SecQuesConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecQuesConfirmTableViewCell.xib; sourceTree = "<group>"; };
 		752115E42201AA4C001BC94A /* SecQuesRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuesRegisterModel.swift; sourceTree = "<group>"; };
 		752115E62201CA3B001BC94A /* CustomerTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTypeViewController.swift; sourceTree = "<group>"; };
-		753C8B9021F9B670002E101B /* AEONMember4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AEONMember4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		753C8B9021F9B670002E101B /* AEONMember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AEONMember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		753C8B9321F9B670002E101B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		753C8B9521F9B670002E101B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		753C8B9821F9B670002E101B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -523,6 +530,11 @@
 		C16C63DD238C3980004E24C1 /* AgentChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannel.swift; sourceTree = "<group>"; };
 		C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelViewController.swift; sourceTree = "<group>"; };
 		C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelPopupViewController.swift; sourceTree = "<group>"; };
+		ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
+		ED387DB9243B17FF00F8DD8A /* askProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = askProductViewModel.swift; sourceTree = "<group>"; };
+		ED387DBB243B1E8F00F8DD8A /* askProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = askProductData.swift; sourceTree = "<group>"; };
+		ED387DBD243B218D00F8DD8A /* askProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = askProductModel.swift; sourceTree = "<group>"; };
+		ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewController.swift; sourceTree = "<group>"; };
 		EF38F9FA23E968AD00E85262 /* HomeNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeNewViewController.swift; path = emplate/HomeNewViewController.swift; sourceTree = "<group>"; };
 		EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -532,7 +544,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD8DA56F3D523C6E51A4049E /* Pods_AEONVCS.framework in Frameworks */,
+				0481007D23FD12E70005515D /* Pods_AEONVCS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,6 +938,7 @@
 				752115D922016146001BC94A /* HomeViewController.swift */,
 				04D322A22223CBE4006BE0CB /* WelcomeViewController.swift */,
 				04ADBA22227C1C1900C086F2 /* HomePageViewController.swift */,
+				042777F12401A11A00F0324C /* FirstTimePhoneViewController.swift */,
 			);
 			name = home;
 			path = "New Group2";
@@ -1040,6 +1053,7 @@
 				04011FB9231391BD009003DE /* LoanCalculatorViewModel.swift */,
 				04F0EA342334805F00C6B486 /* CheckPasswordViewModel.swift */,
 				04A101E923F29D7D00DB9804 /* RoomSyncViewModel.swift */,
+				ED387DB9243B17FF00F8DD8A /* askProductViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -1113,6 +1127,7 @@
 				C16C63DD238C3980004E24C1 /* AgentChannel.swift */,
 				04AF316423ED291F0087719A /* VideoFileData.swift */,
 				04A101E723F29C7400DB9804 /* RoomSyncData.swift */,
+				ED387DBB243B1E8F00F8DD8A /* askProductData.swift */,
 			);
 			name = struct;
 			path = "New Group";
@@ -1146,6 +1161,7 @@
 				04011FB7231386FB009003DE /* LoanCalculatorModel.swift */,
 				04F0EA3223347E1100C6B486 /* CheckPasswordModel.swift */,
 				04A101EB23F29DD400DB9804 /* RoomSyncModel.swift */,
+				ED387DBD243B218D00F8DD8A /* askProductModel.swift */,
 			);
 			name = model;
 			path = "New Group1";
@@ -1214,6 +1230,7 @@
 				04B3D7082224EFD300276A07 /* CustomGIFView.swift */,
 				04104EA0222639060068748D /* DeviceInfo.swift */,
 				04D202BF22A7846C00C85FC3 /* ImagePicker.swift */,
+				ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */,
 			);
 			path = customview;
 			sourceTree = "<group>";
@@ -1231,7 +1248,7 @@
 		753C8B9121F9B670002E101B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				753C8B9021F9B670002E101B /* AEONMember4.app */,
+				753C8B9021F9B670002E101B /* AEONMember.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1267,6 +1284,7 @@
 		75A31DF522000182002E7336 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED9D95BF2436FA5D00B52D74 /* LoanApply */,
 				04AF316123EC0A5A0087719A /* membershipnew */,
 				04AF315C23EBD78C0087719A /* howtouse */,
 				047837B123EA6F71009E9DD1 /* main */,
@@ -1388,6 +1406,14 @@
 			path = agentChannel;
 			sourceTree = "<group>";
 		};
+		ED9D95BF2436FA5D00B52D74 /* LoanApply */ = {
+			isa = PBXGroup;
+			children = (
+				ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */,
+			);
+			path = LoanApply;
+			sourceTree = "<group>";
+		};
 		FB324669134BA1559A50EC5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1416,7 +1442,7 @@
 			);
 			name = AEONVCS;
 			productName = AEON;
-			productReference = 753C8B9021F9B670002E101B /* AEONMember4.app */;
+			productReference = 753C8B9021F9B670002E101B /* AEONMember.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1615,6 +1641,7 @@
 				04A1615C22B24CEE00D05648 /* SecQuesVerifyQATableViewCell.swift in Sources */,
 				047F1611220DA1F70015CDEB /* RegisterData.swift in Sources */,
 				04AF315B23EBD17B0087719A /* CustomMessageActivity.swift in Sources */,
+				042777F22401A11A00F0324C /* FirstTimePhoneViewController.swift in Sources */,
 				04011FB62313846D009003DE /* LoanCalculatorData.swift in Sources */,
 				6A3197992203FE770031D86F /* MemberCardInfoTwoViewController.swift in Sources */,
 				04074BF62372BBA40042FD3E /* ApplicationDetailVC.swift in Sources */,
@@ -1640,6 +1667,7 @@
 				6A3197B5220401310031D86F /* MembershipViewController.swift in Sources */,
 				0421286D22ECA558003252F8 /* OutletListViewController.swift in Sources */,
 				045811BA2362B97200E3C2DA /* DAViewModel.swift in Sources */,
+				ED387DB8243AF1E500F8DD8A /* RoundLabel.swift in Sources */,
 				0495E2EC22191D51009A6FAB /* HotlineData.swift in Sources */,
 				C16C63E3238C3E01004E24C1 /* AgentChannelPopupViewController.swift in Sources */,
 				045F802122716B8B00E72F27 /* PromotionModel.swift in Sources */,
@@ -1673,6 +1701,7 @@
 				04AF316323EC0A790087719A /* MemberShipNewViewController.swift in Sources */,
 				0495E2EE22191DAA009A6FAB /* HotlineModel.swift in Sources */,
 				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
+				ED387DBE243B218D00F8DD8A /* askProductModel.swift in Sources */,
 				6A69822F221955B900840561 /* BioMetricRegisterViewController.swift in Sources */,
 				6A81F0CD22156005001725EA /* MemberInfoPreviewViewController.swift in Sources */,
 				6A3197BD220403140031D86F /* SecQuestionVerifyViewController.swift in Sources */,
@@ -1693,6 +1722,7 @@
 				04BB5ED82292CDBD0091D768 /* ForceChangeSecConfirmViewController.swift in Sources */,
 				04A889EA224CDE2600AA6CED /* CommonNames.swift in Sources */,
 				04F21AD7221D343A00597FED /* OTPViewModel.swift in Sources */,
+				ED387DBA243B17FF00F8DD8A /* askProductViewModel.swift in Sources */,
 				6AC88E172206AF2D0062926F /* Constants.swift in Sources */,
 				6AC88E132206AE6D0062926F /* LoginData.swift in Sources */,
 				6AC88E232206D6F70062926F /* CardView.swift in Sources */,
@@ -1732,6 +1762,7 @@
 				0421286F22ECA56C003252F8 /* OutletDetailViewController.swift in Sources */,
 				6AFEBE052205CDDA006D2F81 /* FAQ.swift in Sources */,
 				04C2B4F422E9954F00074309 /* PhotoUpdateModel.swift in Sources */,
+				ED387DBC243B1E8F00F8DD8A /* askProductData.swift in Sources */,
 				EF38F9FD23E96ACB00E85262 /* FreeChatViewController.swift in Sources */,
 				04B3D7092224EFD300276A07 /* CustomGIFView.swift in Sources */,
 				04A718AD226ECAA3001683A6 /* PromotionTableViewCell.swift in Sources */,
@@ -1758,6 +1789,7 @@
 				04AF316523ED291F0087719A /* VideoFileData.swift in Sources */,
 				6A3197AC220400700031D86F /* FaqAndTermsConditionViewController.swift in Sources */,
 				04F21AD9221D93F200597FED /* CouponData.swift in Sources */,
+				ED9D95C12436FA7C00B52D74 /* LoanViewController.swift in Sources */,
 				04B3D7072224E6B500276A07 /* InstallationMainViewController.swift in Sources */,
 				C1164C8323B7C9B300CB8B4A /* ConfrimTermCollectionViewCell.swift in Sources */,
 				04011FB8231386FB009003DE /* LoanCalculatorModel.swift in Sources */,
@@ -1939,7 +1971,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = NC9BA4Z58U;
 				INFOPLIST_FILE = AEON/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1947,9 +1979,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS.kyt;
-				PRODUCT_NAME = AEONMember4;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS;
+				PRODUCT_NAME = AEONMember;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1963,17 +1995,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
-				DEVELOPMENT_TEAM = 398G994Z67;
+				CURRENT_PROJECT_VERSION = 18;
+				DEVELOPMENT_TEAM = NC9BA4Z58U;
 				INFOPLIST_FILE = AEON/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS.kyt;
-				PRODUCT_NAME = AEONMember4;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS;
+				PRODUCT_NAME = AEONMember;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

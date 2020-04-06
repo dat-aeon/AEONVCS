@@ -51,28 +51,30 @@ open class ImagePicker: NSObject {
     }
     
     public func present(from sourceView: UIView) {
-        self.pickerController.sourceType = UIImagePickerController.SourceType.camera
-        self.pickerController.allowsEditing = false
-        
-        let mainView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: (self.presentationController?.view.frame.size.width)!, height: (self.presentationController?.view.frame.size.height)!-200))
-        let dimX = mainView.frame.size.width - mainView.frame.size.height
-        let frame             = CGRect.init(x: dimX/2, y: 0, width: mainView.frame.size.height, height: mainView.frame.size.height)
-        let blockView         = UIImageView.init(frame: frame)
-        //blockView.contentMode = .scaleAspectFit
-        blockView.image       = UIImage(named: "camera-grid")
-        //mainView.backgroundColor = UIColor.blue
-        //blockView.backgroundColor = UIColor.red
-        let textFrame        = CGRect.init(x: 5, y: mainView.frame.size.height-50, width: mainView.frame.size.height, height: 50)
-        let textView         = UILabel.init(frame: textFrame)
-        textView.text        = "Please don't have glass on your face during the photo shoot."
-        textView.textColor = UIColor.red
-        textView.backgroundColor = UIColor.white
-        textView.font = UIFont.systemFont(ofSize: 15)
-        textView.numberOfLines = 0
-        mainView.addSubview(blockView)
-        mainView.addSubview(textView)
-        self.pickerController.cameraOverlayView = mainView
-        self.presentationController?.present(self.pickerController, animated: true)
+        DispatchQueue.main.async {
+            self.pickerController.sourceType = UIImagePickerController.SourceType.camera
+            self.pickerController.allowsEditing = false
+            
+            let mainView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: (self.presentationController?.view.frame.size.width)!, height: (self.presentationController?.view.frame.size.height)!-200))
+            let dimX = mainView.frame.size.width - mainView.frame.size.height
+            let frame             = CGRect.init(x: dimX/2, y: 0, width: mainView.frame.size.height, height: mainView.frame.size.height)
+            let blockView         = UIImageView.init(frame: frame)
+            //blockView.contentMode = .scaleAspectFit
+            blockView.image       = UIImage(named: "camera-grid")
+            //mainView.backgroundColor = UIColor.blue
+            //blockView.backgroundColor = UIColor.red
+            let textFrame        = CGRect.init(x: 5, y: mainView.frame.size.height-50, width: mainView.frame.size.height, height: 50)
+            let textView         = UILabel.init(frame: textFrame)
+            textView.text        = "Please don't have glass on your face during the photo shoot."
+            textView.textColor = UIColor.red
+            textView.backgroundColor = UIColor.white
+            textView.font = UIFont.systemFont(ofSize: 15)
+            textView.numberOfLines = 0
+            mainView.addSubview(blockView)
+            mainView.addSubview(textView)
+            self.pickerController.cameraOverlayView = mainView
+            self.presentationController?.present(self.pickerController, animated: true)
+        }
     }
     
     public func presentMessageCamera(from sourceView: UIView) {

@@ -26,6 +26,7 @@ struct CommonNames {
     static var MAIN_VIEW_CONTROLLER = "MainViewController"
     static var ABOUT_US_VIEW_CONTROLLER = "AboutUsViewController"
     static var FAQ_MAIN_VIEW_CONTROLLER = "FAQMainViewController"
+    static var FIRST_TIME_PHONE_VIEW_CONTROLLER = "FirstTimePhoneViewController"
     
     // Home
     //static var HOME_VIEW_CONTROLLER = "HomeViewController"

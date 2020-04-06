@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "753C8B8F21F9B670002E101B"
-               BuildableName = "AEONMember4.app"
+               BuildableName = "AEONMember.app"
                BlueprintName = "AEONVCS"
                ReferencedContainer = "container:AEONVCS.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "753C8B8F21F9B670002E101B"
-            BuildableName = "AEONMember4.app"
+            BuildableName = "AEONMember.app"
             BlueprintName = "AEONVCS"
             ReferencedContainer = "container:AEONVCS.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "753C8B8F21F9B670002E101B"
-            BuildableName = "AEONMember4.app"
+            BuildableName = "AEONMember.app"
             BlueprintName = "AEONVCS"
             ReferencedContainer = "container:AEONVCS.xcodeproj">
          </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "753C8B8F21F9B670002E101B"
-            BuildableName = "AEONMember4.app"
+            BuildableName = "AEONMember.app"
             BlueprintName = "AEONVCS"
             ReferencedContainer = "container:AEONVCS.xcodeproj">
          </BuildableReference>

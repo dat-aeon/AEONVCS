@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -21,7 +21,7 @@
         <!--Aeon ServicesVC-->
         <scene sceneID="dND-2R-yTS">
             <objects>
-                <viewController storyboardIdentifier="AeonServicesVC" id="vH4-lc-upd" customClass="AeonServicesVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AeonServicesVC" id="vH4-lc-upd" customClass="AeonServicesVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fat-L2-Gf7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,7 +103,7 @@
         <!--Application ListVC-->
         <scene sceneID="1tb-zW-NsN">
             <objects>
-                <viewController storyboardIdentifier="ApplicationListVC" id="HpR-hJ-5fx" customClass="ApplicationListVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplicationListVC" id="HpR-hJ-5fx" customClass="ApplicationListVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4IV-LA-Soy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,14 +214,14 @@
                                 <rect key="frame" x="0.0" y="202" width="414" height="606"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="idApplicationCell" id="Sma-V2-cab" customClass="cellApplicationList" customModule="AEONMember4" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="idApplicationCell" id="Sma-V2-cab" customClass="cellApplicationList" customModule="AEONMember" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sma-V2-cab" id="2o7-Uw-poc">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="252"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stS-hN-pbf" customClass="CardView" customModule="AEONMember4" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stS-hN-pbf" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="5" width="404" height="245"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APPROVED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1dB-wy-yyr">
@@ -517,12 +517,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQf-1L-kmg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1176.8115942028987" y="958.92857142857133"/>
+            <point key="canvasLocation" x="1374" y="959"/>
         </scene>
         <!--Attachment EditVC-->
         <scene sceneID="jam-1b-TFh">
             <objects>
-                <viewController storyboardIdentifier="AttachmentEditVC" id="48v-6B-Ic4" customClass="AttachmentEditVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AttachmentEditVC" id="48v-6B-Ic4" customClass="AttachmentEditVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wq4-8R-NX3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -531,7 +531,7 @@
                                 <rect key="frame" x="0.0" y="89" width="414" height="720"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idAttachmentEdit" rowHeight="264" id="rAz-x4-rKs" customClass="cellAttachmentEdit" customModule="AEONMember4" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idAttachmentEdit" rowHeight="264" id="rAz-x4-rKs" customClass="cellAttachmentEdit" customModule="AEONMember" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="264"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rAz-x4-rKs" id="xe4-3H-O2d">
@@ -663,7 +663,7 @@
         <!--Apply LoanVC-->
         <scene sceneID="ogl-S4-ElD">
             <objects>
-                <viewController storyboardIdentifier="ApplyLoanVC" id="4gE-hB-aXC" customClass="ApplyLoanVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplyLoanVC" id="4gE-hB-aXC" customClass="ApplyLoanVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HOP-C3-0k9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -835,7 +835,7 @@
         <!--Application DataVC-->
         <scene sceneID="KuI-2Y-PSp">
             <objects>
-                <viewController storyboardIdentifier="ApplicationDataVC" id="j6e-AN-oi6" customClass="ApplicationDataVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplicationDataVC" id="j6e-AN-oi6" customClass="ApplicationDataVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oAd-Iw-klO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1950"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2267,7 +2267,7 @@
         <!--Occupation DataVC-->
         <scene sceneID="bWq-Qg-zdL">
             <objects>
-                <viewController storyboardIdentifier="OccupationDataVC" id="acq-RW-l8Y" customClass="OccupationDataVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OccupationDataVC" id="acq-RW-l8Y" customClass="OccupationDataVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vqp-Hq-s50">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1564"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3090,7 +3090,7 @@
         <!--Emergency ContactVC-->
         <scene sceneID="LzH-gH-hEV">
             <objects>
-                <viewController storyboardIdentifier="EmergencyContactVC" id="hAF-I3-c4I" customClass="EmergencyContactVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmergencyContactVC" id="hAF-I3-c4I" customClass="EmergencyContactVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zIL-m8-lht">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3651,7 +3651,7 @@
         <!--GuarantorVC-->
         <scene sceneID="h4N-pC-AnR">
             <objects>
-                <viewController storyboardIdentifier="GuarantorVC" id="zrf-Iy-Ep0" customClass="GuarantorVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuarantorVC" id="zrf-Iy-Ep0" customClass="GuarantorVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6V2-4O-K1Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="2615"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6547,12 +6547,12 @@
         <!--Purchase DetailVC-->
         <scene sceneID="hOF-0Z-rG4">
             <objects>
-                <viewController storyboardIdentifier="PurchaseDetailVC" id="qt9-7R-CaJ" customClass="PurchaseDetailVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PurchaseDetailVC" id="qt9-7R-CaJ" customClass="PurchaseDetailVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mtJ-QE-ULh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-Px-jO7" customClass="CardView" customModule="AEONMember4" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-Px-jO7" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
                                 <rect key="frame" x="10" y="54" width="394" height="798"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhh-E0-P1d">
@@ -6570,7 +6570,7 @@
                                         <rect key="frame" x="10" y="70" width="374" height="718"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idPurchaseCell" rowHeight="56" id="LJt-T3-7NJ" customClass="cellPurchaseList" customModule="AEONMember4" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idPurchaseCell" rowHeight="56" id="LJt-T3-7NJ" customClass="cellPurchaseList" customModule="AEONMember" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="374" height="56"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LJt-T3-7NJ" id="xtR-Lw-vK1">
@@ -6608,7 +6608,7 @@
                                                     <outlet property="cellLblTitle" destination="vSs-Lf-B2a" id="5r5-EQ-CET"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idUserCardTBCell" rowHeight="230" id="Or6-YK-dwj" customClass="cellPurchaseImages" customModule="AEONMember4" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idUserCardTBCell" rowHeight="230" id="Or6-YK-dwj" customClass="cellPurchaseImages" customModule="AEONMember" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="84" width="374" height="230"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Or6-YK-dwj" id="d5r-9g-28X">
@@ -6681,13 +6681,13 @@
         <!--TncVC-->
         <scene sceneID="H5T-yh-Rpc">
             <objects>
-                <viewController storyboardIdentifier="DATnCVC" id="blg-4J-wEZ" customClass="DATncVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DATnCVC" id="blg-4J-wEZ" customClass="DATncVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wHe-8B-abD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Mm-hx-d2U">
-                                <rect key="frame" x="0.0" y="79" width="414" height="783"/>
+                                <rect key="frame" x="0.0" y="86.5" width="414" height="775.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -6706,7 +6706,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhG-jg-oUe">
-                                <rect key="frame" x="0.0" y="50" width="414" height="22.5"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="30"/>
                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="19"/>
                                 <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -6738,13 +6738,13 @@
         <!--Loan ConfirmationVC-->
         <scene sceneID="s3G-AG-1mF">
             <objects>
-                <viewController storyboardIdentifier="LoanConfirmationVC" id="yD4-36-ZML" customClass="LoanConfirmationVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoanConfirmationVC" id="yD4-36-ZML" customClass="LoanConfirmationVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Khx-4S-rIG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="2062"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcH-no-Cv2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1992"/>
+                                <rect key="frame" x="0.0" y="0.0" width="336" height="1992"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="0bw-FB-753">
                                         <rect key="frame" x="15" y="16" width="341" height="32"/>
@@ -6962,7 +6962,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="confirmTermCollectionCell" id="58U-Ef-8uP" customClass="ConfrimTermCollectionViewCell" customModule="AEONMember4" customModuleProvider="target">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="confirmTermCollectionCell" id="58U-Ef-8uP" customClass="ConfrimTermCollectionViewCell" customModule="AEONMember" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8xD-3q-qHu">
@@ -8137,10 +8137,10 @@
                                 </constraints>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kfv-Wv-YIm">
-                                <rect key="frame" x="10" y="2002" width="355" height="40"/>
+                                <rect key="frame" x="10" y="2002" width="316" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4B-fK-hBI">
-                                        <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="153" height="40"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
                                         <state key="normal" title="PREVIEW">
@@ -8151,7 +8151,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2R-Im-Zda">
-                                        <rect key="frame" x="182.5" y="0.0" width="172.5" height="40"/>
+                                        <rect key="frame" x="163" y="0.0" width="153" height="40"/>
                                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="f2R-Im-Zda" secondAttribute="height" multiplier="188:49" id="7CF-HJ-I87"/>
@@ -8319,12 +8319,12 @@
         <!--Application DetailVC-->
         <scene sceneID="qGl-Vm-wTD">
             <objects>
-                <viewController storyboardIdentifier="ApplicationDetailVC" id="IOM-uL-3ki" customClass="ApplicationDetailVC" customModule="AEONMember4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplicationDetailVC" id="IOM-uL-3ki" customClass="ApplicationDetailVC" customModule="AEONMember" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gdk-Zo-CSD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyE-ZO-Bru" customClass="CardView" customModule="AEONMember4" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyE-ZO-Bru" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
                                 <rect key="frame" x="10" y="54" width="394" height="803"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ixf-i7-yb0">
@@ -8342,7 +8342,7 @@
                                         <rect key="frame" x="0.0" y="60" width="394" height="743"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idApplicationCell" rowHeight="56" id="xwU-7a-JGu" customClass="cellPurchaseList" customModule="AEONMember4" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idApplicationCell" rowHeight="56" id="xwU-7a-JGu" customClass="cellPurchaseList" customModule="AEONMember" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="394" height="56"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xwU-7a-JGu" id="fH8-0o-9M4">
@@ -8380,7 +8380,7 @@
                                                     <outlet property="cellLblTitle" destination="RuK-Fs-asC" id="6S3-ds-kRX"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idApplicationUserCardCell" rowHeight="230" id="QnP-bS-0dH" customClass="cellPurchaseImages" customModule="AEONMember4" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idApplicationUserCardCell" rowHeight="230" id="QnP-bS-0dH" customClass="cellPurchaseImages" customModule="AEONMember" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="84" width="394" height="230"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QnP-bS-0dH" id="uk0-if-DE5">
