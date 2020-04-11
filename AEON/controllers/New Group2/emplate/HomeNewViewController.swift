@@ -49,32 +49,45 @@ class HomeNewViewController: BaseUIViewController {
     @IBOutlet weak var loanApplicationView: CardView!
     @IBOutlet weak var loanAppView: CardView!
     
-    @IBOutlet weak var loanApplyBtn: UIButton!
+    @IBOutlet weak var loanApplyBtn: UILabel!
     
     @IBOutlet weak var contactAppLabel: UILabel!
     @IBOutlet weak var unReadAskProductLabel: UILabel!
-    @IBOutlet weak var loanApplicationStatusBtn: UIButton!
+    @IBOutlet weak var loanAppBtn: UILabel!
+    @IBOutlet weak var loanApplicationStatusBtn: UILabel!
     var customerType : String?
     
     var sessionDataBean : SessionDataBean?
     
     var senderName: String?
     var senderId: Int?
-    
+    let customerId:Int = 303122
+    let cid: Int = 77
     //AT websocket
     var socketReq : SocketReqBean?
     var param : SocketParam?
     
     var vidoeFilePath : String = ""
-    
+   
+   
   
     @IBAction func loanViewHidePress(_ sender: UITapGestureRecognizer) {
         loanAppView.isHidden = true
         
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        contactUpMessageUnRead(customerId: customerId)
+//        levelTwoUnRead(customerId: cid)
+//         loanAppView.isHidden = true
+//    }
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+         
+        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        contactUpMessageUnRead(customerId: customerId)
+        levelTwoUnRead(customerId: senderId ?? 0)
         uiSetup()
         loanAppView.isHidden = true
         updateViews()
@@ -204,9 +217,7 @@ class HomeNewViewController: BaseUIViewController {
                contactAppLabel?.layer.borderColor = UIColor.red.cgColor
                contactAppLabel?.layer.borderWidth = 1.0
     }
-   
     @IBAction func loanApplyBtnPress(_ sender: UIButton) {
-        
                let storyboard = UIStoryboard(name: "DA", bundle: nil)
                               let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.APPLY_LOAN_NAV)
                               applyLoanNav.modalPresentationStyle = .overFullScreen
@@ -217,12 +228,10 @@ class HomeNewViewController: BaseUIViewController {
     @objc override func updateViews() {
         super.updateViews()
         self.lblMembership.text = "sidemenu.membership".localized
-        
         Utils.setLineSpacing(data: "contactus.title".localized, label: lblCustomerService)
         //self.lblCustomerService.text = "contactus.title".localized
         Utils.setLineSpacing(data: "main.loancalculator".localized, label: lblLoanCalculaotr)
         //self.lblLoanCalculaotr.text = "main.loancalculator".localized
-        
         self.lblAnnouncement.text = "main.announcement".localized
         self.lblAskproduct.text = "main.askproduct".localized
         self.lblGoodnews.text = "main.goodnews".localized
@@ -233,24 +242,75 @@ class HomeNewViewController: BaseUIViewController {
         //self.lblInformationUpdate.text = "main.informationupdate".localized
         self.lblShare.text = "main.share".localized
         self.lblLogOut.text = "sidemenu.logout".localized
-        self.loanApplyBtn.titleLabel?.text = "loanApplyBtn".localized
+        self.loanApplyBtn.text = "main.loanapplybtn".localized
+        self.loanAppBtn.text = "main.loanapplybtn".localized
+        self.loanApplicationStatusBtn.text = "main.loanApplicationStatusBtn".localized
     }
-    
-    func roomSync() {
-        
-    }
-    func askProductUnread() {
-        let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
-        askProductModel.init().askProductSync(customerId: customerId, success: { (result) in
-            print(result)
+    func levelTwoUnRead(customerId: Int) {
+      var unreadM = UserDefaults.standard.set(0, forKey: Constants.UNREAD_MESSAGE_COUNT)
+        print(unreadM); LevelTwoMessageUnreadViewModel.init().levelTwoUnreadMessageSync(customerId: customerId, success: { (result) in
+            print("result..<<...  \(result.data.level2MessageUnReadCount)")
+            if "\(result.data.level2MessageUnReadCount)" == "0" {
+                            self.contactAppLabel.isHidden = true
+                        }else{
+                             self.contactAppLabel.isHidden = false
+                            if self.contactAppLabel.text?.count ?? 0 > 99 {
+                                self.contactAppLabel.text = "+99"
+                            }else{
+                                self.contactAppLabel.text =  "\(result.data.level2MessageUnReadCount)"
+                            }
+            }
+            
         }) { (error) in
             print(error)
         }
     }
     
+   
+    func contactUpMessageUnRead(customerId: Int) {
+        
+        AskProductViewModel.init().askProductSync(customerId: customerId, success: { (result) in
+            print("result ,,,.,,..,.kaungmyatsan \(result.data.askProductUnReadCount)")
+            if "\(result.data.askProductUnReadCount)" == "0" {
+                            self.unReadAskProductLabel.isHidden = true
+                        }else{
+                             self.unReadAskProductLabel.isHidden = false
+                            if self.unReadAskProductLabel.text?.count ?? 0 > 99 {
+                                self.unReadAskProductLabel.text = "+99"
+                            }else{
+                                self.unReadAskProductLabel.text =  "\(result.data.askProductUnReadCount)"
+                            }
+            }
+        }) { (error) in
+            print(error)
+        }
+        
+//        contactUsModel.init().contactUsMessage(customerId: customerId, success: { (result) in
+//
+//            print("result ,,,.,,..,.kaungmyatsan \(result.data.askProductUnReadCount)")
+//            if "\(result.data.askProductUnReadCount)" == "0" {
+//                self.contactAppLabel.isHidden = true
+//            }else{
+//                 self.contactAppLabel.isHidden = false
+//                if self.contactAppLabel.text?.count ?? 0 > 99 {
+//                    self.contactAppLabel.text = "+99"
+//                }else{
+//                    self.contactAppLabel.text =  "\(result.data.askProductUnReadCount)"
+//                }
+//            }
+//        }) { (error) in
+//            print(error)
+//        }
+//        askProductModel.init().askProductSync(customerId: customerId, success: { (result) in
+//            print(result)
+//        }) { (error) in
+//            print(error)
+//        }
+    }
+    
     @objc func onTapMemberShipView() {
         print("click")
-        
+        loanAppView.isHidden = true
         if self.customerType == Constants.MEMBER {
             let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MemberShipNewViewController") as! UIViewController
             navigationVC.modalPresentationStyle = .overFullScreen
@@ -266,6 +326,7 @@ class HomeNewViewController: BaseUIViewController {
     
     @objc func onTapCustomerServiceView() {
         print("click")
+        loanAppView.isHidden = true
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MessagingViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
@@ -273,18 +334,21 @@ class HomeNewViewController: BaseUIViewController {
     
     @objc func onTapLoanCalculatorView() {
         print("click")
+        loanAppView.isHidden = true
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoanCalculatorViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapAnnouncementView() {
+        loanAppView.isHidden = true
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "PromotionViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapAskProductView() {
+        loanAppView.isHidden = true
         print("click")
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "AgentChannelViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
@@ -293,6 +357,7 @@ class HomeNewViewController: BaseUIViewController {
     
     @objc func onTapGoodNewsView() {
         print("click")
+        loanAppView.isHidden = true
         
         UserDefaults.standard.set(2, forKey: Constants.togoodnewsfrom)
         
@@ -302,6 +367,7 @@ class HomeNewViewController: BaseUIViewController {
     }
     
     @objc func onTapHowToUseView() {
+        loanAppView.isHidden = true
         print("click")
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HowToUseViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
@@ -309,12 +375,14 @@ class HomeNewViewController: BaseUIViewController {
     }
     
     @objc func onTapOurServiceView() {
+        loanAppView.isHidden = true
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FaqAndTermsConditionViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapFindUsView() {
+        loanAppView.isHidden = true
         print("click")
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "OutletInfoViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
@@ -324,6 +392,7 @@ class HomeNewViewController: BaseUIViewController {
     
     @objc func onTapInformationUpdateView() {
         print("click")
+        loanAppView.isHidden = true
         
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.INFORMATION_UPDATE_VIEW_CONTROLLER) as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
@@ -331,7 +400,7 @@ class HomeNewViewController: BaseUIViewController {
         
     }
     @IBAction func onTappedAppInquiry(_ sender: Any) {
-
+        
         let storyboard = UIStoryboard(name: "DA", bundle: nil)
         let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.INQUIRY_LOAN_NAV) 
         if #available(iOS 13.0, *) {
@@ -347,6 +416,7 @@ class HomeNewViewController: BaseUIViewController {
     
     @objc func onTapFacebookView() {
         print("click")
+        loanAppView.isHidden = true
         UIApplication.tryURL(urls: [
             "fb://profile/116374146706", // App
             "https://www.facebook.com/AeonMicrofinance/" // Website if app fails
@@ -355,7 +425,7 @@ class HomeNewViewController: BaseUIViewController {
     
     @objc func onTapShareView() {
         print("click")
-        
+        loanAppView.isHidden = true
         let shareText = Constants.AEON_SHARE_LINK
         
         //let messageVC = CustomMessageActivity(message:shareText)

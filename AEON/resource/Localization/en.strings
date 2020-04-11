@@ -568,17 +568,23 @@
 "main.loancalculator" = "Loan Calculator";
 "main.register" = "Register";
 "main.goodnews" = "Good News";
+"main.loanapplication" = "Loan Application";
 "main.findus" = "Find Us";
 "main.ourservice" = "Our Service";
 "main.announcement" = "Announcement";
 "main.howtouse" = "How to use";
 "main.share" = "Share";
+
 "main.customerservice" = "Customer Service";
 "main.askproduct" = "Ask Product";
 "main.informationupdate" = "Information Update";
-
+"main.loanapplybtn" = "Loan Apply";
+"main.loanApplicationStatusBtn" = "Loan Application Status";
 //MemberShip
 "membership.warningtext" = "If you have any concerned about last reveived day, please contact to AEON";
 
 "membership.lastReceiveday" = "Last Received Day : ";
+
+
+
 

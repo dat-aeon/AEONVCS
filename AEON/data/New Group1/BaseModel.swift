@@ -559,10 +559,12 @@ class BaseModel {
 //
 //        }
     
-    func getAskProductUnread(endPoint:String,rawData:[String:Int],completion:@escaping (Result<Any>)->Void) -> DataRequest {
-
+    
+    
+    func getAskProductUnreadPostWithoutToken(endPoint:String,rawData:[String:Int],completion:@escaping (Result<Any>)->Void) -> DataRequest {
+           
            let urlString = Constants.base_url + endPoint
-
+       
            let url = URL(string: urlString)
            var request        = URLRequest(url: url!)
            request.httpMethod = ApiServiceEndPoint.POST_METHOD
@@ -570,14 +572,15 @@ class BaseModel {
            request.timeoutInterval = 180
            do {
                request.httpBody = try JSON(rawData).rawData()
-
+               
            } catch let error {
                print("Error : \(error.localizedDescription)")
            }
-           print("Request data :::::::::::\(request)\(rawData)")
-
+           //print("Request data :::::::::::\(request)\(rawData)")
+           
            return Alamofire.request(request).responseJSON{ (response) in
                completion(response.result)
+            print("kauntmyatsan response result .. \(response.result)")
            }
        }
 

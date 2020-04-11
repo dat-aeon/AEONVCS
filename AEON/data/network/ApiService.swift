@@ -115,6 +115,6 @@ struct ApiServiceEndPoint {
     
     //ask product
     
-    static var askproductunread = "free-token/get-ask-product-unread-count?"
-    
+    static var contactUpMessageApi = "free-token/get-ask-product-unread-count"
+    static var LEVEL_TWO_MESSAGE_UNREAD = "free-token/get-level-2-message-unread-count"
 }

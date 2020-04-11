@@ -64,7 +64,7 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     
     // reload message
     var count:Int = 10
-    var countTimer:Timer!
+    var countTimer:Timer?
     
     // Google Map location
     var locationManager : CLLocationManager?
@@ -298,7 +298,7 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.countTimer.invalidate()
+        self.countTimer?.invalidate()
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

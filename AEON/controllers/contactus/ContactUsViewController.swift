@@ -38,7 +38,7 @@ class ContactUsViewController: BaseUIViewController {
         case 2:
             cvHotLine.alpha = 0
             cvMessaging.alpha = 1
-//            // change read_flag on DB
+            // change read_flag on DB
 //            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
 //            var unreadArray = UserDefaults.standard.array(forKey: Constants.UNREAD_MESSAGE_ARRAY)  as? [Int] ?? [Int]()
 //            if unreadArray.count > 0 {

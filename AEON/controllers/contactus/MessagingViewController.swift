@@ -139,7 +139,7 @@ class MessagingViewController: BaseUIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //super.socket.send("unReadMessageList:")
-
+        
         if self.isDidLoad {
             self.isDidLoad = false
 
@@ -154,7 +154,7 @@ class MessagingViewController: BaseUIViewController {
                     for messageId in unreadArray {
                         //self.messagingSocket.send("ChangeReadFlagWithMsgId:\(messageId)")
                         super.socket.write(string: "ChangeReadFlagWithMsgId:\(messageId)")
-//                        print("socket:: change read flag")
+                        print("socket:: change read flag")
                     }
                     unreadArray.removeAll()
                     UserDefaults.standard.set(unreadArray, forKey: Constants.UNREAD_MESSAGE_ARRAY)
@@ -351,7 +351,7 @@ extension MessagingViewController : WebSocketDelegate {
         //print("message socket opened")
         super.socket.write(string: "userName:\(self.senderName)userId:\(self.senderId)")
         super.socket.write(string: "cr:\(self.senderName)or:userWithAgency:")
-        
+       
     }
     
     func webSocketClose(_ code: Int, reason: String, wasClean: Bool) {
@@ -415,7 +415,8 @@ extension MessagingViewController : WebSocketDelegate {
             do{
                 if let json = text.data(using: String.Encoding.utf8){
                     if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
-                        
+                        print("kaungmyat >>>>M<<<<< json \(json)")
+                        print("kaungmyat >>>>M<<<<<jsonData  \(jsonData)")
                         let type = jsonData["type"] as! String
                         //print("type", type)
                         
@@ -425,7 +426,9 @@ extension MessagingViewController : WebSocketDelegate {
                                 super.socket.write(string: "messageList:")
                                 
                             } else {
-                                super.socket.write(string: "unReadMessageList:")
+                                print("kaungmyat >>>>M<<<<<type  \(type)")
+                                super.socket.write(string:
+                                    "unReadMessageList:")
                             }
                             
                         } else if (type == "messageListData"){
@@ -553,7 +556,7 @@ extension MessagingViewController : WebSocketDelegate {
                             
                         } else if (type == "message"){
                             
-                            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+                            print("meaasge kaungmyat type \(type)"); CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                             
                             let messageMenu = UserDefaults.standard.integer(forKey: Constants.MESSAGING_MENU)
                             
@@ -750,6 +753,7 @@ extension MessagingViewController:UITableViewDataSource{
         } else if (!messageData.isReceiveMesg) {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.MESG_SENDER_TABLE_CELL, for: indexPath) as! MesgSenderTableViewCell
+            print("\(messageData.isReceiveMesg)")
             cell.setData(messageBean: messageData)
             cell.selectionStyle = .none
             return cell

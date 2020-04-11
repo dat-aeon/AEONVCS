@@ -558,9 +558,15 @@
 "main.announcement" = "ကြေညာချက်";
 "main.howtouse" = "အသုံးပြုနည်း";
 "main.share" = "မျှဝေမည်";
+"main.loanapplybtn" = "ချေးငွေလျှောက်လွှာ";
 "main.customerservice" = "ဆက်သွယ်ရန်";
 "main.askproduct" = "ပစ္စည်းမေးရန်";
 "main.informationupdate" = "အချက်အလက်\nပြင်ဆင်ခြင်း";
 
 "membership.warningtext" = "သင်​၏နောက်ဆုံးငွေပေးချေမှုရက်စွဲနှင့်ပတ်သက်၍ ကွဲလွဲမှုများရှိပါက AEONသို့ဆက်သွယ်ပါ။";
 "membership.lastReceiveday" = "နောက်ဆုံးငွေပေးချေမှုရက်စွဲ : ";
+
+//loanapply
+
+"main.loanapplybtn" = "ချေးငွေးလျှောက်ထား";
+"main.loanApplicationStatusBtn" = "ချေးငွေးလျှောက်လွှာ";
