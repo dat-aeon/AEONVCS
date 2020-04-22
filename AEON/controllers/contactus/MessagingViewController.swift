@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 import Starscream
-
 class MessagingViewController: BaseUIViewController {
 
     
@@ -136,6 +135,7 @@ class MessagingViewController: BaseUIViewController {
         updateViews()
     }
     
+  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //super.socket.send("unReadMessageList:")
@@ -443,6 +443,7 @@ extension MessagingViewController : WebSocketDelegate {
                                     
                                     if unreadArray.count > 0 {
                                         unreadArray.removeAll()
+                                        
                                     }
                                     if content.count == 25 {
                                         var messageBean = MessageBean()
@@ -754,6 +755,7 @@ extension MessagingViewController:UITableViewDataSource{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.MESG_SENDER_TABLE_CELL, for: indexPath) as! MesgSenderTableViewCell
             print("\(messageData.isReceiveMesg)")
+            print("kaungmyat readflag ...>>> \(messageData.readFlag)")
             cell.setData(messageBean: messageData)
             cell.selectionStyle = .none
             return cell
