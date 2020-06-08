@@ -481,7 +481,7 @@ extension FreeChatViewController : WebSocketDelegate {
                                         unreadArray.removeAll()
                                     }
                                     
-                                    if content.count == 25 {
+                                    if content.count == content.count {
                                         var messageBean = MessageBean()
                                         messageBean.isButton = true
                                         messageBean.messageId = (content[content.count - 1] as AnyObject).value(forKey: "message_id") as? Int
@@ -527,7 +527,7 @@ extension FreeChatViewController : WebSocketDelegate {
                                 self.messageBeanList.remove(at: 0)
                                 self.messageBeanList.insert(contentsOf: oldMessageBeanList, at: 0)
                                 
-                                let scrollIndex:IndexPath = IndexPath(row: 25 , section: 0)
+                                let scrollIndex:IndexPath = IndexPath(row: content.count , section: 0)
                                 
                                 self.tvMessagingView.reloadData()
                                 self.tvMessagingView.scrollToRow(at: scrollIndex, at: .top, animated: false)
