@@ -257,6 +257,7 @@ extension SecQuestConfirmViewController:UITableViewDataSource{
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.SEC_QUEST_CONFIRM_TABLE_CELL, for: indexPath) as! SecQuesConfirmTableViewCell
+        
         cell.selectionStyle = .none
         cell.lblPhoneNo.text = "register.phoneno.label".localized
         cell.tfPhoneNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
@@ -331,10 +332,10 @@ extension SecQuestConfirmViewController:UITableViewDelegate{
             return CGFloat(70.0)
             
         } else if indexPath.section == 1{
-            return CGFloat(150.0)
+            return CGFloat(250.0)
             
         }
-        return CGFloat(250.0)
+        return CGFloat(350.0)
     }
 }
 

@@ -186,6 +186,7 @@ struct CommonNames {
     static var APPLICATION_LIST_CELL = "idApplicationCell"
     
     static var PURCHASE_LIST_CELL = "idPurchaseCell"
+    static var CELLPURCHASE_TITLE_LIST = "cellPurchaseTitleList"
     
     static var PURCHASE_DETAIL_VC = "PurchaseDetailVC"
     

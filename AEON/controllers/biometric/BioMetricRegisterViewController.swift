@@ -15,8 +15,10 @@ class BioMetricRegisterViewController: BaseUIViewController {
     @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
+    @IBOutlet weak var phoneTitleLabel: UILabel!
     
 
+    @IBOutlet weak var passwordTitleLabel: UILabel!
     @IBOutlet weak var svBioMetricVerify: UIScrollView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var tfPhone: UITextField!
@@ -109,7 +111,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
     }
     
     @IBAction func onClickSubmitButton(_ sender: UIButton) {
-        
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         
         if isErrorExist() {
             return
@@ -129,7 +131,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
             
         } else {
         
-            LoginAuthViewModel.init().accessLoginToken(phoneNo: tfPhone.text!, password: tfPassword.text!, success: { (result) in
+            LoginAuthViewModel.init().accessLoginToken(phoneNo: tfPhone.text!, loginDeviceId: deviceId, password: tfPassword.text!, success: { (result) in
                 
                 self.authenticateBioMetricData(phone: self.tfPhone.text!, password: self.tfPassword.text!)
                 
@@ -196,6 +198,8 @@ class BioMetricRegisterViewController: BaseUIViewController {
         self.lbWarningText.text = "biometric.warning.text".localized
         self.lbPhoneMessage.text = self.phoneMesgLocale?.localized
         self.lbPasswordMessage.text = self.passMesgLocale?.localized
+        self.phoneTitleLabel.text = "biometric.phoneno.phoneno".localized
+        self.passwordTitleLabel.text = "biometric.phoneno.password".localized
     }
     
     func authenticateBioMetricData(phone:String,password:String){
@@ -307,6 +311,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
     
     func doAutoLogin(phone: String, password: String) {
         // check network
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         if Network.reachability.isReachable == false {
             Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
             return
@@ -316,7 +321,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
         DispatchQueue.main.async {
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         }
-        LoginAuthViewModel.init().accessLoginToken(phoneNo: phone, password: password, success: { (result) in
+        LoginAuthViewModel.init().accessLoginToken(phoneNo: phone, loginDeviceId: deviceId, password: password, success: { (result) in
             
             //                        let jsonData = try? JSONEncoder().encode(result)
             //                        let jsonString = String(data: jsonData!, encoding: .utf8)!

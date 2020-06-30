@@ -167,6 +167,10 @@ extension MemberCardInfoOneViewController:UITableViewDelegate{
 }
 
 extension MemberCardInfoOneViewController: MemberCardInfoCellDelegate {
+    func alertQR() {
+        print("tap alertQR ckick")
+    }
+    
     func tappedOnQRcode(currentIndex: Int) {
         let agreement = self.agreementNoList[currentIndex]
         self.doGetQRProductInfo(appid: agreement.daApplicationInfoId ?? 0)

@@ -24,6 +24,7 @@ import SwiftyJSON
     var memberNo: String?
     var memberNoValid: Bool?
     var hotlinePhone: String?
+    var jti: String?
     var customerAgreementDtoList: [CustomerAgreementDtoList]?
     
     enum CodingKeys: String, CodingKey {
@@ -34,6 +35,7 @@ import SwiftyJSON
         case memberNo, hotlinePhone
         case name, dateOfBirth, nrcNo, photoPath, customerAgreementDtoList
         case memberNoValid
+        case jti
     }
  }
  
@@ -68,6 +70,7 @@ import SwiftyJSON
  }
  
  struct SessionDataBean : Codable {
+    var loginDeviceId: String?
     var customerId: Int?
     var customerNo: String?
     var phoneNo: String?

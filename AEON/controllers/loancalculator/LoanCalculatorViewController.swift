@@ -191,9 +191,9 @@ class LoanCalculatorViewController: BaseUIViewController {
     
     var heightViewCalculate = 0
     
-    let MINIMUM_AMOUNT = 100000
+    let MINIMUM_AMOUNT = 50000
     let MAXIMUM_AMOUNT = 2000000
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -223,9 +223,47 @@ class LoanCalculatorViewController: BaseUIViewController {
             self.lblBarCusType.text = "Lv.1 : Application user"
             
         }
+        var logoutTimer: Timer?
+        if lblBarCusType.text == "Lv.2 : Login user" {
+                          print("kms ssssssssss>>>>>>")
+                    logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+                      }
         
     }
-    
+    @objc func runTimedCode() {
+                 multiLoginGet()
+             // print("kms\(logoutTimer)")
+             }
+    func multiLoginGet(){
+        let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+     var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+    MultiLoginModel.init().makeMultiLogin(customerId: customerId
+            , loginDeviceId: deviceID, success: { (results) in
+            print("kaungmyat san multi >>>  \(results)")
+            
+            if results.data.logoutFlag == true {
+                print("success stage logout")
+                // create the alert
+                       let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                       // add an action (button)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                   // self.logoutTimer?.invalidate()
+                    let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                    navigationVC.modalPresentationStyle = .overFullScreen
+                    self.present(navigationVC, animated: true, completion:nil)
+                    
+                }))
+
+                       // show the alert
+                       self.present(alert, animated: true, completion: nil)
+                
+                
+            }
+        }) { (error) in
+            print(error)
+        }
+    }
     func setupView() {
         self.colviewLoanTerm.delegate = self
         self.colviewLoanTerm.dataSource = self
@@ -279,7 +317,7 @@ class LoanCalculatorViewController: BaseUIViewController {
           
         
     }
-    
+   
     @objc func onTapBack() {
                  self.dismiss(animated: true, completion: nil)
               }
@@ -305,7 +343,13 @@ class LoanCalculatorViewController: BaseUIViewController {
     
     @objc override func updateViews() {
         super.updateViews()
-        
+        if self.switchMotorCycle.isOn == true {
+            self.lblWarning.text = "loan.warning_minimum_motorcycle".localized
+             self.colviewLoanTerm.reloadData()
+        }else{
+             self.lblWarning.text = "loan.warning_minimum".localized
+        }
+       
         self.lblTitleMotorCycle.text = "loan.motor_cycle".localized
         self.lblTitleLoanTerm.text = "loan.loan_term".localized
         self.lblTitleProcessingFee.text = "loan.fee".localized

@@ -12,8 +12,11 @@ import UIKit
 import SwiftyJSON
 import Starscream
 
+
 class HomeNewViewController: BaseUIViewController {
+    @IBOutlet weak var loanApplyViewPress: UIStackView!
     
+    @IBOutlet weak var loanApplyStatusView: UIStackView!
     @IBOutlet weak var memberShipView: CardView!
     @IBOutlet weak var customerServiceView: CardView!
     @IBOutlet weak var loanCalculatorView: CardView!
@@ -60,34 +63,50 @@ class HomeNewViewController: BaseUIViewController {
     var sessionDataBean : SessionDataBean?
     
     var senderName: String?
-    var senderId: Int?
-    let customerId:Int = 303122
-    let cid: Int = 77
+    var senderId: Int!
+ //   let customerId:Int = 303122
+  //  let cid: Int = 77
+  //  var userDeviceID: String!
     //AT websocket
     var socketReq : SocketReqBean?
     var param : SocketParam?
-    
+    var AutomessageBean = MessageBean()
     var vidoeFilePath : String = ""
-   
-   
-  
+    
+    
+    
     @IBAction func loanViewHidePress(_ sender: UITapGestureRecognizer) {
         loanAppView.isHidden = true
         
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        contactUpMessageUnRead(customerId: customerId)
-//        levelTwoUnRead(customerId: cid)
-//         loanAppView.isHidden = true
-//    }
-  
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        contactUpMessageUnRead(customerId: customerId)
+    //        levelTwoUnRead(customerId: cid)
+    //         loanAppView.isHidden = true
+    //    }
+    override func viewWillAppear(_ animated: Bool) {
+       self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        
+      //  askProductMessageUnRead(customerId: senderId!)
+               levelTwoUnRead(customerId: senderId!)
+    }
+
+    
+ var logoutTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        askProductView.isHidden = true
+        loanApplicationView.isHidden = false
+      logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+       
+    
+        print("kaungmyat usertypeid \(UserDefaults.standard.integer(forKey: Constants.USER_INFO_USER_TYPE_ID))")
+        self.deviceID = sessionDataBean?.loginDeviceId ?? ""
+     
         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
-        contactUpMessageUnRead(customerId: customerId)
-        levelTwoUnRead(customerId: senderId ?? 0)
+      //  askProductMessageUnRead(customerId: senderId!)
+        levelTwoUnRead(customerId: senderId!)
         uiSetup()
         loanAppView.isHidden = true
         updateViews()
@@ -111,7 +130,8 @@ class HomeNewViewController: BaseUIViewController {
         self.facebookView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapFacebookView)))
         self.shareView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapShareView)))
         self.loanApplicationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTaploanApplicationView)))
-        
+        self.loanApplyViewPress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTaploanAppView)))
+        self.loanApplyStatusView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTaploanApplyStatusView)))
         self.lblLogOut.isUserInteractionEnabled = true
         self.lblLogOut.addGestureRecognizer(UITapGestureRecognizer(target: self, action:
             #selector(onTapLogOut)))
@@ -135,23 +155,23 @@ class HomeNewViewController: BaseUIViewController {
         //        case .MY:
         //            bbLocaleFlag.image = UIImage(named: "en_flag")
         //        }
-        
+       
         self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)!
         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
-//        super.socket.delegate = self
-//        if !super.socket.isConnected {
-//            super.socket.connect()
-//            
-//        }
-//        self.socketReq = SocketReqBean()
-//        self.param = SocketParam()
-//        super.at_socket.delegate = self
-//        if !super.at_socket.isConnected {
-//            super.at_socket.connect()
-//        }
-//        param!.customerId = self.senderId!
-//        param!.phoneNo = self.senderName!
-//        param!.roomName = self.senderName!
+        //        super.socket.delegate = self
+        //        if !super.socket.isConnected {
+        //            super.socket.connect()
+        //
+        //        }
+        //        self.socketReq = SocketReqBean()
+        //        self.param = SocketParam()
+        //        super.at_socket.delegate = self
+        //        if !super.at_socket.isConnected {
+        //            super.at_socket.connect()
+        //        }
+        //        param!.customerId = self.senderId!
+        //        param!.phoneNo = self.senderName!
+        //        param!.roomName = self.senderName!
         
         
         // session timeout
@@ -169,7 +189,43 @@ class HomeNewViewController: BaseUIViewController {
         
         
     }
+    var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+    //var customID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+    func multiLoginGet(){
+            let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+       
+        MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                , loginDeviceId: deviceID, success: { (results) in
+                print("kaungmyat san multi >>>  \(results)")
+                
+                if results.data.logoutFlag == true {
+                    print("success stage logout")
+                    // create the alert
+                           let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                           // add an action (button)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.logoutTimer?.invalidate()
+                        let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                        navigationVC.modalPresentationStyle = .overFullScreen
+                        self.present(navigationVC, animated: true, completion:nil)
+                        
+                    }))
+
+                           // show the alert
+                           self.present(alert, animated: true, completion: nil)
+                    
+                    
+                }
+            }) { (error) in
+                print(error)
+            }
+        }
     
+    @objc func runTimedCode() {
+              multiLoginGet()
+          // print("kms\(logoutTimer)")
+          }
     @objc func dismissKeyboard() {
         DispatchQueue.main.async {
             self.view.endEditing(true)
@@ -197,32 +253,30 @@ class HomeNewViewController: BaseUIViewController {
     
     func uiSetup() {
         loanApplyBtn.layer.borderColor  = UIColor.orange.cgColor
-               loanApplyBtn.layer.backgroundColor = UIColor.white.cgColor
-                      loanApplyBtn.layer.cornerRadius = 5
-                      loanApplyBtn.layer.masksToBounds = true
-                      loanApplyBtn.layer.borderWidth = 1
-               
-               loanApplicationStatusBtn.layer.borderColor  = UIColor.orange.cgColor
-                      loanApplicationStatusBtn.layer.backgroundColor = UIColor.white.cgColor
-                             loanApplicationStatusBtn.layer.cornerRadius = 5
-                             loanApplicationStatusBtn.layer.masksToBounds = true
-                             loanApplicationStatusBtn.layer.borderWidth = 1
+        loanApplyBtn.layer.backgroundColor = UIColor.white.cgColor
+        loanApplyBtn.layer.cornerRadius = 5
+        loanApplyBtn.layer.masksToBounds = true
+        loanApplyBtn.layer.borderWidth = 2
+        
+        loanApplicationStatusBtn.layer.borderColor  = UIColor.orange.cgColor
+        loanApplicationStatusBtn.layer.backgroundColor = UIColor.white.cgColor
+        loanApplicationStatusBtn.layer.cornerRadius = 5
+        loanApplicationStatusBtn.layer.masksToBounds = true
+        loanApplicationStatusBtn.layer.borderWidth = 2
         
         unReadAskProductLabel.layer.cornerRadius = unReadAskProductLabel.frame.size.height / 2
-               unReadAskProductLabel.layer.masksToBounds = true
-               unReadAskProductLabel?.layer.borderColor = UIColor.red.cgColor
-               unReadAskProductLabel?.layer.borderWidth = 1.0
-               contactAppLabel.layer.cornerRadius = contactAppLabel.frame.size.height / 2
-               contactAppLabel.layer.masksToBounds = true
-               contactAppLabel?.layer.borderColor = UIColor.red.cgColor
-               contactAppLabel?.layer.borderWidth = 1.0
+        unReadAskProductLabel.layer.masksToBounds = true
+        unReadAskProductLabel?.layer.borderColor = UIColor.red.cgColor
+        unReadAskProductLabel?.layer.borderWidth = 1.0
+        contactAppLabel.layer.cornerRadius = contactAppLabel.frame.size.height / 2
+        contactAppLabel.layer.masksToBounds = true
+        contactAppLabel?.layer.borderColor = UIColor.red.cgColor
+        contactAppLabel?.layer.borderWidth = 1.0
     }
     @IBAction func loanApplyBtnPress(_ sender: UIButton) {
-               let storyboard = UIStoryboard(name: "DA", bundle: nil)
-                              let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.APPLY_LOAN_NAV)
-                              applyLoanNav.modalPresentationStyle = .overFullScreen
-                              self.present(applyLoanNav, animated: true, completion: nil)
-        loanAppView.isHidden = true
+       
+        
+      
     }
     
     @objc override func updateViews() {
@@ -247,18 +301,19 @@ class HomeNewViewController: BaseUIViewController {
         self.loanApplicationStatusBtn.text = "main.loanApplicationStatusBtn".localized
     }
     func levelTwoUnRead(customerId: Int) {
-      var unreadM = UserDefaults.standard.set(0, forKey: Constants.UNREAD_MESSAGE_COUNT)
-        print(unreadM); LevelTwoMessageUnreadViewModel.init().levelTwoUnreadMessageSync(customerId: customerId, success: { (result) in
+   
+        LevelTwoMessageUnreadViewModel.init().levelTwoUnreadMessageSync(customerId: customerId, success: { (result) in
+           
             print("result..<<...  \(result.data.level2MessageUnReadCount)")
             if "\(result.data.level2MessageUnReadCount)" == "0" {
-                            self.contactAppLabel.isHidden = true
-                        }else{
-                             self.contactAppLabel.isHidden = false
-                            if self.contactAppLabel.text?.count ?? 0 > 99 {
-                                self.contactAppLabel.text = "+99"
-                            }else{
-                                self.contactAppLabel.text =  "\(result.data.level2MessageUnReadCount)"
-                            }
+                self.contactAppLabel.isHidden = true
+            }else{
+                self.contactAppLabel.isHidden = false
+                if self.contactAppLabel.text?.count ?? 0 > 99 {
+                    self.contactAppLabel.text = "+99"
+                }else{
+                    self.contactAppLabel.text = "\(result.data.level2MessageUnReadCount)" //"\(result.data.level2MessageUnReadCount)"
+                }
             }
             
         }) { (error) in
@@ -266,46 +321,46 @@ class HomeNewViewController: BaseUIViewController {
         }
     }
     
-   
-    func contactUpMessageUnRead(customerId: Int) {
+    
+    func askProductMessageUnRead(customerId: Int) {
         
         AskProductViewModel.init().askProductSync(customerId: customerId, success: { (result) in
             print("result ,,,.,,..,.kaungmyatsan \(result.data.askProductUnReadCount)")
             if "\(result.data.askProductUnReadCount)" == "0" {
-                            self.unReadAskProductLabel.isHidden = true
-                        }else{
-                             self.unReadAskProductLabel.isHidden = false
-                            if self.unReadAskProductLabel.text?.count ?? 0 > 99 {
-                                self.unReadAskProductLabel.text = "+99"
-                            }else{
-                                self.unReadAskProductLabel.text =  "\(result.data.askProductUnReadCount)"
-                            }
+                self.unReadAskProductLabel.isHidden = true
+            }else{
+                self.unReadAskProductLabel.isHidden = false
+                if self.unReadAskProductLabel.text?.count ?? 0 > 99 {
+                    self.unReadAskProductLabel.text = "+99"
+                }else{
+                    self.unReadAskProductLabel.text =  "\(result.data.askProductUnReadCount)"
+                }
             }
         }) { (error) in
             print(error)
         }
         
-//        contactUsModel.init().contactUsMessage(customerId: customerId, success: { (result) in
-//
-//            print("result ,,,.,,..,.kaungmyatsan \(result.data.askProductUnReadCount)")
-//            if "\(result.data.askProductUnReadCount)" == "0" {
-//                self.contactAppLabel.isHidden = true
-//            }else{
-//                 self.contactAppLabel.isHidden = false
-//                if self.contactAppLabel.text?.count ?? 0 > 99 {
-//                    self.contactAppLabel.text = "+99"
-//                }else{
-//                    self.contactAppLabel.text =  "\(result.data.askProductUnReadCount)"
-//                }
-//            }
-//        }) { (error) in
-//            print(error)
-//        }
-//        askProductModel.init().askProductSync(customerId: customerId, success: { (result) in
-//            print(result)
-//        }) { (error) in
-//            print(error)
-//        }
+        //        contactUsModel.init().contactUsMessage(customerId: customerId, success: { (result) in
+        //
+        //            print("result ,,,.,,..,.kaungmyatsan \(result.data.askProductUnReadCount)")
+        //            if "\(result.data.askProductUnReadCount)" == "0" {
+        //                self.contactAppLabel.isHidden = true
+        //            }else{
+        //                 self.contactAppLabel.isHidden = false
+        //                if self.contactAppLabel.text?.count ?? 0 > 99 {
+        //                    self.contactAppLabel.text = "+99"
+        //                }else{
+        //                    self.contactAppLabel.text =  "\(result.data.askProductUnReadCount)"
+        //                }
+        //            }
+        //        }) { (error) in
+        //            print(error)
+        //        }
+        //        askProductModel.init().askProductSync(customerId: customerId, success: { (result) in
+        //            print(result)
+        //        }) { (error) in
+        //            print(error)
+        //        }
     }
     
     @objc func onTapMemberShipView() {
@@ -327,9 +382,10 @@ class HomeNewViewController: BaseUIViewController {
     @objc func onTapCustomerServiceView() {
         print("click")
         loanAppView.isHidden = true
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MessagingViewController") as! UIViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MessagingViewController") as! MessagingViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
+       
     }
     
     @objc func onTapLoanCalculatorView() {
@@ -399,20 +455,21 @@ class HomeNewViewController: BaseUIViewController {
         self.present(navigationVC, animated: true, completion: nil)
         
     }
-    @IBAction func onTappedAppInquiry(_ sender: Any) {
-        
+    @objc func onTaploanAppView(){
         let storyboard = UIStoryboard(name: "DA", bundle: nil)
-        let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.INQUIRY_LOAN_NAV) 
-        if #available(iOS 13.0, *) {
-            applyLoanNav.modalPresentationStyle = .none
-        } else {
-            // Fallback on earlier versions
-        }
-         self.present(applyLoanNav, animated: true, completion: nil)
-       // performSegue(withIdentifier: CommonNames.APPLICATION_LIST_VC, sender: nil)
-        loanAppView.isHidden = true
-         
+               let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.APPLY_LOAN_NAV)
+               applyLoanNav.modalPresentationStyle = .overFullScreen
+               self.present(applyLoanNav, animated: true, completion: nil)
+               loanAppView.isHidden = true
     }
+    @objc func onTaploanApplyStatusView(){
+       let applyLoanN = UIStoryboard(name: "DA", bundle: nil).instantiateViewController(withIdentifier: CommonNames.INQUIRY_LOAN_NAV) as! UIViewController
+       
+             applyLoanN.modalPresentationStyle = .fullScreen
+             self.present(applyLoanN, animated: true, completion: nil)
+             loanAppView.isHidden = true
+    }
+ 
     
     @objc func onTapFacebookView() {
         print("click")
@@ -536,9 +593,9 @@ class HomeNewViewController: BaseUIViewController {
             UserDefaults.standard.set(true, forKey: Constants.AT_MESSAGE_SOCKET_CLOSE)
             super.at_socket.disconnect()
             
-//            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
-//            navigationVC.modalPresentationStyle = .overFullScreen
-//            self.present(navigationVC, animated: true, completion:nil)
+            //            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
+            //            navigationVC.modalPresentationStyle = .overFullScreen
+            //            self.present(navigationVC, animated: true, completion:nil)
             let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
             navigationVC.modalPresentationStyle = .overFullScreen
             self.present(navigationVC, animated: true, completion:nil)

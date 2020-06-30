@@ -11,6 +11,9 @@ import LocalAuthentication
 
 class MainNewViewController: BaseUIViewController {
     
+    
+    
+    
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
     
@@ -42,9 +45,31 @@ class MainNewViewController: BaseUIViewController {
     
     var vidoeFilePath : String = ""
     
+ 
+  
+    var AutomessageBean = MessageBean()
+   
+//     func autoReplyMessage() {
+//            AutoReplyMessageModel.init().AutoReplyMessageSync(success: { (result) in
+//                print("kkkkkk >>>>> \(result)")
+//                print("auto message kaungmyatsan:..... \(result.data.messageEng)")
+//                print("auto message kaungmyatsan:..... \(result.data.messageMya)")
+//
+//               // self.showMessageDefault.append("\(messageData.messageEng)\(messageData.messageMya)")
+//                          }) { (error) in
+//                               print(error.localized)
+//                          }
+//        }
+   
+    
     @IBOutlet weak var lblBarPhNo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       // autoReplyMessage()
+        
+        // gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+//        multiLoginGet()
         updateViews()
         self.viewoverScrollView.isHidden = true
         self.imgMMlocale.isUserInteractionEnabled = true
@@ -92,7 +117,7 @@ class MainNewViewController: BaseUIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+       // multiLoginGet()
         if(!(UserDefaults.standard.bool(forKey: Constants.IS_LOGOUT)) &&
             UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO) != nil){
             UserDefaults.standard.set(nil, forKey: Constants.USER_INFO_NAME)
@@ -167,13 +192,15 @@ class MainNewViewController: BaseUIViewController {
             
             UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
             
-            
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FreeChatViewController") as! FreeChatViewController
-            navigationVC.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC, animated: true, completion: nil)
+
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FreeChatViewController") as? UIViewController
+            navigationVC?.modalPresentationStyle = .overFullScreen
+            self.present(navigationVC!, animated: true, completion: nil)
+
+           // self.performSegue(withIdentifier: "freemessageSegue", sender: self)
             
         }) { (error) in
-            
+            print(error.localized)
         }
         
         
@@ -222,7 +249,10 @@ class MainNewViewController: BaseUIViewController {
     }
     
     @objc func onTapHowToUseView() {
-        
+        if Network.reachability.isReachable == false {
+                   Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+                   return
+               }
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HowToUseViewController") as! HowToUseViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         //        var vc = navigationVC.children.first as! HowToUseViewController
@@ -232,7 +262,10 @@ class MainNewViewController: BaseUIViewController {
     }
     
     @objc func onTapOurServiceView() {
-        
+        if Network.reachability.isReachable == false {
+                   Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+                   return
+               }
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FaqAndTermsConditionViewController") as! FaqAndTermsConditionViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
@@ -240,6 +273,10 @@ class MainNewViewController: BaseUIViewController {
     
     @objc func onTapFindUsView() {
         print("click")
+        if Network.reachability.isReachable == false {
+                   Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+                   return
+               }
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "OutletInfoViewController") as! OutletInfoViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
@@ -249,7 +286,10 @@ class MainNewViewController: BaseUIViewController {
     
     @objc func onTapFacebookView() {
         print("click")
-        
+        if Network.reachability.isReachable == false {
+                   Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+                   return
+               }
         UIApplication.tryURL(urls: [
             "fb://profile/116374146706", // App
             "https://www.facebook.com/AeonMicrofinance/" // Website if app fails
@@ -288,7 +328,7 @@ class MainNewViewController: BaseUIViewController {
         let authContext = LAContext()
         let authReason = "Use your biometric data to login your account"
         var authError : NSError?
-        
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         if authContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             authContext.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: authReason, reply: {success,evaluateError in
                 
@@ -303,7 +343,7 @@ class MainNewViewController: BaseUIViewController {
                     DispatchQueue.main.async {
                         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                     }
-                    LoginAuthViewModel.init().accessLoginToken(phoneNo: phone, password: password, success: { (result) in
+                    LoginAuthViewModel.init().accessLoginToken(phoneNo: phone, loginDeviceId: deviceId, password: password, success: { (result) in
                         
                         //                        let jsonData = try? JSONEncoder().encode(result)
                         //                        let jsonString = String(data: jsonData!, encoding: .utf8)!
@@ -561,7 +601,19 @@ class MainNewViewController: BaseUIViewController {
         }
         return message
     }
-    
+   
+//    func multiLoginGet(){
+//        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
+//        print(deviceId)
+//        MultiLoginModel.init().makeMultiLogin(customerId: "\(77)", loginDeviceId: deviceId, success: { (results) in
+//            print("kaungmyat san multi >>>  \(results)")
+//            if results.data.logoutFlag == false {
+//                print("success stage win")
+//            }
+//        }) { (error) in
+//            print(error)
+//        }
+//    }
 }
 
 extension UIApplication {

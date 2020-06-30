@@ -11,6 +11,8 @@
 "terms.switch.label" = "လက်ခံပါသည်";
 "terms.ok.button" = "OK";
 "terms.ReqPhNo" = "AEONနှင့်ဆက်သွယ်ရန် ဖုန်းနံပါတ်ထည့်ပေးပါ။";
+"terms.Next" = "ရှေ့သို့";
+
 
 // HOME Screen
 "home.title" = "AEON";
@@ -29,7 +31,9 @@
 //BIOMETRIC Screen
 "biometric.update.title" = "Biometric ပြုပြင်ခြင်း";
 "biometric.register.title" = "Biometric ထည့်သွင်းခြင်း";
-"biometric.phoneno.holder" = "ဖုန်းနံပါတ်";
+"biometric.phoneno.holder" = "ဖုန်းနံပါတ် *";
+"biometric.phoneno.phoneno" = "ဖုန်းနံပါတ်​ *";
+"biometric.phoneno.password" = "လျှို့ဝှက်နံပါတ်";
 "biometric.password.holder" = "လျှို့ဝှက်ကုဒ်";
 "biometric.warning.title" = "သတိပေးချက်*";
 "biometric.warning.text" = "AEONMember application သည် သင်၏ဖုန်းတွင်ရှိသော biometric data အားလုံးကိုအသုံးပြုကာ သင်၏ account ကို login ဝင်မည်ဖြစ်သည်။ ဒါကြောင့် သင်၏ဖုန်းတွင်တခြားသူ၏ biometric data ကိုမထည့်သွင်းမိစေဖို့သတိပြုပေးပါရန်။";
@@ -179,7 +183,7 @@
 //LOAN CALCULATOR
 "loan.title" = "ချေးငွေပမာဏ တွက်ချက်ခြင်း";
 "loan.warning_maximum" = "အများဆုံးချေးငွေပမာဏသည်  ၂,၀၀၀,၀၀၀ ကျပ် ဖြစ်သည်။";
-"loan.warning_minimum" = "အနည်းဆုံးချေးငွေပမာဏသည်  ၁၀၀,၀၀၀ ကျပ် ဖြစ်သည်။";
+"loan.warning_minimum" = "အနည်းဆုံးချေးငွေပမာဏသည်  ၅၀၀,၀၀ ကျပ် ဖြစ်သည်။";
 "loan.warning_minimum_motorcycle" = "အနည်းဆုံး Motor Cycle ချေးငွေပမာဏသည် ၃၅၀,၀၀၀ ကျပ် ဖြစ်သည်။";
 "loan.warning_invalid_loanterm" = ">ချေးငွေကာလ မမှန်ကန်ပါ။";
 "loan.warning_require_loanterm" = ">ချေးငွေကာလတစ်ခုကို ရွေးခြယ်ပေးပါ။";
@@ -319,6 +323,7 @@
 //APPLICATION DATA
 "application_data.title" = "အမည် * :";
 "application_data.fathername" = "ဖခင် အမည် *";
+"application_data.education" = "ပညာရေး";
 "application_data.save.button" = "သိမ်းမည်";
 "application_data.next.button" = "ရှေ့သို့";
 "application_data.nationality" = "လူမျိူး *";
@@ -419,7 +424,7 @@
 "HOUSEHOLD_EMPTY_ERROR" = "ရဲစခန်းထောက်ခံစာ ဓာတ်ပုံရိုက်ပါ";
 "CUSTOMER_SIGNATURE_EMPTY_ERROR" = "သင့်၏လက်မှတ်ကို ဓာတ်ပုံရိုက်ပါ";
 
-"loanconfirmation_product_category" = "ကုန်ပစ္စ္စည်းအမျိုးအစား *";
+"loanconfirmation_product_category" = "ကုန်ပစ္စည်းအမျိုးအစား *";
 "loanconfirmation_product_desc" = "ကုန်ပစ္စည်းအချက်အလက် *";
 "loanconfirmation_finance_amt" = " ချေးငွေပမာဏ *";
 "loanconfirmation_finance_term" = " ချေးငွေကာလ *";
@@ -432,27 +437,36 @@
 "loanconfirmation_household" = "ရဲစခန်းထောက်ခံစာ *";
 "loanconfirmation_applicant_foto" = "သင့်မျက်နှာပုံ *";
 "loanconfirmation_customer_signature" = "ဝယ်သူ၏လက်မှတ်ဓာတ်ပုံ *";
+"loanconfirmation_guarantor_signature" = "အာမခံသူ၏လက်မှတ်ဓာတ်ပုံ";
 "loanconfirmation_loan_type" = "အမျိူးအစား *";
 "loanconfirmation_mobile_type" = "မိုဘိုင်းလ်";
 "loanconfirmation_nonmobile_type" = "မိုဘိုင်းလ် မဟုတ်သော";
-
+"APPLICATIONLIST.APPLICATION_NO_LABEL" = "လျှောက်လွှာနံပါတ်";
+"APPLICATIONLIST.AGREEMENT_NO_LABEL" = "သဘောတူညီမှုနံပါတ်";
+"APPLICATIONLIST.APPROVED_TERM" = "ရရှိသည့်ချေးငွေကာလ";
+"APPLICATIONLIST.APPROVED_AMOUNT" = "ရရှိသည့်ချေးငွေပမာဏ";
 "APPLICATIONLIST.APPLIED_DATE" = "လျှောက်ထားသောနေ့:";
 "APPLICATIONLIST.FINANCE_AMT" = "ချေးငွေပမာဏ:";
 "APPLICATIONLIST.FINANCE_TERMS" = "ချေးငွေကာလ:";
-"application_inquiry_title" = "လျှောက်လှွာများကြည့်ရန်";
-
+"application_inquiry_title" = "လျှောက်လွှာများကြည့်ရန်";
+"product_info.product_Category" = "ပစ္စည်းအမျိုးအစား";
 "product_info.productname" = "ပစ္စည်းအမည်";
+"product_info.productDescription" = "ပစ္စည်းအမည်";
 "product_info.productcode" = "ကုဒ်";
 "product_info.brand" = "အမှတ်တံဆိပ်";
 "prodcut_info.model" = "မော်ဒယ်";
 "prodcut_info.price" = "စျေးနှုန်း";
 "prodcut_info.invoice" = "ဘောင်ချာနံပါတ်";
+"prodcut_info.invoice_Photo" = "ဘောင်ချာ";
 "prodcut_info.cashdown" = "လက်ငင်းပေးချေသည့်ပမာဏ";
 "prodcut_info.loantype" = "ချေးငွေအမျိူးအစား";
-
+"prodcut_info.purchase_Location" = "ဝယ်ယူသည့်လိပ်စာ";
 "prodcut_info.confirm" = "အတည်ပြုမည်";
 "prodcut_info.cancel" = "ပျယ်ဖျက်မည်";
+"product_info.product_One" = "ထုတ်ကုန် - ၁";
+"product_info.product_Two" = "ထုတ်ကုန် - ၂";
 
+"da.clear" = "ရှင်းလင်းမည်";
 "da.search" = "ရှာပါ";
 "da.purchase_detail" = "ဝယ်ယူမှူ အသေးစိတ်";
 "da.attachment_edit" = "စာရွက်စာတန်း ပြင်ဆင်ရန်";
@@ -461,12 +475,12 @@
 "da.application_number" = "လျှောက်လွှာ နံပါတ်";
 "da.application_date" = "လျှောက်သည့် နေ့စွဲ";
 "da.member_card_no" = "အသင်းဝင်ကဒ် နံပါတ်";
-
 "da.application_data" = "လျှောက်လွှာအချက်အလက်";
 "da.name" = "အမည်";
 "da.dob" = "မွေးနေ့";
 "da.nrc_no" = "မှတ်ပုံတင်အမှတ်";
 "da.father_name" = "ဖခင်အမည်";
+"da.education" = "ပညာ";
 "da.nationality" = "လူမျိူး";
 "da.gender" = "ကျား/မ";
 "da.marital_status" = "အိမ်ထောင်ရှိ/မရှိ";
@@ -479,7 +493,6 @@
 "da.resident_tel_no" = "အိမ်ဖုန်းနံပါတ်";
 "da.other_ph_no" = "တခြားဖုန်းနံပါတ်";
 "da.email" = "အီးမေးလ်";
-
 "da.occupation_data" = "အလုပ်အကိုင်အချက်အလက်";
 "da.company_name" = "ကုမ္ပဏီအမည်";
 "da.comapny_address" = "ကုမ္ပဏီလိပ်စာ";
@@ -493,12 +506,9 @@
 "da.other_income" = "အခြားဝင်ငွေ";
 "da.total_income" = "စုစုပေါင်းဝင်ငွေ";
 "da.salary_date" = "လစာထုတ်ရက်";
-
 "da.emergenct_contact" = "အရေးပေါ် အဆက်အသွယ်";
 "da.rs_with_applicant" = "လျှောက်ထားသူနှင့် တော်စပ်ပုံ";
-
 "da.guarantor" = "အာမခံမည့်သူ";
-
 "da.loan_confirmation" = "ချေးငွေ အတည်ပြုခြင်း";
 "da.status" = "Status";
 "da.loan_type" = "အမျိူးအစား";
@@ -519,9 +529,9 @@
 "da.household" = "ရဲစခန်းထောက်ခံစာ";
 "da.applicant_foto" = "သင့်မျက်နှာပုံ";
 "da.customer_signature" = "ဝယ်သူ၏လက်မှတ်ဓာတ်ပုံ";
+"da.customer_guarantor_signature" = "ထောက်ခံသူ၏လက်မှတ်ဓာတ်ပုံ";
 "da.finance_amt" = "ချေးငွေပမာဏ";
 "da.finance_term" = "ချေးငွေကာလ";
-
 "da.outlet_name" = "ဆိုင်အမည်";
 "da.purchasedate" = "ဝယ်သည့်နေ့စွဲ";
 "da.agreement_no" = "သဘောတူညီမှုအမှတ်";
@@ -529,6 +539,7 @@
 "da.member_card" = "အသင်းဝင်ကဒ်";
 "da.cash_receipt" = "ငွေရပြေစာ";
 "da.agreement" = "သဘောတူညီမှူ";
+"da.Uloan" = "ချေးငွေ";
 
 "application_data.dob.label" = "မွေးနေ့* :";
 "application_data.nrc.label" = "မှတ်ပုံတင်နံပါတ် * :";

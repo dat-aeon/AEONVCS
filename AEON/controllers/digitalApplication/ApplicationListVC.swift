@@ -12,6 +12,8 @@ import SwiftyJSON
 
 class ApplicationListVC: BaseUIViewController {
     
+   
+    @IBOutlet weak var clearBtnLable: UIButton!
     @IBOutlet weak var tfAppNo: SkyFloatingLabelTextField!
     @IBOutlet weak var tfAppDate: SkyFloatingLabelTextField!
     
@@ -27,6 +29,15 @@ class ApplicationListVC: BaseUIViewController {
     @IBOutlet weak var btnDetail: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
     
+    @IBOutlet weak var agreementNoLabel: UILabel!
+    @IBOutlet weak var approvedAmountLabel: UILabel!
+    @IBOutlet weak var approveTermLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var phoneNoLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var myanmarLabel: UIImageView!
+    @IBOutlet weak var englishLabel: UIImageView!
+    @IBOutlet weak var backBtnLabel: UIImageView!
     var appDateString = ""
     var loanCategory = ["Select Category", "Mobile Loan", "Nonmobile Loan"]
     var loanCategoryIndex = ["0", "1", "2"]
@@ -49,17 +60,26 @@ class ApplicationListVC: BaseUIViewController {
     
     //Register successful
     var isRegisterSuccess = false
-    
+    var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        self.phoneNoLabel.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+                                             self.nameLabel.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+                                   self.typeLabel.text = "Lv.2 : Login user"
+              self.myanmarLabel.isUserInteractionEnabled = true
+              self.englishLabel.isUserInteractionEnabled = true
+               self.backBtnLabel.isUserInteractionEnabled = true
+              self.myanmarLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+              self.englishLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+               self.backBtnLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
         // Do any additional setup after loading the view.
         
         self.setupView()
         self.updateViews()
         self.setupDob()
         
-        self.lblCategory.text = self.loanCategory[self.selectedCategory]
+       // self.lblCategory.text = self.loanCategory[self.selectedCategory]
         //self.lblStatus.text = self.appStatus[self.selectedStatus]
         
         if self.isRegisterSuccess {
@@ -80,9 +100,58 @@ class ApplicationListVC: BaseUIViewController {
         }
        self.title = "aeonservice.da.list.title".localized
         self.btnSearch.setTitle("da.search".localized, for: .normal)
+        self.clearBtnLable.setTitle("da.clear".localized, for: .normal)
         self.tbApplicationList.reloadData()
     }
-    
+    @objc func runTimedCode() {
+                multiLoginGet()
+            // print("kms\(logoutTimer)")
+            }
+    func multiLoginGet(){
+               let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+            var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+           MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                   , loginDeviceId: deviceID, success: { (results) in
+                   print("kaungmyat san multi >>>  \(results)")
+                   
+                   if results.data.logoutFlag == true {
+                       print("success stage logout")
+                       // create the alert
+                              let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                              // add an action (button)
+                       alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                           self.logoutTimer?.invalidate()
+//                           let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+//                           navigationVC.modalPresentationStyle = .overFullScreen
+//                           self.present(navigationVC, animated: true, completion:nil)
+                        self.performSegue(withIdentifier: "mainsegue", sender: nil)
+                           
+                       }))
+
+                              // show the alert
+                              self.present(alert, animated: true, completion: nil)
+                       
+                       
+                   }
+               }) { (error) in
+                   print(error)
+               }
+           }
+    @objc func onTapMMLocale() {
+             print("click")
+             super.NewupdateLocale(flag: 1)
+             updateViews()
+         }
+         @objc func onTapEngLocale() {
+             print("click")
+             super.NewupdateLocale(flag: 2)
+             updateViews()
+         }
+       @objc func onTapBack() {
+           print("click")
+           self.dismiss(animated: true, completion: nil)
+       }
     @IBAction func doGoBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -96,6 +165,10 @@ class ApplicationListVC: BaseUIViewController {
     @IBAction func doDetailClick(_ sender: UIButton) {
     }
     
+    @IBAction func ClearBtnPress(_ sender: UIButton) {
+        tfAppNo.text = ""
+        tfAppDate.text = ""
+    }
     func setupView() {
         self.tbApplicationList.delegate = self
         self.tbApplicationList.dataSource = self
@@ -276,32 +349,32 @@ extension ApplicationListVC: UITableViewDelegate, UITableViewDataSource {
         return self.appListWithSection.keys.count
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UILabel(frame: CGRect(x: 60, y: 0, width: 0, height: 0))
-        header.backgroundColor = UIColor(red: 183.0/255.0, green: 0.0, blue: 129.0/255.0, alpha: 1)
-        
-        if self.appListWithSection.keys.count == 1{
-            if self.mobileList.count >= 1 {
-                header.text = "    Mobile Loan"
-            } else {
-                header.text = "    Nonmobile Loan"
-            }
-        } else {
-            if section == 0 {
-                header.text = "    Mobile Loan"
-            } else {
-                header.text = "    Nonmobile Loan"
-            }
-        }
-        
-        header.textColor = .white
-        header.font = UIFont(name: "PyidaungsuBook-Bold", size: 20)
-        return header
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let header = UILabel(frame: CGRect(x: 60, y: 0, width: 0, height: 0))
+//        header.backgroundColor = UIColor(red: 183.0/255.0, green: 0.0, blue: 129.0/255.0, alpha: 1)
+//
+//        if self.appListWithSection.keys.count == 1{
+//            if self.mobileList.count >= 1 {
+//                header.text = "    Mobile Loan"
+//            } else {
+//                header.text = "    Nonmobile Loan"
+//            }
+//        } else {
+//            if section == 0 {
+//                header.text = "    Mobile Loan"
+//            } else {
+//                header.text = "    Nonmobile Loan"
+//            }
+//        }
+//
+//        header.textColor = .white
+//        header.font = UIFont(name: "PyidaungsuBook-Bold", size: 20)
+//        return header
+//    }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 50
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -323,7 +396,9 @@ extension ApplicationListVC: UITableViewDelegate, UITableViewDataSource {
         }
         return arrayTemp.count
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.APPLICATION_LIST_CELL, for: indexPath) as! cellApplicationList
@@ -425,7 +500,7 @@ extension ApplicationListVC: cellApplicationListDelegate {
         let pVC = popupVC.popoverPresentationController
         pVC?.permittedArrowDirections = .any
         self.definesPresentationContext = true
-        //popupVC.delegate = self
+        //popupVC.Delegate = self
         self.present(popupVC, animated: true, completion: nil)
     }
     

@@ -16,11 +16,12 @@ let googleApiKey = "AIzaSyA9LipdYZoY8gGLt9KGm1-ia8RHc9ul2Gk"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+  
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+       
         do {
             try Network.reachability = Reachability(hostname: "www.google.com")
         }

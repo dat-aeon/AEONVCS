@@ -139,9 +139,9 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
                             UserDefaults.standard.set(true, forKey: Constants.MENU_SOCKET_CLOSE)
                             self.socket.disconnect()
                             
-                            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
-                            navigationVC.modalPresentationStyle = .overFullScreen
-                            self.present(navigationVC, animated: true, completion:nil)
+                            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+                            navigationVC?.modalPresentationStyle = .overFullScreen
+                            self.present(navigationVC ?? UIViewController(), animated: true, completion:nil)
                             //
                             //                            let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
                             //                            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! UINavigationController
@@ -296,7 +296,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let convertDate = formatter.date(from: (formatter.string(from: Date()) as NSString) as String)
         
-        formatter.dateFormat = "dd-MM-yyyy HH:mm a"
+        formatter.dateFormat = "dd-MM-yyyy HH:mm "
         let myString = formatter.string(from: convertDate!)
         
         return myString

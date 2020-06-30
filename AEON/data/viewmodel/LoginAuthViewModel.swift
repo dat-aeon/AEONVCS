@@ -9,8 +9,8 @@
 import Foundation
 class LoginAuthViewModel {
     
-    func accessLoginToken(phoneNo:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
-        LoginAuthModel.init().getAccessToken(phoneNo: phoneNo, password: password, success: { (result) in
+    func accessLoginToken(phoneNo:String,loginDeviceId:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
+        LoginAuthModel.init().getAccessToken(phoneNo: phoneNo, loginDeviceId: loginDeviceId, password: password, success: { (result) in
             
             success(result)
             

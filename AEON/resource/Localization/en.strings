@@ -12,6 +12,7 @@
 "terms.switch.label" = "Accept";
 "terms.ok.button" = "OK";
 "terms.ReqPhNo" = "Please input your Phone Number to contact with AEON";
+"terms.Next" = "Next";
 
 // HOME Screen
 "home.title" = "AEON";
@@ -31,6 +32,8 @@
 "biometric.register.title" = "Biometric Registration";
 "biometric.update.title" = "Biometric Update";
 "biometric.phoneno.holder" = "Enter Phone Number";
+"biometric.phoneno.phoneno" = "Phone No. *";
+"biometric.phoneno.password" = "Password *";
 "biometric.password.holder" = "Enter Password";
 "biometric.warning.title" = "Warning *";
 "biometric.warning.text" = "AEONMember application will use your all of biometric data to login to your account.So,you will not let other people to save biometric data in your device.";
@@ -180,7 +183,7 @@
 //LOAN CALCULATOR
 "loan.title" = "Loan Calculator";
 "loan.warning_maximum" = "Maximum Loan Amount is 2,000,000 kyats!";
-"loan.warning_minimum" = "Minimum Loan Amount is 100,000 kyats!";
+"loan.warning_minimum" = "Minimum Loan Amount is 500,00 kyats!";
 "loan.warning_minimum_motorcycle" = "Minimum Motor Cycle Loan Amount is 350,000 kyats!";
 "loan.warning_invalid_loanterm" = "Invalid Loan Term.";
 "loan.warning_require_loanterm" = "Please select Loan Term."  ;
@@ -319,6 +322,7 @@
 //APPLICATION DATA
 "application_data.title" = "Name * :";
 "application_data.fathername" = "Father Name *";
+"application_data.education" = "Education *";
 "application_data.save.button" = "Save";
 "application_data.next.button" = "Next";
 "application_data.nationality" = "Nationality *";
@@ -449,6 +453,7 @@
 "loanconfirmation_household" = "Household or Criminal Clearance *";
 "loanconfirmation_applicant_foto" = "Applicant's Photo *";
 "loanconfirmation_customer_signature" = "Customer Signature Attachment *";
+"loanconfirmation_guarantor_signature" = "Guarantor Signature Attachment *";
 "loanconfirmation_loan_type" = "Type *";
 "loanconfirmation_mobile_type" = "Mobile";
 "loanconfirmation_nonmobile_type" = "Non-mobile";
@@ -456,21 +461,30 @@
 "APPLICATIONLIST.APPLIED_DATE" = "Applied Date:";
 "APPLICATIONLIST.FINANCE_AMT" = "Finance Amount:";
 "APPLICATIONLIST.FINANCE_TERMS" = "Terms of Finance";
-
+"APPLICATIONLIST.APPLICATION_NO_LABEL" = "Application No";
 "application_inquiry_title" = "Application Inquries";
+"APPLICATIONLIST.AGREEMENT_NO_LABEL" = "Agreement No";
+"APPLICATIONLIST.APPROVED_TERM" = "Approved Term";
+"APPLICATIONLIST.APPROVED_AMOUNT" = "Approved Amount";
 
 "product_info.productname" = "Product Name";
+"product_info.productDescription" = "Product Description";
 "product_info.productcode" = "Product Code";
 "product_info.brand" = "Brand";
 "prodcut_info.model" = "Model";
 "prodcut_info.price" = "Price";
 "prodcut_info.invoice" = "Invoice";
+"prodcut_info.invoice_Photo" = "Invoice";
 "prodcut_info.cashdown" = "Cashdown";
 "prodcut_info.loantype" = "Loan Type";
-
+"prodcut_info.purchase_Location" = "purchase Location";
 "prodcut_info.confirm" = "Confirm";
 "prodcut_info.cancel" = "Cancel";
+"product_info.product_Category" = "Product Category";
+"product_info.product_One" = "Product - 1";
+"product_info.product_Two" = "Product - 2";
 
+"da.clear" = "Clear";
 "da.search" = "Search";
 "da.purchase_detail" = "Purchase Detail";
 "da.attachment_edit" = "Attachment Detail";
@@ -485,6 +499,7 @@
 "da.dob" = "Date of Birth";
 "da.nrc_no" = "Nrc No.";
 "da.father_name" = "Father's Name";
+"da.education" = "Education";
 "da.nationality" = "Nationality";
 "da.gender" = "Gender";
 "da.marital_status" = "Marital Status";
@@ -537,6 +552,7 @@
 "da.household" = "Household or Criminal Clearence";
 "da.applicant_foto" = "Applicant's Photo";
 "da.customer_signature" = "Customer Signature";
+"da.customer_guarantor_signature" = "Guarantor Signature";
 "da.finance_amt" = "Finance Amount";
 "da.finance_term" = "Term of Finance";
 
@@ -546,6 +562,7 @@
 "da.settlement" = "Settlement Amount";
 "da.member_card" = "Member Card";
 "da.cash_receipt" = "Cash Receipt";
+"da.Uloan" = "Uloan";
 "da.agreement" = "Agreement";
 
 // DA Message

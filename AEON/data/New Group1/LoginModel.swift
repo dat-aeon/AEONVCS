@@ -34,6 +34,7 @@ class LoginModel:BaseModel {
                     if (data["customerNo"]) != nil {
                         loginResponse.data.customerNo = data["customerNo"] as? String
                         loginResponse.data.photoPath = data["photoPath"] as? String
+                        loginResponse.data.jti = data["jti"] as? String
                         loginResponse.data.customerAgreementDtoList = [CustomerAgreementDtoList]()
                         if let agreeList = data["customerAgreementDtoList"] as? [AnyObject] {
                             for agree in agreeList {
@@ -46,6 +47,7 @@ class LoginModel:BaseModel {
                                 cust.financialTerm = agree.value(forKey: "financialTerm") as? Int
                                 cust.importCustomerId = agree.value(forKey: "importCustomerId") as? Int
                                 cust.qrShow = agree.value(forKey: "qrShow") as? Int
+                                
                                 loginResponse.data.customerAgreementDtoList?.append(cust)
                             }
                         } 
@@ -63,7 +65,7 @@ class LoginModel:BaseModel {
                     loginResponse.data.userTypeId = data["userTypeId"] as? Int
                     loginResponse.data.memberNo = data["memberNo"] as? String
                     loginResponse.status = response["status"] as! String
-                    
+                    loginResponse.data.jti = data["jti"] as? String
                     success(loginResponse)
                     
                 } else if Constants.STATUS_500 == response["status"] as? String {

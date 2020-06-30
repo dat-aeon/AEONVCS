@@ -312,7 +312,7 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
         var secIdList:[Int] = []
         var secQuestionAndAnswer:[SecQABean] = []
         var selectedQuestionId: Int = 0
-        
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         print("register cells", registerCells.count)
         var isError = false
         for i in 0..<registerCells.count {
@@ -405,7 +405,7 @@ extension SecQuesRegisterViewController:SecurityQuestionSaveDelegate{
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
             RegisterViewModel.init().makeRegisterNewMember(registerRequestData:registerRequestData!,memberResponseData: memberResponseData!, qaList:secQuestionAndAnswer , success: { (newRegisterResponse) in
                 
-                LoginAuthViewModel.init().accessLoginToken(phoneNo: (self.registerRequestData?.phoneNo)!, password: (self.registerRequestData?.password)!, success: { (result) in
+                LoginAuthViewModel.init().accessLoginToken(phoneNo: (self.registerRequestData?.phoneNo)!, loginDeviceId: deviceId, password: (self.registerRequestData?.password)!, success: { (result) in
                     
 //                    let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
 //                    let tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())

@@ -12,6 +12,7 @@ import SwiftyJSON
 protocol MemberCardInfoCellDelegate {
     func tappedOnAgreementNumber(currentIndex: Int)
     func tappedOnQRcode(currentIndex: Int)
+    func alertQR()
 }
 
 class MemberCardInfoTableViewCell: UITableViewCell {

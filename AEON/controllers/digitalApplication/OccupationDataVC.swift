@@ -118,10 +118,10 @@ class OccupationDataVC: BaseUIViewController {
     var salaryDateMesgLocale: String?
     
     var selectedStatusIndex = 1
-    
+    var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       // logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
         self.lblCompanyNameError.text = Constants.BLANK
 //        self.lblAddressError.text = Constants.BLANK
@@ -258,6 +258,40 @@ class OccupationDataVC: BaseUIViewController {
         self.tfMonthlyBasicIncome.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
     }
+    @objc func runTimedCode() {
+                   multiLoginGet()
+               // print("kms\(logoutTimer)")
+               }
+       func multiLoginGet(){
+                  let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+               var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+              MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                      , loginDeviceId: deviceID, success: { (results) in
+                      print("kaungmyat san multi >>>  \(results)")
+                      
+                      if results.data.logoutFlag == true {
+                          print("success stage logout")
+                          // create the alert
+                                 let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                                 // add an action (button)
+                          alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                              self.logoutTimer?.invalidate()
+                              let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                              navigationVC.modalPresentationStyle = .overFullScreen
+                              self.present(navigationVC, animated: true, completion:nil)
+                              
+                          }))
+
+                                 // show the alert
+                                 self.present(alert, animated: true, completion: nil)
+                          
+                          
+                      }
+                  }) { (error) in
+                      print(error)
+                  }
+              }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField.text == "" {

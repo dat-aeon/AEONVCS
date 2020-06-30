@@ -183,16 +183,24 @@ class Utils{
     //    }
     
     static func changeOldMesgDateformat ( date: String) -> String{
-        let formatter = DateFormatter()
-        // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "dd-MMM-yy HH:mm a"
-        //        formatter.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
-        let convertDate = formatter.date(from: date)
         
-        formatter.dateFormat = "dd-MM-yyyy HH:mm a"
-        let myString = formatter.string(from: convertDate!)
-        
-        return myString
+         let formatter = DateFormatter()
+                  // initially set the format based on your datepicker date / server String
+                  formatter.dateFormat = "dd MMM yy hh:mm aaa"
+                  let convertDate = formatter.date(from: date)
+
+                  formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                  let myString = formatter.string(from: convertDate!)
+
+                  return myString
+//        let formatter = DateFormatter()
+//               formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//               let convertDate = formatter.date(from: (formatter.string(from: Date()) as NSString) as String)
+//               
+//               formatter.dateFormat = "dd-MM-yyyy HH:mm a"
+//               let myString = formatter.string(from: convertDate!)
+//               
+//               return myString
     }
     
     static func isNameValidate (name: String) -> Bool {
@@ -288,7 +296,7 @@ class Utils{
         let authContext = LAContext()
         let authReason = "Use your biometric data to login your account"
         var authError : NSError?
-        
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         if authContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             authContext.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: authReason, reply: {success,evaluateError in
                 
@@ -303,7 +311,7 @@ class Utils{
                     }
                     
                     //call api to check username and password
-                    LoginAuthViewModel.init().accessLoginToken(phoneNo: phone, password: password, success: { (result) in
+                    LoginAuthViewModel.init().accessLoginToken(phoneNo: phone, loginDeviceId: deviceId, password: password, success: { (result) in
                         
                         //set nil to response
                         UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)

@@ -13,18 +13,21 @@ import SwiftyJSON
 
 class ApplicationDataVC: BaseUIViewController {
     
+    
     @IBOutlet weak var svApplicationData: UIScrollView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tfName: UITextField!
 //    @IBOutlet weak var lblMsgName: UILabel!
     
     
+    @IBOutlet weak var educationTitleLabel: UILabel!
     @IBOutlet weak var lblDob: UILabel!
     @IBOutlet weak var tfDob: UITextField!
 //    @IBOutlet weak var lblMsgDob: UILabel!
 //    @IBOutlet weak var lblMsgOneDob: UILabel!
     
 //    @IBOutlet weak var tfTownshipAutoText: SearchTextField!
+    @IBOutlet weak var educationLabel: UILabel!
     
     @IBOutlet weak var lblNrcNo: UILabel!
 //    @IBOutlet weak var vDivision: UIView!
@@ -67,6 +70,14 @@ class ApplicationDataVC: BaseUIViewController {
     @IBOutlet weak var lblLivingWith: UILabel!
 //    @IBOutlet weak var tfLivingWith: UITextField!
     @IBOutlet weak var lblLivingWithWarning: UILabel!
+    @IBOutlet weak var educationWith: UIView! {
+        didSet {
+                   self.educationWith.clipsToBounds = true
+                   self.educationWith.layer.cornerRadius = 5
+                   self.educationWith.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+                   self.educationWith.layer.borderWidth = 1.0
+               }
+    }
     @IBOutlet weak var viewLivingWith: UIView! {
         didSet {
             self.viewLivingWith.clipsToBounds = true
@@ -191,21 +202,20 @@ class ApplicationDataVC: BaseUIViewController {
     var nationalityMesgLocale: String?
     var typeResidenceMesgLocale: String?
     var yearStayMesgLocale: String?
-    
     var isMyanmarNationality = true
-    
     var isMaleSelected = true
     var isMaritalSingle = true
     var selectedTypeResidence = 1
     var selectedLivingWith = 1
-    
+    var selectedEducationWith = 1
     var dobString = ""
-    
     var sessionInfo:SessionDataBean?
-
+    var educationText = "High School"
+    var educationId = 1
+     //var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+            // logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
 //        self.lblMsgDob.text = Constants.BLANK
 //        self.lbNrcNoErrorMessage.text = Constants.BLANK
@@ -259,7 +269,7 @@ class ApplicationDataVC: BaseUIViewController {
         self.tfMonths.keyboardType = .numberPad
         
         self.viewLivingWith.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickLivingWith)))
-        
+        self.educationWith.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickEducationWith)))
         NotificationCenter.default.addObserver(self, selector: #selector(changeLocaleForAppData), name: NSNotification.Name(rawValue: "changeLocaleForApplicationData"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(markAppDataLastState), name: NSNotification.Name(rawValue: "markAppDataLastState"), object: nil)
@@ -323,6 +333,41 @@ class ApplicationDataVC: BaseUIViewController {
         
     }
     
+//    @objc func runTimedCode() {
+//                   multiLoginGet()
+//               // print("kms\(logoutTimer)")
+//               }
+//       func multiLoginGet(){
+//                  let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+//               var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+//              MultiLoginModel.init().makeMultiLogin(customerId: customerId
+//                      , loginDeviceId: deviceID, success: { (results) in
+//                      print("kaungmyat san multi >>>  \(results)")
+//                      
+//                      if results.data.logoutFlag == true {
+//                          print("success stage logout")
+//                          // create the alert
+//                                 let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+//
+//                                 // add an action (button)
+//                          alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+//                              self.logoutTimer?.invalidate()
+//                              let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+//                              navigationVC.modalPresentationStyle = .overFullScreen
+//                              self.present(navigationVC, animated: true, completion:nil)
+//                              
+//                          }))
+//
+//                                 // show the alert
+//                                 self.present(alert, animated: true, completion: nil)
+//                          
+//                          
+//                      }
+//                  }) { (error) in
+//                      print(error)
+//                  }
+//              }
+    
     @objc func showErrorLabelApplication() {
        _ = self.isErrorExist()
     }
@@ -384,8 +429,8 @@ class ApplicationDataVC: BaseUIViewController {
         }
        
         self.dobString = self.tfDob.text!
-        
-        let appData = ApplicationDataRequest(daApplicationInfoId: applicationFormID, daApplicationTypeId: 1, name: self.tfName.text ?? "", dob: self.tfDob.text!, nrcNo: nrc, fatherName: self.tfFatherName.text?.uppercased() ?? "", nationality: selectedNationality, nationalityOther: self.tfNationality.text?.uppercased() ?? "", gender: selectedGender, maritalStatus: selectedMarital, currentAddress: "", permanentAddress: "", typeOfResidence: self.selectedTypeResidence, typeOfResidenceOther: self.tfTypeResidence.text?.uppercased() ?? "", livingWith: self.selectedLivingWith, livingWithOther: self.tflivingWith.text?.uppercased() ?? "", yearOfStayYear: yearStay, yearOfStayMonth: monthStay, mobileNo: self.tfPhNo.text ?? "", residentTelNo: self.tfResidentPhNo.text ?? "", otherPhoneNo: self.tfOtherPhNo.text ?? "", email: self.tfEmail.text ?? "", customerId: Int(customerId)!, status: 0, currentAddressFloor: "\(self.tfCurrentFloor.text?.uppercased() ?? "")", currentAddressBuildingNo: "\(self.tfCurrentBldNo.text?.uppercased() ?? "")", currentAddressRoomNo: "\(self.tfCurrentRoomNo.text?.uppercased() ?? "")", currentAddressStreet: "\(self.tfCurrentStreet.text?.uppercased() ?? "")", currentAddressQtr: "\(self.tfCurrentQrt.text?.uppercased() ?? "")", currentAddressTownship: self.selectedCurrTownshipID ?? 0, currentAddressCity: self.selectedCurrCityID ?? 0, permanentAddressFloor: "\(self.tfPermenentFloor.text?.uppercased() ?? "")", permanentAddressBuildingNo: "\(self.tfPermenentBldNo.text?.uppercased() ?? "")", permanentAddressRoomNo: "\(self.tfPermenentRoomNo.text?.uppercased() ?? "")", permanentAddressStreet: "\(self.tfPermenentStreet.text?.uppercased() ?? "")", permanentAddressQtr: "\(self.tfPermenentQrt.text?.uppercased() ?? "")", permanentAddressTownship: self.selectedPerTownshipID ?? 0, permanentAddressCity: self.selectedPerCityID ?? 0)
+    
+        let appData = ApplicationDataRequest(daApplicationInfoId: applicationFormID, daApplicationTypeId: 1, name: self.tfName.text ?? "", dob: self.tfDob.text!, nrcNo: nrc, fatherName: self.tfFatherName.text?.uppercased() ?? "",highestEducationTypeId: educationId, nationality: selectedNationality, nationalityOther: self.tfNationality.text?.uppercased() ?? "", gender: selectedGender, maritalStatus: selectedMarital, currentAddress: "", permanentAddress: "", typeOfResidence: self.selectedTypeResidence, typeOfResidenceOther: self.tfTypeResidence.text?.uppercased() ?? "", livingWith: self.selectedLivingWith, livingWithOther: self.tflivingWith.text?.uppercased() ?? "", yearOfStayYear: yearStay, yearOfStayMonth: monthStay, mobileNo: self.tfPhNo.text ?? "", residentTelNo: self.tfResidentPhNo.text ?? "", otherPhoneNo: self.tfOtherPhNo.text ?? "", email: self.tfEmail.text ?? "", customerId: Int(customerId)!, status: 0, currentAddressFloor: "\(self.tfCurrentFloor.text?.uppercased() ?? "")", currentAddressBuildingNo: "\(self.tfCurrentBldNo.text?.uppercased() ?? "")", currentAddressRoomNo: "\(self.tfCurrentRoomNo.text?.uppercased() ?? "")", currentAddressStreet: "\(self.tfCurrentStreet.text?.uppercased() ?? "")", currentAddressQtr: "\(self.tfCurrentQrt.text?.uppercased() ?? "")", currentAddressTownship: self.selectedCurrTownshipID ?? 0, currentAddressCity: self.selectedCurrCityID ?? 0, permanentAddressFloor: "\(self.tfPermenentFloor.text?.uppercased() ?? "")", permanentAddressBuildingNo: "\(self.tfPermenentBldNo.text?.uppercased() ?? "")", permanentAddressRoomNo: "\(self.tfPermenentRoomNo.text?.uppercased() ?? "")", permanentAddressStreet: "\(self.tfPermenentStreet.text?.uppercased() ?? "")", permanentAddressQtr: "\(self.tfPermenentQrt.text?.uppercased() ?? "")", permanentAddressTownship: self.selectedPerTownshipID ?? 0, permanentAddressCity: self.selectedPerCityID ?? 0)
         myAppFormData = appData
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SetAppData"), object: self, userInfo: ["appData": appData])
@@ -573,6 +618,7 @@ class ApplicationDataVC: BaseUIViewController {
         self.lblNrcNo.text = "application_data.nrc.label".localized
         
         self.lblFatherName.text = "application_data.fathername".localized
+        self.educationTitleLabel.text = "application_data.education".localized
         self.btnSave.setTitle("application_data.save.button".localized, for: UIControl.State.normal)
         self.btnNext.setTitle("application_data.next.button".localized, for: UIControl.State.normal)
         
@@ -1059,6 +1105,47 @@ class ApplicationDataVC: BaseUIViewController {
     @objc func onClickLivingWith() {
         self.openLivingWithPopup()
     }
+    @objc func onClickEducationWith() {
+        self.openEducationWithPopup()
+    }
+    func openEducationWithPopup() {
+           if UIDevice.current.userInterfaceIdiom == .pad {
+               let action = UIAlertController.actionSheetWithItems(items: Constants.educationWithList, action: { (value)  in
+                   //                let selectedType = self.typeResidence[Int(value)!-1]
+                   self.educationLabel.text = value
+                   self.selectedEducationWith = Constants.educationWithList.firstIndex(of: value)! + 1
+                   print(value)
+               })
+               action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
+               if let popoverPresentationController = action.popoverPresentationController {
+                   popoverPresentationController.sourceView = self.view
+               }
+               //Present the controller
+               self.present(action, animated: true, completion: nil)
+               
+           } else {
+               
+               let action = UIAlertController.actionSheetWithItems(items: Constants.educationWithList, action: { (value)  in
+                   //                let selectedType = self.typeResidence[-1]
+                
+                    self.educationText = value
+                   self.educationLabel.text = value
+                if value == "High School"{
+                    self.educationId = 1
+                }else if value == "University"{
+                    self.educationId = 2
+                }else if value == "Graduated"{
+                    self.educationId = 3
+                }
+                   self.selectedEducationWith = Constants.educationWithList.firstIndex(of: value)! + 1
+                   print(value)
+               })
+               action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
+               //Present the controller
+               self.present(action, animated: true, completion: nil)
+               
+           }
+       }
 
 
     @IBAction func doSelectmale(_ sender: Any) {

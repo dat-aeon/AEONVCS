@@ -9,8 +9,12 @@
 import UIKit
 import AVFoundation
 import SwiftyJSON
+protocol ImageAndCaptionDelegate: class {
+func userDidEnterInformation(image: UIImage)
+}
 
 class LoanConfirmationVC: BaseUIViewController {
+    weak var delegate: ImageAndCaptionDelegate? = nil
     @IBOutlet weak var svLoanConfirmation: UIScrollView!
     
     @IBOutlet weak var btnOne: UIButton! {
@@ -77,6 +81,13 @@ class LoanConfirmationVC: BaseUIViewController {
             self.btnNine.layer.borderWidth = 1.0
         }
     }
+    @IBOutlet weak var btnTen: UIButton! {
+        didSet {
+            self.btnTen.layer.cornerRadius = 10
+            self.btnTen.layer.borderColor = UIColor.lightGray.cgColor
+            self.btnTen.layer.borderWidth = 1.0
+        }
+    }
     
     @IBOutlet weak var viewSample: UIView!
     @IBOutlet weak var imgChoosenNrcFront: UIImageView!
@@ -112,6 +123,10 @@ class LoanConfirmationVC: BaseUIViewController {
     @IBOutlet weak var viewNewCustomerSignature: UIView!
     @IBOutlet weak var stackCustomerSignature: UIStackView!
     @IBOutlet weak var imgChoosenCustomerSignature: UIImageView!
+    
+    @IBOutlet weak var viewNewGuarantorSignature: UIView!
+    @IBOutlet weak var stackGuarantorSignature: UIStackView!
+    @IBOutlet weak var imgChoosenGuarantorSignature: UIImageView!
     
     @IBOutlet weak var viewProductCategory: UIView! {
         didSet {
@@ -193,6 +208,14 @@ class LoanConfirmationVC: BaseUIViewController {
             self.viewCustomerSignature.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
         }
     }
+    @IBOutlet weak var viewGuarantorSignature: UIView! {
+        didSet {
+            self.viewGuarantorSignature.clipsToBounds = true
+            self.viewGuarantorSignature.layer.cornerRadius = 5
+            self.viewGuarantorSignature.layer.borderWidth = 1.0
+            self.viewGuarantorSignature.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+        }
+    }
     
     @IBOutlet weak var lblProductCategoryText: UILabel!
     
@@ -218,6 +241,7 @@ class LoanConfirmationVC: BaseUIViewController {
     @IBOutlet weak var lblHouseholdError: UILabel!
     @IBOutlet weak var lblApplicantFotoError: UILabel!
     @IBOutlet weak var lblCustomerSignatureError: UILabel!
+    @IBOutlet weak var lblGuarantorSignatureError: UILabel!
     
     @IBOutlet weak var lblLoanType: UILabel!
     @IBOutlet weak var lblProductCategory: UILabel!
@@ -239,7 +263,7 @@ class LoanConfirmationVC: BaseUIViewController {
     @IBOutlet weak var lblHousehold: UILabel!
     @IBOutlet weak var lblApplicantFoto: UILabel!
     @IBOutlet weak var lblCustomerSignature: UILabel!
-    
+    @IBOutlet weak var lblGuarantorSignature: UILabel!
     //@IBOutlet weak var lblTnC: UILabel!
     @IBOutlet weak var viewTermOfFinance: UIView! {
         didSet {
@@ -297,7 +321,8 @@ class LoanConfirmationVC: BaseUIViewController {
     @IBOutlet weak var stackNrcFront: UIStackView!
     
     @IBOutlet weak var collectViewLoanTerm: UICollectionView!
-    
+    @IBOutlet weak var imgGuaSignatureIcon: UIImageView!
+    @IBOutlet weak var lblGuaSignatureInside: UILabel!
     @IBOutlet weak var confirmTermCollectionCell: ConfrimTermCollectionViewCell!
 //    @IBOutlet weak var imgOptionLoan: UIImageView!
 //    @IBOutlet weak var cellLblLoanNumber: UILabel!
@@ -318,7 +343,7 @@ class LoanConfirmationVC: BaseUIViewController {
     var householdMesgLocale: String?
     var applicantFotoMesgLocale: String?
     var cusSignatureMesgLocale: String?
-    
+    var guaSignatureMesgLocale: String?
     var termsOfFinance = [String]()
     
     var isNrcFrontChoosen = false
@@ -330,7 +355,7 @@ class LoanConfirmationVC: BaseUIViewController {
     var isHouseholdChoosen = false
     var isApplicantFotoChoosen = false
     var isCustomerSignatureChoosen = false
-    
+    var isGuarantorSignatureChoosen = false
 //    var imagePicker: ImagePicker!
     
     var isNrcFront = false
@@ -360,6 +385,9 @@ class LoanConfirmationVC: BaseUIViewController {
     var isCustomerSignature = false
     var imgCustomerSignature = UIImage()
     
+    var isGuarantorSignature = false
+    var imgGuarantorSignature = UIImage()
+    
     var isMobileSelected = true
     
     var selectedProductTypeID = 0
@@ -377,9 +405,10 @@ class LoanConfirmationVC: BaseUIViewController {
     var nrcfrontImgView = UIImageView()
     var nrcfrontBtn = UIButton()
     
-    
+    var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
+      //  logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         self.collectViewLoanTerm.delegate = self
         self.collectViewLoanTerm.dataSource = self
         
@@ -445,8 +474,42 @@ class LoanConfirmationVC: BaseUIViewController {
         self.viewNewHoushold.isHidden = true
         self.viewNewApplicantFoto.isHidden = true
         self.viewNewCustomerSignature.isHidden = true
+        self.viewNewGuarantorSignature.isHidden = true
     }
-    
+    @objc func runTimedCode() {
+                multiLoginGet()
+            // print("kms\(logoutTimer)")
+            }
+    func multiLoginGet(){
+               let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+            var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+           MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                   , loginDeviceId: deviceID, success: { (results) in
+                   print("kaungmyat san multi >>>  \(results)")
+                   
+                   if results.data.logoutFlag == true {
+                       print("success stage logout")
+                       // create the alert
+                              let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                              // add an action (button)
+                       alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                           self.logoutTimer?.invalidate()
+                           let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                           navigationVC.modalPresentationStyle = .overFullScreen
+                           self.present(navigationVC, animated: true, completion:nil)
+                           
+                       }))
+
+                              // show the alert
+                              self.present(alert, animated: true, completion: nil)
+                       
+                       
+                   }
+               }) { (error) in
+                   print(error)
+               }
+           }
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField.text == "" {
             textField.backgroundColor = UIColor(red:255.0/255.0, green:255.0/255.0, blue:200.0/255.0, alpha: 1.0)
@@ -605,6 +668,14 @@ class LoanConfirmationVC: BaseUIViewController {
             
             tempArray.append(attachment)
         }
+        if isGuarantorSignatureChoosen {
+            let imageData:NSData = self.imgGuarantorSignature.pngData()! as NSData
+            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+            
+            let attachment = AttachmentRequest(fileType: 10, photoByte: imageBase64)
+            
+            tempArray.append(attachment)
+        }
         
         let attachmentlist = tempArray
         
@@ -664,6 +735,8 @@ class LoanConfirmationVC: BaseUIViewController {
         self.lblHousehold.text = "loanconfirmation_household".localized
         self.lblApplicantFoto.text = "loanconfirmation_applicant_foto".localized
         self.lblCustomerSignature.text = "loanconfirmation_customer_signature".localized
+        self.lblGuarantorSignature.text = "loanconfirmation_guarantor_signature".localized
+        
         
         self.lblProductDescError.text = productDescMesgLocale?.localized
         self.lblFinanceAmtError.text = financeAmtMesgLocale?.localized
@@ -677,6 +750,7 @@ class LoanConfirmationVC: BaseUIViewController {
         self.lblHouseholdError.text = householdMesgLocale?.localized
         self.lblApplicantFotoError.text = applicantFotoMesgLocale?.localized
         self.lblCustomerSignatureError.text = cusSignatureMesgLocale?.localized
+        self.lblGuarantorSignatureError.text = guaSignatureMesgLocale?.localized
     }
     
 //    func underlineLink() {
@@ -924,9 +998,18 @@ class LoanConfirmationVC: BaseUIViewController {
             
             self.lblCustomerSignatureError.text = Messages.CUSTOMER_SIGNATURE_EMPTY_ERROR.localized
             self.cusSignatureMesgLocale = Messages.CUSTOMER_SIGNATURE_EMPTY_ERROR
+            
             isError = true
+            
         } else {
             self.lblCustomerSignatureError.text = Constants.BLANK
+            self.cusSignatureMesgLocale = Constants.BLANK
+        }
+        if !isGuarantorSignatureChoosen {
+            self.lblGuarantorSignatureError.text = Messages.GUARANTOR_SIGNATURE_EMPTY_ERROR.localized
+            self.guaSignatureMesgLocale = Messages.GUARANTOR_SIGNATURE_EMPTY_ERROR
+        }else{
+            self.lblGuarantorSignatureError.text = Constants.BLANK
             self.cusSignatureMesgLocale = Constants.BLANK
         }
         return isError
@@ -1001,6 +1084,10 @@ class LoanConfirmationVC: BaseUIViewController {
         //customer signature
         if !isCustomerSignatureChoosen {
             
+            errorcount += 1
+        }
+        //Guarantor signature
+        if !isGuarantorSignatureChoosen {
             errorcount += 1
         }
         //
@@ -1124,6 +1211,10 @@ class LoanConfirmationVC: BaseUIViewController {
         self.checkCameraAccess(isApplicant: false)
     }
     
+    @IBAction func tappedOnGuarantorSignature(_ sender: UIButton) {
+        self.isGuarantorSignature = true
+        self.checkCameraAccess(isApplicant: false)
+    }
     func doResizeAndAssignImages(image: UIImage) {
         
         // print("image is not null")
@@ -1254,6 +1345,14 @@ class LoanConfirmationVC: BaseUIViewController {
                 
                 self.addAfterImageCapturingViewCustomerSignature()
             }
+            if self.isGuarantorSignature {
+                self.imgGuarantorSignature = resizeImage
+                self.isGuarantorSignature = false
+                self.isGuarantorSignatureChoosen = true
+                
+                self.addAfterImageCapturingViewGuarantorSignature()
+            }
+        
             
         }
         
@@ -1424,6 +1523,7 @@ class LoanConfirmationVC: BaseUIViewController {
         self.viewNrcFront.isHidden = true
         
         self.imgChoosenNrcFront.image = self.imgNrcFront
+      
     self.stackNrcFront.addArrangedSubview(self.viewSample)
         
         
@@ -1515,6 +1615,13 @@ class LoanConfirmationVC: BaseUIViewController {
     self.stackCustomerSignature.addArrangedSubview(self.viewNewCustomerSignature)
         
     }
+    func addAfterImageCapturingViewGuarantorSignature() {
+        self.viewNewGuarantorSignature.isHidden = false
+        self.viewGuarantorSignature.isHidden = true
+        self.imgChoosenGuarantorSignature.image = self.imgGuarantorSignature
+        self.stackGuarantorSignature.addArrangedSubview(self.viewNewGuarantorSignature)
+        
+    }
     
     @IBAction func tappedOnPreview(_ sender: Any) {
         var tempArray = [AttachmentRequest]()
@@ -1598,6 +1705,14 @@ class LoanConfirmationVC: BaseUIViewController {
                    
                    tempArray.append(attachment)
                }
+                if isGuarantorSignatureChoosen {
+                    let imageData:NSData = self.imgGuarantorSignature.pngData()! as NSData
+                    let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+            
+                    let attachment = AttachmentRequest(fileType: 10, photoByte: imageBase64)
+            
+                    tempArray.append(attachment)
+        }
         
         let fee = Double(self.tfProcessingfee.text?.replacingOccurrences(of: ",", with: "") ?? "0.0")
         let consave = Double(self.tfCompulsory.text?.replacingOccurrences(of: ",", with: "") ?? "0.0")
@@ -1608,6 +1723,7 @@ class LoanConfirmationVC: BaseUIViewController {
         
         //print("fee : \(self.tfProcessingfee.text)")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showPreview"), object: self, userInfo: ["attachment": tempArray, "processingfee": fee, "comSaving": consave, "totalrepay": totalrepay, "firstrepay": firstrepay, "monthltyrepay": monthlyrepay, "lastpay": lastpay])
+      //  self.collectViewLoanTerm.reloadData()
     }
 }
 

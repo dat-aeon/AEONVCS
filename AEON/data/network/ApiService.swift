@@ -26,7 +26,7 @@ struct ApiServiceEndPoint {
     static var login = "customer-info-manage/get-user-information"
     static var logout = "customer-info-manage/update-app-usage-detail-for-logout"
     static var offline_logout = "offline-logout/logout"
-    
+    static var MULTI_LOGIN = "free-token/check-mutli-login"
     //Information
     static var secQuesList = "reset-password/security-question-list"
     static var faqList = "information/faq-info-list"
@@ -93,6 +93,7 @@ struct ApiServiceEndPoint {
     static var daListRequest = "application/application-inquries-list"
     
     static var daPurchaseInfoDetail = "application/purchase-info-detail"
+  
     static var daApplicationInfoDetail = "application/application-info-detail"
     static var daApplicationCancel = "application/application-cancel"
     static var agreementlist = "customer-info-manage/get-customer-agreement-list"
@@ -113,8 +114,13 @@ struct ApiServiceEndPoint {
     
     static var roomsync = "free-message/room-sync"
     
+    static var educationInfo = "information/highest-education-type-list?"
+    
     //ask product
     
     static var contactUpMessageApi = "free-token/get-ask-product-unread-count"
     static var LEVEL_TWO_MESSAGE_UNREAD = "free-token/get-level-2-message-unread-count"
+    
+    //Auto reply message Level one
+    static var AUTO_REPLY_MESSAGE = "information/get-chat-auto-reply-message?"
 }

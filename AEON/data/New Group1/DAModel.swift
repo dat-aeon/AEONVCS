@@ -1306,42 +1306,164 @@ class DAModel: BaseModel {
             daResponse.status = arr["status"] as? Int
             daResponse.appliedDate = arr["appliedDate"] as? String
             daResponse.applicationNo = arr["applicationNo"] as? String
+            daResponse.agreementNo = arr["agreementNo"] as? String ?? ""
+            daResponse.approvedFinanceAmount = arr["approvedFinanceAmount"] as? Int
+            daResponse.approvedFinanceTerm = arr["approvedFinanceTerm"] as? Int
             responseArray.append(daResponse)
         }
         
         return responseArray
     }
     
-    func getPurchaseDetail(token:String, applicationID: String, success: @escaping (PurchaseDetailResponse) -> Void,failure: @escaping (String) -> Void){
+    func getPurchaseDetail(token:String, applicationID: Int, success: @escaping (PurchaseDetailResponse) -> Void,failure: @escaping (String) -> Void){
         let token = [
             "access_token" : token
         ]
-        
+
         let rawData = [
             "daApplicationInfoId": applicationID
         ]
-        
-        let _ = super.requestDataWithTokenDAWithStringDict(endPoint: ApiServiceEndPoint.daPurchaseInfoDetail, rawData: rawData, token: token) { (result) in
+
+        let _ = super.PurchaseDetailrequestDataWithTokenDAWithStringDict(endPoint: ApiServiceEndPoint.daPurchaseInfoDetail, rawData: rawData, token: token) { (result) in
             switch result{
             case .success(let result):
-                
+
                 let responseJsonData = JSON(result)
                 let responseValue  = try! responseJsonData.rawData()
-                //print("News Response result :::::::::::\(result)")
-                
+                print("News Response result :::::::::::\(result)")
+
+
                 if let newsResponse = try? JSONDecoder().decode(PurchaseDetailResponse.self, from: responseValue){
                     success(newsResponse)
+//                    let response = newsResponse as AnyObject
+//                                   print("app info detail response : ", response)
+//                      var purDeData = PurchaseDetail()
+//                    var purchaseInfoProduct = PurchaseInfoProductDtoList()
+//                    if response[ModelConstants.STATUS] as? String == Constants.STATUS_200 {
+//
+//
+//                                       if  (response[ModelConstants.DATA] as? Dictionary<String, Any>) == nil {
+//                                           failure("Empty")
+//                                       }
+//
+//                                       else {
+//                                        let data = response[ModelConstants.DATA] as AnyObject
+//
+//                                            purDeData.daApplicationInfoId = data["daApplicationInfoId"] as? Int
+//                                        purDeData.daPurchaseInfoId = data["daPurchaseInfoId"] as? Int
+//                                        purDeData.daApplicationInfoId = data["daApplicationInfoId"] as? Int
+//                                       purDeData.customerId = data["customerId"] as? Int
+//                                        purDeData.agreementNo = data["agreementNo"] as? String
+//                                        purDeData.purchaseDate = data["purchaseDate"] as? String
+//                                        purDeData.outletId = data["outletId"] as? Int
+//                                       purDeData.outletName = data["outletName"] as? String
+//                                        purDeData.invoiceNo = data["invoiceNo"] as? String
+//                                       purDeData.agentId = data["agentId"] as? Int
+//                                       purDeData.agentName = data["agentName"] as? String
+//                                      purDeData.financeAmount = data["financeAmount"] as? Double
+//                                     purDeData.financeTerm = data["financeTerm"] as? Int
+//                                        purDeData.processingFees = data["processingFees"] as? Double
+//                                       purDeData.compulsoryAmount = data["compulsoryAmount"] as? Double
+//                                        purDeData.settlementAmount = data["settlementAmount"] as? Double
+//                                        purchaseInfoProduct.productDescription = data["productDescription"] as? String
+//                                       purchaseInfoProduct.model = data["model"] as? String
+//                                      purchaseInfoProduct.brand = data["brand"] as? String
+//                                        purchaseInfoProduct.price = data["price"] as? Double
+//                                        purchaseInfoProduct.daLoanTypeId = data["daLoanTypeId"] as? Int
+//                                        purDeData.purchaseLocation = data["purchaseLocation"] as? String
+//                                        purDeData.delFlag = data["delFlag"] as? Bool
+//                                       purDeData.cashDownAmount = data["cashDownAmount"] as? Double
+//                                        purDeData.status = data["status"] as? Int
+//
+//                                        if let companyInfo = data["purchaseInfoProductDtoList"] as? AnyObject {
+//                                             var productDtoArray = [PurchaseInfoProductDtoList]()
+//                                            var productDescription = ""
+//                                            if let productDes = companyInfo["productDescription"] as? String {
+//                                                productDescription = productDes
+//                                            }
+//                                            var brands = ""
+//                                            if let brand = companyInfo["brand"] as? String {
+//                                                brands = brand
+//                                            }
+//                                            var models = ""
+//                                            if let model = companyInfo["model"] as? String {
+//                                                models = model
+//                                            }
+//                                            var prices = 0.0
+//                                            if let price = companyInfo["price"] as? Double {
+//                                                prices = price
+//                                            }
+//                                            var cashDownAmo = 0.0
+//                                            if let cashDownAmount = companyInfo["cashDownAmount"] as? Double {
+//                                                cashDownAmo = cashDownAmount
+//                                            }
+//                                            var daloanTypeID = 0
+//                                            if let daLoanTypeId = companyInfo["daLoanTypeId"] as? Int {
+//                                                daloanTypeID = daLoanTypeId
+//                                            }
+//                                            var dapurchseInfoID = 0
+//                                            if let daPurchaseInfoId = companyInfo["daPurchaseInfoId"] as? Int {
+//                                                dapurchseInfoID = daPurchaseInfoId
+//                                            }
+//                                            var dapurchseInfoProductID = 0
+//                                            if let daPurchaseInfoProductId = companyInfo["daPurchaseInfoProductId"] as? Int {
+//                                                dapurchseInfoProductID = daPurchaseInfoProductId
+//                                            }
+//                                            var daproductTypeID = 0
+//                                            if let daProductTypeId = companyInfo["daProductTypeId"] as? Int {
+//                                                daproductTypeID = daProductTypeId
+//                                            }
+//                                            let productDtoListObj = PurchaseInfoProductDtoList(productDescription: productDescription, brand: brands, model: models, price: prices, cashDownAmount: cashDownAmo, daLoanTypeId: daloanTypeID, daPurchaseInfoId: dapurchseInfoID, daPurchaseInfoProductId: dapurchseInfoProductID, daProductTypeId: daproductTypeID)
+//                                            productDtoArray.append(productDtoListObj)
+//                                             purDeData.purchaseInfoProductDtoList = productDtoArray
+//                                       }
+                                        
+                                        
+//if let attachments = data["purchaseInfoAttachmentDtoList"] as? [AnyObject] {
+//                           var attachArray = [PurchaseAttachmentDetailResponse]()
+//                           for usercard in attachments {
+//                               var attachid = 0
+//                               if let emergencyid = usercard["daApplicationInfoAttachmentId"] as? Int {
+//                                   attachid = emergencyid
+//                               }
+//
+//                               var applicationinfoid = 0
+//                               if let emergencyid = usercard["daApplicationInfoId"] as? Int {
+//                                   applicationinfoid = emergencyid
+//                               }
+//
+//                               var path = ""
+//                               if let cAddress = usercard["filePath"] as? String {
+//                                   path = cAddress
+//                               }
+//
+//                               var ftype = 0
+//                               if let cAddress = usercard["fileType"] as? Int {
+//                                   ftype = cAddress
+//                               }
+//
+//
+//                               let attachobj = PurchaseAttachmentDetailResponse(daPurchaseInfoAttachmentId: attachid, daPurchaseInfoId: applicationinfoid, filePath: path, fileType: ftype)
+//                               attachArray.append(attachobj)
+//                           }
+//
+//    purDeData.purchaseInfoAttachmentDtoList = attachArray
+
+                    //           }
+                 //   }
                 }else{
                     failure(Constants.EXPIRE_TOKEN)
                 }
-            case .failure(let error):
-                print("Failure on News List:", error.localizedDescription)
+                 
+
+            
+
+            case .failure(_):
                 failure(Constants.SERVER_FAILURE)
-                
             }
-        }
     }
-    
+    }
+
     func getApplicationInfoDetail(token:String, applicationID: String, success: @escaping (ApplicationDetailResponse) -> Void,failure: @escaping (String) -> Void){
         let token = [
             "access_token" : token
@@ -1382,6 +1504,7 @@ class DAModel: BaseModel {
                         daData.dob = data["dob"] as? String
                         daData.nrcNo = data["nrcNo"] as? String
                         daData.fatherName = data["fatherName"] as? String
+                        daData.highestEducationTypeId = data["highestEducationTypeId"] as? Int
                         daData.nationality = data["nationality"] as? Int
                         daData.nationalityOther = data["nationalityOther"] as? String
                         daData.gender = data["gender"] as? Int
@@ -2370,6 +2493,8 @@ class DAModel: BaseModel {
         }
         
     }
+  
 }
+
 
 

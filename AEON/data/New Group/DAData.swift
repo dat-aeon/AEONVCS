@@ -26,6 +26,7 @@ struct RegisterDARequest: Codable {
     
     var nrcNo:String? = ""
     var fatherName:String? = ""
+    var highestEducationTypeId:Int? = 1
     var nationality:Int? = 0
     
     var nationalityOther:String? = ""
@@ -89,6 +90,7 @@ struct RegisterDARequest: Codable {
         
         case nrcNo
         case fatherName
+        case highestEducationTypeId
         case nationality
         
         case nationalityOther
@@ -152,8 +154,8 @@ struct SaveDARequest: Codable {
     
     var nrcNo:String? = ""
     var fatherName:String? = ""
+    var highestEducationTypeId:Int? = 1
     var nationality:Int? = 0
-    
     var nationalityOther:String? = ""
     var gender:Int? = 0
     var maritalStatus:Int? = 0
@@ -214,6 +216,7 @@ struct SaveDARequest: Codable {
         case nrcNo
         case fatherName
         case nationality
+        case highestEducationTypeId
         
         case nationalityOther
         case gender
@@ -492,8 +495,9 @@ struct ApplicationDataRequest: Codable {
     
     var nrcNo:String
     var fatherName:String
+    var highestEducationTypeId:Int
     var nationality:Int
-    
+   
     var nationalityOther:String
     var gender:Int
     var maritalStatus:Int
@@ -542,7 +546,9 @@ struct ApplicationDataRequest: Codable {
         
         case nrcNo
         case fatherName
+        case highestEducationTypeId
         case nationality
+      
         
         case nationalityOther
         case gender
@@ -638,6 +644,7 @@ struct RegisterDAResponse: Codable {
     
     var nrcNo:String? = ""
     var fatherName:String? = ""
+    var highestEducationTypeId:Int? = 1
     var nationality:Int? = 0
     
     var nationalityOther:String? = ""
@@ -712,6 +719,7 @@ struct RegisterDAResponse: Codable {
         
         case nrcNo
         case fatherName
+        case highestEducationTypeId
         case nationality
         
         case nationalityOther
@@ -776,9 +784,9 @@ struct DAInquiryResponse: Codable {
     var daLoanTypeId:Int? = 1
     var appliedDate:String? = ""
     var status:Int? = 1
-   
-   
-   
+    var agreementNo:String = ""
+    var approvedFinanceAmount:Int? = 0
+    var approvedFinanceTerm:Int? = 0
    enum CodingKeys: String, CodingKey {
        
        case daApplicationInfoId
@@ -788,7 +796,9 @@ struct DAInquiryResponse: Codable {
        case daLoanTypeId
        case appliedDate
        case status
-       
+        case agreementNo
+       case approvedFinanceAmount
+    case approvedFinanceTerm
    }
 }
 
@@ -863,82 +873,118 @@ struct PurchaseDetailResponse: Codable {
     }
     
 }
-
+struct PurchaseInfoProductDtoList: Codable {
+    var productDescription: String?
+    var brand: String?
+    var model: String?
+    var price: Double?
+    var cashDownAmount: Double?
+    var daLoanTypeId: Int?
+    var daPurchaseInfoId: Int?
+    var daPurchaseInfoProductId: Int?
+    var daProductTypeId: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case productDescription = "productDescription"
+        case brand = "brand"
+        case model = "model"
+        case price = "price"
+        case cashDownAmount = "cashDownAmount"
+        case daLoanTypeId = "daLoanTypeId"
+        case daPurchaseInfoId = "daPurchaseInfoId"
+        case daPurchaseInfoProductId = "daPurchaseInfoProductId"
+        case daProductTypeId = "daProductTypeId"
+    }
+}
 struct PurchaseDetail: Codable {
- 
+
     var daPurchaseInfoId:Int?
     var daApplicationInfoId:Int?
     var customerId:Int?
-    
-    var productCode:String?
-    var productName:String?
-    var daLoanTypeId:Int?
-    
     var agreementNo:String?
-    var purchaseDate:String?
-    
-    var model:String?
-    var brand:String?
-    var price:Double?
-    
-    var cashDownAmount:Double?
+    var purchaseDate:String? = ""
     var outletId:Int?
     var outletName:String?
-    
     var invoiceNo:String?
     var agentId:Int?
     var agentName:String?
-    
-    var status:Int?
-    var settlementAmount:Double?
-    
+    var financeAmount:Double?
+    var financeTerm:Int?
     var processingFees:Double?
     var compulsoryAmount:Double?
-    
-    var financeTerm:Int?
-    var financeAmount:Double?
-    
-    var purchaseInfoAttachmentDtoList: [PurchaseAttachmentResponse]?
+    var status:Int!
+    var settlementAmount:Double?
+   // var productDescription:String!
+  //  var model:String!
+  //  var brand:String!
+  //  var price:Double!
+   // var daLoanTypeId:Int?
+    var purchaseLocation:String?
+    var delFlag:Bool?
+    var cashDownAmount:Double?
+//    var productCode:String? = ""
+//    var productName:String? = ""
+    var purchaseInfoAttachmentDtoList: [PurchaseAttachmentDetailResponse]?
+    var purchaseInfoProductDtoList: [PurchaseInfoProductDtoList]?
 
 enum CodingKeys: String, CodingKey {
     
-    case daPurchaseInfoId
+        case daPurchaseInfoId
         case daApplicationInfoId
         case customerId
-        
-        case productCode
-        case productName
-        case daLoanTypeId
-        
         case agreementNo
         case purchaseDate
-        
-        case model
-        case brand
-        case price
-        
-        case cashDownAmount
         case outletId
         case outletName
-        
         case invoiceNo
         case agentId
         case agentName
-        
-        case status
-        case settlementAmount
-    
+        case financeAmount
+        case financeTerm
         case processingFees
         case compulsoryAmount
-    
-        case financeTerm
-        case financeAmount
-    
+        case status
+        case settlementAmount
+//        case productDescription
+//        case model
+//        case brand
+//        case price
+      //  case daLoanTypeId
+        case purchaseLocation
+        case delFlag
+        case cashDownAmount
+//        case productCode
+//        case productName
         case purchaseInfoAttachmentDtoList
+        case purchaseInfoProductDtoList
+        
     }
  
 }
+struct PurchaseAttachmentDetailResponse: Codable {
+ 
+    var daPurchaseInfoAttachmentId:Int?
+    var daPurchaseInfoId:Int?
+    
+    var filePath:String?
+    var fileType:Int?
+    
+   
+    
 
+enum CodingKeys: String, CodingKey {
+    
+    
+        case daPurchaseInfoAttachmentId
+        case daPurchaseInfoId
+        
+        case filePath
+        case fileType
+    
+       
+    }
+ 
+}
 struct PurchaseAttachmentResponse: Codable {
  
     var daPurchaseInfoAttachmentId:Int?
@@ -982,6 +1028,7 @@ struct ApplicationDetailResponse: Codable {
     
     var nrcNo:String? = ""
     var fatherName:String? = ""
+    var highestEducationTypeId:Int? = 1
     var nationality:Int? = 0
     
     var nationalityOther:String? = ""
@@ -1061,6 +1108,7 @@ struct ApplicationDetailResponse: Codable {
         
         case nrcNo
         case fatherName
+        case highestEducationTypeId
         case nationality
         
         case nationalityOther

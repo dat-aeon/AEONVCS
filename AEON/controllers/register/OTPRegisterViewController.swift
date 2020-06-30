@@ -41,9 +41,9 @@ class OTPRegisterViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print("generate otp code ::: \(self.otpCode ?? "")")
-        
-        //Utils.showAlert(viewcontroller: self, title: "YOUR OTP", message: self.otpCode!)
-        
+//        
+//        Utils.showAlert(viewcontroller: self, title: "YOUR OTP", message: self.otpCode!)
+//        
         
         
         self.imgMMlocale.isUserInteractionEnabled = true
@@ -160,7 +160,7 @@ class OTPRegisterViewController: BaseUIViewController {
         
     }
     @IBAction func onClickSendBtn(_ sender: Any) {
-        
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         if isErrorExist() {
             return
         }
@@ -173,7 +173,7 @@ class OTPRegisterViewController: BaseUIViewController {
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         RegisterViewModel.init().makeRegisterExistedMember(registerRequestData: registerRequestData!, profileImage: profileImage ?? UIImage(named: "Image")!, memberResponseData: memberResponseData!, qaList: qaList, success: { (registerResponse) in
             
-            LoginAuthViewModel.init().accessLoginToken(phoneNo: (self.memberResponseData?.data?.memberPhoneNo)!, password: (self.registerRequestData?.password)!, success: { (result) in
+            LoginAuthViewModel.init().accessLoginToken(phoneNo: (self.memberResponseData?.data?.memberPhoneNo)!, loginDeviceId: deviceId, password: (self.registerRequestData?.password)!, success: { (result) in
                 
 //                let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
 //                let tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())

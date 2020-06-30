@@ -24,9 +24,10 @@ class EventNewViewController: BaseUIViewController {
     
     
     var containerIndex = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -59,7 +60,7 @@ class EventNewViewController: BaseUIViewController {
                }
         
     }
-    
+   
     @objc func onTapBack() {
        print("click")
         self.dismiss(animated: true, completion: nil)

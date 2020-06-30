@@ -17,7 +17,7 @@ class SecurityQuestionUpdateViewController: BaseUIViewController {
     var customerId:Int = 0
     var tokenInfo : TokenData?
     var updateCells:[SecurityQuestionTableViewCell]!
-    
+     var logoutTimer: Timer?
     override func viewDidLoad() {
 //        print("Start SecurityQuestionUpdateViewController :::::::::::::::")
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class SecurityQuestionUpdateViewController: BaseUIViewController {
             Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
             return
         }
-        
+      //  logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         self.tvSecurityQuestionUpdate.register(UINib(nibName: CommonNames.SECURITY_QUESTION_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.SECURITY_QUESTION_TABLE_CELL)
         
         self.tvSecurityQuestionUpdate.register(UINib(nibName: CommonNames.SECURITY_QUESTION_UPDATE_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.SECURITY_QUESTION_UPDATE_TABLE_CELL)
@@ -59,7 +59,40 @@ class SecurityQuestionUpdateViewController: BaseUIViewController {
         
     }
     
-    
+    @objc func runTimedCode() {
+                   multiLoginGet()
+               // print("kms\(logoutTimer)")
+               }
+       func multiLoginGet(){
+                  let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+               var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+              MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                      , loginDeviceId: deviceID, success: { (results) in
+                      print("kaungmyat san multi >>>  \(results)")
+                      
+                      if results.data.logoutFlag == true {
+                          print("success stage logout")
+                          // create the alert
+                                 let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                                 // add an action (button)
+                          alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                              self.logoutTimer?.invalidate()
+                              let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                              navigationVC.modalPresentationStyle = .overFullScreen
+                              self.present(navigationVC, animated: true, completion:nil)
+                              
+                          }))
+
+                                 // show the alert
+                                 self.present(alert, animated: true, completion: nil)
+                          
+                          
+                      }
+                  }) { (error) in
+                      print(error)
+                  }
+              }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

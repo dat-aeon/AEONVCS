@@ -27,5 +27,5 @@ target 'AEONVCS' do
   pod 'SkyFloatingLabelTextField', '~> 3.0'
 
   pod 'IQKeyboardManagerSwift'
-
+   pod 'Mapbox-iOS-SDK', '~> 5.7.0'  
 end

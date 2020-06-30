@@ -14,7 +14,7 @@ class ApplicationDetailVC: BaseUIViewController {
     @IBOutlet weak var tbApplication: UITableView!
     
     var appInquiryDetail = ["da.application_number", "da.application_date", "da.member_card_no"]
-    var appData = ["da.name", "da.dob", "da.nrc_no", "da.father_name", "da.nationality", "da.gender", "da.marital_status", "da.current_address","da.buildno", "da.roomno", "da.floor", "da.street", "da.quarter", "da.township", "da.city", "da.permenent_address","da.buildno", "da.roomno", "da.floor", "da.street", "da.quarter", "da.township", "da.city", "da.type_of_residence", "da.living_with", "da.yearofstay", "da.mobileno", "da.resident_tel_no", "da.other_ph_no", "da.email"]
+    var appData = ["da.name", "da.dob", "da.nrc_no", "da.father_name","da.education", "da.nationality", "da.gender", "da.marital_status", "da.current_address","da.buildno", "da.roomno", "da.floor", "da.street", "da.quarter", "da.township", "da.city", "da.permenent_address","da.buildno", "da.roomno", "da.floor", "da.street", "da.quarter", "da.township", "da.city", "da.type_of_residence", "da.living_with", "da.yearofstay", "da.mobileno", "da.resident_tel_no", "da.other_ph_no", "da.email"]
     
     var occData = ["da.company_name", "da.comapny_address","da.buildno", "da.roomno", "da.floor", "da.street", "da.quarter", "da.township", "da.city", "da.company_tel", "da.contact_time", "da.department", "da.position", "da.yearservice", "da.companystatus", "da.monthly_income", "da.other_income", "da.total_income", "da.salary_date"]
     
@@ -22,7 +22,7 @@ class ApplicationDetailVC: BaseUIViewController {
     
     var guarantorData = ["da.name", "da.dob", "da.nrc_no", "da.nationality", "da.mobileno", "da.resident_tel_no", "da.rs_with_applicant", "da.current_address","da.buildno", "da.roomno", "da.floor", "da.street", "da.quarter", "da.township", "da.city", "da.type_of_residence", "da.living_with", "da.gender", "da.marital_status", "da.yearofstay", "da.company_name", "da.comapny_address","da.buildno", "da.roomno", "da.floor", "da.street", "da.quarter", "da.township", "da.city", "da.company_tel", "da.department", "da.position", "da.yearservice", "da.monthly_income", "da.total_income"]
     
-    var loanData = ["da.status", "da.loan_type", "da.product_category", "da.product_desc", "da.finance_amt", "Term of Finance", "da.processing_fee", "da.compulsory_saving", "da.total_repayment", "da.first_repayment", "da.monthly_repayment", "da.last_repayment", "da.nrc_front", "da.nrc_back", "da.income_proof", "da.residence_proof", "da.guarantor_nrc_front", "da.guarantor_nrc_back", "da.household", "da.applicant_foto", "da.customer_signature"]
+    var loanData = ["da.status", "da.loan_type", "da.product_category", "da.product_desc", "da.finance_amt", "Term of Finance", "da.processing_fee", "da.compulsory_saving", "da.total_repayment", "da.first_repayment", "da.monthly_repayment", "da.last_repayment", "da.nrc_front", "da.nrc_back", "da.income_proof", "da.residence_proof", "da.guarantor_nrc_front", "da.guarantor_nrc_back", "da.household", "da.applicant_foto", "da.customer_signature","da.customer_guarantor_signature"]
     
     var inquiryAppID = 0
     var appinfoobj = ApplicationDetailResponse()
@@ -31,9 +31,11 @@ class ApplicationDetailVC: BaseUIViewController {
     
     var isPreviewing = false
     var cityTownshipModel = CityTownShipModel()
-    
+    var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+       // doGetApplicationDetailAPI()
         cityTownshipModel = CityTownShipModel()
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         DAViewModel.init().getCityTownshipList(success: { (model) in
@@ -45,8 +47,8 @@ class ApplicationDetailVC: BaseUIViewController {
             if error == Constants.JSON_FAILURE {
                 let alertController = UIAlertController(title: Constants.SERVER_ERROR_TITLE, message: error, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                    //                    let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.CUSTOMER_TYPE_VIEW_CONTROLLER) as! UINavigationController
-                    //                    self.present(navigationVC, animated: true, completion: nil)
+                                        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.CUSTOMER_TYPE_VIEW_CONTROLLER) as! UINavigationController
+                                        self.present(navigationVC, animated: true, completion: nil)
                 }))
                 self.present(alertController, animated: true, completion: nil)
                 
@@ -68,6 +70,41 @@ class ApplicationDetailVC: BaseUIViewController {
         }
     }
     
+    @objc func runTimedCode() {
+                   multiLoginGet()
+               // print("kms\(logoutTimer)")
+               }
+       func multiLoginGet(){
+                  let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+               var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+              MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                      , loginDeviceId: deviceID, success: { (results) in
+                      print("kaungmyat san multi >>>  \(results)")
+                      
+                      if results.data.logoutFlag == true {
+                          print("success stage logout")
+                          // create the alert
+                                 let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                                 // add an action (button)
+                          alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                              self.logoutTimer?.invalidate()
+//                              let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+//                              navigationVC.modalPresentationStyle = .overFullScreen
+//                              self.present(navigationVC, animated: true, completion:nil)
+                            self.performSegue(withIdentifier: "mainsegue", sender: nil)
+                              
+                          }))
+
+                                 // show the alert
+                                 self.present(alert, animated: true, completion: nil)
+                          
+                          
+                      }
+                  }) { (error) in
+                      print(error)
+                  }
+              }
     func doGetApplicationDetailAPI() {
         
         let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
@@ -130,42 +167,53 @@ class ApplicationDetailVC: BaseUIViewController {
         case 3:
             returnString = self.appinfoobj.fatherName ?? ""
         case 4:
+            switch appinfoobj.highestEducationTypeId {
+            case 1:
+               returnString = "High School"
+            case 2:
+                returnString = "University"
+            case 3:
+                returnString = "Graduated"
+            default:
+                returnString = "High School"
+            }
+        case 5:
             var str = "Myanmar"
             if self.appinfoobj.nationality != 1 {
                 str = self.appinfoobj.nationalityOther ?? ""
             }
             returnString = str
-        case 5:
+        case 6:
             var str = "Male"
             if self.appinfoobj.gender != 1 {
                 str = "Female"
             }
             returnString = str
-        case 6:
+        case 7:
             var str = "Single"
             if self.appinfoobj.maritalStatus != 1 {
                 str = "Married"
             }
             returnString = str
-        case 7:
+        case 8:
             returnString = ""//self.appinfoobj.currentAddress ?? ""
             
-        case 8:
+        case 9:
             returnString = self.appinfoobj.currentAddressBuildingNo ?? ""
             
-        case 9:
+        case 10:
             returnString = self.appinfoobj.currentAddressRoomNo ?? ""
             
-        case 10:
+        case 11:
             returnString = self.appinfoobj.currentAddressFloor ?? ""
             
-        case 11:
+        case 12:
             returnString = self.appinfoobj.currentAddressStreet ?? ""
             
-        case 12:
+        case 13:
             returnString = self.appinfoobj.currentAddressQtr ?? ""
             
-        case 13:
+        case 14:
             if self.appinfoobj.currentAddressTownship != 0 {
                 let townId = self.appinfoobj.currentAddressTownship
                 if let townNameId = self.cityTownshipModel.townNameIdDic {
@@ -179,7 +227,7 @@ class ApplicationDetailVC: BaseUIViewController {
                 }
             }
             
-        case 14:
+        case 15:
             if self.appinfoobj.currentAddressCity != 0 {
                 let cityId = self.appinfoobj.currentAddressCity
                 if let cityNameId = self.cityTownshipModel.cityNameIdDic{
@@ -193,25 +241,25 @@ class ApplicationDetailVC: BaseUIViewController {
                 }
             }
             
-        case 15:
+        case 16:
             returnString = ""//self.appinfoobj.permanentAddress ?? ""
             
-        case 16:
+        case 17:
             returnString = self.appinfoobj.permanentAddressBuildingNo ?? ""
             
-        case 17:
+        case 18:
             returnString = self.appinfoobj.permanentAddressRoomNo ?? ""
             
-        case 18:
+        case 19:
             returnString = self.appinfoobj.permanentAddressFloor ?? ""
             
-        case 19:
+        case 20:
             returnString = self.appinfoobj.permanentAddressStreet ?? ""
             
-        case 20:
+        case 21:
             returnString = self.appinfoobj.permanentAddressQtr ?? ""
             
-        case 21:
+        case 22:
             if self.appinfoobj.permanentAddressTownship != 0 {
                 let townId = self.appinfoobj.permanentAddressTownship
                 if let townNameId = self.cityTownshipModel.townNameIdDic {
@@ -225,7 +273,7 @@ class ApplicationDetailVC: BaseUIViewController {
                 }
             }
             
-        case 22:
+        case 23:
             if self.appinfoobj.permanentAddressCity != 0 {
                 let cityId = self.appinfoobj.permanentAddressCity
                 if let cityNameId = self.cityTownshipModel.cityNameIdDic {
@@ -239,7 +287,7 @@ class ApplicationDetailVC: BaseUIViewController {
                 }
             }
             
-        case 23:
+        case 24:
             var indexnow = 0
             if self.appinfoobj.typeOfResidence! > 0 {
                 indexnow = self.appinfoobj.typeOfResidence! - 1
@@ -250,7 +298,7 @@ class ApplicationDetailVC: BaseUIViewController {
             }
             returnString =  str
             
-        case 24:
+        case 25:
             var str = ""
             if let living = self.appinfoobj.livingWith {
                 if living == 0 {
@@ -265,19 +313,19 @@ class ApplicationDetailVC: BaseUIViewController {
 //            }
             returnString =  str
             
-        case 25:
+        case 26:
             returnString = "\(self.appinfoobj.yearOfStayYear ?? 0) Yrs \(self.appinfoobj.yearOfStayMonth ?? 0) Months"
             
-        case 26:
+        case 27:
             returnString = self.appinfoobj.mobileNo ?? ""
             
-        case 27:
+        case 28:
             returnString = self.appinfoobj.residentTelNo ?? ""
             
-        case 28:
+        case 29:
             returnString = self.appinfoobj.otherPhoneNo ?? ""
             
-        case 29:
+        case 30:
             //let email = self.appinfoobj.email
             returnString = self.appinfoobj.email ?? ""
             
@@ -620,7 +668,7 @@ class ApplicationDetailVC: BaseUIViewController {
                         returnString = "Approve"
                     case 11,12,13,14:
                         returnString = "Purchase Confirmed"
-                    case 15,16,17:
+                    case 15,16,17,21,22:
                         returnString = "Purchase Completed"
                     default:
                         returnString = ""
@@ -712,7 +760,7 @@ extension ApplicationDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let baseview = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         let header = UILabel(frame: CGRect(x: 20, y: 10, width: 500, height: 27))
-        baseview.backgroundColor = UIColor(red: 183.0/255.0, green: 0.0, blue: 129.0/255.0, alpha: 1)
+        baseview.backgroundColor = UIColor(red: 187/255.0, green: 189/255.0, blue: 191/255.0, alpha: 1)
         if self.isPreviewing {
             switch section {
             case 0:
@@ -788,13 +836,19 @@ extension ApplicationDetailVC: UITableViewDelegate, UITableViewDataSource {
             let attachmentfiles = self.appinfoobj.applicationInfoAttachmentDtoList
             var imagefile = ""
             var imagefileArray = [String]()
-            var filteredArray = [PurchaseAttachmentResponse]()
+           
+           var filteredArray = [PurchaseAttachmentResponse]()
+            
+            
+          
             if attachmentfiles != nil {
                 if self.isPreviewing {
                     switch indexPath.row {
                         
                     case 12:
-                        filteredArray =  attachmentfiles!.filter { $0.fileType == 1 }
+                        var att1 = attachmentfiles!.filter { $0.fileType == 1 }
+                       // filteredArray =  attachmentfiles!.filter { $0.fileType == 1 }
+                        filteredArray.append(contentsOf: att1)
                     case 13:
                         filteredArray =  attachmentfiles!.filter { $0.fileType == 2 }
                     case 14:
@@ -811,7 +865,8 @@ extension ApplicationDetailVC: UITableViewDelegate, UITableViewDataSource {
                         filteredArray =  attachmentfiles!.filter { $0.fileType == 8 }
                     case 20:
                         filteredArray =  attachmentfiles!.filter { $0.fileType == 9 }
-                        
+                    case 21:
+                         filteredArray =  attachmentfiles!.filter { $0.fileType == 10 }
                     default:
                         imagefile = ""
                     }
@@ -835,12 +890,16 @@ extension ApplicationDetailVC: UITableViewDelegate, UITableViewDataSource {
                         filteredArray =  attachmentfiles!.filter { $0.fileType == 8 }
                     case 20:
                         filteredArray =  attachmentfiles!.filter { $0.fileType == 9 }
+                    case 21:
+                        filteredArray =  attachmentfiles!.filter { $0.fileType == 10 }
                         
                     default:
                         imagefile = ""
                     }
                 }
+                
                 if !isPreviewing {
+                    
                     for attachment in filteredArray {
                         imagefile = "https://ass.aeoncredit.com.mm/daso/digital-application-image-files/\(attachment.filePath ?? "")"
                         imagefileArray.append(imagefile)
@@ -858,8 +917,11 @@ extension ApplicationDetailVC: UITableViewDelegate, UITableViewDataSource {
             }
             
             cell.cellLbltitle.text = subtitleString.localized
-            if imagefileArray.count > 0 {
+            if attachmentfiles!.count > 0 {
                 print("index : \(indexPath.section) \(indexPath.row)")
+                
+                
+                
                 cell.isPreviewing = self.isPreviewing
                 
                 cell.imagefilename = imagefile
@@ -870,7 +932,8 @@ extension ApplicationDetailVC: UITableViewDelegate, UITableViewDataSource {
                 cell.isPreviewing = self.isPreviewing
                 cell.imagefilename = imagefile
                 cell.imagefiles = imagefileArray
-                cell.setDataWithoutImage()
+              //  cell.setDataWithoutImage()
+                cell.setData()
             }
             return cell
             
@@ -888,6 +951,7 @@ extension ApplicationDetailVC: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 currentdata = self.appData
                 subtitleString = self.getRespectiveStringForApplicationData(index: indexPath.row)
+                print("sub title string\(subtitleString)")
             case 1:
                 currentdata = self.occData
                 subtitleString = self.getRepectiveStringForOccupationData(index: indexPath.row)

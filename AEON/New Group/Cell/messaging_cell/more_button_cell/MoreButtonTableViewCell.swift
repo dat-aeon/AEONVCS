@@ -23,7 +23,6 @@ class MoreButtonTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     func setData(messageId: Int){
@@ -31,7 +30,7 @@ class MoreButtonTableViewCell: UITableViewCell {
     }
     
     @IBAction func onClickMoreMesg(_ sender: UIButton) {
-        delegate?.onClickMoreMesg(messageId: self.messageId!)
+     delegate?.onClickMoreMesg(messageId: self.messageId!)
     }
 }
 

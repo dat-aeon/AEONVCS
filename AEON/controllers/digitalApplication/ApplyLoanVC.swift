@@ -17,7 +17,7 @@ protocol applyLoanDelegate {
     func showApplicationForm()
 }
 
-var myAppFormData = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0, permanentAddressCity: 0)
+var myAppFormData = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", highestEducationTypeId: 1, nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0, permanentAddressCity: 0)
 
 var applicationFormID = 0
 var occupationFormID = 0
@@ -28,7 +28,7 @@ var applicationStatus = 0
 class ApplyLoanVC: BaseUIViewController {
     
     var delegate: applyLoanDelegate?
-    
+    var logoutTimer: Timer?
     @IBOutlet weak var viewBgTop: UIView!  {
         didSet {
             
@@ -52,7 +52,7 @@ class ApplyLoanVC: BaseUIViewController {
     @IBOutlet weak var lblForm5: UILabel!
     @IBOutlet weak var lblForm4: UILabel!
     
-    var myAppData = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0, permanentAddressCity: 0)
+    var myAppData = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", highestEducationTypeId: 1 , nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0, permanentAddressCity: 0)
     
     var myLoanData = LoanConfirmationRequest(daLoanTypeId: 1, financeAmount: 0.0, financeTerm: 0, daProductTypeId: 1, productDescription: "", channelType: 2)
     
@@ -65,8 +65,8 @@ class ApplyLoanVC: BaseUIViewController {
     
     var progressBarWithoutLastState: FlexibleSteppedProgressBar!
     var backgroundColor = UIColor(red: 218.0 / 255.0, green: 218.0 / 255.0, blue: 218.0 / 255.0, alpha: 1.0)
-    var progressColor = UIColor(red: 183.0 / 255.0, green: 0.0 / 255.0, blue: 129.0 / 255.0, alpha: 1.0)
-    var textColorHere = UIColor(red: 153.0 / 255.0, green: 153.0 / 255.0, blue: 153.0 / 255.0, alpha: 1.0)
+    var progressColor = UIColor(red: 255.0 / 255.0, green: 150.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
+    var textColorHere = UIColor(red: 255.0 / 255.0, green: 150.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
     var minIndex = -1
     
     var vControllers = [UIViewController]()
@@ -78,9 +78,38 @@ class ApplyLoanVC: BaseUIViewController {
     var isAttachmentEdit = false
     @IBOutlet weak var heightTopMostView: NSLayoutConstraint!
     
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var backBtnLabel: UIImageView!
+    @IBOutlet weak var phoneLabelBtn: UILabel!
+    @IBOutlet weak var nameLabelBtn: UILabel!
+    @IBOutlet weak var myanmarLabelBtn: UIImageView!
+    @IBOutlet weak var engLabelBtn: UIImageView!
+    @objc func onTapMMLocale() {
+          print("click")
+          super.NewupdateLocale(flag: 1)
+          updateViews()
+      }
+      @objc func onTapEngLocale() {
+          print("click")
+          super.NewupdateLocale(flag: 2)
+          updateViews()
+      }
+    @objc func onTapBack() {
+        print("click")
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        self.phoneLabelBtn.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+                                       self.nameLabelBtn.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+                             self.typeLabel.text = "Lv.2 : Login user"
+        self.myanmarLabelBtn.isUserInteractionEnabled = true
+        self.engLabelBtn.isUserInteractionEnabled = true
+         self.backBtnLabel.isUserInteractionEnabled = true
+        self.myanmarLabelBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+        self.engLabelBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+         self.backBtnLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
         // Do any additional setup after loading the view.
         self.setupProgressBarWithoutLastState()
        
@@ -131,6 +160,40 @@ class ApplyLoanVC: BaseUIViewController {
             self.heightTopMostView.constant = 0
         }
     }
+    @objc func runTimedCode() {
+                   multiLoginGet()
+               // print("kms\(logoutTimer)")
+               }
+       func multiLoginGet(){
+                  let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+               var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+              MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                      , loginDeviceId: deviceID, success: { (results) in
+                      print("kaungmyat san multi >>>  \(results)")
+                      
+                      if results.data.logoutFlag == true {
+                          print("success stage logout")
+                          // create the alert
+                                 let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                                 // add an action (button)
+                          alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                              self.logoutTimer?.invalidate()
+//                              let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: "mainvc") as! MainNewViewController
+//                              navigationVC.modalPresentationStyle = .overFullScreen
+//                              self.present(navigationVC, animated: true, completion:nil)
+                            self.performSegue(withIdentifier: "mainsegue", sender: nil)
+                          }))
+
+                                 // show the alert
+                                 self.present(alert, animated: true, completion: nil)
+                          
+                          
+                      }
+                  }) { (error) in
+                      print(error)
+                  }
+              }
     
     @objc func showPreview(notitfication: Notification) {
         //prepare data
@@ -158,7 +221,7 @@ class ApplyLoanVC: BaseUIViewController {
             let monthly = attachmentdict["monthltyrepay"] as? Double
             let lastpay = attachmentdict["lastpay"] as? Double
             
-            var applicationdetailresponse = ApplicationDetailResponse(daApplicationInfoId: 0, applicationNo: "", appliedDate: "", daApplicationTypeId: 0, status: 0, settlementPendingComment: "", daInterestInfoId: 0, daCompulsoryInfoId: 0, name: self.myAppData.name, dob: self.myAppData.dob, nrcNo: self.myAppData.nrcNo, fatherName: self.myAppData.fatherName, nationality: self.myAppData.nationality, nationalityOther: self.myAppData.nationalityOther, gender: self.myAppData.gender, maritalStatus: self.myAppData.maritalStatus, currentAddress: self.myAppData.currentAddress, permanentAddress: self.myAppData.permanentAddress, typeOfResidence: self.myAppData.typeOfResidence, typeOfResidenceOther: self.myAppData.typeOfResidenceOther, livingWith: self.myAppData.livingWith, livingWithOther: self.myAppData.livingWithOther, yearOfStayYear: self.myAppData.yearOfStayYear, yearOfStayMonth: self.myAppData.yearOfStayMonth, mobileNo: self.myAppData.mobileNo, residentTelNo: self.myAppData.residentTelNo, otherPhoneNo: self.myAppData.otherPhoneNo, email: self.myAppData.email, customerId: self.myAppData.customerId, daLoanTypeId: self.myLoanData.daLoanTypeId, financeAmount: self.myLoanData.financeAmount, financeTerm: self.myLoanData.financeTerm, daProductTypeId: self.myLoanData.daProductTypeId, productDescription: self.myLoanData.productDescription, channelType: self.myLoanData.channelType, applicantCompanyInfoDto: myOccupationData, emergencyContactInfoDto: self.myContactData, guarantorInfoDto: self.myGuarantorData, applicationInfoAttachmentDtoList: tempAttachment, processingFees: processingfee, totalConSaving: totalcomp, totalRepayment: totalrepay, firstPayment: firstpayment, monthlyInstallment: monthly, lastPayment: lastpay)
+            var applicationdetailresponse = ApplicationDetailResponse(daApplicationInfoId: 0, applicationNo: "", appliedDate: "", daApplicationTypeId: 0, status: 0, settlementPendingComment: "", daInterestInfoId: 0, daCompulsoryInfoId: 0, name: self.myAppData.name, dob: self.myAppData.dob, nrcNo: self.myAppData.nrcNo, fatherName: self.myAppData.fatherName,highestEducationTypeId: self.myAppData.highestEducationTypeId, nationality: self.myAppData.nationality, nationalityOther: self.myAppData.nationalityOther, gender: self.myAppData.gender, maritalStatus: self.myAppData.maritalStatus, currentAddress: self.myAppData.currentAddress, permanentAddress: self.myAppData.permanentAddress, typeOfResidence: self.myAppData.typeOfResidence, typeOfResidenceOther: self.myAppData.typeOfResidenceOther, livingWith: self.myAppData.livingWith, livingWithOther: self.myAppData.livingWithOther, yearOfStayYear: self.myAppData.yearOfStayYear, yearOfStayMonth: self.myAppData.yearOfStayMonth, mobileNo: self.myAppData.mobileNo, residentTelNo: self.myAppData.residentTelNo, otherPhoneNo: self.myAppData.otherPhoneNo, email: self.myAppData.email, customerId: self.myAppData.customerId, daLoanTypeId: self.myLoanData.daLoanTypeId, financeAmount: self.myLoanData.financeAmount, financeTerm: self.myLoanData.financeTerm, daProductTypeId: self.myLoanData.daProductTypeId, productDescription: self.myLoanData.productDescription, channelType: self.myLoanData.channelType, applicantCompanyInfoDto: myOccupationData, emergencyContactInfoDto: self.myContactData, guarantorInfoDto: self.myGuarantorData, applicationInfoAttachmentDtoList: tempAttachment, processingFees: processingfee, totalConSaving: totalcomp, totalRepayment: totalrepay, firstPayment: firstpayment, monthlyInstallment: monthly, lastPayment: lastpay)
             
             applicationdetailresponse.currentAddressBuildingNo = self.myAppData.currentAddressBuildingNo
             applicationdetailresponse.currentAddressRoomNo = self.myAppData.currentAddressRoomNo
@@ -210,7 +273,7 @@ class ApplyLoanVC: BaseUIViewController {
                 self.myGuarantorData = responseObjDA.guarantorInfoDto!
                 self.myOccupationData = responseObjDA.applicantCompanyInfoDto!
                 
-                let appdata = ApplicationDataRequest(daApplicationInfoId: responseObjDA.daApplicationInfoId ?? 0, daApplicationTypeId: responseObjDA.daApplicationTypeId ?? 1, name: responseObjDA.name ?? "", dob: responseObjDA.dob ?? "", nrcNo: responseObjDA.nrcNo ?? "", fatherName: responseObjDA.fatherName ?? "", nationality: responseObjDA.nationality ?? 1, nationalityOther: responseObjDA.nationalityOther ?? "", gender: responseObjDA.gender!, maritalStatus: responseObjDA.maritalStatus ?? 1, currentAddress: responseObjDA.currentAddress ?? "", permanentAddress: responseObjDA.permanentAddress ?? "", typeOfResidence: responseObjDA.typeOfResidence ?? 1, typeOfResidenceOther: responseObjDA.typeOfResidenceOther ?? "", livingWith: responseObjDA.livingWith ?? 1, livingWithOther: responseObjDA.livingWithOther ?? "", yearOfStayYear: responseObjDA.yearOfStayYear ?? 0, yearOfStayMonth: responseObjDA.yearOfStayMonth ?? 0, mobileNo: responseObjDA.mobileNo ?? "", residentTelNo: responseObjDA.residentTelNo ?? "", otherPhoneNo: responseObjDA.otherPhoneNo ?? "", email: responseObjDA.email ?? "", customerId: responseObjDA.customerId ?? 0, status: responseObjDA.status ?? 0, currentAddressFloor: responseObjDA.currentAddressFloor ?? "", currentAddressBuildingNo: responseObjDA.currentAddressBuildingNo ?? "", currentAddressRoomNo: responseObjDA.currentAddressRoomNo ?? "", currentAddressStreet: responseObjDA.currentAddressStreet ?? "", currentAddressQtr: responseObjDA.currentAddressQtr ?? "", currentAddressTownship: responseObjDA.currentAddressTownship ?? 0, currentAddressCity: responseObjDA.currentAddressCity ?? 0, permanentAddressFloor: responseObjDA.permanentAddressFloor ?? "", permanentAddressBuildingNo: responseObjDA.permanentAddressBuildingNo ?? "", permanentAddressRoomNo: responseObjDA.permanentAddressRoomNo ?? "", permanentAddressStreet: responseObjDA.permanentAddressStreet ?? "", permanentAddressQtr: responseObjDA.permanentAddressQtr ?? "", permanentAddressTownship: responseObjDA.permanentAddressTownship ?? 0, permanentAddressCity: responseObjDA.permanentAddressCity ?? 0)
+                let appdata = ApplicationDataRequest(daApplicationInfoId: responseObjDA.daApplicationInfoId ?? 0, daApplicationTypeId: responseObjDA.daApplicationTypeId ?? 1, name: responseObjDA.name ?? "", dob: responseObjDA.dob ?? "", nrcNo: responseObjDA.nrcNo ?? "", fatherName: responseObjDA.fatherName ?? "",highestEducationTypeId: responseObjDA.highestEducationTypeId ?? 1, nationality: responseObjDA.nationality ?? 1, nationalityOther: responseObjDA.nationalityOther ?? "", gender: responseObjDA.gender!, maritalStatus: responseObjDA.maritalStatus ?? 1, currentAddress: responseObjDA.currentAddress ?? "", permanentAddress: responseObjDA.permanentAddress ?? "", typeOfResidence: responseObjDA.typeOfResidence ?? 1, typeOfResidenceOther: responseObjDA.typeOfResidenceOther ?? "", livingWith: responseObjDA.livingWith ?? 1, livingWithOther: responseObjDA.livingWithOther ?? "", yearOfStayYear: responseObjDA.yearOfStayYear ?? 0, yearOfStayMonth: responseObjDA.yearOfStayMonth ?? 0, mobileNo: responseObjDA.mobileNo ?? "", residentTelNo: responseObjDA.residentTelNo ?? "", otherPhoneNo: responseObjDA.otherPhoneNo ?? "", email: responseObjDA.email ?? "", customerId: responseObjDA.customerId ?? 0, status: responseObjDA.status ?? 0, currentAddressFloor: responseObjDA.currentAddressFloor ?? "", currentAddressBuildingNo: responseObjDA.currentAddressBuildingNo ?? "", currentAddressRoomNo: responseObjDA.currentAddressRoomNo ?? "", currentAddressStreet: responseObjDA.currentAddressStreet ?? "", currentAddressQtr: responseObjDA.currentAddressQtr ?? "", currentAddressTownship: responseObjDA.currentAddressTownship ?? 0, currentAddressCity: responseObjDA.currentAddressCity ?? 0, permanentAddressFloor: responseObjDA.permanentAddressFloor ?? "", permanentAddressBuildingNo: responseObjDA.permanentAddressBuildingNo ?? "", permanentAddressRoomNo: responseObjDA.permanentAddressRoomNo ?? "", permanentAddressStreet: responseObjDA.permanentAddressStreet ?? "", permanentAddressQtr: responseObjDA.permanentAddressQtr ?? "", permanentAddressTownship: responseObjDA.permanentAddressTownship ?? 0, permanentAddressCity: responseObjDA.permanentAddressCity ?? 0)
                 
                 
                 self.myAppData = appdata
@@ -370,7 +433,7 @@ class ApplyLoanVC: BaseUIViewController {
             self.myGuarantorData = responseObjDA.guarantorInfoDto!
             self.myOccupationData = responseObjDA.applicantCompanyInfoDto!
             
-            let appdata = ApplicationDataRequest(daApplicationInfoId: responseObjDA.daApplicationInfoId ?? 0, daApplicationTypeId: responseObjDA.daApplicationTypeId ?? 1, name: responseObjDA.name ?? "", dob: responseObjDA.dob ?? "", nrcNo: responseObjDA.nrcNo ?? "", fatherName: responseObjDA.fatherName ?? "", nationality: responseObjDA.nationality ?? 1, nationalityOther: responseObjDA.nationalityOther ?? "", gender: responseObjDA.gender!, maritalStatus: responseObjDA.maritalStatus ?? 1, currentAddress: responseObjDA.currentAddress ?? "", permanentAddress: responseObjDA.permanentAddress ?? "", typeOfResidence: responseObjDA.typeOfResidence ?? 1, typeOfResidenceOther: responseObjDA.typeOfResidenceOther ?? "", livingWith: responseObjDA.livingWith ?? 1, livingWithOther: responseObjDA.livingWithOther ?? "", yearOfStayYear: responseObjDA.yearOfStayYear ?? 0, yearOfStayMonth: responseObjDA.yearOfStayMonth ?? 0, mobileNo: responseObjDA.mobileNo ?? "", residentTelNo: responseObjDA.residentTelNo ?? "", otherPhoneNo: responseObjDA.otherPhoneNo ?? "", email: responseObjDA.email ?? "", customerId: responseObjDA.customerId ?? 0, status: responseObjDA.status ?? 0, currentAddressFloor: responseObjDA.currentAddressFloor ?? "", currentAddressBuildingNo: responseObjDA.currentAddressBuildingNo ?? "", currentAddressRoomNo: responseObjDA.currentAddressRoomNo ?? "", currentAddressStreet: responseObjDA.currentAddressStreet ?? "", currentAddressQtr: responseObjDA.currentAddressQtr ?? "", currentAddressTownship: responseObjDA.currentAddressTownship ?? 0, currentAddressCity: responseObjDA.currentAddressCity ?? 0, permanentAddressFloor: responseObjDA.permanentAddressFloor ?? "", permanentAddressBuildingNo: responseObjDA.permanentAddressBuildingNo ?? "", permanentAddressRoomNo: responseObjDA.permanentAddressRoomNo ?? "", permanentAddressStreet: responseObjDA.permanentAddressStreet ?? "", permanentAddressQtr: responseObjDA.permanentAddressQtr ?? "", permanentAddressTownship: responseObjDA.permanentAddressTownship ?? 0, permanentAddressCity: responseObjDA.permanentAddressCity ?? 0)
+            let appdata = ApplicationDataRequest(daApplicationInfoId: responseObjDA.daApplicationInfoId ?? 0, daApplicationTypeId: responseObjDA.daApplicationTypeId ?? 1, name: responseObjDA.name ?? "", dob: responseObjDA.dob ?? "", nrcNo: responseObjDA.nrcNo ?? "", fatherName: responseObjDA.fatherName ?? "",highestEducationTypeId: responseObjDA.highestEducationTypeId ?? 1, nationality: responseObjDA.nationality ?? 1, nationalityOther: responseObjDA.nationalityOther ?? "", gender: responseObjDA.gender!, maritalStatus: responseObjDA.maritalStatus ?? 1, currentAddress: responseObjDA.currentAddress ?? "", permanentAddress: responseObjDA.permanentAddress ?? "", typeOfResidence: responseObjDA.typeOfResidence ?? 1, typeOfResidenceOther: responseObjDA.typeOfResidenceOther ?? "", livingWith: responseObjDA.livingWith ?? 1, livingWithOther: responseObjDA.livingWithOther ?? "", yearOfStayYear: responseObjDA.yearOfStayYear ?? 0, yearOfStayMonth: responseObjDA.yearOfStayMonth ?? 0, mobileNo: responseObjDA.mobileNo ?? "", residentTelNo: responseObjDA.residentTelNo ?? "", otherPhoneNo: responseObjDA.otherPhoneNo ?? "", email: responseObjDA.email ?? "", customerId: responseObjDA.customerId ?? 0, status: responseObjDA.status ?? 0, currentAddressFloor: responseObjDA.currentAddressFloor ?? "", currentAddressBuildingNo: responseObjDA.currentAddressBuildingNo ?? "", currentAddressRoomNo: responseObjDA.currentAddressRoomNo ?? "", currentAddressStreet: responseObjDA.currentAddressStreet ?? "", currentAddressQtr: responseObjDA.currentAddressQtr ?? "", currentAddressTownship: responseObjDA.currentAddressTownship ?? 0, currentAddressCity: responseObjDA.currentAddressCity ?? 0, permanentAddressFloor: responseObjDA.permanentAddressFloor ?? "", permanentAddressBuildingNo: responseObjDA.permanentAddressBuildingNo ?? "", permanentAddressRoomNo: responseObjDA.permanentAddressRoomNo ?? "", permanentAddressStreet: responseObjDA.permanentAddressStreet ?? "", permanentAddressQtr: responseObjDA.permanentAddressQtr ?? "", permanentAddressTownship: responseObjDA.permanentAddressTownship ?? 0, permanentAddressCity: responseObjDA.permanentAddressCity ?? 0)
 
             
             self.myAppData = appdata
@@ -402,7 +465,7 @@ class ApplyLoanVC: BaseUIViewController {
                 
             } else if error == "Empty" {
                 //nothing data
-                let appdata = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0, permanentAddressCity: 0)
+                let appdata = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", highestEducationTypeId: 1, nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0, permanentAddressCity: 0)
                 
                 self.myAppData = appdata
                 myAppFormData = self.myAppData

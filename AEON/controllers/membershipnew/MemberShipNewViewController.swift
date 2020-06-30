@@ -39,11 +39,11 @@ class MemberShipNewViewController: BaseUIViewController {
                var customerNo = ""
                var customerId = 0
     
-
+ var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+      //  logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -96,7 +96,42 @@ class MemberShipNewViewController: BaseUIViewController {
         
         
     }
-    
+   
+    @objc func runTimedCode() {
+          multiLoginGet()
+      // print("kms\(logoutTimer)")
+      }
+    func multiLoginGet(){
+         var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+               let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+          
+           MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                   , loginDeviceId: deviceID, success: { (results) in
+                   print("kaungmyat san multi >>>  \(results)")
+                   
+                   if results.data.logoutFlag == true {
+                       print("success stage logout")
+                       // create the alert
+                              let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                              // add an action (button)
+                       alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                           self.logoutTimer?.invalidate()
+                           let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                           navigationVC.modalPresentationStyle = .overFullScreen
+                           self.present(navigationVC, animated: true, completion:nil)
+                           
+                       }))
+
+                              // show the alert
+                              self.present(alert, animated: true, completion: nil)
+                       
+                       
+                   }
+               }) { (error) in
+                   print(error)
+               }
+           }
     @objc func onTapBack() {
        print("click")
         self.dismiss(animated: true, completion: nil)
@@ -222,12 +257,13 @@ extension MemberShipNewViewController:UITableViewDelegate{
             return CGFloat(267.0)
         }else if indexPath.section == 2{
             return CGFloat(70.0)
+           
         }
 //        var tableView = UITableView()
 //        tableView.rowHeight = UITableView.automaticDimension
 //        tableView.estimatedRowHeight = 160
         if agreementNoList[indexPath.row].qrShow == 2 {
-            return CGFloat(146.0)
+            return CGFloat(165.0)
             
         }else{
              return CGFloat(70)
@@ -236,6 +272,14 @@ extension MemberShipNewViewController:UITableViewDelegate{
 }
 
 extension MemberShipNewViewController: MemberCardInfoCellDelegate {
+    
+    func alertQR() {
+           let alert = UIAlertController(title: "No Product Information", message: "", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+              
+                self.present(alert, animated: true, completion: nil)
+       }
+    
     func tappedOnQRcode(currentIndex: Int) {
         let agreement = self.agreementNoList[currentIndex]
         self.doGetQRProductInfo(appid: agreement.daApplicationInfoId ?? 0)

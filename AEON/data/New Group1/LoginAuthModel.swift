@@ -12,11 +12,12 @@ import SwiftyJSON
 
 class LoginAuthModel:BaseModel {
     
-    func getAccessToken(phoneNo:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
+    func getAccessToken(phoneNo:String,loginDeviceId:String,password:String,success: @escaping (LoginResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
             "username": phoneNo,
             "password": password,
-            "grant_type": "password"
+            "grant_type": "password",
+            "login_device_id": loginDeviceId
         ]
         let _ = super.requestToken(endPoint: ApiServiceEndPoint.authenticate, rawData: rawData) { (result) in
             

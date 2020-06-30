@@ -204,7 +204,10 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     
     @objc func onTapBack() {
        print("click")
-        self.dismiss(animated: true, completion: nil)
+       // self.dismiss(animated: true, completion: nil)
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+               navigationVC.modalPresentationStyle = .overFullScreen
+               self.present(navigationVC, animated: true, completion: nil)
     }
     @objc func onTapMMLocale() {
        print("click")
@@ -526,7 +529,7 @@ extension AgentChannelViewController : WebSocketDelegate {
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         //print("socket onMessage \(message as? String)")
         if let text = text as? String {
-            //print("recv: \(text)")
+            print("recv: \(text)")
             do{
                 if let json = text.data(using: String.Encoding.utf8){
                     if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{

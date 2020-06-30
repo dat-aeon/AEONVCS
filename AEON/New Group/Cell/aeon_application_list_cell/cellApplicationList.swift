@@ -16,11 +16,18 @@ protocol cellApplicationListDelegate {
 }
 
 class cellApplicationList: UITableViewCell {
+    @IBOutlet weak var approvedTermLabel: UILabel!
+    @IBOutlet weak var applicationNoLabel: UILabel!
+    @IBOutlet weak var agreementNoLabel: UILabel!
+    
+    @IBOutlet weak var approvedAmountLabel: UILabel!
     
     @IBOutlet weak var cellLblStatus: UILabel! {
         didSet {
             self.cellLblStatus.layer.cornerRadius = 5
             self.cellLblStatus.clipsToBounds = true
+            self.cellLblStatus.textColor = UIColor.white
+            
         }
     }
     @IBOutlet weak var cellAppNo: UILabel!
@@ -37,6 +44,9 @@ class cellApplicationList: UITableViewCell {
     @IBOutlet weak var cellLblAttachmentEdit: UILabel!
     @IBOutlet weak var cellLblCancel: UILabel!
     
+    @IBOutlet weak var cellAgreementNoLabel: UILabel!
+    @IBOutlet weak var cellApprovedAmount: UILabel!
+    @IBOutlet weak var cellApprovedTermLabel: UILabel!
     
     @IBOutlet weak var viewCancel: UIView! {
         didSet {
@@ -82,14 +92,21 @@ class cellApplicationList: UITableViewCell {
         self.cellLblTitleDate.text = "APPLICATIONLIST.APPLIED_DATE".localized
         self.cellLblTitleFinanceAmt.text = "APPLICATIONLIST.FINANCE_AMT".localized
         self.cellLblFinanceTerms.text = "APPLICATIONLIST.FINANCE_TERMS".localized
-        
-        self.cellAppNo.text = "\(appForm.applicationNo ?? "")"
+        self.applicationNoLabel.text = "APPLICATIONLIST.APPLICATION_NO_LABEL".localized
+        self.agreementNoLabel.text = "APPLICATIONLIST.AGREEMENT_NO_LABEL".localized
+        self.approvedTermLabel.text = "APPLICATIONLIST.APPROVED_TERM".localized
+        self.approvedAmountLabel.text = "APPLICATIONLIST.APPROVED_AMOUNT".localized
+        self.cellAppNo.text = ": \(appForm.applicationNo ?? "")"
          
         //self.cellLblDate.text = appForm.appliedDate?.strstr(needle: "T", beforeNeedle: true)
-        self.cellLblDate.text = Utils.changeYMDDateformat(date: appForm.appliedDate!)
-        self.cellLblAmt.text = "\(Int(Double(appForm.financeAmount ?? 0.0)).thousandsFormat) MMK"
-        self.cellLblTerms.text = "\(appForm.financeTerm ?? 0) Months"
+        self.cellLblDate.text = ": \(Utils.changeYMDDateformat(date: appForm.appliedDate!))"
+        self.cellLblAmt.text = ": \(Int(Double(appForm.financeAmount ?? 0.0)).thousandsFormat) MMK"
+        self.cellLblTerms.text = ": \(appForm.financeTerm ?? 0) Months"
+        self.cellAgreementNoLabel.text = ": \(appForm.agreementNo )"
+        self.cellApprovedAmount.text = ": \(Int(Double(appForm.approvedFinanceAmount ?? 0)).thousandsFormat) MMK"
+        self.cellApprovedTermLabel.text = ": \(appForm.approvedFinanceTerm ?? 0) Months"
         let formStatus = appForm.status ?? 0
+        
         
         var statusString = ""
         switch formStatus {
@@ -121,13 +138,13 @@ class cellApplicationList: UITableViewCell {
             statusString = "Unsuccessful"
             
         case 10:
-            statusString = "Approve"
+            statusString = "APPROVE"
             
         case 11:
-            statusString = "Approve"//"Purchase Canceled"
+            statusString = "APPROVE"//"Purchase Canceled"
             
         case 12:
-            statusString = "Approve"//"Purchase initial"
+            statusString = "APPROVE"//"Purchase initial"
             
         case 13:
             statusString = "Approve"//"Purchase confirm waiting"
@@ -143,6 +160,15 @@ class cellApplicationList: UITableViewCell {
             
         case 17:
             statusString = "Purchase completed"//"Setttlement pending"
+        case 19:
+        statusString = "COMPLETED"
+            
+        case 20:
+            statusString = "COMPLETED"
+        case 21:
+            statusString = "COMPLETED"
+        case 22:
+            statusString = "COMPLETED"
             
         default:
             statusString = ""

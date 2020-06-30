@@ -17,10 +17,10 @@ class CustomerTypeViewController: BaseUIViewController {
     
     @IBOutlet weak var lblBarPhNo: UILabel!
     @IBOutlet weak var lblBarName: UILabel!
-    
+    var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -49,7 +49,41 @@ class CustomerTypeViewController: BaseUIViewController {
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
-    
+    @objc func runTimedCode() {
+          multiLoginGet()
+      // print("kms\(logoutTimer)")
+      }
+    func multiLoginGet(){
+         var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+               let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+          
+           MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                   , loginDeviceId: deviceID, success: { (results) in
+                   print("kaungmyat san multi >>>  \(results)")
+                   
+                   if results.data.logoutFlag == true {
+                       print("success stage logout")
+                       // create the alert
+                              let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                              // add an action (button)
+                       alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                           self.logoutTimer?.invalidate()
+                           let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                           navigationVC.modalPresentationStyle = .overFullScreen
+                           self.present(navigationVC, animated: true, completion:nil)
+                           
+                       }))
+
+                              // show the alert
+                              self.present(alert, animated: true, completion: nil)
+                       
+                       
+                   }
+               }) { (error) in
+                   print(error)
+               }
+           }
     @objc func onTapBack() {
        print("click")
         self.dismiss(animated: true, completion: nil)

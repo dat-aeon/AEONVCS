@@ -585,5 +585,81 @@ class BaseModel {
        }
 
 
-    
+    func AutoReplyMessagePOSTWithoutToken(endPoint:String,completion:@escaping (Result<Any>)->Void) -> DataRequest {
+        
+        let urlString = Constants.base_url + endPoint
+        
+        let url = URL(string: urlString)
+        var request        = URLRequest(url: url!)
+        request.httpMethod = ApiServiceEndPoint.GET_METHOD
+        request.setValue(ApiServiceEndPoint.APPLICATION_JSON, forHTTPHeaderField: ApiServiceEndPoint.CONTENT_TYPE)
+        request.timeoutInterval = 180
+        do {
+           // request.httpBody = try JSON(rawData).rawData()
+            
+        } catch let error {
+            print("Error : \(error.localizedDescription)")
+        }
+        //print("Request data :::::::::::\(request)\(rawData)")
+        
+        return Alamofire.request(request).responseJSON{ (response) in
+            completion(response.result)
+        }
+    }
+    func PurchaseDetailrequestDataWithTokenDAWithStringDict(endPoint:String,rawData:[String:Int],token:[String:String],completion:@escaping (Result<Any>)->Void) -> DataRequest {
+           
+           let urlString = Constants.daso_url + endPoint
+           
+           let url = URL(string: urlString)
+           var request        = URLRequest(url: url!)
+           request.httpMethod = ApiServiceEndPoint.POST_METHOD
+           request.setValue(ApiServiceEndPoint.APPLICATION_JSON, forHTTPHeaderField: ApiServiceEndPoint.CONTENT_TYPE)
+           request.timeoutInterval = 180
+           
+           let parameters: Parameters = token
+           //let encodedURLRequest = try URLEncoding.queryString.encode(request, with: parameters)
+           
+           do {
+               request.httpBody = try JSON(rawData).rawData()
+               let encodedURLRequest = try URLEncoding.queryString.encode(request, with: parameters)
+               print("Request data :::::::::::\(encodedURLRequest)\(rawData)")
+               
+               return Alamofire.request(encodedURLRequest).responseJSON{ (response) in
+                   completion(response.result)
+               }
+               
+           } catch let error {
+               print("Error : \(error.localizedDescription)")
+           }
+           
+           return Alamofire.request(request).responseJSON{ (response) in
+               completion(response.result)
+           }
+       }
+       
+   
+    func multiLoginRequest(endPoint:String,rawData:[String:String],completion:@escaping (Result<Any>)->Void) -> DataRequest {
+
+           let urlString = Constants.base_url + endPoint
+
+           let url = URL(string: urlString)
+           var request        = URLRequest(url: url!)
+           request.httpMethod = ApiServiceEndPoint.POST_METHOD
+           request.setValue(ApiServiceEndPoint.APPLICATION_JSON, forHTTPHeaderField: ApiServiceEndPoint.CONTENT_TYPE)
+           request.timeoutInterval = 180
+           do {
+               request.httpBody = try JSON(rawData).rawData()
+           
+          
+           } catch let error {
+               print("Error : \(error.localizedDescription)")
+           }
+           print("Request data :::::::::::\(request)\(rawData)")
+
+      
+           return Alamofire.request(request).responseJSON{ (response) in
+               completion(response.result)
+         
+}
+}
 }

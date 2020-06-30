@@ -164,6 +164,7 @@ class DAViewModel {
         var registerRequest = SaveDARequest (
             daApplicationTypeId: 1, name: appData.name, nrcNo: appData.nrcNo ?? "", fatherName: appData.fatherName ?? "", nationality: appData.nationality , nationalityOther: appData.nationalityOther ?? "", gender: appData.gender , maritalStatus: appData.maritalStatus , currentAddress: appData.currentAddress ?? "", permanentAddress: appData.permanentAddress ?? "", typeOfResidence: appData.typeOfResidence , typeOfResidenceOther: appData.typeOfResidenceOther ?? "", livingWith: appData.livingWith ?? 1, livingWithOther: appData.livingWithOther ?? "", yearOfStayYear: appData.yearOfStayYear ?? 0, yearOfStayMonth: appData.yearOfStayMonth ?? 0, mobileNo: appData.mobileNo ?? "", residentTelNo: appData.residentTelNo ?? "", otherPhoneNo: appData.otherPhoneNo ?? "", email: appData.email ?? "", customerId: appData.customerId ?? 1, daLoanTypeId: loanData.daLoanTypeId ?? 1, financeAmount: loanData.financeAmount , financeTerm: loanData.financeTerm ?? 0, daProductTypeId: loanData.daProductTypeId ?? 1, productDescription: loanData.productDescription ?? "", channelType: 1, status: appData.status, applicantCompanyInfoDto: companyData, emergencyContactInfoDto: emergencyContact, guarantorInfoDto: guarantorData
         )
+       
         //let dobDate = appData.dob
         registerRequest.currentAddressFloor = appData.currentAddressFloor ?? ""
         registerRequest.currentAddressBuildingNo = appData.currentAddressBuildingNo ?? ""
@@ -236,25 +237,72 @@ class DAViewModel {
         
     }
     
-    func doInquiryPurchaseDetail(tokenInfo:TokenData, inquiryAppId: String, success: @escaping (PurchaseDetail) -> Void,failure: @escaping (String) -> Void){
+    func doInquiryPurchaseDetail(tokenInfo:TokenData, inquiryAppId: Int, success: @escaping (PurchaseDetail) -> Void,failure: @escaping (String) -> Void){
         
         DAModel.init().getPurchaseDetail(token: "\(tokenInfo.access_token ?? "")", applicationID: inquiryAppId, success: { (result) in
             
             if result.status == Constants.STATUS_200 {
-                
                 if result.data != nil {
-                    let calculatorResult = result.data
-                    success(calculatorResult!)
+                    print("result data kaungmyatsan ... \(String(describing: result.data))")
+                    let resultData = result.data
+                    let response = resultData as AnyObject
+                                       let data = response[ModelConstants.DATA] as AnyObject
+                                       var purDeData = PurchaseDetail()
+                                       if let companyInfo = data["purchaseInfoProductDtoList"] as? AnyObject {
+                                                                                  var productDtoArray = [PurchaseInfoProductDtoList]()
+                                                                                 var productDescription = ""
+                                                                                 if let productDes = companyInfo["productDescription"] as? String {
+                                                                                     productDescription = productDes
+                                                                                 }
+                                                                                 var brands = ""
+                                                                                 if let brand = companyInfo["brand"] as? String {
+                                                                                     brands = brand
+                                                                                 }
+                                                                                 var models = ""
+                                                                                 if let model = companyInfo["model"] as? String {
+                                                                                     models = model
+                                                                                 }
+                                                                                 var prices = 0.0
+                                                                                 if let price = companyInfo["price"] as? Double {
+                                                                                     prices = price
+                                                                                 }
+                                                                                 var cashDownAmo = 0.0
+                                                                                 if let cashDownAmount = companyInfo["cashDownAmount"] as? Double {
+                                                                                     cashDownAmo = cashDownAmount
+                                                                                 }
+                                                                                 var daloanTypeID = 0
+                                                                                 if let daLoanTypeId = companyInfo["daLoanTypeId"] as? Int {
+                                                                                     daloanTypeID = daLoanTypeId
+                                                                                 }
+                                                                                 var dapurchseInfoID = 0
+                                                                                 if let daPurchaseInfoId = companyInfo["daPurchaseInfoId"] as? Int {
+                                                                                     dapurchseInfoID = daPurchaseInfoId
+                                                                                 }
+                                                                                 var dapurchseInfoProductID = 0
+                                                                                 if let daPurchaseInfoProductId = companyInfo["daPurchaseInfoProductId"] as? Int {
+                                                                                     dapurchseInfoProductID = daPurchaseInfoProductId
+                                                                                 }
+                                                                                 var daproductTypeID = 0
+                                                                                 if let daProductTypeId = companyInfo["daProductTypeId"] as? Int {
+                                                                                     daproductTypeID = daProductTypeId
+                                                                                 }
+                                                                                 let productDtoListObj = PurchaseInfoProductDtoList(productDescription: productDescription, brand: brands, model: models, price: prices, cashDownAmount: cashDownAmo, daLoanTypeId: daloanTypeID, daPurchaseInfoId: dapurchseInfoID, daPurchaseInfoProductId: dapurchseInfoProductID, daProductTypeId: daproductTypeID)
+                                                                                 productDtoArray.append(productDtoListObj)
+                                                                                  purDeData.purchaseInfoProductDtoList = productDtoArray
+                                                                             }
+                    success(resultData!)
+                   
                 } else {
                     failure("No detail getPurchaseDetail")
                 }
-                
-                
-                
+
+
+
             } else {
-                failure(result.status!)
+                failure("error result.status!")
             }
             
+
         }) { (error) in
             if error == Constants.EXPIRE_TOKEN {
                 LoginAuthModel.init().refereshToken(refreshToken: tokenInfo.refresh_token!, success: { (result) in
@@ -274,8 +322,8 @@ class DAViewModel {
                         DAModel.init().getPurchaseDetail(token: "\(tokenInfo.access_token ?? "")", applicationID: inquiryAppId, success: { (result) in
                             
                             if result.status == Constants.STATUS_200 {
-                                let calculatorResult = result.data
-                                success(calculatorResult!)
+                                
+                                success(result.data!)
                                 
                             } else {
                                 failure(result.status!)

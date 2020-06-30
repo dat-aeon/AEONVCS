@@ -28,10 +28,13 @@ class MainViewController: BaseUIViewController {
     
     var isFirstInstall:Bool = false
     var isDidLoad = false
-    
+    var deviceID: String?
+    var logoutTimer: Timer?
+     var sessionDataBean : SessionDataBean?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         self.deviceID = sessionDataBean?.loginDeviceId ?? ""
+       // logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         DispatchQueue.main.async {
 
             self.vLoginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickLogin)))
@@ -62,6 +65,40 @@ class MainViewController: BaseUIViewController {
 //        self.imgLogo.layer.cornerRadius = 13
 //        self.imgLogo.clipsToBounds = true
     }
+    @objc func runTimedCode() {
+                 multiLoginGet()
+             // print("kms\(logoutTimer)")
+             }
+    func multiLoginGet(){
+            let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+       
+            MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                , loginDeviceId: deviceID ?? "", success: { (results) in
+                print("kaungmyat san multi >>>  \(results)")
+                
+                if results.data.logoutFlag == true {
+                    print("success stage logout")
+                    // create the alert
+                           let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                           // add an action (button)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.logoutTimer?.invalidate()
+                        let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                        navigationVC.modalPresentationStyle = .overFullScreen
+                        self.present(navigationVC, animated: true, completion:nil)
+                        
+                    }))
+
+                           // show the alert
+                           self.present(alert, animated: true, completion: nil)
+                    
+                    
+                }
+            }) { (error) in
+                print(error)
+            }
+        }
     
     override func applicationWillEnterForeground() {
         let isBioLogin = UserDefaults.standard.bool(forKey: Constants.IS_BIO_LOGIN)
@@ -84,6 +121,7 @@ class MainViewController: BaseUIViewController {
     @IBAction func onClickLocaleFlag(_ sender: UIBarButtonItem) {
         super.updateLocale()
     }
+    
     @objc override func updateViews() {
         super.updateViews()
         switch Locale.currentLocale {
@@ -233,7 +271,7 @@ class MainViewController: BaseUIViewController {
         let authContext = LAContext()
         let authReason = "Use your biometric data to login your account"
         var authError : NSError?
-        
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         if authContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             authContext.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: authReason, reply: {success,evaluateError in
                 
@@ -248,7 +286,7 @@ class MainViewController: BaseUIViewController {
                     DispatchQueue.main.async {
                         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                     }
-                    LoginAuthViewModel.init().accessLoginToken(phoneNo: phone, password: password, success: { (result) in
+                    LoginAuthViewModel.init().accessLoginToken(phoneNo: phone, loginDeviceId: deviceId, password: password, success: { (result) in
                         
                         //                        let jsonData = try? JSONEncoder().encode(result)
                         //                        let jsonString = String(data: jsonData!, encoding: .utf8)!
