@@ -75,7 +75,7 @@ class FAQTableViewCell: UITableViewCell {
             contentFrame.size.height = questionHeight+32
             self.frame = contentFrame
             
-            self.ivDropdown.image = UIImage(named: "expand")
+            self.ivDropdown.image = UIImage(named: "expand-small-p-icon")
             self.lblAnswer.isHidden = true
             self.lblAnswer?.visiblity(gone: true, dimension: CGFloat(0.0))
             

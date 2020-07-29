@@ -210,11 +210,13 @@ class ApplicationDataVC: BaseUIViewController {
     var selectedEducationWith = 1
     var dobString = ""
     var sessionInfo:SessionDataBean?
-    var educationText = "High School"
+    var educationText = ""
     var educationId = 1
      //var logoutTimer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+      //  self.markAppDataLastState()
             // logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
 //        self.lblMsgDob.text = Constants.BLANK
@@ -300,9 +302,9 @@ class ApplicationDataVC: BaseUIViewController {
         tfPermenentCity.setMaxLength(maxLength: 100)
         tfTypeResidence.setMaxLength(maxLength: 256)
         tfResidentPhNo.setMaxLength(maxLength: 11)
-        tfOtherPhNo.setMaxLength(maxLength: 14)
+        tfOtherPhNo.setMaxLength(maxLength: 11)
         tfEmail.setMaxLength(maxLength: 50)
-        tfPhNo.setMaxLength(maxLength: 14)
+        tfPhNo.setMaxLength(maxLength: 11)
         
         tfName.autocapitalizationType = .allCharacters
         tfFatherName.autocapitalizationType = .allCharacters
@@ -429,10 +431,13 @@ class ApplicationDataVC: BaseUIViewController {
         }
        
         self.dobString = self.tfDob.text!
+        myAppFormData.permanentAddressCity = self.selectedPerCityID ?? 0
+        let appData = ApplicationDataRequest(daApplicationInfoId: applicationFormID, daApplicationTypeId: 1, name: self.tfName.text ?? "", dob: self.tfDob.text!, nrcNo: nrc, fatherName: self.tfFatherName.text?.uppercased() ?? "", highestEducationTypeId: educationId, nationality: selectedNationality, nationalityOther: self.tfNationality.text?.uppercased() ?? "", gender: selectedGender, maritalStatus: selectedMarital, currentAddress: "", permanentAddress: "", typeOfResidence: self.selectedTypeResidence, typeOfResidenceOther: self.tfTypeResidence.text?.uppercased() ?? "", livingWith: self.selectedLivingWith, livingWithOther: self.tflivingWith.text?.uppercased() ?? "", yearOfStayYear: yearStay, yearOfStayMonth: monthStay, mobileNo: self.tfPhNo.text ?? "", residentTelNo: self.tfResidentPhNo.text ?? "", otherPhoneNo: self.tfOtherPhNo.text ?? "", email: self.tfEmail.text ?? "", customerId: Int(customerId)!, status: 0, currentAddressFloor: "\(self.tfCurrentFloor.text?.uppercased() ?? "")", currentAddressBuildingNo: "\(self.tfCurrentBldNo.text?.uppercased() ?? "")", currentAddressRoomNo: "\(self.tfCurrentRoomNo.text?.uppercased() ?? "")", currentAddressStreet: "\(self.tfCurrentStreet.text?.uppercased() ?? "")", currentAddressQtr: "\(self.tfCurrentQrt.text?.uppercased() ?? "")", currentAddressTownship: self.selectedCurrTownshipID ?? 0, currentAddressCity: self.selectedCurrCityID ?? 0, permanentAddressCity: self.selectedPerCityID ?? 0, permanentAddressFloor:  "\(self.tfPermenentFloor.text?.uppercased() ?? "")", permanentAddressBuildingNo: "\(self.tfPermenentBldNo.text?.uppercased() ?? "")", permanentAddressRoomNo: "\(self.tfPermenentRoomNo.text?.uppercased() ?? "")", permanentAddressStreet: "\(self.tfPermenentStreet.text?.uppercased() ?? "")", permanentAddressQtr: "\(self.tfPermenentQrt.text?.uppercased() ?? "")", permanentAddressTownship: self.selectedPerTownshipID ?? 0)
     
-        let appData = ApplicationDataRequest(daApplicationInfoId: applicationFormID, daApplicationTypeId: 1, name: self.tfName.text ?? "", dob: self.tfDob.text!, nrcNo: nrc, fatherName: self.tfFatherName.text?.uppercased() ?? "",highestEducationTypeId: educationId, nationality: selectedNationality, nationalityOther: self.tfNationality.text?.uppercased() ?? "", gender: selectedGender, maritalStatus: selectedMarital, currentAddress: "", permanentAddress: "", typeOfResidence: self.selectedTypeResidence, typeOfResidenceOther: self.tfTypeResidence.text?.uppercased() ?? "", livingWith: self.selectedLivingWith, livingWithOther: self.tflivingWith.text?.uppercased() ?? "", yearOfStayYear: yearStay, yearOfStayMonth: monthStay, mobileNo: self.tfPhNo.text ?? "", residentTelNo: self.tfResidentPhNo.text ?? "", otherPhoneNo: self.tfOtherPhNo.text ?? "", email: self.tfEmail.text ?? "", customerId: Int(customerId)!, status: 0, currentAddressFloor: "\(self.tfCurrentFloor.text?.uppercased() ?? "")", currentAddressBuildingNo: "\(self.tfCurrentBldNo.text?.uppercased() ?? "")", currentAddressRoomNo: "\(self.tfCurrentRoomNo.text?.uppercased() ?? "")", currentAddressStreet: "\(self.tfCurrentStreet.text?.uppercased() ?? "")", currentAddressQtr: "\(self.tfCurrentQrt.text?.uppercased() ?? "")", currentAddressTownship: self.selectedCurrTownshipID ?? 0, currentAddressCity: self.selectedCurrCityID ?? 0, permanentAddressFloor: "\(self.tfPermenentFloor.text?.uppercased() ?? "")", permanentAddressBuildingNo: "\(self.tfPermenentBldNo.text?.uppercased() ?? "")", permanentAddressRoomNo: "\(self.tfPermenentRoomNo.text?.uppercased() ?? "")", permanentAddressStreet: "\(self.tfPermenentStreet.text?.uppercased() ?? "")", permanentAddressQtr: "\(self.tfPermenentQrt.text?.uppercased() ?? "")", permanentAddressTownship: self.selectedPerTownshipID ?? 0, permanentAddressCity: self.selectedPerCityID ?? 0)
-        myAppFormData = appData
+//        let appData = ApplicationDataRequest(daApplicationInfoId: applicationFormID, daApplicationTypeId: 1, name: self.tfName.text ?? "", dob: self.tfDob.text!, nrcNo: nrc, fatherName: self.tfFatherName.text?.uppercased() ?? "",highestEducationTypeId: educationId, nationality: selectedNationality, nationalityOther: self.tfNationality.text?.uppercased() ?? "", gender: selectedGender, maritalStatus: selectedMarital, currentAddress: "", permanentAddress: "", typeOfResidence: self.selectedTypeResidence, typeOfResidenceOther: self.tfTypeResidence.text?.uppercased() ?? "", livingWith: self.selectedLivingWith, livingWithOther: self.tflivingWith.text?.uppercased() ?? "", yearOfStayYear: yearStay, yearOfStayMonth: monthStay, mobileNo: self.tfPhNo.text ?? "", residentTelNo: self.tfResidentPhNo.text ?? "", otherPhoneNo: self.tfOtherPhNo.text ?? "", email: self.tfEmail.text ?? "", customerId: Int(customerId)!, status: 0, currentAddressFloor: "\(self.tfCurrentFloor.text?.uppercased() ?? "")", currentAddressBuildingNo: "\(self.tfCurrentBldNo.text?.uppercased() ?? "")", currentAddressRoomNo: "\(self.tfCurrentRoomNo.text?.uppercased() ?? "")", currentAddressStreet: "\(self.tfCurrentStreet.text?.uppercased() ?? "")", currentAddressQtr: "\(self.tfCurrentQrt.text?.uppercased() ?? "")", currentAddressTownship: self.selectedCurrTownshipID ?? 0, currentAddressCity: self.selectedCurrCityID ?? 0, permanentAddressFloor: "\(self.tfPermenentFloor.text?.uppercased() ?? "")", permanentAddressBuildingNo: "\(self.tfPermenentBldNo.text?.uppercased() ?? "")", permanentAddressRoomNo: "\(self.tfPermenentRoomNo.text?.uppercased() ?? "")", permanentAddressStreet: "\(self.tfPermenentStreet.text?.uppercased() ?? "")", permanentAddressQtr: "\(self.tfPermenentQrt.text?.uppercased() ?? "")", permanentAddressTownship: self.selectedPerTownshipID ?? 0)
+        myAppFormData.permanentAddressCity = appData.permanentAddressCity
         
+         myAppFormData = appData
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SetAppData"), object: self, userInfo: ["appData": appData])
         
         NotificationCenter.default.addObserver(self, selector: #selector(showAppForm(notification:)), name: NSNotification.Name(rawValue: "showAppForm"), object: nil)
@@ -448,6 +453,7 @@ class ApplicationDataVC: BaseUIViewController {
         }
     }
     
+    
     func fillThisForm(data: ApplicationDataRequest) {
         
         let sessionInfoString = UserDefaults.standard.string(forKey: Constants.SESSION_INFO)
@@ -460,7 +466,16 @@ class ApplicationDataVC: BaseUIViewController {
         //        self.tfTownshipAutoText.text = afterBackSlash?.strstr(needle: "(", beforeNeedle: true)
         //        self.lblNrcType.text = "(\(nrcStr.slice(from: "(", to: ")") ?? ""))"
         //        self.tfNrcNo?.text = data.nrcNo
-                
+        
+        let datas = data.highestEducationTypeId
+        if datas == 1 {
+             self.educationLabel.text = "High School"
+        }else if datas == 2 {
+            self.educationLabel.text = "University"
+        }else if datas == 3 {
+            self.educationLabel.text = "Graduated"
+        }
+        
         self.tfName.text = "\(sessionInfo?.name ?? "")"//data.name
         self.tfDob.text  = Utils.changeYMDDateformat(date: (sessionInfo?.dateOfBirth)!)
         let nrcStr = "\(sessionInfo?.nrcNo ?? "")"//data.nrcNo
@@ -607,6 +622,7 @@ class ApplicationDataVC: BaseUIViewController {
         self.updateViews()
         self.updateLocale()
     }
+    
     
     @objc override func updateViews() {
         super.updateViews()
@@ -842,15 +858,17 @@ class ApplicationDataVC: BaseUIViewController {
             for cityName in model.cityNameIdDic!.keys {
                 self.cityNameList.append(cityName)
             }
+            
             // Current Address
-            self.btnCurrentCity.setTitle(self.cityNameList[0], for: UIControl.State.normal)
+            self.btnCurrentCity.setTitle("", for: UIControl.State.normal)
             self.selectedCurrCityID = model.cityNameIdDic![self.cityNameList[0]]
             self.allCurrTownNameList = model.cityIdTownListDic![self.selectedCurrCityID!]!
             self.tfCurrentTsp.filterStrings(self.allCurrTownNameList)
             
             
             // Permanent Address
-            self.btnPermanetCity.setTitle(self.cityNameList[0], for: UIControl.State.normal)
+          
+            self.btnPermanetCity.setTitle("", for: UIControl.State.normal)
             self.selectedPerCityID = model.cityNameIdDic![self.cityNameList[0]]
             self.allPerTownNameList = model.cityIdTownListDic![self.selectedPerCityID!]!
             self.tfPermenentTsp.filterStrings(self.allPerTownNameList)
@@ -870,6 +888,7 @@ class ApplicationDataVC: BaseUIViewController {
                 navigationVC.modalPresentationStyle = .overFullScreen
                 self.present(navigationVC, animated: true, completion: nil)
             }
+           
         }
     }
         
@@ -1130,15 +1149,21 @@ class ApplicationDataVC: BaseUIViewController {
                 
                     self.educationText = value
                    self.educationLabel.text = value
-                if value == "High School"{
-                    self.educationId = 1
-                }else if value == "University"{
-                    self.educationId = 2
-                }else if value == "Graduated"{
-                    self.educationId = 3
-                }
+               
                    self.selectedEducationWith = Constants.educationWithList.firstIndex(of: value)! + 1
                    print(value)
+                if value == "High School"{
+                                   self.educationId = 1
+                               }
+                               if value == "University"{
+                                   self.educationId = 2
+                                
+                               }
+                               if value == "Graduated"{
+                                   self.educationId = 3
+                               }
+                
+                
                })
                action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
                //Present the controller

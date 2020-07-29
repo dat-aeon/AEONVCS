@@ -111,9 +111,10 @@ class EmergencyContactVC: BaseUIViewController {
         
         tfName.setMaxLength(maxLength: 50)
         tfRsWithApplicant.setMaxLength(maxLength: 50)
-        tfMobileNo.setMaxLength(maxLength: 14)
+        tfMobileNo.setMaxLength(maxLength: 11)
+    
         tfResidentTelNo.setMaxLength(maxLength: 11)
-        tfOtherTelNo.setMaxLength(maxLength: 14)
+        tfOtherTelNo.setMaxLength(maxLength: 11)
         
         tfCurrentBldNo.setMaxLength(maxLength: 20)
         tfCurrentFloor.setMaxLength(maxLength: 20)
@@ -147,7 +148,7 @@ class EmergencyContactVC: BaseUIViewController {
                var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
               MultiLoginModel.init().makeMultiLogin(customerId: customerId
                       , loginDeviceId: deviceID, success: { (results) in
-                      print("kaungmyat san multi >>>  \(results)")
+                     // print("kaungmyat san multi >>>  \(results)")
                       
                       if results.data.logoutFlag == true {
                           print("success stage logout")
@@ -278,7 +279,7 @@ class EmergencyContactVC: BaseUIViewController {
             }
             // Company Address
             self.selectedCityID = model.cityNameIdDic![self.cityNameList[0]]
-            self.btnCurrentCity.setTitle(self.cityNameList[0], for: UIControl.State.normal)
+            self.btnCurrentCity.setTitle("", for: UIControl.State.normal)
             self.allTownNameList = model.cityIdTownListDic![self.selectedCityID!]!
             self.tfTownshipAutoText.filterStrings(self.allTownNameList)
             

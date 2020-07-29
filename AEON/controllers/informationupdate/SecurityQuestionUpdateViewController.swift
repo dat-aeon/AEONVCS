@@ -68,7 +68,7 @@ class SecurityQuestionUpdateViewController: BaseUIViewController {
                var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
               MultiLoginModel.init().makeMultiLogin(customerId: customerId
                       , loginDeviceId: deviceID, success: { (results) in
-                      print("kaungmyat san multi >>>  \(results)")
+                     // print("kaungmyat san multi >>>  \(results)")
                       
                       if results.data.logoutFlag == true {
                           print("success stage logout")

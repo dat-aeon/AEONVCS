@@ -37,6 +37,7 @@ class DAViewModel {
         var registerRequest = RegisterDARequest(
             daApplicationTypeId: 1, name: appData.name ?? "", dob: appData.dob ?? "", nrcNo: appData.nrcNo ?? "", fatherName: appData.fatherName ?? "", nationality: appData.nationality ?? 0, nationalityOther: appData.nationalityOther ?? "", gender: appData.gender ?? 1, maritalStatus: appData.maritalStatus ?? 1, currentAddress: appData.currentAddress ?? "", permanentAddress: appData.permanentAddress ?? "", typeOfResidence: appData.typeOfResidence ?? 1, typeOfResidenceOther: appData.typeOfResidenceOther ?? "", livingWith: appData.livingWith ?? 1, livingWithOther: appData.livingWithOther ?? "", yearOfStayYear: appData.yearOfStayYear ?? 0, yearOfStayMonth: appData.yearOfStayMonth ?? 0, mobileNo: appData.mobileNo ?? "", residentTelNo: appData.residentTelNo ?? "", otherPhoneNo: appData.otherPhoneNo ?? "", email: appData.email ?? "", customerId: appData.customerId ?? 1, daLoanTypeId: loanData.daLoanTypeId ?? 1, financeAmount: loanData.financeAmount ?? 0.0, financeTerm: loanData.financeTerm ?? 0, daProductTypeId: loanData.daProductTypeId ?? 1, productDescription: loanData.productDescription ?? "", channelType: 1, status: appData.status, applicantCompanyInfoDto: companyData, emergencyContactInfoDto: emergencyContact, guarantorInfoDto: guarantorData, applicationInfoAttachmentDtoList: attachmentlist
         )
+       
         registerRequest.currentAddressFloor = appData.currentAddressFloor ?? ""
         registerRequest.currentAddressBuildingNo = appData.currentAddressBuildingNo ?? ""
         registerRequest.currentAddressRoomNo = appData.currentAddressRoomNo ?? ""
@@ -57,8 +58,8 @@ class DAViewModel {
         
         do {
             let jsonData = try JSONEncoder().encode(registerRequest)
-            //let jsonString = String(data: jsonData, encoding: .utf8)!
-            //print("REQUEST DATA \(jsonString)")
+            let jsonString = String(data: jsonData, encoding: .utf8)!
+            print("REQUEST DATA \(jsonString)")
             
             return jsonData
         } catch { print("Error \(error)") }
@@ -112,11 +113,11 @@ class DAViewModel {
     }
     
     func doSaveDigitalApplication(tokenInfo:TokenData, appData:ApplicationDataRequest,companyData:OccupationDataRequest,emergencyContact:EmergencyContactRequest, loanData: LoanConfirmationRequest, guarantorData: GuarantorRequest, success: @escaping (RegisterDAResponse) -> Void,failure: @escaping (String) -> Void) {
-        
+        print("app data who <>>>> \(appData)")
         let rawData = getSaveDAData(appData:appData,companyData:companyData,emergencyContact:emergencyContact, loanData: loanData, guarantorData: guarantorData)
         
         DAModel.init().saveDA(token: "\(tokenInfo.access_token ?? "")", rawData: rawData, success:{ (result) in
-            //            if result.status == Constants.STATUS_200 {
+            //            if result.status == Consta nnts.STATUS_200 {
             print("DA view model", result)
             success(result)
             
@@ -161,11 +162,14 @@ class DAViewModel {
     
     func getSaveDAData(appData:ApplicationDataRequest,companyData:OccupationDataRequest,emergencyContact:EmergencyContactRequest, loanData: LoanConfirmationRequest, guarantorData: GuarantorRequest)-> Data {
         
-        var registerRequest = SaveDARequest (
-            daApplicationTypeId: 1, name: appData.name, nrcNo: appData.nrcNo ?? "", fatherName: appData.fatherName ?? "", nationality: appData.nationality , nationalityOther: appData.nationalityOther ?? "", gender: appData.gender , maritalStatus: appData.maritalStatus , currentAddress: appData.currentAddress ?? "", permanentAddress: appData.permanentAddress ?? "", typeOfResidence: appData.typeOfResidence , typeOfResidenceOther: appData.typeOfResidenceOther ?? "", livingWith: appData.livingWith ?? 1, livingWithOther: appData.livingWithOther ?? "", yearOfStayYear: appData.yearOfStayYear ?? 0, yearOfStayMonth: appData.yearOfStayMonth ?? 0, mobileNo: appData.mobileNo ?? "", residentTelNo: appData.residentTelNo ?? "", otherPhoneNo: appData.otherPhoneNo ?? "", email: appData.email ?? "", customerId: appData.customerId ?? 1, daLoanTypeId: loanData.daLoanTypeId ?? 1, financeAmount: loanData.financeAmount , financeTerm: loanData.financeTerm ?? 0, daProductTypeId: loanData.daProductTypeId ?? 1, productDescription: loanData.productDescription ?? "", channelType: 1, status: appData.status, applicantCompanyInfoDto: companyData, emergencyContactInfoDto: emergencyContact, guarantorInfoDto: guarantorData
-        )
+//        var registerRequest = SaveDARequest (
+//            daApplicationTypeId: 1, name: appData.name, nrcNo: appData.nrcNo ?? "", fatherName: appData.fatherName ?? "",highestEducationTypeId: appData.highestEducationTypeId ?? 0, nationality: appData.nationality , nationalityOther: appData.nationalityOther ?? "", gender: appData.gender , maritalStatus: appData.maritalStatus , currentAddress: appData.currentAddress ?? "", permanentAddress: appData.permanentAddress ?? "", typeOfResidence: appData.typeOfResidence , typeOfResidenceOther: appData.typeOfResidenceOther ?? "", livingWith: appData.livingWith ?? 1, livingWithOther: appData.livingWithOther ?? "", yearOfStayYear: appData.yearOfStayYear ?? 0, yearOfStayMonth: appData.yearOfStayMonth ?? 0, mobileNo: appData.mobileNo ?? "", residentTelNo: appData.residentTelNo ?? "", otherPhoneNo: appData.otherPhoneNo ?? "", email: appData.email ?? "", customerId: appData.customerId ?? 1, daLoanTypeId: loanData.daLoanTypeId ?? 1, financeAmount: loanData.financeAmount , financeTerm: loanData.financeTerm ?? 0, daProductTypeId: loanData.daProductTypeId ?? 1, productDescription: loanData.productDescription ?? "", channelType: 1, status: appData.status, applicantCompanyInfoDto: companyData, emergencyContactInfoDto: emergencyContact, guarantorInfoDto: guarantorData
+//        )
        
+        var registerRequest = SaveDARequest (daApplicationTypeId: 1, name: appData.name, nrcNo: appData.nrcNo ?? "", fatherName: appData.fatherName ?? "", highestEducationTypeId: appData.highestEducationTypeId ?? 0, nationality: appData.nationality, nationalityOther: appData.nationalityOther ?? "", gender: appData.gender , maritalStatus: appData.maritalStatus, currentAddress: appData.currentAddress ?? "", currentAddressFloor: appData.currentAddressFloor ?? "", currentAddressBuildingNo: appData.currentAddressBuildingNo, currentAddressRoomNo: appData.currentAddressRoomNo, currentAddressStreet: appData.currentAddressStreet, currentAddressQtr: appData.currentAddressQtr, currentAddressTownship: appData.currentAddressTownship, currentAddressCity: appData.currentAddressCity, permanentAddress: appData.permanentAddress, permanentAddressFloor: appData.permanentAddressFloor, permanentAddressBuildingNo: appData.permanentAddressBuildingNo, permanentAddressRoomNo: appData.permanentAddressRoomNo, permanentAddressStreet: appData.permanentAddressStreet, permanentAddressQtr: appData.permanentAddressQtr, permanentAddressTownship: appData.permanentAddressTownship, permanentAddressCity: appData.permanentAddressCity, typeOfResidence: appData.typeOfResidence, typeOfResidenceOther: appData.typeOfResidenceOther, livingWith: appData.livingWith, livingWithOther: appData.livingWithOther, yearOfStayYear: appData.yearOfStayYear, yearOfStayMonth: appData.yearOfStayMonth, mobileNo: appData.mobileNo, residentTelNo: appData.residentTelNo, otherPhoneNo: appData.otherPhoneNo, email: appData.email, customerId: appData.customerId, daLoanTypeId: loanData.daProductTypeId ?? 1, financeAmount: loanData.financeAmount, financeTerm: loanData.financeTerm, daProductTypeId: loanData.daProductTypeId ?? 1, productDescription: loanData.productDescription ?? "", channelType: 1, status: appData.status, applicantCompanyInfoDto: companyData, emergencyContactInfoDto: emergencyContact, guarantorInfoDto: guarantorData)
         //let dobDate = appData.dob
+        
+        
         registerRequest.currentAddressFloor = appData.currentAddressFloor ?? ""
         registerRequest.currentAddressBuildingNo = appData.currentAddressBuildingNo ?? ""
         registerRequest.currentAddressRoomNo = appData.currentAddressRoomNo ?? ""
@@ -173,6 +177,7 @@ class DAViewModel {
         registerRequest.currentAddressQtr = appData.currentAddressQtr ?? ""
         registerRequest.currentAddressTownship = appData.currentAddressTownship ?? 0
         registerRequest.currentAddressCity = appData.currentAddressCity ?? 0
+       
         
         registerRequest.permanentAddressFloor = appData.permanentAddressFloor ?? ""
         registerRequest.permanentAddressBuildingNo = appData.permanentAddressBuildingNo ?? ""
@@ -181,10 +186,16 @@ class DAViewModel {
         registerRequest.permanentAddressQtr = appData.permanentAddressQtr ?? ""
         registerRequest.permanentAddressTownship = appData.permanentAddressTownship ?? 0
         registerRequest.permanentAddressCity = appData.permanentAddressCity ?? 0
-        
+     
+      
+       
         do {
+            print("registerrequest >>>>?????\(registerRequest)")
             let jsonData = try JSONEncoder().encode(registerRequest)
+           
+             print( String(data: jsonData, encoding: .utf8)! )
             let jsonString = String(data: jsonData, encoding: .utf8)!
+                
             print(jsonString)
             
             return jsonData
@@ -699,4 +710,10 @@ class DAViewModel {
     
     
     
+}
+extension String {
+    func toJSON() -> Any? {
+        guard let data = self.data(using: .utf8, allowLossyConversion: false) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+    }
 }

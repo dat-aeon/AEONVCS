@@ -89,7 +89,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
     
     @objc public func applicationWillEnterForeground() {
         //        print("App is active.")
-        
+        //180
         let sessionTime = 180.0
         let lastUsedTime = UserDefaults.standard.string(forKey: Constants.LAST_USED_TIME)
         let currentTime = Utils.generateLogoutTime()
@@ -170,13 +170,18 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
                             //                            let storyboard = UIStoryboard(name: CommonNames.MAIN_STORYBOARD, bundle: nil)
                             //                            let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
                             //                             navigationVC.modalPresentationStyle = .overFullScreen
-                            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
-                            navigationVC.modalPresentationStyle = .overFullScreen
                             
-                            let currVC = self.presentingViewController
-                            self.dismiss(animated: true, completion: {
-                                currVC?.present(navigationVC,  animated: true, completion: nil)
-                            })
+                            
+//                            let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER)
+//                            navigationVC.modalPresentationStyle = .overFullScreen
+//
+//                            let currVC = self.presentingViewController
+//                            self.dismiss(animated: true, completion: {
+//                                currVC?.present(navigationVC,  animated: true, completion: nil)
+//                            })
+                          let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                          let myVC = storyboard.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                          self.present(myVC, animated: true, completion: nil)
                         }) { (error) in
                             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                             UserDefaults.standard.set(nil, forKey: Constants.SESSION_INFO)

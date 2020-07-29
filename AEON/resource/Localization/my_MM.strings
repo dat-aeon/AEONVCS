@@ -512,7 +512,7 @@
 "da.loan_confirmation" = "ချေးငွေ အတည်ပြုခြင်း";
 "da.status" = "Status";
 "da.loan_type" = "အမျိူးအစား";
-"da.product_category" = "ကုန်ပစ္စ္စည်းအမျိုးအစား";
+"da.product_category" = "ကုန်ပစ္စည်းအမျိုးအစား";
 "da.product_desc" = "ကုန်ပစ္စည်းအချက်အလက်";
 "da.compulsory_saving"= "မဖြစ်မနေစုငွေ";
 "da.processing_fee" = "ဝန်ဆောင်ခ";
@@ -555,6 +555,7 @@
 // Terms & Condition
 "loanconfirm.term.label" = "ချေးငွေသဘောတူကတိစာချုပ်၏ စည်းကမ်းချက်များ";
 "loanconfirm.term.switch.label" = "သဘောတူပါသည်";
+"loanconfirm.term.label" = "လျှောက်လွှာအတည်ပြုသည်";
 
 //How to use
 "howtouse.title.label" = "AEON Member App အသုံးပြုနည်း";

@@ -576,7 +576,7 @@
 // Terms & Condition
 "loanconfirm.term.label" = "Loan Contract of Terms & Conditions";
 "loanconfirm.term.switch.label" = "I agree";
-
+"loanconfirm.term.label" = "Application Confirmation";
 //How to use
 "howtouse.title.label" = "How to use AEON Member App";
 "howtouse.des.label" = "You can learn how to use AEON Member app from this video.";

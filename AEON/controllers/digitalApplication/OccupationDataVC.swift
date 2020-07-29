@@ -267,7 +267,7 @@ class OccupationDataVC: BaseUIViewController {
                var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
               MultiLoginModel.init().makeMultiLogin(customerId: customerId
                       , loginDeviceId: deviceID, success: { (results) in
-                      print("kaungmyat san multi >>>  \(results)")
+                  //    print("kaungmyat san multi >>>  \(results)")
                       
                       if results.data.logoutFlag == true {
                           print("success stage logout")
@@ -419,7 +419,7 @@ class OccupationDataVC: BaseUIViewController {
             }
             // Company Address
             self.selectedCityID = model.cityNameIdDic![self.cityNameList[0]]
-            self.btnCity.setTitle(self.cityNameList[0], for: UIControl.State.normal)
+            self.btnCity.setTitle("", for: UIControl.State.normal)
             self.allTownNameList = model.cityIdTownListDic![self.selectedCityID!]!
             self.tfTsp.filterStrings(self.allTownNameList)
             

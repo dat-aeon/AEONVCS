@@ -56,6 +56,7 @@ class DATncVC: UIViewController {
         
 
         func setupView() {
+        
             self.lblTitle.text = "ချေးငွေသဘောတူကတိစာချုပ်၏ စည်းကမ်းချက်များ"
             self.txtView.text = self.strtnc
         }

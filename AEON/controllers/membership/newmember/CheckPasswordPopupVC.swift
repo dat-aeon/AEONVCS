@@ -28,6 +28,7 @@ class CheckPasswordPopupVC: BaseUIViewController {
     
     @IBOutlet weak var lblTitle: UILabel!
     
+    @IBOutlet weak var agreeErrorlabel: UILabel!
     var delegate :CheckPasswordPopupButtonDelegate?
     
     var titleString = "Enter Password"
@@ -38,13 +39,14 @@ class CheckPasswordPopupVC: BaseUIViewController {
         super.viewDidLoad()
 //        self.btnOK.isEnabled = false
 //        self.btnOK.alpha = 0.5
-        self.swAgree.isOn = false
         
+        self.swAgree.isOn = false
          NotificationCenter.default.addObserver(self, selector: #selector(doForceDismissCoupon), name: NSNotification.Name(rawValue: "doForceDismissCoupon"), object: nil)
         
         self.swAgree.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
 
         self.lblTermsCon.text = strtnc
+        self.lblTitle.text = "ချေးငွေသဘောတူကတိစာချုပ်၏ စည်းကမ်းချက်များ"
         self.updateViews()
 //        self.imgShowPassword.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickPasswordVisible)))
 //
@@ -66,6 +68,7 @@ class CheckPasswordPopupVC: BaseUIViewController {
     
     @objc override func updateViews() {
         super.updateViews()
+        self.lbTermsTItle.text = "loanconfirm.term.label".localized
         self.lblTitle.text = "loanconfirm.term.label".localized
         self.lbSwichTitle.text = "loanconfirm.term.switch.label".localized
         self.lblTitle.attributedText = Utils.setLineSpacing(data: lblTitle.text!)
@@ -90,7 +93,17 @@ class CheckPasswordPopupVC: BaseUIViewController {
     }
     
     @IBAction func onClickOkBtn(_ sender: UIButton) {
-        delegate?.onClickOkBtn(password: self.tfPassword, popUpView: self)
+        if swAgree.isOn == true {
+            if tfPassword.text == "" {
+                agreeErrorlabel.text = "please fill password"
+            }
+             delegate?.onClickOkBtn(password: self.tfPassword, popUpView: self)
+        }else{
+            
+            agreeErrorlabel.text = "please accept terms and conditions"
+            
+        }
+        
     }
     
     @IBAction func onClickCancelBtn(_ sender: UIButton) {
@@ -110,9 +123,12 @@ class CheckPasswordPopupVC: BaseUIViewController {
             imgShowPassword.image = UIImage(named: "visible-icon")
         }
     }
+    var titleMain = """
+ff
+"""
     
     var strtnc = """
-                ဤသဘောတူကတိစာချုပ်၏ စည်းကမ်းချက်များအရ AEON ၏ Small Loan ရယူသူကိုနောင်တွင် “Cutstomer” အားအာမခံပေးသူရှိလျှင်နောင်တွင် “Guarantor” ဟုလည်းကောင်း၊ AEON Microfinance (Myanmar) Company Limited ကိုယ်စား Customer များသို့ AEON ၏ Small Loan ထောက်ပံ့ရာတွင် လွယ်ကူမှုရှိစေရန် ကူညီဆောင်ရွက်ပေးသူ AEON’s Agent ကို နောင်တွင် “Agent” ဟုလည်းကောင်း၊ AEON Microfinance (Myanmar) Company Limited ကို နောင်တွင် “Finance Provider” ဟုလည်းကောင်း ရည်ညွှန်းခေါ်ဆိုရေးသားမည်ဖြစ်သည်။ Customer, Guarantor, Agent နှင့် Finance Provider တို့သည် အောက်ဖော်ပြပါစည်းကမ်းချက်များကို အသီးသီးလိုက်နာဆောင်ရွက်ကြရန် သဘောတူညီကြပါသည်။
+                ဤသဘောတူကတိစာချုပ်၏ စည်းကမ်းချက်များအရ AEON ၏ Small Loan ရယူသူကို နောင်တွင် “Cutstomer” အားအာမခံပေးသူရှိလျှင်နောင်တွင် “Guarantor” ဟုလည်းကောင်း၊ AEON Microfinance (Myanmar) Company Limited ကိုယ်စား Customer များသို့ AEON ၏ Small Loan ထောက်ပံ့ရာတွင် လွယ်ကူမှုရှိစေရန် ကူညီဆောင်ရွက်ပေးသူ AEON’s Agent ကို နောင်တွင် “Agent” ဟုလည်းကောင်း၊ AEON Microfinance (Myanmar) Company Limited ကို နောင်တွင် “Finance Provider” ဟုလည်းကောင်း ရည်ညွှန်းခေါ်ဆိုရေးသားမည်ဖြစ်သည်။ Customer, Guarantor, Agent နှင့် Finance Provider တို့သည် အောက်ဖော်ပြပါစည်းကမ်းချက်များကို အသီးသီးလိုက်နာဆောင်ရွက်ကြရန် သဘောတူညီကြပါသည်။
         ၁။    Finance Provider သည် Customer သို့အသေးစားချေးငွေထောက်ပံ့ပေးရန်သဘောတူသည်။ ထိုအသေးစားချေးငွေအား Customer နှင့် Agent တို့ သဘောတူညီမှုရယူထားသည့်အတွက် Customer မှ Agent သို့ ပေးချေရမည့်ကျသင့်ငွေကြေးအဖြစ် Finance Provider သည် Agent မှတဆင့်ပေးချေရန် သဘောတူသည်။ ထိုသို့ Finance Provider မှ Agent မှတဆင့်ပေးချေသော ငွေကြေးပမာဏကို Customer သည် Finance Provider ထံမှ ချေးငွေရယူမှုအဖြစ်မှတ်ယူရမည်ဖြစ်သည်။
         ၂။    Agent ထံမှအသေးစားချေးငွေ (Small Loan) ကိုလက်ခံရရှိပြီးနောက် Customer သည် သဘောတူစာချုပ်ပါအပြီးသတ်အတည်ပြုချက်စာတိုင်းတွင်လက်မှတ်ရေးထိုးပေးရမည့်အပြင်ငွေရင်း၊အတိုးနှင့် အခြားစရိတ်စကများပါဝင်သောချေးငွေကို Finance Provider သို့အပြည့်အဝပြန်လည်ပေးဆပ်ရန်ကိုလည်းသဘောတူညီသည်။ Customer သည်သဘောတူညီချက်ပါစည်းကမ်းချက်များကိုအပြည့်အဝလိုက်နာဆောင်ရွက်ရန်ကိုလည်းသဘောတူညီသည်။ ချေးငွေပြန်လည်ပေးဆပ်မှုကို Finance Provider သတ်မှတ်သည့် ၎င်း၏ရုံးခွဲ (သို့မဟုတ်) ငွေလွှဲဌာန (သို့မဟုတ်) ဘဏ်တို့တွင် သတ်မှတ်ထားသည့်နည်းလမ်းများအတိုင်း Customer ကပေးဆပ်ရမည်ဖြစ်ပါသည်။ ချေးငွေ ပြန်ပေးဆပ်ရမည့်နည်းလမ်းနှင့် စည်ကမ်းချက်များကို ချေးငွေပြန်ဆပ်သည့်စာရင်းဇယားတွင် Finance Provider ကသတ်မှတ်ပြဌာန်းထားပါသည်။ သဘောတူစာချုပ်တွင် သတ်မှတ်ထားသော ပထမဆုံးအရစ်ကျငွေပြန်ဆပ်ရန်စေ့ရောက်သည့်အချိန်တွင်လစဉ်ပြန်ဆပ်ငွေကို Customer ကအချိန်မီ ပေးဆပ်ရမည်။ ထို့ပြင် နောက်ထပ်ချေးငွေပြန်ဆပ်ရမည့်အချိန်စေ့ရောက်တိုင်းလစဉ်ပြန်ဆပ်ငွေကို ပေးဆပ်ရမည်။ ထိုသို့ လစဉ်ပေးချေမှုကိုချေးငွေပြေကျေသည့်အထိအောက်တွင်ဖော်ပြထားသည့် စည်းကမ်းချက်များနှင့် အစီအစဉ်အတိုင်း ပေးဆပ်ရမည်။
            ၂.၁။ ။ ချေးငွေပြန်ဆပ်သည့် စာရင်းဇယားပေါ်အခြေပြု၍ လစဉ်(၂)ရက်နေ့တိုင်းတွင် Finance Provider  သို့ချေးငွေပြန်ဆပ်ခြင်းကို ချေးငွေပြေကျသည့်အထိ လစဉ်ပြုရမည်။

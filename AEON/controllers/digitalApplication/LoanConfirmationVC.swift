@@ -485,7 +485,7 @@ class LoanConfirmationVC: BaseUIViewController {
             var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
            MultiLoginModel.init().makeMultiLogin(customerId: customerId
                    , loginDeviceId: deviceID, success: { (results) in
-                   print("kaungmyat san multi >>>  \(results)")
+                  // print("kaungmyat san multi >>>  \(results)")
                    
                    if results.data.logoutFlag == true {
                        print("success stage logout")
@@ -584,111 +584,113 @@ class LoanConfirmationVC: BaseUIViewController {
     @objc func markLoanConfirmationLastState() {
         
 //        1: NRC FRONT, 2: NRC BACK, 3: RESIDENT PROOF, 4: INCOME PROOF, 5: GUARANTOR NRC FRONT, 6: GUARANTOR NRC BACK, 7: HOUSEHOLD OR CRIMINAL CLEARANCE, 8: APPLICANT PHOTO, 9: SIGNATURE, 10: OTHER
-        
+        DispatchQueue.main.async {
+              var tempArray = [AttachmentRequest]()
+            if self.isNrcFrontChoosen {
+                      let imageData:NSData = self.imgNrcFront.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                       let attachment = AttachmentRequest(fileType: 1, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                  
+            if self.isNrcBackChoosen {
+                      let imageData:NSData = self.imgNrcBack.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 2, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                  
+            if self.isIncomeProofChoosen {
+                      let imageData:NSData = self.imgIncomeProof.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 3, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                 
+            if self.isResidenceProofChoosen {
+                      let imageData:NSData = self.imgResidenceProof.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 4, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                  
+            if self.isGuarantorNrcFrontChoosen {
+                      let imageData:NSData = self.imgGuarantorNrcFront.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 5, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                  
+            if self.isGuarantorNrcBackChoosen {
+                      let imageData:NSData = self.imgGuarantorNrcBack.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 6, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                  
+            if self.isHouseholdChoosen {
+                      let imageData:NSData = self.imgHousehold.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 7, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                  
+            if self.isApplicantFotoChoosen {
+                      let imageData:NSData = self.imgApplicantFoto.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 8, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                  
+            if self.isCustomerSignatureChoosen {
+                      let imageData:NSData = self.imgCustomerSignature.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 9, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+            if self.isGuarantorSignatureChoosen {
+                      let imageData:NSData = self.imgGuarantorSignature.pngData()! as NSData
+                      let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                      
+                      let attachment = AttachmentRequest(fileType: 10, photoByte: imageBase64)
+                      
+                      tempArray.append(attachment)
+                  }
+                  
+                  let attachmentlist = tempArray
+                  
+                  let amtfinance = self.tfFinanceAmt.text ?? "0"
+                  let removedComma = amtfinance.replacingOccurrences(of: ",", with: "")
+                  
+                  
+                  
+                  let appData = LoanConfirmationRequest(daLoanTypeId: self.isMobileSelected ? 1 : 2, financeAmount: Double(removedComma
+                      
+                      ) ?? 0.0, financeTerm: Int(self.selectedLoanTerm) ?? 0, daProductTypeId: self.selectedProductTypeID, productDescription: self.tfProductDesc.text ?? "", channelType: 1)
+                  
+                  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SetLoanConfirmationData"), object: self, userInfo: ["appData": appData, "attachment": attachmentlist])
+        }
         self.markLoanErrorCount()
         
-        var tempArray = [AttachmentRequest]()
-        if isNrcFrontChoosen {
-            let imageData:NSData = self.imgNrcFront.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-             let attachment = AttachmentRequest(fileType: 1, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        
-        if isNrcBackChoosen {
-            let imageData:NSData = self.imgNrcBack.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 2, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        
-        if isIncomeProofChoosen {
-            let imageData:NSData = self.imgIncomeProof.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 3, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-       
-        if isResidenceProofChoosen {
-            let imageData:NSData = self.imgResidenceProof.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 4, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        
-        if isGuarantorNrcFrontChoosen {
-            let imageData:NSData = self.imgGuarantorNrcFront.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 5, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        
-        if isGuarantorNrcBackChoosen {
-            let imageData:NSData = self.imgGuarantorNrcBack.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 6, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        
-        if isHouseholdChoosen {
-            let imageData:NSData = self.imgHousehold.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 7, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        
-        if isApplicantFotoChoosen {
-            let imageData:NSData = self.imgApplicantFoto.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 8, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        
-        if isCustomerSignatureChoosen {
-            let imageData:NSData = self.imgCustomerSignature.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 9, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        if isGuarantorSignatureChoosen {
-            let imageData:NSData = self.imgGuarantorSignature.pngData()! as NSData
-            let imageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            let attachment = AttachmentRequest(fileType: 10, photoByte: imageBase64)
-            
-            tempArray.append(attachment)
-        }
-        
-        let attachmentlist = tempArray
-        
-        let amtfinance = self.tfFinanceAmt.text ?? "0"
-        let removedComma = amtfinance.replacingOccurrences(of: ",", with: "")
-        
-        
-        
-        let appData = LoanConfirmationRequest(daLoanTypeId: self.isMobileSelected ? 1 : 2, financeAmount: Double(removedComma
-            
-            ) ?? 0.0, financeTerm: Int(self.selectedLoanTerm) ?? 0, daProductTypeId: self.selectedProductTypeID, productDescription: self.tfProductDesc.text ?? "", channelType: 1)
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SetLoanConfirmationData"), object: self, userInfo: ["appData": appData, "attachment": attachmentlist])
+      
         
         self.view.endEditing(true)
     }
@@ -846,7 +848,7 @@ class LoanConfirmationVC: BaseUIViewController {
     @IBAction func doSelectMobile(_ sender: Any) {
         self.imgMobile.image = UIImage(named: "circle_selected")
         self.imgNonmobile.image = UIImage(named: "circle")
-        
+
         self.isMobileSelected = true
     }
     
@@ -854,7 +856,7 @@ class LoanConfirmationVC: BaseUIViewController {
         
         self.imgNonmobile.image = UIImage(named: "circle_selected")
         self.imgMobile.image = UIImage(named: "circle")
-        
+
         self.isMobileSelected = false
     }
     
@@ -1220,7 +1222,7 @@ class LoanConfirmationVC: BaseUIViewController {
         // print("image is not null")
         // resize image
         var resizeImage = UIImage()
-        let jpegData = image.jpegData(compressionQuality: 1.0)
+        let jpegData = image.jpegData(compressionQuality: 2.0)
         let jpegSize: Int = jpegData?.count ?? 0
         print("original size of image in KB: %f ", Double(jpegSize) / 1024.0)
         //            print("original image width & height", image!.size.width, image!.size.height)
@@ -1240,13 +1242,13 @@ class LoanConfirmationVC: BaseUIViewController {
                 resizeImage = image.resizeWithPercent(percentage: 0.7)!
                 
             } else {
-                //resizeImage = image!.resizeWithPercent(percentage: 0.5)!
-                resizeImage = image.resizeWithPercent(percentage: 0.2)!
+                resizeImage = image.resizeWithPercent(percentage: 0.1)!
+               // resizeImage = image.resizeWithPercent(percentage: 0.2)!
                 
             }
-            let rejpegData = resizeImage.jpegData(compressionQuality: 1.0)
+            let rejpegData = resizeImage.jpegData(compressionQuality: 0.2)
             let rejpegSize: Int = rejpegData?.count ?? 0
-            print("resize size of image in KB: %f ", Double(rejpegSize) / 1024.0)
+            print("resize size of image in KB: %f ", Double(rejpegSize) / 9500.0)
             
             if self.isNrcFront {
                 self.imgNrcFront = resizeImage
@@ -1359,7 +1361,7 @@ class LoanConfirmationVC: BaseUIViewController {
     }
     
     @IBAction func doTappedOnRegister(_ sender: Any) {
-        
+        self.logoutTimer?.invalidate()
         self.markLoanConfirmationLastState()
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "doRegistration"), object: nil)
@@ -1723,7 +1725,11 @@ class LoanConfirmationVC: BaseUIViewController {
         
         //print("fee : \(self.tfProcessingfee.text)")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showPreview"), object: self, userInfo: ["attachment": tempArray, "processingfee": fee, "comSaving": consave, "totalrepay": totalrepay, "firstrepay": firstrepay, "monthltyrepay": monthlyrepay, "lastpay": lastpay])
-      //  self.collectViewLoanTerm.reloadData()
+       
+        DispatchQueue.main.async {
+             self.collectViewLoanTerm.reloadData()
+        }
+       
     }
 }
 

@@ -113,6 +113,7 @@ struct RegisterDARequest: Codable {
         case permanentAddressStreet
         case permanentAddressQtr
         case permanentAddressTownship
+        case permanentAddressCity
         
         case typeOfResidence
         case typeOfResidenceOther
@@ -154,7 +155,7 @@ struct SaveDARequest: Codable {
     
     var nrcNo:String? = ""
     var fatherName:String? = ""
-    var highestEducationTypeId:Int? = 1
+    var highestEducationTypeId:Int? = 0
     var nationality:Int? = 0
     var nationalityOther:String? = ""
     var gender:Int? = 0
@@ -239,7 +240,7 @@ struct SaveDARequest: Codable {
         case permanentAddressStreet
         case permanentAddressQtr
         case permanentAddressTownship
-        
+        case permanentAddressCity
         case typeOfResidence
         case typeOfResidenceOther
         case livingWith
@@ -529,66 +530,66 @@ struct ApplicationDataRequest: Codable {
     var currentAddressQtr:String
     var currentAddressTownship:Int
     var currentAddressCity:Int
-    
+    var permanentAddressCity:Int
     var permanentAddressFloor:String
     var permanentAddressBuildingNo:String
     var permanentAddressRoomNo:String
     var permanentAddressStreet:String
     var permanentAddressQtr:String
     var permanentAddressTownship:Int
-    var permanentAddressCity:Int
+    
     
     enum CodingKeys: String, CodingKey {
-        case daApplicationInfoId
-        case daApplicationTypeId
-        case name
-        case dob
+        case daApplicationInfoId = "daApplicationInfoId"
+        case daApplicationTypeId = "daApplicationTypeId"
+        case name = "name"
+        case dob = "dob"
         
-        case nrcNo
-        case fatherName
-        case highestEducationTypeId
-        case nationality
+        case nrcNo = "nrcNo"
+        case fatherName = "fatherName"
+        case highestEducationTypeId = "highestEducationTypeId"
+        case nationality = "nationality"
       
         
-        case nationalityOther
-        case gender
-        case maritalStatus
+        case nationalityOther = "nationalityOther"
+        case gender = "gender"
+        case maritalStatus = "maritalStatus"
         
-        case currentAddress
-        case permanentAddress
-        case typeOfResidence
+        case currentAddress = "currentAddress"
+        case permanentAddress = "permanentAddress"
+        case typeOfResidence = "typeOfResidence"
         
-        case typeOfResidenceOther
-        case livingWith
-        case livingWithOther
+        case typeOfResidenceOther = "typeOfResidenceOther"
+        case livingWith = "livingWith"
+        case livingWithOther = "livingWithOther"
         
-        case yearOfStayYear
-        case yearOfStayMonth
-        case mobileNo
+        case yearOfStayYear = "yearOfStayYear"
+        case yearOfStayMonth = "yearOfStayMonth"
+        case mobileNo = "mobileNo"
         
-        case residentTelNo
-        case otherPhoneNo
-        case email
+        case residentTelNo = "residentTelNo"
+        case otherPhoneNo = "otherPhoneNo"
+        case email = "email"
         
-        case customerId
+        case customerId = "customerId"
         
-        case status
+        case status = "status"
         
-        case currentAddressFloor
-        case currentAddressBuildingNo
-        case currentAddressRoomNo
-        case currentAddressStreet
-        case currentAddressQtr
-        case currentAddressTownship
-        case currentAddressCity
-        
-        case permanentAddressFloor
-        case permanentAddressBuildingNo
-        case permanentAddressRoomNo
-        case permanentAddressStreet
-        case permanentAddressQtr
-        case permanentAddressTownship
-        case permanentAddressCity
+        case currentAddressFloor = "currentAddressFloor"
+        case currentAddressBuildingNo = "currentAddressBuildingNo"
+        case currentAddressRoomNo = "currentAddressRoomNo"
+        case currentAddressStreet = "currentAddressStreet"
+        case currentAddressQtr = "currentAddressQtr"
+        case currentAddressTownship = "currentAddressTownship"
+        case currentAddressCity = "currentAddressCity"
+        case permanentAddressCity = "permanentAddressCity"
+        case permanentAddressFloor = "permanentAddressFloor"
+        case permanentAddressBuildingNo = "permanentAddressBuildingNo"
+        case permanentAddressRoomNo = "permanentAddressRoomNo"
+        case permanentAddressStreet = "permanentAddressStreet"
+        case permanentAddressQtr = "permanentAddressQtr"
+        case permanentAddressTownship = "permanentAddressTownship"
+    
     }
 }
 
@@ -683,7 +684,9 @@ struct RegisterDAResponse: Codable {
     var currentAddressStreet:String? = ""
     var currentAddressQtr:String? = ""
     var currentAddressTownship:Int? = 0
+    
     var currentAddressCity:Int? = 0
+    var permanentAddressCity:Int? = 0
     
     var permanentAddressFloor:String? = ""
     var permanentAddressBuildingNo:String? = ""
@@ -691,7 +694,7 @@ struct RegisterDAResponse: Codable {
     var permanentAddressStreet:String? = ""
     var permanentAddressQtr:String? = ""
     var permanentAddressTownship:Int? = 0
-    var permanentAddressCity:Int? = 0
+    
  
     
     var applicantCompanyInfoDto: OccupationDataRequest?

@@ -363,12 +363,13 @@ class BaseModel {
     }
     
     func requestDataObjWithTokenDA(endPoint:String,rawData:Data,token:[String:String],completion:@escaping (Result<Any>)->Void) -> DataRequest {
-        
+        print(rawData)
          let urlString = Constants.daso_url + endPoint
         
         let url = URL(string: urlString)
         var request        = URLRequest(url: url!)
         request.httpMethod = ApiServiceEndPoint.POST_METHOD
+        
         request.setValue(ApiServiceEndPoint.APPLICATION_JSON, forHTTPHeaderField: ApiServiceEndPoint.CONTENT_TYPE)
         //request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         //request.setValue("Basic dmNzLWFwaS1jbGllbnQ6dmNzLWFwaS1jbGllbnQ=", forHTTPHeaderField: "Authorization")
@@ -380,7 +381,7 @@ class BaseModel {
         do {
             request.httpBody = try JSON(rawData).rawData()
             let encodedURLRequest = try URLEncoding.queryString.encode(request, with: parameters)
-            //print("Request data :::::::::::\(encodedURLRequest)\(try JSON(rawData).rawData())")
+            print("Request data :::::::::::\(encodedURLRequest)\(try JSON(rawData).rawData())")
             
             return Alamofire.request(encodedURLRequest).responseJSON{ (response) in
                 completion(response.result)

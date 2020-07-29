@@ -130,7 +130,7 @@ class DAModel: BaseModel {
                         daData.daProductTypeId = data["daProductTypeId"] as? Int
                         daData.productDescription = data["productDescription"] as? String
                         daData.channelType = data["channelType"] as? Int
-                        
+                        daData.highestEducationTypeId = data["highestEducationTypeId"] as? Int
                         //address
                         var appfloor = ""
                         if let floor = data["currentAddressFloor"] as? String {
@@ -671,6 +671,7 @@ class DAModel: BaseModel {
                     
                     if  (response[ModelConstants.DATA] as? Dictionary<String, Any>) == nil {
                         failure("Empty")
+                        
                     }
                         
                     else {
@@ -707,7 +708,7 @@ class DAModel: BaseModel {
                         daData.email = data["email"] as? String
                         daData.customerId = data["customerId"] as? Int
                         daData.daLoanTypeId = data["daLoanTypeId"] as? Int
-                        
+                        daData.highestEducationTypeId = data["highestEducationTypeId"] as? Int
                         if (data["financeAmount"] as? Double) != nil {
                             daData.financeAmount = data["financeAmount"] as? Double
                         } else {

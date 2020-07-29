@@ -51,7 +51,7 @@ class OutletListTableViewCell: UITableViewCell {
         }
         self.lbName.text = outletInfo.outletName
         self.lbAddress.text = outletInfo.address
-        let roundvalue = Double(round(100*outletInfo.distance!)/100)
+        let roundvalue = Int(round(100*outletInfo.distance!)/100)
         
         self.lbDistance.text = String(roundvalue) + "m"
         

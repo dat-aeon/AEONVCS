@@ -352,7 +352,7 @@ class GuarantorVC: BaseUIViewController {
         tfName.setMaxLength(maxLength: 50)
         tfNrcNo?.setMaxLength(maxLength: 6)
         tfNationality.setMaxLength(maxLength: 50)
-        tfMobileNo.setMaxLength(maxLength: 14)
+        tfMobileNo.setMaxLength(maxLength: 11)
         tfResidentTelNo.setMaxLength(maxLength: 11)
         tfRsWithApplicant.setMaxLength(maxLength: 50)
         tfTypeResidence.setMaxLength(maxLength: 256)
@@ -412,7 +412,7 @@ class GuarantorVC: BaseUIViewController {
                var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
               MultiLoginModel.init().makeMultiLogin(customerId: customerId
                       , loginDeviceId: deviceID, success: { (results) in
-                      print("kaungmyat san multi >>>  \(results)")
+                   //   print("kaungmyat san multi >>>  \(results)")
                       
                       if results.data.logoutFlag == true {
                           print("success stage logout")
@@ -1340,13 +1340,13 @@ class GuarantorVC: BaseUIViewController {
             }
             // current Address
             self.selectedCurrCityID = model.cityNameIdDic![self.cityNameList[0]]
-            self.brnCurrentCity.setTitle(self.cityNameList[0], for: UIControl.State.normal)
+            self.brnCurrentCity.setTitle("", for: UIControl.State.normal)
             self.allCurrTownNameList = model.cityIdTownListDic![self.selectedCurrCityID!]!
             self.tfTsp.filterStrings(self.allCurrTownNameList)
             
             // company address
             self.selectedComCityID = model.cityNameIdDic![self.cityNameList[0]]
-            self.btnCompanyCity.setTitle(self.cityNameList[0], for: UIControl.State.normal)
+            self.btnCompanyCity.setTitle("", for: UIControl.State.normal)
             self.allComTownNameList = model.cityIdTownListDic![self.selectedComCityID!]!
             self.tfCompanyTsp.filterStrings(self.allComTownNameList)
             

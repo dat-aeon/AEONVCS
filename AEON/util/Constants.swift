@@ -248,7 +248,7 @@ struct Constants {
     
     static var rsWithGuarantorList = ["Parent", "Sponse", "Relative", "Friend", "Other"]
     
-    static var categoriesList = ["Smart Phone", "IT", "Furniture", "Aircon", "Refrigerator"]
+     static var categoriesList = ["Smart Phone", "IT", "Furniture", "Aircon", "Refrigerator"]
     
     static var typeResidenceList = ["Owner","Parental","Rental","Relative","Hostel/Other"]
     

@@ -87,18 +87,21 @@ logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #sel
             self.isRegisterSuccess = false
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
     override func updateViews() {
         super.updateViews()
-        switch Locale.currentLocale {
-        case .EN:
-            
-            bbLocaleFlag.image = UIImage(named: "mm_flag")
-        case .MY:
-            
-            bbLocaleFlag.image = UIImage(named: "en_flag")
-        }
-       self.title = "aeonservice.da.list.title".localized
+//        switch Locale.currentLocale {
+//        case .EN:
+//            
+//            bbLocaleFlag.image = UIImage(named: "mm_flag")
+//        case .MY:
+//            
+//            bbLocaleFlag.image = UIImage(named: "en_flag")
+//        }
+//       self.title = "aeonservice.da.list.title".localized
         self.btnSearch.setTitle("da.search".localized, for: .normal)
         self.clearBtnLable.setTitle("da.clear".localized, for: .normal)
         self.tbApplicationList.reloadData()
@@ -112,7 +115,7 @@ logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #sel
             var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
            MultiLoginModel.init().makeMultiLogin(customerId: customerId
                    , loginDeviceId: deviceID, success: { (results) in
-                   print("kaungmyat san multi >>>  \(results)")
+                 //  print("kaungmyat san multi >>>  \(results)")
                    
                    if results.data.logoutFlag == true {
                        print("success stage logout")
@@ -404,7 +407,7 @@ extension ApplicationListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.APPLICATION_LIST_CELL, for: indexPath) as! cellApplicationList
                
                
-//       cell.setData(newsInfoBean: self.newsList[indexPath.row])
+//     cell.setData(newsInfoBean: self.newsList[indexPath.row])
         var sectionarray = [DAInquiryResponse]()
         if self.appListWithSection.keys.count == 1{
             if self.mobileList.count >= 1 {

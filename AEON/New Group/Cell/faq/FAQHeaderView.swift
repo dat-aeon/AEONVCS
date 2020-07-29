@@ -28,7 +28,7 @@ class FAQHeaderView: UITableViewHeaderFooterView {
             if item.isCollapsed{
                 self.imgDropDown.image = UIImage(named: "collapse")
             }else{
-                self.imgDropDown.image = UIImage(named: "expand")
+                self.imgDropDown.image = UIImage(named: "expand-small-p-icon")
             }
         }
     }
