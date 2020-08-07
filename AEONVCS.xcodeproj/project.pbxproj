@@ -261,6 +261,8 @@
 		C16C63DE238C3980004E24C1 /* AgentChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63DD238C3980004E24C1 /* AgentChannel.swift */; };
 		C16C63E1238C3DEF004E24C1 /* AgentChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */; };
 		C16C63E3238C3E01004E24C1 /* AgentChannelPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */; };
+		ED07E04824DBF25E00067AEB /* MainLoanApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07E04724DBF25E00067AEB /* MainLoanApplyViewController.swift */; };
+		ED07E04A24DC072000067AEB /* CustomerInfoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07E04924DC072000067AEB /* CustomerInfoFormViewController.swift */; };
 		ED1B421424611B3200AB442B /* OtherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1B421224611B3200AB442B /* OtherCollectionViewCell.swift */; };
 		ED387DB8243AF1E500F8DD8A /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */; };
 		ED387DBA243B17FF00F8DD8A /* AskProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DB9243B17FF00F8DD8A /* AskProductViewModel.swift */; };
@@ -544,6 +546,8 @@
 		C16C63DD238C3980004E24C1 /* AgentChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannel.swift; sourceTree = "<group>"; };
 		C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelViewController.swift; sourceTree = "<group>"; };
 		C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelPopupViewController.swift; sourceTree = "<group>"; };
+		ED07E04724DBF25E00067AEB /* MainLoanApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoanApplyViewController.swift; sourceTree = "<group>"; };
+		ED07E04924DC072000067AEB /* CustomerInfoFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoFormViewController.swift; sourceTree = "<group>"; };
 		ED1B421224611B3200AB442B /* OtherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
 		ED387DB9243B17FF00F8DD8A /* AskProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskProductViewModel.swift; sourceTree = "<group>"; };
@@ -1325,6 +1329,7 @@
 		75A31DF522000182002E7336 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED07E04624DBF23400067AEB /* mainLoanapply */,
 				ED9D95BF2436FA5D00B52D74 /* LoanApply */,
 				04AF316123EC0A5A0087719A /* membershipnew */,
 				04AF315C23EBD78C0087719A /* howtouse */,
@@ -1446,6 +1451,15 @@
 				C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */,
 			);
 			path = agentChannel;
+			sourceTree = "<group>";
+		};
+		ED07E04624DBF23400067AEB /* mainLoanapply */ = {
+			isa = PBXGroup;
+			children = (
+				ED07E04724DBF25E00067AEB /* MainLoanApplyViewController.swift */,
+				ED07E04924DC072000067AEB /* CustomerInfoFormViewController.swift */,
+			);
+			path = mainLoanapply;
 			sourceTree = "<group>";
 		};
 		ED9D95BF2436FA5D00B52D74 /* LoanApply */ = {
@@ -1750,6 +1764,7 @@
 				0495E2EE22191DAA009A6FAB /* HotlineModel.swift in Sources */,
 				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
 				ED387DBE243B218D00F8DD8A /* contactUsModel.swift in Sources */,
+				ED07E04824DBF25E00067AEB /* MainLoanApplyViewController.swift in Sources */,
 				6A69822F221955B900840561 /* BioMetricRegisterViewController.swift in Sources */,
 				6A81F0CD22156005001725EA /* MemberInfoPreviewViewController.swift in Sources */,
 				6A3197BD220403140031D86F /* SecQuestionVerifyViewController.swift in Sources */,
@@ -1792,6 +1807,7 @@
 				0497E2DF222E930A0013DEFF /* LogoutViewModel.swift in Sources */,
 				6A3197A9220400290031D86F /* MessagingViewController.swift in Sources */,
 				7561955D21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift in Sources */,
+				ED07E04A24DC072000067AEB /* CustomerInfoFormViewController.swift in Sources */,
 				EDC90DFC24568C73005FD5E2 /* AutoReplyMessageViewModel.swift in Sources */,
 				04045A8D2272CCA70055DF91 /* NewsModel.swift in Sources */,
 				6AFEBE0B2205CEAD006D2F81 /* FAQHeaderView.swift in Sources */,

@@ -165,8 +165,8 @@ struct CommonNames {
     //Aeon Services List
     static var AEON_SERVICES_VIEW_CONTROLLER = "AeonServicesVC"
     static var APPLY_LOAN_NAV = "ApplySmallLoanNav"
-    
-    
+    static var APPLY_LOAN_MAIN = "MainLoanApplyViewController"
+    static var CUSTOMER_INFOFORM = "CustomerInfoFormViewController"
     //Appy Aeon Loan
     static var APPLICATION_DATA_VC = "ApplicationDataVC"
     static var OCCUPATION_DATA_VC = "OccupationDataVC"

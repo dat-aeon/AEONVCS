@@ -456,11 +456,16 @@ class HomeNewViewController: BaseUIViewController {
         
     }
     @objc func onTaploanAppView(){
-        let storyboard = UIStoryboard(name: "DA", bundle: nil)
-               let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.APPLY_LOAN_NAV)
-               applyLoanNav.modalPresentationStyle = .overFullScreen
-               self.present(applyLoanNav, animated: true, completion: nil)
-               loanAppView.isHidden = true
+//        let storyboard = UIStoryboard(name: "DA", bundle: nil)
+//               let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.APPLY_LOAN_NAV)
+//               applyLoanNav.modalPresentationStyle = .overFullScreen
+//               self.present(applyLoanNav, animated: true, completion: nil)
+//               loanAppView.isHidden = true
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.APPLY_LOAN_MAIN)
+        applyLoanNav.modalPresentationStyle = .overFullScreen
+        self.present(applyLoanNav, animated: true, completion: nil)
+        loanAppView.isHidden = true
     }
     @objc func onTaploanApplyStatusView(){
        let applyLoanN = UIStoryboard(name: "DA", bundle: nil).instantiateViewController(withIdentifier: CommonNames.INQUIRY_LOAN_NAV) as! UIViewController

@@ -71,7 +71,10 @@ class EmergencyContactVC: BaseUIViewController {
     @IBOutlet weak var tfResidentTelNo: UITextField!
     @IBOutlet weak var tfOtherTelNo: UITextField!
     
+    @IBOutlet weak var backBtn: UIImageView!
     
+    @IBOutlet weak var imgMMlocale: UIImageView!
+    @IBOutlet weak var imgEnglocale: UIImageView!
     var nameMesgLocale: String?
     var rsWithApplicantMesgLocale: String?
     var addressMesgLocale: String?
@@ -91,8 +94,15 @@ class EmergencyContactVC: BaseUIViewController {
     var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imgMMlocale.isUserInteractionEnabled = true
+        self.imgEnglocale.isUserInteractionEnabled = true
+        self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+                   self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
  //logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
+        backBtn.isUserInteractionEnabled = true
+         self.backBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backView)))
         self.lblNameError.text = Constants.BLANK
         self.lblRelationshipError.text = Constants.BLANK
         self.lblCurrentAddressError.text = Constants.BLANK
@@ -139,6 +149,9 @@ class EmergencyContactVC: BaseUIViewController {
         self.tfMobileNo.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
     }
+    @objc func backView() {
+              self.dismiss(animated: true, completion: nil)
+          }
     @objc func runTimedCode() {
                    multiLoginGet()
                // print("kms\(logoutTimer)")
@@ -251,7 +264,20 @@ class EmergencyContactVC: BaseUIViewController {
             
         }
     }
-    
+    @objc func onTapMMLocale() {
+               
+               super.NewupdateLocale(flag: 1)
+               updateViews()
+            
+             
+           }
+           @objc func onTapEngLocale() {
+              
+               super.NewupdateLocale(flag: 2)
+               updateViews()
+         
+               
+           }
     func setupTownshipCityData() {
         
         //autocomplete

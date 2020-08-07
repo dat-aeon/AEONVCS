@@ -15,6 +15,7 @@ func userDidEnterInformation(image: UIImage)
 
 class LoanConfirmationVC: BaseUIViewController {
     weak var delegate: ImageAndCaptionDelegate? = nil
+    @IBOutlet weak var backView: UIImageView!
     @IBOutlet weak var svLoanConfirmation: UIScrollView!
     
     @IBOutlet weak var btnOne: UIButton! {
@@ -408,6 +409,8 @@ class LoanConfirmationVC: BaseUIViewController {
     var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.backView.isUserInteractionEnabled = true
+                self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtn)))
       //  logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         self.collectViewLoanTerm.delegate = self
         self.collectViewLoanTerm.dataSource = self
@@ -579,6 +582,9 @@ class LoanConfirmationVC: BaseUIViewController {
         
         print("save term ====>\(self.termsOfFinance) + \(self.selectedTerm)")
         self.collectViewLoanTerm.reloadData()
+       }
+    @objc func backBtn() {
+           self.dismiss(animated: true, completion: nil)
        }
     
     @objc func markLoanConfirmationLastState() {

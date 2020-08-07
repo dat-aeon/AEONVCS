@@ -87,6 +87,7 @@ class OccupationDataVC: BaseUIViewController {
     @IBOutlet weak var tfTotalIncome: UITextField!
     @IBOutlet weak var lbTotalIncomeTxt: UILabel!
     
+    @IBOutlet weak var backView: UIImageView!
     
 //    var companyStatusList = ["Public Company","Factory", "Police","Private Company","SME Owner","Goverment Office", "Taxi Owner", "Specialist", "SME officer", "Military", "NGO", "Other"]
 //    
@@ -121,6 +122,8 @@ class OccupationDataVC: BaseUIViewController {
     var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.backView.isUserInteractionEnabled = true
+         self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtn)))
        // logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
         self.lblCompanyNameError.text = Constants.BLANK
@@ -292,7 +295,9 @@ class OccupationDataVC: BaseUIViewController {
                       print(error)
                   }
               }
-    
+   @objc func backBtn() {
+          self.dismiss(animated: true, completion: nil)
+      }
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField.text == "" {
             textField.backgroundColor = UIColor(red:255.0/255.0, green:255.0/255.0, blue:200.0/255.0, alpha: 1.0)

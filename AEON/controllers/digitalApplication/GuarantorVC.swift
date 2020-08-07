@@ -54,6 +54,7 @@ class GuarantorVC: BaseUIViewController {
     @IBOutlet weak var tfCompanyCity: UITextField!
     @IBOutlet weak var btnCompanyCity: UIButton!
     
+    @IBOutlet weak var backView: UIImageView!
     
 //    @IBOutlet weak var tvCompanyAddress: UITextView! {
 //        didSet {
@@ -252,6 +253,9 @@ class GuarantorVC: BaseUIViewController {
     var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.backView.isUserInteractionEnabled = true
+        self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtn)))
 //logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
         self.lblNameError.text = Constants.BLANK
@@ -444,7 +448,9 @@ class GuarantorVC: BaseUIViewController {
             textField.backgroundColor = UIColor.white
         }
     }
-    
+    @objc func backBtn() {
+           self.dismiss(animated: true, completion: nil)
+       }
     @objc override func keyboardWillChange(notification : Notification) {
         guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
