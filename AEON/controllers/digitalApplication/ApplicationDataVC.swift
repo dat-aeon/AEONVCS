@@ -244,9 +244,12 @@ class ApplicationDataVC: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showAppForm"), object: self, userInfo: ["data": self.myAppData as Any])
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "markAppDataLastState"), object: nil)
         self.backView.isUserInteractionEnabled = true
          self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtn)))
-      //  self.markAppDataLastState()
+        self.markAppDataLastState()
             // logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
 //        self.lblMsgDob.text = Constants.BLANK
@@ -381,8 +384,10 @@ class ApplicationDataVC: BaseUIViewController {
                 NotificationCenter.default.addObserver(self, selector: #selector(doRegisterDA), name: NSNotification.Name(rawValue: "doRegistration"), object: nil)
                
                NotificationCenter.default.addObserver(self, selector: #selector(doSaveDA), name: NSNotification.Name(rawValue: "saveDA"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(showPreview), name: NSNotification.Name(rawValue: "showPreview"), object: nil)
         self.doLoadSaveDAData()
     }
+    
     @objc func doRegisterDA() {
     //        self.logoutTimer?.invalidate()
             let appError = UserDefaults.standard.integer(forKey: Constants.APP_DATA_ERROR_COUNT)
@@ -474,6 +479,7 @@ class ApplicationDataVC: BaseUIViewController {
                 }))
                 self.present(alertController, animated: true, completion: nil)
             }
+         self.doLoadSaveDAData()
             
         }
      @objc func doSetAppData(notification: Notification) {
@@ -575,6 +581,70 @@ class ApplicationDataVC: BaseUIViewController {
                self.present( self.myPickerController, animated: true, completion: nil)
            }
        }
+     @objc func showPreview(notitfication: Notification) {
+            //prepare data
+            
+            if let attachmentdict = notitfication.userInfo as? Dictionary<String, Any> {
+                
+                print("doshowPreview")
+                var tempAttachment = [PurchaseAttachmentResponse]()
+                if let attachmentarray = attachmentdict["attachment"] as? [AttachmentRequest] {
+                    
+                    for attachment in attachmentarray {
+                        var purchaseAttachment = PurchaseAttachmentResponse()
+                        purchaseAttachment.fileType = attachment.fileType
+                        purchaseAttachment.filePath = attachment.photoByte
+                        tempAttachment.append(purchaseAttachment)
+                    }
+                }
+                
+    //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showPreview"), object: self, userInfo: ["attachment": tempArray, "processingfee": Double(self.tfProcessingfee.text ?? "0.0") ?? 0.0, "comSaving": Double(self.tfCompulsory.text ?? "0.0") ?? 0.0, "totalrepay": Double(self.tfTotalRepayment.text ?? "0.0") ?? 0.0, "firstrepay": Double(self.tfFirstRepayment.text ?? "0.0") ?? 0.0, "monthltyrepay": Double(self.tfMonthlyRepayment.text ?? "0.0") ?? 0.0])
+                
+                let processingfee = attachmentdict["processingfee"] as? Double
+                let totalcomp = attachmentdict["comSaving"] as? Double
+                let totalrepay = attachmentdict["totalrepay"] as? Double
+                let firstpayment = attachmentdict["firstrepay"] as? Double//
+                let monthly = attachmentdict["monthltyrepay"] as? Double
+                let lastpay = attachmentdict["lastpay"] as? Double
+                
+                var applicationdetailresponse = ApplicationDetailResponse(daApplicationInfoId: 0, applicationNo: "", appliedDate: "", daApplicationTypeId: 0, status: 0, settlementPendingComment: "", daInterestInfoId: 0, daCompulsoryInfoId: 0, name: self.myAppData.name, dob: self.myAppData.dob, nrcNo: self.myAppData.nrcNo, fatherName: self.myAppData.fatherName,highestEducationTypeId: self.myAppData.highestEducationTypeId, nationality: self.myAppData.nationality, nationalityOther: self.myAppData.nationalityOther, gender: self.myAppData.gender, maritalStatus: self.myAppData.maritalStatus, currentAddress: self.myAppData.currentAddress, permanentAddress: self.myAppData.permanentAddress, typeOfResidence: self.myAppData.typeOfResidence, typeOfResidenceOther: self.myAppData.typeOfResidenceOther, livingWith: self.myAppData.livingWith, livingWithOther: self.myAppData.livingWithOther, yearOfStayYear: self.myAppData.yearOfStayYear, yearOfStayMonth: self.myAppData.yearOfStayMonth, mobileNo: self.myAppData.mobileNo, residentTelNo: self.myAppData.residentTelNo, otherPhoneNo: self.myAppData.otherPhoneNo, email: self.myAppData.email, customerId: self.myAppData.customerId, daLoanTypeId: self.myLoanData.daLoanTypeId, financeAmount: self.myLoanData.financeAmount, financeTerm: self.myLoanData.financeTerm, daProductTypeId: self.myLoanData.daProductTypeId, productDescription: self.myLoanData.productDescription, channelType: self.myLoanData.channelType, applicantCompanyInfoDto: myOccupationData, emergencyContactInfoDto: self.myContactData, guarantorInfoDto: self.myGuarantorData, applicationInfoAttachmentDtoList: tempAttachment, processingFees: processingfee, totalConSaving: totalcomp, totalRepayment: totalrepay, firstPayment: firstpayment, monthlyInstallment: monthly, lastPayment: lastpay)
+                
+                applicationdetailresponse.currentAddressBuildingNo = self.myAppData.currentAddressBuildingNo
+                applicationdetailresponse.currentAddressRoomNo = self.myAppData.currentAddressRoomNo
+                applicationdetailresponse.currentAddressFloor = self.myAppData.currentAddressFloor
+                applicationdetailresponse.currentAddressStreet = self.myAppData.currentAddressStreet
+                applicationdetailresponse.currentAddressQtr = self.myAppData.currentAddressQtr
+                applicationdetailresponse.currentAddressTownship = self.myAppData.currentAddressTownship
+                applicationdetailresponse.currentAddressCity = self.myAppData.currentAddressCity
+                
+                applicationdetailresponse.permanentAddressBuildingNo = self.myAppData.permanentAddressBuildingNo
+                applicationdetailresponse.permanentAddressRoomNo = self.myAppData.permanentAddressRoomNo
+                applicationdetailresponse.permanentAddressFloor = self.myAppData.permanentAddressFloor
+                applicationdetailresponse.permanentAddressStreet = self.myAppData.permanentAddressStreet
+                applicationdetailresponse.permanentAddressQtr = self.myAppData.permanentAddressQtr
+                applicationdetailresponse.permanentAddressTownship = self.myAppData.permanentAddressTownship
+                applicationdetailresponse.permanentAddressCity = self.myAppData.permanentAddressCity
+                
+                let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.APPLICATION_DETAIL_VC) as! ApplicationDetailVC
+                popupVC.modalPresentationStyle = .overCurrentContext
+                popupVC.modalTransitionStyle = .crossDissolve
+                
+                 
+                popupVC.inquiryAppID =  0
+                popupVC.appinfoobj = applicationdetailresponse
+                popupVC.isPreviewing = true
+                
+                let pVC = popupVC.popoverPresentationController
+                pVC?.permittedArrowDirections = .any
+                
+                
+                
+                self.definesPresentationContext = true
+                //popupVC.delegate = self
+                self.present(popupVC, animated: true, completion: nil)
+                
+            }
+        }
     func doLoadSaveDAData() {
         let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
         tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
@@ -595,9 +665,10 @@ class ApplicationDataVC: BaseUIViewController {
             
             self.myAppData = appdata
             myAppFormData = self.myAppData
-            DispatchQueue.main.async {
-                self.delegate?.showApplicationForm()
-            }
+            self.fillThisForm(data: myAppFormData)
+//            DispatchQueue.main.async {
+//                self.delegate?.showApplicationForm()
+//            }
             
             let loanData = LoanConfirmationRequest(daLoanTypeId: responseObjDA.daLoanTypeId ?? 1, financeAmount: responseObjDA.financeAmount ?? 0.0, financeTerm: responseObjDA.financeTerm ?? 0, daProductTypeId: responseObjDA.daProductTypeId ?? 1, productDescription: responseObjDA.productDescription ?? "", channelType: responseObjDA.channelType ?? 2)
             self.myLoanData = loanData
@@ -607,7 +678,7 @@ class ApplicationDataVC: BaseUIViewController {
             emergencyFormID = self.myContactData.daEmergencyContactInfoId
             guarantorFormID = self.myGuarantorData.daGuarantorInfoId
             applicationStatus = self.myAppData.status
-    
+            
             
         }) { (error) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
@@ -626,9 +697,9 @@ class ApplicationDataVC: BaseUIViewController {
                 
                 self.myAppData = appdata
                 myAppFormData = self.myAppData
-                DispatchQueue.main.async {
-                    self.delegate?.showApplicationForm()
-                }
+//                DispatchQueue.main.async {
+//                    self.delegate?.showApplicationForm()
+//                }
             } else {
                 Utils.showAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "News " + error)
             }
@@ -738,7 +809,7 @@ class ApplicationDataVC: BaseUIViewController {
         
          myAppFormData = appData
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SetAppData"), object: self, userInfo: ["appData": appData])
-        
+        self.fillThisForm(data: myAppFormData)
         NotificationCenter.default.addObserver(self, selector: #selector(showAppForm(notification:)), name: NSNotification.Name(rawValue: "showAppForm"), object: nil)
         self.view.endEditing(true)
     }
@@ -2026,10 +2097,10 @@ class ApplicationDataVC: BaseUIViewController {
                 myAppFormData = self.myAppData
                 CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                 
-                DispatchQueue.main.async {
-                    self.delegate?.showApplicationForm()
-                }
-                
+//                DispatchQueue.main.async {
+//                    self.delegate?.showApplicationForm()
+//                }
+//
                 let loanData = LoanConfirmationRequest(daLoanTypeId: responseObjDA.daLoanTypeId ?? 1, financeAmount: responseObjDA.financeAmount ?? 0.0, financeTerm: responseObjDA.financeTerm ?? 0, daProductTypeId: responseObjDA.daProductTypeId ?? 1, productDescription: responseObjDA.productDescription ?? "", channelType: responseObjDA.channelType ?? 2)
                 self.myLoanData = loanData
                 
