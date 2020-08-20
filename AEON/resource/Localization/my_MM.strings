@@ -225,6 +225,11 @@
 
 // REGISTER
 "NAME_EMPTY_ERROR" = "နာမည်ထည့်ပါ။";
+"BUILD_NO_ERROR" = "တိုက်အမှတ်ထည့်ပါ။";
+"FLOOR_NO_ERROR" = "အလွှာထည့်ပါ။";
+"STREET_ERROR" = "လမ်းအမည်ထည့်ပါ။";
+"QUARTER_ERROR" = "ရပ်ကွက်အမည်ထည့်ပါ။";
+"ROOM_NO_ERROR" = "အခန်းအမှတ်ထည့်ပါ။";
 "NAME_REG_FORMAT_ERROR" = "English နာမည်နဲ့ထည့်ပါ။ အထူးအက္ခရာများမပါဝင်သင့်ပါ။";
 "DOB_EMPTY_ERROR" = "မွေးနေ့ထည့်ပါ။";
 "DOB_FORMAT_ERROR" = "မွေးနေ့ပုံစံမမှန်ပါ။";
@@ -323,6 +328,7 @@
 //APPLICATION DATA
 "application_data.title" = "အမည် * :";
 "application_data.fathername" = "ဖခင် အမည် *";
+
 "application_data.education" = "ပညာရေး";
 "application_data.save.button" = "သိမ်းမည်";
 "application_data.next.button" = "ရှေ့သို့";
@@ -397,7 +403,11 @@
 "occupation_other_income" = "အခြားဝင်ငွေ";
 "occupation_total_income" = "စုစုပေါင်းဝင်ငွေ *";
 "occupation_salary_date" = "လစာထုတ်ရက် *";
-
+"OCCUPATION_STREET_ERROR" = "လမ်းအမည်ထည့်ပါ။*";
+"OCCUPATION_BULDING_ERROR" = "အဆောက်အဦးနံပါတ်ထည့်ပါ။";
+"OCCUPATION_FLOOR_NO_ERROR" = "အလွှာနံပါတ်ထည့်ပါ။";
+"OCCUPATION_ROOM_NO_ERROR" = "အခန်းနံပါတ်ထည့်ပါ။";
+"OCCUPATION_QUARTER_ERROR" = "ရက်ကွက်အမည်ထည့်ပါ။";
 //EMERGENCY CONTACT //FORM 3
 "emergencycontact_name" = "အမည် *";
 "emergencycontact_rsapplicant" = "လျှောက်ထားသူနှင့် တော်စပ်ပုံ  *";

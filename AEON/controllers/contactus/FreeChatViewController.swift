@@ -15,6 +15,9 @@ class FreeChatViewController: BaseUIViewController {
    
     
    
+    @IBOutlet weak var sendBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var questionTwo: UIView!
+    @IBOutlet weak var questionOne: UIView!
     @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
@@ -29,6 +32,9 @@ class FreeChatViewController: BaseUIViewController {
     @IBOutlet weak var btnSendMesg: UIButton!
     @IBOutlet weak var vSendBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var menuImage: UIImageView!
+    @IBOutlet weak var menuHeight: NSLayoutConstraint!
+    @IBOutlet weak var menuBtnLabel: UIButton!
     
         var oldMessageBeanList = [MessageBean]()
         var typeLists:String = ""
@@ -48,15 +54,30 @@ class FreeChatViewController: BaseUIViewController {
         var engLan = ""
         var mainLan = ""
 //
+    @objc func myTargetFunction(textField: UITextField) {
+        print("myTargetFunction")
+  
+                  buttonHasNoText = true
+        menuHeight.constant = 0
+        if tfTypeMessage.text!.count == 0 {
+            sendBtnWidth.constant = 0
+        }
+        if tfTypeMessage.text!.count > 0 {
+            sendBtnWidth.constant = 60
+        }
+    }
     override func viewDidAppear(_ animated: Bool) {
          AutomessageBean.message = mmLan
        
     }
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            tfTypeMessage.addTarget(self, action: #selector(myTargetFunction(textField:)), for: UIControl.Event.touchDown)
             autoReplyMessage()
         
-          
+            questionOne.layer.cornerRadius = questionOne.frame.width / 2
+            questionTwo.layer.cornerRadius = questionOne.frame.width / 2
             AutomessageBean.isReceiveMesg = true
             AutomessageBean.message = mainLan
                            
@@ -141,6 +162,37 @@ class FreeChatViewController: BaseUIViewController {
             tvMessagingView.reloadData()
             
         }
+ var buttonHasNoText: Bool = true
+    @IBAction func menuBtnPress(_ sender: UIButton) {
+        print(sender.isSelected)
+       // sender.isSelected = !sender.isSelected
+       if buttonHasNoText {
+           menuHeight.constant = 271
+           buttonHasNoText = false
+       } else {
+            menuHeight.constant = 0
+           buttonHasNoText = true
+       }
+//        if sender.isSelected == false {
+//             sender.isSelected = true
+//             menuHeight.constant = 271
+//           self.vSendBottomConstraint.constant = 0
+//        }else{
+//             self.vSendBottomConstraint.constant = 0
+//            menuHeight.constant = 0
+//            sender.isSelected = false
+//        }
+//        if sender.isSelected == false {
+//            menuHeight.constant = 271
+//        }
+//        if sender.isSelected{
+//            
+//             menuHeight.constant = 271
+//        }else{
+//            menuHeight.constant = 0
+//        }
+    }
+  
         func autoReplyMessage() {
              CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                           AutoReplyMessageModel.init().AutoReplyMessageSync(success: { (result) in
@@ -159,7 +211,10 @@ class FreeChatViewController: BaseUIViewController {
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             //super.free_chat_socket_url.send("unReadMessageList:")
-            
+    
+            if tfTypeMessage.text!.isEmpty {
+                sendBtnWidth.constant = 0
+            }
             if self.isDidLoad {
                 self.isDidLoad = false
                 
@@ -207,6 +262,7 @@ class FreeChatViewController: BaseUIViewController {
             super.updateViews()
             self.btnSendImg.setTitle("messaging.send.button".localized, for: UIControl.State.normal)
         }
+    
         // send message
         @IBAction func sendMessage(_ sender: UIButton) {
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)

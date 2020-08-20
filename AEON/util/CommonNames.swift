@@ -167,6 +167,7 @@ struct CommonNames {
     static var APPLY_LOAN_NAV = "ApplySmallLoanNav"
     static var APPLY_LOAN_MAIN = "MainLoanApplyViewController"
     static var CUSTOMER_INFOFORM = "CustomerInfoFormViewController"
+    static var LOAN_CHOOSE = "LoanChooseViewController"
     //Appy Aeon Loan
     static var APPLICATION_DATA_VC = "ApplicationDataVC"
     static var OCCUPATION_DATA_VC = "OccupationDataVC"

@@ -112,7 +112,7 @@ class EmergencyContactVC: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         NotificationCenter.default.addObserver(self, selector: #selector(alertSuccess), name: NSNotification.Name(rawValue: "applicationSuccessfully"), object: nil)
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
         self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
@@ -173,11 +173,18 @@ class EmergencyContactVC: BaseUIViewController {
                       
                        NotificationCenter.default.addObserver(self, selector: #selector(doRegisterDA), name: NSNotification.Name(rawValue: "doRegistration"), object: nil)
                       
-                      NotificationCenter.default.addObserver(self, selector: #selector(doSaveDA), name: NSNotification.Name(rawValue: "saveDA"), object: nil)
+//                      NotificationCenter.default.addObserver(self, selector: #selector(doSaveDA), name: NSNotification.Name(rawValue: "saveDA"), object: nil)
                 
                self.doLoadSaveDAData()
         
     }
+    @objc func alertSuccess() {
+              let alertController = UIAlertController(title: "Your application is successfully saved!", message: "", preferredStyle: .alert)
+              alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
+                    
+              }))
+              self.present(alertController, animated: true, completion: nil)
+          }
     func doLoadSaveDAData() {
             let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
             tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
@@ -197,7 +204,7 @@ class EmergencyContactVC: BaseUIViewController {
 
 //                let appdata = EmergencyContactRequest(daEmergencyContactInfoId: myEmergencyContact?.daEmergencyContactInfoId ?? 0, name: myEmergencyContact?.name "", relationship: myEmergencyContact?.relationship ?? 0, relationshipOther: myEmergencyContact?.relationshipOther ?? "", currentAddress: myEmergencyContact?.currentAddress ?? "", mobileNo: myEmergencyContact?.mobileNo ?? "", residentTelNo: myEmergencyContact?.residentTelNo ?? "", otherPhoneNo: myEmergencyContact?.otherPhoneNo ?? "", currentAddressFloor: myEmergencyContact?.currentAddressFloor ?? "", currentAddressBuildingNo: myEmergencyContact?.currentAddressBuildingNo ?? "", currentAddressRoomNo: myEmergencyContact?.currentAddressRoomNo ?? "", currentAddressStreet: myEmergencyContact?.currentAddressStreet ?? "", currentAddressQtr: myEmergencyContact?.currentAddressQtr ?? "", currentAddressTownship: myEmergencyContact.currentAddressTownship ?? 0, currentAddressCity: myEmergencyContact?.currentAddressCity ?? 0)
 //                self.myContactData = appdata
-               // myAppFormData = self.myAppData
+                myAppFormData = self.myAppData
                 self.fillThisForm(data: self.myContactData)
     //            DispatchQueue.main.async {
     //                self.delegate?.showApplicationForm()
@@ -238,68 +245,68 @@ class EmergencyContactVC: BaseUIViewController {
                 }
             }
         }
-     @objc func doSaveDA() {
-            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-            
-            let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
-                   tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
-                   
-                   DAViewModel.init().doSaveDigitalApplication(tokenInfo: self.tokenInfo!, appData: self.myAppData, companyData: self.myOccupationData, emergencyContact: self.myContactData, loanData: self.myLoanData, guarantorData: self.myGuarantorData,  success: { (responseObjDA) in
-                    
-                    self.myContactData = responseObjDA.emergencyContactInfoDto!
-                    print("\(self.myContactData.name)")
-                    self.myGuarantorData = responseObjDA.guarantorInfoDto!
-                    self.myOccupationData = responseObjDA.applicantCompanyInfoDto!
-                    
-                    let appdata = ApplicationDataRequest(daApplicationInfoId: responseObjDA.daApplicationInfoId ?? 0, daApplicationTypeId: responseObjDA.daApplicationTypeId ?? 1, name: responseObjDA.name ?? "", dob: responseObjDA.dob ?? "", nrcNo: responseObjDA.nrcNo ?? "", fatherName: responseObjDA.fatherName ?? "",highestEducationTypeId: responseObjDA.highestEducationTypeId ?? 0, nationality: responseObjDA.nationality ?? 1, nationalityOther: responseObjDA.nationalityOther ?? "", gender: responseObjDA.gender!, maritalStatus: responseObjDA.maritalStatus ?? 1, currentAddress: responseObjDA.currentAddress ?? "", permanentAddress: responseObjDA.permanentAddress ?? "", typeOfResidence: responseObjDA.typeOfResidence ?? 1, typeOfResidenceOther: responseObjDA.typeOfResidenceOther ?? "", livingWith: responseObjDA.livingWith ?? 1, livingWithOther: responseObjDA.livingWithOther ?? "", yearOfStayYear: responseObjDA.yearOfStayYear ?? 0, yearOfStayMonth: responseObjDA.yearOfStayMonth ?? 0, mobileNo: responseObjDA.mobileNo ?? "", residentTelNo: responseObjDA.residentTelNo ?? "", otherPhoneNo: responseObjDA.otherPhoneNo ?? "", email: responseObjDA.email ?? "", customerId: responseObjDA.customerId ?? 0, status: responseObjDA.status ?? 0, currentAddressFloor: responseObjDA.currentAddressFloor ?? "", currentAddressBuildingNo: responseObjDA.currentAddressBuildingNo ?? "", currentAddressRoomNo: responseObjDA.currentAddressRoomNo ?? "", currentAddressStreet: responseObjDA.currentAddressStreet ?? "", currentAddressQtr: responseObjDA.currentAddressQtr ?? "", currentAddressTownship: responseObjDA.currentAddressTownship ?? 0, currentAddressCity: responseObjDA.currentAddressCity ?? 0,permanentAddressCity: responseObjDA.permanentAddressCity ?? 0, permanentAddressFloor: responseObjDA.permanentAddressFloor ?? "", permanentAddressBuildingNo: responseObjDA.permanentAddressBuildingNo ?? "", permanentAddressRoomNo: responseObjDA.permanentAddressRoomNo ?? "", permanentAddressStreet: responseObjDA.permanentAddressStreet ?? "", permanentAddressQtr: responseObjDA.permanentAddressQtr ?? "", permanentAddressTownship: responseObjDA.permanentAddressTownship ?? 0)
-
-
-                    self.myAppData = appdata
-                    myAppFormData = self.myAppData
-                    CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                    
-    //                DispatchQueue.main.async {
-    //                    self.delegate?.showApplicationForm()
-    //                }
-    //
-                    let loanData = LoanConfirmationRequest(daLoanTypeId: responseObjDA.daLoanTypeId ?? 1, financeAmount: responseObjDA.financeAmount ?? 0.0, financeTerm: responseObjDA.financeTerm ?? 0, daProductTypeId: responseObjDA.daProductTypeId ?? 1, productDescription: responseObjDA.productDescription ?? "", channelType: responseObjDA.channelType ?? 2)
-                    self.myLoanData = loanData
-                    
-                    applicationFormID = self.myAppData.daApplicationInfoId
-                    occupationFormID = self.myOccupationData.daApplicantCompanyInfoId
-                    emergencyFormID = self.myContactData.daEmergencyContactInfoId
-                    guarantorFormID = self.myGuarantorData.daGuarantorInfoId
-                    applicationStatus = self.myAppData.status
-                    
-                       
-                        let alertController = UIAlertController(title: "Your application is successfully saved!", message: "", preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                              
-                        }))
-                        self.present(alertController, animated: true, completion: nil)
-                       
-                       
-                   }) { (error) in
-                       
-                       CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                                  
-                           if error == Constants.SERVER_FAILURE {
-                               let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                               let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
-                               self.present(navigationVC, animated: true, completion: nil)
-                                      
-                               } else if error == Constants.EXPIRE_TOKEN {
-                                   Utils.showExpireAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "COUPON " + Messages.EXPIRE_TOKEN_ERROR.localized)
-                                      
-                                  } else if error == Constants.APPLICATION_LIMIT {
-                                      Utils.showAlert(viewcontroller: self, title: Constants.APPLICATION_LIMIT_TITLE, message: "" + error)
-                                  } else {
-                                      Utils.showAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "" + error)
-                                  }
-                       
-                       
-                   }
-        }
+//     @objc func doSaveDA() {
+//            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+//
+//            let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
+//                   tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
+//
+//                   DAViewModel.init().doSaveDigitalApplication(tokenInfo: self.tokenInfo!, appData: self.myAppData, companyData: self.myOccupationData, emergencyContact: self.myContactData, loanData: self.myLoanData, guarantorData: self.myGuarantorData,  success: { (responseObjDA) in
+//
+//                    self.myContactData = responseObjDA.emergencyContactInfoDto!
+//                    print("\(self.myContactData.name)")
+//                    self.myGuarantorData = responseObjDA.guarantorInfoDto!
+//                    self.myOccupationData = responseObjDA.applicantCompanyInfoDto!
+//
+//                    let appdata = ApplicationDataRequest(daApplicationInfoId: responseObjDA.daApplicationInfoId ?? 0, daApplicationTypeId: responseObjDA.daApplicationTypeId ?? 1, name: responseObjDA.name ?? "", dob: responseObjDA.dob ?? "", nrcNo: responseObjDA.nrcNo ?? "", fatherName: responseObjDA.fatherName ?? "",highestEducationTypeId: responseObjDA.highestEducationTypeId ?? 0, nationality: responseObjDA.nationality ?? 1, nationalityOther: responseObjDA.nationalityOther ?? "", gender: responseObjDA.gender!, maritalStatus: responseObjDA.maritalStatus ?? 1, currentAddress: responseObjDA.currentAddress ?? "", permanentAddress: responseObjDA.permanentAddress ?? "", typeOfResidence: responseObjDA.typeOfResidence ?? 1, typeOfResidenceOther: responseObjDA.typeOfResidenceOther ?? "", livingWith: responseObjDA.livingWith ?? 1, livingWithOther: responseObjDA.livingWithOther ?? "", yearOfStayYear: responseObjDA.yearOfStayYear ?? 0, yearOfStayMonth: responseObjDA.yearOfStayMonth ?? 0, mobileNo: responseObjDA.mobileNo ?? "", residentTelNo: responseObjDA.residentTelNo ?? "", otherPhoneNo: responseObjDA.otherPhoneNo ?? "", email: responseObjDA.email ?? "", customerId: responseObjDA.customerId ?? 0, status: responseObjDA.status ?? 0, currentAddressFloor: responseObjDA.currentAddressFloor ?? "", currentAddressBuildingNo: responseObjDA.currentAddressBuildingNo ?? "", currentAddressRoomNo: responseObjDA.currentAddressRoomNo ?? "", currentAddressStreet: responseObjDA.currentAddressStreet ?? "", currentAddressQtr: responseObjDA.currentAddressQtr ?? "", currentAddressTownship: responseObjDA.currentAddressTownship ?? 0, currentAddressCity: responseObjDA.currentAddressCity ?? 0,permanentAddressCity: responseObjDA.permanentAddressCity ?? 0, permanentAddressFloor: responseObjDA.permanentAddressFloor ?? "", permanentAddressBuildingNo: responseObjDA.permanentAddressBuildingNo ?? "", permanentAddressRoomNo: responseObjDA.permanentAddressRoomNo ?? "", permanentAddressStreet: responseObjDA.permanentAddressStreet ?? "", permanentAddressQtr: responseObjDA.permanentAddressQtr ?? "", permanentAddressTownship: responseObjDA.permanentAddressTownship ?? 0)
+//
+//
+//                    self.myAppData = appdata
+//                    myAppFormData = self.myAppData
+//                    CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+//
+//    //                DispatchQueue.main.async {
+//    //                    self.delegate?.showApplicationForm()
+//    //                }
+//    //
+//                    let loanData = LoanConfirmationRequest(daLoanTypeId: responseObjDA.daLoanTypeId ?? 1, financeAmount: responseObjDA.financeAmount ?? 0.0, financeTerm: responseObjDA.financeTerm ?? 0, daProductTypeId: responseObjDA.daProductTypeId ?? 1, productDescription: responseObjDA.productDescription ?? "", channelType: responseObjDA.channelType ?? 2)
+//                    self.myLoanData = loanData
+//
+//                    applicationFormID = self.myAppData.daApplicationInfoId
+//                    occupationFormID = self.myOccupationData.daApplicantCompanyInfoId
+//                    emergencyFormID = self.myContactData.daEmergencyContactInfoId
+//                    guarantorFormID = self.myGuarantorData.daGuarantorInfoId
+//                    applicationStatus = self.myAppData.status
+//
+//
+//                        let alertController = UIAlertController(title: "Your application is successfully saved!", message: "", preferredStyle: .alert)
+//                        alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
+//
+//                        }))
+//                        self.present(alertController, animated: true, completion: nil)
+//
+//
+//                   }) { (error) in
+//
+//                       CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+//
+//                           if error == Constants.SERVER_FAILURE {
+//                               let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                               let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
+//                               self.present(navigationVC, animated: true, completion: nil)
+//
+//                               } else if error == Constants.EXPIRE_TOKEN {
+//                                   Utils.showExpireAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "COUPON " + Messages.EXPIRE_TOKEN_ERROR.localized)
+//
+//                                  } else if error == Constants.APPLICATION_LIMIT {
+//                                      Utils.showAlert(viewcontroller: self, title: Constants.APPLICATION_LIMIT_TITLE, message: "" + error)
+//                                  } else {
+//                                      Utils.showAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "" + error)
+//                                  }
+//
+//
+//                   }
+//        }
      @objc func doRegisterDA() {
         //        self.logoutTimer?.invalidate()
                 let appError = UserDefaults.standard.integer(forKey: Constants.APP_DATA_ERROR_COUNT)

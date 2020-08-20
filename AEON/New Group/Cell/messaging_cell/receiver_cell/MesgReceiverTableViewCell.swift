@@ -16,6 +16,7 @@ class MesgReceiverTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+         lbMesgText.layer.cornerRadius = lbMesgText.frame.size.height / 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

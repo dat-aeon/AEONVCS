@@ -407,6 +407,19 @@ class LoanConfirmationVC: BaseUIViewController {
     var nrcfrontBtn = UIButton()
     
     var logoutTimer: Timer?
+     let myPickerController = UIImagePickerController()
+    
+    
+     var myAppData = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", highestEducationTypeId: 1 , nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0)
+         
+         var myLoanData = LoanConfirmationRequest(daLoanTypeId: 1, financeAmount: 0.0, financeTerm: 0, daProductTypeId: 1, productDescription: "", channelType: 2)
+         
+         var myGuarantorData = GuarantorRequest(daGuarantorInfoId: 0,name: "", dob: "", nrcNo: "", nationality: 1, nationalityOther: "", mobileNo: "", residentTelNo: "", relationship: 1, relationshipOther: "", currentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", gender: 1, maritalStatus: 1, yearOfStayYear: 0, yearOfStayMonth: 0, companyName: "", companyTelNo: "", companyAddress: "", department: "", position: "", yearOfServiceYear: 0, yearOfServiceMonth: 0, monthlyBasicIncome: 0.0, totalIncome: 0.0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, companyAddressBuildingNo: "", companyAddressRoomNo: "", companyAddressFloor: "", companyAddressStreet: "", companyAddressQtr: "", companyAddressTownship: 0, companyAddressCity: 0)
+         
+         var myOccupationData = OccupationDataRequest(daApplicantCompanyInfoId: 0, companyName: "", companyAddress: "", companyTelNo: "", contactTimeFrom: "", contactTimeTo: "", department: "", position: "", yearOfServiceYear: 0, yearOfServiceMonth: 0, companyStatus: 1, companyStatusOther: "", monthlyBasicIncome: 0.0, otherIncome: 0.0, totalIncome: 0.0, salaryDay: 0, companyAddressBuildingNo: "", companyAddressRoomNo: "", companyAddressFloor: "", companyAddressStreet: "", companyAddressQtr: "", companyAddressTownship: 0, companyAddressCity: 0)
+         
+         var myContactData = EmergencyContactRequest(daEmergencyContactInfoId: 0, name: "", relationship: 1, relationshipOther: "", currentAddress: "", mobileNo: "", residentTelNo: "", otherPhoneNo: "", currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0)
+         var myAttachments = [AttachmentRequest]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backView.isUserInteractionEnabled = true
@@ -465,7 +478,7 @@ class LoanConfirmationVC: BaseUIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showLoanForm(notification:)), name: NSNotification.Name(rawValue: "showLoanForm"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showErrorLabelLoan), name: NSNotification.Name(rawValue: "showErrorLabel"), object: nil)
-        
+         NotificationCenter.default.addObserver(self, selector: #selector(choosePhotoVia(notification:)), name: NSNotification.Name(rawValue: "ChooseFoto"), object: nil)
         self.doGetProductTypeListAPI()
         
         self.viewSample.isHidden = true
@@ -478,7 +491,49 @@ class LoanConfirmationVC: BaseUIViewController {
         self.viewNewApplicantFoto.isHidden = true
         self.viewNewCustomerSignature.isHidden = true
         self.viewNewGuarantorSignature.isHidden = true
+        
+//         NotificationCenter.default.addObserver(self, selector: #selector(showPreview), name: NSNotification.Name(rawValue: "showPreview"), object: nil)
     }
+    
+    //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showPreview"), object: self, userInfo: ["attachment": tempArray, "processingfee": Double(self.tfProcessingfee.text ?? "0.0") ?? 0.0, "comSaving": Double(self.tfCompulsory.text ?? "0.0") ?? 0.0, "totalrepay": Double(self.tfTotalRepayment.text ?? "0.0") ?? 0.0, "firstrepay": Double(self.tfFirstRepayment.text ?? "0.0") ?? 0.0, "monthltyrepay": Double(self.tfMonthlyRepayment.text ?? "0.0") ?? 0.0])
+                
+              
+        
+    @objc func choosePhotoVia(notification: Notification) {
+              print("choose photo noti")
+              if let dict = notification.userInfo as? Dictionary<String, Bool> {
+                  print("choose photo noti \(dict)")
+                  if let boolvar = dict["isCamera"] as? Bool {
+                      if boolvar {
+                          self.camera()
+                      } else {
+                          self.photoLibrary()
+                      }
+                  }
+              }
+          }
+       func camera()
+          {
+              if UIImagePickerController.isSourceTypeAvailable(.camera){
+                  
+                  self.myPickerController.delegate = self;
+                   self.myPickerController.sourceType = .camera
+                  self.present( self.myPickerController, animated: true, completion: nil)
+              }
+              
+          }
+          
+          func photoLibrary()
+          {
+              
+              if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                  
+                   self.myPickerController.delegate = self;
+                   self.myPickerController.sourceType = .photoLibrary
+                  self.present( self.myPickerController, animated: true, completion: nil)
+              }
+          }
+    
     @objc func runTimedCode() {
                 multiLoginGet()
             // print("kms\(logoutTimer)")
@@ -1102,38 +1157,38 @@ class LoanConfirmationVC: BaseUIViewController {
         UserDefaults.standard.set(errorcount, forKey: Constants.LOAN_CONFIRMATION_ERROR_COUNT)
     }
     
-    func checkCameraAccess(isApplicant: Bool) {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .denied:
-            print("Denied, request permission from settings")
-            presentCameraSettings()
-        case .restricted:
-            print("Restricted, device owner must approve")
-            presentCameraSettings()
-        case .authorized:
-            print("Authorized, proceed")
-            if isApplicant {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChooseFoto"), object: self, userInfo: ["isCamera": true])
-            } else {
-                DispatchQueue.main.async {
-                    self.showActionSheet(vc: self)
-                }
-            }
-        case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video) { success in
-                if success {
-                    print("Permission granted, proceed")
-                    DispatchQueue.main.async {
-                        self.showActionSheet(vc: self)
-                    }
-                } else {
-                    print("Permission denied")
-                }
-            }
-        @unknown default:
-            print("unknown")
-        }
-    }
+//    func checkCameraAccess(isApplicant: Bool) {
+//        switch AVCaptureDevice.authorizationStatus(for: .video) {
+//        case .denied:
+//            print("Denied, request permission from settings")
+//            presentCameraSettings()
+//        case .restricted:
+//            print("Restricted, device owner must approve")
+//            presentCameraSettings()
+//        case .authorized:
+//            print("Authorized, proceed")
+//            if isApplicant {
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChooseFoto"), object: self, userInfo: ["isCamera": true])
+//            } else {
+//                DispatchQueue.main.async {
+//                    self.showActionSheet(vc: self)
+//                }
+//            }
+//        case .notDetermined:
+//            AVCaptureDevice.requestAccess(for: .video) { success in
+//                if success {
+//                    print("Permission granted, proceed")
+//                    DispatchQueue.main.async {
+//                        self.showActionSheet(vc: self)
+//                    }
+//                } else {
+//                    print("Permission denied")
+//                }
+//            }
+//        @unknown default:
+//            print("unknown")
+//        }
+//    }
     
     func presentCameraSettings() {
         let alertController = UIAlertController(title: "To Allow Camera Access, Go to Settings",
@@ -1223,6 +1278,38 @@ class LoanConfirmationVC: BaseUIViewController {
         self.isGuarantorSignature = true
         self.checkCameraAccess(isApplicant: false)
     }
+        func checkCameraAccess(isApplicant: Bool) {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .denied:
+                print("Denied, request permission from settings")
+                presentCameraSettings()
+            case .restricted:
+                print("Restricted, device owner must approve")
+                presentCameraSettings()
+            case .authorized:
+                print("Authorized, proceed")
+                if isApplicant {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChooseFoto"), object: self, userInfo: ["isCamera": true])
+                } else {
+                    DispatchQueue.main.async {
+                        self.showActionSheet(vc: self)
+                    }
+                }
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { success in
+                    if success {
+                        print("Permission granted, proceed")
+                        DispatchQueue.main.async {
+                            self.showActionSheet(vc: self)
+                        }
+                    } else {
+                        print("Permission denied")
+                    }
+                }
+            @unknown default:
+                print("unknown")
+            }
+        }
     func doResizeAndAssignImages(image: UIImage) {
         
         // print("image is not null")
@@ -1372,6 +1459,8 @@ class LoanConfirmationVC: BaseUIViewController {
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "doRegistration"), object: nil)
     }
+    
+
     
     //Loan Functions
     @objc func addSeparatorDidChange(_ textField: UITextField) {
@@ -1795,6 +1884,25 @@ extension LoanConfirmationVC: UICollectionViewDelegate, UICollectionViewDataSour
             self.doCalculateLoan(amt: self.tfFinanceAmt.text ?? "", terms: self.selectedLoanTerm)
             
         }
+    }
+    func callNotification(image: UIImage) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didSelectFoto"), object: self, userInfo: ["img": image])
+    //        self.delegate?.didSelectfoto(image: image)
+        }
+}
+extension LoanConfirmationVC {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: nil)
+        guard let image = info[.editedImage] as? UIImage else {
+            guard let originImage = info[.originalImage] as? UIImage else {
+                self.callNotification(image: UIImage())
+                return
+            }
+            self.callNotification(image: originImage)
+            return
+        }
+         self.callNotification(image: image)
+        return
     }
 }
 

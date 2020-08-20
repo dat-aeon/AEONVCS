@@ -225,6 +225,12 @@
 
 // REGISTER
 "NAME_EMPTY_ERROR" = "Please enter Name.";
+"BUILD_NO_ERROR" = "Please enter Build No.";
+"ROOM_NO_ERROR" = "Please enter Room No.";
+"FLOOR_NO_ERROR" = "Please enter Floor No.";
+"STREET_ERROR" = "Please enter Street.";
+"QUARTER_ERROR" = "Please enter Quarter.";
+
 "NAME_REG_FORMAT_ERROR" = "Please enter in English and don't include special characters.";
 "DOB_EMPTY_ERROR" = "Please enter Date Of Birth.";
 "DOB_FORMAT_ERROR" = "Date Of Birth format is wrong.";
@@ -386,7 +392,11 @@
 "SALARY_DATE_FORMAT_ERROR" = "Salary date format is wrong.";
 
 "SALARY_DATE_EMPTY_ERROR" = "Please enter salary date.";
-
+"OCCUPATION_STREET_ERROR" = "Please enter Street *";
+"OCCUPATION_BULDING_ERROR" = "Please enter Bulding No";
+"OCCUPATION_FLOOR_NO_ERROR" = "Please enter Floor No";
+"OCCUPATION_ROOM_NO_ERROR" = "Please enter Room No";
+"OCCUPATION_QUARTER_ERROR" = "Please enter Quarter No";
 //OCCUPATION DATA
 "occupation_company_name" = "Company Name *";
 "occupation_company_address" = "Company Address *";

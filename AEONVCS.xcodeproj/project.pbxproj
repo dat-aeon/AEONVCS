@@ -272,6 +272,7 @@
 		ED3DFD162473E07D00B2B8D5 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DFD152473E07D00B2B8D5 /* Modal.swift */; };
 		ED40A4D12461D1BE0051603A /* OtherImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40A4D02461D1BE0051603A /* OtherImageTableViewCell.swift */; };
 		ED45507424864FFB0013C793 /* FreechatImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45507324864FFB0013C793 /* FreechatImageDetailViewController.swift */; };
+		ED9A908524E3E1F8003BC7DE /* LoanChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */; };
 		ED9D95C12436FA7C00B52D74 /* LoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */; };
 		EDC90DF8245684CF005FD5E2 /* AutoReplyMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DF7245684CF005FD5E2 /* AutoReplyMessageData.swift */; };
 		EDC90DFA245686AA005FD5E2 /* AutoReplyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DF9245686AA005FD5E2 /* AutoReplyMessageModel.swift */; };
@@ -557,6 +558,7 @@
 		ED3DFD152473E07D00B2B8D5 /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		ED40A4D02461D1BE0051603A /* OtherImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherImageTableViewCell.swift; sourceTree = "<group>"; };
 		ED45507324864FFB0013C793 /* FreechatImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreechatImageDetailViewController.swift; sourceTree = "<group>"; };
+		ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanChooseViewController.swift; sourceTree = "<group>"; };
 		ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewController.swift; sourceTree = "<group>"; };
 		EDC90DF7245684CF005FD5E2 /* AutoReplyMessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageData.swift; sourceTree = "<group>"; };
 		EDC90DF9245686AA005FD5E2 /* AutoReplyMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageModel.swift; sourceTree = "<group>"; };
@@ -1458,6 +1460,7 @@
 			children = (
 				ED07E04724DBF25E00067AEB /* MainLoanApplyViewController.swift */,
 				ED07E04924DC072000067AEB /* CustomerInfoFormViewController.swift */,
+				ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */,
 			);
 			path = mainLoanapply;
 			sourceTree = "<group>";
@@ -1849,6 +1852,7 @@
 				75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */,
 				04D322A32223CBE4006BE0CB /* WelcomeViewController.swift in Sources */,
 				045EBD64238B97CD00D6CE38 /* AttachmentEditVC.swift in Sources */,
+				ED9A908524E3E1F8003BC7DE /* LoanChooseViewController.swift in Sources */,
 				045811B12362B56100E3C2DA /* AeonServicesVC.swift in Sources */,
 				04F0022F22094D21007A9ACF /* RegisterViewModel.swift in Sources */,
 				0467B30322573DC500E23EE5 /* NewVersionViewModel.swift in Sources */,

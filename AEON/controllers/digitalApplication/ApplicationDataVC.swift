@@ -14,25 +14,19 @@ import SwipeMenuViewController
 import SwiftyJSON
 import AVFoundation
 
-protocol applyLoanDelegate {
-//    func didSelectfoto(image: UIImage)
-    func showApplicationForm()
-}
-var myAppFormData = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", highestEducationTypeId: 1, nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0)
-
-var applicationFormID = 0
-var occupationFormID = 0
-var emergencyFormID = 0
-var guarantorFormID = 0
-var applicationStatus = 0
 
 class ApplicationDataVC: BaseUIViewController {
     
      var delegate: applyLoanDelegate?
+    @IBOutlet weak var applicationDataTitle: UILabel!
     @IBOutlet weak var svApplicationData: UIScrollView!
+    @IBOutlet weak var engFlagBtn: UIImageView!
+    @IBOutlet weak var mmFlagBtn: UIImageView!
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tfName: UITextField!
 //    @IBOutlet weak var lblMsgName: UILabel!
+    @IBOutlet weak var townshipWarningHeight: NSLayoutConstraint!
     
     @IBOutlet weak var backView: UIImageView!
     
@@ -58,10 +52,17 @@ class ApplicationDataVC: BaseUIViewController {
     @IBOutlet weak var tfFatherName: UITextField!
     @IBOutlet weak var lblFatherWarning: UILabel!
     
+    @IBOutlet weak var roomNoWarningLabel: UILabel!
+    @IBOutlet weak var streetWarningLabel: UILabel!
+    @IBOutlet weak var floorNoWarningLabel: UILabel!
+    @IBOutlet weak var quarterWarningLabel: UILabel!
+    
+    @IBOutlet weak var streetWarningHeight: NSLayoutConstraint!
     @IBOutlet weak var lblNationality: UILabel!
     @IBOutlet weak var tfNationality: UITextField!
     @IBOutlet weak var lblNationalityWarning: UILabel!
     
+   
     @IBOutlet weak var lblCurrentAddress: UILabel!
 //    @IBOutlet weak var tfCurrentAddress: UITextField!
     @IBOutlet weak var lblCurrentAddressWarning: UILabel!
@@ -81,7 +82,17 @@ class ApplicationDataVC: BaseUIViewController {
             self.btnTypeResidence.layer.borderWidth = 1.0
         }
     }
+    @IBOutlet weak var perQuarterHeight: NSLayoutConstraint!
+    @IBOutlet weak var perStreetHeight: NSLayoutConstraint!
+    @IBOutlet weak var perRoomHeight: NSLayoutConstraint!
+    @IBOutlet weak var perFloorHeight: NSLayoutConstraint!
+    @IBOutlet weak var perBldNoHeight: NSLayoutConstraint!
+    @IBOutlet weak var perWarningQuarter: UILabel!
+    @IBOutlet weak var perWarningStreet: UILabel!
+    @IBOutlet weak var perWarningFloorNo: UILabel!
+    @IBOutlet weak var perWarningBldNo: UILabel!
     
+    @IBOutlet weak var perWarningRoomNo: UILabel!
     @IBOutlet weak var lblLivingWithText: UILabel!
     @IBOutlet weak var lblLivingWith: UILabel!
 //    @IBOutlet weak var tfLivingWith: UITextField!
@@ -149,7 +160,14 @@ class ApplicationDataVC: BaseUIViewController {
     @IBOutlet weak var tflivingWith: SkyFloatingLabelTextField!
     
     @IBOutlet weak var lblBldNo: UILabel!
+    
     @IBOutlet weak var tfCurrentBldNo: UITextField!
+    @IBOutlet weak var currentBldNoWarning: UILabel!
+    @IBOutlet weak var BldNoHeight: NSLayoutConstraint!
+    @IBOutlet weak var roomNoWarningHeight: NSLayoutConstraint!
+    @IBOutlet weak var floorNoWarningHeight: NSLayoutConstraint!
+   
+    @IBOutlet weak var quarterWarningHeight: NSLayoutConstraint!
     @IBOutlet weak var lblCurrentRoomNo: UILabel!
     @IBOutlet weak var tfCurrentRoomNo: UITextField!
     @IBOutlet weak var lblCurrentFloor: UILabel!
@@ -241,10 +259,14 @@ class ApplicationDataVC: BaseUIViewController {
     
     var myContactData = EmergencyContactRequest(daEmergencyContactInfoId: 0, name: "", relationship: 1, relationshipOther: "", currentAddress: "", mobileNo: "", residentTelNo: "", otherPhoneNo: "", currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0)
     var myAttachments = [AttachmentRequest]()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        logoImageView.layer.cornerRadius = 5
+        btnSave.layer.cornerRadius = 10
+        applicationDataTitle.layer.cornerRadius = 5
+          NotificationCenter.default.addObserver(self, selector: #selector(alertSuccess), name: NSNotification.Name(rawValue: "applicationSuccessfully"), object: nil)
+        
          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showAppForm"), object: self, userInfo: ["data": self.myAppData as Any])
          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "markAppDataLastState"), object: nil)
         self.backView.isUserInteractionEnabled = true
@@ -358,6 +380,12 @@ class ApplicationDataVC: BaseUIViewController {
         self.updateViews()
         
         // mendatory fields background setting
+        self.tfCurrentBldNo.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfCurrentRoomNo.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfCurrentFloor.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfCurrentQrt.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfCurrentCity.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfCurrentTsp.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.tfFatherName.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.tfNationality.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.tfCurrentStreet.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
@@ -366,10 +394,14 @@ class ApplicationDataVC: BaseUIViewController {
         self.tfYears.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.tfMonths.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
+         self.tfPermenentBldNo.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+         self.tfPermenentStreet.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+         self.tfPermenentQrt.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+         self.tfPermenentCity.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+         self.tfPermenentFloor.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+         self.tfPermenentRoomNo.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
-        
-        
-               NotificationCenter.default.addObserver(self, selector: #selector(choosePhotoVia(notification:)), name: NSNotification.Name(rawValue: "ChooseFoto"), object: nil)
+              
                
                 NotificationCenter.default.addObserver(self, selector: #selector(doSetAppData(notification:)), name: NSNotification.Name(rawValue: "SetAppData"), object: nil)
                
@@ -378,16 +410,38 @@ class ApplicationDataVC: BaseUIViewController {
                NotificationCenter.default.addObserver(self, selector: #selector(doSetEmergencyContactData(notification:)), name: NSNotification.Name(rawValue: "SetEmergencyContactData"), object: nil)
                
                NotificationCenter.default.addObserver(self, selector: #selector(doSetGuarantorData(notification:)), name: NSNotification.Name(rawValue: "SetGuarantorData"), object: nil)
-               
-               NotificationCenter.default.addObserver(self, selector: #selector(doSetLoanConfirmationData(notification:)), name: NSNotification.Name(rawValue: "SetLoanConfirmationData"), object: nil)
+//
+//               NotificationCenter.default.addObserver(self, selector: #selector(doSetLoanConfirmationData(notification:)), name: NSNotification.Name(rawValue: "SetLoanConfirmationData"), object: nil)
                
                 NotificationCenter.default.addObserver(self, selector: #selector(doRegisterDA), name: NSNotification.Name(rawValue: "doRegistration"), object: nil)
                
-               NotificationCenter.default.addObserver(self, selector: #selector(doSaveDA), name: NSNotification.Name(rawValue: "saveDA"), object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(showPreview), name: NSNotification.Name(rawValue: "showPreview"), object: nil)
+//               NotificationCenter.default.addObserver(self, selector: #selector(doSaveDA), name: NSNotification.Name(rawValue: "saveDA"), object: nil)
+//         NotificationCenter.default.addObserver(self, selector: #selector(showPreview), name: NSNotification.Name(rawValue: "showPreview"), object: nil)
         self.doLoadSaveDAData()
     }
-    
+    @objc func alertSuccess() {
+        BldNoHeight.constant = 0
+        roomNoWarningHeight.constant = 0
+        floorNoWarningHeight.constant = 0
+        streetWarningHeight.constant = 0
+        quarterWarningHeight.constant = 0
+        
+        perStreetHeight.constant = 0
+        perQuarterHeight.constant = 0
+        perFloorHeight.constant = 0
+        perBldNoHeight.constant = 0
+        perRoomHeight.constant = 0
+        self.tfResidentPhNoWarning.text = Constants.BLANK
+        self.lblOtherPhNoWarning.text = Constants.BLANK
+        self.lblEmailWarning.text = Constants.BLANK
+         CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+           let alertController = UIAlertController(title: "Your application is successfully saved!", message: "", preferredStyle: .alert)
+           alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
+                 
+           }))
+           self.present(alertController, animated: true, completion: nil)
+        
+       }
     @objc func doRegisterDA() {
     //        self.logoutTimer?.invalidate()
             let appError = UserDefaults.standard.integer(forKey: Constants.APP_DATA_ERROR_COUNT)
@@ -530,121 +584,7 @@ class ApplicationDataVC: BaseUIViewController {
             }
         }
         
-        @objc func doSetLoanConfirmationData(notification: Notification) {
-            print("doSetLoanConfirmationData")
-            if let dict = notification.userInfo as? Dictionary<String, Any> {
-    //            print("doSetLoanConfirmationData \(dict)")
-                if let sVar = dict["appData"] as? LoanConfirmationRequest {
-                    print("doSetLoanConfirmationData \(sVar.financeAmount)")
-                    self.myLoanData = sVar
-                    print("doSetLoanConfirmationData myappdata.name \(self.myLoanData.financeAmount)")
-                } //attachment
-                
-                if let sVar = dict["attachment"] as? [AttachmentRequest] {
-                    print("doSetLoanConfirmationData attachment present")
-                    self.myAttachments = sVar
-                    print("doSetLoanConfirmationData attachment present")
-                }
-            }
-        }
-    @objc func choosePhotoVia(notification: Notification) {
-           print("choose photo noti")
-           if let dict = notification.userInfo as? Dictionary<String, Bool> {
-               print("choose photo noti \(dict)")
-               if let boolvar = dict["isCamera"] as? Bool {
-                   if boolvar {
-                       self.camera()
-                   } else {
-                       self.photoLibrary()
-                   }
-               }
-           }
-       }
-    func camera()
-       {
-           if UIImagePickerController.isSourceTypeAvailable(.camera){
-               
-               self.myPickerController.delegate = self;
-                self.myPickerController.sourceType = .camera
-               self.present( self.myPickerController, animated: true, completion: nil)
-           }
-           
-       }
-       
-       func photoLibrary()
-       {
-           
-           if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-               
-                self.myPickerController.delegate = self;
-                self.myPickerController.sourceType = .photoLibrary
-               self.present( self.myPickerController, animated: true, completion: nil)
-           }
-       }
-     @objc func showPreview(notitfication: Notification) {
-            //prepare data
-            
-            if let attachmentdict = notitfication.userInfo as? Dictionary<String, Any> {
-                
-                print("doshowPreview")
-                var tempAttachment = [PurchaseAttachmentResponse]()
-                if let attachmentarray = attachmentdict["attachment"] as? [AttachmentRequest] {
-                    
-                    for attachment in attachmentarray {
-                        var purchaseAttachment = PurchaseAttachmentResponse()
-                        purchaseAttachment.fileType = attachment.fileType
-                        purchaseAttachment.filePath = attachment.photoByte
-                        tempAttachment.append(purchaseAttachment)
-                    }
-                }
-                
-    //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showPreview"), object: self, userInfo: ["attachment": tempArray, "processingfee": Double(self.tfProcessingfee.text ?? "0.0") ?? 0.0, "comSaving": Double(self.tfCompulsory.text ?? "0.0") ?? 0.0, "totalrepay": Double(self.tfTotalRepayment.text ?? "0.0") ?? 0.0, "firstrepay": Double(self.tfFirstRepayment.text ?? "0.0") ?? 0.0, "monthltyrepay": Double(self.tfMonthlyRepayment.text ?? "0.0") ?? 0.0])
-                
-                let processingfee = attachmentdict["processingfee"] as? Double
-                let totalcomp = attachmentdict["comSaving"] as? Double
-                let totalrepay = attachmentdict["totalrepay"] as? Double
-                let firstpayment = attachmentdict["firstrepay"] as? Double//
-                let monthly = attachmentdict["monthltyrepay"] as? Double
-                let lastpay = attachmentdict["lastpay"] as? Double
-                
-                var applicationdetailresponse = ApplicationDetailResponse(daApplicationInfoId: 0, applicationNo: "", appliedDate: "", daApplicationTypeId: 0, status: 0, settlementPendingComment: "", daInterestInfoId: 0, daCompulsoryInfoId: 0, name: self.myAppData.name, dob: self.myAppData.dob, nrcNo: self.myAppData.nrcNo, fatherName: self.myAppData.fatherName,highestEducationTypeId: self.myAppData.highestEducationTypeId, nationality: self.myAppData.nationality, nationalityOther: self.myAppData.nationalityOther, gender: self.myAppData.gender, maritalStatus: self.myAppData.maritalStatus, currentAddress: self.myAppData.currentAddress, permanentAddress: self.myAppData.permanentAddress, typeOfResidence: self.myAppData.typeOfResidence, typeOfResidenceOther: self.myAppData.typeOfResidenceOther, livingWith: self.myAppData.livingWith, livingWithOther: self.myAppData.livingWithOther, yearOfStayYear: self.myAppData.yearOfStayYear, yearOfStayMonth: self.myAppData.yearOfStayMonth, mobileNo: self.myAppData.mobileNo, residentTelNo: self.myAppData.residentTelNo, otherPhoneNo: self.myAppData.otherPhoneNo, email: self.myAppData.email, customerId: self.myAppData.customerId, daLoanTypeId: self.myLoanData.daLoanTypeId, financeAmount: self.myLoanData.financeAmount, financeTerm: self.myLoanData.financeTerm, daProductTypeId: self.myLoanData.daProductTypeId, productDescription: self.myLoanData.productDescription, channelType: self.myLoanData.channelType, applicantCompanyInfoDto: myOccupationData, emergencyContactInfoDto: self.myContactData, guarantorInfoDto: self.myGuarantorData, applicationInfoAttachmentDtoList: tempAttachment, processingFees: processingfee, totalConSaving: totalcomp, totalRepayment: totalrepay, firstPayment: firstpayment, monthlyInstallment: monthly, lastPayment: lastpay)
-                
-                applicationdetailresponse.currentAddressBuildingNo = self.myAppData.currentAddressBuildingNo
-                applicationdetailresponse.currentAddressRoomNo = self.myAppData.currentAddressRoomNo
-                applicationdetailresponse.currentAddressFloor = self.myAppData.currentAddressFloor
-                applicationdetailresponse.currentAddressStreet = self.myAppData.currentAddressStreet
-                applicationdetailresponse.currentAddressQtr = self.myAppData.currentAddressQtr
-                applicationdetailresponse.currentAddressTownship = self.myAppData.currentAddressTownship
-                applicationdetailresponse.currentAddressCity = self.myAppData.currentAddressCity
-                
-                applicationdetailresponse.permanentAddressBuildingNo = self.myAppData.permanentAddressBuildingNo
-                applicationdetailresponse.permanentAddressRoomNo = self.myAppData.permanentAddressRoomNo
-                applicationdetailresponse.permanentAddressFloor = self.myAppData.permanentAddressFloor
-                applicationdetailresponse.permanentAddressStreet = self.myAppData.permanentAddressStreet
-                applicationdetailresponse.permanentAddressQtr = self.myAppData.permanentAddressQtr
-                applicationdetailresponse.permanentAddressTownship = self.myAppData.permanentAddressTownship
-                applicationdetailresponse.permanentAddressCity = self.myAppData.permanentAddressCity
-                
-                let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.APPLICATION_DETAIL_VC) as! ApplicationDetailVC
-                popupVC.modalPresentationStyle = .overCurrentContext
-                popupVC.modalTransitionStyle = .crossDissolve
-                
-                 
-                popupVC.inquiryAppID =  0
-                popupVC.appinfoobj = applicationdetailresponse
-                popupVC.isPreviewing = true
-                
-                let pVC = popupVC.popoverPresentationController
-                pVC?.permittedArrowDirections = .any
-                
-                
-                
-                self.definesPresentationContext = true
-                //popupVC.delegate = self
-                self.present(popupVC, animated: true, completion: nil)
-                
-            }
-        }
+    
     func doLoadSaveDAData() {
         let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
         tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
@@ -666,9 +606,9 @@ class ApplicationDataVC: BaseUIViewController {
             self.myAppData = appdata
             myAppFormData = self.myAppData
             self.fillThisForm(data: myAppFormData)
-//            DispatchQueue.main.async {
-//                self.delegate?.showApplicationForm()
-//            }
+            DispatchQueue.main.async {
+                self.delegate?.showApplicationForm()
+            }
             
             let loanData = LoanConfirmationRequest(daLoanTypeId: responseObjDA.daLoanTypeId ?? 1, financeAmount: responseObjDA.financeAmount ?? 0.0, financeTerm: responseObjDA.financeTerm ?? 0, daProductTypeId: responseObjDA.daProductTypeId ?? 1, productDescription: responseObjDA.productDescription ?? "", channelType: responseObjDA.channelType ?? 2)
             self.myLoanData = loanData
@@ -697,9 +637,9 @@ class ApplicationDataVC: BaseUIViewController {
                 
                 self.myAppData = appdata
                 myAppFormData = self.myAppData
-//                DispatchQueue.main.async {
-//                    self.delegate?.showApplicationForm()
-//                }
+                DispatchQueue.main.async {
+                    self.delegate?.showApplicationForm()
+                }
             } else {
                 Utils.showAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "News " + error)
             }
@@ -812,6 +752,11 @@ class ApplicationDataVC: BaseUIViewController {
         self.fillThisForm(data: myAppFormData)
         NotificationCenter.default.addObserver(self, selector: #selector(showAppForm(notification:)), name: NSNotification.Name(rawValue: "showAppForm"), object: nil)
         self.view.endEditing(true)
+    }
+    
+    @objc func myTargetFunction(textField: UITextField) {
+        print("myTargetFunction")
+        
     }
     @objc func backBtn() {
         self.dismiss(animated: true, completion: nil)
@@ -1053,6 +998,7 @@ class ApplicationDataVC: BaseUIViewController {
 //        self.lblMsgName.text = self.nameMesgLocale?.localized
 //        self.lblMsgDob.text = self.dobMesgLocale?.localized
 //        self.lbNrcNoErrorMessage.text = self.nrcMesgLocale?.localized
+       
         self.lblFatherWarning.text = self.fatherNameMesgLocale?.localized
         self.lblNationalityWarning.text = self.nationalityMesgLocale?.localized
         self.lblCurrentAddressWarning.text = self.currentAddressMesgLocale?.localized
@@ -1617,6 +1563,7 @@ class ApplicationDataVC: BaseUIViewController {
 //        }
         
         // Validate Name [a-zA-Z0-9 ]
+        
         if self.tfFatherName?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
             self.tfFatherName?.text = Constants.BLANK
             self.lblFatherWarning.text = Messages.NAME_EMPTY_ERROR.localized
@@ -1635,20 +1582,83 @@ class ApplicationDataVC: BaseUIViewController {
             self.fatherNameMesgLocale = Constants.BLANK
             self.lblFatherWarning.text = Constants.BLANK
         }
-        
+        if self.tfCurrentRoomNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            roomNoWarningHeight.constant = 16
+            self.tfCurrentRoomNo?.text = Constants.BLANK
+            self.roomNoWarningLabel.text = Messages.ROOM_NO_ERROR.localized
+            isError = true
+        }else{
+            roomNoWarningHeight.constant = 0
+        }
+        if self.tfCurrentBldNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            BldNoHeight.constant = 16
+            self.tfCurrentBldNo.text = Constants.BLANK
+            self.currentBldNoWarning.text = Messages.BUILD_NO_ERROR.localized
+           isError = true
+        }else{
+           BldNoHeight.constant = 0
+//              self.tfCurrentBldNo.text = Constants.BLANK
+//                self.currentBldNoWarning.text = Constants.BLANK
+        }
+        if self.tfCurrentRoomNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                    roomNoWarningHeight.constant = 16
+                    self.tfCurrentRoomNo.text = Constants.BLANK
+                    self.roomNoWarningLabel.text = Messages.ROOM_NO_ERROR.localized
+                   isError = true
+                }else{
+                   roomNoWarningHeight.constant = 0
+        //              self.tfCurrentBldNo.text = Constants.BLANK
+        //                self.currentBldNoWarning.text = Constants.BLANK
+                }
+        if self.tfCurrentFloor.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                           floorNoWarningHeight.constant = 16
+                           self.tfCurrentFloor.text = Constants.BLANK
+                           self.floorNoWarningLabel.text = Messages.FLOOR_NO_ERROR.localized
+                          isError = true
+                       }else{
+                          floorNoWarningHeight.constant = 0
+               //              self.tfCurrentBldNo.text = Constants.BLANK
+               //                self.currentBldNoWarning.text = Constants.BLANK
+                       }
+        if self.tfCurrentQrt.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                                  quarterWarningHeight.constant = 16
+                                  self.quarterWarningLabel.text = Constants.BLANK
+                                  self.quarterWarningLabel.text = Messages.FLOOR_NO_ERROR.localized
+                                 isError = true
+                              }else{
+                                 quarterWarningHeight.constant = 0
+                      //              self.tfCurrentBldNo.text = Constants.BLANK
+                      //                self.currentBldNoWarning.text = Constants.BLANK
+                              }
         // Current address
         if self.tfCurrentStreet?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            self.streetWarningHeight.constant = 16
             self.tfCurrentStreet?.text = Constants.BLANK
-            self.lblCurrentAddressWarning.text = Messages.ADDRESS_EMPTY_ERROR.localized
-            self.currentAddressMesgLocale = Messages.ADDRESS_EMPTY_ERROR
+            self.streetWarningLabel.text = Messages.STREET_ERROR.localized
+//            self.currentAddressMesgLocale = Messages.STREET_ERROR
             isError = true
             
         } else {
-            self.currentAddressMesgLocale = Constants.BLANK
-            self.lblCurrentAddressWarning.text = Constants.BLANK
+            self.streetWarningHeight.constant = 0
+            //self.currentAddressMesgLocale = Constants.BLANK
+            //self.lblCurrentAddressWarning.text = Constants.BLANK
         }
+        if self.tfCurrentQrt?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                  self.quarterWarningHeight.constant = 16
+
+            self.tfCurrentQrt.text = Constants.BLANK
+            self.quarterWarningLabel.text = Messages.QUARTER_ERROR.localized
+                 // self.currentAddressMesgLocale = Messages.ADDRESS_EMPTY_ERROR
+                  isError = true
+
+              } else {
+                  self.quarterWarningHeight.constant = 0
+//                  self.currentAddressMesgLocale = Constants.BLANK
+//                  self.lblCurrentAddressWarning.text = Constants.BLANK
+              }
         
         if self.tfCurrentTsp?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            //self.townshipWarningHeight.constant = 16
             self.tfCurrentTsp?.text = Constants.BLANK
             self.lblCurrentAddressWarning.text = Messages.ADDRESS_EMPTY_ERROR.localized
             self.currentAddressMesgLocale = Messages.ADDRESS_EMPTY_ERROR
@@ -1661,6 +1671,7 @@ class ApplicationDataVC: BaseUIViewController {
             isError = true
             
         } else {
+           // self.townshipWarningHeight.constant = 16
             self.currentAddressMesgLocale = Constants.BLANK
             self.lblCurrentAddressWarning.text = Constants.BLANK
         }
@@ -1673,21 +1684,71 @@ class ApplicationDataVC: BaseUIViewController {
 //            isError = true
 //
 //        } else
-        if !(self.tfPermenentStreet?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? false) {
-            if !self.allPerTownNameList.contains((self.tfPermenentTsp?.text)!) {
-                self.tfPermenentTsp?.text = Constants.BLANK
-                self.lblPermenentAddressWarning.text = Messages.ADDRESS_INVALID_ERROR.localized
-                self.permenentAddressMesgLocale = Messages.ADDRESS_INVALID_ERROR
-                isError = true
-                
-            } else {
-                self.permenentAddressMesgLocale = Constants.BLANK
-                self.lblPermenentAddressWarning.text = Constants.BLANK
-            }
-        } else {
-            self.permenentAddressMesgLocale = Constants.BLANK
-            self.lblPermenentAddressWarning.text = Constants.BLANK
+        
+        
+         if self.tfPermenentBldNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                    perBldNoHeight.constant = 16
+                    self.tfPermenentBldNo.text = Constants.BLANK
+                    self.perWarningBldNo.text = Messages.BUILD_NO_ERROR.localized
+                   isError = true
+                }else{
+                   perBldNoHeight.constant = 0
+                self.perWarningBldNo.text = Constants.BLANK
+                }
+        if self.tfPermenentFloor.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            perFloorHeight.constant = 16
+            self.tfPermenentFloor.text = Constants.BLANK
+            self.perWarningFloorNo.text = Messages.FLOOR_NO_ERROR.localized
+           isError = true
+        }else{
+           perFloorHeight.constant = 0
+        self.perWarningFloorNo.text = Constants.BLANK
         }
+        if self.tfPermenentRoomNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            perRoomHeight.constant = 16
+            self.tfPermenentRoomNo.text = Constants.BLANK
+            self.perWarningRoomNo.text = Messages.ROOM_NO_ERROR.localized
+           isError = true
+        }else{
+           perRoomHeight.constant = 0
+        self.perWarningRoomNo.text = Constants.BLANK
+        }
+        if self.tfPermenentQrt.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                   perQuarterHeight.constant = 16
+                   self.tfPermenentQrt.text = Constants.BLANK
+                   self.perWarningQuarter.text = Messages.QUARTER_ERROR.localized
+                  isError = true
+               }else{
+                  perQuarterHeight.constant = 0
+               self.perWarningQuarter.text = Constants.BLANK
+               }
+        if self.tfPermenentStreet.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            perStreetHeight.constant = 16
+            self.tfPermenentStreet.text = Constants.BLANK
+            self.perWarningStreet.text = Messages.STREET_ERROR.localized
+           isError = true
+        }else{
+           perStreetHeight.constant = 0
+        self.perWarningStreet.text = Constants.BLANK
+        }
+        
+//        if !(self.tfPermenentStreet?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? false) {
+//            if !self.allPerTownNameList.contains((self.tfPermenentTsp?.text)!) {
+//                self.tfPermenentTsp?.text = Constants.BLANK
+//                self.perWarningStreet.text = Messages.ADDRESS_INVALID_ERROR.localized
+//                self.permenentAddressMesgLocale = Messages.ADDRESS_INVALID_ERROR
+//                isError = true
+//
+//            } else {
+//                self.permenentAddressMesgLocale = Constants.BLANK
+//                self.perWarningStreet.text = Constants.BLANK
+//            }
+//        } else {
+//            self.permenentAddressMesgLocale = Constants.BLANK
+//            self.perWarningStreet.text = Constants.BLANK
+//        }
+        
+        
         
 //        if self.tfPermenentTsp?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
 //            self.tfPermenentTsp?.text = Constants.BLANK
@@ -1700,7 +1761,8 @@ class ApplicationDataVC: BaseUIViewController {
 //            self.lblPermenentAddressWarning.text = Constants.BLANK
 //        }
         
-        if !(self.tfResidentPhNo?.text?.isEmpty ?? false){
+        if !(self.tfResidentPhNo?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? false){
+            
             if !Utils.isNumberValidate(phoneNo: (self.tfResidentPhNo?.text)!){
                 // validate phone no format
                 self.tfResidentPhNoWarning.text = Messages.PHONE_REG_LENGTH_ERROR.localized
@@ -1712,9 +1774,12 @@ class ApplicationDataVC: BaseUIViewController {
             }
             
         } else {
-            self.residentPhoneMesgLocale = Constants.BLANK
-            self.tfResidentPhNoWarning.text = Constants.BLANK
+          
         }
+        if self.tfResidentPhNo.text == Constants.BLANK {
+             self.tfResidentPhNoWarning.text = Messages.PHONE_REG_EMPTY_ERROR.localized
+        }
+
         
         //        //Other Phone No.
         if !(self.tfOtherPhNo?.text?.isEmpty ?? false){
@@ -1733,6 +1798,10 @@ class ApplicationDataVC: BaseUIViewController {
             self.otherPhoneMesgLocale = Constants.BLANK
             self.lblOtherPhNoWarning.text = Constants.BLANK
         }
+        
+        if self.tfOtherPhNo.text == Constants.BLANK {
+                    self.lblOtherPhNoWarning.text = Messages.PHONE_REG_EMPTY_ERROR.localized
+               }
         
         // Validate Email
         if !(self.tfEmail?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? false){
@@ -1755,6 +1824,9 @@ class ApplicationDataVC: BaseUIViewController {
         } else {
             self.lblEmailWarning.text = Constants.BLANK
             self.emailMesgLocale = Constants.BLANK
+        }
+        if self.tfEmail.text == Constants.BLANK {
+            self.lblEmailWarning.text = Messages.EMAIL_EMPTY_ERROR.localized
         }
         
         if !self.isMyanmarNationality {
@@ -1828,7 +1900,7 @@ class ApplicationDataVC: BaseUIViewController {
         
         // Validate Name [a-zA-Z0-9 ]
         if self.tfFatherName?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
-            
+           
             errorCount += 1
             
         }
@@ -1838,6 +1910,25 @@ class ApplicationDataVC: BaseUIViewController {
 //            
 //        }
         
+        if self.tfCurrentBldNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            errorCount += 1
+        
+        }else{
+          
+        }
+        if self.tfCurrentRoomNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            errorCount += 1
+            
+        }
+        if self.tfCurrentFloor.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            errorCount += 1
+            
+        }
+        
+        if self.tfCurrentQrt.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            errorCount += 1
+            
+        }
         // Current address
         if self.tfCurrentStreet?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
             errorCount += 1
@@ -1856,6 +1947,26 @@ class ApplicationDataVC: BaseUIViewController {
                 errorCount += 1
             }
         }
+        if self.tfPermenentBldNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                   errorCount += 1
+                   
+               }
+        if self.tfPermenentRoomNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                          errorCount += 1
+                          
+                      }
+        if self.tfPermenentFloor.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                          errorCount += 1
+                          
+                      }
+        if self.tfPermenentStreet.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                          errorCount += 1
+                          
+                      }
+        if self.tfPermenentQrt.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                          errorCount += 1
+                          
+                      }
         // Validate Date of Birth [dd-MM-yyyy]
         if self.tfDob?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
             
@@ -1899,17 +2010,24 @@ class ApplicationDataVC: BaseUIViewController {
 //            errorCount += 1
 //
 //        }
+    
         
         //Validate Resident Phone No. [09[0-9]{7,9}]
         if !(self.tfResidentPhNo?.text?.isEmpty ?? false) {
-            
+
             if !Utils.isNumberValidate(phoneNo: (self.tfResidentPhNo?.text)!){
                 // validate phone no format
                 errorCount += 1
-                
+
             }
         }
-        
+        if self.tfResidentPhNo.text == "" {
+             errorCount += 1
+        }
+//        if self.tfResidentPhNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+//                                 errorCount += 1
+//
+//                             }
         //        //Other Phone No.
         if !(self.tfOtherPhNo?.text?.isEmpty ?? false) {
             
@@ -1918,12 +2036,17 @@ class ApplicationDataVC: BaseUIViewController {
                 errorCount += 1
             }
         }
-        
+        if self.tfOtherPhNo.text == Constants.BLANK {
+             errorCount += 1
+        }
         // Validate Email
         if !(self.tfEmail?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? false){
             if !Utils.isValidEmail(emailStr: (self.tfEmail?.text)!){
                 errorCount += 1
             }
+        }
+        if self.tfEmail.text == Constants.BLANK {
+             errorCount += 1
         }
         
         if !self.isMyanmarNationality {
@@ -1955,8 +2078,25 @@ class ApplicationDataVC: BaseUIViewController {
     } //End of markErrorCount
     
     @IBAction func doSaveData(_ sender: Any) {
-        
+         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         self.markAppDataLastState()
+       let appError = UserDefaults.standard.integer(forKey: Constants.APP_DATA_ERROR_COUNT)
+        var errorString = ""
+//        if appError == 0 {
+//            self.BldNoHeight.constant = 0
+//        }
+        
+        if appError > 0 {
+            errorString += "In Application Data, total warning : \(appError) \n"
+             let alertController = UIAlertController(title: "Please fill all the mendantory fields!", message: errorString, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { (action) in
+                if appError > 0 {
+                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showErrorLabel"), object: nil)
+                                    }
+            }))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "saveDA"), object: nil)
         
@@ -1967,6 +2107,7 @@ class ApplicationDataVC: BaseUIViewController {
 //        }
         
     }
+    
      func doRegisterDAApi() {
            // self.logoutTimer?.invalidate()
              CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
@@ -2077,68 +2218,7 @@ class ApplicationDataVC: BaseUIViewController {
             
         }
     }
-    @objc func doSaveDA() {
-        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-        
-        let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
-               tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
-               
-               DAViewModel.init().doSaveDigitalApplication(tokenInfo: self.tokenInfo!, appData: self.myAppData, companyData: self.myOccupationData, emergencyContact: self.myContactData, loanData: self.myLoanData, guarantorData: self.myGuarantorData,  success: { (responseObjDA) in
-                
-                self.myContactData = responseObjDA.emergencyContactInfoDto!
-                print("\(self.myContactData.name)")
-                self.myGuarantorData = responseObjDA.guarantorInfoDto!
-                self.myOccupationData = responseObjDA.applicantCompanyInfoDto!
-                
-                let appdata = ApplicationDataRequest(daApplicationInfoId: responseObjDA.daApplicationInfoId ?? 0, daApplicationTypeId: responseObjDA.daApplicationTypeId ?? 1, name: responseObjDA.name ?? "", dob: responseObjDA.dob ?? "", nrcNo: responseObjDA.nrcNo ?? "", fatherName: responseObjDA.fatherName ?? "",highestEducationTypeId: responseObjDA.highestEducationTypeId ?? 0, nationality: responseObjDA.nationality ?? 1, nationalityOther: responseObjDA.nationalityOther ?? "", gender: responseObjDA.gender!, maritalStatus: responseObjDA.maritalStatus ?? 1, currentAddress: responseObjDA.currentAddress ?? "", permanentAddress: responseObjDA.permanentAddress ?? "", typeOfResidence: responseObjDA.typeOfResidence ?? 1, typeOfResidenceOther: responseObjDA.typeOfResidenceOther ?? "", livingWith: responseObjDA.livingWith ?? 1, livingWithOther: responseObjDA.livingWithOther ?? "", yearOfStayYear: responseObjDA.yearOfStayYear ?? 0, yearOfStayMonth: responseObjDA.yearOfStayMonth ?? 0, mobileNo: responseObjDA.mobileNo ?? "", residentTelNo: responseObjDA.residentTelNo ?? "", otherPhoneNo: responseObjDA.otherPhoneNo ?? "", email: responseObjDA.email ?? "", customerId: responseObjDA.customerId ?? 0, status: responseObjDA.status ?? 0, currentAddressFloor: responseObjDA.currentAddressFloor ?? "", currentAddressBuildingNo: responseObjDA.currentAddressBuildingNo ?? "", currentAddressRoomNo: responseObjDA.currentAddressRoomNo ?? "", currentAddressStreet: responseObjDA.currentAddressStreet ?? "", currentAddressQtr: responseObjDA.currentAddressQtr ?? "", currentAddressTownship: responseObjDA.currentAddressTownship ?? 0, currentAddressCity: responseObjDA.currentAddressCity ?? 0,permanentAddressCity: responseObjDA.permanentAddressCity ?? 0, permanentAddressFloor: responseObjDA.permanentAddressFloor ?? "", permanentAddressBuildingNo: responseObjDA.permanentAddressBuildingNo ?? "", permanentAddressRoomNo: responseObjDA.permanentAddressRoomNo ?? "", permanentAddressStreet: responseObjDA.permanentAddressStreet ?? "", permanentAddressQtr: responseObjDA.permanentAddressQtr ?? "", permanentAddressTownship: responseObjDA.permanentAddressTownship ?? 0)
-
-
-                self.myAppData = appdata
-                myAppFormData = self.myAppData
-                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                
-//                DispatchQueue.main.async {
-//                    self.delegate?.showApplicationForm()
-//                }
-//
-                let loanData = LoanConfirmationRequest(daLoanTypeId: responseObjDA.daLoanTypeId ?? 1, financeAmount: responseObjDA.financeAmount ?? 0.0, financeTerm: responseObjDA.financeTerm ?? 0, daProductTypeId: responseObjDA.daProductTypeId ?? 1, productDescription: responseObjDA.productDescription ?? "", channelType: responseObjDA.channelType ?? 2)
-                self.myLoanData = loanData
-                
-                applicationFormID = self.myAppData.daApplicationInfoId
-                occupationFormID = self.myOccupationData.daApplicantCompanyInfoId
-                emergencyFormID = self.myContactData.daEmergencyContactInfoId
-                guarantorFormID = self.myGuarantorData.daGuarantorInfoId
-                applicationStatus = self.myAppData.status
-                
-                   
-                    let alertController = UIAlertController(title: "Your application is successfully saved!", message: "", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                          
-                    }))
-                    self.present(alertController, animated: true, completion: nil)
-                   
-                   
-               }) { (error) in
-                   
-                   CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                              
-                       if error == Constants.SERVER_FAILURE {
-                           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                           let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
-                           self.present(navigationVC, animated: true, completion: nil)
-                                  
-                           } else if error == Constants.EXPIRE_TOKEN {
-                               Utils.showExpireAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "COUPON " + Messages.EXPIRE_TOKEN_ERROR.localized)
-                                  
-                              } else if error == Constants.APPLICATION_LIMIT {
-                                  Utils.showAlert(viewcontroller: self, title: Constants.APPLICATION_LIMIT_TITLE, message: "" + error)
-                              } else {
-                                  Utils.showAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "" + error)
-                              }
-                   
-                   
-               }
-    }
+   
     
     @IBAction func tappedOnNext(_ sender: Any) {
         

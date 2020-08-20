@@ -10,12 +10,14 @@ import UIKit
 
 class MesgSenderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var messageSendViews: UIView!
     @IBOutlet weak var vMainView: UIView!
     @IBOutlet weak var lbSendDate: UILabel!
     @IBOutlet weak var lbMesgText: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        messageSendViews.layer.cornerRadius = messageSendViews.frame.size.height / 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -14,15 +14,19 @@ class MainLoanApplyViewController: UIViewController {
     
     @IBOutlet weak var customerInfoPress: UILabel!
     
-           
+    @IBOutlet weak var applyLoanPress: UILabel!
+    
            
            
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.customerInfoPress.isUserInteractionEnabled = true
+        self.applyLoanPress.isUserInteractionEnabled = true
         self.backView.isUserInteractionEnabled = true
        self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtn)))
         self.customerInfoPress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(customerInfo)))
+        self.applyLoanPress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(applyLoanInfo)))
         
     }
     @objc func backBtn() {
@@ -34,6 +38,14 @@ class MainLoanApplyViewController: UIViewController {
              
               let storyboard = UIStoryboard(name: "DA", bundle: nil)
                      let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.CUSTOMER_INFOFORM)
+                     applyLoanNav.modalPresentationStyle = .overFullScreen
+                     self.present(applyLoanNav, animated: true, completion: nil)
+           
+    }
+    @objc func applyLoanInfo() {
+       
+              let storyboard = UIStoryboard(name: "DA", bundle: nil)
+                     let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.LOAN_CHOOSE)
                      applyLoanNav.modalPresentationStyle = .overFullScreen
                      self.present(applyLoanNav, animated: true, completion: nil)
            

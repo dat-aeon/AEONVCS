@@ -96,7 +96,19 @@ class OccupationDataVC: BaseUIViewController {
     @IBOutlet weak var backView: UIImageView!
     
 //    var companyStatusList = ["Public Company","Factory", "Police","Private Company","SME Owner","Goverment Office", "Taxi Owner", "Specialist", "SME officer", "Military", "NGO", "Other"]
-//    
+//
+    //Warning Outlet and Height
+    @IBOutlet weak var buldingNoWarning: UILabel!
+    @IBOutlet weak var buldingNowarningHeight: NSLayoutConstraint!
+    @IBOutlet weak var RoomNoWarning: UILabel!
+    @IBOutlet weak var roomNoWarningHeight: NSLayoutConstraint!
+    @IBOutlet weak var floorNoWarning: UILabel!
+    @IBOutlet weak var floorNoHeight: NSLayoutConstraint!
+    @IBOutlet weak var streetWarning: UILabel!
+    @IBOutlet weak var streetWarningHeight: NSLayoutConstraint!
+    @IBOutlet weak var quarterWarning: UILabel!
+    @IBOutlet weak var quarterWarningHeight: NSLayoutConstraint!
+    
     
     var daysArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
     
@@ -140,7 +152,7 @@ class OccupationDataVC: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       NotificationCenter.default.addObserver(self, selector: #selector(alertSuccess), name: NSNotification.Name(rawValue: "applicationSuccessfully"), object: nil)
         self.backView.isUserInteractionEnabled = true
          self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtn)))
        // logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
@@ -267,6 +279,11 @@ class OccupationDataVC: BaseUIViewController {
         // mendatory fields background setting
         self.tfCompanyName.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.tfStreet.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfBldNO.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfRoomNo.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfQrt.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        self.tfFloor.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
         self.tfTsp.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.tfCompanyTelNo.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         self.tfAM.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
@@ -289,73 +306,12 @@ class OccupationDataVC: BaseUIViewController {
             
                 NotificationCenter.default.addObserver(self, selector: #selector(doRegisterDA), name: NSNotification.Name(rawValue: "doRegistration"), object: nil)
                
-               NotificationCenter.default.addObserver(self, selector: #selector(doSaveDA), name: NSNotification.Name(rawValue: "saveDA"), object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(showPreview), name: NSNotification.Name(rawValue: "showPreview"), object: nil)
+//               NotificationCenter.default.addObserver(self, selector: #selector(doSaveDA), name: NSNotification.Name(rawValue: "saveDA"), object: nil)
+//         NotificationCenter.default.addObserver(self, selector: #selector(showPreview), name: NSNotification.Name(rawValue: "showPreview"), object: nil)
         self.doLoadSaveDAData()
         
     }
-     @objc func doSaveDA() {
-            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
-            
-            let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
-                   tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
-                   
-                   DAViewModel.init().doSaveDigitalApplication(tokenInfo: self.tokenInfo!, appData: self.myAppData, companyData: self.myOccupationData, emergencyContact: self.myContactData, loanData: self.myLoanData, guarantorData: self.myGuarantorData,  success: { (responseObjDA) in
-                    
-                    self.myContactData = responseObjDA.emergencyContactInfoDto!
-                    print("\(self.myContactData.name)")
-                    self.myGuarantorData = responseObjDA.guarantorInfoDto!
-                    self.myOccupationData = responseObjDA.applicantCompanyInfoDto!
-                    
-                    let appdata = ApplicationDataRequest(daApplicationInfoId: responseObjDA.daApplicationInfoId ?? 0, daApplicationTypeId: responseObjDA.daApplicationTypeId ?? 1, name: responseObjDA.name ?? "", dob: responseObjDA.dob ?? "", nrcNo: responseObjDA.nrcNo ?? "", fatherName: responseObjDA.fatherName ?? "",highestEducationTypeId: responseObjDA.highestEducationTypeId ?? 0, nationality: responseObjDA.nationality ?? 1, nationalityOther: responseObjDA.nationalityOther ?? "", gender: responseObjDA.gender!, maritalStatus: responseObjDA.maritalStatus ?? 1, currentAddress: responseObjDA.currentAddress ?? "", permanentAddress: responseObjDA.permanentAddress ?? "", typeOfResidence: responseObjDA.typeOfResidence ?? 1, typeOfResidenceOther: responseObjDA.typeOfResidenceOther ?? "", livingWith: responseObjDA.livingWith ?? 1, livingWithOther: responseObjDA.livingWithOther ?? "", yearOfStayYear: responseObjDA.yearOfStayYear ?? 0, yearOfStayMonth: responseObjDA.yearOfStayMonth ?? 0, mobileNo: responseObjDA.mobileNo ?? "", residentTelNo: responseObjDA.residentTelNo ?? "", otherPhoneNo: responseObjDA.otherPhoneNo ?? "", email: responseObjDA.email ?? "", customerId: responseObjDA.customerId ?? 0, status: responseObjDA.status ?? 0, currentAddressFloor: responseObjDA.currentAddressFloor ?? "", currentAddressBuildingNo: responseObjDA.currentAddressBuildingNo ?? "", currentAddressRoomNo: responseObjDA.currentAddressRoomNo ?? "", currentAddressStreet: responseObjDA.currentAddressStreet ?? "", currentAddressQtr: responseObjDA.currentAddressQtr ?? "", currentAddressTownship: responseObjDA.currentAddressTownship ?? 0, currentAddressCity: responseObjDA.currentAddressCity ?? 0,permanentAddressCity: responseObjDA.permanentAddressCity ?? 0, permanentAddressFloor: responseObjDA.permanentAddressFloor ?? "", permanentAddressBuildingNo: responseObjDA.permanentAddressBuildingNo ?? "", permanentAddressRoomNo: responseObjDA.permanentAddressRoomNo ?? "", permanentAddressStreet: responseObjDA.permanentAddressStreet ?? "", permanentAddressQtr: responseObjDA.permanentAddressQtr ?? "", permanentAddressTownship: responseObjDA.permanentAddressTownship ?? 0)
-
-
-                    self.myAppData = appdata
-                    myAppFormData = self.myAppData
-                    CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                    
-    //                DispatchQueue.main.async {
-    //                    self.delegate?.showApplicationForm()
-    //                }
-    //
-                    let loanData = LoanConfirmationRequest(daLoanTypeId: responseObjDA.daLoanTypeId ?? 1, financeAmount: responseObjDA.financeAmount ?? 0.0, financeTerm: responseObjDA.financeTerm ?? 0, daProductTypeId: responseObjDA.daProductTypeId ?? 1, productDescription: responseObjDA.productDescription ?? "", channelType: responseObjDA.channelType ?? 2)
-                    self.myLoanData = loanData
-                    
-                    applicationFormID = self.myAppData.daApplicationInfoId
-                    occupationFormID = self.myOccupationData.daApplicantCompanyInfoId
-                    emergencyFormID = self.myContactData.daEmergencyContactInfoId
-                    guarantorFormID = self.myGuarantorData.daGuarantorInfoId
-                    applicationStatus = self.myAppData.status
-                    
-                       
-                        let alertController = UIAlertController(title: "Your application is successfully saved!", message: "", preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
-                              
-                        }))
-                        self.present(alertController, animated: true, completion: nil)
-                       
-                       
-                   }) { (error) in
-                       
-                       CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
-                                  
-                           if error == Constants.SERVER_FAILURE {
-                               let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                               let navigationVC = storyboard.instantiateViewController(withIdentifier: CommonNames.SERVICE_UNAVAILABLE_VIEW_CONTROLLER) as! UINavigationController
-                               self.present(navigationVC, animated: true, completion: nil)
-                                      
-                               } else if error == Constants.EXPIRE_TOKEN {
-                                   Utils.showExpireAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "COUPON " + Messages.EXPIRE_TOKEN_ERROR.localized)
-                                      
-                                  } else if error == Constants.APPLICATION_LIMIT {
-                                      Utils.showAlert(viewcontroller: self, title: Constants.APPLICATION_LIMIT_TITLE, message: "" + error)
-                                  } else {
-                                      Utils.showAlert(viewcontroller: self, title: Constants.LOADING_ERROR_TITLE, message: "" + error)
-                                  }
-                       
-                       
-                   }
-        }
+    
      @objc func doRegisterDA() {
         //        self.logoutTimer?.invalidate()
                 let appError = UserDefaults.standard.integer(forKey: Constants.APP_DATA_ERROR_COUNT)
@@ -450,6 +406,27 @@ class OccupationDataVC: BaseUIViewController {
              self.doLoadSaveDAData()
                 
             }
+    @objc func alertSuccess() {
+        streetWarningHeight.constant = 0
+        buldingNowarningHeight.constant = 0
+        roomNoWarningHeight.constant = 0
+        floorNoHeight.constant = 0
+        quarterWarningHeight.constant = 0
+        self.lblCompanyNameError.text = Constants.BLANK
+        self.lblDepartmentError.text = Constants.BLANK
+        self.lblPositionError.text = Constants.BLANK
+        self.lblTelNoError.text = Constants.BLANK
+          self.lblYearServiceError.text = Constants.BLANK
+          self.lblStatusError.text = Constants.BLANK
+          self.lblMonthlyIncomeError.text = Constants.BLANK
+          self.lblOtherIncomeError.text = Constants.BLANK
+          self.lblSalaryDateError.text = Constants.BLANK
+           let alertController = UIAlertController(title: "Your application is successfully saved!", message: "", preferredStyle: .alert)
+           alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { action in
+                 
+           }))
+           self.present(alertController, animated: true, completion: nil)
+       }
     @objc func doSetAppData(notification: Notification) {
                print("doSetAppData")
                if let dict = notification.userInfo as? Dictionary<String, Any> {
@@ -473,70 +450,7 @@ class OccupationDataVC: BaseUIViewController {
                }
            }
        
-         @objc func showPreview(notitfication: Notification) {
-                //prepare data
-                
-                if let attachmentdict = notitfication.userInfo as? Dictionary<String, Any> {
-                    
-                    print("doshowPreview")
-                    var tempAttachment = [PurchaseAttachmentResponse]()
-                    if let attachmentarray = attachmentdict["attachment"] as? [AttachmentRequest] {
-                        
-                        for attachment in attachmentarray {
-                            var purchaseAttachment = PurchaseAttachmentResponse()
-                            purchaseAttachment.fileType = attachment.fileType
-                            purchaseAttachment.filePath = attachment.photoByte
-                            tempAttachment.append(purchaseAttachment)
-                        }
-                    }
-                    
-        //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showPreview"), object: self, userInfo: ["attachment": tempArray, "processingfee": Double(self.tfProcessingfee.text ?? "0.0") ?? 0.0, "comSaving": Double(self.tfCompulsory.text ?? "0.0") ?? 0.0, "totalrepay": Double(self.tfTotalRepayment.text ?? "0.0") ?? 0.0, "firstrepay": Double(self.tfFirstRepayment.text ?? "0.0") ?? 0.0, "monthltyrepay": Double(self.tfMonthlyRepayment.text ?? "0.0") ?? 0.0])
-                    
-                    let processingfee = attachmentdict["processingfee"] as? Double
-                    let totalcomp = attachmentdict["comSaving"] as? Double
-                    let totalrepay = attachmentdict["totalrepay"] as? Double
-                    let firstpayment = attachmentdict["firstrepay"] as? Double//
-                    let monthly = attachmentdict["monthltyrepay"] as? Double
-                    let lastpay = attachmentdict["lastpay"] as? Double
-                    
-                    var applicationdetailresponse = ApplicationDetailResponse(daApplicationInfoId: 0, applicationNo: "", appliedDate: "", daApplicationTypeId: 0, status: 0, settlementPendingComment: "", daInterestInfoId: 0, daCompulsoryInfoId: 0, name: self.myAppData.name, dob: self.myAppData.dob, nrcNo: self.myAppData.nrcNo, fatherName: self.myAppData.fatherName,highestEducationTypeId: self.myAppData.highestEducationTypeId, nationality: self.myAppData.nationality, nationalityOther: self.myAppData.nationalityOther, gender: self.myAppData.gender, maritalStatus: self.myAppData.maritalStatus, currentAddress: self.myAppData.currentAddress, permanentAddress: self.myAppData.permanentAddress, typeOfResidence: self.myAppData.typeOfResidence, typeOfResidenceOther: self.myAppData.typeOfResidenceOther, livingWith: self.myAppData.livingWith, livingWithOther: self.myAppData.livingWithOther, yearOfStayYear: self.myAppData.yearOfStayYear, yearOfStayMonth: self.myAppData.yearOfStayMonth, mobileNo: self.myAppData.mobileNo, residentTelNo: self.myAppData.residentTelNo, otherPhoneNo: self.myAppData.otherPhoneNo, email: self.myAppData.email, customerId: self.myAppData.customerId, daLoanTypeId: self.myLoanData.daLoanTypeId, financeAmount: self.myLoanData.financeAmount, financeTerm: self.myLoanData.financeTerm, daProductTypeId: self.myLoanData.daProductTypeId, productDescription: self.myLoanData.productDescription, channelType: self.myLoanData.channelType, applicantCompanyInfoDto: myOccupationData, emergencyContactInfoDto: self.myContactData, guarantorInfoDto: self.myGuarantorData, applicationInfoAttachmentDtoList: tempAttachment, processingFees: processingfee, totalConSaving: totalcomp, totalRepayment: totalrepay, firstPayment: firstpayment, monthlyInstallment: monthly, lastPayment: lastpay)
-                    
-                    applicationdetailresponse.currentAddressBuildingNo = self.myAppData.currentAddressBuildingNo
-                    applicationdetailresponse.currentAddressRoomNo = self.myAppData.currentAddressRoomNo
-                    applicationdetailresponse.currentAddressFloor = self.myAppData.currentAddressFloor
-                    applicationdetailresponse.currentAddressStreet = self.myAppData.currentAddressStreet
-                    applicationdetailresponse.currentAddressQtr = self.myAppData.currentAddressQtr
-                    applicationdetailresponse.currentAddressTownship = self.myAppData.currentAddressTownship
-                    applicationdetailresponse.currentAddressCity = self.myAppData.currentAddressCity
-                    
-                    applicationdetailresponse.permanentAddressBuildingNo = self.myAppData.permanentAddressBuildingNo
-                    applicationdetailresponse.permanentAddressRoomNo = self.myAppData.permanentAddressRoomNo
-                    applicationdetailresponse.permanentAddressFloor = self.myAppData.permanentAddressFloor
-                    applicationdetailresponse.permanentAddressStreet = self.myAppData.permanentAddressStreet
-                    applicationdetailresponse.permanentAddressQtr = self.myAppData.permanentAddressQtr
-                    applicationdetailresponse.permanentAddressTownship = self.myAppData.permanentAddressTownship
-                    applicationdetailresponse.permanentAddressCity = self.myAppData.permanentAddressCity
-                    
-                    let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.APPLICATION_DETAIL_VC) as! ApplicationDetailVC
-                    popupVC.modalPresentationStyle = .overCurrentContext
-                    popupVC.modalTransitionStyle = .crossDissolve
-                    
-                     
-                    popupVC.inquiryAppID =  0
-                    popupVC.appinfoobj = applicationdetailresponse
-                    popupVC.isPreviewing = true
-                    
-                    let pVC = popupVC.popoverPresentationController
-                    pVC?.permittedArrowDirections = .any
-                    
-                    
-                    
-                    self.definesPresentationContext = true
-                    //popupVC.delegate = self
-                    self.present(popupVC, animated: true, completion: nil)
-                    
-                }
-            }
+       
         func doLoadSaveDAData() {
             let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
             tokenInfo = try? JSONDecoder().decode(TokenData.self, from: JSON(parseJSON: tokenInfoString ?? "").rawData())
@@ -1239,10 +1153,23 @@ class OccupationDataVC: BaseUIViewController {
     @IBAction func doSaveData(_ sender: Any) {
         
         self.markOccupationDataLastState()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "saveDA"), object: nil)
-        //        if isErrorExist() {
-        //            return
-        //        }
+        let appError = UserDefaults.standard.integer(forKey: Constants.OCCUPATION_DATA_ERROR_COUNT)
+                var errorString = ""
+                
+                if appError > 0 {
+                    errorString += "In Application Data, total warning : \(appError) \n"
+                     let alertController = UIAlertController(title: "Please fill all the mendantory fields!", message: errorString, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: Constants.OK, style: UIAlertAction.Style.default, handler: { (action) in
+                        if appError > 0 {
+                                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showErrorLabel"), object: nil)
+                                            }
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "saveDA"), object: nil)
+       
         
     }
     func doRegisterDAApi() {
@@ -1381,14 +1308,64 @@ class OccupationDataVC: BaseUIViewController {
         
         // Company address
         if self.tfStreet?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            self.streetWarningHeight.constant = 16
             self.tfStreet?.text = Constants.BLANK
-            self.lblAddressError.text = Messages.COMPANY_ADDRESS_EMPTY_ERROR.localized
-            self.companyAddressMesgLocale = Messages.COMPANY_ADDRESS_EMPTY_ERROR
+            self.streetWarning.text = Messages.OCCUPATION_STREET_ERROR.localized
+            self.companyAddressMesgLocale = Messages.OCCUPATION_STREET_ERROR
             isError = true
             
         } else {
+            self.streetWarningHeight.constant = 0
             self.companyAddressMesgLocale = Constants.BLANK
-            self.lblAddressError.text = Constants.BLANK
+            self.streetWarning.text = Constants.BLANK
+        }
+        if self.tfBldNO?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                   self.buldingNowarningHeight.constant = 16
+                   self.tfBldNO?.text = Constants.BLANK
+                   self.buldingNoWarning.text = Messages.OCCUPATION_BULDING_ERROR.localized
+                   self.companyAddressMesgLocale = Messages.OCCUPATION_BULDING_ERROR
+                   isError = true
+                   
+               } else {
+                   self.buldingNowarningHeight.constant = 0
+                   self.companyAddressMesgLocale = Constants.BLANK
+                   self.buldingNoWarning.text = Constants.BLANK
+               }
+        if self.tfFloor?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                          self.floorNoHeight.constant = 16
+                          self.tfFloor?.text = Constants.BLANK
+                          self.floorNoWarning.text = Messages.OCCUPATION_FLOOR_NO_ERROR.localized
+                          self.companyAddressMesgLocale = Messages.OCCUPATION_FLOOR_NO_ERROR
+                          isError = true
+                          
+                      } else {
+                          self.floorNoHeight.constant = 0
+                          self.companyAddressMesgLocale = Constants.BLANK
+                          self.floorNoWarning.text = Constants.BLANK
+                      }
+        if self.tfRoomNo?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+                                 self.roomNoWarningHeight.constant = 16
+                                 self.tfRoomNo?.text = Constants.BLANK
+                                 self.RoomNoWarning.text = Messages.OCCUPATION_ROOM_NO_ERROR.localized
+                                 self.companyAddressMesgLocale = Messages.OCCUPATION_ROOM_NO_ERROR
+                                 isError = true
+                                 
+                             } else {
+                                 self.roomNoWarningHeight.constant = 0
+                                 self.companyAddressMesgLocale = Constants.BLANK
+                                 self.RoomNoWarning.text = Constants.BLANK
+                             }
+        if self.tfQrt?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            self.quarterWarningHeight.constant = 16
+            //self.tfQrt?.text = Constants.BLANK
+            self.quarterWarning.text = Messages.OCCUPATION_QUARTER_ERROR.localized
+            self.companyAddressMesgLocale = Messages.OCCUPATION_QUARTER_ERROR
+            isError = true
+            
+        } else {
+            self.quarterWarningHeight.constant = 0
+            self.companyAddressMesgLocale = Constants.BLANK
+           // self.tfQrt.text = Constants.BLANK
         }
         
         if self.tfTsp?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
@@ -1593,6 +1570,20 @@ class OccupationDataVC: BaseUIViewController {
 //        }
         
         // Company address
+        
+        if self.tfBldNO.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+        errorcount += 1
+        }
+        if self.tfRoomNo.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+        errorcount += 1
+        }
+        if self.tfFloor.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+        errorcount += 1
+        }
+        if self.tfQrt.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+        errorcount += 1
+        }
+        
         if self.tfStreet?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
             errorcount += 1
             
@@ -1602,7 +1593,6 @@ class OccupationDataVC: BaseUIViewController {
         } else if !self.allTownNameList.contains((self.tfTsp?.text)!) {
             errorcount += 1
         }
-        
         // Department
         if self.tfDepartment?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
             errorcount += 1
