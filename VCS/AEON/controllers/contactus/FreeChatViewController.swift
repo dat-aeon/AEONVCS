@@ -15,9 +15,8 @@ class FreeChatViewController: BaseUIViewController {
    
     
    
-    @IBOutlet weak var sendBtnWidth: NSLayoutConstraint!
-    @IBOutlet weak var questionTwo: UIView!
-    @IBOutlet weak var questionOne: UIView!
+   
+   
     @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
@@ -31,17 +30,9 @@ class FreeChatViewController: BaseUIViewController {
     @IBOutlet weak var tfTypeMessage: UITextField!
     @IBOutlet weak var btnSendMesg: UIButton!
     @IBOutlet weak var vSendBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var questionOneAction: UIView!
-    @IBOutlet weak var menuImage: UIImageView!
-    @IBOutlet weak var menuHeight: NSLayoutConstraint!
-    @IBOutlet weak var menuBtnLabel: UIButton!
-    @IBOutlet weak var qOneLabel: UILabel!
-    
-    @IBOutlet weak var questionTwoLabelPress: UILabel!
-    @IBOutlet weak var questionThree: UIView!
+  
    
-    @IBOutlet weak var engView: UIView!
-    @IBOutlet weak var questionThreeLabelpress: UILabel!
+   
    
     var oldMessageBeanList = [MessageBean]()
         var typeLists:String = ""
@@ -61,18 +52,7 @@ class FreeChatViewController: BaseUIViewController {
         var engLan = ""
         var mainLan = ""
 //
-    @objc func myTargetFunction(textField: UITextField) {
-        print("myTargetFunction")
   
-                  buttonHasNoText = true
-        menuHeight.constant = 0
-        if tfTypeMessage.text!.count == 0 {
-            sendBtnWidth.constant = 0
-        }
-        if tfTypeMessage.text!.count > 0 {
-            sendBtnWidth.constant = 60
-        }
-    }
     override func viewDidAppear(_ animated: Bool) {
          AutomessageBean.message = mmLan
        
@@ -80,37 +60,20 @@ class FreeChatViewController: BaseUIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            tfTypeMessage.addTarget(self, action: #selector(myTargetFunction(textField:)), for: UIControl.Event.touchDown)
+            imgBack.isUserInteractionEnabled = true
+            self.imgMMlocale.isUserInteractionEnabled = true
+                   self.imgEnglocale.isUserInteractionEnabled = true
             autoReplyMessage()
-            self.questionOne.layer.borderWidth = 1
-            self.questionOne.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
-            self.questionTwo.layer.borderWidth = 1
-            self.questionTwo.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
-            self.questionThree.layer.borderWidth = 1
-            self.questionThree.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
-            self.engView.layer.borderWidth = 1
-            self.engView.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
-            
-            questionOne.layer.cornerRadius = questionOne.frame.width / 2
-            questionTwo.layer.cornerRadius = questionOne.frame.width / 2
-            questionThree.layer.cornerRadius = questionOne.frame.width / 2
+        
             AutomessageBean.isReceiveMesg = true
             AutomessageBean.message = mainLan
                            
            self.messageBeanList.append(AutomessageBean)
-            self.imgBack.isUserInteractionEnabled = true
-            self.imgMMlocale.isUserInteractionEnabled = true
-            self.imgEnglocale.isUserInteractionEnabled = true
-             self.qOneLabel.isUserInteractionEnabled = true
-            self.questionTwoLabelPress.isUserInteractionEnabled = true
-            self.questionThreeLabelpress.isUserInteractionEnabled = true
+            
             self.imgBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
             self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
             self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
            
-            self.qOneLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(qOneView)))
-             self.questionTwoLabelPress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(qTwoView)))
-            self.questionThreeLabelpress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(qThreeView)))
             self.senderName = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09123456789"
             
             //        RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
@@ -196,37 +159,7 @@ class FreeChatViewController: BaseUIViewController {
         }
    
    
-    
-    var buttonHasNoText: Bool = true
-    @IBAction func menuBtnPress(_ sender: UIButton) {
-        print(sender.isSelected)
-       // sender.isSelected = !sender.isSelected
-       if buttonHasNoText {
-           menuHeight.constant = 271
-           buttonHasNoText = false
-       } else {
-            menuHeight.constant = 0
-           buttonHasNoText = true
-       }
-//        if sender.isSelected == false {
-//             sender.isSelected = true
-//             menuHeight.constant = 271
-//           self.vSendBottomConstraint.constant = 0
-//        }else{
-//             self.vSendBottomConstraint.constant = 0
-//            menuHeight.constant = 0
-//            sender.isSelected = false
-//        }
-//        if sender.isSelected == false {
-//            menuHeight.constant = 271
-//        }
-//        if sender.isSelected{
-//            
-//             menuHeight.constant = 271
-//        }else{
-//            menuHeight.constant = 0
-//        }
-    }
+   
   
         func autoReplyMessage() {
              CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
@@ -247,9 +180,7 @@ class FreeChatViewController: BaseUIViewController {
             super.viewWillAppear(animated)
             //super.free_chat_socket_url.send("unReadMessageList:")
     
-            if tfTypeMessage.text!.isEmpty {
-                sendBtnWidth.constant = 0
-            }
+          
             if self.isDidLoad {
                 self.isDidLoad = false
                 

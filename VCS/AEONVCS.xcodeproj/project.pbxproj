@@ -271,6 +271,7 @@
 		ED3DFD142473E04800B2B8D5 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DFD132473E04800B2B8D5 /* CustomAlert.swift */; };
 		ED3DFD162473E07D00B2B8D5 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DFD152473E07D00B2B8D5 /* Modal.swift */; };
 		ED40A4D12461D1BE0051603A /* OtherImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40A4D02461D1BE0051603A /* OtherImageTableViewCell.swift */; };
+		ED40BFC424FF5F1000AE1A3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED40BFC324FF5F0F00AE1A3E /* GoogleService-Info.plist */; };
 		ED45507424864FFB0013C793 /* FreechatImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45507324864FFB0013C793 /* FreechatImageDetailViewController.swift */; };
 		ED9A908524E3E1F8003BC7DE /* LoanChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */; };
 		ED9D95C12436FA7C00B52D74 /* LoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */; };
@@ -522,7 +523,6 @@
 		753C8B9B21F9B670002E101B /* AEON.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AEON.xcdatamodel; sourceTree = "<group>"; };
 		753C8B9D21F9B67B002E101B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		753C8BA021F9B67B002E101B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		753C8BA221F9B67B002E101B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7561955B21FC78E60037AF9D /* SecurityQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		7561955C21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		75A31DF62200020E002E7336 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -557,6 +557,9 @@
 		ED3DFD132473E04800B2B8D5 /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		ED3DFD152473E07D00B2B8D5 /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		ED40A4D02461D1BE0051603A /* OtherImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherImageTableViewCell.swift; sourceTree = "<group>"; };
+		ED40BFC124FF336200AE1A3E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED40BFC324FF5F0F00AE1A3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED40BFC524FF5F7A00AE1A3E /* AEONMember.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AEONMember.entitlements; sourceTree = "<group>"; };
 		ED45507324864FFB0013C793 /* FreechatImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreechatImageDetailViewController.swift; sourceTree = "<group>"; };
 		ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanChooseViewController.swift; sourceTree = "<group>"; };
 		ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewController.swift; sourceTree = "<group>"; };
@@ -1285,6 +1288,7 @@
 		753C8B8721F9B670002E101B = {
 			isa = PBXGroup;
 			children = (
+				ED40BFC524FF5F7A00AE1A3E /* AEONMember.entitlements */,
 				753C8B9221F9B670002E101B /* AEON */,
 				753C8B9121F9B670002E101B /* Products */,
 				034609DE9A96877D2C068E13 /* Pods */,
@@ -1312,8 +1316,9 @@
 				6A6A992C2207F0B5001C30D2 /* resource */,
 				753C8B9321F9B670002E101B /* AppDelegate.swift */,
 				753C8B9521F9B670002E101B /* ViewController.swift */,
+				ED40BFC124FF336200AE1A3E /* Info.plist */,
+				ED40BFC324FF5F0F00AE1A3E /* GoogleService-Info.plist */,
 				753C8B9F21F9B67B002E101B /* LaunchScreen.storyboard */,
-				753C8BA221F9B67B002E101B /* Info.plist */,
 				753C8B9A21F9B670002E101B /* AEON.xcdatamodeld */,
 			);
 			path = AEON;
@@ -1492,8 +1497,8 @@
 				753C8B8C21F9B670002E101B /* Sources */,
 				753C8B8D21F9B670002E101B /* Frameworks */,
 				753C8B8E21F9B670002E101B /* Resources */,
-				A2242C47C39B97E954CBF46B /* [CP] Embed Pods Frameworks */,
-				8D53CCDA9208825E34ECF4BF /* [CP] Copy Pods Resources */,
+				2AF819EB822CCBAF2F4BA76F /* [CP] Embed Pods Frameworks */,
+				FEC8DF6EF17D12F6820B4D59 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1511,7 +1516,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "AEON microfinance";
 				TargetAttributes = {
 					753C8B8F21F9B670002E101B = {
@@ -1558,6 +1563,7 @@
 				6A6A99312207F0F8001C30D2 /* my_MM.strings in Resources */,
 				6AC88E352206E5E90062926F /* SecurityQuestionUpdateTableViewCell.xib in Resources */,
 				753C8BA121F9B67B002E101B /* LaunchScreen.storyboard in Resources */,
+				ED40BFC424FF5F1000AE1A3E /* GoogleService-Info.plist in Resources */,
 				753C8B9E21F9B67B002E101B /* Assets.xcassets in Resources */,
 				753C8B9921F9B670002E101B /* Main.storyboard in Resources */,
 				040BC222222FE18B000EE89B /* SecQuesRegHeaderTableViewCell.xib in Resources */,
@@ -1596,24 +1602,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8D53CCDA9208825E34ECF4BF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AEONVCS/Pods-AEONVCS-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AEONVCS/Pods-AEONVCS-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEONVCS/Pods-AEONVCS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A2242C47C39B97E954CBF46B /* [CP] Embed Pods Frameworks */ = {
+		2AF819EB822CCBAF2F4BA76F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1650,6 +1639,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEC8DF6EF17D12F6820B4D59 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEONVCS/Pods-AEONVCS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEONVCS/Pods-AEONVCS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEONVCS/Pods-AEONVCS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2047,6 +2053,7 @@
 			baseConfigurationReference = 9DC50FE8F6F5CA4174F54CD4 /* Pods-AEONVCS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;
@@ -2071,6 +2078,7 @@
 			baseConfigurationReference = 8F08E73AA93DBD04EABD061E /* Pods-AEONVCS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;

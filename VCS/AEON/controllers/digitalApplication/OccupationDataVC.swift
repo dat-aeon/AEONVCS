@@ -289,8 +289,8 @@ class OccupationDataVC: BaseUIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(markOccupationDataLastState), name: NSNotification.Name(rawValue: "markOccupationDataLastState"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showOccupationForm(notification:)), name: NSNotification.Name(rawValue: "showOccupationForm"), object: nil)
-        
+//        NotificationCenter.default.addObserver(self, selector: #selector(showOccupationForm(notification:)), name: NSNotification.Name(rawValue: "showOccupationForm"), object: nil)
+//        
         NotificationCenter.default.addObserver(self, selector: #selector(showErrorLabelOccupation), name: NSNotification.Name(rawValue: "showErrorLabel"), object: nil)
         
         // mendatory fields background setting
@@ -874,7 +874,8 @@ class OccupationDataVC: BaseUIViewController {
         //self.btnCompanyStatus.setTitle("\(self.companyStatusList[self.selectedStatusIndex - 1])", for: .normal)
         let status = self.lblStatusError.text ?? Constants.BLANK
         if status == Constants.BLANK {
-//            self.tfCompanyStatusAutoText.text = Constants.companyStatusList[self.selectedStatusIndex - 1]
+            print("\(Constants.companyStatusList[self.selectedStatusIndex - 1])")
+           self.tfCompanyStatusAutoText.text = "\(Constants.companyStatusList[self.selectedStatusIndex - 1])"
         }
         self.textFieldDidChange(self.tfCompanyStatusAutoText)
         

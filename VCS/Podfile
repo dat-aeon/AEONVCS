@@ -21,6 +21,13 @@ target 'AEONVCS' do
   pod 'SearchTextField'
   pod 'Starscream'
   pod 'AAViewAnimator', '1.0'
+  
+  # Add the Firebase pod for Google Analytics
+  pod 'Firebase/Analytics'
+
+  # Add the pod for Firebase Cloud Messaging
+  pod 'Firebase/Messaging'
+  
   #DA Stepped Progress Bar
   pod "FlexibleSteppedProgressBar"
   pod 'SwipeMenuViewController'

@@ -25,6 +25,10 @@
 			<string></string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.284565461694-lcualgrbjn45nrh9aesbql35u2ug0pf6</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -52,6 +56,12 @@
 	<array>
 		<string>Pyidaungsu-Regular.ttf</string>
 		<string>Pyidaungsu-Bold.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
