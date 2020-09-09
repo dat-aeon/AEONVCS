@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.284565461694-lcualgrbjn45nrh9aesbql35u2ug0pf6</string>
+				<string>com.googleusercontent.apps.22344857910-d8plo1t525g7ojh06b6ti099252f6nc6</string>
 			</array>
 		</dict>
 	</array>
@@ -82,5 +82,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+   
 </dict>
 </plist>

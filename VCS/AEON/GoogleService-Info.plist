@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>284565461694-lcualgrbjn45nrh9aesbql35u2ug0pf6.apps.googleusercontent.com</string>
+	<string>22344857910-d8plo1t525g7ojh06b6ti099252f6nc6.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.284565461694-lcualgrbjn45nrh9aesbql35u2ug0pf6</string>
+	<string>com.googleusercontent.apps.22344857910-d8plo1t525g7ojh06b6ti099252f6nc6</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>22344857910-1v11s0jekttlrcf6cvpk4pjncbjq8b51.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCmV_JGnzd24o5lj--Dif53C-eXHgCmmWU</string>
+	<string>AIzaSyBgeB7mue30-PCd-Ugwd_eVTTqmNHdFiq8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>284565461694</string>
+	<string>22344857910</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>mm.com.aeonmicrofinance.vcsaeon.AEONVCS</string>
 	<key>PROJECT_ID</key>
-	<string>aeonvcs</string>
+	<string>vcsmfb-dc6bd</string>
 	<key>STORAGE_BUCKET</key>
-	<string>aeonvcs.appspot.com</string>
+	<string>vcsmfb-dc6bd.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:284565461694:ios:689910fce0d505a78adcef</string>
+	<string>1:22344857910:ios:2982bc7a5c1fffb4c35b97</string>
 	<key>DATABASE_URL</key>
-	<string>https://aeonvcs.firebaseio.com</string>
+	<string>https://vcsmfb-dc6bd.firebaseio.com</string>
 </dict>
 </plist>

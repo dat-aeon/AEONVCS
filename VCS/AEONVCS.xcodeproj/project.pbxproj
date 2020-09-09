@@ -271,8 +271,8 @@
 		ED3DFD142473E04800B2B8D5 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DFD132473E04800B2B8D5 /* CustomAlert.swift */; };
 		ED3DFD162473E07D00B2B8D5 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DFD152473E07D00B2B8D5 /* Modal.swift */; };
 		ED40A4D12461D1BE0051603A /* OtherImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40A4D02461D1BE0051603A /* OtherImageTableViewCell.swift */; };
-		ED40BFC424FF5F1000AE1A3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED40BFC324FF5F0F00AE1A3E /* GoogleService-Info.plist */; };
 		ED45507424864FFB0013C793 /* FreechatImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45507324864FFB0013C793 /* FreechatImageDetailViewController.swift */; };
+		ED4F89F82502017B006D2346 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED4F89F72502017A006D2346 /* GoogleService-Info.plist */; };
 		ED9A908524E3E1F8003BC7DE /* LoanChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */; };
 		ED9D95C12436FA7C00B52D74 /* LoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */; };
 		EDC90DF8245684CF005FD5E2 /* AutoReplyMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DF7245684CF005FD5E2 /* AutoReplyMessageData.swift */; };
@@ -558,9 +558,9 @@
 		ED3DFD152473E07D00B2B8D5 /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		ED40A4D02461D1BE0051603A /* OtherImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherImageTableViewCell.swift; sourceTree = "<group>"; };
 		ED40BFC124FF336200AE1A3E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED40BFC324FF5F0F00AE1A3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED40BFC524FF5F7A00AE1A3E /* AEONMember.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AEONMember.entitlements; sourceTree = "<group>"; };
 		ED45507324864FFB0013C793 /* FreechatImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreechatImageDetailViewController.swift; sourceTree = "<group>"; };
+		ED4F89F72502017A006D2346 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanChooseViewController.swift; sourceTree = "<group>"; };
 		ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewController.swift; sourceTree = "<group>"; };
 		EDC90DF7245684CF005FD5E2 /* AutoReplyMessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageData.swift; sourceTree = "<group>"; };
@@ -1317,7 +1317,7 @@
 				753C8B9321F9B670002E101B /* AppDelegate.swift */,
 				753C8B9521F9B670002E101B /* ViewController.swift */,
 				ED40BFC124FF336200AE1A3E /* Info.plist */,
-				ED40BFC324FF5F0F00AE1A3E /* GoogleService-Info.plist */,
+				ED4F89F72502017A006D2346 /* GoogleService-Info.plist */,
 				753C8B9F21F9B67B002E101B /* LaunchScreen.storyboard */,
 				753C8B9A21F9B670002E101B /* AEON.xcdatamodeld */,
 			);
@@ -1563,8 +1563,8 @@
 				6A6A99312207F0F8001C30D2 /* my_MM.strings in Resources */,
 				6AC88E352206E5E90062926F /* SecurityQuestionUpdateTableViewCell.xib in Resources */,
 				753C8BA121F9B67B002E101B /* LaunchScreen.storyboard in Resources */,
-				ED40BFC424FF5F1000AE1A3E /* GoogleService-Info.plist in Resources */,
 				753C8B9E21F9B67B002E101B /* Assets.xcassets in Resources */,
+				ED4F89F82502017B006D2346 /* GoogleService-Info.plist in Resources */,
 				753C8B9921F9B670002E101B /* Main.storyboard in Resources */,
 				040BC222222FE18B000EE89B /* SecQuesRegHeaderTableViewCell.xib in Resources */,
 				04D4E21E22EEE334001AAB43 /* OutletListTableViewCell.xib in Resources */,
