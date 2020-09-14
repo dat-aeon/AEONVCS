@@ -205,7 +205,7 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     @objc func onTapBack() {
        print("click")
        // self.dismiss(animated: true, completion: nil)
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! MainNewViewController
                navigationVC.modalPresentationStyle = .overFullScreen
                self.present(navigationVC, animated: true, completion: nil)
     }

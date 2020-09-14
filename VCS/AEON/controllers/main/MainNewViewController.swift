@@ -8,6 +8,7 @@
 
 import UIKit
 import LocalAuthentication
+import UserNotifications
 
 class MainNewViewController: BaseUIViewController {
     
@@ -43,8 +44,12 @@ class MainNewViewController: BaseUIViewController {
     @IBOutlet weak var lblVersionNo: UILabel!
     @IBOutlet weak var viewoverScrollView: UIView!
     
-    var vidoeFilePath : String = ""
+    @IBOutlet weak var lblAskproduct: UILabel!
+    @IBOutlet weak var unReadAskProductLabel: UILabel!
+     @IBOutlet weak var askProductView: CardView!
     
+    var vidoeFilePath : String = ""
+     var senderId: Int!
  
   
     var AutomessageBean = MessageBean()
@@ -65,7 +70,10 @@ class MainNewViewController: BaseUIViewController {
     @IBOutlet weak var lblBarPhNo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        askProductMessageUnRead(customerId: senderId!)
+       
+     //   notiData()
        // autoReplyMessage()
         
         // gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
@@ -93,6 +101,8 @@ class MainNewViewController: BaseUIViewController {
         self.facebookView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapFacebookView)))
         self.shareView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapShareView)))
         
+        self.askProductView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapAskProductView)))
+        
         if let firstTimePhNo = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) {
             self.lblBarPhNo.text = firstTimePhNo
         } else {
@@ -115,9 +125,46 @@ class MainNewViewController: BaseUIViewController {
 
         
     }
+     func askProductMessageUnRead(customerId: Int) {
+           
+           AskProductViewModel.init().askProductSync(customerId: customerId, success: { (result) in
+               print("result ,,,.,,..,.kaungmyatsan \(result.data.askProductUnReadCount)")
+               if "\(result.data.askProductUnReadCount)" == "0" {
+                   self.unReadAskProductLabel.isHidden = true
+               }else{
+                   self.unReadAskProductLabel.isHidden = false
+                   if self.unReadAskProductLabel.text?.count ?? 0 > 99 {
+                       self.unReadAskProductLabel.text = "+99"
+                   }else{
+                       self.unReadAskProductLabel.text =  "\(result.data.askProductUnReadCount)"
+                   }
+               }
+           }) { (error) in
+               print(error)
+           }
+           
+         
+       }
+    @objc func onTapAskProductView() {
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "AgentChannelViewController") as! UIViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
+    }
+    func notiData() {
+        let content = UNMutableNotificationContent()
+        content.title = "Title"
+        content.body = "Body"
+        content.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "testnoti", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
        // multiLoginGet()
+        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        askProductMessageUnRead(customerId: senderId!)
+        
         if(!(UserDefaults.standard.bool(forKey: Constants.IS_LOGOUT)) &&
             UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO) != nil){
             UserDefaults.standard.set(nil, forKey: Constants.USER_INFO_NAME)
@@ -125,8 +172,10 @@ class MainNewViewController: BaseUIViewController {
         
         self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
         
+        
     }
     
+   
     @objc func onTapMMLocale() {
         super.NewupdateLocale(flag: 1)
         updateViews()
@@ -150,12 +199,12 @@ class MainNewViewController: BaseUIViewController {
         self.lblAnnouncement.text = "main.announcement".localized
         self.lblHowtouse.text = "main.howtouse".localized
         self.lblShare.text = "main.share".localized
-        
+        self.lblAskproduct.text = "main.askproduct".localized
         Utils.setLineSpacing(data: "contactus.title".localized, label: lblFreeChat)
         //self.lblFreeChat.text = "contactus.title".localized
         
     }
-    
+
     @objc func onTapViewOverScrollView(){
         self.viewoverScrollView.isHidden = true
     }

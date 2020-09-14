@@ -17,7 +17,7 @@ class MesgSenderTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        messageSendViews.layer.cornerRadius = messageSendViews.frame.size.height / 5
+        messageSendViews.layer.cornerRadius = messageSendViews.frame.size.height / 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

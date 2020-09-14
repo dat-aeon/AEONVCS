@@ -10761,14 +10761,14 @@
                                                             <constraint firstAttribute="height" constant="95" id="Rq8-bo-1Ii"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z8c-0H-YPB">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z8c-0H-YPB">
                                                         <rect key="frame" x="16" y="340" width="382" height="95"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wR-kR-iuy" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="95"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="122" height="95"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U7K-ZF-s4Y">
-                                                                        <rect key="frame" x="73.5" y="8" width="40" height="40"/>
+                                                                        <rect key="frame" x="41" y="8" width="40" height="40"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gd_ic_fb" translatesAutoresizingMaskIntoConstraints="NO" id="fei-dn-MmH">
                                                                                 <rect key="frame" x="8" y="8" width="24" height="24"/>
@@ -10795,7 +10795,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veq-Nb-8QU">
-                                                                        <rect key="frame" x="0.0" y="52" width="187" height="16"/>
+                                                                        <rect key="frame" x="0.0" y="52" width="122" height="16"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -10812,10 +10812,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THv-9e-Shf" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                                                                <rect key="frame" x="195" y="0.0" width="187" height="95"/>
+                                                                <rect key="frame" x="130" y="0.0" width="122" height="95"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSq-ly-vm8">
-                                                                        <rect key="frame" x="73.5" y="8" width="40" height="40"/>
+                                                                        <rect key="frame" x="41" y="8" width="40" height="40"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gd_ic_share" translatesAutoresizingMaskIntoConstraints="NO" id="APO-Tc-7hv">
                                                                                 <rect key="frame" x="8" y="8" width="24" height="24"/>
@@ -10840,7 +10840,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SC5-Sh-X88">
-                                                                        <rect key="frame" x="0.0" y="52" width="187" height="16"/>
+                                                                        <rect key="frame" x="0.0" y="52" width="122" height="16"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -10856,9 +10856,61 @@
                                                                     <constraint firstItem="SC5-Sh-X88" firstAttribute="top" secondItem="xSq-ly-vm8" secondAttribute="bottom" constant="4" id="rXU-Fu-TiH"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWE-My-7Lw" userLabel="Ask Product" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
+                                                                <rect key="frame" x="260" y="0.0" width="122" height="95"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ask_product" translatesAutoresizingMaskIntoConstraints="NO" id="FTK-vN-Fti">
+                                                                        <rect key="frame" x="41" y="9" width="40" height="40"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="40" id="4iI-wi-aFR"/>
+                                                                            <constraint firstAttribute="width" constant="40" id="Dth-v8-MmX"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask Product" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toR-US-tbt">
+                                                                        <rect key="frame" x="0.0" y="53" width="122" height="14.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msa-I1-SHO">
+                                                                        <rect key="frame" x="71" y="19" width="20" height="20"/>
+                                                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="20" id="MIt-NI-GfO"/>
+                                                                            <constraint firstAttribute="height" constant="20" id="lOK-F6-KK3"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                                        <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" red="0.96078431369999995" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="Msa-I1-SHO" firstAttribute="centerY" secondItem="FTK-vN-Fti" secondAttribute="centerY" id="0Wf-US-xF2"/>
+                                                                    <constraint firstItem="FTK-vN-Fti" firstAttribute="centerX" secondItem="CWE-My-7Lw" secondAttribute="centerX" id="A5t-N2-uFo"/>
+                                                                    <constraint firstItem="toR-US-tbt" firstAttribute="leading" secondItem="CWE-My-7Lw" secondAttribute="leading" id="Ih4-sW-c8Q"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="toR-US-tbt" secondAttribute="trailing" id="JDg-l0-Z2H"/>
+                                                                    <constraint firstItem="toR-US-tbt" firstAttribute="top" secondItem="FTK-vN-Fti" secondAttribute="bottom" constant="4" id="L09-8J-EsQ"/>
+                                                                    <constraint firstItem="toR-US-tbt" firstAttribute="leading" secondItem="CWE-My-7Lw" secondAttribute="leading" id="MlL-sK-AXS"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="toR-US-tbt" secondAttribute="trailing" id="aDe-D1-RqP"/>
+                                                                    <constraint firstItem="toR-US-tbt" firstAttribute="centerX" secondItem="CWE-My-7Lw" secondAttribute="centerX" id="hT1-Un-NAE"/>
+                                                                    <constraint firstItem="FTK-vN-Fti" firstAttribute="top" secondItem="CWE-My-7Lw" secondAttribute="top" constant="9" id="u7A-YF-r6e"/>
+                                                                    <constraint firstItem="Msa-I1-SHO" firstAttribute="centerX" secondItem="FTK-vN-Fti" secondAttribute="trailing" id="vvY-Wj-ifI"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="THv-9e-Shf" firstAttribute="width" secondItem="2wR-kR-iuy" secondAttribute="width" id="GuK-vP-Eh0"/>
                                                             <constraint firstAttribute="height" constant="95" id="wzS-fP-1Nu"/>
                                                         </constraints>
                                                     </stackView>
@@ -11284,6 +11336,7 @@
                     <navigationItem key="navigationItem" id="UNQ-pl-z8d"/>
                     <connections>
                         <outlet property="announcementView" destination="Yz3-jb-1TP" id="d39-Qf-UCB"/>
+                        <outlet property="askProductView" destination="CWE-My-7Lw" id="VrS-vu-kIr"/>
                         <outlet property="facebookView" destination="2wR-kR-iuy" id="7gS-Aw-mea"/>
                         <outlet property="findusView" destination="Ahn-aB-6mD" id="7Ua-oA-k33"/>
                         <outlet property="freeChatView" destination="0GM-Av-Lh1" id="Yn6-l1-n5v"/>
@@ -11292,6 +11345,7 @@
                         <outlet property="imgEnglocale" destination="guh-PY-5Om" id="5Pp-Vy-7I2"/>
                         <outlet property="imgMMlocale" destination="D6V-gz-bLp" id="g21-hx-w4b"/>
                         <outlet property="lblAnnouncement" destination="sCu-fi-4cP" id="l9G-ob-Ewr"/>
+                        <outlet property="lblAskproduct" destination="toR-US-tbt" id="Hj2-Ib-ull"/>
                         <outlet property="lblBarPhNo" destination="eWe-hK-hQ2" id="3eL-uX-b4m"/>
                         <outlet property="lblFacebook" destination="veq-Nb-8QU" id="3Ro-3L-gfE"/>
                         <outlet property="lblFindUs" destination="CKi-9p-cca" id="6fm-X9-FIE"/>
@@ -11309,6 +11363,7 @@
                         <outlet property="ourserviceView" destination="3tN-sm-fRj" id="cm0-wq-nuz"/>
                         <outlet property="registerView" destination="fYl-bP-kYF" id="Khh-MH-8RR"/>
                         <outlet property="shareView" destination="THv-9e-Shf" id="x8y-4F-4kk"/>
+                        <outlet property="unReadAskProductLabel" destination="Msa-I1-SHO" id="6lW-wf-cJ5"/>
                         <outlet property="viewoverScrollView" destination="LR2-6r-nbg" id="M1m-U0-xdm"/>
                     </connections>
                 </viewController>
@@ -11823,7 +11878,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kix-Yc-I4k">
-                                <rect key="frame" x="0.0" y="188.5" width="414" height="201"/>
+                                <rect key="frame" x="0.0" y="188.5" width="414" height="202"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Hsn-uq-ZUi">
                                         <rect key="frame" x="5" y="2" width="404" height="62.5"/>
@@ -11893,7 +11948,7 @@
                                         <rect key="frame" x="5" y="79" width="365" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loan Term" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TDy-I9-cg9">
-                                                <rect key="frame" x="9" y="0.0" width="61" height="53.5"/>
+                                                <rect key="frame" x="9" y="0.0" width="61" height="54"/>
                                                 <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -11902,7 +11957,7 @@
                                                 </variation>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Esw-Rb-u1w">
-                                                <rect key="frame" x="72" y="0.0" width="332" height="53.5"/>
+                                                <rect key="frame" x="72" y="0.0" width="332" height="54"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Mhh-Ak-TcW">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -11912,7 +11967,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="idLoanTermCell" id="GR1-FO-nVP" customClass="colLoanTermCell" customModule="AEONMember" customModuleProvider="target">
-                                                        <rect key="frame" x="5" y="5.5" width="40" height="42.5"/>
+                                                        <rect key="frame" x="5" y="6" width="40" height="42.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="42.5"/>
@@ -12025,7 +12080,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3It-iZ-hQX">
-                                <rect key="frame" x="2" y="399.5" width="412" height="451.5"/>
+                                <rect key="frame" x="2" y="400.5" width="412" height="453.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2s-A4-1j1">
                                         <rect key="frame" x="0.0" y="5" width="412" height="387.5"/>
@@ -13239,7 +13294,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
+                                                <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -13256,7 +13311,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
+                                                <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>

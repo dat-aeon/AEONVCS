@@ -144,7 +144,6 @@
 		04CB089A2276F26E0069FDF9 /* MesgSenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB08982276F26E0069FDF9 /* MesgSenderTableViewCell.swift */; };
 		04CB089B2276F26E0069FDF9 /* MesgSenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CB08992276F26E0069FDF9 /* MesgSenderTableViewCell.xib */; };
 		04CB089E2276F28A0069FDF9 /* MesgReceiverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB089C2276F28A0069FDF9 /* MesgReceiverTableViewCell.swift */; };
-		04CB089F2276F28A0069FDF9 /* MesgReceiverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CB089D2276F28A0069FDF9 /* MesgReceiverTableViewCell.xib */; };
 		04D202C022A7846C00C85FC3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D202BF22A7846C00C85FC3 /* ImagePicker.swift */; };
 		04D2FFF523A76D1000AF6CD2 /* DATncVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2FFF423A76D0F00AF6CD2 /* DATncVC.swift */; };
 		04D322A32223CBE4006BE0CB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D322A22223CBE4006BE0CB /* WelcomeViewController.swift */; };
@@ -264,6 +263,8 @@
 		ED07E04824DBF25E00067AEB /* MainLoanApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07E04724DBF25E00067AEB /* MainLoanApplyViewController.swift */; };
 		ED07E04A24DC072000067AEB /* CustomerInfoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07E04924DC072000067AEB /* CustomerInfoFormViewController.swift */; };
 		ED1B421424611B3200AB442B /* OtherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1B421224611B3200AB442B /* OtherCollectionViewCell.swift */; };
+		ED37FDF7250A33C700937830 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FDF6250A33C700937830 /* NotificationService.swift */; };
+		ED37FDFB250A33C700937830 /* AEONVCSNOTIFICATION.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED37FDF4250A33C700937830 /* AEONVCSNOTIFICATION.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ED387DB8243AF1E500F8DD8A /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */; };
 		ED387DBA243B17FF00F8DD8A /* AskProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DB9243B17FF00F8DD8A /* AskProductViewModel.swift */; };
 		ED387DBC243B1E8F00F8DD8A /* ContactUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DBB243B1E8F00F8DD8A /* ContactUsData.swift */; };
@@ -278,6 +279,7 @@
 		EDC90DF8245684CF005FD5E2 /* AutoReplyMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DF7245684CF005FD5E2 /* AutoReplyMessageData.swift */; };
 		EDC90DFA245686AA005FD5E2 /* AutoReplyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DF9245686AA005FD5E2 /* AutoReplyMessageModel.swift */; };
 		EDC90DFC24568C73005FD5E2 /* AutoReplyMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DFB24568C73005FD5E2 /* AutoReplyMessageViewModel.swift */; };
+		EDCDE9D7250FB807009B1B14 /* MesgReceiverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCDE9D6250FB807009B1B14 /* MesgReceiverTableViewCell.xib */; };
 		EDDF784024640F5E002BD640 /* MultiLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDF783F24640F5E002BD640 /* MultiLoginData.swift */; };
 		EDDF7842246411B3002BD640 /* MultiLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDF7841246411B3002BD640 /* MultiLoginModel.swift */; };
 		EDDF784424642309002BD640 /* MultiLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDF784324642309002BD640 /* MultiLoginViewModel.swift */; };
@@ -287,6 +289,30 @@
 		EF38F9FB23E968AD00E85262 /* HomeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FA23E968AD00E85262 /* HomeNewViewController.swift */; };
 		EF38F9FD23E96ACB00E85262 /* FreeChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ED37FDF9250A33C700937830 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 753C8B8821F9B670002E101B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED37FDF3250A33C700937830;
+			remoteInfo = AEONVCSNOTIFICATION;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ED37FDFC250A33C700937830 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				ED37FDFB250A33C700937830 /* AEONVCSNOTIFICATION.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04011FB52313846D009003DE /* LoanCalculatorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanCalculatorData.swift; sourceTree = "<group>"; };
@@ -425,7 +451,6 @@
 		04CB08982276F26E0069FDF9 /* MesgSenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesgSenderTableViewCell.swift; sourceTree = "<group>"; };
 		04CB08992276F26E0069FDF9 /* MesgSenderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MesgSenderTableViewCell.xib; sourceTree = "<group>"; };
 		04CB089C2276F28A0069FDF9 /* MesgReceiverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesgReceiverTableViewCell.swift; sourceTree = "<group>"; };
-		04CB089D2276F28A0069FDF9 /* MesgReceiverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MesgReceiverTableViewCell.xib; sourceTree = "<group>"; };
 		04D202BF22A7846C00C85FC3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		04D2FFF423A76D0F00AF6CD2 /* DATncVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DATncVC.swift; sourceTree = "<group>"; };
 		04D322A22223CBE4006BE0CB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -550,6 +575,9 @@
 		ED07E04724DBF25E00067AEB /* MainLoanApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoanApplyViewController.swift; sourceTree = "<group>"; };
 		ED07E04924DC072000067AEB /* CustomerInfoFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoFormViewController.swift; sourceTree = "<group>"; };
 		ED1B421224611B3200AB442B /* OtherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCollectionViewCell.swift; sourceTree = "<group>"; };
+		ED37FDF4250A33C700937830 /* AEONVCSNOTIFICATION.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AEONVCSNOTIFICATION.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED37FDF6250A33C700937830 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		ED37FDF8250A33C700937830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
 		ED387DB9243B17FF00F8DD8A /* AskProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskProductViewModel.swift; sourceTree = "<group>"; };
 		ED387DBB243B1E8F00F8DD8A /* ContactUsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsData.swift; sourceTree = "<group>"; };
@@ -566,6 +594,7 @@
 		EDC90DF7245684CF005FD5E2 /* AutoReplyMessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageData.swift; sourceTree = "<group>"; };
 		EDC90DF9245686AA005FD5E2 /* AutoReplyMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageModel.swift; sourceTree = "<group>"; };
 		EDC90DFB24568C73005FD5E2 /* AutoReplyMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageViewModel.swift; sourceTree = "<group>"; };
+		EDCDE9D6250FB807009B1B14 /* MesgReceiverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MesgReceiverTableViewCell.xib; sourceTree = "<group>"; };
 		EDDF783F24640F5E002BD640 /* MultiLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLoginData.swift; sourceTree = "<group>"; };
 		EDDF7841246411B3002BD640 /* MultiLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLoginModel.swift; sourceTree = "<group>"; };
 		EDDF784324642309002BD640 /* MultiLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLoginViewModel.swift; sourceTree = "<group>"; };
@@ -582,6 +611,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0481007D23FD12E70005515D /* Pods_AEONVCS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED37FDF1250A33C700937830 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,8 +855,8 @@
 		04CB08972276F23A0069FDF9 /* receiver_cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDCDE9D6250FB807009B1B14 /* MesgReceiverTableViewCell.xib */,
 				04CB089C2276F28A0069FDF9 /* MesgReceiverTableViewCell.swift */,
-				04CB089D2276F28A0069FDF9 /* MesgReceiverTableViewCell.xib */,
 			);
 			path = receiver_cell;
 			sourceTree = "<group>";
@@ -1290,6 +1326,7 @@
 			children = (
 				ED40BFC524FF5F7A00AE1A3E /* AEONMember.entitlements */,
 				753C8B9221F9B670002E101B /* AEON */,
+				ED37FDF5250A33C700937830 /* AEONVCSNOTIFICATION */,
 				753C8B9121F9B670002E101B /* Products */,
 				034609DE9A96877D2C068E13 /* Pods */,
 				FB324669134BA1559A50EC5E /* Frameworks */,
@@ -1300,6 +1337,7 @@
 			isa = PBXGroup;
 			children = (
 				753C8B9021F9B670002E101B /* AEONMember.app */,
+				ED37FDF4250A33C700937830 /* AEONVCSNOTIFICATION.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1470,6 +1508,15 @@
 			path = mainLoanapply;
 			sourceTree = "<group>";
 		};
+		ED37FDF5250A33C700937830 /* AEONVCSNOTIFICATION */ = {
+			isa = PBXGroup;
+			children = (
+				ED37FDF6250A33C700937830 /* NotificationService.swift */,
+				ED37FDF8250A33C700937830 /* Info.plist */,
+			);
+			path = AEONVCSNOTIFICATION;
+			sourceTree = "<group>";
+		};
 		ED9D95BF2436FA5D00B52D74 /* LoanApply */ = {
 			isa = PBXGroup;
 			children = (
@@ -1499,15 +1546,34 @@
 				753C8B8E21F9B670002E101B /* Resources */,
 				2AF819EB822CCBAF2F4BA76F /* [CP] Embed Pods Frameworks */,
 				FEC8DF6EF17D12F6820B4D59 /* [CP] Copy Pods Resources */,
+				ED37FDFC250A33C700937830 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				ED37FDFA250A33C700937830 /* PBXTargetDependency */,
 			);
 			name = AEONVCS;
 			productName = AEON;
 			productReference = 753C8B9021F9B670002E101B /* AEONMember.app */;
 			productType = "com.apple.product-type.application";
+		};
+		ED37FDF3250A33C700937830 /* AEONVCSNOTIFICATION */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED37FDFF250A33C700937830 /* Build configuration list for PBXNativeTarget "AEONVCSNOTIFICATION" */;
+			buildPhases = (
+				ED37FDF0250A33C700937830 /* Sources */,
+				ED37FDF1250A33C700937830 /* Frameworks */,
+				ED37FDF2250A33C700937830 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AEONVCSNOTIFICATION;
+			productName = AEONVCSNOTIFICATION;
+			productReference = ED37FDF4250A33C700937830 /* AEONVCSNOTIFICATION.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1515,7 +1581,7 @@
 		753C8B8821F9B670002E101B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "AEON microfinance";
 				TargetAttributes = {
@@ -1530,6 +1596,9 @@
 								enabled = 0;
 							};
 						};
+					};
+					ED37FDF3250A33C700937830 = {
+						CreatedOnToolsVersion = 11.6;
 					};
 				};
 			};
@@ -1547,6 +1616,7 @@
 			projectRoot = "";
 			targets = (
 				753C8B8F21F9B670002E101B /* AEONVCS */,
+				ED37FDF3250A33C700937830 /* AEONVCSNOTIFICATION */,
 			);
 		};
 /* End PBXProject section */
@@ -1558,6 +1628,7 @@
 			files = (
 				0428A0AE2359657E001BB980 /* Pyidaungsu-Bold.ttf in Resources */,
 				6AFEBE102205CEC8006D2F81 /* FAQTableViewCell.xib in Resources */,
+				EDCDE9D7250FB807009B1B14 /* MesgReceiverTableViewCell.xib in Resources */,
 				C16C63DC238C3729004E24C1 /* ATreceiveMessageTableViewCell.xib in Resources */,
 				6AC88E2C2206D8AE0062926F /* MemberCardInfoTableViewCell.xib in Resources */,
 				6A6A99312207F0F8001C30D2 /* my_MM.strings in Resources */,
@@ -1584,7 +1655,6 @@
 				7561955E21FC78E60037AF9D /* SecurityQuestionTableViewCell.xib in Resources */,
 				6A6A992F2207F0E8001C30D2 /* en.strings in Resources */,
 				04A1615922B2026C00D05648 /* MoreButtonTableViewCell.xib in Resources */,
-				04CB089F2276F28A0069FDF9 /* MesgReceiverTableViewCell.xib in Resources */,
 				6A6A99372207F54F001C30D2 /* CouponTableViewCell.xib in Resources */,
 				04BA7AC022103796006696E7 /* SecQuesRegisterTableViewCell.xib in Resources */,
 				04045A892272BE4E0055DF91 /* NewsTableViewCell.xib in Resources */,
@@ -1596,6 +1666,13 @@
 				6A69823D2219775E00840561 /* SideMenuListTableViewCell.xib in Resources */,
 				752115E222019378001BC94A /* SecQuesConfirmTableViewCell.xib in Resources */,
 				75C9F39621FD9C8A00D65E0A /* QR_codeViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED37FDF2250A33C700937830 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1906,7 +1983,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ED37FDF0250A33C700937830 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED37FDF7250A33C700937830 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ED37FDFA250A33C700937830 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED37FDF3250A33C700937830 /* AEONVCSNOTIFICATION */;
+			targetProxy = ED37FDF9250A33C700937830 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		753C8B9721F9B670002E101B /* Main.storyboard */ = {
@@ -2052,6 +2145,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9DC50FE8F6F5CA4174F54CD4 /* Pods-AEONVCS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2077,6 +2171,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F08E73AA93DBD04EABD061E /* Pods-AEONVCS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2093,6 +2188,48 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS;
 				PRODUCT_NAME = AEONMember;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		ED37FDFD250A33C700937830 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NC9BA4Z58U;
+				INFOPLIST_FILE = AEONVCSNOTIFICATION/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS.AEONVCSNOTIFICATION;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED37FDFE250A33C700937830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NC9BA4Z58U;
+				INFOPLIST_FILE = AEONVCSNOTIFICATION/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS.AEONVCSNOTIFICATION;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2115,6 +2252,15 @@
 			buildConfigurations = (
 				753C8BA621F9B67B002E101B /* Debug */,
 				753C8BA721F9B67B002E101B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED37FDFF250A33C700937830 /* Build configuration list for PBXNativeTarget "AEONVCSNOTIFICATION" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED37FDFD250A33C700937830 /* Debug */,
+				ED37FDFE250A33C700937830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
