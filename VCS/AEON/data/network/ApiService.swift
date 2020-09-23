@@ -115,6 +115,9 @@ struct ApiServiceEndPoint {
     static var roomsync = "free-message/room-sync"
     
     static var educationInfo = "information/highest-education-type-list?"
+    static var getchatbot =  "free-message/get-chat-bot-question-answer-eng-list"
+    static var getchatbotmm =  "free-message/get-chat-bot-question-answer-mm-list"
+    static var sendchatQuestionAnswer =  "free-message/send-chat-bot-question-answer-level1"
     
     //ask product
     

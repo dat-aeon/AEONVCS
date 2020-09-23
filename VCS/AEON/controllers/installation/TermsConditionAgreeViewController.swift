@@ -31,6 +31,8 @@ class TermsConditionAgreeViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults.standard
+        defaults.set(2, forKey: "eng")
         updateViews()
         btnNext.isUserInteractionEnabled = true
         self.btnAgree.isEnabled = false
@@ -90,12 +92,19 @@ class TermsConditionAgreeViewController: BaseUIViewController {
 
     @objc func onTapMMLocale() {
        print("click")
+        
+        let defaults = UserDefaults.standard
+        defaults.set(1, forKey: "mya")
         super.NewupdateLocale(flag: 1)
+       
         updateViews()
     }
     @objc func onTapEngLocale() {
        print("click")
+        let defaults = UserDefaults.standard
+        defaults.set(2, forKey: "eng")
         super.NewupdateLocale(flag: 2)
+       
         updateViews()
     }
 

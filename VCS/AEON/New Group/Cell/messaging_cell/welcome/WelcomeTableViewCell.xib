@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pyidaungsu-Regular.ttf">
+            <string>PyidaungsuBook</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WelcomeTableViewCell" rowHeight="186" id="KGk-i7-Jjw" customClass="WelcomeTableViewCell" customModule="AEONMember" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="415" height="186"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="415" height="186"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utJ-wX-Yow">
+                        <rect key="frame" x="0.0" y="0.0" width="415" height="186"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aeon_logo" translatesAutoresizingMaskIntoConstraints="NO" id="yIh-my-xmt">
+                                <rect key="frame" x="10" y="30" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9Ub-qI-AaT"/>
+                                    <constraint firstAttribute="width" constant="40" id="OHk-92-9Ia"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-NS-GgD">
+                                <rect key="frame" x="55" y="30" width="290" height="151"/>
+                                <color key="backgroundColor" red="0.49585313455146079" green="0.75829409246575341" blue="0.35172714098027175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VbY-NS-GgD" firstAttribute="top" secondItem="yIh-my-xmt" secondAttribute="top" id="3cy-St-ZV0"/>
+                            <constraint firstItem="yIh-my-xmt" firstAttribute="leading" secondItem="utJ-wX-Yow" secondAttribute="leading" constant="10" id="4nj-qa-RTv"/>
+                            <constraint firstAttribute="bottom" secondItem="VbY-NS-GgD" secondAttribute="bottom" constant="5" id="QgI-tL-3Xc"/>
+                            <constraint firstItem="yIh-my-xmt" firstAttribute="top" secondItem="utJ-wX-Yow" secondAttribute="top" constant="30" id="VmD-Mf-iWD"/>
+                            <constraint firstItem="VbY-NS-GgD" firstAttribute="leading" secondItem="yIh-my-xmt" secondAttribute="trailing" constant="5" id="iSb-Rd-7mc"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VbY-NS-GgD" secondAttribute="trailing" constant="70" id="uFU-WI-FFm"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="utJ-wX-Yow" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F5T-mc-DDC"/>
+                    <constraint firstAttribute="bottom" secondItem="utJ-wX-Yow" secondAttribute="bottom" id="Onv-nx-Cbx"/>
+                    <constraint firstAttribute="trailing" secondItem="utJ-wX-Yow" secondAttribute="trailing" id="o0f-X9-2ld"/>
+                    <constraint firstItem="utJ-wX-Yow" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wJl-Fq-hcd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgReceiver" destination="yIh-my-xmt" id="QpC-pC-22P"/>
+                <outlet property="lbMesgText" destination="VbY-NS-GgD" id="uyp-fC-cLs"/>
+            </connections>
+            <point key="canvasLocation" x="-50.000000000000007" y="123.88392857142857"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="aeon_logo" width="291" height="302"/>
+    </resources>
+</document>

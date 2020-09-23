@@ -54,3 +54,5 @@ struct NewsInfoBean{
     var isLocationNull: Bool = false
     var newsUrl: String? = ""
 }
+
+

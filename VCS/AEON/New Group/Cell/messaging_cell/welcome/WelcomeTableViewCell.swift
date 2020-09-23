@@ -1,18 +1,18 @@
 //
-//  MesgReceiverTableViewCell.swift
+//  WelcomeTableViewCell.swift
 //  AEONVCS
 //
-//  Created by mac on 4/29/19.
-//  Copyright © 2019 AEON microfinance. All rights reserved.
+//  Created by Ant on 21/09/2020.
+//  Copyright © 2020 AEON microfinance. All rights reserved.
 //
 
 import UIKit
 
-class MesgReceiverTableViewCell: UITableViewCell {
+class WelcomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imgReceiver: UIImageView!
     @IBOutlet weak var lbMesgText: UITextView!
-    @IBOutlet weak var lbSendDate: UILabel!
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +25,7 @@ class MesgReceiverTableViewCell: UITableViewCell {
     
     func setData(messageBean: MessageBean){
         self.lbMesgText.text = messageBean.message
-        self.lbSendDate.text = messageBean.sendTime
+        
     }
     
 }

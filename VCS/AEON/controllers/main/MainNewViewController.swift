@@ -70,7 +70,7 @@ class MainNewViewController: BaseUIViewController {
     @IBOutlet weak var lblBarPhNo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
         askProductMessageUnRead(customerId: senderId!)
        
      //   notiData()
@@ -162,7 +162,7 @@ class MainNewViewController: BaseUIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
        // multiLoginGet()
-        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
         askProductMessageUnRead(customerId: senderId!)
         
         if(!(UserDefaults.standard.bool(forKey: Constants.IS_LOGOUT)) &&
@@ -177,11 +177,17 @@ class MainNewViewController: BaseUIViewController {
     
    
     @objc func onTapMMLocale() {
+        let defaults = UserDefaults.standard
+        defaults.set(1, forKey: "mya")
         super.NewupdateLocale(flag: 1)
+        
         updateViews()
     }
     @objc func onTapEngLocale() {
+        let defaults = UserDefaults.standard
+        defaults.set(2, forKey: "eng")
         super.NewupdateLocale(flag: 2)
+        
         updateViews()
     }
     

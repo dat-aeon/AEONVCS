@@ -11,12 +11,17 @@ import Foundation
 struct MessageBean{
     var isButton: Bool = false
     var isPhoto: Bool = false
+    var isReceiveMesg: Bool = false
+    var isIntro:Bool = false
+    var isMessagingBot:Bool = false
+    var type: String = ""
     var message: String? = ""
     var sender: String? = ""
-    var isReceiveMesg: Bool = false
     var sendTime: String? = ""
     var readFlag: String? = ""
     var messageId:Int? = 0
+    
+   
 }
 
 struct MessageResBean: Decodable{

@@ -145,9 +145,14 @@ struct CommonNames {
     // NRC
     static var NRC_TABLE_CELL = "NrcTableViewCell"
     
+    //chatbot
+     static var MESG_SEND_CHAT_BOT = "ChatBotTableViewCell"
+    static var MESG_COLLECTIONCELL_CHAT_BOT = "chatBotCollectionViewCell"
+    
     // Messaging
     static var MESG_MORE_BUTTON_TABLE_CELL = "MoreButtonTableViewCell"
     static var MESG_SENDER_TABLE_CELL = "MesgSenderTableViewCell"
+    static var WELCOME_TABLE_CELL = "WelcomeTableViewCell"
     static var MESG_RECEIVER_TABLE_CELL = "MesgReceiverTableViewCell"
     static var MESG_SEND_PHOTO_TABLE_CELL = "SendPhotoTableViewCell"
     

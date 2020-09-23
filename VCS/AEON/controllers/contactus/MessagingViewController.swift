@@ -797,6 +797,7 @@ class MessagingViewController: BaseUIViewController {
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           
           let messageData = self.messageBeanList[indexPath.row]
+        
           if messageData.isButton {
               let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.MESG_MORE_BUTTON_TABLE_CELL, for: indexPath) as! MoreButtonTableViewCell
               cell.setData(messageId: messageData.messageId!)

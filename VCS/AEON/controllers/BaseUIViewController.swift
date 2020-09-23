@@ -244,6 +244,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
     
     //Locale Change Functions Start
     @objc func localeChanged() {
+        
         reloadDataIfVCVisible()
     }
     
@@ -277,6 +278,7 @@ class BaseUIViewController: UIViewController,UITextFieldDelegate {
         //            Locale.currentLocale = .MY
         //        case .MY:
         //            Locale.currentLocale = .EN
+      
         switch flag {
         case 1:
             Locale.currentLocale = .MY

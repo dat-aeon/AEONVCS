@@ -584,7 +584,28 @@ class BaseModel {
             print("kauntmyatsan response result .. \(response.result)")
            }
        }
-
+    func getChatBotPostWithoutToken(endPoint:String,rawData:[String:Int],completion:@escaping (Result<Any>)->Void) -> DataRequest {
+        
+              
+              let urlString = Constants.base_url + endPoint
+              let url = URL(string: urlString)
+              var request = URLRequest(url: url!)
+              request.httpMethod = ApiServiceEndPoint.POST_METHOD
+              request.setValue(ApiServiceEndPoint.APPLICATION_JSON, forHTTPHeaderField: ApiServiceEndPoint.CONTENT_TYPE)
+              request.timeoutInterval = 180
+              do {
+                request.httpBody = try JSON(rawData).rawData()
+              
+              } catch let error {
+                  print("Error : \(error.localizedDescription)")
+              }
+              //print("Request data :::::::::::\(request)\(rawData)")
+              
+              return Alamofire.request(request).responseJSON{ (response) in
+                  completion(response.result)
+               print("kauntmyatsan response result .. \(response.result)")
+              }
+          }
 
     func AutoReplyMessagePOSTWithoutToken(endPoint:String,completion:@escaping (Result<Any>)->Void) -> DataRequest {
         

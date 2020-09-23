@@ -605,3 +605,5 @@
 "main.loanApplicationStatusBtn" = "ချေးငွေးလျှောက်လွှာ";
 "main.customerInformation" = "အသုံးပြုသူအချက်အလက်";
 "main.applyLoan" = "ချေးငွေးလျှောက်ထား";
+//chatbot
+"message.ask" = "မေးမယ်";

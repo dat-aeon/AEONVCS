@@ -90,7 +90,7 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
         sessionInfo = try? JSONDecoder().decode(SessionDataBean.self, from: JSON(parseJSON: sessionInfoString ?? "").rawData())
         
         self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)!
-        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
+        self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
         
         // label setting
         self.btSendToAgent.setTitle("agentchannel.send.button".localized, for: UIControl.State.normal)

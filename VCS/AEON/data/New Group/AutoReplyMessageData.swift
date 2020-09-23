@@ -24,3 +24,7 @@ struct ReplyMessageData: Codable {
         case messageMya = "messageMya"
     }
 }
+struct AutoReplayMessageData {
+    var messageEng: String = ""
+    var messageMya: String = ""
+}

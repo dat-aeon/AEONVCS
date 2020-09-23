@@ -625,3 +625,5 @@
 //Loanapply
 "main.customerInformation" = "Customer Information";
 "main.applyLoan" = "Apply Loan";
+ //chatbot
+"message.ask" = "Ask";
