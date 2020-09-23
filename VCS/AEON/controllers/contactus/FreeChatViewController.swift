@@ -237,8 +237,7 @@ class FreeChatViewController: BaseUIViewController {
 
             self.orginBottom = vSendBottomConstraint.constant
 
-            self.tvMessagingView.reloadData()
-            scrollToBottom()
+           
             // open the socket
 
             UserDefaults.standard.set(false, forKey: Constants.MESSAGE_SOCKET_CLOSE)
@@ -248,8 +247,9 @@ class FreeChatViewController: BaseUIViewController {
             self.isDidLoad = true
 
             self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
-       
-            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            self.tvMessagingView.reloadData()
+            scrollToBottom()
+          //  CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
         }
 
     @IBAction func botChatAction(_ sender: UIButton) {
@@ -283,7 +283,7 @@ class FreeChatViewController: BaseUIViewController {
 
         
 scrollToBottom()
-      
+        CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
 
     }
 
@@ -376,7 +376,7 @@ scrollToBottom()
 
                self.tvMessagingView.reloadData()
 //scrollToBottom()
-             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            
 
                       }
 
@@ -450,7 +450,7 @@ scrollToBottom()
 
                     }
 
-                    CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+               //     CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
 
                     UserDefaults.standard.set(0, forKey: Constants.UNREAD_MESSAGE_COUNT)
 
@@ -482,25 +482,9 @@ scrollToBottom()
 let answer_type = "answer_type"
         
     @objc func chatAnswers(){
-        let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: answer_type, message: answers, sender: "", sendTime: "", readFlag: "", messageId: 0)
+        let sendTime = super.generateCurrentTimeForMessage()
+        let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: answer_type, message: answers, sender: "", sendTime: sendTime, readFlag: "", messageId: 0)
           self.messageBeanList.append(messageWelcome)
-     
-        
-        
-       
-
-//        self.tvMessagingView.beginUpdates()
-//
-//        let indexPath:IndexPath = IndexPath(row: self.messageBeanList.count-1, section: 0)
-        
-        
-//
-//        self.tvMessagingView.insertRows(at: [indexPath], with: .automatic)
-//
-//        self.tvMessagingView.endUpdates()
-//
-//        self.tvMessagingView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-//
         tvMessagingView.reloadData()
 scrollToBottom()
         
@@ -1244,7 +1228,7 @@ scrollToBottom()
 
                                 }
 
-                                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                           //     CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
 
                             }
 
@@ -1259,7 +1243,8 @@ scrollToBottom()
                     
 
                 }
-
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                scrollToBottom()
             }
            
 
@@ -1378,12 +1363,7 @@ scrollToBottom()
                 return cell
             } else if (!messageData.isReceiveMesg) {
                 
-                
-                
                 let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.MESG_SENDER_TABLE_CELL, for: indexPath) as! MesgSenderTableViewCell
-
-                
-
                 cell.setData(messageBean: messageData)
 
                 cell.selectionStyle = .none
@@ -1392,8 +1372,7 @@ scrollToBottom()
 
                 
 
-            }
-            else{
+            }else{
 
                 let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.MESG_RECEIVER_TABLE_CELL, for: indexPath) as! MesgReceiverTableViewCell
 
@@ -1531,7 +1510,8 @@ extension FreeChatViewController : QuestionAndAnswerIdDelegate{
             print(error)
         }
           let question_type = "question_type"
-        let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: question_type, message: question, sender: "", sendTime: "", readFlag: "", messageId: 0)
+        let sendTime = super.generateCurrentTimeForMessage()
+        let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: question_type, message: question, sender: "", sendTime: sendTime, readFlag: "", messageId: 0)
           self.messageBeanList.append(messageWelcome)
            
         
