@@ -126,4 +126,6 @@ struct ApiServiceEndPoint {
     
     //Auto reply message Level one
     static var AUTO_REPLY_MESSAGE = "information/get-chat-auto-reply-message?"
+    //Calculator message
+    static var CALCULATOR_MESSAGE = "free-token/get-loan-calculator-msg"
 }

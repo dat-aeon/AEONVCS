@@ -9,7 +9,7 @@
 
 class SendChatQuestionViewModel {
     
-    func sendChatQuestionAnswer(customerId: String,chatBotQuestionAndAnswerId: String ,question: String,answer:String,success: @escaping (SendChatQuestionResponse) -> Void,failure: @escaping (String) -> Void){
+    func sendChatQuestionAnswer(customerId: Int,chatBotQuestionAndAnswerId: Int ,question: String,answer:String,success: @escaping (SendChatQuestionResponse) -> Void,failure: @escaping (String) -> Void){
         SendChatQuestionModel.init().sendChatQuestion(customerId: customerId, chatBotQuestionAndAnswerId: chatBotQuestionAndAnswerId, question: question, answer: answer) { (result) in
             if result.status ==  Constants.STATUS_200 {
                 success(result)

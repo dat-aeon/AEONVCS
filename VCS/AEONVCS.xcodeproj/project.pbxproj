@@ -297,6 +297,9 @@
 		EDCC4ECC2511CE52009A387F /* chatBotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC4ECA2511CE52009A387F /* chatBotCollectionViewCell.swift */; };
 		EDCC4ECD2511CE52009A387F /* chatBotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCC4ECB2511CE52009A387F /* chatBotCollectionViewCell.xib */; };
 		EDCDE9D7250FB807009B1B14 /* MesgReceiverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCDE9D6250FB807009B1B14 /* MesgReceiverTableViewCell.xib */; };
+		EDD546F8251C501100FC6919 /* CalculatorMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD546F7251C501100FC6919 /* CalculatorMessageData.swift */; };
+		EDD546FC251C50D300FC6919 /* CalculatorMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD546FB251C50D300FC6919 /* CalculatorMessageModel.swift */; };
+		EDD54700251C51DB00FC6919 /* CalculatorMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD546FF251C51DB00FC6919 /* CalculatorMessageViewModel.swift */; };
 		EDDF784024640F5E002BD640 /* MultiLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDF783F24640F5E002BD640 /* MultiLoginData.swift */; };
 		EDDF7842246411B3002BD640 /* MultiLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDF7841246411B3002BD640 /* MultiLoginModel.swift */; };
 		EDDF784424642309002BD640 /* MultiLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDF784324642309002BD640 /* MultiLoginViewModel.swift */; };
@@ -629,6 +632,9 @@
 		EDCC4ECA2511CE52009A387F /* chatBotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatBotCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDCC4ECB2511CE52009A387F /* chatBotCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = chatBotCollectionViewCell.xib; sourceTree = "<group>"; };
 		EDCDE9D6250FB807009B1B14 /* MesgReceiverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MesgReceiverTableViewCell.xib; sourceTree = "<group>"; };
+		EDD546F7251C501100FC6919 /* CalculatorMessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorMessageData.swift; sourceTree = "<group>"; };
+		EDD546FB251C50D300FC6919 /* CalculatorMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorMessageModel.swift; sourceTree = "<group>"; };
+		EDD546FF251C51DB00FC6919 /* CalculatorMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorMessageViewModel.swift; sourceTree = "<group>"; };
 		EDDF783F24640F5E002BD640 /* MultiLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLoginData.swift; sourceTree = "<group>"; };
 		EDDF7841246411B3002BD640 /* MultiLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLoginModel.swift; sourceTree = "<group>"; };
 		EDDF784324642309002BD640 /* MultiLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLoginViewModel.swift; sourceTree = "<group>"; };
@@ -1173,6 +1179,7 @@
 				ED3C8375251368D700FA6912 /* GetChatBotViewModel.swift */,
 				ED342A692519DD0800F126EE /* GetChatBotMMViewModel.swift */,
 				ED342AB6251A424700F126EE /* SendChatQuestionViewModel.swift */,
+				EDD546FF251C51DB00FC6919 /* CalculatorMessageViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -1253,6 +1260,7 @@
 				ED3C83712513606800FA6912 /* GetChatBotData.swift */,
 				ED342A6D2519DEF900F126EE /* GetChatBotMMData.swift */,
 				ED342A96251A154000F126EE /* SendChatQuestionData.swift */,
+				EDD546F7251C501100FC6919 /* CalculatorMessageData.swift */,
 			);
 			name = struct;
 			path = "New Group";
@@ -1294,6 +1302,7 @@
 				ED3C8373251365DB00FA6912 /* GetChatBotModel.swift */,
 				ED342A652519DA1200F126EE /* GetChatBotMMModel.swift */,
 				ED342AB2251A3F3500F126EE /* SendChatQuestionModel.swift */,
+				EDD546FB251C50D300FC6919 /* CalculatorMessageModel.swift */,
 			);
 			name = model;
 			path = "New Group1";
@@ -1834,6 +1843,7 @@
 				04104EA1222639060068748D /* DeviceInfo.swift in Sources */,
 				04BB5EDA2292E9270091D768 /* AppLockData.swift in Sources */,
 				04BB5EDE2292ECA20091D768 /* AppLockCheckViewModel.swift in Sources */,
+				EDD546FC251C50D300FC6919 /* CalculatorMessageModel.swift in Sources */,
 				04AF315E23EBD7A20087719A /* HowToUseViewController.swift in Sources */,
 				045811BD2362E7E500E3C2DA /* tbcellAeonService.swift in Sources */,
 				C16C63D7238C3714004E24C1 /* ATsendMessageTableViewCell.swift in Sources */,
@@ -1928,6 +1938,7 @@
 				752115E72201CA3B001BC94A /* CustomerTypeViewController.swift in Sources */,
 				ED387DBE243B218D00F8DD8A /* contactUsModel.swift in Sources */,
 				ED07E04824DBF25E00067AEB /* MainLoanApplyViewController.swift in Sources */,
+				EDD546F8251C501100FC6919 /* CalculatorMessageData.swift in Sources */,
 				6A69822F221955B900840561 /* BioMetricRegisterViewController.swift in Sources */,
 				6A81F0CD22156005001725EA /* MemberInfoPreviewViewController.swift in Sources */,
 				6A3197BD220403140031D86F /* SecQuestionVerifyViewController.swift in Sources */,
@@ -2045,6 +2056,7 @@
 				EDCC4EC82511C3A4009A387F /* ChatBotTableViewCell.swift in Sources */,
 				0467B3062257694900E23EE5 /* NRCpopupViewController.swift in Sources */,
 				753C8B9421F9B670002E101B /* AppDelegate.swift in Sources */,
+				EDD54700251C51DB00FC6919 /* CalculatorMessageViewModel.swift in Sources */,
 				6A6A99292207F042001C30D2 /* Locale.swift in Sources */,
 				EDDF784024640F5E002BD640 /* MultiLoginData.swift in Sources */,
 				ED3C83722513606800FA6912 /* GetChatBotData.swift in Sources */,
@@ -2235,7 +2247,7 @@
 				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = NC9BA4Z58U;
 				INFOPLIST_FILE = AEON/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2263,7 +2275,7 @@
 				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = NC9BA4Z58U;
 				INFOPLIST_FILE = AEON/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

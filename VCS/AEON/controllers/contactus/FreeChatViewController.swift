@@ -144,25 +144,25 @@ class FreeChatViewController: BaseUIViewController {
 
             
 
-            //        RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
+                    RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
 
-            //
+            
 
-            //            let freeCustomerInfoId = result.data.freeCustomerInfoID
+                        let freeCustomerInfoId = result.data.freeCustomerInfoID
 
-            //
+            
 
-            //             UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
+                         UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
 
-            //
+            
 
-            //        }) { (error) in
+                    }) { (error) in
 
-            //
+            
 
-            //        }
+                    }
 
-            //        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? 0
+                    self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? 0
 
             self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
 
@@ -1501,14 +1501,9 @@ extension FreeChatViewController : QuestionAndAnswerIdDelegate{
     func questionAndAnswerId(id: Int, question: String, answer: String) {
         print("kms \(id) q \(question) a \(answer)")
         answers = answer
-        var customerId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
+       
       
-        SendChatQuestionModel.init().sendChatQuestion(customerId: "\(customerId)", chatBotQuestionAndAnswerId: "\(id)", question: question, answer: answer) { (result) in
-            print(result)
-            //self.tvMessagingView.reloadData()
-        } failure: { (error) in
-            print(error)
-        }
+        
           let question_type = "question_type"
         let sendTime = super.generateCurrentTimeForMessage()
         let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: question_type, message: question, sender: "", sendTime: sendTime, readFlag: "", messageId: 0)
@@ -1517,7 +1512,7 @@ extension FreeChatViewController : QuestionAndAnswerIdDelegate{
         
         Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(self.chatAnswers), userInfo: nil, repeats: false)
        
-      
+       
        
        
     }

@@ -20,7 +20,7 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     var chatBot = [ChatBotInfo]()
     var chatBotmm = [ChatBotInfo]()
     var chatBotList: [ChatBotInfo] = []
-   var customerId = 0
+  
     var chatBotId = 0
    var chatBotMM = [ChatBotMMInfo]()
     var chatBotMMList: [ChatBotMMInfo] = []
@@ -121,13 +121,21 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         return size
         
     }
-   
+    let customerId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chatBotCollectionViewCell", for: indexPath) as! chatBotCollectionViewCell
         cell.questionBtnLabel.tag = indexPath.row
          chatBotId = chatBotList[indexPath.row].chatBotQuestionAndAnswerId
         delegate?.questionAndAnswerId(id: chatBotId, question: chatBotList[indexPath.row].question, answer: chatBotList[indexPath.row].answer)
+        
+        SendChatQuestionModel.init().sendChatQuestion(customerId: customerId, chatBotQuestionAndAnswerId: chatBotId, question: chatBotList[indexPath.row].question, answer: chatBotList[indexPath.row].answer) { (result) in
+            print(result)
+            //self.tvMessagingView.reloadData()
+        } failure: { (error) in
+            print(error)
+        }
+        
     }
     var button = 0
     var ans = ""
@@ -138,7 +146,14 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         let newId = chat[button].chatBotQuestionAndAnswerId
         let ques = chat[button].question
         let answ = chat[button].answer
+        
         delegate?.questionAndAnswerId(id: newId, question: ques, answer: answ)
+        SendChatQuestionModel.init().sendChatQuestion(customerId: customerId, chatBotQuestionAndAnswerId: newId, question: ques, answer: answ) { (result) in
+            print(result)
+            //self.tvMessagingView.reloadData()
+        } failure: { (error) in
+            print(error)
+        }
     }
     
 }

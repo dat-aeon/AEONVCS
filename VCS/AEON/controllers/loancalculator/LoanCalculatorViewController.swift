@@ -19,6 +19,7 @@ class LoanCalculatorViewController: BaseUIViewController {
     @IBOutlet weak var lblBarPhNo: UILabel!
     @IBOutlet weak var lblBarName: UILabel!
     @IBOutlet weak var lblBarCusType: UILabel!
+    @IBOutlet weak var calculatorMessageLbl: UILabel!
     
     
     @IBOutlet weak var colviewLoanTerm: UICollectionView!
@@ -193,10 +194,37 @@ class LoanCalculatorViewController: BaseUIViewController {
     
     let MINIMUM_AMOUNT = 50000
     let MAXIMUM_AMOUNT = 2000000
+    var engMessage = ""
+    var myaMessage = ""
+    let mmFlag = "my_MM"
+    let engFlag = "en"
+    var language = Locale.currentLocale
    
+    func calculatorMessage(){
+        CalculatorMessageModel.init().CalculatorMessageSync { (result) in
+            print("my result \(result)")
+            self.engMessage = result.data.decriptionEng
+            self.myaMessage = result.data.descriptionMm
+           
+            
+            if self.mmFlag == self.language.rawValue{
+                self.calculatorMessageLbl.text = self.myaMessage
+            }else if self.engFlag == self.language.rawValue{
+                self.calculatorMessageLbl.text = self.engMessage
+
+            }
+
+            
+            
+        } failure: { (error) in
+           print(error)
+        }
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        calculatorMessage()
+        
         self.heightWarningLoanTerm.constant = 0
         self.lblWarningLoanTerm.isHidden = true
         
@@ -228,6 +256,7 @@ class LoanCalculatorViewController: BaseUIViewController {
                           print("kms ssssssssss>>>>>>")
                     logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
                       }
+        
         
     }
     @objc func runTimedCode() {

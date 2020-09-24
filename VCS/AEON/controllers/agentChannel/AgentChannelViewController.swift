@@ -68,10 +68,28 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     
     // Google Map location
     var locationManager : CLLocationManager?
-    
+    func roomSync() {
+        RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
+
+
+
+            let freeCustomerInfoId = result.data.freeCustomerInfoID
+
+
+
+             UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
+
+
+
+        }) { (error) in
+
+
+
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      //  roomSync()
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -84,6 +102,9 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
         // for max length of textview
         txtAddText.delegate = self
         txtAddress.delegate = self
+        
+        
+       
         
         
         let sessionInfoString = UserDefaults.standard.string(forKey: Constants.SESSION_INFO)

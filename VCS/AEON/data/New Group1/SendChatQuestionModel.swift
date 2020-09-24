@@ -11,15 +11,15 @@ import Alamofire
 import SwiftyJSON
 
 class SendChatQuestionModel:BaseModel {
-    func sendChatQuestion(customerId: String,chatBotQuestionAndAnswerId: String ,question: String,answer:String,success: @escaping (SendChatQuestionResponse) -> Void,failure: @escaping (String) -> Void){
+    func sendChatQuestion(customerId: Int,chatBotQuestionAndAnswerId: Int ,question: String,answer:String,success: @escaping (SendChatQuestionResponse) -> Void,failure: @escaping (String) -> Void){
         let rawData = [
-            "customerId": "\(customerId)",
-            "chatBotQuestionAndAnswerId": "\(chatBotQuestionAndAnswerId)",
+            "customerId": customerId,
+            "chatBotQuestionAndAnswerId": chatBotQuestionAndAnswerId,
             "question": question,
             "answer": answer
             
-            ]
-        let _ = super.requestPOSTWithoutToken(endPoint: ApiServiceEndPoint.sendchatQuestionAnswer, rawData: rawData) { (result) in
+        ] as [String : Any]
+        let _ = super.sendChatPOSTWithoutToken(endPoint: ApiServiceEndPoint.sendchatQuestionAnswer, rawData: rawData) { (result) in
             switch result{
                    case .success(let result):
                        
