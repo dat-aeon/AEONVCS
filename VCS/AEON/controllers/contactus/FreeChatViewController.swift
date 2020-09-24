@@ -1510,14 +1510,11 @@ extension FreeChatViewController : QuestionAndAnswerIdDelegate{
           self.messageBeanList.append(messageWelcome)
            
         
-        Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(self.chatAnswers), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.chatAnswers), userInfo: nil, repeats: false)
        
        
        
        
     }
-    
-    
-
 
 }
