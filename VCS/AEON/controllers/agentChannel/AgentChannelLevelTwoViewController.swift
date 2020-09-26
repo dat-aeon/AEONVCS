@@ -1,9 +1,9 @@
 //
-//  AgentChannelViewController.swift
+//  AgentChannelLevelTwoViewController.swift
 //  AEONVCS
 //
-//  Created by Khin Yadanar Thein on 11/25/19.
-//  Copyright © 2019 AEON microfinance. All rights reserved.
+//  Created by Ant on 25/09/2020.
+//  Copyright © 2020 AEON microfinance. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,9 @@ import SwiftyJSON
 import Starscream
 import GoogleMaps
 
-class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
+class AgentChannelLevelTwoViewController: BaseUIViewController , UITextViewDelegate{
+    
+    
     
     
     @IBOutlet weak var imgBack: UIImageView!
@@ -41,6 +43,11 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     @IBOutlet weak var lbErrAddress: UILabel!
     @IBOutlet weak var btnSend: UIButton!
     
+    
+    
+    
+    
+    
     var segmentIndex: Int!
     var orginBottom : CGFloat!
     var isDidLoad = false
@@ -68,28 +75,8 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     
     // Google Map location
     var locationManager : CLLocationManager?
-    func roomSync() {
-        RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
-
-
-
-            let freeCustomerInfoId = result.data.freeCustomerInfoID
-
-
-
-             UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
-
-
-
-        }) { (error) in
-
-
-
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  roomSync()
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -109,8 +96,7 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
         let sessionInfoString = UserDefaults.standard.string(forKey: Constants.SESSION_INFO)
         sessionInfo = try? JSONDecoder().decode(SessionDataBean.self, from: JSON(parseJSON: sessionInfoString ?? "").rawData())
         
-        self.senderName = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)!
-      //  self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)!
+        self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)!
         self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
         
         // label setting
@@ -193,9 +179,7 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
         
         self.btnCloseImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickClosePopup(tapGestureRecognizer:))))
         
-        
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         print ("appear")
         if self.isDidLoad {
@@ -206,12 +190,9 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
             
             if messageMenu == 10 {
                 self.socketReq.api = "get-unread-messages"
-                self.param.userId = self.senderId
-                self.param.levelType = 1
-                self.socketReq.param = param
                 let socketJson = try? JSONEncoder().encode(socketReq)
                 let socketString = String(data: socketJson!, encoding: .utf8)!
-                print("my socketString >>  \(socketString)")
+                print(socketString)
                 super.at_socket.write(string: socketString)
                 self.countTimer = Timer.scheduledTimer(timeInterval: 1 ,
                                                        target: self,
@@ -229,7 +210,7 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
     @objc func onTapBack() {
        print("click")
        // self.dismiss(animated: true, completion: nil)
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as! MainNewViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
                navigationVC.modalPresentationStyle = .overFullScreen
                self.present(navigationVC, animated: true, completion: nil)
     }
@@ -258,45 +239,6 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
         self.lbErrAddText.text = self.addTextLocale?.localized
         self.lbErrAddress.text = self.addressLocale?.localized
     }
-    
-    @IBAction func onClickSendBtn(_ sender: UIButton) {
-        
-        //Show popup view
-        self.view.addSubview(popupBackView)
-        self.view.addSubview(popupScrollView)
-        
-        popupBackView.center = view.center
-        popupScrollView.center = view.center
-        
-        popupBackView.alpha = 0.8
-        popupScrollView.alpha = 1
-        popupScrollView.layer.zPosition = 1
-        
-        popupBackView.transform = CGAffineTransform(scaleX: 0.8, y: 1.2)
-        popupScrollView.transform = CGAffineTransform(scaleX: 0.8, y: 1.2)
-        
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [],  animations: {
-            self.popupBackView.transform = .identity
-            self.popupScrollView.transform = .identity
-        })
-        self.lbCategoryTitle.text = "agentchannel.category.label".localized
-        self.lbBrandTitle.text = "agentchannel.brand.label".localized
-        self.lbAddTextTitle.text = "agentchannel.additional.label".localized
-        self.lbAddressTitle.text = "agentchannel.location.label".localized
-        self.btnSend.setTitle("agentchannel.send.button".localized, for: UIControl.State.normal)
-        if self.brandNameList.count > 0 {
-            lbBrand.text = self.brandNameList[0]
-        }
-        if self.categoryNameList.count > 0 {
-            lbCategory.text = self.categoryNameList[0]
-        }
-        self.txtAddText.text = ""
-        self.txtAddress.text = ""
-        self.lbErrAddress.text = Constants.BLANK
-        self.lbErrAddText.text = Constants.BLANK
-        self.locationManager?.startUpdatingLocation()
-    }
     // Timer for Reload message
     @objc func reloadMessage(){
         //print("reload message")
@@ -306,10 +248,8 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
                 self.count -= 1
                 
             } else {
+                
                 self.socketReq.api = "get-unread-messages"
-                self.param.userId = self.senderId
-                self.param.levelType = 1
-                self.socketReq.param = param
                 let socketJson = try? JSONEncoder().encode(socketReq)
                 let socketString = String(data: socketJson!, encoding: .utf8)!
                 print(socketString)
@@ -379,7 +319,6 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
             param.sendFlag = 0
             param.sendTime = super.generateCurrentTimeStamp()
             param.readFlag = 0
-            param.levelType = 1
             socketReq.param = param
             
             let socketJson = try? JSONEncoder().encode(socketReq)
@@ -387,9 +326,46 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
             print(socketString)
             super.at_socket.write(string: socketString)
         }
-        
     }
-    
+    @IBAction func onClickSendBtn(_ sender: UIButton) {
+        //Show popup view
+        self.view.addSubview(popupBackView)
+        self.view.addSubview(popupScrollView)
+        
+        popupBackView.center = view.center
+        popupScrollView.center = view.center
+        
+        popupBackView.alpha = 0.8
+        popupScrollView.alpha = 1
+        popupScrollView.layer.zPosition = 1
+        
+        popupBackView.transform = CGAffineTransform(scaleX: 0.8, y: 1.2)
+        popupScrollView.transform = CGAffineTransform(scaleX: 0.8, y: 1.2)
+        
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [],  animations: {
+            self.popupBackView.transform = .identity
+            self.popupScrollView.transform = .identity
+        })
+        
+        self.lbCategoryTitle.text = "agentchannel.category.label".localized
+        self.lbBrandTitle.text = "agentchannel.brand.label".localized
+        self.lbAddTextTitle.text = "agentchannel.additional.label".localized
+        self.lbAddressTitle.text = "agentchannel.location.label".localized
+        self.btnSend.setTitle("agentchannel.send.button".localized, for: UIControl.State.normal)
+        
+        if self.brandNameList.count > 0 {
+            lbBrand.text = self.brandNameList[0]
+        }
+        if self.categoryNameList.count > 0 {
+            lbCategory.text = self.categoryNameList[0]
+        }
+        self.txtAddText.text = ""
+        self.txtAddress.text = ""
+        self.lbErrAddress.text = Constants.BLANK
+        self.lbErrAddText.text = Constants.BLANK
+        self.locationManager?.startUpdatingLocation()
+    }
     @objc func onClickCategoryDropDown(){
         self.txtAddText?.resignFirstResponder()
         self.txtAddress?.resignFirstResponder()
@@ -468,8 +444,7 @@ class AgentChannelViewController: BaseUIViewController , UITextViewDelegate{
         }
     }
 }
-
-extension AgentChannelViewController : CLLocationManagerDelegate {
+extension AgentChannelLevelTwoViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else {
             return
@@ -509,9 +484,9 @@ extension AgentChannelViewController : CLLocationManagerDelegate {
     }
 }
 
-extension AgentChannelViewController : WebSocketDelegate {
+extension AgentChannelLevelTwoViewController : WebSocketDelegate {
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("my websocketDidReceiveData > > \(data)")
+        
     }
     
     func websocketDidConnect(socket: WebSocketClient) {
@@ -519,14 +494,9 @@ extension AgentChannelViewController : WebSocketDelegate {
         param.customerId = self.senderId
         param.phoneNo = self.senderName
         param.roomName = self.senderName
-        param.levelType = 1
+        param.levelType = 2
         self.socketReq.param = param
         self.socketReq.api = "socket-connect"
-//        param.customerId = self.senderId
-//        param.phoneNo = self.senderName
-//        param.roomName = self.senderName
-//        self.socketReq.param = param
-//        self.socketReq.api = "socket-connect"
         
         let socketJson = try? JSONEncoder().encode(socketReq)
         let socketString = String(data: socketJson!, encoding: .utf8)!
@@ -570,11 +540,11 @@ extension AgentChannelViewController : WebSocketDelegate {
                             param.customerId = self.senderId
                             param.phoneNo = self.senderName
                             param.roomName = self.senderName
-                            param.levelType = 1
+                            param.levelType = 2
                             self.socketReq.param = param
                             var socketJson = try? JSONEncoder().encode(socketReq)
                             var socketString = String(data: socketJson!, encoding: .utf8)!
-                            print("get-message-history \(socketString)")
+                            print(socketString)
                             socket.write(string: socketString)
                             
                             // get categories
@@ -582,11 +552,10 @@ extension AgentChannelViewController : WebSocketDelegate {
                             param.customerId = self.senderId
                             param.phoneNo = self.senderName
                             param.roomName = self.senderName
-                            param.levelType = 1
-                            self.socketReq.param = param
-                             socketJson = try? JSONEncoder().encode(socketReq)
+                            param.levelType = 2
+                            socketJson = try? JSONEncoder().encode(socketReq)
                             socketString = String(data: socketJson!, encoding: .utf8)!
-                            print("get-device-categories\(socketString)")
+                            print(socketString)
                             socket.write(string: socketString)
                             
                             // get brands
@@ -594,12 +563,11 @@ extension AgentChannelViewController : WebSocketDelegate {
                             param.customerId = self.senderId
                             param.phoneNo = self.senderName
                             param.roomName = self.senderName
-                            param.levelType = 1
-                            self.socketReq.param = param
+                            param.levelType = 2
                             socketJson = try? JSONEncoder().encode(socketReq)
                             socketString = String(data: socketJson!, encoding: .utf8)!
                             socket.write(string: socketString)
-                           
+                            
                             
                         } else if (type == "get-msg-history"){
                             if let content = jsonData["data"] as? NSArray {
@@ -645,7 +613,6 @@ extension AgentChannelViewController : WebSocketDelegate {
                                         messageBean.location = (content[index] as AnyObject).value(forKey: "location") as? String ?? ""
                                         messageBean.categoryId = (content[index] as AnyObject).value(forKey: "categoryId") as! Int
                                         messageBean.categoryName = (content[index] as AnyObject).value(forKey: "categoryName") as! String
-                                       
                                         self.messageBeanList.append(messageBean)
                                     }
                                     
@@ -715,7 +682,6 @@ extension AgentChannelViewController : WebSocketDelegate {
                                         
                                         self.socketReq.api = "read-messages"
                                         self.socketReq.param.messageId = messageBean.messageId
-                                        self.socketReq.param.levelType = messageBean.levelType
                                         let socketJson = try? JSONEncoder().encode(socketReq)
                                         let socketString = String(data: socketJson!, encoding: .utf8)!
                                         //print(socketString)
@@ -805,14 +771,14 @@ extension AgentChannelViewController : WebSocketDelegate {
                     }
                 }
             }catch {
-                print(error.localizedDescription)
+                //print(error.localizedDescription)
                 
             }
         }
     }
 }
 
-extension AgentChannelViewController:UITableViewDataSource{
+extension AgentChannelLevelTwoViewController:UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -850,7 +816,7 @@ extension AgentChannelViewController:UITableViewDataSource{
 }
 
 
-extension AgentChannelViewController : MoreMessageDelegate {
+extension AgentChannelLevelTwoViewController : MoreMessageDelegate {
     func onClickMoreMesg(messageId: Int) {
         // messageid means index in agent channel
         print("on click index ::", messageId)
@@ -886,7 +852,7 @@ extension AgentChannelViewController : MoreMessageDelegate {
 }
 
 
-extension AgentChannelViewController:UITableViewDelegate{
+extension AgentChannelLevelTwoViewController:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -897,16 +863,15 @@ extension AgentChannelViewController:UITableViewDelegate{
     }
 }
 
-extension AgentChannelViewController : CallAgentDelegate {
+extension AgentChannelLevelTwoViewController : CallAgentDelegate {
    
     
-    func onClickCallAgent(phoneNo: String , agentId : Int, messageId : Int, levelType: Int) {
+    func onClickCallAgent(phoneNo: String , agentId : Int, messageId : Int,levelType: Int) {
         phoneNo.makeCall()
         
         self.socketReq.api = "update-call-count"
         self.socketReq.param.agentId = agentId
         self.socketReq.param.messageId = messageId
-        self.socketReq.param.levelType = levelType
         let socketJson = try? JSONEncoder().encode(socketReq)
         let socketString = String(data: socketJson!, encoding: .utf8)!
         print(socketString)

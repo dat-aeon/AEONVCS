@@ -50,6 +50,7 @@ struct ATmessageBean: Codable{
     var phoneNo : String = ""
     var urlLink: String = ""
     var sendTime: String = ""
+    var levelType : Int = 1
 }
 
 struct SocketReqBean: Codable {
@@ -80,4 +81,5 @@ struct SocketParam : Codable {
     var sendFlag : Int = 0
     var sendTime : String = ""
     var readFlag : Int = 0
+    var levelType : Int = 1
 }

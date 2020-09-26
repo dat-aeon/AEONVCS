@@ -70,6 +70,7 @@ class MainNewViewController: BaseUIViewController {
     @IBOutlet weak var lblBarPhNo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.unReadAskProductLabel.isHidden = true
         self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
         askProductMessageUnRead(customerId: senderId!)
        
@@ -190,6 +191,7 @@ class MainNewViewController: BaseUIViewController {
         
         updateViews()
     }
+   
     
     @objc override func updateViews() {
         super.updateViews()
@@ -241,11 +243,22 @@ class MainNewViewController: BaseUIViewController {
             Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
             return
         }
-       
-        
-        
-        
-        
+        RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
+            
+            let freeCustomerInfoId = result.data.freeCustomerInfoID
+            
+            UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
+            
+
+            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FreeChatViewController") as? UIViewController
+            navigationVC?.modalPresentationStyle = .overFullScreen
+            self.present(navigationVC!, animated: true, completion: nil)
+
+           // self.performSegue(withIdentifier: "freemessageSegue", sender: self)
+            
+        }) { (error) in
+            print(error.localized)
+        }
     }
     
     @objc func onTapRegisterView() {

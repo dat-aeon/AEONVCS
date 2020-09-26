@@ -48,11 +48,11 @@ class ATreceiveMessageTableViewCell: UITableViewCell {
     
     @objc func onClickCallAgent(tapGestureRecognizer: UITapGestureRecognizer){
         //self.messageBean!.phoneNo.makeCall()
-        callDelegate?.onClickCallAgent(phoneNo: self.messageBean!.phoneNo, agentId: self.messageBean!.agentId, messageId: self.messageBean!.messageId)
+        callDelegate?.onClickCallAgent(phoneNo: self.messageBean!.phoneNo, agentId: self.messageBean!.agentId, messageId: self.messageBean!.messageId, levelType: self.messageBean!.levelType)
     }
 }
 
 
     protocol CallAgentDelegate {
-        func onClickCallAgent(phoneNo:String , agentId:Int, messageId : Int)
+        func onClickCallAgent(phoneNo:String , agentId:Int, messageId : Int,levelType : Int)
     }

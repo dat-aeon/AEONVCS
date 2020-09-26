@@ -87,7 +87,7 @@ class HomeNewViewController: BaseUIViewController {
     override func viewWillAppear(_ animated: Bool) {
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
         
-      //  askProductMessageUnRead(customerId: senderId!)
+        askProductMessageUnRead(customerId: senderId!)
                levelTwoUnRead(customerId: senderId!)
     }
 
@@ -96,7 +96,7 @@ class HomeNewViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        askProductView.isHidden = true
+        askProductView.isHidden = false
         loanApplicationView.isHidden = false
       logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
        
@@ -406,7 +406,7 @@ class HomeNewViewController: BaseUIViewController {
     @objc func onTapAskProductView() {
         loanAppView.isHidden = true
         print("click")
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "AgentChannelViewController") as! UIViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "AgentChannelLevelTwoViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }

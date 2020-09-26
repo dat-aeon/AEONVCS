@@ -31,6 +31,7 @@ class TermsConditionAgreeViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        roomCall()
         let defaults = UserDefaults.standard
         defaults.set(2, forKey: "eng")
         updateViews()
@@ -87,7 +88,17 @@ class TermsConditionAgreeViewController: BaseUIViewController {
         self.wholeView.addGestureRecognizer(tap)
         
     }
-    
+    func roomCall(){
+        RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
+            
+            let freeCustomerInfoId = result.data.freeCustomerInfoID
+            
+            UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
+            
+        }) { (error) in
+            print(error.localized)
+        }
+    }
 
 
     @objc func onTapMMLocale() {

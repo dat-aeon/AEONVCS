@@ -306,6 +306,7 @@
 		EDED465E243C7C4500725548 /* LevelTwoMessageUnreadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDED465D243C7C4500725548 /* LevelTwoMessageUnreadData.swift */; };
 		EDED4660243C7E0C00725548 /* LevelTwoMessageUnreadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDED465F243C7E0C00725548 /* LevelTwoMessageUnreadModel.swift */; };
 		EDED4662243C7F7200725548 /* LevelTwoMessageUnreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDED4661243C7F7200725548 /* LevelTwoMessageUnreadViewModel.swift */; };
+		EDF41272251D9F40006D5DCA /* AgentChannelLevelTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF41271251D9F40006D5DCA /* AgentChannelLevelTwoViewController.swift */; };
 		EF38F9FB23E968AD00E85262 /* HomeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FA23E968AD00E85262 /* HomeNewViewController.swift */; };
 		EF38F9FD23E96ACB00E85262 /* FreeChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */; };
 /* End PBXBuildFile section */
@@ -641,6 +642,7 @@
 		EDED465D243C7C4500725548 /* LevelTwoMessageUnreadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTwoMessageUnreadData.swift; sourceTree = "<group>"; };
 		EDED465F243C7E0C00725548 /* LevelTwoMessageUnreadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTwoMessageUnreadModel.swift; sourceTree = "<group>"; };
 		EDED4661243C7F7200725548 /* LevelTwoMessageUnreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTwoMessageUnreadViewModel.swift; sourceTree = "<group>"; };
+		EDF41271251D9F40006D5DCA /* AgentChannelLevelTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelLevelTwoViewController.swift; sourceTree = "<group>"; };
 		EF38F9FA23E968AD00E85262 /* HomeNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeNewViewController.swift; path = emplate/HomeNewViewController.swift; sourceTree = "<group>"; };
 		EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1550,6 +1552,7 @@
 			children = (
 				C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */,
 				C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */,
+				EDF41271251D9F40006D5DCA /* AgentChannelLevelTwoViewController.swift */,
 			);
 			path = agentChannel;
 			sourceTree = "<group>";
@@ -1879,6 +1882,7 @@
 				04ADBA23227C1C1900C086F2 /* HomePageViewController.swift in Sources */,
 				EDED4662243C7F7200725548 /* LevelTwoMessageUnreadViewModel.swift in Sources */,
 				6AC88E192206AFC50062926F /* BaseModel.swift in Sources */,
+				EDF41272251D9F40006D5DCA /* AgentChannelLevelTwoViewController.swift in Sources */,
 				04A718B0226EFCFC001683A6 /* PromotionPopupViewController.swift in Sources */,
 				75A31DFF220069F5002E7336 /* SecQuestConfirmViewController.swift in Sources */,
 				0495E2EA22191D1F009A6FAB /* HotlineViewModel.swift in Sources */,
