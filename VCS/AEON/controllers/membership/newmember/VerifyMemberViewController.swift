@@ -13,6 +13,9 @@ import SearchTextField
 class VerifyMemberViewController: BaseUIViewController {
     
     
+    @IBAction func backBTN(_ sender: UIButton) {
+        print("kms back btn")
+    }
     @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
@@ -142,7 +145,12 @@ class VerifyMemberViewController: BaseUIViewController {
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePicker.Mode.date
         let calendar = Calendar(identifier: .gregorian)
-        
+        if #available(iOS 13.4, *) {
+            datePickerView.preferredDatePickerStyle = .wheels
+            datePickerView.backgroundColor = UIColor.white
+        } else {
+            // Fallback on earlier versions
+        }
         let currentDate = Date()
         var components = DateComponents()
         components.calendar = calendar
@@ -259,7 +267,7 @@ class VerifyMemberViewController: BaseUIViewController {
             // print("kms\(logoutTimer)")
             }
     @objc func onTapBack() {
-       print("click")
+       print("click back")
         self.dismiss(animated: true, completion: nil)
     }
     @objc func onTapMMLocale() {

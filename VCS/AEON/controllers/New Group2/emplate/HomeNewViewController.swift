@@ -87,7 +87,7 @@ class HomeNewViewController: BaseUIViewController {
     override func viewWillAppear(_ animated: Bool) {
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
         
-        askProductMessageUnRead(customerId: senderId!)
+        askProductMessageUnRead(customerId: senderId!, levelType: 2)
                levelTwoUnRead(customerId: senderId!)
     }
 
@@ -96,8 +96,8 @@ class HomeNewViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        askProductView.isHidden = false
-        loanApplicationView.isHidden = false
+        askProductView.isHidden = true
+        loanApplicationView.isHidden = true
       logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
        
     
@@ -105,7 +105,7 @@ class HomeNewViewController: BaseUIViewController {
         self.deviceID = sessionDataBean?.loginDeviceId ?? ""
      
         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
-      //  askProductMessageUnRead(customerId: senderId!)
+        askProductMessageUnRead(customerId: senderId!, levelType: 2)
         levelTwoUnRead(customerId: senderId!)
         uiSetup()
         loanAppView.isHidden = true
@@ -322,9 +322,9 @@ class HomeNewViewController: BaseUIViewController {
     }
     
     
-    func askProductMessageUnRead(customerId: Int) {
+    func askProductMessageUnRead(customerId: Int,levelType: Int) {
         
-        AskProductViewModel.init().askProductSync(customerId: customerId, success: { (result) in
+        AskProductViewModel.init().askProductSync(customerId: customerId, levelType: levelType, success: { (result) in
             print("result ,,,.,,..,.kaungmyatsan \(result.data.askProductUnReadCount)")
             if "\(result.data.askProductUnReadCount)" == "0" {
                 self.unReadAskProductLabel.isHidden = true
@@ -390,6 +390,10 @@ class HomeNewViewController: BaseUIViewController {
     
     @objc func onTapLoanCalculatorView() {
         print("click")
+        if Network.reachability.isReachable == false {
+            Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+            return
+        }
         loanAppView.isHidden = true
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoanCalculatorViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen

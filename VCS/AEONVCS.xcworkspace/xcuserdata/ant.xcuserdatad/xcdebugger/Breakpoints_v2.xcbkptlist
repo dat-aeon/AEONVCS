@@ -142,8 +142,8 @@
             filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38">
+            startingLineNumber = "39"
+            endingLineNumber = "39">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -334,8 +334,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "roomSync(phoneNo:success:failure:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1036,8 +1036,8 @@
             filePath = "AEON/controllers/main/MainNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "660"
-            endingLineNumber = "660"
+            startingLineNumber = "659"
+            endingLineNumber = "659"
             landmarkName = "MainNewViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1046,6 +1046,22 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "11651474-B25A-4D10-97D4-FCD78250D4A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/main/MainNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "662"
+            endingLineNumber = "662"
+            landmarkName = "MainNewViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53D2C7C9-D565-4275-919C-FF9242225A1D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -1061,22 +1077,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "53D2C7C9-D565-4275-919C-FF9242225A1D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/main/MainNewViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "664"
-            endingLineNumber = "664"
-            landmarkName = "MainNewViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "CDA3E5D3-FF30-4870-BBDB-814B818B5EAC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1084,8 +1084,8 @@
             filePath = "AEON/controllers/main/MainNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "669"
-            endingLineNumber = "669"
+            startingLineNumber = "668"
+            endingLineNumber = "668"
             landmarkName = "MainNewViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1308,8 +1308,8 @@
             filePath = "AEON/controllers/main/MainNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "onTapHowToUseView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1432,8 +1432,8 @@
             filePath = "AEON/controllers/main/MainNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "onTapHowToUseView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1927,8 +1927,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1943,8 +1943,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1957,8 +1957,8 @@
             filePath = "AEON/controllers/membership/newmember/VerifyMemberViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "onClickVerifyButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1973,8 +1973,8 @@
             filePath = "AEON/controllers/membership/newmember/VerifyMemberViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
             landmarkName = "onClickVerifyButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2135,8 +2135,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
             endingLineNumber = "206"
-            landmarkName = "onClickAgreeBtn(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2309,8 +2309,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "792"
-            endingLineNumber = "792"
+            startingLineNumber = "798"
+            endingLineNumber = "798"
             landmarkName = "onClickOkBtn(checkMemberReponse:registerBean:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2325,8 +2325,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "onClickSave(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2341,8 +2341,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
             landmarkName = "onClickSave(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2357,8 +2357,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "onClickSave(_:)"
             landmarkType = "7">
             <Locations>
@@ -2405,8 +2405,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
+            startingLineNumber = "512"
+            endingLineNumber = "512"
             landmarkName = "onClickSave(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2421,8 +2421,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "onClickSave(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2437,8 +2437,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "onClickSave(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2453,8 +2453,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "546"
-            endingLineNumber = "546"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
             landmarkName = "onClickSave(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2469,8 +2469,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "555"
-            endingLineNumber = "555"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
             landmarkName = "onClickSave(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2479,38 +2479,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CD99E8E3-96D3-473B-BB89-8D0E59CA44DE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/register/RegistrationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "557"
-            endingLineNumber = "557"
-            landmarkName = "onClickSave(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8AA0E8D0-FAF4-430B-9381-848683843633"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/register/RegistrationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "560"
-            endingLineNumber = "560"
-            landmarkName = "onClickSave(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C86F54EC-57AC-4020-A217-931477F80BD2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -2526,6 +2494,38 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "8AA0E8D0-FAF4-430B-9381-848683843633"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/register/RegistrationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "566"
+            endingLineNumber = "566"
+            landmarkName = "onClickSave(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C86F54EC-57AC-4020-A217-931477F80BD2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/register/RegistrationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
+            landmarkName = "onClickSave(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             uuid = "8323D132-12C9-4B0D-9D13-B04C10D1875F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -2533,8 +2533,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "568"
-            endingLineNumber = "568"
+            startingLineNumber = "574"
+            endingLineNumber = "574"
             landmarkName = "goToSecQuesRegisterView(result:registerRequestData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2549,8 +2549,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
+            startingLineNumber = "581"
+            endingLineNumber = "581"
             landmarkName = "goToSecQuesRegisterView(result:registerRequestData:)"
             landmarkType = "7">
             <Locations>
@@ -2597,8 +2597,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "580"
-            endingLineNumber = "580"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
             landmarkName = "goToSecQuesRegisterView(result:registerRequestData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2613,8 +2613,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "589"
-            endingLineNumber = "589"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
             landmarkName = "goToSecQuesRegisterView(result:registerRequestData:)"
             landmarkType = "7">
             <Locations>
@@ -2661,8 +2661,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "598"
-            endingLineNumber = "598"
+            startingLineNumber = "604"
+            endingLineNumber = "604"
             landmarkName = "didPressButtonFromCustomView(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2677,8 +2677,8 @@
             filePath = "AEON/controllers/register/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "605"
-            endingLineNumber = "605"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
             landmarkName = "onClickBackButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2741,8 +2741,8 @@
             filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "onTapAnnouncementView()"
             landmarkType = "7">
             <Locations>
@@ -2789,8 +2789,8 @@
             filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
+            startingLineNumber = "403"
+            endingLineNumber = "403"
             landmarkName = "onTapAnnouncementView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2807,8 +2807,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "showOTPCode()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2823,8 +2823,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3637,8 +3637,8 @@
             filePath = "AEON/controllers/main/MainNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
             landmarkName = "authenticateBioMetricData(phone:password:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3653,8 +3653,8 @@
             filePath = "AEON/controllers/howtouse/HowToUseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4919,8 +4919,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "373"
             endingLineNumber = "373"
-            landmarkName = "authenticateBioMetricData(viewController:phone:password:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "01768949-8AA4-45F6-8AA4-31BFFEBB607A - 691157e1ef18eab9"
@@ -9442,10 +9442,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
-            landmarkName = "AppDelegate"
-            landmarkType = "21">
+            startingLineNumber = "394"
+            endingLineNumber = "394"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9458,8 +9458,8 @@
             filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "554"
-            endingLineNumber = "554"
+            startingLineNumber = "558"
+            endingLineNumber = "558"
             landmarkName = "onTapLogOut()"
             landmarkType = "7">
          </BreakpointContent>
@@ -9474,8 +9474,8 @@
             filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "518"
+            endingLineNumber = "518"
             landmarkName = "onTapLogOut()"
             landmarkType = "7">
          </BreakpointContent>
@@ -9490,8 +9490,8 @@
             filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "557"
-            endingLineNumber = "557"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
             landmarkName = "onTapLogOut()"
             landmarkType = "7">
             <Locations>
@@ -9538,10 +9538,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "359"
+            endingLineNumber = "359"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9554,10 +9554,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9570,10 +9570,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9586,10 +9586,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9602,10 +9602,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "355"
+            endingLineNumber = "355"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9618,10 +9618,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "367"
+            endingLineNumber = "367"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9634,10 +9634,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "357"
+            endingLineNumber = "357"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9650,10 +9650,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9691,22 +9691,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "00467215-EBF3-4DC7-A0FA-EFFE2B8BA85A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "DBB96802-417F-4225-B0E9-5A8DDD1005A8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -9714,8 +9698,8 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
             <Locations>
@@ -9762,8 +9746,8 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -9858,10 +9842,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "416"
+            endingLineNumber = "416"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9874,10 +9858,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "399"
+            endingLineNumber = "399"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9890,10 +9874,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9906,10 +9890,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9922,10 +9906,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9938,10 +9922,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9954,10 +9938,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
-            landmarkName = "messaging(_:didReceive:)"
-            landmarkType = "7">
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9986,10 +9970,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "401"
+            endingLineNumber = "401"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10002,10 +9986,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
-            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "430"
+            endingLineNumber = "430"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10018,10 +10002,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
-            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "437"
+            endingLineNumber = "437"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10034,74 +10018,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
-            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A104C408-5F70-445C-8450-9761186FD702"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/BaseUIViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
-            landmarkName = "NewupdateLocale(flag:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0E850E9F-4A4F-4FB7-97AA-3317673357C8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "508"
-            endingLineNumber = "508"
-            landmarkName = "updateViews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "36CE0B0B-D1E6-4160-9996-951480389708"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
-            landmarkName = "updateViews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "85F735FF-9162-4DAE-B2EE-932FAD04F358"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
-            landmarkName = "updateViews()"
-            landmarkType = "7">
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10116,8 +10036,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
             endingLineNumber = "109"
-            landmarkName = "onTapMMLocale()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10132,24 +10052,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "onTapMMLocale()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7D1C9132-AD14-4206-A408-DD14748A5C84"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/BaseUIViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
-            landmarkName = "NewupdateLocale(flag:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10210,10 +10114,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
-            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
-            landmarkType = "7">
+            startingLineNumber = "435"
+            endingLineNumber = "435"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10226,10 +10130,10 @@
             filePath = "AEON/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
-            landmarkName = "AppDelegate"
-            landmarkType = "21">
+            startingLineNumber = "429"
+            endingLineNumber = "429"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10242,8 +10146,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10258,8 +10162,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "787"
-            endingLineNumber = "787"
+            startingLineNumber = "803"
+            endingLineNumber = "803"
             landmarkName = "webSocketOpen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -10274,10 +10178,10 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "783"
-            endingLineNumber = "783"
-            landmarkName = "webSocketOpen()"
-            landmarkType = "7">
+            startingLineNumber = "799"
+            endingLineNumber = "799"
+            landmarkName = "FreeChatViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10290,8 +10194,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "789"
-            endingLineNumber = "789"
+            startingLineNumber = "805"
+            endingLineNumber = "805"
             landmarkName = "webSocketOpen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -10306,10 +10210,10 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "797"
-            endingLineNumber = "797"
-            landmarkName = "webSocketClose(_:reason:wasClean:)"
-            landmarkType = "7">
+            startingLineNumber = "813"
+            endingLineNumber = "813"
+            landmarkName = "FreeChatViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10322,8 +10226,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "801"
-            endingLineNumber = "801"
+            startingLineNumber = "817"
+            endingLineNumber = "817"
             landmarkName = "webSocketClose(_:reason:wasClean:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10338,8 +10242,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "805"
-            endingLineNumber = "805"
+            startingLineNumber = "821"
+            endingLineNumber = "821"
             landmarkName = "webSocketClose(_:reason:wasClean:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10354,73 +10258,9 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1389"
-            endingLineNumber = "1389"
+            startingLineNumber = "1413"
+            endingLineNumber = "1413"
             landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4C0F5057-089A-4AD7-92FF-116EB7097896"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "595"
-            endingLineNumber = "595"
-            landmarkName = "keyboardWillChange(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F1CEB0C2-E57D-4508-9646-E0BDF7DABEF7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "607"
-            endingLineNumber = "607"
-            landmarkName = "keyboardWillChange(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EEE27392-1E31-4855-8195-250CF6C1286E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "615"
-            endingLineNumber = "615"
-            landmarkName = "keyboardWillChange(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BBB9AD15-3895-4F85-8810-9E2ADB6244F8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "619"
-            endingLineNumber = "619"
-            landmarkName = "keyboardWillChange(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10437,22 +10277,6 @@
             startingLineNumber = "125"
             endingLineNumber = "125"
             landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EC26D187-AE8D-4088-965C-9218A3257909"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10969,150 +10793,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "82179873-7345-4208-9302-B5FEF1ABB96D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2917039A-AA2B-49BF-B004-BCBE70E30052"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2917039A-AA2B-49BF-B004-BCBE70E30052 - 4995af20cd4ace7a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AEONMember.FreeChatViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "AEONMember"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/controllers/contactus/FreeChatViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "3324">
-               </Location>
-               <Location
-                  uuid = "2917039A-AA2B-49BF-B004-BCBE70E30052 - 6ef4f9c27675f647"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (AEONMember.RoomSyncResponse) -&gt; () in AEONMember.FreeChatViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "AEONMember"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/controllers/contactus/FreeChatViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "854C1606-2F49-4F34-9C37-44BC6754381A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "60C70FA9-C176-4123-98B9-DD0E4CD6C6A8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/main/MainNewViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
-            landmarkName = "onTapFreeChatView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5D47301F-5422-496A-94F1-FD2C36F39C9A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/agentChannel/AgentChannelLevelTwoViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "539"
-            endingLineNumber = "539"
-            landmarkName = "websocketDidReceiveMessage(socket:text:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "87D11DD4-C4A9-403E-BE8C-86474E40B9C6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/agentChannel/AgentChannelLevelTwoViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "526"
-            endingLineNumber = "526"
-            landmarkName = "websocketDidReceiveMessage(socket:text:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0BC7461B-C193-4EAB-AF2D-7FC30461F338"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/agentChannel/AgentChannelLevelTwoViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "537"
-            endingLineNumber = "537"
-            landmarkName = "websocketDidReceiveMessage(socket:text:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "6245DD48-9EC9-4E9F-8669-7CDA23CD3802"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -11120,8 +10800,8 @@
             filePath = "AEON/controllers/agentChannel/AgentChannelLevelTwoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "513"
+            endingLineNumber = "513"
             landmarkName = "websocketDidDisconnect(socket:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -11226,7 +10906,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "30EEA32D-80BA-4B4F-8380-0767C690ABF3"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11242,7 +10922,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "543A4C88-65B7-4D7A-897C-0506B2DF649B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11258,7 +10938,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E13820FF-D201-4290-960F-043F407AC453"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11274,7 +10954,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6BE9A119-8C4A-4591-BB3C-3DB95A842610"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11290,7 +10970,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "51E909DF-2DF5-457F-A904-A5450B4149CE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11306,7 +10986,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0F445798-0815-459C-BC62-9C744A9788AF"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11322,7 +11002,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EC73BBF5-76C5-4D54-AA49-04E7D4705ADC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11338,7 +11018,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3E9EC41C-66B4-4BD5-B7D4-8AA7DEFAFF0E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11354,7 +11034,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "2D56600F-9F00-46B9-8EA3-68045B005387"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11370,7 +11050,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "37E20A24-2535-4A83-8209-3848292ACDB2"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11386,7 +11066,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A830D070-B01B-4E8B-9A94-E4E86D8C0614"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11402,7 +11082,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "84E81FAA-6BD8-4CB1-B261-C36733FE013D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11418,7 +11098,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "39399C90-A9CC-450D-9F47-F9E534F9ADFD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11434,7 +11114,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B646E206-00A0-4406-BEA6-92B01DF6C3F9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11450,7 +11130,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6B792A11-6FFE-4EAD-9EAE-F87449CD4416"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11465,40 +11145,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EF4E7B88-75EF-4199-AD74-20289B7AE958"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
-            landmarkName = "reloadMessage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "195BD795-6296-4C3B-98A1-9619D2B11155"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "reloadMessage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "16E7FE47-B6FF-4302-A63A-7B55DC55F7AB"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11514,7 +11162,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "79AC975E-1F07-4431-B447-AE90DC0E4B5C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11530,7 +11178,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "523F3911-3E68-4B7F-92DF-DF4F7A412343"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11546,7 +11194,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EA23FBAD-7F1C-49E9-B2A8-689ED66E6C51"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11562,7 +11210,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C52B6CC7-EE16-4D26-A8EA-D471D7933E15"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11578,7 +11226,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5E7B58FA-D089-4254-A8DE-C8E9F327BE64"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11594,7 +11242,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6585B814-35F2-4314-B4A3-C9DD27E7294D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11610,7 +11258,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AF9292F9-40F4-4D7D-B8F2-568F4086907F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11626,7 +11274,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FCEDFDF8-2971-4CA6-8CE4-C91B49715386"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11642,7 +11290,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "919150FA-3FB0-4843-9C68-1844FFEB6E70"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11658,7 +11306,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1D9E7C29-32DE-4E38-9007-C17572B5A0EC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11705,40 +11353,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C4B0C3DE-AE06-483A-89E1-BDAC43C6E7CA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "reloadMessage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "216C6561-A92A-4421-A9B6-F72EF71F8613"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
-            landmarkName = "reloadMessage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "58E826D8-6382-4F03-884C-F8D1BF0AEC39"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11754,7 +11370,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C259ECD7-EF5B-4707-BA99-411D72F4FA64"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11770,7 +11386,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "09A73AA8-FE93-4D1B-AC86-6DA1F557D278"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11786,7 +11402,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C8DB2A06-EEBB-44E6-AF73-1FA5D64C2259"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11802,7 +11418,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "04CF42FE-1CB2-44CB-B2C9-269759D11C1E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11818,7 +11434,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "792809FF-6B06-44DD-BF27-8D4C9B4DB932"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11834,7 +11450,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "982E45F9-B850-479C-AA39-B1661A60BD06"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11850,7 +11466,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7E89E42A-3437-4D00-ADDB-CF902B1C883C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11866,7 +11482,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1C030734-430B-48AF-812E-37651D162320"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11882,7 +11498,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AF874353-E7BE-461A-AC87-2F9D61D6DFB7"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11898,7 +11514,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9B72B4D5-4B98-4796-B136-F4D9CCE21E8B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11914,7 +11530,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9E1009E5-A8F8-44FF-A0A5-CE109A2DFBE2"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11930,7 +11546,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "D72246E3-7736-4B79-A8F2-1781CB7788E5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11946,7 +11562,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FD8EDCF7-78D5-4A84-B4A4-E1250D0C1C22"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11962,7 +11578,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4B252691-CD3A-4222-AB89-C08E5E08C236"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11978,7 +11594,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6492BCDC-B562-45D2-8A42-CD458D72B223"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -11994,7 +11610,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6386EDB6-9225-448A-BDD2-7CFA5768AF28"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12010,7 +11626,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "48D62B0B-1218-4DE8-BDFD-283AC795C429"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12026,7 +11642,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DD50020F-30C0-4751-956B-E15915BA8565"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12042,7 +11658,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "934644D0-98BE-45C5-961E-448D15A2D9B0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12058,7 +11674,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A0A652DD-8CD9-4626-B21E-F85271266821"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12074,7 +11690,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B90145BC-0F1E-4E7F-B581-5BC5124089CD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12090,7 +11706,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C750DA8F-BD8A-4FDF-A929-E59C1F82D8C9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12106,7 +11722,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EA36925F-D98E-4D5B-85C7-110BF7DE5583"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12122,7 +11738,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "36F90265-F89B-4C95-ABCE-1EA44C559582"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12130,15 +11746,15 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "515"
             endingLineNumber = "515"
-            landmarkName = "AgentChannelViewController"
-            landmarkType = "21">
+            landmarkName = "websocketDidReceiveData(socket:data:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "95C0A6EA-B1A4-47B6-B3C0-3EC061232096"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12154,7 +11770,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "75C0398F-AC23-4C9D-997A-F561958E1A64"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12170,7 +11786,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "65629F29-EDFA-4B08-BE3A-2A23E0AF8F02"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12186,7 +11802,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "41FB317A-03CA-426C-AC1F-AA46E21F44E8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12202,7 +11818,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5EA94E7C-5DA6-4687-B9F5-2E67647BF1DE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12218,7 +11834,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "59F4F68F-412D-4FBE-A9DB-933876367934"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12234,7 +11850,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BC603139-12EC-476E-9164-EB91FAB7377C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/agentChannel/AgentChannelViewController.swift"
@@ -12243,6 +11859,838 @@
             startingLineNumber = "550"
             endingLineNumber = "550"
             landmarkName = "websocketDidDisconnect(socket:error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6006B6B8-4B88-49DD-A2B7-30E4881E012A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8B2DD36-3B30-42D7-B930-53058F416F7D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C3208D4-D82C-41FF-BDFB-7C4F407A9231"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "837A1E20-CE62-4E32-8499-402782C8005B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E5F38C8-1033-40CB-BB05-7A8EFC191B8E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "797B8492-AA39-4375-813E-75724F9ABDBC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/agentChannel/AgentChannelLevelTwoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
+            landmarkName = "websocketDidReceiveMessage(socket:text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF88582C-0DEF-4C4A-978B-8E286933212B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4F62151E-BB57-4299-BFF4-EEEBC9140F0F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69335CE7-2081-4287-AA4C-BAEC7D3FFC9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "69335CE7-2081-4287-AA4C-BAEC7D3FFC9F - 3535c7d649cf5d66"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AEONMember.HomeNewViewController.askProductMessageUnRead(customerId: Swift.Int, levelType: Swift.Int) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/controllers/New%20Group2/emplate/HomeNewViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "327"
+                  endingLineNumber = "327"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "69335CE7-2081-4287-AA4C-BAEC7D3FFC9F - d7774467e613bd58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AEONMember.contactUsResponse) -&gt; () in AEONMember.HomeNewViewController.askProductMessageUnRead(customerId: Swift.Int, levelType: Swift.Int) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/controllers/New%20Group2/emplate/HomeNewViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "328"
+                  endingLineNumber = "328"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CAE049B4-44BA-4117-9C76-38D2D3BF2003"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CAE049B4-44BA-4117-9C76-38D2D3BF2003 - d7774467e613beb7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AEONMember.contactUsResponse) -&gt; () in AEONMember.HomeNewViewController.askProductMessageUnRead(customerId: Swift.Int, levelType: Swift.Int) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/controllers/New%20Group2/emplate/HomeNewViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "339"
+                  endingLineNumber = "339"
+                  offsetFromSymbolStart = "2376">
+               </Location>
+               <Location
+                  uuid = "CAE049B4-44BA-4117-9C76-38D2D3BF2003 - d57c41024d02e870"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.String) -&gt; () in AEONMember.HomeNewViewController.askProductMessageUnRead(customerId: Swift.Int, levelType: Swift.Int) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/controllers/New%20Group2/emplate/HomeNewViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "340"
+                  endingLineNumber = "340"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7EAE840A-CC13-41FF-96FA-EB50A59A0622"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14B73C08-B466-4A83-8B73-D1AA3CA211F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "askProductSync(customerId:levelType:success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B77E1D8-16BC-4998-802A-6D59D9D16DDF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "askProductSync(customerId:levelType:success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EFFF320-9B8E-4ABA-B548-A7BDA7F0926B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "askProductSync(customerId:levelType:success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "560356A2-BEDB-4E04-A3B8-96CAC432A89A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "askProductSync(customerId:levelType:success:failure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "560356A2-BEDB-4E04-A3B8-96CAC432A89A - 15c2b1ec558cb638"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.String) -&gt; () in AEONMember.AskProductViewModel.askProductSync(customerId: Swift.Int, levelType: Swift.Int, success: (AEONMember.contactUsResponse) -&gt; (), failure: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/data/viewmodel/AskProductViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "560356A2-BEDB-4E04-A3B8-96CAC432A89A - 1aa18255d6dde378"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AEONMember.contactUsResponse) -&gt; () in closure #2 (Swift.String) -&gt; () in AEONMember.AskProductViewModel.askProductSync(customerId: Swift.Int, levelType: Swift.Int, success: (AEONMember.contactUsResponse) -&gt; (), failure: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/data/viewmodel/AskProductViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BD023EE-8BDD-42CE-B109-F8352FF61568"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "askProductSync(customerId:levelType:success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17CF54F7-93D8-46CC-B488-8030B8D6ACE8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "askProductSync(customerId:levelType:success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A4B0472-8794-44ED-A656-B19BFEE497FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "askProductSync(customerId:levelType:success:failure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7A4B0472-8794-44ED-A656-B19BFEE497FC - 1aa18255d6dde3d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AEONMember.contactUsResponse) -&gt; () in closure #2 (Swift.String) -&gt; () in AEONMember.AskProductViewModel.askProductSync(customerId: Swift.Int, levelType: Swift.Int, success: (AEONMember.contactUsResponse) -&gt; (), failure: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/data/viewmodel/AskProductViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "364">
+               </Location>
+               <Location
+                  uuid = "7A4B0472-8794-44ED-A656-B19BFEE497FC - 3f6790ab2fc87ed7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.String) -&gt; () in closure #2 (Swift.String) -&gt; () in AEONMember.AskProductViewModel.askProductSync(customerId: Swift.Int, levelType: Swift.Int, success: (AEONMember.contactUsResponse) -&gt; (), failure: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/data/viewmodel/AskProductViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5CFD63DF-AEE1-4401-B750-87E936B9D33A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/AskProductViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "askProductSync(customerId:levelType:success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4FFE9EEE-1855-4B86-90A8-B580D7FBA1FC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/agentChannel/AgentChannelLevelTwoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "647"
+            endingLineNumber = "647"
+            landmarkName = "websocketDidReceiveMessage(socket:text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E7DD867-D847-42E4-8711-D32CDE12AD43"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/agentChannel/AgentChannelLevelTwoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "websocketDidReceiveMessage(socket:text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69B4EA7A-1096-4301-8145-C64210D9F39A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/agentChannel/AgentChannelLevelTwoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "653"
+            endingLineNumber = "653"
+            landmarkName = "websocketDidReceiveMessage(socket:text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F61492D-E084-445E-82B2-D10D2860C304"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "levelTwoUnRead(customerId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D46022E3-BE03-42FC-B991-FEEC6B2585EB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "levelTwoUnRead(customerId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D46022E3-BE03-42FC-B991-FEEC6B2585EB - 1ae2fe18fc423e8c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AEONMember.HomeNewViewController.levelTwoUnRead(customerId: Swift.Int) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/controllers/New%20Group2/emplate/HomeNewViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "305"
+                  endingLineNumber = "305"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "D46022E3-BE03-42FC-B991-FEEC6B2585EB - 9a9839d64bfa4f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AEONMember.levelTwoMessageUnReadResponse) -&gt; () in AEONMember.HomeNewViewController.levelTwoUnRead(customerId: Swift.Int) -&gt; ()"
+                  moduleName = "AEONMember"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/controllers/New%20Group2/emplate/HomeNewViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E0963F6-7B0C-4A95-A0DD-CCA9A437EC5F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6CE49C6E-34C0-4464-99C2-BD71E530DAD2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31FD5BA5-FA9E-41BF-828D-B7234DC75B73"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/LevelTwoMessageUnreadViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "levelTwoUnreadMessageSync(customerId:success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA5AAF59-C891-4635-B01E-018F948CE4FD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/data/viewmodel/LevelTwoMessageUnreadViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "levelTwoUnreadMessageSync(customerId:success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E31B5DDB-A818-40BD-97E5-8029B73B33B8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/New Group2/emplate/HomeNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
+            landmarkName = "levelTwoUnRead(customerId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D93F4648-75B6-432B-8780-4FF3FE863011"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/main/MainNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1152D5F8-1C97-4CF7-9CCD-A01DED8FCA56"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/main/MainNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B329DB7C-C320-4485-94C9-EA593BE35D9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/main/MainNewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94A8DFB6-1EF2-4CB3-9117-8CB3FDEA6D6E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "botChatAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55FF28AA-CD3F-4774-84DD-206002C019F2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "botChatAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6E63768-E845-49CE-87AD-357B3F43DFFC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1125"
+            endingLineNumber = "1125"
+            landmarkName = "websocketDidReceiveMessage(socket:text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE0F4B9D-8E8E-48A6-8FC5-6C06C22F75E9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1091"
+            endingLineNumber = "1091"
+            landmarkName = "websocketDidReceiveMessage(socket:text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96A4BB15-4AF6-41DD-93A3-044A92CCE4B8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1099"
+            endingLineNumber = "1099"
+            landmarkName = "websocketDidReceiveMessage(socket:text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3DD8E40E-71B5-4C3C-8CBE-38788ABD221D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/register/OTPRegisterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3DF4EBCA-89FD-4EEC-9785-596392A5717E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1316"
+            endingLineNumber = "1316"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "37FB0B3F-393F-4B8E-A908-E79737EF4706"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1320"
+            endingLineNumber = "1320"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C7EF6B9-33BC-477F-9902-0A6DE9C28A31"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/howtouse/HowToUseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "onTapBack()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFE9A988-374F-43F9-A294-2B3D1A2E669A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/howtouse/HowToUseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "onTapBack()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

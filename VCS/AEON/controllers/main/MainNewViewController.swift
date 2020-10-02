@@ -70,9 +70,10 @@ class MainNewViewController: BaseUIViewController {
     @IBOutlet weak var lblBarPhNo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.askProductView.isHidden = true
         self.unReadAskProductLabel.isHidden = true
         self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
-        askProductMessageUnRead(customerId: senderId!)
+        askProductMessageUnRead(customerId: senderId!, levelType: 1)
        
      //   notiData()
        // autoReplyMessage()
@@ -80,6 +81,7 @@ class MainNewViewController: BaseUIViewController {
         // gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 //        multiLoginGet()
         updateViews()
+        uiSetup()
         self.viewoverScrollView.isHidden = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -126,9 +128,18 @@ class MainNewViewController: BaseUIViewController {
 
         
     }
-     func askProductMessageUnRead(customerId: Int) {
+    func uiSetup() {
+       
+        
+        unReadAskProductLabel.layer.cornerRadius = unReadAskProductLabel.frame.size.height / 2
+        unReadAskProductLabel.layer.masksToBounds = true
+        unReadAskProductLabel?.layer.borderColor = UIColor.red.cgColor
+        unReadAskProductLabel?.layer.borderWidth = 1.0
+       
+    }
+     func askProductMessageUnRead(customerId: Int,levelType: Int) {
            
-           AskProductViewModel.init().askProductSync(customerId: customerId, success: { (result) in
+        AskProductViewModel.init().askProductSync(customerId: customerId, levelType: levelType, success: { (result) in
                print("result ,,,.,,..,.kaungmyatsan \(result.data.askProductUnReadCount)")
                if "\(result.data.askProductUnReadCount)" == "0" {
                    self.unReadAskProductLabel.isHidden = true
@@ -164,7 +175,7 @@ class MainNewViewController: BaseUIViewController {
     override func viewWillAppear(_ animated: Bool) {
        // multiLoginGet()
         self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
-        askProductMessageUnRead(customerId: senderId!)
+        askProductMessageUnRead(customerId: senderId!, levelType: 1)
         
         if(!(UserDefaults.standard.bool(forKey: Constants.IS_LOGOUT)) &&
             UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO) != nil){
@@ -243,22 +254,9 @@ class MainNewViewController: BaseUIViewController {
             Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
             return
         }
-        RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
-            
-            let freeCustomerInfoId = result.data.freeCustomerInfoID
-            
-            UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
-            
-
-            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FreeChatViewController") as? UIViewController
-            navigationVC?.modalPresentationStyle = .overFullScreen
-            self.present(navigationVC!, animated: true, completion: nil)
-
-           // self.performSegue(withIdentifier: "freemessageSegue", sender: self)
-            
-        }) { (error) in
-            print(error.localized)
-        }
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FreeChatViewController") as? UIViewController
+        navigationVC?.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC!, animated: true, completion: nil)
     }
     
     @objc func onTapRegisterView() {
@@ -266,15 +264,16 @@ class MainNewViewController: BaseUIViewController {
             Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
             return
         }
-        
-        print("click")
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as! RegistrationViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc func onTapLoanCalculatorView() {
-        print("click")
+        if Network.reachability.isReachable == false {
+            Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
+            return
+        }
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoanCalculatorViewController") as! LoanCalculatorViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)

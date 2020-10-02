@@ -15,8 +15,8 @@ class contactUsModel:BaseModel {
     
     
     
-    func contactUsMessage(customerId: Int, success: @escaping (contactUsResponse) -> Void,failure: @escaping (String) -> Void){
-        let rawData = ["customerId": customerId]
+    func contactUsMessage(customerId: Int,levelType: Int, success: @escaping (contactUsResponse) -> Void,failure: @escaping (String) -> Void){
+        let rawData = ["customerId": customerId,"levelType": levelType]
         _ = super.getAskProductUnreadPostWithoutToken(endPoint: ApiServiceEndPoint.contactUpMessageApi, rawData: rawData) { (result) in
         print("askProductunread Response result kaungmyatsan:::::::::::\(result)")
             switch result{

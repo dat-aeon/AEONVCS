@@ -27,7 +27,7 @@ class HowToUseViewController: BaseUIViewController {
     var vdoPath : String = ""
      var logoutTimer: Timer?
     private var playerController: AVPlayerViewController?
-   
+    var player = AVPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -51,6 +51,9 @@ class HowToUseViewController: BaseUIViewController {
            //  var vdoUrl = "https://ass.aeoncredit.com.mm/daso/how-to-use-video/\(self.vdoPath)"
             let vdoUrl = Constants.video_url + self.vdoPath
             if self.vdoView.superview != nil {
+             
+                let videoPlayerURL = AVPlayer(url: URL(string: vdoUrl)!)
+                self.player = videoPlayerURL
                 self.addVideoPlayer(videoUrl: URL(string: vdoUrl
                     )!, to: self.vdoView)
             }
@@ -110,7 +113,9 @@ class HowToUseViewController: BaseUIViewController {
                }
            }
     @objc func onTapBack() {
-       print("click")
+       print("click back")
+        player.pause()
+      
         self.dismiss(animated: true, completion: nil)
     }
     @objc func onTapMMLocale() {
@@ -131,13 +136,14 @@ class HowToUseViewController: BaseUIViewController {
     
         
     @IBAction func closeTap(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
     }
     func addVideoPlayer(videoUrl: URL, to view: UIView) {
             playerController = AVPlayerViewController()
             playerController?.player = AVPlayer(url: videoUrl)
             playerController!.view.frame = view.bounds
-            
+    
             view.addSubview(playerController!.view)
         }
 

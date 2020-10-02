@@ -111,7 +111,7 @@ class FreeChatViewController: BaseUIViewController {
 //
 //            self.messageBeanList.append(welcome)
             
-         //   AutomessageBean.message = mainLan
+           // AutomessageBean.message = mainLan
           let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: "welcome", message: mainLan, sender: "", sendTime: "", readFlag: "", messageId: 0)
             self.messageBeanList.append(messageWelcome)
             tvMessagingView.reloadData()
@@ -267,18 +267,18 @@ class FreeChatViewController: BaseUIViewController {
 
         
 
-      autoReplyMessage()
-        let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: "welcome", message: mainLan, sender: "", sendTime: "", readFlag: "", messageId: 0)
-          self.messageBeanList.append(messageWelcome)
+     // autoReplyMessage()
+//        let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: "welcome", message: mainLan, sender: "", sendTime: "", readFlag: "", messageId: 0)
+//          self.messageBeanList.append(messageWelcome)
         AutomessageBean.isMessagingBot = true
-        AutomessageBean.isReceiveMesg = true
+     //   AutomessageBean.isReceiveMesg = true
 
       //  AutomessageBean.message = mainLan
 
                        
 
        self.messageBeanList.append(AutomessageBean)
-
+        
             self.tvMessagingView.reloadData()
 
         
@@ -323,9 +323,10 @@ scrollToBottom()
 
             updateViews()
 
-          mainLan = mmLan
-
-           tvMessagingView.reloadData()
+//          mainLan = mmLan
+//            AutomessageBean.message = mmLan
+//
+//           tvMessagingView.reloadData()
 
         }
 
@@ -336,10 +337,10 @@ scrollToBottom()
             super.NewupdateLocale(flag: 2)
 
             updateViews()
-
-            mainLan = engLan
-
-            tvMessagingView.reloadData()
+//            AutomessageBean.message = engLan
+//            mainLan = engLan
+//
+//            tvMessagingView.reloadData()
 
             
 
@@ -355,18 +356,33 @@ scrollToBottom()
 
         func autoReplyMessage() {
 
-             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+          //   CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
 
                           AutoReplyMessageModel.init().AutoReplyMessageSync(success: { (result) in
 
 
-                           self.mainLan = result.data.messageMya
-
-                            self.mmLan = result.data.messageMya
-
-                            self.engLan = result.data.messageEng
-
+//                           self.mainLan = result.data.messageMya
+//
+//                            self.mmLan = result.data.messageMya
+//
+//                            self.engLan = result.data.messageEng
+//
+//
+//                            self.tvMessagingView.reloadData()
                             
+                            if self.mmFlag == self.language.rawValue{
+                                super.NewupdateLocale(flag: 1)
+                                self.mainLan = result.data.messageMya
+                                self.AutomessageBean.message = self.mmLan
+                                self.tvMessagingView.reloadData()
+
+                            }else if self.engFlag == self.language.rawValue{
+                                super.NewupdateLocale(flag: 2)
+                                self.mainLan = result.data.messageEng
+                                self.AutomessageBean.message = self.engLan
+                                self.tvMessagingView.reloadData()
+
+                            }
 
                                         }) { (error) in
 
@@ -374,7 +390,7 @@ scrollToBottom()
 
                                         }
 
-               self.tvMessagingView.reloadData()
+            //   self.tvMessagingView.reloadData()
 //scrollToBottom()
             
 
@@ -1084,9 +1100,9 @@ scrollToBottom()
 
                                     //print("more message list array size :", content.count)
 
-                                    
-
+                                
                                    
+                                    
 
                                     
 
@@ -1107,7 +1123,7 @@ scrollToBottom()
                                         
 
                                         if content.count == content.count {
-
+                                            
                                             var messageBean = MessageBean()
 
                                             messageBean.isButton = true
@@ -1133,7 +1149,9 @@ scrollToBottom()
                                             
 
                                             var messageBean = MessageBean()
-
+                                           
+                                          
+                                        
                                             
 
                                             messageBean.message = (content[index] as AnyObject).value(forKey: "text") as? String
@@ -1143,7 +1161,8 @@ scrollToBottom()
                                             //print("type = mobile old msg : messageBean.sendtime \(messageBean.sendTime)")
 
                                             messageBean.sender = "AEON"
-
+                                           
+                                            
                                             if 1 == (content[index] as AnyObject).value(forKey: "message_type") as? Int {
 
                                                 messageBean.isPhoto = true
@@ -1294,7 +1313,13 @@ scrollToBottom()
 
             var messageData = self.messageBeanList[indexPath.row]
 
-         
+            if indexPath.row == messageBeanList.count - 1 {
+                if messageData.isMessagingBot == true {
+                    botchat.isUserInteractionEnabled = false
+                }else{
+                    botchat.isUserInteractionEnabled = true
+                }
+            }
 
             print("messadata trr \(messageData.type)")
             let chat = messageBeanList[indexPath.row]
@@ -1302,6 +1327,7 @@ scrollToBottom()
             if chat.type == "welcome"{
                 print("welcome my friend")
                 let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.WELCOME_TABLE_CELL, for: indexPath) as! WelcomeTableViewCell
+                
                 cell.lbMesgText.text = mainLan
                                cell.selectionStyle = .none
 
@@ -1337,14 +1363,12 @@ scrollToBottom()
                 
 
             }else if (messageData.isMessagingBot) == true {
+                
 
                 let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.MESG_SEND_CHAT_BOT, for: indexPath) as! ChatBotTableViewCell
                 cell.delegate = self
-                               cell.selectionStyle = .none
-
-
-
-                               return cell
+                cell.selectionStyle = .none
+                return cell
 
             }else if (messageData.type) == "welcome" {
                 
@@ -1399,6 +1423,7 @@ scrollToBottom()
            
 
         }
+        
 
         
 

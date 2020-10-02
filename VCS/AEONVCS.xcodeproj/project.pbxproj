@@ -269,8 +269,6 @@
 		ED342A97251A154000F126EE /* SendChatQuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED342A96251A154000F126EE /* SendChatQuestionData.swift */; };
 		ED342AB3251A3F3600F126EE /* SendChatQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED342AB2251A3F3500F126EE /* SendChatQuestionModel.swift */; };
 		ED342AB7251A424700F126EE /* SendChatQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED342AB6251A424700F126EE /* SendChatQuestionViewModel.swift */; };
-		ED37FDF7250A33C700937830 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FDF6250A33C700937830 /* NotificationService.swift */; };
-		ED37FDFB250A33C700937830 /* AEONVCSNOTIFICATION.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED37FDF4250A33C700937830 /* AEONVCSNOTIFICATION.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ED387DB8243AF1E500F8DD8A /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */; };
 		ED387DBA243B17FF00F8DD8A /* AskProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DB9243B17FF00F8DD8A /* AskProductViewModel.swift */; };
 		ED387DBC243B1E8F00F8DD8A /* ContactUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED387DBB243B1E8F00F8DD8A /* ContactUsData.swift */; };
@@ -311,16 +309,6 @@
 		EF38F9FD23E96ACB00E85262 /* FreeChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38F9FC23E96ACB00E85262 /* FreeChatViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		ED37FDF9250A33C700937830 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 753C8B8821F9B670002E101B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ED37FDF3250A33C700937830;
-			remoteInfo = AEONVCSNOTIFICATION;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		ED37FDFC250A33C700937830 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -328,7 +316,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				ED37FDFB250A33C700937830 /* AEONVCSNOTIFICATION.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,7 +589,6 @@
 		ED342A96251A154000F126EE /* SendChatQuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendChatQuestionData.swift; sourceTree = "<group>"; };
 		ED342AB2251A3F3500F126EE /* SendChatQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendChatQuestionModel.swift; sourceTree = "<group>"; };
 		ED342AB6251A424700F126EE /* SendChatQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendChatQuestionViewModel.swift; sourceTree = "<group>"; };
-		ED37FDF4250A33C700937830 /* AEONVCSNOTIFICATION.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AEONVCSNOTIFICATION.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED37FDF6250A33C700937830 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		ED37FDF8250A33C700937830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED387DB7243AF1E500F8DD8A /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
@@ -653,13 +639,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0481007D23FD12E70005515D /* Pods_AEONVCS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED37FDF1250A33C700937830 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1395,7 +1374,6 @@
 			isa = PBXGroup;
 			children = (
 				753C8B9021F9B670002E101B /* AEONMember.app */,
-				ED37FDF4250A33C700937830 /* AEONVCSNOTIFICATION.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1630,29 +1608,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				ED37FDFA250A33C700937830 /* PBXTargetDependency */,
 			);
 			name = AEONVCS;
 			productName = AEON;
 			productReference = 753C8B9021F9B670002E101B /* AEONMember.app */;
 			productType = "com.apple.product-type.application";
-		};
-		ED37FDF3250A33C700937830 /* AEONVCSNOTIFICATION */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ED37FDFF250A33C700937830 /* Build configuration list for PBXNativeTarget "AEONVCSNOTIFICATION" */;
-			buildPhases = (
-				ED37FDF0250A33C700937830 /* Sources */,
-				ED37FDF1250A33C700937830 /* Frameworks */,
-				ED37FDF2250A33C700937830 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AEONVCSNOTIFICATION;
-			productName = AEONVCSNOTIFICATION;
-			productReference = ED37FDF4250A33C700937830 /* AEONVCSNOTIFICATION.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1676,9 +1636,6 @@
 							};
 						};
 					};
-					ED37FDF3250A33C700937830 = {
-						CreatedOnToolsVersion = 11.6;
-					};
 				};
 			};
 			buildConfigurationList = 753C8B8B21F9B670002E101B /* Build configuration list for PBXProject "AEONVCS" */;
@@ -1695,7 +1652,6 @@
 			projectRoot = "";
 			targets = (
 				753C8B8F21F9B670002E101B /* AEONVCS */,
-				ED37FDF3250A33C700937830 /* AEONVCSNOTIFICATION */,
 			);
 		};
 /* End PBXProject section */
@@ -1749,13 +1705,6 @@
 				6A69823D2219775E00840561 /* SideMenuListTableViewCell.xib in Resources */,
 				752115E222019378001BC94A /* SecQuesConfirmTableViewCell.xib in Resources */,
 				75C9F39621FD9C8A00D65E0A /* QR_codeViewCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED37FDF2250A33C700937830 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2083,23 +2032,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED37FDF0250A33C700937830 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED37FDF7250A33C700937830 /* NotificationService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		ED37FDFA250A33C700937830 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ED37FDF3250A33C700937830 /* AEONVCSNOTIFICATION */;
-			targetProxy = ED37FDF9250A33C700937830 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		753C8B9721F9B670002E101B /* Main.storyboard */ = {
@@ -2251,7 +2184,7 @@
 				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = NC9BA4Z58U;
 				INFOPLIST_FILE = AEON/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2279,7 +2212,7 @@
 				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = NC9BA4Z58U;
 				INFOPLIST_FILE = AEON/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2291,48 +2224,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS;
 				PRODUCT_NAME = AEONMember;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		ED37FDFD250A33C700937830 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NC9BA4Z58U;
-				INFOPLIST_FILE = AEONVCSNOTIFICATION/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS.AEONVCSNOTIFICATION;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		ED37FDFE250A33C700937830 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NC9BA4Z58U;
-				INFOPLIST_FILE = AEONVCSNOTIFICATION/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mm.com.aeonmicrofinance.vcsaeon.AEONVCS.AEONVCSNOTIFICATION;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2355,15 +2246,6 @@
 			buildConfigurations = (
 				753C8BA621F9B67B002E101B /* Debug */,
 				753C8BA721F9B67B002E101B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ED37FDFF250A33C700937830 /* Build configuration list for PBXNativeTarget "AEONVCSNOTIFICATION" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ED37FDFD250A33C700937830 /* Debug */,
-				ED37FDFE250A33C700937830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

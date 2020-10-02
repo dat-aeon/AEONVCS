@@ -40,11 +40,11 @@ class OTPRegisterViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("generate otp code ::: \(self.otpCode ?? "")")
-//        
-//        Utils.showAlert(viewcontroller: self, title: "YOUR OTP", message: self.otpCode!)
-//        
+        print("generate otp code ::: \(self.otpCode ?? "")")
         
+      //  Utils.showAlert(viewcontroller: self, title: "YOUR OTP", message: self.otpCode!)
+        
+        showOTPCode()
         
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -83,7 +83,7 @@ class OTPRegisterViewController: BaseUIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //self.showOTPCode()
+        self.showOTPCode()
     }
     
     func showOTPCode() {
@@ -297,7 +297,7 @@ class OTPRegisterViewController: BaseUIViewController {
         OTPViewModel.init().sendOTPRequest(siteActivationKey: Constants.SITE_ACTIVATION_KEY, phoneNo: (self.registerRequestData?.phoneNo)!, success: { (result) in
             
             self.otpCode = result.data.otpCode
-            //self.showOTPCode()
+            self.showOTPCode()
             self.isValid = true
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             self.count = 120

@@ -19,7 +19,7 @@ let googleApiKey = "AIzaSyA9LipdYZoY8gGLt9KGm1-ia8RHc9ul2Gk"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-   var localRemoteMessage : MessagingRemoteMessage? = nil
+  // var localRemoteMessage : MessagingRemoteMessage? = nil
     let gcmMessageIDKey = "gcm.message_id"
   
     var window: UIWindow?
@@ -90,44 +90,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] {
                  //TODO: Handle background notification
                }
-       application.registerForRemoteNotifications()
+     //  application.registerForRemoteNotifications()
       
                if let userInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] {
                  //TODO: Handle background notification
                }
         
-        func requestNotificationAuthorization(application: UIApplication) {
-                   if #available(iOS 10.0, *) {
-                     UNUserNotificationCenter.current().delegate = self
-                     let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-                     UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
-                   } else {
-                     let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-                     application.registerUserNotificationSettings(settings)
-                   }
-                 }
+//        func requestNotificationAuthorization(application: UIApplication) {
+//                   if #available(iOS 10.0, *) {
+//                     UNUserNotificationCenter.current().delegate = self
+//                     let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//                     UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
+//                   } else {
+//                     let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//                     application.registerUserNotificationSettings(settings)
+//                   }
+//                 }
     
-        requestNotificationAuthorization(application: application)
+    //    requestNotificationAuthorization(application: application)
         
-        if #available(iOS 10.0, *) {
-                 
-                 UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-                    print("granted: \(granted)")
-                     DispatchQueue.main.async {
-                         if granted {
-                             UIApplication.shared.registerForRemoteNotifications()
-                         }
-                     }
-                     
-                     
-                 }
-                 
-             } else {
-                 
-                 application.registerUserNotificationSettings(UIUserNotificationSettings(types: UIUserNotificationType(rawValue: UIUserNotificationType.sound.rawValue | UIUserNotificationType.alert.rawValue |
-                     UIUserNotificationType.badge.rawValue), categories: nil))
-             }
-        application.registerForRemoteNotifications()
+//        if #available(iOS 10.0, *) {
+//                 
+//                 UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+//                    print("granted: \(granted)")
+//                     DispatchQueue.main.async {
+//                         if granted {
+//                             UIApplication.shared.registerForRemoteNotifications()
+//                         }
+//                     }
+//                     
+//                     
+//                 }
+//                 
+//             } else {
+//                 
+//                 application.registerUserNotificationSettings(UIUserNotificationSettings(types: UIUserNotificationType(rawValue: UIUserNotificationType.sound.rawValue | UIUserNotificationType.alert.rawValue |
+//                     UIUserNotificationType.badge.rawValue), categories: nil))
+//             }
+//        application.registerForRemoteNotifications()
 
         Messaging.messaging().delegate = self
         FirebaseApp.configure()
@@ -306,17 +306,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       completionHandler(UIBackgroundFetchResult.newData)
     
     }
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let deviceTokenString = deviceToken.hexString
-         let fcmDeviceToken = Messaging.messaging().fcmToken
-        print("mydeviceToken : \(deviceToken)")
-        print(fcmDeviceToken as Any)
-       print(deviceTokenString)
-       
-    }
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("my error: \(error)")
-    }
+//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        let deviceTokenString = deviceToken.hexString
+//         let fcmDeviceToken = Messaging.messaging().fcmToken
+//        print("mydeviceToken : \(deviceToken)")
+//        print(fcmDeviceToken as Any)
+//       print(deviceTokenString)
+//
+//    }
+//    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+//        print("my error: \(error)")
+//    }
 
 }
 
@@ -346,45 +346,39 @@ extension AppDelegate : MessagingDelegate {
     // [START ios_10_data_message]
     // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
     // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
-    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        
-        let type : String = remoteMessage.appData["type"] as! String
-        if type == "product" {
-//            print("ASNFirebase Received data message title: \(remoteMessage.appData["title"]!)")
-//            print("ASNFirebase Received data message body : \(remoteMessage.appData["body"]!)")
-//            print("ASNFirebase Received data message url  : \(remoteMessage.appData["url"]!)")
-//            print("ASNFirebase Received data message youtube_id : \(remoteMessage.appData["youtube_id"]!)")
-//            print("ASNFirebase Received data message image_url : \(remoteMessage.appData["image_url"]!)")
-//            print("ASNFirebase Received data message type  : \(remoteMessage.appData["type"]!)")
-//            print("ASNFirebase Received data message from  : \(remoteMessage.appData["from"]!)")
-            
-            localRemoteMessage = remoteMessage
-            
-            let content = UNMutableNotificationContent()
-        
-            content.title = NSString.localizedUserNotificationString(forKey: "\(remoteMessage.appData["body"]!)", arguments: nil)
-            content.body = NSString.localizedUserNotificationString(forKey: "\(remoteMessage.appData["title"]!)", arguments: nil)
-            content.sound = UNNotificationSound.default
-               
-               if #available(iOS 12.0, *) {
-                   content.sound = UNNotificationSound.defaultCritical
-               } else {
-               }
-               let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.2, repeats: false)
-               let request = UNNotificationRequest(identifier:"rig", content: content, trigger: trigger)
-               UNUserNotificationCenter.current().delegate = self
-               UNUserNotificationCenter.current().add(request) { (error) in
-//                   if let getError = error {
-//                       print(getError.localizedDescription)
-//                   }
-               }
-               
-            
-        }
-        
-        
-    }
-    
+//    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+//
+//        let type : String = remoteMessage.appData["type"] as! String
+//        if type == "product" {
+//
+//
+//            localRemoteMessage = remoteMessage
+//
+//            let content = UNMutableNotificationContent()
+//
+//            content.title = NSString.localizedUserNotificationString(forKey: "\(remoteMessage.appData["body"]!)", arguments: nil)
+//            content.body = NSString.localizedUserNotificationString(forKey: "\(remoteMessage.appData["title"]!)", arguments: nil)
+//            content.sound = UNNotificationSound.default
+//
+//               if #available(iOS 12.0, *) {
+//                   content.sound = UNNotificationSound.defaultCritical
+//               } else {
+//               }
+//               let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.2, repeats: false)
+//               let request = UNNotificationRequest(identifier:"rig", content: content, trigger: trigger)
+//               UNUserNotificationCenter.current().delegate = self
+//               UNUserNotificationCenter.current().add(request) { (error) in
+////                   if let getError = error {
+////                       print(getError.localizedDescription)
+////                   }
+//               }
+//
+//
+//        }
+//
+//
+//    }
+//
     
     
     // [END ios_10_data_message]
@@ -396,77 +390,77 @@ extension AppDelegate : MessagingDelegate {
        
 }
 
-@available(iOS 10, *)
-extension AppDelegate : UNUserNotificationCenterDelegate {
-
-    @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-      let userInfo = response.notification.request.content.userInfo
-        if response.notification.request.identifier == "rig" {
-            
-           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-           // instantiate the view controller from storyboard
-           if  let conversationVC = storyboard.instantiateViewController(withIdentifier: "MessagingViewController") as? MessagingViewController {
-
-               // set the view controller as root
-               self.window?.rootViewController = conversationVC
-           }
-           
-           // tell the app that we have finished processing the user’s action / response
-           completionHandler()
-            
-        
-
-        }
-         completionHandler()
-    }
-    func preparePushNotifications(for application: UIApplication) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.alert,.sound]) { (granted, error) in
-            guard granted else {
-                return
-            }
-            DispatchQueue.main.async {
-                application.registerForRemoteNotifications()
-            }
-        }
-    }
-
-   //Receive displayed notifications for iOS 10 devices.
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              willPresent notification: UNNotification,
-    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-let content = UNMutableNotificationContent()
-    let userInfo = notification.request.content.userInfo
-    let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
-    let CustomerInfoID:String = userInfo["customer_id"] as! String
-    if CustomerInfoID == customerId {
-        completionHandler([[.alert, .sound,.badge]])
-    }else if CustomerInfoID == "A350"{
-        completionHandler([[.alert, .sound,.badge]])
-       
-    }
-
-    if let messageID = userInfo[gcmMessageIDKey] {
-      print("Message ID: \(messageID)")
-    }
-
-   
-    print(userInfo)
-
-  }
-
-
-
-  
-
-    
-}
-extension Data {
-    var hexString: String{
-        let hexString = map {String(format: "%02.2hhx",$0)
-          }.joined()
-          return hexString
-    }
-  
-}
+//@available(iOS 10, *)
+//extension AppDelegate : UNUserNotificationCenterDelegate {
+//
+//    @available(iOS 10.0, *)
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//      let userInfo = response.notification.request.content.userInfo
+//        if response.notification.request.identifier == "rig" {
+//
+//           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//           // instantiate the view controller from storyboard
+//           if  let conversationVC = storyboard.instantiateViewController(withIdentifier: "MessagingViewController") as? MessagingViewController {
+//
+//               // set the view controller as root
+//               self.window?.rootViewController = conversationVC
+//           }
+//
+//           // tell the app that we have finished processing the user’s action / response
+//           completionHandler()
+//
+//
+//
+//        }
+//         completionHandler()
+//    }
+//    func preparePushNotifications(for application: UIApplication) {
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.alert,.sound]) { (granted, error) in
+//            guard granted else {
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                application.registerForRemoteNotifications()
+//            }
+//        }
+//    }
+//
+//   //Receive displayed notifications for iOS 10 devices.
+//  func userNotificationCenter(_ center: UNUserNotificationCenter,
+//                              willPresent notification: UNNotification,
+//    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//let content = UNMutableNotificationContent()
+//    let userInfo = notification.request.content.userInfo
+//    let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+//    let CustomerInfoID:String = userInfo["customer_id"] as! String
+//    if CustomerInfoID == customerId {
+//        completionHandler([[.alert, .sound,.badge]])
+//    }else if CustomerInfoID == "A350"{
+//        completionHandler([[.alert, .sound,.badge]])
+//
+//    }
+//
+//    if let messageID = userInfo[gcmMessageIDKey] {
+//      print("Message ID: \(messageID)")
+//    }
+//
+//
+//    print(userInfo)
+//
+//  }
+//
+//
+//
+//
+//
+//
+//}
+//extension Data {
+//    var hexString: String{
+//        let hexString = map {String(format: "%02.2hhx",$0)
+//          }.joined()
+//          return hexString
+//    }
+//
+//}

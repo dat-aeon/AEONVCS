@@ -170,6 +170,12 @@ class RegistrationViewController: BaseUIViewController {
 
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePicker.Mode.date
+        if #available(iOS 13.4, *) {
+            datePickerView.preferredDatePickerStyle = .wheels
+            datePickerView.backgroundColor = UIColor.white
+        } else {
+            // Fallback on earlier versions
+        }
         let calendar = Calendar(identifier: .gregorian)
         
         let currentDate = Date()

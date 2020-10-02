@@ -190,6 +190,7 @@ class AgentChannelLevelTwoViewController: BaseUIViewController , UITextViewDeleg
             
             if messageMenu == 10 {
                 self.socketReq.api = "get-unread-messages"
+                param.levelType = 2
                 let socketJson = try? JSONEncoder().encode(socketReq)
                 let socketString = String(data: socketJson!, encoding: .utf8)!
                 print(socketString)
@@ -250,6 +251,7 @@ class AgentChannelLevelTwoViewController: BaseUIViewController , UITextViewDeleg
             } else {
                 
                 self.socketReq.api = "get-unread-messages"
+                param.levelType = 2
                 let socketJson = try? JSONEncoder().encode(socketReq)
                 let socketString = String(data: socketJson!, encoding: .utf8)!
                 print(socketString)

@@ -9,16 +9,17 @@
 import Foundation
 
 class AskProductViewModel {
-    func askProductSync(customerId:Int, success: @escaping (contactUsResponse) -> Void,failure: @escaping (String) -> Void){
+    func askProductSync(customerId:Int,levelType: Int, success: @escaping (contactUsResponse) -> Void,failure: @escaping (String) -> Void){
         
-        contactUsModel.init().contactUsMessage(customerId: customerId, success: { (result) in
+       
+        contactUsModel.init().contactUsMessage(customerId: customerId,levelType: levelType, success: { (result) in
             if result.status == Constants.STATUS_200 {
                 success(result)
             }else{
                 failure(result.status)
             }
         }) { (error) in
-            contactUsModel.init().contactUsMessage(customerId: customerId, success: { (result) in
+            contactUsModel.init().contactUsMessage(customerId: customerId,levelType: levelType, success: { (result) in
                 if result.status == Constants.STATUS_200 {
                     success(result)
                 }else{
@@ -26,9 +27,9 @@ class AskProductViewModel {
                 }
             }) { (error) in
                 failure(error)
-                
+
             }
-            
+
         }
    
         }
