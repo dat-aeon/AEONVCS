@@ -11,7 +11,9 @@ import SwiftyJSON
 
 class LoanCalculatorViewController: BaseUIViewController {
     
+    @IBOutlet weak var heightViewpaymentFee: NSLayoutConstraint!
     
+    @IBOutlet weak var heightViewCompulsory: NSLayoutConstraint!
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
     @IBOutlet weak var imgBack: UIImageView!
@@ -201,6 +203,7 @@ class LoanCalculatorViewController: BaseUIViewController {
     var language = Locale.currentLocale
    
     func calculatorMessage(){
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         CalculatorMessageModel.init().CalculatorMessageSync { (result) in
             print("my result \(result)")
             self.engMessage = result.data.decriptionEng
@@ -215,7 +218,7 @@ class LoanCalculatorViewController: BaseUIViewController {
             }
 
             
-            
+            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
         } failure: { (error) in
            print(error)
         }
@@ -223,6 +226,7 @@ class LoanCalculatorViewController: BaseUIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideResultView()
         calculatorMessage()
         
         self.heightWarningLoanTerm.constant = 0
@@ -319,31 +323,45 @@ class LoanCalculatorViewController: BaseUIViewController {
                
                 self.lblEmptyLoanAmt.text = "loan.empty_loan_amount".localized
                 self.heightLblEmptyLoanAmt.constant = self.lblEmptyLoanAmt.requiredHeight + 10
+                self.heightViewCompulsory.constant = 0
+                self.heightViewpaymentFee.constant = 0
             } else {
                 self.heightLblEmptyLoanAmt.constant = 0
+//                self.heightViewCompulsory.constant = 127
+//                self.heightViewpaymentFee.constant = 270
             }
             
             
             self.heightWarningView.constant = 0
         } else {
             self.heightLblEmptyLoanAmt.constant = 0
+//            self.heightViewCompulsory.constant = 127
+//            self.heightViewpaymentFee.constant = 270
             
             if self.isWarningShowing {
                 self.heightWarningView.constant = self.lblWarning.requiredHeight + 20
+                self.heightViewCompulsory.constant = 0
+                self.heightViewpaymentFee.constant = 0
                 //            self.isWarningShowing = false
             } else {
                 self.heightWarningView.constant = 0
+//                self.heightViewCompulsory.constant = 127
+//                self.heightViewpaymentFee.constant = 270
             }
         }
         
         if !self.isLoanTermSelected {
             self.heightWarningLoanTerm.constant = self.lblWarningLoanTerm.requiredHeight + 5
             self.lblWarningLoanTerm.isHidden = false
+            self.heightViewCompulsory.constant = 0
+            self.heightViewpaymentFee.constant = 0
         } else {
             self.heightWarningLoanTerm.constant = 0
+//            self.heightViewCompulsory.constant = 127
+//            self.heightViewpaymentFee.constant = 270
         }
 
-          
+         
         
     }
    
@@ -354,10 +372,13 @@ class LoanCalculatorViewController: BaseUIViewController {
      @objc func onTapMMLocale() {
               super.NewupdateLocale(flag: 1)
     //           changeLocale()
+        self.calculatorMessageLbl.text = myaMessage
+        
             updateViews()
            }
            @objc func onTapEngLocale() {
               super.NewupdateLocale(flag: 2)
+            self.calculatorMessageLbl.text = engMessage
     //           changeLocale()
             updateViews()
            }
@@ -396,9 +417,14 @@ class LoanCalculatorViewController: BaseUIViewController {
         
     }
     
+    
     func hideResultView() {
+        
         self.viewCompulsory.isHidden = true
         self.viewPaymentFee.isHidden = true
+    
+        self.heightViewpaymentFee.constant = 0
+        self.heightViewCompulsory.constant = 0
     }
     
     @IBAction func closeTap(_ sender: Any) {
@@ -407,6 +433,8 @@ class LoanCalculatorViewController: BaseUIViewController {
     func showResultView() {
         self.viewPaymentFee.isHidden = false
         self.viewCompulsory.isHidden = false
+        self.heightViewCompulsory.constant = 127
+        self.heightViewpaymentFee.constant = 270
     }
     
     func setupInitialState() {
@@ -452,11 +480,15 @@ class LoanCalculatorViewController: BaseUIViewController {
     @IBAction func tappedOnCalculate(_ sender: Any) {
     
         let totalString = "\(self.txtLoanAmt.text ?? "")"
-        
+       
         if totalString.count == 0 {
+            hideResultView()
             self.isCalculatingWithNoLoanAmount = true
             self.viewDidLayoutSubviews()
         } else {
+//            self.heightViewCompulsory.constant = 127
+//            self.heightViewpaymentFee.constant = 270
+            
             self.isCalculatingWithNoLoanAmount = false
             let removedComma = totalString.replacingOccurrences(of: ",", with: "")
             self.checkAmountisValid(amt: removedComma, isCalculating: true)
@@ -502,6 +534,7 @@ class LoanCalculatorViewController: BaseUIViewController {
                 }
                 self.colviewLoanTerm.reloadData()
                 self.isWarningShowing = false
+                
             } else if number > 700000 {
                 let tempArray = self.loanTerms
                 if self.isMotorcycleOn {
@@ -632,7 +665,7 @@ class LoanCalculatorViewController: BaseUIViewController {
         
         
         print("loan Request Amt: \(loanRequest.financeAmount) Term: \(loanRequest.loanTerm) motorcycle: \(loanRequest.motorCycleLoanFlag)")
-        
+      
         CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         LoanCalculatorViewModel.init().executeLoanCalculator(calculatorInfo: loanRequest, success: { (result) in
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
@@ -739,11 +772,18 @@ extension LoanCalculatorViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "idLoanTermCell", for: indexPath) as? colLoanTermCell)!
-        
+//        if cell.cellImgOption.image == UIImage(named: "imgCircle"){
+//            self.heightViewCompulsory.constant = 0
+//            self.heightViewpaymentFee.constant = 0
+//        }else{
+//            self.heightViewCompulsory.constant = 127
+//            self.heightViewpaymentFee.constant = 270
+//        }
         if selectedTerm == indexPath.item {
             cell.cellImgOption.image = UIImage(named: "imgCircleDot")
              self.selectedLoanTerm = self.loanTerms[indexPath.item]
         } else {
+           
              cell.cellImgOption.image = UIImage(named: "imgCircle")
         }
         

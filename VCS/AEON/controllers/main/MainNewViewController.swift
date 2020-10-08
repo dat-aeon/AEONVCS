@@ -323,6 +323,7 @@ class MainNewViewController: BaseUIViewController {
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FaqAndTermsConditionViewController") as! FaqAndTermsConditionViewController
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
+      
     }
     
     @objc func onTapFindUsView() {

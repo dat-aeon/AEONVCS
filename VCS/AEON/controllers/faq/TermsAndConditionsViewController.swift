@@ -11,8 +11,9 @@ import SwiftyJSON
 
 class TermsAndConditionsViewController: BaseUIViewController {
 
+    @IBOutlet weak var mytextView: UITextView!
     @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblTermsCon: UILabel!
+   
     
     var engText:String = ""
     var mmText:String = ""
@@ -24,13 +25,15 @@ class TermsAndConditionsViewController: BaseUIViewController {
         
         switch Locale.currentLocale {
         case .EN:
-            self.lblTermsCon.text = engText
+            self.mytextView.font = UIFont(name: "Arial", size: 25)
+            self.mytextView.text = engText
         case .MY:
-            self.lblTermsCon.text = mmText
+            self.mytextView.font = UIFont(name: "PyidaungsuBook", size: 18)
+            self.mytextView.text = mmText
         }
         self.lblTitle.text = "terms.title".localized
-        self.lblTermsCon.font = UIFont(name: "PyidaungsuBook", size: 18)
-        self.lblTermsCon.attributedText = Utils.setLineSpacing(data: self.lblTermsCon.text!)
+        
+        self.mytextView.attributedText = Utils.setLineSpacing(data: self.mytextView.text!)
         self.lblTitle.attributedText = Utils.setLineSpacing(data: self.lblTitle.text!)
     }
     
@@ -38,13 +41,13 @@ class TermsAndConditionsViewController: BaseUIViewController {
         super.updateViews()
         switch Locale.currentLocale {
         case .EN:
-            self.lblTermsCon.text = engText
+            self.mytextView.text = engText
         case .MY:
-            self.lblTermsCon.text = mmText
+            self.mytextView.text = mmText
         }
         self.lblTitle.text = "terms.title".localized
         self.lblTitle.attributedText = Utils.setLineSpacing(data: self.lblTitle.text!)
-        self.lblTermsCon.attributedText = Utils.setLineSpacing(data: self.lblTermsCon.text!)
+        self.mytextView.attributedText = Utils.setLineSpacing(data: self.mytextView.text!)
 //        self.lblTermsCon.attributedText = Utils.setLineSpacing(data: engText)
 //        self.lblTermsCon.text = engText
         print("\(mmText.count)")
@@ -54,12 +57,12 @@ class TermsAndConditionsViewController: BaseUIViewController {
         
         switch Locale.currentLocale {
         case .EN:
-            self.lblTermsCon.text = engText
+            self.mytextView.text = engText
         case .MY:
-            self.lblTermsCon.text = mmText
+            self.mytextView.text = mmText
         }
         self.lblTitle.attributedText = Utils.setLineSpacing(data: self.lblTitle.text!)
-        self.lblTermsCon.attributedText = Utils.setLineSpacing(data: self.lblTermsCon.text!)
+        self.mytextView.attributedText = Utils.setLineSpacing(data: self.mytextView.text!)
         
     }
     

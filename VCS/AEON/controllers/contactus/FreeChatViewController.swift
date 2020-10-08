@@ -322,9 +322,9 @@ scrollToBottom()
             super.NewupdateLocale(flag: 1)
 
             updateViews()
-
+//
 //          mainLan = mmLan
-//            AutomessageBean.message = mmLan
+//            AutomessageBean.message = "mmLan"
 //
 //           tvMessagingView.reloadData()
 
