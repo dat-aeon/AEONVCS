@@ -19,26 +19,19 @@ class FreeChatViewController: BaseUIViewController {
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
     @IBOutlet weak var lblBarPhNo: UILabel!
-    
     @IBOutlet weak var tvMessagingView: UITableView!
-    //    @IBOutlet weak var lbHotline: UILabel!
-    //    @IBOutlet weak var btnHotline: UIImageView!
     @IBOutlet weak var vSendview: UIView!
     @IBOutlet weak var btnSendImg: UIButton!
     @IBOutlet weak var tfTypeMessage: UITextField!
     @IBOutlet weak var btnSendMesg: UIButton!
     @IBOutlet weak var vSendBottomConstraint: NSLayoutConstraint!
-  
     @IBOutlet weak var botchat: UIButton!
-    var answers = ""
+    
+        var answers = ""
         var oldMessageBeanList = [MessageBean]()
-
         var typeLists:String = ""
-
         var flagLanNo:Int = 1
-
         var segmentIndex: Int!
-
         var orginBottom : CGFloat!
 
         var isDidLoad = false
@@ -60,26 +53,21 @@ class FreeChatViewController: BaseUIViewController {
         //    var socket = WebSocket(url: URL(string: Constants.socket_url)!, protocols: ["chat"])
 
         var mmLan = ""
-
         var engLan = ""
-
         var mainLan = ""
-
+        let mmFlag = "my_MM"
+        let engFlag = "en"
+        var language = Locale.currentLocale
 //
 
   
 
     override func viewDidAppear(_ animated: Bool) {
-
          AutomessageBean.message = mmLan
-
-       
 
     }
 
-    let mmFlag = "my_MM"
-    let engFlag = "en"
-    var language = Locale.currentLocale
+   
    
 
         override func viewDidLoad() {
@@ -264,16 +252,7 @@ class FreeChatViewController: BaseUIViewController {
             
 
                }
-
-        
-
-     // autoReplyMessage()
-//        let messageWelcome =  MessageBean.init(isButton: false, isPhoto: false, isReceiveMesg: false, isIntro: false, isMessagingBot: false, type: "welcome", message: mainLan, sender: "", sendTime: "", readFlag: "", messageId: 0)
-//          self.messageBeanList.append(messageWelcome)
         AutomessageBean.isMessagingBot = true
-     //   AutomessageBean.isReceiveMesg = true
-
-      //  AutomessageBean.message = mainLan
 
                        
 
@@ -314,33 +293,28 @@ scrollToBottom()
             self.dismiss(animated: true, completion: nil)
 
         }
-
         @objc func onTapMMLocale() {
-
-            print("click")
-
             super.NewupdateLocale(flag: 1)
 
             updateViews()
-//
-//          mainLan = mmLan
-//            AutomessageBean.message = "mmLan"
-//
-//           tvMessagingView.reloadData()
+            self.mainLan = mmLan
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "callMM"), object: nil)
+            
+            self.AutomessageBean.message = self.mainLan
+            self.tvMessagingView.reloadData()
 
         }
 
         @objc func onTapEngLocale() {
 
             print("click")
-
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "callENG"), object: nil)
             super.NewupdateLocale(flag: 2)
 
             updateViews()
-//            AutomessageBean.message = engLan
-//            mainLan = engLan
-//
-//            tvMessagingView.reloadData()
+            self.mainLan = engLan
+            self.AutomessageBean.message = self.mainLan
+            self.tvMessagingView.reloadData()
 
             
 
@@ -361,11 +335,11 @@ scrollToBottom()
                           AutoReplyMessageModel.init().AutoReplyMessageSync(success: { (result) in
 
 
-//                           self.mainLan = result.data.messageMya
-//
-//                            self.mmLan = result.data.messageMya
-//
-//                            self.engLan = result.data.messageEng
+                           self.mainLan = result.data.messageMya
+
+                            self.mmLan = result.data.messageMya
+
+                            self.engLan = result.data.messageEng
 //
 //
 //                            self.tvMessagingView.reloadData()

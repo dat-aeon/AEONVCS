@@ -29,7 +29,8 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     var language = Locale.currentLocale
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(callmm), name: NSNotification.Name("callMM"), object:nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(calleng), name: NSNotification.Name("callENG"), object:nil)
         chatCollectionView.delegate = self
         chatCollectionView.dataSource = self
         self.chatCollectionView.register(UINib(nibName: CommonNames.MESG_COLLECTIONCELL_CHAT_BOT, bundle: nil), forCellWithReuseIdentifier: CommonNames.MESG_COLLECTIONCELL_CHAT_BOT)
@@ -42,6 +43,12 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         }
      
       
+    }
+    @objc func callmm(){
+       getchatBotMM()
+    }
+    @objc func calleng(){
+       getchatBotEng()
     }
     func getchatBotMM(){
         GetChatBotMMViewModel.init().getChatBotSync(type: 1, success: { (result) in

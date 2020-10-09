@@ -1927,8 +1927,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1943,8 +1943,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2727,8 +2727,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "405"
             endingLineNumber = "405"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "onTapAnnouncementView()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "CDF6E1B3-7281-44D9-B779-FDF008B3C8B2 - 5139dd26c733ae53"
@@ -2775,8 +2775,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "403"
             endingLineNumber = "403"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "onTapAnnouncementView()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2791,8 +2791,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "showOTPCode()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2807,8 +2807,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9444,8 +9444,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "558"
             endingLineNumber = "558"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "onTapLogOut()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9460,8 +9460,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "518"
             endingLineNumber = "518"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "onTapLogOut()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -9476,8 +9476,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "561"
             endingLineNumber = "561"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "onTapLogOut()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "D1BE36D0-3EB0-45C8-B644-F4DB92DE4202 - 212d3cac91cca274"
@@ -10098,8 +10098,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10114,8 +10114,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "803"
-            endingLineNumber = "803"
+            startingLineNumber = "777"
+            endingLineNumber = "777"
             landmarkName = "webSocketOpen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -10130,8 +10130,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "799"
-            endingLineNumber = "799"
+            startingLineNumber = "773"
+            endingLineNumber = "773"
             landmarkName = "webSocketOpen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -10146,8 +10146,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "805"
-            endingLineNumber = "805"
+            startingLineNumber = "779"
+            endingLineNumber = "779"
             landmarkName = "webSocketOpen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -10162,8 +10162,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "813"
-            endingLineNumber = "813"
+            startingLineNumber = "787"
+            endingLineNumber = "787"
             landmarkName = "webSocketClose(_:reason:wasClean:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10178,8 +10178,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "817"
-            endingLineNumber = "817"
+            startingLineNumber = "791"
+            endingLineNumber = "791"
             landmarkName = "webSocketClose(_:reason:wasClean:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10194,8 +10194,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "821"
-            endingLineNumber = "821"
+            startingLineNumber = "795"
+            endingLineNumber = "795"
             landmarkName = "webSocketClose(_:reason:wasClean:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10210,8 +10210,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1413"
-            endingLineNumber = "1413"
+            startingLineNumber = "1387"
+            endingLineNumber = "1387"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10226,8 +10226,8 @@
             filePath = "AEON/New Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10242,13 +10242,13 @@
             filePath = "AEON/New Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "editbutton(sender:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8FAC224D-4C67-453D-A655-64EEDE0F3BD1 - 818c01737fc3a320"
+                  uuid = "8FAC224D-4C67-453D-A655-64EEDE0F3BD1 - 818c01737fc3a239"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -10258,12 +10258,12 @@
                   urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/New%20Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
                   offsetFromSymbolStart = "756">
                </Location>
                <Location
-                  uuid = "8FAC224D-4C67-453D-A655-64EEDE0F3BD1 - f2dcd9458a9b9ad5"
+                  uuid = "8FAC224D-4C67-453D-A655-64EEDE0F3BD1 - f2dcd9458a9b9bce"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -10273,8 +10273,8 @@
                   urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/New%20Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "152"
-                  endingLineNumber = "152"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
                   offsetFromSymbolStart = "144">
                </Location>
             </Locations>
@@ -10290,8 +10290,8 @@
             filePath = "AEON/New Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "editbutton(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10306,13 +10306,13 @@
             filePath = "AEON/New Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "editbutton(sender:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "137EF2FA-C85B-4A18-9EFC-6AB83E92EA9C - f2dcd9458a9b9b6b"
+                  uuid = "137EF2FA-C85B-4A18-9EFC-6AB83E92EA9C - f2dcd9458a9b840c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -10322,12 +10322,12 @@
                   urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/New%20Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "154"
-                  endingLineNumber = "154"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
                   offsetFromSymbolStart = "324">
                </Location>
                <Location
-                  uuid = "137EF2FA-C85B-4A18-9EFC-6AB83E92EA9C - 217f5a123fec2917"
+                  uuid = "137EF2FA-C85B-4A18-9EFC-6AB83E92EA9C - 217f5a123fec363e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -10337,8 +10337,8 @@
                   urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/New%20Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -10354,8 +10354,8 @@
             filePath = "AEON/New Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "editbutton(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10560,13 +10560,13 @@
             filePath = "AEON/New Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "BC8BBDBE-BEB8-4CCE-B963-5BBA974406A6 - 3f8974d6d66fc788"
+                  uuid = "BC8BBDBE-BEB8-4CCE-B963-5BBA974406A6 - 3f8974d6d66fc6b3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -10576,12 +10576,12 @@
                   urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/New%20Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
                   offsetFromSymbolStart = "1692">
                </Location>
                <Location
-                  uuid = "BC8BBDBE-BEB8-4CCE-B963-5BBA974406A6 - da0c55f729afbf5f"
+                  uuid = "BC8BBDBE-BEB8-4CCE-B963-5BBA974406A6 - da0c55f729afbea6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -10591,8 +10591,8 @@
                   urlString = "file:///Users/ant/Documents/WorkSpace/Last%20main%20pj/VCS/AEON/New%20Group/Cell/messaging_cell/chatbot_button_cell/ChatBotTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "133"
-                  endingLineNumber = "133"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
                   offsetFromSymbolStart = "144">
                </Location>
             </Locations>
@@ -11746,8 +11746,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
             endingLineNumber = "90"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -11762,8 +11762,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "325"
             endingLineNumber = "325"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -11778,8 +11778,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "330"
             endingLineNumber = "330"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -11794,8 +11794,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "334"
             endingLineNumber = "334"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -11810,8 +11810,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
             endingLineNumber = "108"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -11842,8 +11842,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "333"
             endingLineNumber = "333"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -11858,8 +11858,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "329"
             endingLineNumber = "329"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -11874,8 +11874,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "327"
             endingLineNumber = "327"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "69335CE7-2081-4287-AA4C-BAEC7D3FFC9F - 3535c7d649cf5d66"
@@ -11922,8 +11922,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "339"
             endingLineNumber = "339"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "CAE049B4-44BA-4117-9C76-38D2D3BF2003 - d7774467e613beb7"
@@ -11970,8 +11970,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "340"
             endingLineNumber = "340"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "askProductMessageUnRead(customerId:levelType:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12226,8 +12226,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "303"
             endingLineNumber = "303"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "levelTwoUnRead(customerId:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12242,8 +12242,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "305"
             endingLineNumber = "305"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "levelTwoUnRead(customerId:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "D46022E3-BE03-42FC-B991-FEEC6B2585EB - 1ae2fe18fc423e8c"
@@ -12290,8 +12290,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12306,8 +12306,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
             endingLineNumber = "109"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12354,8 +12354,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "308"
             endingLineNumber = "308"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "levelTwoUnRead(customerId:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12368,8 +12368,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "botChatAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -12384,8 +12384,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "botChatAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -12400,8 +12400,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1125"
-            endingLineNumber = "1125"
+            startingLineNumber = "1099"
+            endingLineNumber = "1099"
             landmarkName = "websocketDidReceiveMessage(socket:text:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -12416,8 +12416,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1091"
-            endingLineNumber = "1091"
+            startingLineNumber = "1065"
+            endingLineNumber = "1065"
             landmarkName = "websocketDidReceiveMessage(socket:text:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -12432,8 +12432,8 @@
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1099"
-            endingLineNumber = "1099"
+            startingLineNumber = "1073"
+            endingLineNumber = "1073"
             landmarkName = "websocketDidReceiveMessage(socket:text:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -12450,8 +12450,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "showOTPCode()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12866,8 +12866,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
             endingLineNumber = "127"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12882,8 +12882,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "437"
             endingLineNumber = "437"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "onTapOurServiceView()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -12898,8 +12898,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "441"
             endingLineNumber = "441"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "onTapOurServiceView()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -13877,16 +13877,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "72295136-A30A-4A6C-A9D5-26E811B99F62"
+            uuid = "790B5A36-E20B-4DB7-8ABF-D8A40F7311B0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "onTapMMLocale()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "533BF5EF-C375-43F0-83B9-D54DA75CA458"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "onTapMMLocale()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5BABF19-2FAD-4CEB-AECF-0B166ECA8BC9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/controllers/contactus/FreeChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8CB1168E-2A3D-4EE4-BD0B-6D66295FAD14"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/New Group/Cell/event_news_coupon/promotion/PromotionTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "setData(promoBean:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED53F52E-AAAC-4825-92F0-627A0A240285"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/New Group/Cell/event_news_coupon/promotion/PromotionTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "setData(promoBean:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F11C2DC0-BBAB-4410-BBF8-5C07B416200B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON/New Group/Cell/event_news_coupon/promotion/PromotionTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "setData(promoBean:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
