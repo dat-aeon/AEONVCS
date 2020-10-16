@@ -150,10 +150,12 @@ extension SecurityQuestionUpdateViewController:UITableViewDataSource{
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.SECURITY_QUESTION_UPDATE_TABLE_CELL, for: indexPath) as! SecurityQuestionUpdateTableViewCell
+       
         cell.selectionStyle = .none
         cell.delegate = self
         cell.tfPassword.setMaxLength(maxLength: 6)
         cell.btnUpdate.setTitle("infoupate.update.button".localized, for: UIButton.State.normal)
+        cell.passwordTitle.text = "securityquestion.password.holder".localized
         return cell
     }
     
@@ -168,7 +170,7 @@ extension SecurityQuestionUpdateViewController:UITableViewDelegate{
         if indexPath.section == 0{
             return CGFloat(150.0)
         }
-        return CGFloat(150.0)
+        return CGFloat(180.0)
     }
 }
 

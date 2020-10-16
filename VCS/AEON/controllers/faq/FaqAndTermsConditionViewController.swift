@@ -28,7 +28,13 @@ class FaqAndTermsConditionViewController: BaseUIViewController {
    var logoutTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        segFAQ.makeMultiline(numberOfLines: 2)
+        let font = UIFont(name: "PyidaungsuBook", size: 13)
+        segFAQ.setTitleTextAttributes([NSAttributedString.Key.font: font],
+                                                for: .normal)
+        segFAQ.setTitle("faq.tag1.title".localized, forSegmentAt: 0)
+        segFAQ.setTitle("faq.tag2.title".localized, forSegmentAt: 1)
+        segFAQ.setTitle("aboutus.title".localized, forSegmentAt: 2)
         self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -38,12 +44,7 @@ class FaqAndTermsConditionViewController: BaseUIViewController {
         self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
 
         
-        let font = UIFont(name: "PyidaungsuBook", size: 14)
-        segFAQ.setTitleTextAttributes([NSAttributedString.Key.font: font],
-                                                for: .normal)
-        segFAQ.setTitle("faq.tag1.title".localized, forSegmentAt: 0)
-        segFAQ.setTitle("faq.tag2.title".localized, forSegmentAt: 1)
-        segFAQ.setTitle("aboutus.title".localized, forSegmentAt: 2)
+       
         
     
         toggleContainer(position:containerIndex)
@@ -141,8 +142,20 @@ class FaqAndTermsConditionViewController: BaseUIViewController {
     
     @objc override func updateViews() {
         super.updateViews()
+        
         segFAQ.setTitle("faq.tag1.title".localized, forSegmentAt: 0)
         segFAQ.setTitle("faq.tag2.title".localized, forSegmentAt: 1)
         segFAQ.setTitle("aboutus.title".localized, forSegmentAt: 2)
+    }
+}
+extension UISegmentedControl
+{
+    func makeMultiline(numberOfLines: Int)
+    {
+        for segment in self.subviews
+        {
+            let labels = segment.subviews.filter { $0 is UILabel }  // [AnyObject]
+            labels.map { ($0 as! UILabel).numberOfLines = numberOfLines }
+        }
     }
 }

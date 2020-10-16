@@ -63,12 +63,12 @@ open class ImagePicker: NSObject {
             blockView.image       = UIImage(named: "camera-grid")
             //mainView.backgroundColor = UIColor.blue
             //blockView.backgroundColor = UIColor.red
-            let textFrame        = CGRect.init(x: 5, y: mainView.frame.size.height-50, width: mainView.frame.size.height, height: 50)
+            let textFrame        = CGRect.init(x: 0, y: mainView.frame.size.height-50, width: mainView.frame.size.height, height: 50)
             let textView         = UILabel.init(frame: textFrame)
-            textView.text        = "Please don't have glass on your face during the photo shoot."
+            textView.text        = "member.cameraglass".localized
             textView.textColor = UIColor.red
             textView.backgroundColor = UIColor.white
-            textView.font = UIFont.systemFont(ofSize: 15)
+            textView.font = UIFont.systemFont(ofSize: 13)
             textView.numberOfLines = 0
             mainView.addSubview(blockView)
             mainView.addSubview(textView)

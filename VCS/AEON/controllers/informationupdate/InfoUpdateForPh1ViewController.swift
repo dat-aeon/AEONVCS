@@ -240,6 +240,7 @@ extension InfoUpdateForPh1ViewController:UITableViewDataSource{
         cell.delegate = self
         cell.tfPassword.setMaxLength(maxLength: 16)
         cell.btnUpdate.setTitle("infoupate.update.button".localized, for: UIButton.State.normal)
+        cell.passwordTitle.text = "securityquestion.password.holder".localized
         if self.isViewAppear {
             cell.tfPassword.text = Constants.BLANK
             cell.lbMessage.text = Constants.BLANK
@@ -278,9 +279,9 @@ extension InfoUpdateForPh1ViewController:UITableViewDelegate{
             return CGFloat(70.0)
             
         } else if indexPath.section == 1{
-            return CGFloat(150.0)
+            return CGFloat(160.0)
         }
-        return CGFloat(150.0)
+        return CGFloat(180.0)
     }
 }
 

@@ -166,6 +166,8 @@ class ResetPasswordViewController: BaseUIViewController {
                         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion: nil)
+                       
+                            
                         
                     }))
                     self.present(alertController, animated: true, completion: nil)
@@ -211,6 +213,7 @@ class ResetPasswordViewController: BaseUIViewController {
                         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
                         navigationVC.modalPresentationStyle = .overFullScreen
                         self.present(navigationVC, animated: true, completion: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "callbackloginalertview"), object: nil)
                         
                     }))
                     self.present(alertController, animated: true, completion: nil)

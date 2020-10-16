@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class LoanCalculatorViewController: BaseUIViewController {
-    
+   
     @IBOutlet weak var heightViewpaymentFee: NSLayoutConstraint!
     
     @IBOutlet weak var heightViewCompulsory: NSLayoutConstraint!
@@ -172,6 +172,7 @@ class LoanCalculatorViewController: BaseUIViewController {
     @IBOutlet weak var viewCalculate: UIView!
     
     
+    
     var isWarningShowing = false
     
     var isLoanTermSelected = true
@@ -226,6 +227,7 @@ class LoanCalculatorViewController: BaseUIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         hideResultView()
         calculatorMessage()
         
@@ -300,7 +302,7 @@ class LoanCalculatorViewController: BaseUIViewController {
     func setupView() {
         self.colviewLoanTerm.delegate = self
         self.colviewLoanTerm.dataSource = self
-        
+        self.heightWarningView.constant = 0
 //        self.txtLoanAmt.delegate = self
         
         self.updateViews()
@@ -314,7 +316,6 @@ class LoanCalculatorViewController: BaseUIViewController {
    
     @IBOutlet weak var heightVCalculate: NSLayoutConstraint!
     @IBOutlet weak var heightCalculateView: NSLayoutConstraint!
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -325,6 +326,7 @@ class LoanCalculatorViewController: BaseUIViewController {
                 self.heightLblEmptyLoanAmt.constant = self.lblEmptyLoanAmt.requiredHeight + 10
                 self.heightViewCompulsory.constant = 0
                 self.heightViewpaymentFee.constant = 0
+              //  self.calculateView.constant = 0
             } else {
                 self.heightLblEmptyLoanAmt.constant = 0
 //                self.heightViewCompulsory.constant = 127
@@ -339,12 +341,14 @@ class LoanCalculatorViewController: BaseUIViewController {
 //            self.heightViewpaymentFee.constant = 270
             
             if self.isWarningShowing {
-                self.heightWarningView.constant = self.lblWarning.requiredHeight + 20
+                self.heightWarningView.constant = self.lblWarning.requiredHeight + 10
                 self.heightViewCompulsory.constant = 0
                 self.heightViewpaymentFee.constant = 0
+               // self.calculateView.constant = 0
                 //            self.isWarningShowing = false
             } else {
                 self.heightWarningView.constant = 0
+                
 //                self.heightViewCompulsory.constant = 127
 //                self.heightViewpaymentFee.constant = 270
             }
@@ -355,8 +359,10 @@ class LoanCalculatorViewController: BaseUIViewController {
             self.lblWarningLoanTerm.isHidden = false
             self.heightViewCompulsory.constant = 0
             self.heightViewpaymentFee.constant = 0
+          //  self.calculateView.constant = 0
         } else {
             self.heightWarningLoanTerm.constant = 0
+            self.lblWarningLoanTerm.isHidden = true
 //            self.heightViewCompulsory.constant = 127
 //            self.heightViewpaymentFee.constant = 270
         }
@@ -366,21 +372,49 @@ class LoanCalculatorViewController: BaseUIViewController {
     }
    
     @objc func onTapBack() {
-                 self.dismiss(animated: true, completion: nil)
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
               }
     
      @objc func onTapMMLocale() {
               super.NewupdateLocale(flag: 1)
     //           changeLocale()
-        self.calculatorMessageLbl.text = myaMessage
         
+        self.calculatorMessageLbl.text = myaMessage
+        let totalString = "\(self.txtLoanAmt.text ?? "")"
+        let removedComma = totalString.replacingOccurrences(of: ",", with: "")
+        if let number = Int(removedComma) {
+            if number > 2000000 {
+                self.lblWarning.text = "loan.warning_maximum".localized
+                print("lblWarnign Size : \(self.lblWarning.requiredHeight)")
+                self.isWarningShowing = true
+                self.loanTerms = []
+                
+            }
+            
+        }else{
             updateViews()
+        }
+           
            }
            @objc func onTapEngLocale() {
               super.NewupdateLocale(flag: 2)
             self.calculatorMessageLbl.text = engMessage
-    //           changeLocale()
-            updateViews()
+            let totalString = "\(self.txtLoanAmt.text ?? "")"
+            let removedComma = totalString.replacingOccurrences(of: ",", with: "")
+            if let number = Int(removedComma) {
+                if number > 2000000 {
+                    self.lblWarning.text = "loan.warning_maximum".localized
+                    print("lblWarnign Size : \(self.lblWarning.requiredHeight)")
+                    self.isWarningShowing = true
+                    self.loanTerms = []
+                    
+                }
+                
+            }else{
+                updateViews()
+            }
            }
     
     
@@ -422,10 +456,13 @@ class LoanCalculatorViewController: BaseUIViewController {
         
         self.viewCompulsory.isHidden = true
         self.viewPaymentFee.isHidden = true
-    
+       // self.calculateView.constant = 0
         self.heightViewpaymentFee.constant = 0
         self.heightViewCompulsory.constant = 0
+        
+      
     }
+    
     
     @IBAction func closeTap(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -435,12 +472,13 @@ class LoanCalculatorViewController: BaseUIViewController {
         self.viewCompulsory.isHidden = false
         self.heightViewCompulsory.constant = 127
         self.heightViewpaymentFee.constant = 270
+    //    self.calculateView.constant = 175
     }
     
     func setupInitialState() {
         self.lblEmptyLoanAmt.text = ""
         self.lblWarning.text = ""
-        
+       
         self.hideResultView()
         
         self.loanTerms = [String]()
@@ -462,19 +500,26 @@ class LoanCalculatorViewController: BaseUIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        print("textfield did change")
+        self.isLoanTermSelected = true
+        self.viewDidLayoutSubviews()
+        self.isWarningShowing = false
+    
          self.isCalculatingWithNoLoanAmount = false
         self.hideResultView()
         self.selectedTerm = -1
         self.colviewLoanTerm.reloadData()
-        
+        self.heightWarningView.constant = 0
         if textField.text!.count < 9 {
+           
             let totalString = "\(textField.text ?? "")"
             let removedComma = totalString.replacingOccurrences(of: ",", with: "")
             self.txtLoanAmt.text = Int(removedComma)?.thousandsFormat
             self.refreshLoanTerm(amt: removedComma)
+          
         }
-//        self.checkAmountisValid(amt: removedComma, isCalculating: false)
+        
+     //  self.checkAmountisValid(amt: removedComma, isCalculating: false)
+        
     }
     
     @IBAction func tappedOnCalculate(_ sender: Any) {
@@ -573,6 +618,7 @@ class LoanCalculatorViewController: BaseUIViewController {
     }
     
     func refreshLoanTerm(amt: String) {
+       
         if let number = Int(amt) {
             if number > 2000000 {
                 
@@ -620,6 +666,7 @@ class LoanCalculatorViewController: BaseUIViewController {
             }
             
             if isMotorcycleOn {
+                
                 if number < 350000 {
                     //loan.warning_minimum_motorcycle
                     print("Motor Cycle ON NUMBEr LESS THAN 350,000")
@@ -713,17 +760,15 @@ class LoanCalculatorViewController: BaseUIViewController {
             let removedComma = totalString.replacingOccurrences(of: ",", with: "")
             self.checkAmountisValid(amt: removedComma, isCalculating: true)
             self.refreshLoanTerm(amt: removedComma)
-//            if self.isMotorcycleOn {
-//                self.loanTerms = self.motorCycleLoanTerm
-//                self.colviewLoanTerm.reloadData()
-//            } else {
-//                if self.txtLoanAmt.text?.count == 0 {
-//                    self.loanTerms = self.motorCycleLoanTerm
-//                    self.colviewLoanTerm.reloadData()
-//                } else {
-//                    self.refreshLoanTerm(amt: removedComma)
-//                }
-//            }
+            if self.isMotorcycleOn {
+                self.loanTerms = self.motorCycleLoanTerm
+                self.colviewLoanTerm.reloadData()
+            }else if self.isMotorcycleOn == false {
+                self.loanTerms = []
+                self.colviewLoanTerm.reloadData()
+            }else{
+                self.refreshLoanTerm(amt: removedComma)
+            }
         }
     }
     
@@ -844,5 +889,5 @@ extension Int {
         return result!
         
     }
-    
+    //update
 }

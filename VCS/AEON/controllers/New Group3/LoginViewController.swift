@@ -23,13 +23,15 @@ class LoginViewController: BaseUIViewController {
     @IBOutlet weak var lbForgetPass: UILabel!
     @IBOutlet weak var ivBiometric: UIImageView!
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
+    @IBOutlet weak var loginTitleLabel: UILabel!
+    @IBOutlet weak var backBtn: UIButton!
     
     var phoneMesgLocale : String?
     var passwordMesgLocale : String?
     
     override func viewDidLoad() {
         
-        self.svMemberLogin.isScrollEnabled = false
+      //  self.svMemberLogin.isScrollEnabled = false
         
         print("Start LoginViewController :::::::::::::::")
         super.viewDidLoad()
@@ -151,9 +153,11 @@ class LoginViewController: BaseUIViewController {
         switch Locale.currentLocale {
         case .EN:
             bbLocaleFlag.image = UIImage(named: "mm_flag")
+            
         case .MY:
             bbLocaleFlag.image = UIImage(named: "en_flag")
         }
+        self.loginTitleLabel.text = "login.title".localized
         self.title = "login.title".localized
         self.tfPhoneNumber.placeholder = "login.phoneno.holder".localized
         self.tfPassword.placeholder = "login.password.holder".localized
@@ -181,6 +185,7 @@ class LoginViewController: BaseUIViewController {
     }
     
     func isErrorExist() -> Bool{
+        //Validate Phone No. [09[0-9]{7,9}]
         var isError = false
         if self.tfPhoneNumber?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
             self.tfPhoneNumber.text = Constants.BLANK
@@ -188,7 +193,14 @@ class LoginViewController: BaseUIViewController {
             self.lbPhoneMessage.text = Messages.PHONE_EMPTY_ERROR.localized
             isError = true
             
-        } else {
+        } else if !Utils.isPhoneValidate(phoneNo: (self.tfPhoneNumber.text)!){
+            // validate phone no format
+            self.phoneMesgLocale = Messages.PHONE_REG_LENGTH_ERROR.localized
+            self.lbPhoneMessage.text = Messages.PHONE_REG_LENGTH_ERROR.localized
+           // self.phoneMesgLocale = Messages.PHONE_REG_LENGTH_ERROR
+            isError = true
+            
+        }else {
             self.phoneMesgLocale = Constants.BLANK
             self.lbPhoneMessage.text = Constants.BLANK
         }
@@ -206,8 +218,8 @@ class LoginViewController: BaseUIViewController {
     }
         
     @IBAction func onClickLogin(_ sender:UIButton){
-
-        if (isErrorExist()) {
+       
+        if isErrorExist(){
             return
         }else{
             // check network
@@ -575,21 +587,26 @@ class LoginViewController: BaseUIViewController {
         
         present(alertController, animated: true)
     }
-    
-    @objc override func keyboardWillChange(notification : Notification) {
-        
-        guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        
-        if notification.name == UIResponder.keyboardWillShowNotification {
-            svMemberLogin.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardReact.height, right: 0)
-        } else {
-            svMemberLogin.contentInset = UIEdgeInsets.zero
-            
-        }
-        
-        svMemberLogin.scrollIndicatorInsets = svMemberLogin.contentInset
-        
+    @IBAction func backBtnPress(_ sender: UIButton) {
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as? UIViewController
+        navigationVC?.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC!, animated: true, completion: nil)
     }
+    
+//    @objc override func keyboardWillChange(notification : Notification) {
+//
+//        guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+//            return
+//        }
+//
+//        if notification.name == UIResponder.keyboardWillShowNotification {
+//            svMemberLogin.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardReact.height, right: 0)
+//        } else {
+//            svMemberLogin.contentInset = UIEdgeInsets.zero
+//
+//        }
+//
+//        svMemberLogin.scrollIndicatorInsets = svMemberLogin.contentInset
+//
+//    }
 }

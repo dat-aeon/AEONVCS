@@ -17,6 +17,7 @@ class AboutUsViewController: BaseUIViewController {
     @IBOutlet weak var lblWebsiteLink: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
+    @IBOutlet weak var callBtn: UIButton!
     
     var aboutUsData : AboutUsResponse!
     
@@ -116,6 +117,7 @@ class AboutUsViewController: BaseUIViewController {
             setLineSpacing(data: self.lblDescription.text!)
         }
         self.title = "aboutus.title".localized
+        self.callBtn.setTitle("verify.callnow.button".localized, for: UIControl.State.normal)
         
     }
     @IBAction func onClickBackBtn(_ sender: Any) {

@@ -30,6 +30,7 @@ class HomeNewViewController: BaseUIViewController {
     @IBOutlet weak var facebookView: CardView!
     @IBOutlet weak var shareView: CardView!
     @IBOutlet weak var lblLogOut: UILabel!
+    @IBOutlet weak var logoutImg: UIImageView!
     @IBOutlet weak var lblBarPhNo: UILabel!
     @IBOutlet weak var lblBarName: UILabel!
     
@@ -58,6 +59,11 @@ class HomeNewViewController: BaseUIViewController {
     @IBOutlet weak var unReadAskProductLabel: UILabel!
     @IBOutlet weak var loanAppBtn: UILabel!
     @IBOutlet weak var loanApplicationStatusBtn: UILabel!
+    @IBOutlet weak var loancalculatorTop: NSLayoutConstraint!
+    @IBOutlet weak var contactusTop: NSLayoutConstraint!
+    @IBOutlet weak var goodnewTop: NSLayoutConstraint!
+    @IBOutlet weak var ourserviceTop: NSLayoutConstraint!
+    @IBOutlet weak var informationupdatTop: NSLayoutConstraint!
     var customerType : String?
     
     var sessionDataBean : SessionDataBean?
@@ -86,16 +92,39 @@ class HomeNewViewController: BaseUIViewController {
     //    }
     override func viewWillAppear(_ animated: Bool) {
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
-        
-        askProductMessageUnRead(customerId: senderId!, levelType: 2)
-               levelTwoUnRead(customerId: senderId!)
+       currentLanguage()
+      
+        DispatchQueue.main.async {
+            self.levelTwoUnRead(customerId: self.senderId!)
+            self.askProductMessageUnRead(customerId: self.senderId!, levelType: 2)
+        }
+              
     }
 
     
  var logoutTimer: Timer?
-    
+    func currentLanguage(){
+        switch Locale.currentLocale {
+        case .MY:
+            mmTop()
+            break
+            
+        case .EN:
+            engTop()
+            break
+        }
+    }
+   
+    override func viewDidAppear(_ animated: Bool) {
+        currentLanguage()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            self.contactAppLabel.isHidden = true
+            self.notiIcon()
+        }
+        currentLanguage()
         askProductView.isHidden = true
         loanApplicationView.isHidden = true
       logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
@@ -133,6 +162,9 @@ class HomeNewViewController: BaseUIViewController {
         self.loanApplyViewPress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTaploanAppView)))
         self.loanApplyStatusView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTaploanApplyStatusView)))
         self.lblLogOut.isUserInteractionEnabled = true
+        self.logoutImg.isUserInteractionEnabled = true
+        self.logoutImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action:
+            #selector(onTapLogOut)))
         self.lblLogOut.addGestureRecognizer(UITapGestureRecognizer(target: self, action:
             #selector(onTapLogOut)))
         
@@ -233,13 +265,28 @@ class HomeNewViewController: BaseUIViewController {
         print("call dismisskeyboard")
     }
     
+    func mmTop(){
+        self.loancalculatorTop.constant = 9
+        self.contactusTop.constant = 9
+        self.ourserviceTop.constant = 9
+        self.informationupdatTop.constant = 5
+        
+    }
+    func engTop(){
+        self.informationupdatTop.constant = 5
+        self.ourserviceTop.constant = 18
+        self.contactusTop.constant = 18
+        self.loancalculatorTop.constant = 18
+    }
     @objc func onTapMMLocale() {
         print("click")
+        mmTop()
         super.NewupdateLocale(flag: 1)
         updateViews()
     }
     @objc func onTapEngLocale() {
         print("click")
+       engTop()
         super.NewupdateLocale(flag: 2)
         updateViews()
     }
@@ -249,7 +296,12 @@ class HomeNewViewController: BaseUIViewController {
         
     }
     
-    
+    func notiIcon(){
+        contactAppLabel.layer.cornerRadius = contactAppLabel.frame.size.height / 2
+        contactAppLabel.layer.masksToBounds = true
+        contactAppLabel?.layer.borderColor = UIColor.red.cgColor
+        contactAppLabel?.layer.borderWidth = 1.0
+    }
     
     func uiSetup() {
         loanApplyBtn.layer.borderColor  = UIColor.orange.cgColor
@@ -268,10 +320,7 @@ class HomeNewViewController: BaseUIViewController {
         unReadAskProductLabel.layer.masksToBounds = true
         unReadAskProductLabel?.layer.borderColor = UIColor.red.cgColor
         unReadAskProductLabel?.layer.borderWidth = 1.0
-        contactAppLabel.layer.cornerRadius = contactAppLabel.frame.size.height / 2
-        contactAppLabel.layer.masksToBounds = true
-        contactAppLabel?.layer.borderColor = UIColor.red.cgColor
-        contactAppLabel?.layer.borderWidth = 1.0
+       
     }
     @IBAction func loanApplyBtnPress(_ sender: UIButton) {
        
@@ -455,6 +504,8 @@ class HomeNewViewController: BaseUIViewController {
         loanAppView.isHidden = true
         
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.INFORMATION_UPDATE_VIEW_CONTROLLER) as! UIViewController
+//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.INFORMATIONUPDATE_VIEW_CONTROLLER) as! UIViewController
+        
         navigationVC.modalPresentationStyle = .overFullScreen
         self.present(navigationVC, animated: true, completion: nil)
         

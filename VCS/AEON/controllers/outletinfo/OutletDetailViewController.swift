@@ -22,7 +22,7 @@ class OutletDetailViewController: BaseUIViewController {
     @IBOutlet weak var vMapNavigateBtn: UIView!
     @IBOutlet weak var lbMapNav: UILabel!
     
-    @IBOutlet weak var labelCallPhone: UILabel!
+   
     var currentLocation : CLLocation?
     
     var outletInfo : OutletInfoBean?
@@ -32,14 +32,20 @@ class OutletDetailViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let yourColor : UIColor = UIColor(red: 185, green: 0, blue: 130)
+        vCallNow.layer.masksToBounds = true
+        vCallNow.layer.borderColor = yourColor.cgColor
+        vCallNow.layer.borderWidth = 1.0
+        vMapNavigateBtn.layer.masksToBounds = true
+        vMapNavigateBtn.layer.borderColor = yourColor.cgColor
+        vMapNavigateBtn.layer.borderWidth = 1.0
         self.ivBackBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickBack)))
         
         if outletInfo != nil {
             lbName.text = self.outletInfo?.outletName
             lbAddress.text = self.outletInfo?.address
             lbPhone.text = self.outletInfo?.phoneNo
-            labelCallPhone.text = self.outletInfo?.phoneNo
+          
             
             if self.outletInfo?.phoneNo != nil {
                 self.vCallNow.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickCallNow)))

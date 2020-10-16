@@ -176,7 +176,7 @@ extension OutletListViewController:UITableViewDelegate, UIPopoverControllerDeleg
         
         //let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.OUTLET_DETAIL_VIEW_CONTROLLER) as! OutletDetailViewController
-        popupVC.modalPresentationStyle = .overCurrentContext
+        popupVC.modalPresentationStyle = .fullScreen
         popupVC.modalTransitionStyle = .crossDissolve
         popupVC.outletInfo = self.selectedOutletBean!
         

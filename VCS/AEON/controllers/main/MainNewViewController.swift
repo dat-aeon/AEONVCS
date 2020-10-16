@@ -12,9 +12,8 @@ import UserNotifications
 
 class MainNewViewController: BaseUIViewController {
     
-    
-    
-    
+    @IBOutlet weak var contactusTopcon: NSLayoutConstraint!
+    @IBOutlet weak var calculatorTopcon: NSLayoutConstraint!
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
     
@@ -48,6 +47,9 @@ class MainNewViewController: BaseUIViewController {
     @IBOutlet weak var unReadAskProductLabel: UILabel!
      @IBOutlet weak var askProductView: CardView!
     
+    @IBOutlet weak var calculatorTop: NSLayoutConstraint!
+    @IBOutlet weak var contactusTop: NSLayoutConstraint!
+    @IBOutlet weak var ourserviceTop: NSLayoutConstraint!
     var vidoeFilePath : String = ""
      var senderId: Int!
  
@@ -65,11 +67,21 @@ class MainNewViewController: BaseUIViewController {
 //                               print(error.localized)
 //                          }
 //        }
-   
+    let mmFlag = "my_MM"
+    let engFlag = "en"
+    var language = Locale.currentLocale
+    let topInc:CGFloat = 24.0
+    let topDec:CGFloat = 10.0
     
     @IBOutlet weak var lblBarPhNo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentLanguage()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(callbackloginalert), name: NSNotification.Name("callbackloginalertview"), object:nil)
+        
+      
+        
         self.askProductView.isHidden = true
         self.unReadAskProductLabel.isHidden = true
         self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
@@ -157,6 +169,12 @@ class MainNewViewController: BaseUIViewController {
            
          
        }
+    @objc func callbackloginalert(){
+        
+            self.viewoverScrollView.isHidden = false
+        
+        
+    }
     @objc func onTapAskProductView() {
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "AgentChannelViewController") as! UIViewController
         navigationVC.modalPresentationStyle = .overFullScreen
@@ -174,6 +192,7 @@ class MainNewViewController: BaseUIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
        // multiLoginGet()
+        currentLanguage()
         self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
         askProductMessageUnRead(customerId: senderId!, levelType: 1)
         
@@ -189,6 +208,7 @@ class MainNewViewController: BaseUIViewController {
     
    
     @objc func onTapMMLocale() {
+        mmTop()
         let defaults = UserDefaults.standard
         defaults.set(1, forKey: "mya")
         super.NewupdateLocale(flag: 1)
@@ -196,10 +216,10 @@ class MainNewViewController: BaseUIViewController {
         updateViews()
     }
     @objc func onTapEngLocale() {
+        engTop()
         let defaults = UserDefaults.standard
         defaults.set(2, forKey: "eng")
         super.NewupdateLocale(flag: 2)
-        
         updateViews()
     }
    
@@ -226,6 +246,9 @@ class MainNewViewController: BaseUIViewController {
 
     @objc func onTapViewOverScrollView(){
         self.viewoverScrollView.isHidden = true
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "MainNewViewController") as? UIViewController
+        navigationVC?.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC!, animated: true, completion: nil)
     }
     
     @objc func onTapLoginView() {
@@ -338,7 +361,28 @@ class MainNewViewController: BaseUIViewController {
         
     }
     
-    
+    func currentLanguage(){
+        switch Locale.currentLocale {
+        case .MY:
+            mmTop()
+            break
+            
+        case .EN:
+            engTop()
+            break
+        }
+    }
+    func mmTop(){
+        self.ourserviceTop.constant = topDec
+        self.calculatorTop.constant = topDec
+        self.contactusTop.constant = topDec
+        
+    }
+    func engTop(){
+        self.ourserviceTop.constant = 23
+        self.calculatorTop.constant = topInc
+        self.contactusTop.constant = topInc
+    }
     @objc func onTapFacebookView() {
         print("click")
         if Network.reachability.isReachable == false {

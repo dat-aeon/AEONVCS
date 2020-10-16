@@ -198,7 +198,8 @@ extension CouponViewController:UITableViewDelegate, UIPopoverControllerDelegate 
 extension CouponViewController: PopupButtonDelegate {
     func onClickOkBtn(password: UITextField, popUpView: UIViewController) {
         if password.text == Constants.BLANK {
-            password.showError(message: Messages.PASSWORD_EMPTY_ERROR.localized)
+            Utils.showAlert(viewcontroller: self, title: "", message: "PASSWORD_EMPTY_ERROR".localized)
+          //  password.showError(message: Messages.PASSWORD_EMPTY_ERROR.localized)
             return
         }
         
@@ -210,13 +211,15 @@ extension CouponViewController: PopupButtonDelegate {
             CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             
             if result == Constants.INCORRECT_PWD {
+                Utils.showAlert(viewcontroller: self, title: "biometric.warning.title".localized, message: "PASSWORD_WRONG_ERROR".localized)
                 password.text = Constants.BLANK
-                password.showError(message: Messages.PASSWORD_WRONG_ERROR.localized)
+              //  password.showError(message: Messages.PASSWORD_WRONG_ERROR.localized)
                 return
                 
             } else if result == Constants.COUPON_REDEEM {
                 password.text = Constants.BLANK
-                password.showError(message: Messages.COUPON_REDEEM_ERROR.localized)
+                Utils.showAlert(viewcontroller: self, title: "", message: Messages.COUPON_REDEEM_ERROR.localized)
+//                password.showError(message: Messages.COUPON_REDEEM_ERROR.localized)
                 return
             }
             

@@ -5,12 +5,10 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Pyidaungsu-Bold.ttf">
-            <string>PyidaungsuBook-Bold</string>
-        </array>
         <array key="Pyidaungsu-Regular.ttf">
             <string>PyidaungsuBook</string>
         </array>
@@ -28,32 +26,45 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bg-JW-fbH" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
                         <rect key="frame" x="5" y="5" width="429" height="267"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Easy Apply &amp; Loan and Quick Processing" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-V4-Qcf">
-                                <rect key="frame" x="10" y="10" width="409" height="75"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="24"/>
-                                <color key="textColor" red="0.22352941179999999" green="0.74117647060000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09-05-2019 12:12 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YI-Xt-isn">
-                                <rect key="frame" x="10" y="220" width="249" height="37"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="read more" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLr-lZ-4Lf">
-                                <rect key="frame" x="269" y="220" width="150" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-V4-Qcf">
+                                <rect key="frame" x="10" y="10" width="409" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="hzY-W5-zkn"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ekd-T4-VET"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Easy Apply &amp; Loan and Quick Processing">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.83529411764705885" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="16" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09-05-2019 12:12 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YI-Xt-isn">
+                                <rect key="frame" x="10" y="232" width="125" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="kFo-jF-Vl1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Read more" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLr-lZ-4Lf">
+                                <rect key="frame" x="145" y="232" width="120" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="hzY-W5-zkn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z9-YS-QvK" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                                <rect key="frame" x="254" y="90" width="170" height="120"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z9-YS-QvK">
+                                <rect key="frame" x="230" y="68" width="190" height="190"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mdy_news_img" translatesAutoresizingMaskIntoConstraints="NO" id="fYA-79-6ZW">
-                                        <rect key="frame" x="2" y="2" width="166" height="116"/>
+                                        <rect key="frame" x="2" y="2" width="186" height="186"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="8"/>
@@ -63,10 +74,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="3c7-NH-e8T"/>
+                                    <constraint firstAttribute="width" constant="190" id="AAE-kA-Mka"/>
                                     <constraint firstAttribute="bottom" secondItem="fYA-79-6ZW" secondAttribute="bottom" constant="2" id="ITQ-KA-C8b"/>
                                     <constraint firstItem="fYA-79-6ZW" firstAttribute="leading" secondItem="8Z9-YS-QvK" secondAttribute="leading" constant="2" id="Yjp-yl-BZN"/>
-                                    <constraint firstAttribute="width" constant="170" id="dPT-H3-q9O"/>
+                                    <constraint firstAttribute="width" secondItem="8Z9-YS-QvK" secondAttribute="height" multiplier="2:2" id="aH2-3B-bqp"/>
                                     <constraint firstItem="fYA-79-6ZW" firstAttribute="top" secondItem="8Z9-YS-QvK" secondAttribute="top" constant="2" id="nAT-0H-WEw"/>
                                     <constraint firstAttribute="trailing" secondItem="fYA-79-6ZW" secondAttribute="trailing" constant="2" id="sCT-jF-OTR"/>
                                 </constraints>
@@ -75,17 +86,17 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" systemColor="systemGray3Color"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcQ-aZ-Tn6">
-                                <rect key="frame" x="10" y="90" width="234" height="120"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcQ-aZ-Tn6">
+                                <rect key="frame" x="10" y="65" width="210" height="137"/>
                                 <string key="text">Dear value customer, We would like to announce that on 14th February 2019 AEON loan disbursement service is available at new AEON counter located at "Royal Mingalar (Mandalay) for our value customers.</string>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -93,21 +104,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9YI-Xt-isn" firstAttribute="centerY" secondItem="HLr-lZ-4Lf" secondAttribute="centerY" id="3nK-U9-k6e"/>
+                            <constraint firstItem="VcQ-aZ-Tn6" firstAttribute="centerY" secondItem="7bg-JW-fbH" secondAttribute="centerY" id="6Lo-Kv-R2H"/>
                             <constraint firstItem="HLr-lZ-4Lf" firstAttribute="leading" secondItem="9YI-Xt-isn" secondAttribute="trailing" constant="10" id="ASo-FJ-SQA"/>
                             <constraint firstAttribute="bottom" secondItem="9YI-Xt-isn" secondAttribute="bottom" constant="10" id="Cdn-Ag-JeR"/>
                             <constraint firstItem="VcQ-aZ-Tn6" firstAttribute="top" secondItem="VOH-V4-Qcf" secondAttribute="bottom" constant="5" id="FPJ-v1-zD2"/>
                             <constraint firstItem="VOH-V4-Qcf" firstAttribute="top" secondItem="7bg-JW-fbH" secondAttribute="top" constant="10" id="LqS-l7-tr5"/>
-                            <constraint firstItem="HLr-lZ-4Lf" firstAttribute="top" secondItem="8Z9-YS-QvK" secondAttribute="bottom" constant="10" id="NcP-1N-AcN"/>
                             <constraint firstItem="9YI-Xt-isn" firstAttribute="leading" secondItem="7bg-JW-fbH" secondAttribute="leading" constant="10" id="OWo-YR-Ap3"/>
-                            <constraint firstAttribute="trailing" secondItem="HLr-lZ-4Lf" secondAttribute="trailing" constant="10" id="VmX-qg-rOO"/>
+                            <constraint firstAttribute="bottom" secondItem="8Z9-YS-QvK" secondAttribute="bottom" constant="9" id="aRa-QX-gXf"/>
                             <constraint firstItem="VcQ-aZ-Tn6" firstAttribute="leading" secondItem="7bg-JW-fbH" secondAttribute="leading" constant="10" id="kwz-YK-cNh"/>
                             <constraint firstAttribute="trailing" secondItem="VOH-V4-Qcf" secondAttribute="trailing" constant="10" id="rEi-1C-Gpc"/>
-                            <constraint firstItem="8Z9-YS-QvK" firstAttribute="top" secondItem="VcQ-aZ-Tn6" secondAttribute="top" id="v0D-DY-RgC"/>
+                            <constraint firstItem="8Z9-YS-QvK" firstAttribute="top" secondItem="VcQ-aZ-Tn6" secondAttribute="top" constant="3" id="v0D-DY-RgC"/>
                             <constraint firstItem="8Z9-YS-QvK" firstAttribute="leading" secondItem="VcQ-aZ-Tn6" secondAttribute="trailing" constant="10" id="vdJ-Ky-XhZ"/>
                             <constraint firstAttribute="bottom" secondItem="HLr-lZ-4Lf" secondAttribute="bottom" constant="10" id="wRh-Vm-Vw1"/>
                             <constraint firstItem="VOH-V4-Qcf" firstAttribute="leading" secondItem="7bg-JW-fbH" secondAttribute="leading" constant="10" id="x7V-Vb-tha"/>
-                            <constraint firstItem="9YI-Xt-isn" firstAttribute="top" secondItem="VcQ-aZ-Tn6" secondAttribute="bottom" constant="10" id="ze2-Ge-53H"/>
-                            <constraint firstAttribute="trailing" secondItem="8Z9-YS-QvK" secondAttribute="trailing" constant="5" id="zkZ-aw-e0H"/>
+                            <constraint firstAttribute="trailing" secondItem="8Z9-YS-QvK" secondAttribute="trailing" constant="9" id="zkZ-aw-e0H"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -131,5 +141,8 @@
     </objects>
     <resources>
         <image name="mdy_news_img" width="200" height="150"/>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

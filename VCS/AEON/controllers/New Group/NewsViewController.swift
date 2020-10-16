@@ -161,7 +161,7 @@ extension NewsViewController:UITableViewDelegate, UIPopoverControllerDelegate {
         
         //let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.NEWS_POPUP_VIEW_CONTROLLER) as! NewsPopupViewController
-        popupVC.modalPresentationStyle = .overCurrentContext
+        popupVC.modalPresentationStyle = .fullScreen
         popupVC.modalTransitionStyle = .crossDissolve
         popupVC.newsInfoBean = self.selectedNewsBean!
         

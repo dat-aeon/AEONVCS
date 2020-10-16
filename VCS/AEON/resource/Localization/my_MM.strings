@@ -28,6 +28,7 @@
 "login.login.button" = "ဝင်မည်";
 "login.forgetpassword.link" ="လျှို့ဝှက်ကုဒ်မေ့နေပါသလား?";
 
+
 //BIOMETRIC Screen
 "biometric.update.title" = "Biometric ပြုပြင်ခြင်း";
 "biometric.register.title" = "Biometric ထည့်သွင်းခြင်း";
@@ -60,7 +61,7 @@
 "secquestconfirm.confrim.button" = "အတည်ပြုမည်";
 
 //FORCE PASSWORD CHANGE Screen
-"resetpass.confirm.title" = "အချက်အလက်အတည်ပြုခြင်း";
+"resetpass.confirm.title" = "လျှို့ဝှက်ကုဒ်ပြင်ဆင်ရန် အတည်ပြုခြင်း";
 "resetpass.next.button" = "OK";
 
 //RESET PASSWORD Screen
@@ -188,7 +189,7 @@
 "loan.warning_invalid_loanterm" = ">ချေးငွေကာလ မမှန်ကန်ပါ။";
 "loan.warning_require_loanterm" = ">ချေးငွေကာလတစ်ခုကို ရွေးခြယ်ပေးပါ။";
 
-"loan.motor_cycle" = "Motor Cycle ချေးငွေ";
+"loan.motor_cycle" = "Motor Cycle";
 "loan.loan_term" = "ချေးငွေကာလ";
 "loan.fee" = "ဝန်ဆောင်ခ";
 "loan.total_repay" = "ပြန်လည်ပေးသွင်းရမည့်ပမာဏ\n(စုစုပေါင်း)";
@@ -275,6 +276,7 @@
 "UPGRADE_SUCCESS" = "Memberအဖြစ်အဆင့်မြှင့်ခြင်းအောင်မြင်ပါသည်။ \nသင်၏ဖုန်းနံပါတ်တွင်ထည့်သွင်းထားသော [";
 "UPGRADE_SUCCESS_2" = "] ဖြင့်ဝင်ရမည်ဖြစ်သည်။ Biometric အချက်အလက်ကိုယခုနံပါတ်ဖြင့်ပြင်ဆင်ပေးပါ။";
 "VERIFY_INVALID_ANSWERS" = "မေးခွန်းနှင့်အဖြေများမကိုက်ညီပါ။";
+
 
 // INFO UPDATE
 "INCORRECT_PASSWORD_ERROR" = "လျှို့ဝှက်ကုဒ်မမှန်ကန်ပါ။";
@@ -607,3 +609,8 @@
 "main.applyLoan" = "ချေးငွေးလျှောက်ထား";
 //chatbot
 "message.ask" = "မေးမယ်";
+//camera member upload
+ 
+"member.cameraglass" = "ဓာတ်ပုံရိုက်နေစဉ်အတွင်း မျက်မှန်မတပ်ရ။";
+"main.multilogin" = "နောက်ထပ် Login ဝင်နေသည်။";
+"securityquestion.password.holder" = "လျှို့ဝှက်ကုဒ်";

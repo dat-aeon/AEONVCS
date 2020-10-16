@@ -60,7 +60,7 @@
 "secquestconfirm.confrim.button" = "CONFIRM";
 
 //FORCE PASSWORD CHANGE Screen
-"resetpass.confirm.title" = "Confirm Information";
+"resetpass.confirm.title" = "PASSWORD CHANGE CONFIRMATION";
 "resetpass.next.button" = "OK";
 
 //RESET PASSWORD Screen
@@ -153,7 +153,7 @@
 
 // EVENTS & NEWS Screen
 "eventnews.title" = "EVENTS & NEWS";
-"eventnews.tab1.title" = "GOODS NEWS";
+"eventnews.tab1.title" = "GOOD NEWS";
 "eventnews.tab2.title" = "AEON ANNOUNCES";
 "eventnews.tab3.title" = "GIFTS";
 "eventnews.readmore.label" = "read more";
@@ -188,7 +188,7 @@
 "loan.warning_invalid_loanterm" = "Invalid Loan Term.";
 "loan.warning_require_loanterm" = "Please select Loan Term."  ;
 
-"loan.motor_cycle" = "Motor Cycle Loan";
+"loan.motor_cycle" = "Motor Cycle";
 "loan.loan_term" = "Loan Term";
 "loan.fee" = "Processing Fee";
 "loan.total_repay" = "Total Repayment Amount";
@@ -218,6 +218,7 @@
 "PHONE_EMPTY_ERROR" = "Please enter Login Phone No.";
 "PASSWORD_EMPTY_ERROR" = "Please enter Password.";
 
+
 "PHONE_LENGTH_ERROR" = "Phone No. must be at least 9 digits.";
 "PASSWORD_LENGTH_ERROR" = "Length of Password shall be from 6 to 16.";
 "BAD_CREDENTIAL_ERROR" = "Phone No. or Password is wrong.";
@@ -238,7 +239,7 @@
 
 "NRC_TOWNSHIP_EMPTY_ERROR" = "Please enter NRC Township code.";
 "NRC_TOWNSHIP_INVALID_ERROR" = "NRC Township code is not valid.";
-"NRC_NO_EMPTY_ERROR" = "Please enter NRC No.";
+"NRC_NO_EMPTY_ERROR" = "Please enter NRC";
 "NRC_LENGTH_ERROR" = "NRC(No) must be 6 numbers only.";
 
 "PHONE_REG_EMPTY_ERROR" = "Please enter Phone No.";
@@ -627,3 +628,8 @@
 "main.applyLoan" = "Apply Loan";
  //chatbot
 "message.ask" = "Ask";
+//camera member upload
+ 
+"member.cameraglass" = "Please do not have glass on your face during photo shot.";
+"main.multilogin" = "Another Login Occurred!";
+"securityquestion.password.holder" = "Password *";

@@ -614,7 +614,8 @@ class RegistrationViewController: BaseUIViewController {
     
     @objc func dobDatePickerFromValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+//        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         tfDob?.text = dateFormatter.string(from: sender.date)
         
     }
@@ -625,8 +626,8 @@ class RegistrationViewController: BaseUIViewController {
         let dateFormatter: DateFormatter = DateFormatter()
         
         // Set date format
+      
         dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
-        
         // Apply date format
         //let selectedDate: String = dateFormatter.string(from: sender.date)
         

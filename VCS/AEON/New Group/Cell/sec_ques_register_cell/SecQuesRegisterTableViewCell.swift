@@ -11,6 +11,8 @@ import UIKit
 class SecQuesRegisterTableViewCell: UITableViewCell,UITextFieldDelegate {
 
     @IBOutlet weak var vsecQuesList: UIView!
+    
+    //@IBOutlet weak var vsecQuesList: UIView!
     @IBOutlet weak var lblQuesNo: UILabel!
     @IBOutlet weak var lblSecQuestion: UILabel!
     @IBOutlet weak var lblAnsNo: UILabel!
@@ -29,12 +31,12 @@ class SecQuesRegisterTableViewCell: UITableViewCell,UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        self.vsecQuesList.layer.borderWidth = 1
-        self.vsecQuesList.layer.cornerRadius = 4 as CGFloat
-        self.vsecQuesList.layer.borderColor = UIColor(red:205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha: 1.0).cgColor
-        
-        
+        self.vsecQuesList.isUserInteractionEnabled = true
+//        self.vsecQuesList.layer.borderWidth = 1
+//        self.vsecQuesList.layer.cornerRadius = 4 as CGFloat
+//        self.vsecQuesList.layer.borderColor = UIColor(red:205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha: 1.0).cgColor
+//        
+//        
         self.vsecQuesList.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickSecQuesList)))
         
         self.tfsecAnswer.delegate = self

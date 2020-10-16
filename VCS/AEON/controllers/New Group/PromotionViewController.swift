@@ -179,7 +179,7 @@ extension PromotionViewController:UITableViewDataSource{
 //        let bgColorView = UIView()
 //        bgColorView.backgroundColor = .blue
 //        cell.selectedBackgroundView = bgColorView
-//        
+        cell.selectionStyle = .none
         cell.setData(promoBean: self.promoList[indexPath.row])
         
         return cell
@@ -197,7 +197,7 @@ extension PromotionViewController:UITableViewDelegate, UIPopoverControllerDelega
         
         //let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let popupVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.PROMOTION_POPUP_VIEW_CONTROLLER) as! PromotionPopupViewController
-        popupVC.modalPresentationStyle = .overCurrentContext
+        popupVC.modalPresentationStyle = .fullScreen
         popupVC.modalTransitionStyle = .crossDissolve
         popupVC.promoBean = self.selectedPromoBean!
         

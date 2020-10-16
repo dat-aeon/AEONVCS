@@ -42,6 +42,7 @@ class ForceChangeSecConfirmViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tvSecQuesView.estimatedRowHeight = 120
         
         loadSecurityQuestionLIst()
         
@@ -198,7 +199,6 @@ extension ForceChangeSecConfirmViewController:UITableViewDataSource{
         }
         return 1
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.SEC_QUEST_REG_HEADER_TABLE_CELL, for: indexPath) as! SecQuesRegHeaderTableViewCell
@@ -281,6 +281,7 @@ extension ForceChangeSecConfirmViewController:SecQuesRegisterCellClickDelegate{
                 }
                 print(value)
             })
+            tvSecQuesView.reloadData()
             action.addAction(UIAlertAction.init(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
             self.present(action, animated: true, completion: nil)
         }
@@ -298,10 +299,10 @@ extension ForceChangeSecConfirmViewController:UITableViewDelegate{
             return CGFloat(70.0)
             
         } else if indexPath.section == 1{
-            return CGFloat(160.0)
+            return UITableView.automaticDimension
             
         }
-        return CGFloat(60.0)
+        return UITableView.automaticDimension
     }
 }
 

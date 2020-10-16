@@ -16,6 +16,7 @@ class OutletListTableViewCell: UITableViewCell {
     @IBOutlet weak var lbDistance: UILabel!
     @IBOutlet weak var ivForwardDetail: UIImageView!
     
+    @IBOutlet weak var meterView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +24,15 @@ class OutletListTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        let yourColor : UIColor = UIColor.lightGray
+       
+        meterView.layer.masksToBounds = true
+        meterView.layer.borderColor = yourColor.cgColor
+        meterView.layer.borderWidth = 1.0
+        
+        ivMarker.layer.masksToBounds = true
+        ivMarker.layer.borderColor = yourColor.cgColor
+        ivMarker.layer.borderWidth = 1.0
         // Configure the view for the selected state
     }
     

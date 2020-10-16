@@ -10,6 +10,7 @@ import UIKit
 
 class SecurityQuestionUpdateTableViewCell: UITableViewCell, UITextFieldDelegate {
     
+    @IBOutlet weak var passwordTitle: UILabel!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnUpdate: UIButton!
     @IBOutlet weak var ivPasswordVisible: UIImageView!
@@ -21,7 +22,8 @@ class SecurityQuestionUpdateTableViewCell: UITableViewCell, UITextFieldDelegate 
     var delegate:SecurityQuestionUpdateDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+//        passwordTitle.text = "securityquestion.password.holder".localized
+        passwordTitle.text = messageLocale
         self.tfPassword.delegate = self
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.addTarget(self, action: #selector(didTapView))

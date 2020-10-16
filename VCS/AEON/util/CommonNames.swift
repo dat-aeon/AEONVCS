@@ -50,6 +50,7 @@ struct CommonNames {
     
     // Information Update
     static var INFORMATION_UPDATE_VIEW_CONTROLLER = "InfoUpdateForPh1ViewController"
+    static var  INFORMATIONUPDATE_VIEW_CONTROLLER = "InformationUpdateViewController"
     static var SEC_QUEST_UPDATE_VIEW_CONTROLLER = ""
     static var CUSTOMER_INFO_UPDATE_VIEW_CONTROLLER = ""
     

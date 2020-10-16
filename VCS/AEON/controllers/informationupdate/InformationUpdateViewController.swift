@@ -17,6 +17,7 @@ class InformationUpdateViewController: BaseUIViewController {
     var containerIndex = 1
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         segInfroUpdate.setTitle("infoupdate.tag1.title".localized, forSegmentAt: 0)
         segInfroUpdate.setTitle("infoupdate.tag2.title".localized, forSegmentAt: 1)
         toggleContainer(position:containerIndex)

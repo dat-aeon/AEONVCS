@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="KGk-i7-Jjw" customClass="ForgetConfirmTableViewCell" customModule="AEONVCS" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="KGk-i7-Jjw" customClass="ForgetConfirmTableViewCell" customModule="AEONMember" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="390" height="141"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -23,15 +23,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="y41-ti-14E">
-                        <rect key="frame" x="15" y="11" width="360" height="40"/>
+                        <rect key="frame" x="16" y="11" width="358" height="40"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snd-KS-mVF">
-                                <rect key="frame" x="5" y="0.0" width="172.5" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snd-KS-mVF">
+                                <rect key="frame" x="5" y="0.0" width="171.5" height="40"/>
                                 <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="AZP-9m-GKt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
@@ -43,8 +42,8 @@
                                     <action selector="onClickCallNow:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="deX-OT-hLd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GN-ip-U3e">
-                                <rect key="frame" x="182.5" y="0.0" width="172.5" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GN-ip-U3e">
+                                <rect key="frame" x="181.5" y="0.0" width="171.5" height="40"/>
                                 <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tBX-gU-xau"/>
@@ -70,11 +69,20 @@
                             <constraint firstItem="snd-KS-mVF" firstAttribute="leading" secondItem="y41-ti-14E" secondAttribute="leading" constant="5" id="x4k-D3-gTp"/>
                         </constraints>
                     </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-ringer_volume" translatesAutoresizingMaskIntoConstraints="NO" id="73Q-F5-i0F">
+                        <rect key="frame" x="24" y="11" width="30" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="7qV-r3-XEB"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="73Q-F5-i0F" firstAttribute="top" secondItem="snd-KS-mVF" secondAttribute="top" id="CZp-0x-Yoi"/>
                     <constraint firstItem="y41-ti-14E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Eiw-Yn-xAe"/>
+                    <constraint firstItem="73Q-F5-i0F" firstAttribute="leading" secondItem="snd-KS-mVF" secondAttribute="leading" constant="3" id="Kkz-JB-2ZN"/>
                     <constraint firstAttribute="trailingMargin" secondItem="y41-ti-14E" secondAttribute="trailing" id="Rxw-hc-kY7"/>
                     <constraint firstItem="y41-ti-14E" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZJD-zB-awM"/>
+                    <constraint firstItem="73Q-F5-i0F" firstAttribute="bottom" secondItem="snd-KS-mVF" secondAttribute="bottom" id="ZyV-mH-nd4"/>
                     <constraint firstAttribute="bottomMargin" secondItem="y41-ti-14E" secondAttribute="bottom" id="bfy-3V-kwC"/>
                 </constraints>
             </tableViewCellContentView>
@@ -83,7 +91,10 @@
                 <outlet property="btnCallNow" destination="snd-KS-mVF" id="ye9-o3-bUO"/>
                 <outlet property="btnConfirm" destination="4GN-ip-U3e" id="wvT-VM-qwv"/>
             </connections>
-            <point key="canvasLocation" x="193.59999999999999" y="153.37331334332833"/>
+            <point key="canvasLocation" x="193.59999999999999" y="152.47376311844079"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icons8-ringer_volume" width="50" height="50"/>
+    </resources>
 </document>

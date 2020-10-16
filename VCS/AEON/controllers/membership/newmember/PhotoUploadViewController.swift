@@ -121,8 +121,8 @@ class PhotoUploadViewController: BaseUIViewController {
                    if results.data.logoutFlag == true {
                        print("success stage logout")
                        // create the alert
-                              let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
-
+                    let alert = UIAlertController(title: "Alert", message: "main.multilogin".localized, preferredStyle: UIAlertController.Style.alert)
+  
                               // add an action (button)
                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
                            self.logoutTimer?.invalidate()
@@ -221,7 +221,7 @@ class PhotoUploadViewController: BaseUIViewController {
             
             self.definesPresentationContext = true
             popupVC.delegate = self
-            popupVC.lblTitle.text = "Enter Password"
+            popupVC.lblTitle.text = "biometric.password.holder".localized
             self.present(popupVC, animated: true, completion: nil)
         } else {
             self.checkPermission()
@@ -311,7 +311,7 @@ class PhotoUploadViewController: BaseUIViewController {
             } else {
 //                Utils.showAlert(viewcontroller: self, title: Constants.CHECK_PASSWORD_FAILED_TITIE, message: "")
                 strPassword.text = Constants.BLANK
-                strPassword.attributedPlaceholder = NSAttributedString(string: "Password is wrong.",
+                strPassword.attributedPlaceholder = NSAttributedString(string: "PASSWORD_WRONG_ERROR".localized,
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             }
             
@@ -445,7 +445,7 @@ extension PhotoUploadViewController: PopupButtonDelegate {
         
         } else {
             //password.placeholder = "Please enter password."
-            password.attributedPlaceholder = NSAttributedString(string: "Please enter password.",
+            password.attributedPlaceholder = NSAttributedString(string: "PASSWORD_EMPTY_ERROR".localized,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         }
     }
