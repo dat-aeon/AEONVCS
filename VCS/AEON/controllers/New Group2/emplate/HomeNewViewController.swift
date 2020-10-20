@@ -90,17 +90,26 @@ class HomeNewViewController: BaseUIViewController {
     //        levelTwoUnRead(customerId: cid)
     //         loanAppView.isHidden = true
     //    }
+   
+    override func viewDidDisappear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.currentLanguage()
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
        currentLanguage()
-      
-        DispatchQueue.main.async {
-            self.levelTwoUnRead(customerId: self.senderId!)
-            self.askProductMessageUnRead(customerId: self.senderId!, levelType: 2)
-        }
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
+//        DispatchQueue.main.async {
+//            self.levelTwoUnRead(customerId: self.senderId!)
+//           
+//         //   self.askProductMessageUnRead(customerId: self.senderId!, levelType: 2)
+//        }
               
     }
-
+    @objc func contactUsnoti() {
+        self.levelTwoUnRead(customerId: self.senderId!)
+    }
     
  var logoutTimer: Timer?
     func currentLanguage(){
@@ -116,14 +125,17 @@ class HomeNewViewController: BaseUIViewController {
     }
    
     override func viewDidAppear(_ animated: Bool) {
-        currentLanguage()
+        DispatchQueue.main.async {
+            self.currentLanguage()
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async {
+     
             self.contactAppLabel.isHidden = true
             self.notiIcon()
-        }
+       
+       
         currentLanguage()
         askProductView.isHidden = true
         loanApplicationView.isHidden = true
@@ -134,8 +146,8 @@ class HomeNewViewController: BaseUIViewController {
         self.deviceID = sessionDataBean?.loginDeviceId ?? ""
      
         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
-        askProductMessageUnRead(customerId: senderId!, levelType: 2)
-        levelTwoUnRead(customerId: senderId!)
+       // askProductMessageUnRead(customerId: senderId!, levelType: 2)
+        self.levelTwoUnRead(customerId: self.senderId!)
         uiSetup()
         loanAppView.isHidden = true
         updateViews()
@@ -320,7 +332,10 @@ class HomeNewViewController: BaseUIViewController {
         unReadAskProductLabel.layer.masksToBounds = true
         unReadAskProductLabel?.layer.borderColor = UIColor.red.cgColor
         unReadAskProductLabel?.layer.borderWidth = 1.0
-       
+        contactAppLabel.layer.cornerRadius = contactAppLabel.frame.size.height / 2
+        contactAppLabel.layer.masksToBounds = true
+        contactAppLabel?.layer.borderColor = UIColor.red.cgColor
+        contactAppLabel?.layer.borderWidth = 1.0
     }
     @IBAction func loanApplyBtnPress(_ sender: UIButton) {
        

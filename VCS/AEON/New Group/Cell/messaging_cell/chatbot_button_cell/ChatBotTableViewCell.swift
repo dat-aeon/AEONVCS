@@ -12,10 +12,13 @@ import Alamofire
 protocol QuestionAndAnswerIdDelegate {
     func questionAndAnswerId(id: Int,question: String,answer: String)
 }
-
+protocol QuestionDelegate {
+    func questionData(question: String)
+}
 class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
   
     var delegate: QuestionAndAnswerIdDelegate?
+    var questionDelegate: QuestionDelegate?
     @IBOutlet weak var chatCollectionView: UICollectionView!
     var chatBot = [ChatBotInfo]()
     var chatBotmm = [ChatBotInfo]()
@@ -116,6 +119,8 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
      //   cell.addSubview(editButton ?? <#default value#>)
         editButton?.tag = indexPath.row
         cell.setData(chatBotInfor: data)
+        
+        
         return cell
        }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -130,18 +135,26 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     }
     let customerId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chatBotCollectionViewCell", for: indexPath) as! chatBotCollectionViewCell
-        cell.questionBtnLabel.tag = indexPath.row
-         chatBotId = chatBotList[indexPath.row].chatBotQuestionAndAnswerId
-        delegate?.questionAndAnswerId(id: chatBotId, question: chatBotList[indexPath.row].question, answer: chatBotList[indexPath.row].answer)
         
-        SendChatQuestionModel.init().sendChatQuestion(customerId: customerId, chatBotQuestionAndAnswerId: chatBotId, question: chatBotList[indexPath.row].question, answer: chatBotList[indexPath.row].answer) { (result) in
-            print(result)
-            //self.tvMessagingView.reloadData()
-        } failure: { (error) in
-            print(error)
-        }
+        
+        let questions = chatBotList[indexPath.row].question
+        
+        questionDelegate?.questionData(question: questions)
+//        print(indexPath.row)
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chatBotCollectionViewCell", for: indexPath) as! chatBotCollectionViewCell
+//        cell.questionBtnLabel.tag = indexPath.row
+//         chatBotId = chatBotList[indexPath.row].chatBotQuestionAndAnswerId
+//        delegate?.questionAndAnswerId(id: chatBotId, question: chatBotList[indexPath.row].question, answer: chatBotList[indexPath.row].answer)
+//
+//        SendChatQuestionModel.init().sendChatQuestion(customerId: customerId, chatBotQuestionAndAnswerId: chatBotId, question: chatBotList[indexPath.row].question, answer: chatBotList[indexPath.row].answer) { (result) in
+//            print(result)
+//            //self.tvMessagingView.reloadData()
+//        } failure: { (error) in
+//            print(error)
+//        }
+//
+        
+        
         
     }
     var button = 0

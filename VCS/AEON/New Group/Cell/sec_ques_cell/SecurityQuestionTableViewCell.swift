@@ -26,9 +26,9 @@ class SecurityQuestionTableViewCell: UITableViewCell,UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.ivQuestion.layer.borderWidth = 1
-        self.ivQuestion.layer.cornerRadius = 4 as CGFloat
-        self.ivQuestion.layer.borderColor = UIColor(red:205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha: 1.0).cgColor
+//        self.ivQuestion.layer.borderWidth = 1
+//        self.ivQuestion.layer.cornerRadius = 4 as CGFloat
+//        self.ivQuestion.layer.borderColor = UIColor(red:205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha: 1.0).cgColor
         
         self.tfAnswer.delegate = self
         let tapRecognizer = UITapGestureRecognizer()

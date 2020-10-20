@@ -46,24 +46,10 @@ class MessagingViewController: BaseUIViewController {
       //let messagingSocket = WebSocket(Constants.socket_url)
       //var socket = WebSocket(url: URL(string: Constants.socket_url)!, protocols: ["chat"])
      
-         override func viewWillDisappear(_ animated: Bool) {
-             print("viewWillDisappear \(viewWillDisappear)")
-  //        let viewController = HomeNewViewController()
-  //                     viewController.viewWillAppear(true)
-         
-         }
-         override func viewDidAppear(_ animated: Bool) {
-             print("viewDidAppear \(viewDidAppear)")
-            // self.viewDidLoad()
-         }
-         override func viewDidDisappear(_ animated: Bool) {
-             print("viewDidDisappear \(viewDidDisappear)")
-  //        let viewController = HomeNewViewController()
-  //        viewController.viewWillAppear(false)
-         }
+   
       override func viewDidLoad() {
           super.viewDidLoad()
-          
+        self.tvMessagingView.reloadData()
          logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
           self.imgBack.isUserInteractionEnabled = true
           self.imgMMlocale.isUserInteractionEnabled = true
@@ -214,7 +200,7 @@ class MessagingViewController: BaseUIViewController {
                       unreadArray.removeAll()
                       UserDefaults.standard.set(unreadArray, forKey: Constants.UNREAD_MESSAGE_ARRAY)
                   }
-                  CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                //  CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                   UserDefaults.standard.set(0, forKey: Constants.UNREAD_MESSAGE_COUNT)
 
                   self.tvMessagingView.reloadData()
@@ -478,6 +464,7 @@ class MessagingViewController: BaseUIViewController {
                           //print("type", type)
                           
                           if (type == "room"){
+                            
                               // chat room is open and get message list
                               if (self.messageBeanList.count == 0){
                                   super.socket.write(string: "messageList:")
@@ -767,7 +754,7 @@ class MessagingViewController: BaseUIViewController {
                                   self.tvMessagingView.scrollToRow(at: scrollIndex, at: .top, animated: false)
                                   
                               }
-                              CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                          //    CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                           }
                       }
                   }

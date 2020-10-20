@@ -189,10 +189,23 @@ class MainNewViewController: BaseUIViewController {
         let request = UNNotificationRequest(identifier: "testnoti", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.currentLanguage()
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.currentLanguage()
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
        // multiLoginGet()
-        currentLanguage()
+       // mmTop()
+        DispatchQueue.main.async {
+            self.currentLanguage()
+        }
+        
         self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
         askProductMessageUnRead(customerId: senderId!, levelType: 1)
         

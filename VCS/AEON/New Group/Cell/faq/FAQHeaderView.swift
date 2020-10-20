@@ -44,6 +44,7 @@ class FAQHeaderView: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "callback"), object: nil)
     }
     
     @objc private func didTapHeader() {

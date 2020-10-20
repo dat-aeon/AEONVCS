@@ -14,7 +14,10 @@ import Starscream
 class FreeChatViewController: BaseUIViewController {
     
     
-   
+    @IBOutlet weak var closeAlertView: UIImageView!
+    @IBOutlet weak var questionAlertView: UIView!
+    @IBOutlet weak var questionLabel: UILabel!
+    
     @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
@@ -26,7 +29,8 @@ class FreeChatViewController: BaseUIViewController {
     @IBOutlet weak var btnSendMesg: UIButton!
     @IBOutlet weak var vSendBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var botchat: UIButton!
-    
+    let questionButton = UIButton()
+        var myQuestions = ""
         var answers = ""
         var oldMessageBeanList = [MessageBean]()
         var typeLists:String = ""
@@ -58,7 +62,7 @@ class FreeChatViewController: BaseUIViewController {
         let mmFlag = "my_MM"
         let engFlag = "en"
         var language = Locale.currentLocale
-//
+
 
   
 
@@ -66,16 +70,34 @@ class FreeChatViewController: BaseUIViewController {
          AutomessageBean.message = mmLan
 
     }
-
-   
-   
-
+    
+  
+  
+    
+    @objc func questionView(sender:UIButton) {
+        print("\(myQuestions)")
+    }
+    func questionAlertView(question: String){
+        print(question)
+        Utils.showAlert(viewcontroller: self, title: "", message: question)
+//        AlertView.instance.showAlert(title: "", message: question, alertType: "")
+        questionAlertView.isHidden = true
+        //questionLabel.text = question
+    }
+    @objc func closeView(){
+        questionAlertView.isHidden = true
+    }
         override func viewDidLoad() {
 
             super.viewDidLoad()
-           
-           
+            self.closeAlertView.isUserInteractionEnabled = true
+            self.questionLabel.isUserInteractionEnabled = true
+            self.closeAlertView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeView)))
+            self.questionLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeView)))
             
+            questionAlertView.isHidden = true
+           
+            questionButton.addTarget(self, action: #selector(questionView(sender:)), for: UIControl.Event.touchUpInside)
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
             
 
@@ -1341,6 +1363,7 @@ scrollToBottom()
 
                 let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.MESG_SEND_CHAT_BOT, for: indexPath) as! ChatBotTableViewCell
                 cell.delegate = self
+                cell.questionDelegate = self
                 cell.selectionStyle = .none
                 return cell
 
@@ -1360,7 +1383,7 @@ scrollToBottom()
                 cell.selectionStyle = .none
                 return cell
             } else if (!messageData.isReceiveMesg) {
-                
+                //Question type
                 let cell = tableView.dequeueReusableCell(withIdentifier: CommonNames.MESG_SENDER_TABLE_CELL, for: indexPath) as! MesgSenderTableViewCell
                 cell.setData(messageBean: messageData)
 
@@ -1516,4 +1539,14 @@ extension FreeChatViewController : QuestionAndAnswerIdDelegate{
        
     }
 
+}
+extension FreeChatViewController : QuestionDelegate {
+    func questionData(question: String) {
+        myQuestions = question
+      questionAlertView(question: question)
+       // print("My question  >>>  \(question)")
+  
+    }
+    
+    
 }

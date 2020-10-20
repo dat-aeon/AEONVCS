@@ -113,18 +113,20 @@ class HowToUseViewController: BaseUIViewController {
                }
            }
     @objc func onTapBack() {
-       print("click back")
-        player.pause()
+        DispatchQueue.main.async {
+            self.player.pause()
+        }
       
+    
         self.dismiss(animated: true, completion: nil)
     }
     @objc func onTapMMLocale() {
-       print("click")
+      
         super.NewupdateLocale(flag: 1)
         changeLocale()
     }
     @objc func onTapEngLocale() {
-       print("click")
+      
         super.NewupdateLocale(flag: 2)
         changeLocale()
     }

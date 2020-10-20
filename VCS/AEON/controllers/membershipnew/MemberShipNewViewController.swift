@@ -84,7 +84,7 @@ class MemberShipNewViewController: BaseUIViewController {
                     
                    
                     
-                    if let agreementList = sessionInfo!.customerAgreementDtoList{
+                    if (sessionInfo?.customerAgreementDtoList) != nil{
         //                self.agreementNoList = agreementList
                         
                     }

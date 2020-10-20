@@ -12,26 +12,33 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="chatBotCollectionViewCell" id="gTV-IL-0wX" customClass="chatBotCollectionViewCell" customModule="AEONMember" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="424" height="276"/>
+            <rect key="frame" x="0.0" y="0.0" width="424" height="300"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="424" height="276"/>
+                <rect key="frame" x="0.0" y="0.0" width="424" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h62-2K-1fd" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                        <rect key="frame" x="10" y="5" width="404" height="266"/>
+                        <rect key="frame" x="10" y="5" width="404" height="290"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="အလုပ်အကိုင်အခွင့်အလမ်းများအကြောင်" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-5K-u4o">
-                                <rect key="frame" x="10" y="10" width="384" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-5K-u4o">
+                                <rect key="frame" x="10" y="5" width="384" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="AIo-P7-Foy"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="gS7-ME-Xmr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="hi">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="12"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWO-40-dT1" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                                <rect key="frame" x="10" y="216" width="384" height="40"/>
+                                <rect key="frame" x="10" y="240" width="384" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsI-GX-AHs">
                                         <rect key="frame" x="2" y="2" width="380" height="36"/>
@@ -61,7 +68,7 @@
                             <constraint firstAttribute="bottom" secondItem="UWO-40-dT1" secondAttribute="bottom" constant="10" id="Pf6-cW-aLV"/>
                             <constraint firstAttribute="trailing" secondItem="vjA-5K-u4o" secondAttribute="trailing" constant="10" id="SrM-qu-yGr"/>
                             <constraint firstItem="UWO-40-dT1" firstAttribute="leading" secondItem="h62-2K-1fd" secondAttribute="leading" constant="10" id="X2A-LD-XnD"/>
-                            <constraint firstItem="vjA-5K-u4o" firstAttribute="top" secondItem="h62-2K-1fd" secondAttribute="top" constant="10" id="chk-Ce-HLS"/>
+                            <constraint firstItem="vjA-5K-u4o" firstAttribute="top" secondItem="h62-2K-1fd" secondAttribute="top" constant="5" id="chk-Ce-HLS"/>
                             <constraint firstItem="vjA-5K-u4o" firstAttribute="leading" secondItem="h62-2K-1fd" secondAttribute="leading" constant="10" id="fcP-cC-2a2"/>
                             <constraint firstAttribute="trailing" secondItem="UWO-40-dT1" secondAttribute="trailing" constant="10" id="tvm-No-d9s"/>
                         </constraints>

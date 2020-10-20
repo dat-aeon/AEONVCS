@@ -57,6 +57,7 @@ class FAQMainViewController: BaseUIViewController {
             } else {
                 Utils.showAlert(viewcontroller: self, title: Constants.FAQ_LOADING_ERROR_TITLE, message: error)
             }
+            
         }
         
         
@@ -67,13 +68,14 @@ class FAQMainViewController: BaseUIViewController {
         tvFAQView.dataSource = self
         tvFAQView.delegate = self
         
-        tvFAQView.estimatedRowHeight = CGFloat(10.0)
+        tvFAQView.estimatedRowHeight = CGFloat(30.0)
         tvFAQView.rowHeight = UITableView.automaticDimension
         
         tvFAQView.estimatedSectionHeaderHeight = CGFloat(100.0)
         tvFAQView.sectionHeaderHeight = UITableView.automaticDimension
         
         tvFAQView.tableFooterView = UIView()
+        self.tvFAQView.reloadData()
     }
     @IBAction func onClickCloseBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -122,9 +124,13 @@ class FAQMainViewController: BaseUIViewController {
     }
     
     func reloadSections(section:Int) {
-        self.tvFAQView?.beginUpdates()
-        self.tvFAQView?.reloadSections([section], with: .automatic)
-        self.tvFAQView?.endUpdates()
+        DispatchQueue.main.async {
+            self.tvFAQView?.beginUpdates()
+            self.tvFAQView?.reloadSections([section], with: .automatic)
+            self.tvFAQView?.endUpdates()
+            self.tvFAQView.reloadData()
+        }
+       
     }
     
     @objc override func updateViews() {
@@ -169,7 +175,9 @@ extension FAQMainViewController:UITableViewDataSource{
 
 extension FAQMainViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FAQHeaderView.identifier) as? FAQHeaderView {
+            
             let item = dataList[section]
             
             headerView.item = item
@@ -184,33 +192,47 @@ extension FAQMainViewController:UITableViewDelegate{
 
 extension FAQMainViewController:UITableViewHeaderDelegate{
     func toggleSection(header: FAQHeaderView, section: Int) {
-        let item = dataList[section]
-        if item.isCollapsible {
-            
-            // Toggle collapse
-            let collapsed = !item.isCollapsed
-            
-            self.dataList[section].isCollapsed = collapsed
-            
-            reloadSections(section: section)
-            
-            UIView.transition(with: tvFAQView,
-                              duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: { self.tvFAQView.reloadData() })
-            
+        DispatchQueue.main.async {
+            let item = self.dataList[section]
+            if item.isCollapsible {
+             
+                    // Toggle collapse
+                    let collapsed = !item.isCollapsed
+                    
+                    self.dataList[section].isCollapsed = collapsed
+                    
+                    self.reloadSections(section: section)
+                    
+                    UIView.transition(with: self.tvFAQView,
+                                      duration: 0.5,
+                                      options: .transitionCrossDissolve,
+                                      animations: { self.tvFAQView.reloadData() })
+              
+                
+             
+              
+            }
+          
         }
+        
+        
     }
 }
 
 extension FAQMainViewController:UITableViewCellDelegate{
     func toggleItemCell(cell:FAQTableViewCell,section:Int,position: Int,isCollapsed:Bool) {
-        let item = dataList[section].faqList[position]
-        let collapsed = !item.isCollapsed
-        self.dataList[section].faqList[position].isCollapsed = collapsed
-        let indexPath = IndexPath(row: position, section: section)
+        DispatchQueue.main.async {
+            let item = self.dataList[section].faqList[position]
+            let collapsed = !item.isCollapsed
+            self.dataList[section].faqList[position].isCollapsed = collapsed
+            let indexPath = IndexPath(row: position, section: section)
+          
+                self.tvFAQView.reloadRows(at: [indexPath], with: .fade)
+            self.tvFAQView.reloadData()
+        }
+      
         
-        tvFAQView.reloadRows(at: [indexPath], with: .fade)
+        
         
     }
 }

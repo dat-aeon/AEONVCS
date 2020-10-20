@@ -372,9 +372,10 @@ class LoanCalculatorViewController: BaseUIViewController {
     }
    
     @objc func onTapBack() {
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
-        navigationVC.modalPresentationStyle = .overFullScreen
-        self.present(navigationVC, animated: true, completion: nil)
+//        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+//        navigationVC.modalPresentationStyle = .overFullScreen
+//        self.present(navigationVC, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
               }
     
      @objc func onTapMMLocale() {

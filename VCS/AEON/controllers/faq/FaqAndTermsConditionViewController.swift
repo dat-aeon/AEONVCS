@@ -26,12 +26,17 @@ class FaqAndTermsConditionViewController: BaseUIViewController {
     
     var containerIndex = 1
    var logoutTimer: Timer?
+    override func viewWillAppear(_ animated: Bool) {
+        self.segFAQ.makeMultiline(numberOfLines: 0)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        segFAQ.makeMultiline(numberOfLines: 2)
-        let font = UIFont(name: "PyidaungsuBook", size: 13)
-        segFAQ.setTitleTextAttributes([NSAttributedString.Key.font: font],
-                                                for: .normal)
+        segFAQ.isUserInteractionEnabled = true
+        self.segFAQ.makeMultiline(numberOfLines: 0)
+//        let font = UIFont(name: "PyidaungsuBook", size: 14)
+//
+//        segFAQ.setTitleTextAttributes([NSAttributedString.Key.font: font],
+//                                                for: .normal)
         segFAQ.setTitle("faq.tag1.title".localized, forSegmentAt: 0)
         segFAQ.setTitle("faq.tag2.title".localized, forSegmentAt: 1)
         segFAQ.setTitle("aboutus.title".localized, forSegmentAt: 2)
@@ -103,11 +108,15 @@ class FaqAndTermsConditionViewController: BaseUIViewController {
     }
     @objc func onTapMMLocale() {
        print("click")
+        self.segFAQ.isUserInteractionEnabled = true
+        self.segFAQ.makeMultiline(numberOfLines: 0)
         super.NewupdateLocale(flag: 1)
         updateViews()
     }
     @objc func onTapEngLocale() {
        print("click")
+        self.segFAQ.isUserInteractionEnabled = true
+        self.segFAQ.makeMultiline(numberOfLines: 2)
         super.NewupdateLocale(flag: 2)
         updateViews()
     }
@@ -142,10 +151,17 @@ class FaqAndTermsConditionViewController: BaseUIViewController {
     
     @objc override func updateViews() {
         super.updateViews()
+//        let font = UIFont(name: "PyidaungsuBook", size: 14)
+//
+//        segFAQ.setTitleTextAttributes([NSAttributedString.Key.font: font!],
+//                                                for: .normal)
+        self.segFAQ.isUserInteractionEnabled = true
+       
         
         segFAQ.setTitle("faq.tag1.title".localized, forSegmentAt: 0)
         segFAQ.setTitle("faq.tag2.title".localized, forSegmentAt: 1)
         segFAQ.setTitle("aboutus.title".localized, forSegmentAt: 2)
+        self.segFAQ.makeMultiline(numberOfLines: 0)
     }
 }
 extension UISegmentedControl
@@ -154,7 +170,9 @@ extension UISegmentedControl
     {
         for segment in self.subviews
         {
-            let labels = segment.subviews.filter { $0 is UILabel }  // [AnyObject]
+            let labels = segment.subviews.filter { $0 is UILabel }
+            // [AnyObject]
+            
             labels.map { ($0 as! UILabel).numberOfLines = numberOfLines }
         }
     }
