@@ -14,9 +14,7 @@ import Starscream
 class FreeChatViewController: BaseUIViewController {
     
     
-    @IBOutlet weak var closeAlertView: UIImageView!
-    @IBOutlet weak var questionAlertView: UIView!
-    @IBOutlet weak var questionLabel: UILabel!
+   
     
     @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var imgMMlocale: UIImageView!
@@ -30,6 +28,7 @@ class FreeChatViewController: BaseUIViewController {
     @IBOutlet weak var vSendBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var botchat: UIButton!
     let questionButton = UIButton()
+    var customerID:Int = 0
         var myQuestions = ""
         var answers = ""
         var oldMessageBeanList = [MessageBean]()
@@ -80,22 +79,13 @@ class FreeChatViewController: BaseUIViewController {
     func questionAlertView(question: String){
         print(question)
         Utils.showAlert(viewcontroller: self, title: "", message: question)
-//        AlertView.instance.showAlert(title: "", message: question, alertType: "")
-        questionAlertView.isHidden = true
-        //questionLabel.text = question
+
     }
-    @objc func closeView(){
-        questionAlertView.isHidden = true
-    }
+   
         override func viewDidLoad() {
 
             super.viewDidLoad()
-            self.closeAlertView.isUserInteractionEnabled = true
-            self.questionLabel.isUserInteractionEnabled = true
-            self.closeAlertView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeView)))
-            self.questionLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeView)))
-            
-            questionAlertView.isHidden = true
+           
            
             questionButton.addTarget(self, action: #selector(questionView(sender:)), for: UIControl.Event.touchUpInside)
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
@@ -154,27 +144,27 @@ class FreeChatViewController: BaseUIViewController {
 
             
 
-                    RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
-
-            
-
-                        let freeCustomerInfoId = result.data.freeCustomerInfoID
-
-            
-
-                         UserDefaults.standard.set(freeCustomerInfoId, forKey: Constants.FREECUS_INFO_ID)
-
-            
-
-                    }) { (error) in
-
-            
-
-                    }
-
-                    self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? 0
-
+//                    RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
+//
+//
+//                        self.customerID = result.data.freeCustomerInfoID
+//                        let freeCustomerInfoId = result.data.freeCustomerInfoID
+//                        self.senderId = result.data.freeCustomerInfoID
+//            print("freeCustomerInfoId\(freeCustomerInfoId)")
+//
+//                        UserDefaults.standard.set(self.customerID, forKey: Constants.FREECUS_INFO_ID)
+//                        print("freeCustomerInfoId\(Constants.FREECUS_INFO_ID)")
+//
+//
+//                    }) { (error) in
+//
+//
+//
+//                    }
+          //  self.senderId = customerID
             self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
+//
+//            self.senderId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)
 
             //        self.senderId = 100
 
@@ -261,11 +251,8 @@ class FreeChatViewController: BaseUIViewController {
             scrollToBottom()
           //  CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
         }
-
     @IBAction func botChatAction(_ sender: UIButton) {
-
         
-
         if Network.reachability.isReachable == false {
 
                    Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
@@ -1258,8 +1245,9 @@ scrollToBottom()
                     
 
                 }
-                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+            //    CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                 scrollToBottom()
+                CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
             }
            
 
@@ -1498,7 +1486,7 @@ scrollToBottom()
 
             } else if messageData.isButton {
 
-                return CGFloat(50.0)
+                return CGFloat(0.0)
 
                 
 

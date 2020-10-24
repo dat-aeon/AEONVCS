@@ -161,6 +161,12 @@ let myColor: UIColor = UIColor(red: 200, green: 1, blue: 132, alpha: 0.75)
           wholeView.alpha = 1
           btnAgree.isUserInteractionEnabled = true
           swAgree.isUserInteractionEnabled = true
+        if !swAgree.isOn {
+            self.dialogView.isHidden = true
+              self.btnAgree.isEnabled = false
+            self.btnAgree.alpha = 0.5
+            //  self.btnAgree.alpha = 1.0
+        }
           
       }
       
@@ -168,14 +174,16 @@ let myColor: UIColor = UIColor(red: 200, green: 1, blue: 132, alpha: 0.75)
       @objc func switchIsChanged(mySwitch: UISwitch) {
           super.updateViews()
           if mySwitch.isOn {
-            self.dialogView.isHidden = false
+           // self.dialogView.isHidden = true
               self.btnAgree.isEnabled = true
               self.btnAgree.alpha = 1.0
+           
               //print("switch is on")
              
-          } else {
-            self.dialogView.isHidden = true
+          }else{
+           // self.dialogView.isHidden = true
               self.btnAgree.isEnabled = false
+           
               self.btnAgree.alpha = 0.5
               //print("switch is off")
           }
@@ -183,7 +191,7 @@ let myColor: UIColor = UIColor(red: 200, green: 1, blue: 132, alpha: 0.75)
       @IBAction func onClickeLocaleChange(_ sender: UIBarButtonItem) {
           super.updateLocale()
       }
-      
+   
       @objc override func updateViews() {
           super.updateViews()
           self.lbErrorMsg.text = "PHONE_EMPTY_ERROR".localized
@@ -225,8 +233,9 @@ let myColor: UIColor = UIColor(red: 200, green: 1, blue: 132, alpha: 0.75)
   //        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.MAIN_VIEW_CONTROLLER) as! UINavigationController
   //        navigationVC.modalPresentationStyle = .overFullScreen
   //        self.present(navigationVC, animated: true, completion: nil)
-          
+        
           wholeView.alpha = 0.5
+         
           btnAgree.isUserInteractionEnabled = false
           swAgree.isUserInteractionEnabled = false
          

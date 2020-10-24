@@ -20,20 +20,8 @@ class FAQViewController: BaseUIViewController {
     //var faqDataList = [FAQCateoryDataBeanElement]()
     
     var showNavBar:Bool = false
-    var TT = Timer()
-    @objc func reloads() {
-        self.tvFAQView.reloadData()
-        TT.invalidate()
-    }
-    @objc func callbacks() {
-        
-      TT = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(reloads), userInfo: nil, repeats: true)
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(callbacks), name: NSNotification.Name("callback"), object:nil)
-        
         if showNavBar {
             self.view.backgroundColor = UIColor(netHex: 0xB70081)
             let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 30, width: self.view.frame.width, height: 48))
@@ -74,7 +62,7 @@ class FAQViewController: BaseUIViewController {
         tvFAQView.dataSource = self
         tvFAQView.delegate = self
         
-        tvFAQView.estimatedRowHeight = CGFloat(100.0)
+        tvFAQView.estimatedRowHeight = CGFloat(50.0)
         tvFAQView.rowHeight = UITableView.automaticDimension
         
         tvFAQView.estimatedSectionHeaderHeight = CGFloat(100.0)
@@ -196,10 +184,6 @@ extension FAQViewController:UITableViewDelegate{
             return headerView
         }
         return UIView()
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
     }
     
 }

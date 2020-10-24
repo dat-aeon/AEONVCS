@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,10 +26,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="329" height="140"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hO8-Ik-aOb">
-                                <rect key="frame" x="10" y="10" width="309" height="20"/>
+                                <rect key="frame" x="10" y="110" width="309" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01-05-2019 4:00 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbH-Kd-Top">
-                                        <rect key="frame" x="5" y="0.0" width="299" height="20.5"/>
+                                        <rect key="frame" x="5" y="-0.5" width="299" height="21"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -44,10 +44,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CL2-9J-hLU">
-                                <rect key="frame" x="80.5" y="35" width="243.5" height="100"/>
+                                <rect key="frame" x="76" y="10" width="248" height="95"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="pZk-JR-CVP">
-                                        <rect key="frame" x="10" y="5" width="223.5" height="90"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZk-JR-CVP">
+                                        <rect key="frame" x="10" y="5" width="228" height="85"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">photo path Optional("https://ass.aeoncredit.com.mm/vcsm/message-image-files/1399_2019-05-301357:54.png")
 Messaging size of jpeg image in KB: %f  448.671875 photo path Optional("https://ass.aeoncredit.com.mm/vcsm/message-image-files/1399_2019-05-301357:54.png")
@@ -75,13 +75,13 @@ Messaging size of jpeg image in KB: %f  448.671875</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CL2-9J-hLU" firstAttribute="top" secondItem="hO8-Ik-aOb" secondAttribute="bottom" constant="5" id="10K-g0-tJy"/>
-                            <constraint firstItem="hO8-Ik-aOb" firstAttribute="top" secondItem="XEm-jr-iN5" secondAttribute="top" constant="10" id="606-bZ-EMk"/>
                             <constraint firstAttribute="trailing" secondItem="CL2-9J-hLU" secondAttribute="trailing" constant="5" id="N3e-PO-dvB"/>
+                            <constraint firstItem="hO8-Ik-aOb" firstAttribute="top" secondItem="CL2-9J-hLU" secondAttribute="bottom" constant="5" id="Sjr-JT-h32"/>
+                            <constraint firstAttribute="bottom" secondItem="hO8-Ik-aOb" secondAttribute="bottom" constant="10" id="UkE-gn-h6W"/>
                             <constraint firstItem="hO8-Ik-aOb" firstAttribute="leading" secondItem="XEm-jr-iN5" secondAttribute="leading" constant="10" id="VqB-fM-Klb"/>
                             <constraint firstItem="CL2-9J-hLU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XEm-jr-iN5" secondAttribute="leading" constant="70" id="b8l-Pg-RHk"/>
-                            <constraint firstAttribute="bottom" secondItem="CL2-9J-hLU" secondAttribute="bottom" constant="5" id="cga-qX-qph"/>
                             <constraint firstAttribute="trailing" secondItem="hO8-Ik-aOb" secondAttribute="trailing" constant="10" id="hwl-Nq-QqW"/>
+                            <constraint firstItem="CL2-9J-hLU" firstAttribute="top" secondItem="XEm-jr-iN5" secondAttribute="top" constant="10" id="r35-Q6-p8W"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -24,26 +24,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bg-JW-fbH" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5" width="429" height="247.5"/>
+                        <rect key="frame" x="5" y="5" width="429" height="239"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-V4-Qcf">
-                                <rect key="frame" x="10" y="10" width="409" height="50"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-V4-Qcf">
+                                <rect key="frame" x="10" y="10" width="409" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ekd-T4-VET"/>
+                                    <constraint firstAttribute="height" constant="45" id="Vpb-Ef-imU"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Easy Apply &amp; Loan and Quick Processing">
+                                    <fragment content="Easy Apply &amp; Loan and Quick ProcessingEasy Apply &amp; Loan and Quick Processing">
                                         <attributes>
-                                            <color key="NSColor" red="1" green="0.83529411764705885" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="16" name="Arial-BoldMT"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" tighteningFactorForTruncation="0.0"/>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="1" green="0.82304626703262329" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="20" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09-05-2019 12:12 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YI-Xt-isn">
-                                <rect key="frame" x="10" y="223" width="125" height="25"/>
+                                <rect key="frame" x="10" y="213.5" width="125" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="kFo-jF-Vl1"/>
                                 </constraints>
@@ -52,7 +53,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Read more" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLr-lZ-4Lf">
-                                <rect key="frame" x="300" y="223" width="120" height="24.5"/>
+                                <rect key="frame" x="300" y="218" width="120" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="hzY-W5-zkn"/>
                                 </constraints>
@@ -61,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z9-YS-QvK">
-                                <rect key="frame" x="260" y="68" width="160" height="150"/>
+                                <rect key="frame" x="260" y="63" width="160" height="150"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mdy_news_img" translatesAutoresizingMaskIntoConstraints="NO" id="fYA-79-6ZW">
                                         <rect key="frame" x="2" y="2" width="156" height="146"/>
@@ -94,7 +95,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcQ-aZ-Tn6">
-                                <rect key="frame" x="10" y="65" width="240" height="117.5"/>
+                                <rect key="frame" x="10" y="60" width="240" height="119"/>
                                 <string key="text">Dear value customer, We would like to announce that on 14th February 2019 AEON loan disbursement service is available at new AEON counter located at "Royal Mingalar (Mandalay) for our value customers.</string>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -115,7 +116,7 @@
                             <constraint firstAttribute="trailing" secondItem="VOH-V4-Qcf" secondAttribute="trailing" constant="10" id="rEi-1C-Gpc"/>
                             <constraint firstItem="8Z9-YS-QvK" firstAttribute="top" secondItem="VcQ-aZ-Tn6" secondAttribute="top" constant="3" id="v0D-DY-RgC"/>
                             <constraint firstItem="8Z9-YS-QvK" firstAttribute="leading" secondItem="VcQ-aZ-Tn6" secondAttribute="trailing" constant="10" id="vdJ-Ky-XhZ"/>
-                            <constraint firstAttribute="bottom" secondItem="HLr-lZ-4Lf" secondAttribute="bottom" id="wRh-Vm-Vw1"/>
+                            <constraint firstAttribute="bottom" secondItem="HLr-lZ-4Lf" secondAttribute="bottom" constant="5" id="wRh-Vm-Vw1"/>
                             <constraint firstItem="VOH-V4-Qcf" firstAttribute="leading" secondItem="7bg-JW-fbH" secondAttribute="leading" constant="10" id="x7V-Vb-tha"/>
                             <constraint firstAttribute="trailing" secondItem="8Z9-YS-QvK" secondAttribute="trailing" constant="9" id="zkZ-aw-e0H"/>
                         </constraints>

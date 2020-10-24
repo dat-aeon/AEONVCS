@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Pyidaungsu-Bold.ttf">
-            <string>PyidaungsuBook-Bold</string>
-        </array>
         <array key="Pyidaungsu-Regular.ttf">
             <string>PyidaungsuBook</string>
         </array>
@@ -18,125 +16,174 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="176" id="KGk-i7-Jjw" customClass="CouponTableViewCell" customModule="AEONVCS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="176"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="243" id="KGk-i7-Jjw" customClass="CouponTableViewCell" customModule="AEONMember" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="413" height="243"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="176"/>
+                <rect key="frame" x="0.0" y="0.0" width="413" height="243"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-xE-Qic">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="231"/>
+                        <rect key="frame" x="0.0" y="0.0" width="413" height="243"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coupon-template" translatesAutoresizingMaskIntoConstraints="NO" id="3xC-W3-tHd">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="231"/>
+                                <rect key="frame" x="0.0" y="0.0" width="413" height="243"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coupon-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wxl-Sp-sY7">
-                                <rect key="frame" x="8" y="55.5" width="120" height="120"/>
+                                <rect key="frame" x="8" y="61.5" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="QPC-jr-3Zi"/>
                                     <constraint firstAttribute="height" constant="120" id="m0b-Nh-VVr"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a bottle of pepsi coca cola." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V61-3l-gKs">
-                                <rect key="frame" x="131" y="20" width="266" height="59.5"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="19"/>
-                                <color key="textColor" red="0.91745740175247192" green="0.25346475839614868" blue="0.14499741792678833" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V61-3l-gKs">
+                                <rect key="frame" x="133" y="34" width="277" height="26.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26.5" id="aFi-Iy-Wkh"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="This is a bottle of pepsi coca cola.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.91745740175247192" green="0.25346475839614868" blue="0.14499741792678833" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" systemColor="systemRedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End of " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkQ-JY-JGb">
-                                <rect key="frame" x="333.5" y="60" width="54.5" height="28.5"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="18"/>
-                                <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkQ-JY-JGb">
+                                <rect key="frame" x="343" y="65.5" width="58" height="19"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="End of ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.91745740175247192" green="0.25346475839614868" blue="0.14499741792678833" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="17" name="Arial-BoldMT"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19.12.2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk1-BV-Wa6">
-                                <rect key="frame" x="312.5" y="89.5" width="71.5" height="25"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="16"/>
+                                <rect key="frame" x="316.5" y="85.5" width="80.5" height="18"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Event Special Event Special Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GX4-Uj-Oso">
-                                <rect key="frame" x="12" y="6" width="376" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GX4-Uj-Oso">
+                                <rect key="frame" x="12" y="6" width="389" height="23"/>
                                 <color key="backgroundColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCC-xD-ZPN">
-                                <rect key="frame" x="12" y="210.5" width="376" height="14.5"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="5600" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFM-p5-1QV">
-                                <rect key="frame" x="128" y="134" width="149" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="hya-5P-uD2"/>
+                                    <constraint firstAttribute="height" constant="23" id="mkS-4p-FdH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="75"/>
-                                <color key="textColor" red="0.93704366935810568" green="0.72361770733981068" blue="0.14499741792678833" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Special Event Special Event Special Event">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="12" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" firstLineHeadIndent="5" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCC-xD-ZPN">
+                                <rect key="frame" x="12" y="214" width="389" height="23"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="Jq4-YA-S3P"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="description">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="12" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" firstLineHeadIndent="5" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFM-p5-1QV">
+                                <rect key="frame" x="138" y="131.5" width="53.5" height="27"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="5600">
+                                        <attributes>
+                                            <color key="NSColor" red="0.93704366935810568" green="0.72361770733981068" blue="0.14499741792678833" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="24" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mmk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDS-p7-r4t">
-                                <rect key="frame" x="277" y="189" width="45" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="mmk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDS-p7-r4t">
+                                <rect key="frame" x="191.5" y="209" width="45.5" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <color key="textColor" red="0.93704366939999995" green="0.72361770729999997" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1650" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yx5-EO-CgK">
-                                <rect key="frame" x="131" y="79.5" width="65.5" height="51.5"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="33"/>
-                                <color key="textColor" red="0.93704366939999995" green="0.72361770729999997" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mmk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg6-Tc-7j3">
-                                <rect key="frame" x="196.5" y="89.5" width="45.5" height="33"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="21"/>
-                                <color key="textColor" red="0.93704366939999995" green="0.72361770729999997" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yx5-EO-CgK">
+                                <rect key="frame" x="138" y="65.5" width="44.5" height="31.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31.5" id="7Oy-J6-Jb0"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="1650">
+                                        <attributes>
+                                            <color key="NSColor" red="0.93704366935810568" green="0.72361770733981068" blue="0.14499741792678833" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="20" name="ArialMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="used-stamp" translatesAutoresizingMaskIntoConstraints="NO" id="j7s-Fe-z8g">
-                                <rect key="frame" x="125" y="16" width="150" height="150"/>
+                                <rect key="frame" x="126.5" y="46.5" width="160" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="HTp-dG-QtO"/>
-                                    <constraint firstAttribute="width" constant="150" id="nO1-MZ-BCe"/>
+                                    <constraint firstAttribute="height" constant="150" id="3XL-ip-PLz"/>
+                                    <constraint firstAttribute="width" constant="160" id="3ei-1r-TCX"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mmk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg6-Tc-7j3">
+                                <rect key="frame" x="182.5" y="81.5" width="32.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
+                                <color key="textColor" red="0.93704366939999995" green="0.72361770729999997" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Yx5-EO-CgK" firstAttribute="leading" secondItem="Wxl-Sp-sY7" secondAttribute="trailing" constant="3" id="0Gq-av-dC1"/>
-                            <constraint firstItem="oCC-xD-ZPN" firstAttribute="top" secondItem="dDS-p7-r4t" secondAttribute="bottom" id="0Yi-MR-ChD"/>
-                            <constraint firstItem="j7s-Fe-z8g" firstAttribute="top" secondItem="Yn4-xE-Qic" secondAttribute="top" constant="16" id="1lx-YX-23m"/>
-                            <constraint firstItem="eg6-Tc-7j3" firstAttribute="top" secondItem="V61-3l-gKs" secondAttribute="bottom" constant="10" id="3pa-h3-1eM"/>
-                            <constraint firstItem="Yx5-EO-CgK" firstAttribute="top" secondItem="V61-3l-gKs" secondAttribute="bottom" id="57g-x7-2Ey"/>
                             <constraint firstAttribute="trailing" secondItem="oCC-xD-ZPN" secondAttribute="trailing" constant="12" id="6B4-sg-zd2"/>
                             <constraint firstItem="Xk1-BV-Wa6" firstAttribute="top" secondItem="kkQ-JY-JGb" secondAttribute="bottom" constant="1" id="8pn-vJ-xHd"/>
                             <constraint firstItem="GX4-Uj-Oso" firstAttribute="leading" secondItem="Yn4-xE-Qic" secondAttribute="leading" constant="12" id="Arj-Me-E7w"/>
-                            <constraint firstItem="eg6-Tc-7j3" firstAttribute="leading" secondItem="Yx5-EO-CgK" secondAttribute="trailing" id="BZO-WO-f3H"/>
+                            <constraint firstItem="Yx5-EO-CgK" firstAttribute="leading" secondItem="Wxl-Sp-sY7" secondAttribute="trailing" constant="10" id="DOe-hY-vvP"/>
+                            <constraint firstItem="Yx5-EO-CgK" firstAttribute="top" secondItem="V61-3l-gKs" secondAttribute="bottom" constant="5" id="Gjw-Ys-4Bt"/>
                             <constraint firstAttribute="trailing" secondItem="V61-3l-gKs" secondAttribute="trailing" constant="3" id="Gnk-87-5dg"/>
                             <constraint firstAttribute="trailing" secondItem="Xk1-BV-Wa6" secondAttribute="trailing" constant="16" id="GxW-1b-qYs"/>
                             <constraint firstItem="GX4-Uj-Oso" firstAttribute="top" secondItem="Yn4-xE-Qic" secondAttribute="top" constant="6" id="KJl-o1-NZY"/>
-                            <constraint firstItem="j7s-Fe-z8g" firstAttribute="centerX" secondItem="Yn4-xE-Qic" secondAttribute="centerX" id="LQO-lv-MpB"/>
                             <constraint firstAttribute="bottom" secondItem="oCC-xD-ZPN" secondAttribute="bottom" constant="6" id="Llq-Vx-Y3c"/>
-                            <constraint firstItem="V61-3l-gKs" firstAttribute="top" secondItem="Yn4-xE-Qic" secondAttribute="top" constant="20" id="NWA-c4-ivd"/>
+                            <constraint firstItem="dDS-p7-r4t" firstAttribute="top" secondItem="CFM-p5-1QV" secondAttribute="centerY" id="M05-03-oP4"/>
                             <constraint firstItem="Wxl-Sp-sY7" firstAttribute="centerY" secondItem="Yn4-xE-Qic" secondAttribute="centerY" id="Nn1-6N-jvl"/>
                             <constraint firstItem="oCC-xD-ZPN" firstAttribute="leading" secondItem="Yn4-xE-Qic" secondAttribute="leading" constant="12" id="OGv-KI-cYG"/>
-                            <constraint firstItem="V61-3l-gKs" firstAttribute="leading" secondItem="Wxl-Sp-sY7" secondAttribute="trailing" constant="3" id="PWs-n5-peZ"/>
+                            <constraint firstItem="V61-3l-gKs" firstAttribute="leading" secondItem="Wxl-Sp-sY7" secondAttribute="trailing" constant="5" id="PWs-n5-peZ"/>
+                            <constraint firstItem="kkQ-JY-JGb" firstAttribute="top" secondItem="V61-3l-gKs" secondAttribute="bottom" constant="5" id="Vbt-Fe-CoV"/>
+                            <constraint firstItem="j7s-Fe-z8g" firstAttribute="centerY" secondItem="Yn4-xE-Qic" secondAttribute="centerY" id="Vgz-t3-pei"/>
+                            <constraint firstItem="eg6-Tc-7j3" firstAttribute="top" secondItem="Yx5-EO-CgK" secondAttribute="centerY" id="YgM-W9-Ex3"/>
                             <constraint firstItem="3xC-W3-tHd" firstAttribute="leading" secondItem="Yn4-xE-Qic" secondAttribute="leading" id="ZZK-Vk-vVx"/>
                             <constraint firstItem="Wxl-Sp-sY7" firstAttribute="leading" secondItem="Yn4-xE-Qic" secondAttribute="leading" constant="8" id="ZzK-9H-d9C"/>
-                            <constraint firstItem="kkQ-JY-JGb" firstAttribute="top" secondItem="Yn4-xE-Qic" secondAttribute="top" constant="60" id="cVI-9D-4Pz"/>
-                            <constraint firstAttribute="bottom" secondItem="j7s-Fe-z8g" secondAttribute="bottom" constant="16" id="fIF-uw-5dW"/>
                             <constraint firstAttribute="trailing" secondItem="3xC-W3-tHd" secondAttribute="trailing" id="fjA-Gy-QWz"/>
+                            <constraint firstItem="oCC-xD-ZPN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dDS-p7-r4t" secondAttribute="bottom" constant="5" id="hSD-uu-NKB"/>
                             <constraint firstItem="dDS-p7-r4t" firstAttribute="leading" secondItem="CFM-p5-1QV" secondAttribute="trailing" id="hgS-zs-KPE"/>
                             <constraint firstItem="3xC-W3-tHd" firstAttribute="top" secondItem="Yn4-xE-Qic" secondAttribute="top" id="iBR-Ms-5qh"/>
                             <constraint firstItem="dDS-p7-r4t" firstAttribute="leading" secondItem="CFM-p5-1QV" secondAttribute="trailing" id="iMy-Jz-DvB"/>
-                            <constraint firstAttribute="bottom" secondItem="CFM-p5-1QV" secondAttribute="bottom" constant="7" id="k5D-RP-GVH"/>
                             <constraint firstAttribute="bottom" secondItem="3xC-W3-tHd" secondAttribute="bottom" id="kyi-3s-few"/>
                             <constraint firstAttribute="trailing" secondItem="kkQ-JY-JGb" secondAttribute="trailing" constant="12" id="mqj-F5-fL7"/>
-                            <constraint firstItem="CFM-p5-1QV" firstAttribute="leading" secondItem="Wxl-Sp-sY7" secondAttribute="trailing" id="nt3-w5-476"/>
+                            <constraint firstItem="V61-3l-gKs" firstAttribute="top" secondItem="GX4-Uj-Oso" secondAttribute="bottom" constant="5" id="n8h-xM-AUk"/>
+                            <constraint firstItem="CFM-p5-1QV" firstAttribute="leading" secondItem="Wxl-Sp-sY7" secondAttribute="trailing" constant="10" id="nt3-w5-476"/>
+                            <constraint firstItem="j7s-Fe-z8g" firstAttribute="centerX" secondItem="Yn4-xE-Qic" secondAttribute="centerX" id="uvz-4X-TP3"/>
+                            <constraint firstItem="eg6-Tc-7j3" firstAttribute="leading" secondItem="Yx5-EO-CgK" secondAttribute="trailing" id="v3O-Xx-DCp"/>
                             <constraint firstAttribute="trailing" secondItem="GX4-Uj-Oso" secondAttribute="trailing" constant="12" id="v9f-f5-qpC"/>
                         </constraints>
                     </view>
@@ -163,12 +210,15 @@
                 <outlet property="lbGoodPriceUnit" destination="eg6-Tc-7j3" id="s3T-11-31J"/>
                 <outlet property="lbSpecialEvent" destination="GX4-Uj-Oso" id="WGN-3S-vqM"/>
             </connections>
-            <point key="canvasLocation" x="142" y="66"/>
+            <point key="canvasLocation" x="151.19999999999999" y="95.802098950524751"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="coupon-logo" width="255" height="192"/>
         <image name="coupon-template" width="530" height="231"/>
         <image name="used-stamp" width="150" height="150"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

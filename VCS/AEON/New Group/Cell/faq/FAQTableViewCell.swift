@@ -26,7 +26,6 @@ class FAQTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "callback"), object: nil)
     }
     
     @objc private func didTapHeader() {
@@ -68,18 +67,18 @@ class FAQTableViewCell: UITableViewCell {
             var contentFrame = self.frame
             contentFrame.size.height = questionHeight+answerHeight+32
             self.frame = contentFrame
-           
+            
         }
-        else if !faqItem.isCollapsed {
+        else {
+            self.lblAnswer.text = ""
             var contentFrame = self.frame
-            contentFrame.size.height = questionHeight+32
+            contentFrame.size.height = 0
             self.frame = contentFrame
+            
             self.ivDropdown.image = UIImage(named: "expand-small-p-icon")
             self.lblAnswer.isHidden = true
             self.lblAnswer?.visiblity(gone: true, dimension: CGFloat(0.0))
-        }else{
-            self.lblAnswer.frame.size.height = 0
-            self.lblAnswer.isHidden = true
+            
         }
         self.lblAnswer.layoutIfNeeded()
     }

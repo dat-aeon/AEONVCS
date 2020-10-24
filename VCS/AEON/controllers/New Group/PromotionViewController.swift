@@ -233,6 +233,7 @@ extension PromotionViewController:UITableViewDelegate, UIPopoverControllerDelega
          
          let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.tvPromotion.frame.size.width - 20, height: 0))
          lbl.font = UIFont(name: "PyidaungsuBook-Bold", size: 24)
+        lbl.numberOfLines = 0
          lbl.text = titlestr
         let calculateHeight = lbl.requiredHeightForNewsEventsTitle
          let totalHeight = 210 + calculateHeight

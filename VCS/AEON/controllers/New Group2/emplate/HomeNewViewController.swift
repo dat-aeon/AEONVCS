@@ -99,7 +99,7 @@ class HomeNewViewController: BaseUIViewController {
     override func viewWillAppear(_ animated: Bool) {
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
        currentLanguage()
-        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
 //        DispatchQueue.main.async {
 //            self.levelTwoUnRead(customerId: self.senderId!)
 //           

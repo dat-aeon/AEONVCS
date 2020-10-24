@@ -52,7 +52,7 @@ class MainNewViewController: BaseUIViewController {
     @IBOutlet weak var ourserviceTop: NSLayoutConstraint!
     var vidoeFilePath : String = ""
      var senderId: Int!
- 
+    var myID:Int = 0
   
     var AutomessageBean = MessageBean()
    
@@ -71,13 +71,13 @@ class MainNewViewController: BaseUIViewController {
     let engFlag = "en"
     var language = Locale.currentLocale
     let topInc:CGFloat = 24.0
-    let topDec:CGFloat = 10.0
+    let topDec:CGFloat =  9.0
     
     @IBOutlet weak var lblBarPhNo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         currentLanguage()
-        
+        roomID()
         NotificationCenter.default.addObserver(self, selector: #selector(callbackloginalert), name: NSNotification.Name("callbackloginalertview"), object:nil)
         
       
@@ -174,6 +174,24 @@ class MainNewViewController: BaseUIViewController {
             self.viewoverScrollView.isHidden = false
         
         
+    }
+   
+    func roomID(){
+        RoomSyncViewModel.init().roomSync(phoneNo: UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE) ?? "09", success: {(result) in
+
+            
+           
+            self.myID = result.data.freeCustomerInfoID
+            print("freeCustomerInfoId\(self.myID)")
+            UserDefaults.standard.set(self.myID, forKey: Constants.FREECUS_INFO_ID)
+            print("freeCustomerInfoId\(Constants.FREECUS_INFO_ID)")
+
+
+        }) { (error) in
+
+
+
+        }
     }
     @objc func onTapAskProductView() {
         let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "AgentChannelViewController") as! UIViewController
@@ -290,7 +308,7 @@ class MainNewViewController: BaseUIViewController {
             Utils.showAlert(viewcontroller: self, title: Constants.NETWORK_CONNECTION_TITLE, message: Messages.NETWORK_CONNECTION_ERROR.localized)
             return
         }
-        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FreeChatViewController") as? UIViewController
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "FreeChatViewController") as? FreeChatViewController
         navigationVC?.modalPresentationStyle = .overFullScreen
         self.present(navigationVC!, animated: true, completion: nil)
     }

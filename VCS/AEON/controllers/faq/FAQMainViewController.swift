@@ -128,7 +128,7 @@ class FAQMainViewController: BaseUIViewController {
             self.tvFAQView?.beginUpdates()
             self.tvFAQView?.reloadSections([section], with: .automatic)
             self.tvFAQView?.endUpdates()
-            self.tvFAQView.reloadData()
+           
         }
        
     }
@@ -169,6 +169,14 @@ extension FAQMainViewController:UITableViewDataSource{
         cell.delegate = self
         cell.setData(faqItem: dataList[indexPath.section].faqList[indexPath.row])
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let item = dataList[section]
+        if item.isCollapsed {
+            return UITableView.automaticDimension
+        } else {
+            return 0.0
+        }
     }
     
 }
