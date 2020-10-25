@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class LoanCalculatorViewController: BaseUIViewController {
    
+    @IBOutlet weak var scrollHeight: NSLayoutConstraint!
     @IBOutlet weak var heightViewpaymentFee: NSLayoutConstraint!
     
     @IBOutlet weak var heightViewCompulsory: NSLayoutConstraint!
@@ -460,7 +461,7 @@ class LoanCalculatorViewController: BaseUIViewController {
        // self.calculateView.constant = 0
         self.heightViewpaymentFee.constant = 0
         self.heightViewCompulsory.constant = 0
-        
+        self.scrollHeight.constant = calculatorMessageLbl.frame.size.height + 20
       
     }
     
@@ -473,6 +474,7 @@ class LoanCalculatorViewController: BaseUIViewController {
         self.viewCompulsory.isHidden = false
         self.heightViewCompulsory.constant = 127
         self.heightViewpaymentFee.constant = 270
+        self.scrollHeight.constant = self.heightViewCompulsory.constant + self.heightViewpaymentFee.constant + calculatorMessageLbl.frame.size.height + 50
     //    self.calculateView.constant = 175
     }
     

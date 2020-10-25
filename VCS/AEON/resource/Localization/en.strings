@@ -633,3 +633,7 @@
 "member.cameraglass" = "Please do not have glass on your face during photo shot.";
 "main.multilogin" = "Another Login Occurred!";
 "securityquestion.password.holder" = "Password *";
+
+//Version
+
+"main.version :" = "Version :";

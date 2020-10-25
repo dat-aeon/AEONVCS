@@ -91,12 +91,9 @@ class HomeNewViewController: BaseUIViewController {
     //         loanAppView.isHidden = true
     //    }
    
-    override func viewDidDisappear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            self.currentLanguage()
-        }
-    }
+   
     override func viewWillAppear(_ animated: Bool) {
+       // USER_INFO_CUSTOMER_ID
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
        currentLanguage()
         Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
@@ -105,14 +102,14 @@ class HomeNewViewController: BaseUIViewController {
 //           
 //         //   self.askProductMessageUnRead(customerId: self.senderId!, levelType: 2)
 //        }
-              
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(currentLanguage), userInfo: nil, repeats: true)
     }
     @objc func contactUsnoti() {
         self.levelTwoUnRead(customerId: self.senderId!)
     }
     
  var logoutTimer: Timer?
-    func currentLanguage(){
+   @objc func currentLanguage(){
         switch Locale.currentLocale {
         case .MY:
             mmTop()
@@ -200,7 +197,7 @@ class HomeNewViewController: BaseUIViewController {
         //            bbLocaleFlag.image = UIImage(named: "en_flag")
         //        }
        
-        self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)!
+        self.senderName = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO) ?? "09"
         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
         //        super.socket.delegate = self
         //        if !super.socket.isConnected {

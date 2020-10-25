@@ -25,6 +25,7 @@ class LoginViewController: BaseUIViewController {
     @IBOutlet weak var bbLocaleFlag: UIBarButtonItem!
     @IBOutlet weak var loginTitleLabel: UILabel!
     @IBOutlet weak var backBtn: UIButton!
+   
     
     var phoneMesgLocale : String?
     var passwordMesgLocale : String?
@@ -147,6 +148,8 @@ class LoginViewController: BaseUIViewController {
     @IBAction func onClickLocalChangeButton(_ sender: UIBarButtonItem) {
         super.updateLocale()
     }
+   
+
     
     @objc override func updateViews() {
         super.updateViews()
@@ -420,6 +423,8 @@ class LoginViewController: BaseUIViewController {
     }
     
     @objc func onClickBioMetricIcon(){
+       
+        
         let userDefaults = UserDefaults.standard
         let phone = userDefaults.string(forKey: Constants.BIOMETRIC_PHONE)
         let password = userDefaults.string(forKey: Constants.BIOMETRIC_PASSWORD)

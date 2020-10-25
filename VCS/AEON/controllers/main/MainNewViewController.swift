@@ -12,6 +12,7 @@ import UserNotifications
 
 class MainNewViewController: BaseUIViewController {
     
+    @IBOutlet weak var topConstraintAlertview: NSLayoutConstraint!
     @IBOutlet weak var contactusTopcon: NSLayoutConstraint!
     @IBOutlet weak var calculatorTopcon: NSLayoutConstraint!
     @IBOutlet weak var imgMMlocale: UIImageView!
@@ -170,9 +171,9 @@ class MainNewViewController: BaseUIViewController {
          
        }
     @objc func callbackloginalert(){
-        
+        self.topConstraintAlertview.constant = 50
             self.viewoverScrollView.isHidden = false
-        
+        self.view.endEditing(true) 
         
     }
    
@@ -190,6 +191,18 @@ class MainNewViewController: BaseUIViewController {
         }) { (error) in
 
 
+
+        }
+    }
+    @objc override func keyboardWillChange(notification : Notification) {
+        guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            self.topConstraintAlertview.constant = -70
+        } else {
+            self.topConstraintAlertview.constant = 50
+          //  self.bottomConstraint.constant = orginBottom
 
         }
     }
@@ -220,6 +233,7 @@ class MainNewViewController: BaseUIViewController {
     override func viewWillAppear(_ animated: Bool) {
        // multiLoginGet()
        // mmTop()
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(currentLanguage), userInfo: nil, repeats: true)
         DispatchQueue.main.async {
             self.currentLanguage()
         }
@@ -257,6 +271,7 @@ class MainNewViewController: BaseUIViewController {
     
     @objc override func updateViews() {
         super.updateViews()
+        let current_version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         self.lblLogin.text = "home.login.button".localized
         
         Utils.setLineSpacing(data: "main.loancalculator".localized, label: lblLoanCallulator)
@@ -271,6 +286,7 @@ class MainNewViewController: BaseUIViewController {
         self.lblShare.text = "main.share".localized
         self.lblAskproduct.text = "main.askproduct".localized
         Utils.setLineSpacing(data: "contactus.title".localized, label: lblFreeChat)
+        self.lblVersionNo.text = "main.version :".localized + current_version
         //self.lblFreeChat.text = "contactus.title".localized
         
     }
@@ -392,7 +408,7 @@ class MainNewViewController: BaseUIViewController {
         
     }
     
-    func currentLanguage(){
+    @objc func currentLanguage(){
         switch Locale.currentLocale {
         case .MY:
             mmTop()
@@ -669,8 +685,8 @@ class MainNewViewController: BaseUIViewController {
         //CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
         let current_version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         
-        print("Version :", current_version)
-        self.lblVersionNo.text = current_version
+        print("Version :".localized, current_version)
+        self.lblVersionNo.text = "main.version :".localized + current_version
         
         _ = try? self.isUpdateAvailable { (update, error, version) in
             if let error = error {

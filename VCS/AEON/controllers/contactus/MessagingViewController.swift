@@ -49,7 +49,8 @@ class MessagingViewController: BaseUIViewController {
    
       override func viewDidLoad() {
           super.viewDidLoad()
-        self.tvMessagingView.reloadData()
+      //  self.tvMessagingView.reloadData()
+        CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
          logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
           self.imgBack.isUserInteractionEnabled = true
           self.imgMMlocale.isUserInteractionEnabled = true
@@ -476,6 +477,7 @@ class MessagingViewController: BaseUIViewController {
                               }
                               
                           } else if (type == "messageListData"){
+                            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                               
                               if let content = jsonData["data"] as? NSArray {
                                  // print("message list array size :", content.count)
@@ -754,7 +756,7 @@ class MessagingViewController: BaseUIViewController {
                                   self.tvMessagingView.scrollToRow(at: scrollIndex, at: .top, animated: false)
                                   
                               }
-                          //    CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+                              CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
                           }
                       }
                   }

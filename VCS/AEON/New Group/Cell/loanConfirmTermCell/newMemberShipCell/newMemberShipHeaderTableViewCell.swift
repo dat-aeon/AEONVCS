@@ -12,6 +12,7 @@ import UIKit
 
 class newMemberShipHeaderTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var cameraView: CardView!
     var sessionInfo : SessionDataBean?
 
     @IBOutlet weak var lblCustomerId: UILabel!

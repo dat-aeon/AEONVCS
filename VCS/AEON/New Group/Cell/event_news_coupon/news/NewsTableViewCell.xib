@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -35,13 +36,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09-05-2019 12:12 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX4-EF-79r">
-                                <rect key="frame" x="10" y="220" width="249" height="37"/>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="10" y="220" width="249" height="42"/>
+                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="read more" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl6-Pz-hBt">
-                                <rect key="frame" x="269" y="220" width="150" height="37"/>
+                                <rect key="frame" x="269" y="220" width="150" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="7yP-yr-Enr"/>
                                 </constraints>
@@ -50,10 +51,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Hw-Jz-Q78" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                                <rect key="frame" x="254" y="90" width="170" height="120"/>
+                                <rect key="frame" x="264" y="90" width="160" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mdy_news_img" translatesAutoresizingMaskIntoConstraints="NO" id="9s6-ex-syI">
-                                        <rect key="frame" x="2" y="2" width="166" height="116"/>
+                                        <rect key="frame" x="2" y="2" width="156" height="116"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="8"/>
@@ -61,14 +62,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="9s6-ex-syI" secondAttribute="trailing" constant="2" id="09i-l8-uvb"/>
                                     <constraint firstItem="9s6-ex-syI" firstAttribute="leading" secondItem="5Hw-Jz-Q78" secondAttribute="leading" constant="2" id="EUR-E1-WRC"/>
                                     <constraint firstAttribute="height" constant="120" id="ZFh-9g-Fdv"/>
                                     <constraint firstAttribute="bottom" secondItem="9s6-ex-syI" secondAttribute="bottom" constant="2" id="a1g-HB-0n9"/>
                                     <constraint firstItem="9s6-ex-syI" firstAttribute="top" secondItem="5Hw-Jz-Q78" secondAttribute="top" constant="2" id="bhv-mB-kDG"/>
-                                    <constraint firstAttribute="width" constant="170" id="chV-YH-cNX"/>
+                                    <constraint firstAttribute="width" constant="160" id="chV-YH-cNX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -82,11 +83,21 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOh-NA-pDT">
-                                <rect key="frame" x="10" y="90" width="234" height="120"/>
-                                <string key="text">Dear value customer, We would like to announce that on 14th February 2019 AEON loan disbursement service is available at new AEON counter located at "Royal Mingalar (Mandalay) for our value customers.</string>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOh-NA-pDT">
+                                <rect key="frame" x="10" y="90" width="244" height="118.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="2tm-Fy-uz4"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Dear value customer, We would like to announce that on 14th February 2019 AEON loan disbursement service is available at new AEON counter located at "Royal Mingalar (Mandalay) for our value customers.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -100,13 +111,12 @@
                             <constraint firstItem="Gwq-7L-LWP" firstAttribute="leading" secondItem="ri3-X0-Ebq" secondAttribute="leading" constant="10" id="Cba-i9-h0e"/>
                             <constraint firstItem="Gwq-7L-LWP" firstAttribute="top" secondItem="ri3-X0-Ebq" secondAttribute="top" constant="10" id="JZP-rX-RCi"/>
                             <constraint firstItem="PX4-EF-79r" firstAttribute="centerY" secondItem="Jl6-Pz-hBt" secondAttribute="centerY" id="Rgo-Qb-Ktd"/>
-                            <constraint firstAttribute="bottom" secondItem="Jl6-Pz-hBt" secondAttribute="bottom" constant="10" id="U8A-Tu-S9M"/>
+                            <constraint firstAttribute="bottom" secondItem="Jl6-Pz-hBt" secondAttribute="bottom" constant="5" id="U8A-Tu-S9M"/>
                             <constraint firstAttribute="trailing" secondItem="Gwq-7L-LWP" secondAttribute="trailing" constant="10" id="Z4G-VV-gkd"/>
-                            <constraint firstAttribute="bottom" secondItem="PX4-EF-79r" secondAttribute="bottom" constant="10" id="ZdV-K5-Sl5"/>
+                            <constraint firstAttribute="bottom" secondItem="PX4-EF-79r" secondAttribute="bottom" constant="5" id="ZdV-K5-Sl5"/>
                             <constraint firstAttribute="trailing" secondItem="5Hw-Jz-Q78" secondAttribute="trailing" constant="5" id="ajU-TI-wFj"/>
                             <constraint firstItem="Jl6-Pz-hBt" firstAttribute="top" secondItem="5Hw-Jz-Q78" secondAttribute="bottom" constant="10" id="ax2-FJ-Sh3"/>
                             <constraint firstItem="TOh-NA-pDT" firstAttribute="top" secondItem="Gwq-7L-LWP" secondAttribute="bottom" constant="5" id="dBw-sq-3fJ"/>
-                            <constraint firstItem="PX4-EF-79r" firstAttribute="top" secondItem="TOh-NA-pDT" secondAttribute="bottom" constant="10" id="dFb-Ul-K7g"/>
                             <constraint firstItem="Jl6-Pz-hBt" firstAttribute="leading" secondItem="PX4-EF-79r" secondAttribute="trailing" constant="10" id="lmm-uG-O1l"/>
                         </constraints>
                     </view>
@@ -133,5 +143,8 @@
     </objects>
     <resources>
         <image name="mdy_news_img" width="200" height="150"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

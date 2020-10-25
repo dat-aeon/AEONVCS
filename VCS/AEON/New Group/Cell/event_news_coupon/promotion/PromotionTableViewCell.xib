@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Pyidaungsu-Bold.ttf">
+            <string>PyidaungsuBook-Bold</string>
+        </array>
         <array key="Pyidaungsu-Regular.ttf">
             <string>PyidaungsuBook</string>
         </array>
@@ -23,49 +26,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="439" height="277"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bg-JW-fbH" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5" width="429" height="239"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdL-qt-zLL" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="429" height="267"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-V4-Qcf">
-                                <rect key="frame" x="10" y="10" width="409" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Vpb-Ef-imU"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Easy Apply &amp; Loan and Quick ProcessingEasy Apply &amp; Loan and Quick Processing">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="NSColor" red="1" green="0.82304626703262329" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="20" name="Arial-BoldMT"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Easy Apply &amp; Loan and Quick Processing" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbi-Ju-2pn">
+                                <rect key="frame" x="10" y="10" width="409" height="75"/>
+                                <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.80000000000000004" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09-05-2019 12:12 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YI-Xt-isn">
-                                <rect key="frame" x="10" y="213.5" width="125" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="kFo-jF-Vl1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09-05-2019 12:12 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KC-t4-M8c">
+                                <rect key="frame" x="10" y="220" width="249" height="42"/>
+                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Read more" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLr-lZ-4Lf">
-                                <rect key="frame" x="300" y="218" width="120" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="read more" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdm-Qd-EYa">
+                                <rect key="frame" x="269" y="220" width="150" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="hzY-W5-zkn"/>
+                                    <constraint firstAttribute="width" constant="150" id="T1A-Cu-TiB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z9-YS-QvK">
-                                <rect key="frame" x="260" y="63" width="160" height="150"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-cN-4RB" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
+                                <rect key="frame" x="264" y="90" width="160" height="120"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mdy_news_img" translatesAutoresizingMaskIntoConstraints="NO" id="fYA-79-6ZW">
-                                        <rect key="frame" x="2" y="2" width="156" height="146"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mdy_news_img" translatesAutoresizingMaskIntoConstraints="NO" id="P0P-kb-a8G">
+                                        <rect key="frame" x="2" y="2" width="156" height="116"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="8"/>
@@ -73,77 +62,87 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="AAE-kA-Mka"/>
-                                    <constraint firstAttribute="bottom" secondItem="fYA-79-6ZW" secondAttribute="bottom" constant="2" id="ITQ-KA-C8b"/>
-                                    <constraint firstItem="fYA-79-6ZW" firstAttribute="leading" secondItem="8Z9-YS-QvK" secondAttribute="leading" constant="2" id="Yjp-yl-BZN"/>
-                                    <constraint firstItem="fYA-79-6ZW" firstAttribute="top" secondItem="8Z9-YS-QvK" secondAttribute="top" constant="2" id="nAT-0H-WEw"/>
-                                    <constraint firstAttribute="trailing" secondItem="fYA-79-6ZW" secondAttribute="trailing" constant="2" id="sCT-jF-OTR"/>
-                                    <constraint firstAttribute="height" constant="150" id="sRh-UZ-MtP"/>
+                                    <constraint firstAttribute="bottom" secondItem="P0P-kb-a8G" secondAttribute="bottom" constant="2" id="4yA-1a-BmZ"/>
+                                    <constraint firstAttribute="height" constant="120" id="GUi-F9-Rza"/>
+                                    <constraint firstItem="P0P-kb-a8G" firstAttribute="top" secondItem="f3I-cN-4RB" secondAttribute="top" constant="2" id="cZ2-vK-eMS"/>
+                                    <constraint firstAttribute="width" constant="160" id="ejB-2d-lUh"/>
+                                    <constraint firstAttribute="trailing" secondItem="P0P-kb-a8G" secondAttribute="trailing" constant="2" id="mvm-Pe-Fdl"/>
+                                    <constraint firstItem="P0P-kb-a8G" firstAttribute="leading" secondItem="f3I-cN-4RB" secondAttribute="leading" constant="2" id="yUC-Re-Myd"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" systemColor="systemGray3Color"/>
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcQ-aZ-Tn6">
-                                <rect key="frame" x="10" y="60" width="240" height="119"/>
-                                <string key="text">Dear value customer, We would like to announce that on 14th February 2019 AEON loan disbursement service is available at new AEON counter located at "Royal Mingalar (Mandalay) for our value customers.</string>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lv-7N-fMV">
+                                <rect key="frame" x="10" y="90" width="244" height="118.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="F6A-6L-iZ2"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Dear value customer, We would like to announce that on 14th February 2019 AEON loan disbursement service is available at new AEON counter located at "Royal Mingalar (Mandalay) for our value customers.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VcQ-aZ-Tn6" firstAttribute="centerY" secondItem="7bg-JW-fbH" secondAttribute="centerY" id="6Lo-Kv-R2H"/>
-                            <constraint firstItem="VcQ-aZ-Tn6" firstAttribute="top" secondItem="VOH-V4-Qcf" secondAttribute="bottom" constant="5" id="FPJ-v1-zD2"/>
-                            <constraint firstAttribute="trailing" secondItem="HLr-lZ-4Lf" secondAttribute="trailing" constant="9" id="Fhr-nq-cJK"/>
-                            <constraint firstItem="VOH-V4-Qcf" firstAttribute="top" secondItem="7bg-JW-fbH" secondAttribute="top" constant="10" id="LqS-l7-tr5"/>
-                            <constraint firstItem="9YI-Xt-isn" firstAttribute="centerY" secondItem="HLr-lZ-4Lf" secondAttribute="centerY" id="MRM-Vi-S2z"/>
-                            <constraint firstItem="9YI-Xt-isn" firstAttribute="leading" secondItem="7bg-JW-fbH" secondAttribute="leading" constant="10" id="OWo-YR-Ap3"/>
-                            <constraint firstItem="8Z9-YS-QvK" firstAttribute="centerY" secondItem="7bg-JW-fbH" secondAttribute="centerY" id="V6h-i8-rY7"/>
-                            <constraint firstItem="VcQ-aZ-Tn6" firstAttribute="leading" secondItem="7bg-JW-fbH" secondAttribute="leading" constant="10" id="kwz-YK-cNh"/>
-                            <constraint firstItem="HLr-lZ-4Lf" firstAttribute="top" secondItem="8Z9-YS-QvK" secondAttribute="bottom" constant="5" id="nds-Ld-zn2"/>
-                            <constraint firstAttribute="trailing" secondItem="VOH-V4-Qcf" secondAttribute="trailing" constant="10" id="rEi-1C-Gpc"/>
-                            <constraint firstItem="8Z9-YS-QvK" firstAttribute="top" secondItem="VcQ-aZ-Tn6" secondAttribute="top" constant="3" id="v0D-DY-RgC"/>
-                            <constraint firstItem="8Z9-YS-QvK" firstAttribute="leading" secondItem="VcQ-aZ-Tn6" secondAttribute="trailing" constant="10" id="vdJ-Ky-XhZ"/>
-                            <constraint firstAttribute="bottom" secondItem="HLr-lZ-4Lf" secondAttribute="bottom" constant="5" id="wRh-Vm-Vw1"/>
-                            <constraint firstItem="VOH-V4-Qcf" firstAttribute="leading" secondItem="7bg-JW-fbH" secondAttribute="leading" constant="10" id="x7V-Vb-tha"/>
-                            <constraint firstAttribute="trailing" secondItem="8Z9-YS-QvK" secondAttribute="trailing" constant="9" id="zkZ-aw-e0H"/>
+                            <constraint firstItem="zdm-Qd-EYa" firstAttribute="top" secondItem="f3I-cN-4RB" secondAttribute="bottom" constant="10" id="0qN-Xs-KQC"/>
+                            <constraint firstAttribute="trailing" secondItem="zdm-Qd-EYa" secondAttribute="trailing" constant="10" id="0tv-aA-6KO"/>
+                            <constraint firstItem="5Lv-7N-fMV" firstAttribute="leading" secondItem="cdL-qt-zLL" secondAttribute="leading" constant="10" id="21I-BU-gOV"/>
+                            <constraint firstAttribute="trailing" secondItem="f3I-cN-4RB" secondAttribute="trailing" constant="5" id="AX4-7N-Qk9"/>
+                            <constraint firstItem="9KC-t4-M8c" firstAttribute="leading" secondItem="cdL-qt-zLL" secondAttribute="leading" constant="10" id="HOt-82-C3E"/>
+                            <constraint firstItem="5Lv-7N-fMV" firstAttribute="top" secondItem="jbi-Ju-2pn" secondAttribute="bottom" constant="5" id="PQL-w7-jaC"/>
+                            <constraint firstItem="jbi-Ju-2pn" firstAttribute="top" secondItem="cdL-qt-zLL" secondAttribute="top" constant="10" id="Uro-yv-siB"/>
+                            <constraint firstItem="zdm-Qd-EYa" firstAttribute="leading" secondItem="9KC-t4-M8c" secondAttribute="trailing" constant="10" id="bNa-A1-muE"/>
+                            <constraint firstAttribute="trailing" secondItem="jbi-Ju-2pn" secondAttribute="trailing" constant="10" id="dTv-h6-amM"/>
+                            <constraint firstItem="jbi-Ju-2pn" firstAttribute="leading" secondItem="cdL-qt-zLL" secondAttribute="leading" constant="10" id="dTz-7P-TvK"/>
+                            <constraint firstAttribute="bottom" secondItem="zdm-Qd-EYa" secondAttribute="bottom" constant="5" id="fMD-Yu-zK8"/>
+                            <constraint firstItem="9KC-t4-M8c" firstAttribute="centerY" secondItem="zdm-Qd-EYa" secondAttribute="centerY" id="gAN-go-WQY"/>
+                            <constraint firstAttribute="bottom" secondItem="9KC-t4-M8c" secondAttribute="bottom" constant="5" id="kpN-ZO-FfO"/>
+                            <constraint firstItem="f3I-cN-4RB" firstAttribute="top" secondItem="5Lv-7N-fMV" secondAttribute="top" id="uic-yq-FND"/>
+                            <constraint firstItem="f3I-cN-4RB" firstAttribute="leading" secondItem="5Lv-7N-fMV" secondAttribute="trailing" constant="10" id="wnD-OC-gsw"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="7bg-JW-fbH" secondAttribute="trailing" constant="5" id="71i-Fc-FhX"/>
-                    <constraint firstItem="7bg-JW-fbH" firstAttribute="top" secondItem="OLb-G2-jSV" secondAttribute="top" constant="5" id="L9F-WS-UMt"/>
-                    <constraint firstItem="7bg-JW-fbH" firstAttribute="leading" secondItem="OLb-G2-jSV" secondAttribute="leading" constant="5" id="qod-DZ-li1"/>
-                    <constraint firstAttribute="bottom" secondItem="7bg-JW-fbH" secondAttribute="bottom" constant="5" id="uIt-rH-czm"/>
+                    <constraint firstAttribute="bottom" secondItem="cdL-qt-zLL" secondAttribute="bottom" constant="5" id="FnR-pR-Voh"/>
+                    <constraint firstAttribute="trailing" secondItem="cdL-qt-zLL" secondAttribute="trailing" constant="5" id="Wxj-Je-YLY"/>
+                    <constraint firstItem="cdL-qt-zLL" firstAttribute="top" secondItem="OLb-G2-jSV" secondAttribute="top" constant="5" id="eV6-HZ-qW2"/>
+                    <constraint firstItem="cdL-qt-zLL" firstAttribute="leading" secondItem="OLb-G2-jSV" secondAttribute="leading" constant="5" id="gfp-Yc-B41"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="gM2-RS-ZV6"/>
             <connections>
-                <outlet property="imgPromoPhoto" destination="fYA-79-6ZW" id="RcP-FV-i5e"/>
-                <outlet property="lbContent" destination="VcQ-aZ-Tn6" id="y6b-No-sTf"/>
-                <outlet property="lbDate" destination="9YI-Xt-isn" id="cHe-91-eMH"/>
-                <outlet property="lbTitle" destination="VOH-V4-Qcf" id="rOO-tK-NFa"/>
-                <outlet property="lbreadMore" destination="HLr-lZ-4Lf" id="EsN-Yn-noI"/>
+                <outlet property="imgPromoPhoto" destination="P0P-kb-a8G" id="Q2W-z9-o5M"/>
+                <outlet property="lbContent" destination="5Lv-7N-fMV" id="mRX-hH-t89"/>
+                <outlet property="lbDate" destination="9KC-t4-M8c" id="yiL-lJ-OCD"/>
+                <outlet property="lbTitle" destination="jbi-Ju-2pn" id="Rcc-Hr-zaN"/>
+                <outlet property="lbreadMore" destination="zdm-Qd-EYa" id="NEz-CG-Khz"/>
             </connections>
             <point key="canvasLocation" x="148" y="114.24287856071965"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="mdy_news_img" width="200" height="150"/>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

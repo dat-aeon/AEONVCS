@@ -154,7 +154,8 @@ class BioMetricRegisterViewController: BaseUIViewController {
 //        if(UserDefaults.standard.bool(forKey: Constants.IS_BIO_LOGIN))
         
        // let tokenInfoString = UserDefaults.standard.string(forKey: Constants.TOKEN_DATA)
-        
+      
+       
         if (self.isAlreadyLogin) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: CommonNames.HOME_NEW_VIEW_CONTROLLER) as! HomeNewViewController
             vc.sessionDataBean = self.sessionData
@@ -162,6 +163,7 @@ class BioMetricRegisterViewController: BaseUIViewController {
             self.present(vc, animated: true, completion: nil)
         }else{
             self.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "callbackloginalertview"), object: nil)
         }
         
         

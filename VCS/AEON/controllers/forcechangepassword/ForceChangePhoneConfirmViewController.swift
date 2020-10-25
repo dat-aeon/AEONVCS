@@ -169,6 +169,8 @@ class ForceChangePhoneConfirmViewController: BaseUIViewController {
     @objc func onTapBack() {
        print("click")
         self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "callbackloginalertview"), object: nil)
+       
     }
     @objc func onTapMMLocale() {
        print("click")
