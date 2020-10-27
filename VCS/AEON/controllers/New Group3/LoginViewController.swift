@@ -168,6 +168,7 @@ class LoginViewController: BaseUIViewController {
         self.lbForgetPass.text = "login.forgetpassword.link".localized
         self.lbPhoneMessage.text = self.phoneMesgLocale?.localized
         self.lbPasswordMessage.text = self.passwordMesgLocale?.localized
+       // self.lbPhoneMessage.text = "PHONE_REG_LENGTH_ERROR".localized
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -200,7 +201,7 @@ class LoginViewController: BaseUIViewController {
             // validate phone no format
             self.phoneMesgLocale = Messages.PHONE_REG_LENGTH_ERROR.localized
             self.lbPhoneMessage.text = Messages.PHONE_REG_LENGTH_ERROR.localized
-           // self.phoneMesgLocale = Messages.PHONE_REG_LENGTH_ERROR
+            self.phoneMesgLocale = Messages.PHONE_REG_LENGTH_ERROR
             isError = true
             
         }else {

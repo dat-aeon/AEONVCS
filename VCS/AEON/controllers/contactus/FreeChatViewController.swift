@@ -82,11 +82,12 @@ class FreeChatViewController: BaseUIViewController {
 
     }
    
+   
         override func viewDidLoad() {
 
             super.viewDidLoad()
            
-           
+         
             questionButton.addTarget(self, action: #selector(questionView(sender:)), for: UIControl.Event.touchUpInside)
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
             
@@ -594,7 +595,7 @@ scrollToBottom()
         @objc override func keyboardWillChange(notification : Notification) {
 
             
-
+           
             guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
 
                 return
@@ -1538,3 +1539,4 @@ extension FreeChatViewController : QuestionDelegate {
     
     
 }
+

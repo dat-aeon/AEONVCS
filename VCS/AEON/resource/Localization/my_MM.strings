@@ -39,6 +39,7 @@
 "biometric.warning.title" = "သတိပေးချက်*";
 "biometric.warning.text" = "AEONMember application သည် သင်၏ဖုန်းတွင်ရှိသော biometric data အားလုံးကိုအသုံးပြုကာ သင်၏ account ကို login ဝင်မည်ဖြစ်သည်။ ဒါကြောင့် သင်၏ဖုန်းတွင်တခြားသူ၏ biometric data ကိုမထည့်သွင်းမိစေဖို့သတိပြုပေးပါရန်။";
 "biometric.submit.button" = "ထည့်သွင်းမည်";
+"biometric.register" = "လက်ဗွေစနစ်ကို အသုံးပြုပြီးအကောင့်လော့အင် ဝင်ပါ။";
 
 // WELCOME SCREEN
 "welcome.label" = "ကြိုဆိုပါ၏";

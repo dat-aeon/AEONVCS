@@ -472,7 +472,7 @@ class MainNewViewController: BaseUIViewController {
     
     func authenticateBioMetricData(phone:String,password:String){
         let authContext = LAContext()
-        let authReason = "Use your biometric data to login your account"
+        let authReason = "biometric.register".localized//"Use your biometric data to login your account"
         var authError : NSError?
         let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         if authContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError) {

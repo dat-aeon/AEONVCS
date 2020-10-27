@@ -38,6 +38,7 @@
 "biometric.warning.title" = "Warning *";
 "biometric.warning.text" = "AEONMember application will use your all of biometric data to login to your account.So,you will not let other people to save biometric data in your device.";
 "biometric.submit.button" = "SUBMIT";
+"biometric.register" = "Use your biometric data to login your account";
 
 // WELCOME SCREEN
 "welcome.label" = "WELCOME TO";

@@ -11,7 +11,7 @@ import LocalAuthentication
 import SwiftyJSON
 
 class BioMetricRegisterViewController: BaseUIViewController {
-    
+   
     @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var imgMMlocale: UIImageView!
     @IBOutlet weak var imgEnglocale: UIImageView!
@@ -92,7 +92,15 @@ class BioMetricRegisterViewController: BaseUIViewController {
             self.phoneMesgLocale = Messages.PHONE_EMPTY_ERROR
             isError = true
             
-        } else {
+        }else if !Utils.isPhoneValidate(phoneNo: (self.tfPhone.text)!){
+            // validate phone no format
+            self.phoneMesgLocale = Messages.PHONE_REG_LENGTH_ERROR.localized
+            self.lbPhoneMessage.text = Messages.PHONE_REG_LENGTH_ERROR.localized
+            self.phoneMesgLocale = Messages.PHONE_REG_LENGTH_ERROR
+            isError = true
+           
+            
+        }else {
             self.lbPhoneMessage.text = Constants.BLANK
             self.phoneMesgLocale = Constants.BLANK
         }
@@ -202,13 +210,13 @@ class BioMetricRegisterViewController: BaseUIViewController {
         self.lbPasswordMessage.text = self.passMesgLocale?.localized
         self.phoneTitleLabel.text = "biometric.phoneno.phoneno".localized
         self.passwordTitleLabel.text = "biometric.phoneno.password".localized
+       // self.lbPhoneMessage.text = Messages.PHONE_REG_LENGTH_ERROR.localized
     }
     
     func authenticateBioMetricData(phone:String,password:String){
         let authContext = LAContext()
-        let authReason = "Use your biometric data to login your account"
+        let authReason = "biometric.register".localized
         var authError : NSError?
-        
         if authContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             authContext.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: authReason, reply: {success,evaluateError in
                 

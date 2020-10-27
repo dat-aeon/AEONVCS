@@ -189,7 +189,8 @@ class Utils{
                   formatter.dateFormat = "dd MMM yy hh:mm aaa"
                   let convertDate = formatter.date(from: date)
 
-                  formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                 // formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        formatter.dateFormat = "dd-MM-yyyy HH:mm"
                   let myString = formatter.string(from: convertDate!)
 
                   return myString

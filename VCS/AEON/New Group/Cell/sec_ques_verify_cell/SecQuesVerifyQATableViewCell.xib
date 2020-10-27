@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,10 +26,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="443" height="153"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTo-86-421">
-                                <rect key="frame" x="0.0" y="16" width="40" height="50"/>
+                                <rect key="frame" x="0.0" y="5" width="48" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q1:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPT-4k-I09">
-                                        <rect key="frame" x="17.5" y="12.5" width="22.5" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q10:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPT-4k-I09">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="50"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                         <color key="textColor" red="0.82406836750000001" green="0.1919207275" blue="0.63621109720000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -37,17 +37,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="NPT-4k-I09" firstAttribute="leading" secondItem="QTo-86-421" secondAttribute="leading" id="1u4-Jn-Pn4"/>
+                                    <constraint firstItem="NPT-4k-I09" firstAttribute="top" secondItem="QTo-86-421" secondAttribute="top" id="3ML-Zf-FS4"/>
+                                    <constraint firstAttribute="bottom" secondItem="NPT-4k-I09" secondAttribute="bottom" id="3aP-5g-SZq"/>
                                     <constraint firstAttribute="height" constant="50" id="4k2-EY-7Ou"/>
-                                    <constraint firstAttribute="width" constant="40" id="LNH-3y-Ab6"/>
+                                    <constraint firstAttribute="width" constant="48" id="LNH-3y-Ab6"/>
                                     <constraint firstItem="NPT-4k-I09" firstAttribute="centerY" secondItem="QTo-86-421" secondAttribute="centerY" id="VKa-ag-gmk"/>
                                     <constraint firstAttribute="trailing" secondItem="NPT-4k-I09" secondAttribute="trailing" id="hej-n3-SaT"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TN8-tF-Cif">
-                                <rect key="frame" x="48" y="5" width="387" height="50"/>
+                                <rect key="frame" x="56" y="5" width="379" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your favorite food?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoK-Fh-9Zz">
-                                        <rect key="frame" x="5" y="15" width="374" height="20.5"/>
+                                        <rect key="frame" x="5" y="15" width="366" height="20.5"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="13"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -62,10 +65,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDw-87-kpJ">
-                                <rect key="frame" x="0.0" y="74" width="40" height="50"/>
+                                <rect key="frame" x="0.0" y="63" width="48" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ans1:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys2-K2-375">
-                                        <rect key="frame" x="4" y="12.5" width="36" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ans10:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys2-K2-375">
+                                        <rect key="frame" x="1" y="12.5" width="47" height="25"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="16"/>
                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -74,16 +77,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ys2-K2-375" firstAttribute="centerY" secondItem="NDw-87-kpJ" secondAttribute="centerY" id="68d-OQ-wtn"/>
+                                    <constraint firstItem="ys2-K2-375" firstAttribute="leading" secondItem="NDw-87-kpJ" secondAttribute="leading" constant="1" id="Kok-7j-pw2"/>
                                     <constraint firstAttribute="height" constant="50" id="Zof-gc-YOt"/>
                                     <constraint firstAttribute="trailing" secondItem="ys2-K2-375" secondAttribute="trailing" id="iaU-Jc-sgV"/>
-                                    <constraint firstAttribute="width" constant="40" id="x4e-dj-b0Z"/>
+                                    <constraint firstAttribute="width" constant="48" id="x4e-dj-b0Z"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZh-Ro-hkB">
-                                <rect key="frame" x="48" y="63" width="387" height="50"/>
+                                <rect key="frame" x="56" y="63" width="379" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wr3-4O-57K">
-                                        <rect key="frame" x="0.0" y="8" width="379" height="34"/>
+                                        <rect key="frame" x="0.0" y="8" width="371" height="34"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -97,7 +101,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbq-RL-Y4F">
-                                <rect key="frame" x="48" y="113" width="379" height="0.0"/>
+                                <rect key="frame" x="56" y="113" width="371" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.91745740180000002" green="0.25346475839999999" blue="0.14499741790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -106,13 +110,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yZh-Ro-hkB" firstAttribute="leading" secondItem="NDw-87-kpJ" secondAttribute="trailing" constant="8" id="29c-ej-gFA"/>
-                            <constraint firstItem="NDw-87-kpJ" firstAttribute="top" secondItem="QTo-86-421" secondAttribute="bottom" constant="8" id="4R2-1F-qiC"/>
                             <constraint firstAttribute="trailing" secondItem="TN8-tF-Cif" secondAttribute="trailing" constant="8" id="8gl-nf-YnH"/>
                             <constraint firstAttribute="trailing" secondItem="yZh-Ro-hkB" secondAttribute="trailing" constant="8" id="Ckv-oe-bge"/>
+                            <constraint firstItem="QTo-86-421" firstAttribute="centerY" secondItem="DoK-Fh-9Zz" secondAttribute="centerY" id="EaP-wj-uxU"/>
                             <constraint firstItem="NDw-87-kpJ" firstAttribute="leading" secondItem="SlX-va-C9k" secondAttribute="leading" id="QzD-GQ-5WR"/>
+                            <constraint firstItem="NDw-87-kpJ" firstAttribute="centerY" secondItem="wr3-4O-57K" secondAttribute="centerY" id="QzY-cb-8pR"/>
                             <constraint firstItem="yZh-Ro-hkB" firstAttribute="top" secondItem="TN8-tF-Cif" secondAttribute="bottom" constant="8" id="TgC-Nz-ATA"/>
                             <constraint firstAttribute="trailing" secondItem="zbq-RL-Y4F" secondAttribute="trailing" constant="16" id="UHW-Il-PZz"/>
-                            <constraint firstItem="QTo-86-421" firstAttribute="top" secondItem="SlX-va-C9k" secondAttribute="top" constant="16" id="YRF-Nh-7me"/>
                             <constraint firstItem="QTo-86-421" firstAttribute="leading" secondItem="SlX-va-C9k" secondAttribute="leading" id="mtz-00-Ufd"/>
                             <constraint firstItem="zbq-RL-Y4F" firstAttribute="leading" secondItem="yZh-Ro-hkB" secondAttribute="leading" id="nja-Bp-qFE"/>
                             <constraint firstItem="TN8-tF-Cif" firstAttribute="leading" secondItem="QTo-86-421" secondAttribute="trailing" constant="8" id="uhR-JF-SG4"/>

@@ -22,7 +22,12 @@ class OutletDetailViewController: BaseUIViewController {
     @IBOutlet weak var vMapNavigateBtn: UIView!
     @IBOutlet weak var lbMapNav: UILabel!
     
-   
+    @IBOutlet weak var phoneImg: UIImageView!
+    @IBOutlet weak var phoneView: UIView!
+    
+    @IBOutlet weak var phoneHeight: NSLayoutConstraint!
+    @IBOutlet weak var callBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var mapWidth: NSLayoutConstraint!
     var currentLocation : CLLocation?
     
     var outletInfo : OutletInfoBean?
@@ -48,9 +53,17 @@ class OutletDetailViewController: BaseUIViewController {
           
             
             if self.outletInfo?.phoneNo != nil {
+                self.callBtnWidth.constant = 175
+               // self.mapWidth.constant = 192
+                self.phoneHeight.constant = 35
+                self.phoneView.isHidden = false
                 self.vCallNow.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickCallNow)))
                 self.vCallNow.isUserInteractionEnabled = true
                 self.phoneNo = self.outletInfo?.phoneNo
+            }else{
+                self.phoneHeight.constant = 0
+                self.phoneView.isHidden = true
+                self.callBtnWidth.constant = 0
             }
             
             if self.outletInfo?.latitude != nil && self.outletInfo?.longitude != nil {

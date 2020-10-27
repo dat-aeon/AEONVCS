@@ -69,7 +69,7 @@ class HomeNewViewController: BaseUIViewController {
     var sessionDataBean : SessionDataBean?
     
     var senderName: String?
-    var senderId: Int!
+  //  var senderId: Int!
  //   let customerId:Int = 303122
   //  let cid: Int = 77
   //  var userDeviceID: String!
@@ -79,7 +79,7 @@ class HomeNewViewController: BaseUIViewController {
     var AutomessageBean = MessageBean()
     var vidoeFilePath : String = ""
     
-    
+    var senderId:Int = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
     
     @IBAction func loanViewHidePress(_ sender: UITapGestureRecognizer) {
         loanAppView.isHidden = true
@@ -94,6 +94,7 @@ class HomeNewViewController: BaseUIViewController {
    
     override func viewWillAppear(_ animated: Bool) {
        // USER_INFO_CUSTOMER_ID
+        logoutTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
        currentLanguage()
         Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
@@ -105,7 +106,7 @@ class HomeNewViewController: BaseUIViewController {
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(currentLanguage), userInfo: nil, repeats: true)
     }
     @objc func contactUsnoti() {
-        self.levelTwoUnRead(customerId: self.senderId!)
+        self.levelTwoUnRead(customerId: self.senderId)
     }
     
  var logoutTimer: Timer?
@@ -129,22 +130,22 @@ class HomeNewViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-            self.contactAppLabel.isHidden = true
+          //  self.contactAppLabel.isHidden = true
             self.notiIcon()
        
-       
+        Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
         currentLanguage()
         askProductView.isHidden = true
         loanApplicationView.isHidden = true
-      logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        logoutTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
        
     
         print("kaungmyat usertypeid \(UserDefaults.standard.integer(forKey: Constants.USER_INFO_USER_TYPE_ID))")
-        self.deviceID = sessionDataBean?.loginDeviceId ?? ""
+     //   self.deviceID = sessionDataBean?.loginDeviceId ?? ""
      
         self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
        // askProductMessageUnRead(customerId: senderId!, levelType: 2)
-        self.levelTwoUnRead(customerId: self.senderId!)
+        self.levelTwoUnRead(customerId: self.senderId)
         uiSetup()
         loanAppView.isHidden = true
         updateViews()
@@ -230,43 +231,43 @@ class HomeNewViewController: BaseUIViewController {
         
         
     }
-    var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-    //var customID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-    func multiLoginGet(){
-            let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
-       
-        MultiLoginModel.init().makeMultiLogin(customerId: customerId
-                , loginDeviceId: deviceID, success: { (results) in
-               // print("kaungmyat san multi >>>  \(results)")
-                
-                if results.data.logoutFlag == true {
-                    print("success stage logout")
-                    // create the alert
-                           let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
-
-                           // add an action (button)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
-                        self.logoutTimer?.invalidate()
-                        let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
-                        navigationVC.modalPresentationStyle = .overFullScreen
-                        self.present(navigationVC, animated: true, completion:nil)
-                        
-                    }))
-
-                           // show the alert
-                           self.present(alert, animated: true, completion: nil)
-                    
-                    
-                }
-            }) { (error) in
-                print(error)
-            }
-        }
-    
     @objc func runTimedCode() {
-              multiLoginGet()
-          // print("kms\(logoutTimer)")
-          }
+        multiLoginGet()
+    // print("kms\(logoutTimer)")
+    }
+  func multiLoginGet(){
+       var deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+             let customerId = (UserDefaults.standard.string(forKey: Constants.USER_INFO_CUSTOMER_ID) ?? "0")
+        
+         MultiLoginModel.init().makeMultiLogin(customerId: customerId
+                 , loginDeviceId: deviceID, success: { (results) in
+              //   print("kaungmyat san multi >>>  \(results)")
+                 
+                 if results.data.logoutFlag == true {
+                     print("success stage logout")
+                     // create the alert
+                            let alert = UIAlertController(title: "Alert", message: "Another Login Occurred!", preferredStyle: UIAlertController.Style.alert)
+
+                            // add an action (button)
+                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                         self.logoutTimer?.invalidate()
+                         let navigationVC = self.storyboard!.instantiateViewController(withIdentifier: CommonNames.MAIN_NEW_VIEW_CONTROLLER) as! MainNewViewController
+                         navigationVC.modalPresentationStyle = .overFullScreen
+                         self.present(navigationVC, animated: true, completion:nil)
+                         
+                     }))
+
+                            // show the alert
+                            self.present(alert, animated: true, completion: nil)
+                     
+                     
+                 }
+             }) { (error) in
+                 print(error)
+             }
+         }
+    
+   
     @objc func dismissKeyboard() {
         DispatchQueue.main.async {
             self.view.endEditing(true)
