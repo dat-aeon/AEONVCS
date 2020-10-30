@@ -11,10 +11,10 @@ import SwiftyJSON
 import Starscream
 
 
-class FreeChatViewController: BaseUIViewController {
+class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
     
     
-   
+  //  @IBOutlet weak var tfMessage: UITextView!
     
     @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var imgMMlocale: UIImageView!
@@ -69,9 +69,107 @@ class FreeChatViewController: BaseUIViewController {
          AutomessageBean.message = mmLan
 
     }
-    
-  
-  
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 1024
+    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let textFieldText = textField.text,
+//            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+//                return false
+//        }
+//        let substringToReplace = textFieldText[rangeOfTextToReplace]
+//        let count = textFieldText.count - substringToReplace.count + string.count
+//        print("text count \(count)")
+////        if count > 645 {
+////            Utils.showAlert(viewcontroller: self, title: "", message: "Too many words")
+////        textField.deleteBackward()
+////        }
+//       
+//        return count <= 10
+//    }
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        if textView.text.isEmpty {
+//            textView.text = "Type a message ..."
+//            textView.textColor = UIColor.lightGray
+//        }else{
+//            textView.textColor = UIColor.black
+//        }
+//        print("textViewDidEndEditing")
+//    }
+//
+//
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        print("textViewDidBeginEditing")
+//        if textView.text.isEmpty {
+//            textView.text = "Type a message ..."
+//            textView.textColor = UIColor.lightGray
+//        }else{
+//            textView.textColor = UIColor.black
+//            textView.text = ""
+//            textView.delegate = self
+//
+//
+//        }
+//    }
+//    func textViewDidChange(_ textView: UITextView) {
+//        let size = CGSize(width: view.frame.width, height: .infinity)
+//        let estimatedSize = textView.sizeThatFits(size)
+//        let estimateH: CGFloat = 50
+//        let estimateHM: CGFloat = 400
+//        let scrollH: CGFloat = 300
+//        textView.constraints.forEach { (constraint) in
+//            if constraint.firstAttribute == .height {
+//                constraint.constant = estimatedSize.height
+//
+//
+//                if estimatedSize.height > estimateH && estimatedSize.height < estimateHM {
+//                    textView.isScrollEnabled = true
+////                   textView.frame.size.height = scrollH
+//                  // tfMessage.frame.size.height = scrollH
+////                    messageTextViewheight.constant = scrollH
+////                    tfmessageViewHeight.constant = scrollH
+//                    tfMessage.isEditable = true
+//                    print("text view height \(tfMessage.frame.size.height)")
+//                    if tfMessage.frame.size.height > 70 {
+//                        tfmessageViewHeight.constant = 80
+//                        messageTextViewheight.constant = 80
+//                        tfMessage.frame.size.height = 80
+//                        textView.isScrollEnabled = true
+//                    }else{
+//                        print("tttt\(estimatedSize.height)")
+//                    }
+//
+//                }else{
+//                    tfMessage.isScrollEnabled = true
+//                    messageTextViewheight.constant = 50
+//                    tfmessageViewHeight.constant = 50
+//                }
+//            }else{
+//                if estimatedSize.height > estimateH && estimatedSize.height < estimateHM{
+//                    textView.isScrollEnabled = true
+////                    tfMessage.frame.size.height = scrollH
+////                    messageTextViewheight.constant = scrollH
+//
+//                  //  textView.frame.size.height = scrollH
+//                   // tfmessagecontainerViewheight.constant = scrollH
+//                }else{
+//                    textView.isScrollEnabled = true
+//                   // textView.frame.size.height = estimatedSize.height
+//                   // tfmessagecontainerViewheight.constant = estimatedSize.height
+//                }
+//            }
+////            if estimatedSize.height < 30 && estimatedSize.height > 30{
+////                textView.frame.size.height = 34
+////               // tfmessagecontainerViewheight.constant = 34
+////            }
+//        }
+//    }
     
     @objc func questionView(sender:UIButton) {
         print("\(myQuestions)")
@@ -86,8 +184,15 @@ class FreeChatViewController: BaseUIViewController {
         override func viewDidLoad() {
 
             super.viewDidLoad()
-           
-         
+            tfTypeMessage.delegate = self
+            
+           // tfTypeMessage.maxLength = 5
+//            if tfMessage.text.isEmpty {
+//                tfMessage.text = "Type a message ..."
+//                tfMessage.textColor = UIColor.black
+//            }else{
+//                tfMessage.textColor = UIColor.black
+//            }
             questionButton.addTarget(self, action: #selector(questionView(sender:)), for: UIControl.Event.touchUpInside)
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
             
@@ -199,7 +304,8 @@ class FreeChatViewController: BaseUIViewController {
 
             }
 
-            
+           // PyidaungsuBook 15.0
+           
 
             let sessionInfoString = UserDefaults.standard.string(forKey: Constants.SESSION_INFO)
 
@@ -275,6 +381,8 @@ scrollToBottom()
         CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
 
     }
+    
+    
 
     @objc func qThreeView() {
 
@@ -510,6 +618,7 @@ scrollToBottom()
             super.updateViews()
 
             self.btnSendImg.setTitle("messaging.send.button".localized, for: UIControl.State.normal)
+         //  self.tfTypeMessage.placeholder = ""
             
 
         }
@@ -522,7 +631,7 @@ scrollToBottom()
 
         @IBAction func sendMessage(_ sender: UIButton) {
 
-            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+          
 
             
 
@@ -540,6 +649,7 @@ scrollToBottom()
 
             if self.tfTypeMessage.text != Constants.BLANK {
 
+                
                 //self.messagingSocket.send("msg:\(self.tfTypeMessage.text!)op_send_flag:0message_type:0")
 
                 //self.messagingSocket.send("ChangeFinishFlagByMobile:\(self.senderName)")
@@ -547,10 +657,11 @@ scrollToBottom()
                 super.free_chat_socket_url.write(string: "msg:\(self.tfTypeMessage.text!)op_send_flag:0message_type:0")
 
                 super.free_chat_socket_url.write(string: "ChangeFinishFlagByMobile:\(self.senderName)")
+              
 
             }
 
-            CustomLoadingView.shared().hideActivityIndicator(uiView: self.view)
+          
 
             
 

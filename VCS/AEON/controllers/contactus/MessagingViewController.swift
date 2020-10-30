@@ -519,7 +519,7 @@ class MessagingViewController: BaseUIViewController {
                                                  // save unread message from admin
                                                  if 0 == (content[index] as AnyObject).value(forKey: "readFlag") as? Int {
                                                      
-                                                     if messageMenu == 0 {
+                                                     if messageMenu == 8 {
                                                          super.socket.write(string: "ChangeReadFlagWithMsgId:\(((content[index] as AnyObject).value(forKey: "messageId") as? Int)!)")
                                                          
                                                          } else {

@@ -45,14 +45,16 @@ class OutletDetailViewController: BaseUIViewController {
         vMapNavigateBtn.layer.borderColor = yourColor.cgColor
         vMapNavigateBtn.layer.borderWidth = 1.0
         self.ivBackBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickBack)))
-        
+        let phoneString = outletInfo?.phoneNo
+        let trimmedString = phoneString?.trimmingCharacters(in: .whitespaces)
+       
         if outletInfo != nil {
             lbName.text = self.outletInfo?.outletName
             lbAddress.text = self.outletInfo?.address
             lbPhone.text = self.outletInfo?.phoneNo
           
             
-            if self.outletInfo?.phoneNo != nil {
+            if self.outletInfo?.phoneNo != nil{
                 self.callBtnWidth.constant = 175
                // self.mapWidth.constant = 192
                 self.phoneHeight.constant = 35
@@ -61,6 +63,11 @@ class OutletDetailViewController: BaseUIViewController {
                 self.vCallNow.isUserInteractionEnabled = true
                 self.phoneNo = self.outletInfo?.phoneNo
             }else{
+                self.phoneHeight.constant = 0
+                self.phoneView.isHidden = true
+                self.callBtnWidth.constant = 0
+            }
+            if trimmedString == "" {
                 self.phoneHeight.constant = 0
                 self.phoneView.isHidden = true
                 self.callBtnWidth.constant = 0

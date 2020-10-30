@@ -30,7 +30,7 @@ class HowToUseViewController: BaseUIViewController {
     var player = AVPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       videoCall()
          self.imgBack.isUserInteractionEnabled = true
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -44,6 +44,25 @@ class HowToUseViewController: BaseUIViewController {
         self.lblHowtouseDes.text = "howtouse.des.label".localized
          self.lblHowtouseDes.attributedText = Utils.setLineSpacing(data: lblHowtouseDes.text!)
         
+        
+        
+       if (UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME) == nil) {
+            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
+            self.lblBarName.text = ""
+            self.lblBarMemberType.text = "Lv.1 : Application user"
+        }else{
+            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+                       self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+             self.lblBarMemberType.text = "Lv.2 : Login user"
+        }
+        
+        if lblBarMemberType.text == "Lv.2 : Login user" {
+                   print("kms ssssssssss>>>>>>")
+             logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+               }
+       
+    }
+    func videoCall() {
         AboutUsViewModel.init().getVideoFilePath(siteActivationKey: Constants.SITE_ACTIVATION_KEY, success: { (result) in
                   
                   self.vdoPath = result.data.fileName
@@ -61,22 +80,6 @@ class HowToUseViewController: BaseUIViewController {
               }) { (error) in
                   
               }
-        
-       if (UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME) == nil) {
-            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.FIRST_TIME_PHONE)
-            self.lblBarName.text = ""
-            self.lblBarMemberType.text = "Lv.1 : Application user"
-        }else{
-            self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
-                       self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
-             self.lblBarMemberType.text = "Lv.2 : Login user"
-        }
-        
-        if lblBarMemberType.text == "Lv.2 : Login user" {
-                   print("kms ssssssssss>>>>>>")
-             logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
-               }
-       
     }
    @objc func runTimedCode() {
                 multiLoginGet()
@@ -113,11 +116,11 @@ class HowToUseViewController: BaseUIViewController {
                }
            }
     @objc func onTapBack() {
-        DispatchQueue.main.async {
-            self.player.pause()
-        }
-      
-    
+//        DispatchQueue.main.async {
+//            self.player.pause()
+//        }
+//      print(player.play())
+       videoCall()
         self.dismiss(animated: true, completion: nil)
     }
     @objc func onTapMMLocale() {

@@ -767,6 +767,7 @@ class LoanCalculatorViewController: BaseUIViewController {
                 self.loanTerms = self.motorCycleLoanTerm
                 self.colviewLoanTerm.reloadData()
             }else if self.isMotorcycleOn == false {
+                
                 self.loanTerms = []
                 self.colviewLoanTerm.reloadData()
             }else{

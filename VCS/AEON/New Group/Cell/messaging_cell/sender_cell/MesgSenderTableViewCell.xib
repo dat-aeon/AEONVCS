@@ -29,7 +29,7 @@
                                 <rect key="frame" x="10" y="110" width="309" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01-05-2019 4:00 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbH-Kd-Top">
-                                        <rect key="frame" x="5" y="-0.5" width="299" height="21"/>
+                                        <rect key="frame" x="5" y="-0.5" width="294" height="21"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,13 +38,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="hbH-Kd-Top" firstAttribute="leading" secondItem="hO8-Ik-aOb" secondAttribute="leading" constant="5" id="6wt-bf-8W0"/>
-                                    <constraint firstAttribute="trailing" secondItem="hbH-Kd-Top" secondAttribute="trailing" constant="5" id="Pq7-g6-qlW"/>
+                                    <constraint firstAttribute="trailing" secondItem="hbH-Kd-Top" secondAttribute="trailing" constant="10" id="Pq7-g6-qlW"/>
                                     <constraint firstItem="hbH-Kd-Top" firstAttribute="centerY" secondItem="hO8-Ik-aOb" secondAttribute="centerY" id="VNH-13-83U"/>
                                     <constraint firstAttribute="height" constant="20" id="xVO-Jl-kp4"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CL2-9J-hLU">
-                                <rect key="frame" x="76" y="10" width="248" height="95"/>
+                                <rect key="frame" x="71" y="10" width="248" height="95"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZk-JR-CVP">
                                         <rect key="frame" x="10" y="5" width="228" height="85"/>
@@ -75,7 +75,7 @@ Messaging size of jpeg image in KB: %f  448.671875</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CL2-9J-hLU" secondAttribute="trailing" constant="5" id="N3e-PO-dvB"/>
+                            <constraint firstAttribute="trailing" secondItem="CL2-9J-hLU" secondAttribute="trailing" constant="10" id="N3e-PO-dvB"/>
                             <constraint firstItem="hO8-Ik-aOb" firstAttribute="top" secondItem="CL2-9J-hLU" secondAttribute="bottom" constant="5" id="Sjr-JT-h32"/>
                             <constraint firstAttribute="bottom" secondItem="hO8-Ik-aOb" secondAttribute="bottom" constant="10" id="UkE-gn-h6W"/>
                             <constraint firstItem="hO8-Ik-aOb" firstAttribute="leading" secondItem="XEm-jr-iN5" secondAttribute="leading" constant="10" id="VqB-fM-Klb"/>

@@ -11,7 +11,8 @@ import UIKit
 
 import SwiftyJSON
 import Starscream
-
+import AVKit
+import AVFoundation
 
 class HomeNewViewController: BaseUIViewController {
     @IBOutlet weak var loanApplyViewPress: UIStackView!
@@ -94,6 +95,8 @@ class HomeNewViewController: BaseUIViewController {
    
     override func viewWillAppear(_ animated: Bool) {
        // USER_INFO_CUSTOMER_ID
+        var player = AVPlayer()
+        player.pause()
         logoutTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
        currentLanguage()
@@ -130,7 +133,7 @@ class HomeNewViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-          //  self.contactAppLabel.isHidden = true
+            self.contactAppLabel.isHidden = true
             self.notiIcon()
        
         Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
