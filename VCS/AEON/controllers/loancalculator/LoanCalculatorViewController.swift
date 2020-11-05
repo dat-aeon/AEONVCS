@@ -763,13 +763,19 @@ class LoanCalculatorViewController: BaseUIViewController {
             let removedComma = totalString.replacingOccurrences(of: ",", with: "")
             self.checkAmountisValid(amt: removedComma, isCalculating: true)
             self.refreshLoanTerm(amt: removedComma)
-            if self.isMotorcycleOn {
+            if self.isMotorcycleOn == true {
                 self.loanTerms = self.motorCycleLoanTerm
                 self.colviewLoanTerm.reloadData()
             }else if self.isMotorcycleOn == false {
+               // overSeventyToTwoHundred
+                if removedComma >= "1000000" {
+                    self.loanTerms = self.overSeventyToTwoHundred
+                    self.colviewLoanTerm.reloadData()
+                }else{
+                    self.loanTerms = []
+                    self.colviewLoanTerm.reloadData()
+                }
                 
-                self.loanTerms = []
-                self.colviewLoanTerm.reloadData()
             }else{
                 self.refreshLoanTerm(amt: removedComma)
             }

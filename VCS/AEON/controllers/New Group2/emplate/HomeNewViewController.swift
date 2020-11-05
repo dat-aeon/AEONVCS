@@ -100,7 +100,7 @@ class HomeNewViewController: BaseUIViewController {
         logoutTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
        self.senderId = UserDefaults.standard.integer(forKey: Constants.USER_INFO_CUSTOMER_ID)
        currentLanguage()
-        Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
 //        DispatchQueue.main.async {
 //            self.levelTwoUnRead(customerId: self.senderId!)
 //           
@@ -129,14 +129,15 @@ class HomeNewViewController: BaseUIViewController {
         DispatchQueue.main.async {
             self.currentLanguage()
         }
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
      
             self.contactAppLabel.isHidden = true
             self.notiIcon()
-       
-        Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
+       // Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
         currentLanguage()
         askProductView.isHidden = true
         loanApplicationView.isHidden = true
@@ -369,7 +370,7 @@ class HomeNewViewController: BaseUIViewController {
    
         LevelTwoMessageUnreadViewModel.init().levelTwoUnreadMessageSync(customerId: customerId, success: { (result) in
            
-            print("result..<<...  \(result.data.level2MessageUnReadCount)")
+           // print("result..<<...  \(result.data.level2MessageUnReadCount)")
             if "\(result.data.level2MessageUnReadCount)" == "0" {
                 self.contactAppLabel.isHidden = true
             }else{

@@ -603,7 +603,7 @@ class BaseModel {
            
            return Alamofire.request(request).responseJSON{ (response) in
                completion(response.result)
-            print("kauntmyatsan response result .. \(response.result)")
+         //   print("kauntmyatsan response result .. \(response.result)")
            }
        }
     func getChatBotPostWithoutToken(endPoint:String,rawData:[String:Int],completion:@escaping (Result<Any>)->Void) -> DataRequest {
@@ -625,7 +625,7 @@ class BaseModel {
               
               return Alamofire.request(request).responseJSON{ (response) in
                   completion(response.result)
-               print("kauntmyatsan response result .. \(response.result)")
+             //  print("kauntmyatsan response result .. \(response.result)")
               }
           }
 

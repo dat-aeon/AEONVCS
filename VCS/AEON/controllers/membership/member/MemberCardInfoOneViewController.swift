@@ -24,6 +24,7 @@ class MemberCardInfoOneViewController: UIViewController {
     override func viewDidLoad() {
 //        print("Start MemberCardInfoOneViewController :::::::::::::::")
         super.viewDidLoad()
+        
         let customerType = UserDefaults.standard.string(forKey: Constants.CUSTOMER_TYPE)
         if customerType == Constants.MEMBER {
             self.tvMemberCardInfo.register(UINib(nibName: CommonNames.MEMBER_CARD_HEADER_TABLE_CELL, bundle: nil), forCellReuseIdentifier: CommonNames.MEMBER_CARD_HEADER_TABLE_CELL)

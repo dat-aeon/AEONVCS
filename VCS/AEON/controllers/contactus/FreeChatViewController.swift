@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Starscream
-
+import GrowingTextView
 
 class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
     
@@ -27,6 +27,7 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
     @IBOutlet weak var btnSendMesg: UIButton!
     @IBOutlet weak var vSendBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var botchat: UIButton!
+    
     let questionButton = UIButton()
     var customerID:Int = 0
         var myQuestions = ""
@@ -36,7 +37,7 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
         var flagLanNo:Int = 1
         var segmentIndex: Int!
         var orginBottom : CGFloat!
-
+     
         var isDidLoad = false
 
         var messageBeanList: [MessageBean] = []
@@ -69,15 +70,25 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
          AutomessageBean.message = mmLan
 
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let textFieldText = textField.text,
-            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-                return false
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        if (textField.text!.count > maxLength) {
+            Utils.showAlert(viewcontroller: self, title: "", message: "freechat.Toomanywords".localized)
+            textField.deleteBackward()
+         
+        }else{
+          
         }
-        let substringToReplace = textFieldText[rangeOfTextToReplace]
-        let count = textFieldText.count - substringToReplace.count + string.count
-        return count <= 1024
     }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let textFieldText = textField.text,
+//            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+//                return false
+//        }
+//        let substringToReplace = textFieldText[rangeOfTextToReplace]
+//        let count = textFieldText.count - substringToReplace.count + string.count
+//        return count <= 1024
+//    }
+    
 //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 //        guard let textFieldText = textField.text,
 //            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
@@ -184,6 +195,7 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
         override func viewDidLoad() {
 
             super.viewDidLoad()
+           
             tfTypeMessage.delegate = self
             
            // tfTypeMessage.maxLength = 5
@@ -701,11 +713,17 @@ scrollToBottom()
 
         
 
-        
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 1024
+        let currentString: NSString = (textField.text ?? "") as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
 
         @objc override func keyboardWillChange(notification : Notification) {
 
-            
+          //  checkMaxLength(textField: tfTypeMessage, maxLength: 5)
            
             guard let keyboardReact = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
 
@@ -720,6 +738,7 @@ scrollToBottom()
                 self.vSendBottomConstraint.constant = keyboardReact.height
 
                 self.tvMessagingView.scrollToRow(at: IndexPath(item: self.messageBeanList.count-1, section: 0), at: .bottom, animated: false)
+        
 
             } else {
 

@@ -32,10 +32,10 @@ class PromotionPopupViewController: BaseUIViewController {
     let marker = GMSMarker()
     
     var promoBean : PromotionBean?
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         self.imgCloseBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(self.onClickClose(tapGestureRecognizer:))))
         
         self.mapView.delegate = self

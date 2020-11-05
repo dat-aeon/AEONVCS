@@ -17,7 +17,7 @@ class LevelTwoMessageUnreadModel:BaseModel {
 func levelTwoMessageUnreadSync(customerId: Int, success: @escaping (levelTwoMessageUnReadResponse) -> Void,failure: @escaping (String) -> Void){
     let rawData = ["customerId": customerId]
     _ = super.getAskProductUnreadPostWithoutToken(endPoint: ApiServiceEndPoint.LEVEL_TWO_MESSAGE_UNREAD, rawData: rawData) { (result) in
-    print("askProductunread Response result kaungmyatsan:::::::::::\(result)")
+    //print("askProductunread Response result kaungmyatsan:::::::::::\(result)")
         switch result{
         case .success(let result):
             let responseJsonData = JSON(result)
@@ -29,7 +29,7 @@ func levelTwoMessageUnreadSync(customerId: Int, success: @escaping (levelTwoMess
                 failure(Constants.JSON_FAILURE)
             }
         case .failure(let error):
-            print("error kms", error.localizedDescription)
+         //   print("error kms", error.localizedDescription)
             failure(Constants.SERVER_FAILURE)
         }
     }

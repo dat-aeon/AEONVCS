@@ -41,7 +41,7 @@ class PhotoUpdateModel : BaseModel {
                     failure(Constants.JSON_FAILURE)
                 }
             case .failure( _):
-                //print("Register New error",error.localizedDescription)
+                print("Register New error",failure.self)
                 failure(Constants.SERVER_FAILURE)
             }
         }

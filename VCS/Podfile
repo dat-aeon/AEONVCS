@@ -27,7 +27,7 @@ target 'AEONVCS' do
 
   # Add the pod for Firebase Cloud Messaging
   pod 'Firebase/Messaging'
-  
+  pod 'GrowingTextView', '0.7.2'
   #DA Stepped Progress Bar
   pod "FlexibleSteppedProgressBar"
   pod 'SwipeMenuViewController'

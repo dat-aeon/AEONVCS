@@ -19,8 +19,6 @@ class MessagingViewController: BaseUIViewController {
     @IBOutlet weak var lblBarCusType: UILabel!
     @IBOutlet weak var lblBarPhNo: UILabel!
     @IBOutlet weak var lblBarName: UILabel!
-    
-    
     @IBOutlet weak var tvMessagingView: UITableView!
     @IBOutlet weak var lbHotline: UILabel!
     @IBOutlet weak var btnHotline: UIImageView!
@@ -30,17 +28,13 @@ class MessagingViewController: BaseUIViewController {
     @IBOutlet weak var btnSendMesg: UIButton!
     @IBOutlet weak var vSendBottomConstraint: NSLayoutConstraint!
     
-   
-  
     var segmentIndex: Int!
     var orginBottom : CGFloat!
     var isDidLoad = false
-    
     var messageBeanList: [MessageBean] = []
     var senderName: String = Constants.BLANK
     var senderId: Int = 0
     var sessionInfo: SessionDataBean?
-    
     var imagePicker: ImagePicker?
     var messageBean = MessageBean()
    var logoutTimer: Timer?
