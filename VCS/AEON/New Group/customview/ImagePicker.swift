@@ -87,7 +87,7 @@ open class ImagePicker: NSObject {
         if let action = self.action(for: .photoLibrary, title: "Gallery") {
             alertController.addAction(action)
         }
-        
+       
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -97,12 +97,14 @@ open class ImagePicker: NSObject {
         }
         
         self.presentationController?.present(alertController, animated: true)
+        
     }
     
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
         
         self.delegate?.didSelect(image: image)
+        
     }
 }
 
@@ -110,6 +112,7 @@ extension ImagePicker: UIImagePickerControllerDelegate {
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.pickerController(picker, didSelect: nil)
+        
     }
     
     public func imagePickerController(_ picker: UIImagePickerController,

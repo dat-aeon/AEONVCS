@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ura-iJ-5tp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ura-iJ-5tp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -275,10 +275,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsT-nC-hFG" customClass="CardView" customModule="AEONMember" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="80" width="314" height="350"/>
+                                <rect key="frame" x="0.0" y="80" width="310" height="350"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prp-nL-5Mw">
-                                        <rect key="frame" x="16" y="220" width="282" height="48"/>
+                                        <rect key="frame" x="16" y="220" width="278" height="48"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="3e0-Sp-mmR"/>
@@ -388,14 +388,14 @@
                                         </subviews>
                                     </stackView>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biometric-img" translatesAutoresizingMaskIntoConstraints="NO" id="ukj-39-RBV">
-                                        <rect key="frame" x="82" y="278" width="150" height="75"/>
+                                        <rect key="frame" x="80" y="278" width="150" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="0xg-8D-OvN"/>
                                             <constraint firstAttribute="width" constant="150" id="f2Y-Lg-OoV"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget Password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgE-kZ-lxH">
-                                        <rect key="frame" x="92" y="363" width="130" height="30"/>
+                                        <rect key="frame" x="90" y="363" width="130" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="EpP-wX-hCv"/>
                                             <constraint firstAttribute="height" constant="30" id="xsA-aJ-n2A"/>
@@ -408,7 +408,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNu-Jl-UgC">
-                                        <rect key="frame" x="127" y="25" width="60" height="25"/>
+                                        <rect key="frame" x="125" y="25" width="60" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="Xpq-7z-I1l"/>
                                         </constraints>
@@ -11627,14 +11627,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mn-Eu-B4A">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkW-cP-lMn">
-                                <rect key="frame" x="20" y="98" width="373" height="608.5"/>
+                                <rect key="frame" x="20" y="98" width="334" height="608.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Info." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ej-TH-a0i">
-                                        <rect key="frame" x="0.0" y="13" width="373" height="33"/>
+                                        <rect key="frame" x="0.0" y="13" width="334" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="1Ax-Z3-wsb"/>
                                         </constraints>
@@ -11643,13 +11643,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7Y-Vc-rlC">
-                                        <rect key="frame" x="9" y="57" width="356" height="426"/>
+                                        <rect key="frame" x="9" y="57" width="317" height="426"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="MSk-Ej-gOH">
-                                                <rect key="frame" x="11" y="12" width="324" height="45"/>
+                                                <rect key="frame" x="11" y="12" width="285" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJw-YO-gQL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="324" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="285" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="285" id="nj3-iM-HtM"/>
                                                         </constraints>
@@ -11658,7 +11658,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqi-V5-TBU">
-                                                        <rect key="frame" x="0.0" y="23" width="324" height="22"/>
+                                                        <rect key="frame" x="0.0" y="23" width="285" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="285" id="K3B-7K-ZtU"/>
                                                         </constraints>
@@ -11692,16 +11692,16 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q81-Wu-6CZ">
-                                                <rect key="frame" x="11" y="238" width="160" height="54"/>
+                                                <rect key="frame" x="11" y="238" width="142.5" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45X-sP-da1">
-                                                        <rect key="frame" x="0.0" y="2" width="160" height="22"/>
+                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="22"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wQ-R9-Mw7">
-                                                        <rect key="frame" x="0.0" y="26" width="160.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="26" width="143" height="22"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -11719,16 +11719,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9p-DL-KvN">
-                                                <rect key="frame" x="183.5" y="238" width="164" height="54"/>
+                                                <rect key="frame" x="166" y="238" width="142.5" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ul1-gX-qNa">
-                                                        <rect key="frame" x="0.0" y="2" width="164" height="22"/>
+                                                        <rect key="frame" x="0.0" y="2" width="142.5" height="22"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" red="0.71764705880000002" green="0.0" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vr1-j8-wv9">
-                                                        <rect key="frame" x="0.0" y="26" width="164.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="26" width="143" height="22"/>
                                                         <fontDescription key="fontDescription" name="PyidaungsuBook-Bold" family="Pyidaungsu Book" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -11894,7 +11894,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itx-dx-lTw">
-                                        <rect key="frame" x="9" y="501" width="170.5" height="41"/>
+                                        <rect key="frame" x="9" y="501" width="151" height="41"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="18"/>
                                         <state key="normal" title="Confirm">
@@ -11905,7 +11905,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKV-ha-tYa">
-                                        <rect key="frame" x="194.5" y="501" width="170.5" height="41"/>
+                                        <rect key="frame" x="175" y="501" width="151" height="41"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PyidaungsuBook" family="Pyidaungsu Book" pointSize="18"/>
                                         <state key="normal" title="Cancel">
@@ -14661,7 +14661,7 @@
                                                         <rect key="frame" x="8" y="10" width="386" height="18"/>
                                                         <color key="backgroundColor" red="0.96862745100000003" green="0.3921568627" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="Label">
+                                                            <fragment content=".....">
                                                                 <attributes>
                                                                     <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <font key="NSFont" metaFont="system" size="15"/>

@@ -9,12 +9,13 @@
 import Foundation
 struct Constants {
 
-        static var base_url:String = "https://ass.aeoncredit.com.mm/daso/"
-        static let socket_url:String = "wss://ass.aeoncredit.com.mm/vcschat"
-        static var assm_base_url :String = "https://ass.aeoncredit.com.mm/assm2/"
-        static let at_socket_url:String = "wss://ass.aeoncredit.com.mm/vcsplchat"
-        static let free_chat_socket_url:String = "wss://ass.aeoncredit.com.mm/free-chat-server"
-        static var daso_url:String = "https://ass.aeoncredit.com.mm/daso/"
+//        static var base_url:String = "https://ass.aeoncredit.com.mm/daso/"
+//        static let socket_url:String = "wss://ass.aeoncredit.com.mm/vcschat"
+//        static var assm_base_url :String = "https://ass.aeoncredit.com.mm/assm2/"
+//        static let at_socket_url:String = "wss://ass.aeoncredit.com.mm/vcsplchat"
+//        static let free_chat_socket_url:String = "wss://ass.aeoncredit.com.mm/free-chat-server"
+//        static var daso_url:String = "https://ass.aeoncredit.com.mm/daso/"
+//    static var video_url:String = "https://amf.aeoncredit.com.mm/daso/how-to-use-video/"
        
 //    static var base_url:String = "https://amf.aeoncredit.com.mm/daso/"
 //    static let socket_url:String = "wss://amf.aeoncredit.com.mm/vcschat"
@@ -24,13 +25,20 @@ struct Constants {
 //    static var daso_url:String = "https://amf.aeoncredit.com.mm/daso/"
     
 
+        static var base_url:String = "https://amf.aeoncredit.com.mm/vcsm2/"
+        static let socket_url:String = "wss://amf.aeoncredit.com.mm/vcschat"
+        static var assm_base_url :String = "https://amf.aeoncredit.com.mm/vcsm2/"
+        static let at_socket_url:String = "wss://amf.aeoncredit.com.mm/vcsplchat"
+        static let free_chat_socket_url:String = "wss://amf.aeoncredit.com.mm/free-chat-server"
+        static var daso_url:String = "https://amf.aeoncredit.com.mm/vcsm2/"
+        static var video_url:String = "https://amf.aeoncredit.com.mm/vcsm2/how-to-use-video/"
     
-    static var site_activation_key = "12345678"
     
-    static var SITE_ACTIVATION_KEY = "siteActivationKey"
     
-    //VideoUrl
-    static var video_url:String = "https://ass.aeoncredit.com.mm/daso/how-to-use-video/"
+        static var site_activation_key = "12345678"
+        static var SITE_ACTIVATION_KEY = "siteActivationKey"
+   
+    
     
     //PreDefine Data
     static var NRC_TOWNSHIP_List = "nrc_township"

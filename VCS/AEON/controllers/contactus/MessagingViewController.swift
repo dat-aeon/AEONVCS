@@ -475,8 +475,8 @@ class MessagingViewController: BaseUIViewController {
                                      
                                      if (content.count > 0){
                                          
-                                         let messageMenu = UserDefaults.standard.integer(forKey: Constants.MESSAGING_MENU)
-                                         
+//                                         let messageMenu = UserDefaults.standard.integer(forKey: Constants.MESSAGING_MENU)
+                                        let messageMenu:Int = 8
                                          var unreadArray = UserDefaults.standard.array(forKey: Constants.UNREAD_MESSAGE_ARRAY)  as? [Int] ?? [Int]()
                                          
                                          if unreadArray.count > 0 {
@@ -528,7 +528,7 @@ class MessagingViewController: BaseUIViewController {
                                              self.messageBeanList.append(messageBean)
                                              
                                          }
-                                         //("unread message list array size :", unreadArray.count)
+                                         ("unread message list array size :", unreadArray.count)
                                          
                                          self.tvMessagingView.reloadData()
                                          let indexPath:IndexPath = IndexPath(row: self.messageBeanList.count-1, section: 0)

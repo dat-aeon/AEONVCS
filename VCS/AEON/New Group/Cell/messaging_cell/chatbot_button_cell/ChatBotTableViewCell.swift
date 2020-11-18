@@ -23,15 +23,15 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     var chatBot = [ChatBotInfo]()
     var chatBotmm = [ChatBotInfo]()
     var chatBotList: [ChatBotInfo] = []
-  
     var chatBotId = 0
-   var chatBotMM = [ChatBotMMInfo]()
+    var chatBotMM = [ChatBotMMInfo]()
     var chatBotMMList: [ChatBotMMInfo] = []
     let mmFlag = "my_MM"
     let engFlag = "en"
     var language = Locale.currentLocale
     override func awakeFromNib() {
         super.awakeFromNib()
+       // CustomLoadingView.shared().showActivityIndicator(uiView: self.contentView)
         NotificationCenter.default.addObserver(self, selector: #selector(callmm), name: NSNotification.Name("callMM"), object:nil)
         NotificationCenter.default.addObserver(self, selector: #selector(calleng), name: NSNotification.Name("callENG"), object:nil)
         chatCollectionView.delegate = self
@@ -40,9 +40,14 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
        
        
         if mmFlag == language.rawValue{
-            getchatBotMM()
+            DispatchQueue.main.async {
+                self.getchatBotMM()
+            }
+           
         }else if engFlag == language.rawValue{
-            getchatBotEng()
+            DispatchQueue.main.async {
+                self.getchatBotEng()
+            }
         }
      
       
@@ -54,37 +59,41 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
        getchatBotEng()
     }
     func getchatBotMM(){
+      
         GetChatBotMMViewModel.init().getChatBotSync(type: 1, success: { (result) in
-            var questionId:Int = 0
-            self.chatBot = result
-            self.chatBotList = result
-           
-            for i in self.chatBotList {
-                 questionId = i.chatBotQuestionAndAnswerId
+         
+                var questionId:Int = 0
+                self.chatBot = result
+                self.chatBotList = result
+                
+                for i in self.chatBotList {
+                     questionId = i.chatBotQuestionAndAnswerId
+                }
+                self.chatCollectionView.reloadData()
                
-            }
-           // self.delegate?.questionAndAnswerId(id: questionId)
             
            
-            self.chatCollectionView.reloadData()
 
         }) { (error) in
             print(error.localized)
         }
-
+       
     }
     func getchatBotEng(){
+      
         GetChatBotViewModel.init().getChatBotSync(type: 1, success: { (result) in
-
-
+                
+          
             self.chatBot = result
             self.chatBotList = result
             print(self.chatBotList)
             self.chatCollectionView.reloadData()
-
+           
+            
         }) { (error) in
             print(error.localized)
         }
+       
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -169,10 +178,10 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         
         delegate?.questionAndAnswerId(id: newId, question: ques, answer: answ)
         SendChatQuestionModel.init().sendChatQuestion(customerId: customerId, chatBotQuestionAndAnswerId: newId, question: ques, answer: answ) { (result) in
-            print(result)
+            //print(result)
             //self.tvMessagingView.reloadData()
         } failure: { (error) in
-            print(error)
+            //print(error)
         }
     }
     

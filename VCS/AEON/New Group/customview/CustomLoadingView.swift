@@ -55,7 +55,7 @@ class CustomLoadingView {
         uiView.addSubview(container)
         activityIndicator.startAnimating()
     }
-    
+  
     /*
      Hide activity indicator
      Actually remove activity indicator from its super view
