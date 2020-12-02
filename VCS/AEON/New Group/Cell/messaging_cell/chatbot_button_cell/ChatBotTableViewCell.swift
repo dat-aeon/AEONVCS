@@ -20,6 +20,10 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     var delegate: QuestionAndAnswerIdDelegate?
     var questionDelegate: QuestionDelegate?
     @IBOutlet weak var chatCollectionView: UICollectionView!
+    @IBOutlet weak var readmoreLabel: UILabel!
+    @IBOutlet weak var viewsBorder: UIView!
+    
+    @IBOutlet weak var readmoreView: UIView!
     var chatBot = [ChatBotInfo]()
     var chatBotmm = [ChatBotInfo]()
     var chatBotList: [ChatBotInfo] = []
@@ -29,8 +33,25 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
     let mmFlag = "my_MM"
     let engFlag = "en"
     var language = Locale.currentLocale
+    @objc func readmores(){
+        print("readmor")
+        let collectionBounds = self.chatCollectionView.bounds
+                let contentOffset = CGFloat(floor(self.chatCollectionView.contentOffset.x + collectionBounds.size.width))
+                self.moveCollectionToFrame(contentOffset: contentOffset)
+    }
+    func moveCollectionToFrame(contentOffset : CGFloat) {
+
+            let frame: CGRect = CGRect(x : contentOffset ,y : self.chatCollectionView.contentOffset.y ,width : self.chatCollectionView.frame.width,height : self.chatCollectionView.frame.height)
+            self.chatCollectionView.scrollRectToVisible(frame, animated: true)
+        }
     override func awakeFromNib() {
         super.awakeFromNib()
+       
+        self.readmoreView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(readmores)))
+        let yourColor : UIColor = UIColor( red: 0.7, green: 0.3, blue:0.1, alpha: 1.0 )
+        viewsBorder.layer.masksToBounds = true
+        viewsBorder.layer.borderColor = yourColor.cgColor
+        viewsBorder.layer.borderWidth = 1.0
        // CustomLoadingView.shared().showActivityIndicator(uiView: self.contentView)
         NotificationCenter.default.addObserver(self, selector: #selector(callmm), name: NSNotification.Name("callMM"), object:nil)
         NotificationCenter.default.addObserver(self, selector: #selector(calleng), name: NSNotification.Name("callENG"), object:nil)
@@ -128,7 +149,7 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
      //   cell.addSubview(editButton ?? <#default value#>)
         editButton?.tag = indexPath.row
         cell.setData(chatBotInfor: data)
-        
+        readmoreLabel.text = "chatbot.readmore.label".localized
         
         return cell
        }
@@ -137,9 +158,17 @@ class ChatBotTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollect
         layout?.minimumLineSpacing = 5
         layout?.minimumInteritemSpacing = 5
         layout?.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        let size = CGSize(width:(collectionView.bounds.width-5)/1.8, height: 150)
-        layout?.itemSize = size
-        return size
+       
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let size = CGSize(width:(collectionView.bounds.width-5)/1.8, height: 220)
+            layout?.itemSize = size
+            return size
+        }else{
+            let size = CGSize(width:(collectionView.bounds.width-5)/1.8, height: 155)
+            layout?.itemSize = size
+            return size
+        }
+       
         
     }
     let customerId = UserDefaults.standard.integer(forKey: Constants.FREECUS_INFO_ID)

@@ -81,6 +81,7 @@ class newMemberShipTableViewCell: UITableViewCell {
                 qrCodeHeight.constant = 100
                 imgQrCode.isHidden = false
                 lblQRlabel.isHidden = false
+                lblQRlabel.text = "QR Code :"
                 
             } else {
                

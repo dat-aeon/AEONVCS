@@ -610,6 +610,7 @@
 "main.applyLoan" = "ချေးငွေးလျှောက်ထား";
 //chatbot
 "message.ask" = "မေးမယ်";
+"chatbot.readmore.label" = "နောက်ထပ်မေးခွန်းများ";
 //camera member upload
  
 "member.cameraglass" = "ဓာတ်ပုံရိုက်နေစဉ်အတွင်း မျက်မှန်မတပ်ရ။";

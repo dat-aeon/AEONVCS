@@ -159,6 +159,8 @@
 "eventnews.tab3.title" = "GIFTS";
 "eventnews.readmore.label" = "read more";
 
+
+
 //CONTACTUS Screen
 "contactus.title" = "Contact Us";
 "contactus.tag1.title" = "HOTLINE PHONE";
@@ -629,6 +631,7 @@
 "main.applyLoan" = "Apply Loan";
  //chatbot
 "message.ask" = "Ask";
+"chatbot.readmore.label" = "More questions";
 //camera member upload
  
 "member.cameraglass" = "Please do not have glass on your face during photo shot.";

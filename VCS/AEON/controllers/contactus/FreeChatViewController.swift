@@ -199,13 +199,6 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
            // CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
             tfTypeMessage.delegate = self
             
-           // tfTypeMessage.maxLength = 5
-//            if tfMessage.text.isEmpty {
-//                tfMessage.text = "Type a message ..."
-//                tfMessage.textColor = UIColor.black
-//            }else{
-//                tfMessage.textColor = UIColor.black
-//            }
             questionButton.addTarget(self, action: #selector(questionView(sender:)), for: UIControl.Event.touchUpInside)
            
             
@@ -215,11 +208,6 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
             self.imgMMlocale.isUserInteractionEnabled = true
 
             self.imgEnglocale.isUserInteractionEnabled = true
-
-            
-
-           
-
             AutomessageBean.isReceiveMesg = true
 
             AutomessageBean.isMessagingBot = true
@@ -341,6 +329,12 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
 
                }
    
+           
+       // self.tvMessagingView.reloadData()
+       
+        
+       
+ 
             self.AutomessageBean.isMessagingBot = true
             self.messageBeanList.append(self.AutomessageBean)
         self.tvMessagingView.beginUpdates()
@@ -350,13 +344,21 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
         
         self.tvMessagingView.endUpdates()
        
-           // self.tvMessagingView.reloadData()
         self.tvMessagingView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-           // self.scrollToBottom()
+            
+            
+              
+            
+           
+            
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+
+            self.tvMessagingView.reloadData()
+            self.scrollToBottoms()
+
+                    }
         
-
-
     }
     
     
@@ -429,7 +431,7 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
              
             CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                           AutoReplyMessageModel.init().AutoReplyMessageSync(success: { (result) in
-                            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
+                           // CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
 
                            self.mainLan = result.data.messageMya
 
@@ -455,7 +457,7 @@ class FreeChatViewController: BaseUIViewController,UITextViewDelegate {
                             }
 
                                         }) { (error) in
-
+                            CustomLoadingView.shared().showActivityIndicator(uiView: self.view)
                                              print(error.localized)
 
                                         }
@@ -1606,7 +1608,15 @@ let answer_type = "answer_type"
                // return UITableView.automaticDimension
                
                 if botCount > 0 {
-                    return CGFloat(220.0)
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        print("ipad")
+                        return CGFloat(300.0)
+                    }else{
+                        return CGFloat(220.0)
+                    }
+                       
+                    
+                   
                 }else{
                     
                     return UITableView.automaticDimension

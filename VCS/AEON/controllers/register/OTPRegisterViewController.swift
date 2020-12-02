@@ -40,7 +40,7 @@ class OTPRegisterViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  print("generate otp code ::: \(self.otpCode ?? "")")
+        print("generate otp code ::: \(self.otpCode ?? "")")
         
       //  Utils.showAlert(viewcontroller: self, title: "YOUR OTP", message: self.otpCode!)
         

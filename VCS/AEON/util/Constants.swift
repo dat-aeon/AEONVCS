@@ -16,7 +16,7 @@ struct Constants {
 //        static let free_chat_socket_url:String = "wss://ass.aeoncredit.com.mm/free-chat-server"
 //        static var daso_url:String = "https://ass.aeoncredit.com.mm/daso/"
 //    static var video_url:String = "https://amf.aeoncredit.com.mm/daso/how-to-use-video/"
-       
+//
 //    static var base_url:String = "https://amf.aeoncredit.com.mm/daso/"
 //    static let socket_url:String = "wss://amf.aeoncredit.com.mm/vcschat"
 //    static var assm_base_url :String = "https://amf.aeoncredit.com.mm/assm2/"
