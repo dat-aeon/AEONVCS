@@ -9,22 +9,48 @@
 import UIKit
 
 class LoanChooseViewController: UIViewController {
-
+    @IBOutlet weak var ploanView: CardView!
+    
+    @IBOutlet weak var sloanView: CardView!
+   // @IBOutlet weak var backImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //backImage.isUserInteractionEnabled = true
+       // self.backImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBack)))
+        self.sloanView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sloan)))
+        self.ploanView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ploan)))
+        
+       
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+  
+    @objc func ploan() {
+      
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "PersonalLoanViewController") as! PersonalLoanViewController
+       // LoanConfirmationVC
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
-    */
+    @objc func sloan() {
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SmallLoanViewController") as! SmallLoanViewController
+       // LoanConfirmationVC
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
+    }
+    
+    @objc func onTapBack() {
+       print("click")
+       
+              
+        
+       
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let customViewController = storyboard.instantiateViewController(withIdentifier: "MainLoanApplyViewController") as! MainLoanApplyViewController
+        customViewController.modalPresentationStyle = .overFullScreen
+        self.present(customViewController, animated: true, completion: nil)
+        
+    }
 
 }

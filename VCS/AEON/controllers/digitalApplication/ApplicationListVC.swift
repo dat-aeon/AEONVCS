@@ -152,8 +152,13 @@ logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #sel
              updateViews()
          }
        @objc func onTapBack() {
-           print("click")
-           self.dismiss(animated: true, completion: nil)
+       
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let customViewController = storyboard.instantiateViewController(withIdentifier: "HomeNewViewController") as! HomeNewViewController
+        customViewController.modalPresentationStyle = .overFullScreen
+        self.present(customViewController, animated: true, completion: nil)
        }
     @IBAction func doGoBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

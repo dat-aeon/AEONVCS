@@ -112,9 +112,11 @@ class EmergencyContactVC: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnNext.isUserInteractionEnabled = true
          NotificationCenter.default.addObserver(self, selector: #selector(alertSuccess), name: NSNotification.Name(rawValue: "applicationSuccessfully"), object: nil)
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
+        self.btnNext.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextBtn)))
         self.imgMMlocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
                    self.imgEnglocale.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
  //logoutTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
@@ -178,6 +180,11 @@ class EmergencyContactVC: BaseUIViewController {
 
                self.doLoadSaveDAData()
         
+    }
+    @objc func nextBtn() {
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoanChooseViewController") as! LoanChooseViewController
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     @objc func alertSuccess() {
               let alertController = UIAlertController(title: "Your application is successfully saved!", message: "", preferredStyle: .alert)

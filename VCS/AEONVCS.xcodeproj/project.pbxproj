@@ -46,7 +46,6 @@
 		04577A56221B4074009EE51D /* SecQuesVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577A55221B4074009EE51D /* SecQuesVerifyViewModel.swift */; };
 		04577A58221BD8D8009EE51D /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577A57221BD8D8009EE51D /* PhotoUploadViewController.swift */; };
 		045811AE2362B56100E3C2DA /* GuarantorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045811A72362B56100E3C2DA /* GuarantorVC.swift */; };
-		045811AF2362B56100E3C2DA /* ApplicationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045811A82362B56100E3C2DA /* ApplicationDataVC.swift */; };
 		045811B02362B56100E3C2DA /* EmergencyContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045811A92362B56100E3C2DA /* EmergencyContactVC.swift */; };
 		045811B12362B56100E3C2DA /* AeonServicesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045811AA2362B56100E3C2DA /* AeonServicesVC.swift */; };
 		045811B22362B56100E3C2DA /* LoanConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045811AB2362B56100E3C2DA /* LoanConfirmationVC.swift */; };
@@ -260,9 +259,16 @@
 		C16C63DE238C3980004E24C1 /* AgentChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63DD238C3980004E24C1 /* AgentChannel.swift */; };
 		C16C63E1238C3DEF004E24C1 /* AgentChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */; };
 		C16C63E3238C3E01004E24C1 /* AgentChannelPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */; };
+		ED014C6C25B59977003ACA68 /* icons8-registration-100.png in Resources */ = {isa = PBXBuildFile; fileRef = ED014C6B25B59976003ACA68 /* icons8-registration-100.png */; };
 		ED07E04824DBF25E00067AEB /* MainLoanApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07E04724DBF25E00067AEB /* MainLoanApplyViewController.swift */; };
 		ED07E04A24DC072000067AEB /* CustomerInfoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07E04924DC072000067AEB /* CustomerInfoFormViewController.swift */; };
+		ED1A398125AD436400112051 /* JointsTermsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A398025AD436400112051 /* JointsTermsConditionsViewController.swift */; };
+		ED1A398625AD472900112051 /* RegisterApplicationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A398525AD472900112051 /* RegisterApplicationsViewController.swift */; };
+		ED1A398B25AD499800112051 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A398A25AD499800112051 /* PreviewViewController.swift */; };
+		ED1A4CC325B55046006F9B57 /* icons8-image-96.png in Resources */ = {isa = PBXBuildFile; fileRef = ED1A4CC225B55045006F9B57 /* icons8-image-96.png */; };
+		ED1A4CC725B56A33006F9B57 /* icons8-delete-bin-96.png in Resources */ = {isa = PBXBuildFile; fileRef = ED1A4CC625B56A32006F9B57 /* icons8-delete-bin-96.png */; };
 		ED1B421424611B3200AB442B /* OtherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1B421224611B3200AB442B /* OtherCollectionViewCell.swift */; };
+		ED32381525B031B5004FA110 /* ApplicationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3237FD25B031B4004FA110 /* ApplicationDataVC.swift */; };
 		ED342A662519DA1200F126EE /* GetChatBotMMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED342A652519DA1200F126EE /* GetChatBotMMModel.swift */; };
 		ED342A6A2519DD0800F126EE /* GetChatBotMMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED342A692519DD0800F126EE /* GetChatBotMMViewModel.swift */; };
 		ED342A6E2519DEF900F126EE /* GetChatBotMMData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED342A6D2519DEF900F126EE /* GetChatBotMMData.swift */; };
@@ -281,12 +287,22 @@
 		ED3F2A492518F22C005709AC /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F2A472518F22C005709AC /* WelcomeTableViewCell.swift */; };
 		ED3F2A4A2518F22C005709AC /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3F2A482518F22C005709AC /* WelcomeTableViewCell.xib */; };
 		ED40A4D12461D1BE0051603A /* OtherImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40A4D02461D1BE0051603A /* OtherImageTableViewCell.swift */; };
+		ED420B3625A8177D00A8B653 /* LoanConfirmationViewcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED420B3525A8177D00A8B653 /* LoanConfirmationViewcon.swift */; };
 		ED4F89F82502017B006D2346 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED4F89F72502017A006D2346 /* GoogleService-Info.plist */; };
 		ED540F7D25173B1600C4838B /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED540F7B25173B1600C4838B /* EmptyTableViewCell.swift */; };
 		ED540F7E25173B1600C4838B /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED540F7C25173B1600C4838B /* EmptyTableViewCell.xib */; };
 		ED87893225428C2D0009BBC1 /* FreechatImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED87893125428C2D0009BBC1 /* FreechatImageDetailViewController.swift */; };
 		ED9A908524E3E1F8003BC7DE /* LoanChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */; };
 		ED9D95C12436FA7C00B52D74 /* LoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */; };
+		EDBC5A8C25AC35FC00B57D46 /* depositphotos_182710514-stock-photo-passport-picture-asian-young-woman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EDBC5A8525AC35FC00B57D46 /* depositphotos_182710514-stock-photo-passport-picture-asian-young-woman.jpg */; };
+		EDBC5A8D25AC35FC00B57D46 /* JointOccupationDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBC5A8625AC35FC00B57D46 /* JointOccupationDataViewController.swift */; };
+		EDBC5A8E25AC35FC00B57D46 /* AttachmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBC5A8725AC35FC00B57D46 /* AttachmentsViewController.swift */; };
+		EDBC5A8F25AC35FC00B57D46 /* 8498c4faeda51c49a04003e44d685243.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EDBC5A8825AC35FC00B57D46 /* 8498c4faeda51c49a04003e44d685243.jpg */; };
+		EDBC5A9025AC35FC00B57D46 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBC5A8925AC35FC00B57D46 /* CheckBox.swift */; };
+		EDBC5A9125AC35FC00B57D46 /* JointApplicationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBC5A8A25AC35FC00B57D46 /* JointApplicationDataVC.swift */; };
+		EDBC5ABC25AC589800B57D46 /* SmallLoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBC5ABB25AC589800B57D46 /* SmallLoanViewController.swift */; };
+		EDBC5ABF25AC58CC00B57D46 /* PersonalLoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBC5ABE25AC58CC00B57D46 /* PersonalLoanViewController.swift */; };
+		EDBC5AC425AC631800B57D46 /* LoanConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBC5AC325AC631800B57D46 /* LoanConfirmationViewController.swift */; };
 		EDC90DF8245684CF005FD5E2 /* AutoReplyMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DF7245684CF005FD5E2 /* AutoReplyMessageData.swift */; };
 		EDC90DFA245686AA005FD5E2 /* AutoReplyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DF9245686AA005FD5E2 /* AutoReplyMessageModel.swift */; };
 		EDC90DFC24568C73005FD5E2 /* AutoReplyMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC90DFB24568C73005FD5E2 /* AutoReplyMessageViewModel.swift */; };
@@ -362,7 +378,6 @@
 		04577A55221B4074009EE51D /* SecQuesVerifyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecQuesVerifyViewModel.swift; sourceTree = "<group>"; };
 		04577A57221BD8D8009EE51D /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadViewController.swift; sourceTree = "<group>"; };
 		045811A72362B56100E3C2DA /* GuarantorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuarantorVC.swift; sourceTree = "<group>"; };
-		045811A82362B56100E3C2DA /* ApplicationDataVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDataVC.swift; sourceTree = "<group>"; };
 		045811A92362B56100E3C2DA /* EmergencyContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyContactVC.swift; sourceTree = "<group>"; };
 		045811AA2362B56100E3C2DA /* AeonServicesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AeonServicesVC.swift; sourceTree = "<group>"; };
 		045811AB2362B56100E3C2DA /* LoanConfirmationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanConfirmationVC.swift; sourceTree = "<group>"; };
@@ -580,9 +595,16 @@
 		C16C63DD238C3980004E24C1 /* AgentChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannel.swift; sourceTree = "<group>"; };
 		C16C63E0238C3DEF004E24C1 /* AgentChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelViewController.swift; sourceTree = "<group>"; };
 		C16C63E2238C3E01004E24C1 /* AgentChannelPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChannelPopupViewController.swift; sourceTree = "<group>"; };
+		ED014C6B25B59976003ACA68 /* icons8-registration-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-registration-100.png"; sourceTree = "<group>"; };
 		ED07E04724DBF25E00067AEB /* MainLoanApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoanApplyViewController.swift; sourceTree = "<group>"; };
 		ED07E04924DC072000067AEB /* CustomerInfoFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInfoFormViewController.swift; sourceTree = "<group>"; };
+		ED1A398025AD436400112051 /* JointsTermsConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointsTermsConditionsViewController.swift; sourceTree = "<group>"; };
+		ED1A398525AD472900112051 /* RegisterApplicationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterApplicationsViewController.swift; sourceTree = "<group>"; };
+		ED1A398A25AD499800112051 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		ED1A4CC225B55045006F9B57 /* icons8-image-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-image-96.png"; sourceTree = "<group>"; };
+		ED1A4CC625B56A32006F9B57 /* icons8-delete-bin-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-delete-bin-96.png"; sourceTree = "<group>"; };
 		ED1B421224611B3200AB442B /* OtherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCollectionViewCell.swift; sourceTree = "<group>"; };
+		ED3237FD25B031B4004FA110 /* ApplicationDataVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDataVC.swift; sourceTree = "<group>"; };
 		ED342A652519DA1200F126EE /* GetChatBotMMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChatBotMMModel.swift; sourceTree = "<group>"; };
 		ED342A692519DD0800F126EE /* GetChatBotMMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChatBotMMViewModel.swift; sourceTree = "<group>"; };
 		ED342A6D2519DEF900F126EE /* GetChatBotMMData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChatBotMMData.swift; sourceTree = "<group>"; };
@@ -605,12 +627,22 @@
 		ED40A4D02461D1BE0051603A /* OtherImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherImageTableViewCell.swift; sourceTree = "<group>"; };
 		ED40BFC124FF336200AE1A3E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED40BFC524FF5F7A00AE1A3E /* AEONMember.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AEONMember.entitlements; sourceTree = "<group>"; };
+		ED420B3525A8177D00A8B653 /* LoanConfirmationViewcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanConfirmationViewcon.swift; sourceTree = "<group>"; };
 		ED4F89F72502017A006D2346 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED540F7B25173B1600C4838B /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		ED540F7C25173B1600C4838B /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		ED87893125428C2D0009BBC1 /* FreechatImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreechatImageDetailViewController.swift; sourceTree = "<group>"; };
 		ED9A908424E3E1F8003BC7DE /* LoanChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanChooseViewController.swift; sourceTree = "<group>"; };
 		ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanViewController.swift; sourceTree = "<group>"; };
+		EDBC5A8525AC35FC00B57D46 /* depositphotos_182710514-stock-photo-passport-picture-asian-young-woman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "depositphotos_182710514-stock-photo-passport-picture-asian-young-woman.jpg"; sourceTree = "<group>"; };
+		EDBC5A8625AC35FC00B57D46 /* JointOccupationDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JointOccupationDataViewController.swift; sourceTree = "<group>"; };
+		EDBC5A8725AC35FC00B57D46 /* AttachmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentsViewController.swift; sourceTree = "<group>"; };
+		EDBC5A8825AC35FC00B57D46 /* 8498c4faeda51c49a04003e44d685243.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8498c4faeda51c49a04003e44d685243.jpg; sourceTree = "<group>"; };
+		EDBC5A8925AC35FC00B57D46 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		EDBC5A8A25AC35FC00B57D46 /* JointApplicationDataVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JointApplicationDataVC.swift; sourceTree = "<group>"; };
+		EDBC5ABB25AC589800B57D46 /* SmallLoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLoanViewController.swift; sourceTree = "<group>"; };
+		EDBC5ABE25AC58CC00B57D46 /* PersonalLoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalLoanViewController.swift; sourceTree = "<group>"; };
+		EDBC5AC325AC631800B57D46 /* LoanConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanConfirmationViewController.swift; sourceTree = "<group>"; };
 		EDC90DF7245684CF005FD5E2 /* AutoReplyMessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageData.swift; sourceTree = "<group>"; };
 		EDC90DF9245686AA005FD5E2 /* AutoReplyMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageModel.swift; sourceTree = "<group>"; };
 		EDC90DFB24568C73005FD5E2 /* AutoReplyMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReplyMessageViewModel.swift; sourceTree = "<group>"; };
@@ -697,9 +729,13 @@
 		045811A62362B56100E3C2DA /* digitalApplication */ = {
 			isa = PBXGroup;
 			children = (
+				ED1A398925AD497400112051 /* Preview */,
+				ED1A398425AD470700112051 /* RegisterApplication */,
+				ED1A397E25AD42C400112051 /* Terms&conditions */,
+				EDBC5A8225AC35DA00B57D46 /* digitalapplication */,
 				045811AA2362B56100E3C2DA /* AeonServicesVC.swift */,
 				045811AC2362B56100E3C2DA /* ApplyLoanVC.swift */,
-				045811A82362B56100E3C2DA /* ApplicationDataVC.swift */,
+				ED3237FD25B031B4004FA110 /* ApplicationDataVC.swift */,
 				045811AD2362B56100E3C2DA /* OccupationDataVC.swift */,
 				045811A92362B56100E3C2DA /* EmergencyContactVC.swift */,
 				045811A72362B56100E3C2DA /* GuarantorVC.swift */,
@@ -1410,6 +1446,7 @@
 		75A31DF522000182002E7336 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED420B0A25A8142C00A8B653 /* loanConfirmation */,
 				ED07E04624DBF23400067AEB /* mainLoanapply */,
 				ED9D95BF2436FA5D00B52D74 /* LoanApply */,
 				04AF316123EC0A5A0087719A /* membershipnew */,
@@ -1545,6 +1582,30 @@
 			path = mainLoanapply;
 			sourceTree = "<group>";
 		};
+		ED1A397E25AD42C400112051 /* Terms&conditions */ = {
+			isa = PBXGroup;
+			children = (
+				ED1A398025AD436400112051 /* JointsTermsConditionsViewController.swift */,
+			);
+			path = "Terms&conditions";
+			sourceTree = "<group>";
+		};
+		ED1A398425AD470700112051 /* RegisterApplication */ = {
+			isa = PBXGroup;
+			children = (
+				ED1A398525AD472900112051 /* RegisterApplicationsViewController.swift */,
+			);
+			path = RegisterApplication;
+			sourceTree = "<group>";
+		};
+		ED1A398925AD497400112051 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				ED1A398A25AD499800112051 /* PreviewViewController.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
 		ED37FDF5250A33C700937830 /* AEONVCSNOTIFICATION */ = {
 			isa = PBXGroup;
 			children = (
@@ -1563,12 +1624,39 @@
 			path = welcome;
 			sourceTree = "<group>";
 		};
+		ED420B0A25A8142C00A8B653 /* loanConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				ED420B3525A8177D00A8B653 /* LoanConfirmationViewcon.swift */,
+				EDBC5ABB25AC589800B57D46 /* SmallLoanViewController.swift */,
+				EDBC5ABE25AC58CC00B57D46 /* PersonalLoanViewController.swift */,
+			);
+			path = loanConfirmation;
+			sourceTree = "<group>";
+		};
 		ED9D95BF2436FA5D00B52D74 /* LoanApply */ = {
 			isa = PBXGroup;
 			children = (
 				ED9D95C02436FA7C00B52D74 /* LoanViewController.swift */,
 			);
 			path = LoanApply;
+			sourceTree = "<group>";
+		};
+		EDBC5A8225AC35DA00B57D46 /* digitalapplication */ = {
+			isa = PBXGroup;
+			children = (
+				EDBC5A8525AC35FC00B57D46 /* depositphotos_182710514-stock-photo-passport-picture-asian-young-woman.jpg */,
+				EDBC5A8625AC35FC00B57D46 /* JointOccupationDataViewController.swift */,
+				ED1A4CC625B56A32006F9B57 /* icons8-delete-bin-96.png */,
+				EDBC5A8725AC35FC00B57D46 /* AttachmentsViewController.swift */,
+				EDBC5A8825AC35FC00B57D46 /* 8498c4faeda51c49a04003e44d685243.jpg */,
+				ED1A4CC225B55045006F9B57 /* icons8-image-96.png */,
+				ED014C6B25B59976003ACA68 /* icons8-registration-100.png */,
+				EDBC5A8925AC35FC00B57D46 /* CheckBox.swift */,
+				EDBC5A8A25AC35FC00B57D46 /* JointApplicationDataVC.swift */,
+				EDBC5AC325AC631800B57D46 /* LoanConfirmationViewController.swift */,
+			);
+			path = digitalapplication;
 			sourceTree = "<group>";
 		};
 		EDCC4EC52511C36E009A387F /* chatbot_button_cell */ = {
@@ -1662,6 +1750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0428A0AE2359657E001BB980 /* Pyidaungsu-Bold.ttf in Resources */,
+				ED1A4CC725B56A33006F9B57 /* icons8-delete-bin-96.png in Resources */,
 				6AFEBE102205CEC8006D2F81 /* FAQTableViewCell.xib in Resources */,
 				EDCDE9D7250FB807009B1B14 /* MesgReceiverTableViewCell.xib in Resources */,
 				C16C63DC238C3729004E24C1 /* ATreceiveMessageTableViewCell.xib in Resources */,
@@ -1677,6 +1766,7 @@
 				ED540F7E25173B1600C4838B /* EmptyTableViewCell.xib in Resources */,
 				04D4E21E22EEE334001AAB43 /* OutletListTableViewCell.xib in Resources */,
 				04A1615D22B24CEE00D05648 /* SecQuesVerifyQATableViewCell.xib in Resources */,
+				EDBC5A8C25AC35FC00B57D46 /* depositphotos_182710514-stock-photo-passport-picture-asian-young-woman.jpg in Resources */,
 				0467B30B22576B3D00E23EE5 /* NrcTableViewCell.xib in Resources */,
 				6AC88E282206D8580062926F /* MemberCardHeaderView.xib in Resources */,
 				041F1B3F23FA7C6300454E76 /* newMemberWarningTextTableViewCell.xib in Resources */,
@@ -1695,8 +1785,11 @@
 				04A1615922B2026C00D05648 /* MoreButtonTableViewCell.xib in Resources */,
 				6A6A99372207F54F001C30D2 /* CouponTableViewCell.xib in Resources */,
 				04BA7AC022103796006696E7 /* SecQuesRegisterTableViewCell.xib in Resources */,
+				EDBC5A8F25AC35FC00B57D46 /* 8498c4faeda51c49a04003e44d685243.jpg in Resources */,
 				04045A892272BE4E0055DF91 /* NewsTableViewCell.xib in Resources */,
+				ED1A4CC325B55046006F9B57 /* icons8-image-96.png in Resources */,
 				0428A0AF2359657E001BB980 /* Pyidaungsu-Regular.ttf in Resources */,
+				ED014C6C25B59977003ACA68 /* icons8-registration-100.png in Resources */,
 				040F3D122281947E000501AB /* SendPhotoTableViewCell.xib in Resources */,
 				045811BF2362E81100E3C2DA /* tbcellAeonService.xib in Resources */,
 				0405C5FC2362A8D10071DA01 /* DA.storyboard in Resources */,
@@ -1781,6 +1874,7 @@
 				EDDF784424642309002BD640 /* MultiLoginViewModel.swift in Sources */,
 				C16C63DE238C3980004E24C1 /* AgentChannel.swift in Sources */,
 				EDCC4ECC2511CE52009A387F /* chatBotCollectionViewCell.swift in Sources */,
+				ED1A398125AD436400112051 /* JointsTermsConditionsViewController.swift in Sources */,
 				04A20AE82215847D00A7C1D9 /* AboutUsData.swift in Sources */,
 				75A31E0122006A89002E7336 /* ResetPasswordViewController.swift in Sources */,
 				ED342AB7251A424700F126EE /* SendChatQuestionViewModel.swift in Sources */,
@@ -1797,6 +1891,7 @@
 				04BB5EDE2292ECA20091D768 /* AppLockCheckViewModel.swift in Sources */,
 				EDD546FC251C50D300FC6919 /* CalculatorMessageModel.swift in Sources */,
 				04AF315E23EBD7A20087719A /* HowToUseViewController.swift in Sources */,
+				EDBC5A9025AC35FC00B57D46 /* CheckBox.swift in Sources */,
 				045811BD2362E7E500E3C2DA /* tbcellAeonService.swift in Sources */,
 				C16C63D7238C3714004E24C1 /* ATsendMessageTableViewCell.swift in Sources */,
 				045F80272271B7B500E72F27 /* NewsPopupViewController.swift in Sources */,
@@ -1839,7 +1934,6 @@
 				6A3197A02203FF830031D86F /* CouponViewController.swift in Sources */,
 				04A20AEC221584A100A7C1D9 /* AboutUsViewModel.swift in Sources */,
 				04BA7AD0221319F7006696E7 /* UserSecQuesData.swift in Sources */,
-				045811AF2362B56100E3C2DA /* ApplicationDataVC.swift in Sources */,
 				6A6A99272207F00D001C30D2 /* Localizable.swift in Sources */,
 				04A20AE622141F0000A7C1D9 /* AboutUsViewController.swift in Sources */,
 				752115DA22016146001BC94A /* HomeViewController.swift in Sources */,
@@ -1911,6 +2005,7 @@
 				ED1B421424611B3200AB442B /* OtherCollectionViewCell.swift in Sources */,
 				04AF316923ED45060087719A /* newMemberShipTableViewCell.swift in Sources */,
 				75A31E0D22006F32002E7336 /* PhotoTakingViewController.swift in Sources */,
+				EDBC5A8D25AC35FC00B57D46 /* JointOccupationDataViewController.swift in Sources */,
 				6A3197972203FE640031D86F /* MemberCardInfoOneViewController.swift in Sources */,
 				040FDB5F237171C4007E8720 /* cellPurchaseList.swift in Sources */,
 				04BB5ED82292CDBD0091D768 /* ForceChangeSecConfirmViewController.swift in Sources */,
@@ -1922,6 +2017,7 @@
 				6AC88E232206D6F70062926F /* CardView.swift in Sources */,
 				045F802322716BCD00E72F27 /* PromotionData.swift in Sources */,
 				0495E2F022197771009A6FAB /* ResetPasswordData.swift in Sources */,
+				EDBC5ABF25AC58CC00B57D46 /* PersonalLoanViewController.swift in Sources */,
 				ED342A662519DA1200F126EE /* GetChatBotMMModel.swift in Sources */,
 				04BB5EDC2292EA2B0091D768 /* AppLockCheckModel.swift in Sources */,
 				6A276CDB2217C6DE002C87E0 /* UpdateInfoModel.swift in Sources */,
@@ -1935,6 +2031,7 @@
 				6A276CDD2217CA2C002C87E0 /* UpdateInfoData.swift in Sources */,
 				6AFEBE152205CF45006D2F81 /* UIExtension.swift in Sources */,
 				6A3197A22203FF910031D86F /* PromotionViewController.swift in Sources */,
+				ED32381525B031B5004FA110 /* ApplicationDataVC.swift in Sources */,
 				04045A882272BE4E0055DF91 /* NewsTableViewCell.swift in Sources */,
 				0497E2DF222E930A0013DEFF /* LogoutViewModel.swift in Sources */,
 				6A3197A9220400290031D86F /* MessagingViewController.swift in Sources */,
@@ -1945,6 +2042,7 @@
 				6AFEBE0B2205CEAD006D2F81 /* FAQHeaderView.swift in Sources */,
 				C16C63DB238C3729004E24C1 /* ATreceiveMessageTableViewCell.swift in Sources */,
 				04B06F99225A5ED900EC4AE6 /* EventNewForPh1ViewController.swift in Sources */,
+				EDBC5AC425AC631800B57D46 /* LoanConfirmationViewController.swift in Sources */,
 				04D4E21D22EEE334001AAB43 /* OutletListTableViewCell.swift in Sources */,
 				6A276CD92217C6B6002C87E0 /* UpdateInfoViewModel.swift in Sources */,
 				04F21ACF221CF90300597FED /* RegisterPhotoUploadViewController.swift in Sources */,
@@ -1953,6 +2051,7 @@
 				04C2FC27228295C300137CC3 /* MessagingPhotoPopupViewController.swift in Sources */,
 				ED3C8376251368D700FA6912 /* GetChatBotViewModel.swift in Sources */,
 				75A31DF72200020E002E7336 /* MainViewController.swift in Sources */,
+				EDBC5A8E25AC35FC00B57D46 /* AttachmentsViewController.swift in Sources */,
 				04C3B31522522801005B54EB /* InfoUpdateForPh1ViewController.swift in Sources */,
 				0467B30122573CE200E23EE5 /* NewVersionModel.swift in Sources */,
 				04BA7AC8221089D8006696E7 /* SecQuesRegisterViewController.swift in Sources */,
@@ -1972,17 +2071,22 @@
 				04CB089E2276F28A0069FDF9 /* MesgReceiverTableViewCell.swift in Sources */,
 				EDED4660243C7E0C00725548 /* LevelTwoMessageUnreadModel.swift in Sources */,
 				04C2B4F622E9991300074309 /* ProfileImageUpdateData.swift in Sources */,
+				ED420B3625A8177D00A8B653 /* LoanConfirmationViewcon.swift in Sources */,
 				04577A58221BD8D8009EE51D /* PhotoUploadViewController.swift in Sources */,
 				041F1B3E23FA7C6300454E76 /* newMemberWarningTextTableViewCell.swift in Sources */,
 				ED40A4D12461D1BE0051603A /* OtherImageTableViewCell.swift in Sources */,
+				EDBC5ABC25AC589800B57D46 /* SmallLoanViewController.swift in Sources */,
 				04BA7ACE221317B5006696E7 /* SecQuesConfirmViewModel.swift in Sources */,
 				04577A56221B4074009EE51D /* SecQuesVerifyViewModel.swift in Sources */,
+				ED1A398625AD472900112051 /* RegisterApplicationsViewController.swift in Sources */,
 				04BA7AC4221076DF006696E7 /* SecQuesRegisterViewModel.swift in Sources */,
 				75A31E0322006B80002E7336 /* ContactUsViewController.swift in Sources */,
 				04D322A32223CBE4006BE0CB /* WelcomeViewController.swift in Sources */,
 				045EBD64238B97CD00D6CE38 /* AttachmentEditVC.swift in Sources */,
 				ED9A908524E3E1F8003BC7DE /* LoanChooseViewController.swift in Sources */,
 				045811B12362B56100E3C2DA /* AeonServicesVC.swift in Sources */,
+				EDBC5A9125AC35FC00B57D46 /* JointApplicationDataVC.swift in Sources */,
+				ED1A398B25AD499800112051 /* PreviewViewController.swift in Sources */,
 				04F0022F22094D21007A9ACF /* RegisterViewModel.swift in Sources */,
 				0467B30322573DC500E23EE5 /* NewVersionViewModel.swift in Sources */,
 				6A698237221974FA00840561 /* SideMenuHeaderTableViewCell.swift in Sources */,
@@ -2184,7 +2288,7 @@
 				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = NC9BA4Z58U;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = AEON/Info.plist;
@@ -2213,7 +2317,7 @@
 				CODE_SIGN_ENTITLEMENTS = AEONMember.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = NC9BA4Z58U;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = AEON/Info.plist;

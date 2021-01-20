@@ -9,14 +9,15 @@
 import Foundation
 struct Constants {
 
-//        static var base_url:String = "https://ass.aeoncredit.com.mm/daso/"
-//        static let socket_url:String = "wss://ass.aeoncredit.com.mm/vcschat"
-//        static var assm_base_url :String = "https://ass.aeoncredit.com.mm/assm2/"
-//        static let at_socket_url:String = "wss://ass.aeoncredit.com.mm/vcsplchat"
-//        static let free_chat_socket_url:String = "wss://ass.aeoncredit.com.mm/free-chat-server"
-//        static var daso_url:String = "https://ass.aeoncredit.com.mm/daso/"
-//    static var video_url:String = "https://amf.aeoncredit.com.mm/daso/how-to-use-video/"
-//
+        static var base_url:String = "https://ass.aeoncredit.com.mm/daso/"
+        static let socket_url:String = "wss://ass.aeoncredit.com.mm/vcschat"
+        static var assm_base_url :String = "https://ass.aeoncredit.com.mm/assm2/"
+        static let at_socket_url:String = "wss://ass.aeoncredit.com.mm/vcsplchat"
+        static let free_chat_socket_url:String = "wss://ass.aeoncredit.com.mm/free-chat-server"
+        static var daso_url:String = "https://ass.aeoncredit.com.mm/daso/"
+        static var video_url:String = "https://amf.aeoncredit.com.mm/daso/how-to-use-video/"
+    
+
 //    static var base_url:String = "https://amf.aeoncredit.com.mm/daso/"
 //    static let socket_url:String = "wss://amf.aeoncredit.com.mm/vcschat"
 //    static var assm_base_url :String = "https://amf.aeoncredit.com.mm/assm2/"
@@ -25,13 +26,13 @@ struct Constants {
 //    static var daso_url:String = "https://amf.aeoncredit.com.mm/daso/"
     
 
-        static var base_url:String = "https://amf.aeoncredit.com.mm/vcsm2/"
-        static let socket_url:String = "wss://amf.aeoncredit.com.mm/vcschat"
-        static var assm_base_url :String = "https://amf.aeoncredit.com.mm/vcsm2/"
-        static let at_socket_url:String = "wss://amf.aeoncredit.com.mm/vcsplchat"
-        static let free_chat_socket_url:String = "wss://amf.aeoncredit.com.mm/free-chat-server"
-        static var daso_url:String = "https://amf.aeoncredit.com.mm/vcsm2/"
-        static var video_url:String = "https://amf.aeoncredit.com.mm/vcsm2/how-to-use-video/"
+//        static var base_url:String = "https://amf.aeoncredit.com.mm/vcsm2/"
+//        static let socket_url:String = "wss://amf.aeoncredit.com.mm/vcschat"
+//        static var assm_base_url :String = "https://amf.aeoncredit.com.mm/vcsm2/"
+//        static let at_socket_url:String = "wss://amf.aeoncredit.com.mm/vcsplchat"
+//        static let free_chat_socket_url:String = "wss://amf.aeoncredit.com.mm/free-chat-server"
+//        static var daso_url:String = "https://amf.aeoncredit.com.mm/vcsm2/"
+//        static var video_url:String = "https://amf.aeoncredit.com.mm/vcsm2/how-to-use-video/"
     
     
     
@@ -264,7 +265,7 @@ struct Constants {
     
     static var educationWithList = ["High School", "University", "Graduated"]
     
-    
+    static var productTpyeWithList = ["Education Loan", "Motocycle Loan", "Other Loan"]
     // First Time PhNo Constant
     
     static var FIRST_TIME_PHONE = "FIRST_TIME_PHONE"

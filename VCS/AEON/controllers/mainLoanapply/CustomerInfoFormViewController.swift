@@ -36,33 +36,33 @@ class CustomerInfoFormViewController: BaseUIViewController {
     @IBOutlet weak var dobLbl: UILabel!
     @IBOutlet weak var nrcNoLbl: UILabel!
     
-    @IBOutlet weak var mmflag: UIImageView!
-    @IBOutlet weak var engflag: UIImageView!
+//    @IBOutlet weak var mmflag: UIImageView!
+//    @IBOutlet weak var engflag: UIImageView!
     @IBOutlet weak var myscrollView: UIScrollView!
-    @IBOutlet weak var backView: UIImageView!
-    @IBOutlet weak var applicationDataLabel: UILabel!
+   // @IBOutlet weak var backView: UIImageView!
+   // @IBOutlet weak var applicationDataLabel: UILabel!
     @IBOutlet weak var occupationDataLabel: UILabel!
     @IBOutlet weak var emergencyContactLabel: UILabel!
-    @IBOutlet weak var lblBarPhNo: UILabel!
-    @IBOutlet weak var lblBarName: UILabel!
+//    @IBOutlet weak var lblBarPhNo: UILabel!
+//    @IBOutlet weak var lblBarName: UILabel!
     
-    @IBOutlet weak var loanConfirmationLabel: UILabel!
-    @IBOutlet weak var saveLabel: UIButton!
-    @IBOutlet weak var applicationChangeLabel: UIButton!
-    @IBOutlet weak var occupationChangeLabel: UIButton!
-    @IBOutlet weak var emergencyContactChangeLabel: UIButton!
+  //  @IBOutlet weak var loanConfirmationLabel: UILabel!
+ //   @IBOutlet weak var saveLabel: UIButton!
+   // @IBOutlet weak var applicationChangeLabel: UIButton!
+   // @IBOutlet weak var occupationChangeLabel: UIButton!
+   // @IBOutlet weak var emergencyContactChangeLabel: UIButton!
     @IBOutlet weak var guarantorChangeLabel: UIButton!
     @IBOutlet weak var loanConfirmationChangeLabel: UIButton!
     @IBOutlet weak var occupationPressView: CardView!
  
     @IBOutlet weak var applicationTitleView: UIView!
     @IBOutlet weak var emergencyPressView: CardView!
-    @IBOutlet weak var guarantorPressView: CardView!
+   // @IBOutlet weak var guarantorPressView: CardView!
     @IBOutlet weak var applicationLabel: UILabel!
     @IBOutlet weak var occupationLabel: UILabel!
     @IBOutlet weak var emergencyLabel: UILabel!
-    @IBOutlet weak var guarantorLabel: UILabel!
-    @IBOutlet weak var saveView: CardView!
+   // @IBOutlet weak var guarantorLabel: UILabel!
+  //  @IBOutlet weak var saveView: CardView!
     
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -86,13 +86,13 @@ class CustomerInfoFormViewController: BaseUIViewController {
     @IBOutlet weak var emeBuildingResLabel: UILabel!
     @IBOutlet weak var emeDetailLabel: UILabel!
     
-    @IBOutlet weak var guaNameLabel: UILabel!
-    @IBOutlet weak var guaDateofBLabel: UILabel!
-    @IBOutlet weak var guaNrcLabel: UILabel!
-    @IBOutlet weak var guanameResLabel: UILabel!
-    @IBOutlet weak var guaDateOfBResLabel: UILabel!
-    @IBOutlet weak var guaNrcResLabel: UILabel!
-    @IBOutlet weak var guaDetailLabel: UILabel!
+//    @IBOutlet weak var guaNameLabel: UILabel!
+//    @IBOutlet weak var guaDateofBLabel: UILabel!
+//    @IBOutlet weak var guaNrcLabel: UILabel!
+//    @IBOutlet weak var guanameResLabel: UILabel!
+//    @IBOutlet weak var guaDateOfBResLabel: UILabel!
+//    @IBOutlet weak var guaNrcResLabel: UILabel!
+//    @IBOutlet weak var guaDetailLabel: UILabel!
     
     var myAppData = ApplicationDataRequest(daApplicationInfoId: 0, daApplicationTypeId: 1, name: "", dob: "", nrcNo: "", fatherName: "", highestEducationTypeId: 1 , nationality: 1, nationalityOther: "", gender: 1, maritalStatus: 1, currentAddress: "", permanentAddress: "", typeOfResidence: 1, typeOfResidenceOther: "", livingWith: 1, livingWithOther: "", yearOfStayYear: 0, yearOfStayMonth: 0, mobileNo: "", residentTelNo: "", otherPhoneNo: "", email: "", customerId: 0, status: 0, currentAddressFloor: "", currentAddressBuildingNo: "", currentAddressRoomNo: "", currentAddressStreet: "", currentAddressQtr: "", currentAddressTownship: 0, currentAddressCity: 0, permanentAddressCity: 0, permanentAddressFloor: "", permanentAddressBuildingNo: "", permanentAddressRoomNo: "", permanentAddressStreet: "", permanentAddressQtr: "", permanentAddressTownship: 0)
     
@@ -128,25 +128,25 @@ class CustomerInfoFormViewController: BaseUIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        updateViews()
+     //   updateViews()
        
-        animationview.aa_animate(duration: 1.0, repeatCount: 1 ,springDamping: .slight, animation: .toRight) { inAnimating, animView in
-        
-        if inAnimating {
-            print("Animating ....")
-            self.animateWithTransition(.fromLeft)
-        }
-        else {
-            print("Animation Done 👍🏻")
-            self.animateWithTransition(.fromRight)
-        }
-        
-        guard inAnimating else {
-            return
-        }
-        
-          //  self.animateWithTransition(.)
-    }
+//        animationview.aa_animate(duration: 1.0, repeatCount: 1 ,springDamping: .slight, animation: .toRight) { inAnimating, animView in
+//
+//        if inAnimating {
+//            print("Animating ....")
+//            self.animateWithTransition(.fromLeft)
+//        }
+//        else {
+//            print("Animation Done 👍🏻")
+//            self.animateWithTransition(.fromRight)
+//        }
+//
+//        guard inAnimating else {
+//            return
+//        }
+//
+//          //  self.animateWithTransition(.)
+//    }
     }
     func animateWithTransition(_ animator: AAViewAnimators) {
         animationview.aa_animate(duration: 0.7, springDamping: .slight, animation: animator) { inAnimating, animView in
@@ -195,30 +195,31 @@ class CustomerInfoFormViewController: BaseUIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+      //  guarantorPressView.isHidden = true
          self.doLoadSaveDAData()
-        mmflag.layer.cornerRadius = 5
-        engflag.layer.cornerRadius = 5
+//        mmflag.layer.cornerRadius = 5
+//        engflag.layer.cornerRadius = 5
 //         NotificationCenter.default.addObserver(self, selector: #selector(doSetOccupationData(notification:)), name: NSNotification.Name(rawValue: "SetOccupationData"), object: nil)
 //       NotificationCenter.default.post(name: NSNotification.Name(rawValue: "markOccupationDataLastState"), object: nil)
 //         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showOccupationForm"), object: self, userInfo: ["data": self.myOccupationData as Any])
         fillThisForm(data: myAppFormData)
        
-        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
-        self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
-    self.mmflag.isUserInteractionEnabled = true
-    self.engflag.isUserInteractionEnabled = true
-        
-        self.mmflag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
-        self.engflag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
+//        self.lblBarPhNo.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
+//        self.lblBarName.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
+//    self.mmflag.isUserInteractionEnabled = true
+//    self.engflag.isUserInteractionEnabled = true
+//
+//        self.mmflag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
+//        self.engflag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
         self.occupationPressView.isUserInteractionEnabled = true
         self.applicationTitleView.isUserInteractionEnabled = true
         self.emergencyPressView.isUserInteractionEnabled = true
-        self.guarantorPressView.isUserInteractionEnabled = true
+       // self.guarantorPressView.isUserInteractionEnabled = true
              self.occupationPressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(occupationPressAction)))
         
         self.applicationTitleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(applicationPressAction)))
            self.emergencyPressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(emergencyPressAction)))
-          self.guarantorPressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(guarantorPressAction)))
+         // self.guarantorPressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(guarantorPressAction)))
 //        self.applicationTitleView.layer.borderWidth = 1
 //        self.applicationTitleView.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
         
@@ -226,8 +227,8 @@ class CustomerInfoFormViewController: BaseUIViewController {
 //               self.phoneLabelBtn.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_PHONE_NO)
 //                                              self.nameLabelBtn.text = UserDefaults.standard.string(forKey: Constants.USER_INFO_NAME)
 //                                    self.typeLabel.text = "Lv.2 : Login user"
-       self.backView.isUserInteractionEnabled = true
-             self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtn)))
+//       self.backView.isUserInteractionEnabled = true
+//             self.backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtn)))
        //self.updateViews()
                
           
@@ -272,14 +273,14 @@ class CustomerInfoFormViewController: BaseUIViewController {
     }
     func occupationFillThisForm(data: OccupationDataRequest) {
         
-        self.ocCompanyName.text = data.companyName
-        self.ocBuildingNo.text = data.companyAddressBuildingNo
-        self.ocRoomNo.text = data.companyAddressRoomNo
+//        self.ocCompanyName.text = data.companyName
+//        self.ocBuildingNo.text = data.companyAddressBuildingNo
+//        self.ocRoomNo.text = data.companyAddressRoomNo
     }
     func EmergencyFillThisForm(data: EmergencyContactRequest) {
-        self.emeNameResLabel.text = data.name
-        self.emePhoneNoResLabel.text = data.mobileNo
-        self.emeBuildingResLabel.text = data.currentAddressBuildingNo
+//        self.emeNameResLabel.text = data.name
+//        self.emePhoneNoResLabel.text = data.mobileNo
+//        self.emeBuildingResLabel.text = data.currentAddressBuildingNo
        
     }
     
@@ -305,7 +306,7 @@ class CustomerInfoFormViewController: BaseUIViewController {
         self.applicationLabel.text = "application_data.data".localized
         self.occupationDataLabel.text = "application_data.occupation".localized
         self.emergencyLabel.text = "application_data.emergency".localized
-        self.guarantorLabel.text = "application_data.guarantor".localized
+       // self.guarantorLabel.text = "application_data.guarantor".localized
       
         self.nameLabel.text = "application_data.title".localized
         self.nrcNoLabel.text = "application_data.nrc_no".localized
@@ -319,10 +320,10 @@ class CustomerInfoFormViewController: BaseUIViewController {
         self.emePhoneNoLabel.text = "emergencycontact_mobileno".localized
         self.emeNameLabel.text = "occupation_company_name".localized
         self.emeDetailLabel.text = "occupation_company_detail".localized
-        self.guaNameLabel.text = "occupation_company_name".localized
-        self.guaNrcLabel.text = "application_data.nrc_no".localized
-        self.guaDateofBLabel.text = "application_data.dob.label".localized
-        self.guaDetailLabel.text = "occupation_company_detail".localized
+//        self.guaNameLabel.text = "occupation_company_name".localized
+//        self.guaNrcLabel.text = "application_data.nrc_no".localized
+//        self.guaDateofBLabel.text = "application_data.dob.label".localized
+//        self.guaDetailLabel.text = "occupation_company_detail".localized
         
     }
         func doRegisterDAApi() {

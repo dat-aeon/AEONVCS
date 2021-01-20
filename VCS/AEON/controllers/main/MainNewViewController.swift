@@ -649,6 +649,8 @@ class MainNewViewController: BaseUIViewController {
             let url = URL(string: "http://itunes.apple.com/lookup?bundleId=mm.com.aeonmicrofinance.vcsaeon.AEONVCS") else {
                 throw VersionError.invalidBundleInfo
         }
+        //Log.debug(currentVersion)
+        print("cur version\(currentVersion)")
         //        print("store url: ",url)
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {

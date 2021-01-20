@@ -640,5 +640,5 @@
 
 //Version
 
-"main.version :" = "Version :";
+"main.version :"= "Version ";
 "freechat.Toomanywords" = "Too many words";

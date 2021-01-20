@@ -140,7 +140,7 @@ class HomeNewViewController: BaseUIViewController {
        // Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(contactUsnoti), userInfo: nil, repeats: true)
         currentLanguage()
         askProductView.isHidden = true
-        loanApplicationView.isHidden = true
+        loanApplicationView.isHidden = false
         logoutTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
        
     
@@ -151,7 +151,7 @@ class HomeNewViewController: BaseUIViewController {
        // askProductMessageUnRead(customerId: senderId!, levelType: 2)
         self.levelTwoUnRead(customerId: self.senderId)
         uiSetup()
-        loanAppView.isHidden = true
+        loanAppView.isHidden = false
         updateViews()
         self.imgMMlocale.isUserInteractionEnabled = true
         self.imgEnglocale.isUserInteractionEnabled = true
@@ -533,7 +533,7 @@ class HomeNewViewController: BaseUIViewController {
 //               applyLoanNav.modalPresentationStyle = .overFullScreen
 //               self.present(applyLoanNav, animated: true, completion: nil)
 //               loanAppView.isHidden = true
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "DA", bundle: nil)
         let applyLoanNav = storyboard.instantiateViewController(withIdentifier: CommonNames.APPLY_LOAN_MAIN)
         applyLoanNav.modalPresentationStyle = .overFullScreen
         self.present(applyLoanNav, animated: true, completion: nil)

@@ -19,6 +19,7 @@ class OccupationDataVC: BaseUIViewController {
    
    
     
+    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var titleImageLogo: UIImageView!
     
     @IBOutlet weak var svOccupationData: UIScrollView!
@@ -159,13 +160,14 @@ class OccupationDataVC: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.nextBtn.isUserInteractionEnabled = true
         titleImageLogo.layer.cornerRadius = 5
         btnSave.layer.cornerRadius = 10
       
         
         self.mmFlag.isUserInteractionEnabled = true
                         self.engFlag.isUserInteractionEnabled = true
-                            
+        self.nextBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextBtnPress)))
                             self.mmFlag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapMMLocale)))
                             self.engFlag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapEngLocale)))
         
@@ -327,6 +329,11 @@ class OccupationDataVC: BaseUIViewController {
 //         NotificationCenter.default.addObserver(self, selector: #selector(showPreview), name: NSNotification.Name(rawValue: "showPreview"), object: nil)
         self.doLoadSaveDAData()
         
+    }
+    @objc func nextBtnPress() {
+        let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "EmergencyContactVC") as! EmergencyContactVC
+        navigationVC.modalPresentationStyle = .overFullScreen
+        self.present(navigationVC, animated: true, completion: nil)
     }
     @objc func onTapMMLocale() {
         print("click")

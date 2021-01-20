@@ -18,6 +18,7 @@ import AVFoundation
 class ApplicationDataVC: BaseUIViewController {
     
      var delegate: applyLoanDelegate?
+    @IBOutlet weak var nextBtnPress: UIButton!
     @IBOutlet weak var applicationDataTitle: UILabel!
     @IBOutlet weak var svApplicationData: UIScrollView!
     @IBOutlet weak var engFlagBtn: UIImageView!
@@ -135,7 +136,7 @@ class ApplicationDataVC: BaseUIViewController {
     @IBOutlet weak var lblEmailWarning: UILabel!
     
     @IBOutlet weak var btnSave: UIButton!
-    @IBOutlet weak var btnNext: UIButton!
+    
     
     @IBOutlet weak var imgMale: UIImageView!
     @IBOutlet weak var imgFemale: UIImageView!
@@ -263,7 +264,8 @@ class ApplicationDataVC: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.nextBtnPress.isUserInteractionEnabled = true
+              self.nextBtnPress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextBtn)))
         self.mmFlagBtn.isUserInteractionEnabled = true
                  self.engFlagBtn.isUserInteractionEnabled = true
                      
@@ -276,6 +278,7 @@ class ApplicationDataVC: BaseUIViewController {
         
         logoImageView.layer.cornerRadius = 5
         btnSave.layer.cornerRadius = 10
+        nextBtnPress.layer.cornerRadius = 10
         applicationDataTitle.layer.cornerRadius = 5
           NotificationCenter.default.addObserver(self, selector: #selector(alertSuccess), name: NSNotification.Name(rawValue: "applicationSuccessfully"), object: nil)
         
@@ -453,6 +456,11 @@ class ApplicationDataVC: BaseUIViewController {
            }))
            self.present(alertController, animated: true, completion: nil)
         
+       }
+    @objc func nextBtn() {
+                               let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "OccupationDataVC") as! OccupationDataVC
+        navigationVC.modalPresentationStyle = .overFullScreen
+                               self.present(navigationVC, animated: true, completion: nil)
        }
     @objc func onTapMMLocale() {
         print("click")

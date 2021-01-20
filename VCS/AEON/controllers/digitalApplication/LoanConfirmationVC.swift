@@ -9,125 +9,17 @@
 import UIKit
 import AVFoundation
 import SwiftyJSON
-protocol ImageAndCaptionDelegate: class {
-func userDidEnterInformation(image: UIImage)
-}
+//protocol ImageAndCaptionDelegate: class {
+//func userDidEnterInformation(image: UIImage)
+//}
 
 class LoanConfirmationVC: BaseUIViewController {
-    weak var delegate: ImageAndCaptionDelegate? = nil
+   // weak var delegate: ImageAndCaptionDelegate? = nil
     @IBOutlet weak var backView: UIImageView!
     @IBOutlet weak var svLoanConfirmation: UIScrollView!
     
-    @IBOutlet weak var btnOne: UIButton! {
-        didSet {
-            self.btnOne.layer.cornerRadius = 10
-            self.btnOne.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnOne.layer.borderWidth = 1.0
-        }
-    }
-    @IBOutlet weak var btnTwo: UIButton! {
-        didSet {
-            self.btnTwo.layer.cornerRadius = 10
-            self.btnTwo.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnTwo.layer.borderWidth = 1.0
-        }
-    }
-    @IBOutlet weak var btnThree: UIButton! {
-        didSet {
-            self.btnThree.layer.cornerRadius = 10
-            self.btnThree.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnThree.layer.borderWidth = 1.0
-        }
-    }
-    @IBOutlet weak var btnFour: UIButton! {
-        didSet {
-            self.btnFour.layer.cornerRadius = 10
-            self.btnFour.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnFour.layer.borderWidth = 1.0
-        }
-    }
-    @IBOutlet weak var btnFive: UIButton! {
-        didSet {
-            self.btnFive.layer.cornerRadius = 10
-            self.btnFive.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnFive.layer.borderWidth = 1.0
-        }
-    }
+   
     
-    @IBOutlet weak var btnSix: UIButton! {
-        didSet {
-            self.btnSix.layer.cornerRadius = 10
-            self.btnSix.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnSix.layer.borderWidth = 1.0
-        }
-    }
-    @IBOutlet weak var btnSeven: UIButton! {
-        didSet {
-            self.btnSeven.layer.cornerRadius = 10
-            self.btnSeven.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnSeven.layer.borderWidth = 1.0
-        }
-    }
-    @IBOutlet weak var btnEight: UIButton! {
-        didSet {
-            self.btnEight.layer.cornerRadius = 10
-            self.btnEight.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnEight.layer.borderWidth = 1.0
-        }
-    }
-    @IBOutlet weak var btnNine: UIButton! {
-        didSet {
-            self.btnNine.layer.cornerRadius = 10
-            self.btnNine.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnNine.layer.borderWidth = 1.0
-        }
-    }
-    @IBOutlet weak var btnTen: UIButton! {
-        didSet {
-            self.btnTen.layer.cornerRadius = 10
-            self.btnTen.layer.borderColor = UIColor.lightGray.cgColor
-            self.btnTen.layer.borderWidth = 1.0
-        }
-    }
-    
-    @IBOutlet weak var viewSample: UIView!
-    @IBOutlet weak var imgChoosenNrcFront: UIImageView!
-    
-    @IBOutlet weak var stackNrcBacl: UIStackView!
-    @IBOutlet weak var viewNewNrcBack: UIView!
-    @IBOutlet weak var imgChoosenNrcBack: UIImageView!
-    
-    @IBOutlet weak var viewNewResidenceProof: UIView!
-    @IBOutlet weak var stackResidenceProof: UIStackView!
-    @IBOutlet weak var imgChoosenResidenceProof: UIImageView!
-    
-    @IBOutlet weak var viewNewIncomeProof: UIView!
-    @IBOutlet weak var imgChoosenIncomeProof: UIImageView!
-    @IBOutlet weak var stackIncomeProof: UIStackView!
-    
-    @IBOutlet weak var stackGuarantor: UIStackView!
-    @IBOutlet weak var imgChoosenGuarantor: UIImageView!
-    @IBOutlet weak var viewNewGuarantor: UIView!
-    
-    @IBOutlet weak var stackGuarantorBack: UIStackView!
-    @IBOutlet weak var viewNewGuarantorBack: UIView!
-    @IBOutlet weak var imgChoosenGuarantorBack: UIImageView!
-    
-    @IBOutlet weak var stackHousehold: UIStackView!
-    @IBOutlet weak var viewNewHoushold: UIView!
-    @IBOutlet weak var imgChoosenHousehold: UIImageView!
-    
-    @IBOutlet weak var stackApplicantFoto: UIStackView!
-    @IBOutlet weak var viewNewApplicantFoto: UIView!
-    @IBOutlet weak var imgChoosenApplicantFoto: UIImageView!
-    
-    @IBOutlet weak var viewNewCustomerSignature: UIView!
-    @IBOutlet weak var stackCustomerSignature: UIStackView!
-    @IBOutlet weak var imgChoosenCustomerSignature: UIImageView!
-    
-    @IBOutlet weak var viewNewGuarantorSignature: UIView!
-    @IBOutlet weak var stackGuarantorSignature: UIStackView!
-    @IBOutlet weak var imgChoosenGuarantorSignature: UIImageView!
     
     @IBOutlet weak var viewProductCategory: UIView! {
         didSet {
@@ -137,94 +29,14 @@ class LoanConfirmationVC: BaseUIViewController {
             self.viewProductCategory.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
         }
     }
-    @IBOutlet weak var viewNrcFront: UIView! {
-        didSet {
-            self.viewNrcFront.clipsToBounds = true
-            self.viewNrcFront.layer.cornerRadius = 5
-            self.viewNrcFront.layer.borderWidth = 1.0
-            self.viewNrcFront.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewNrcBack: UIView! {
-        didSet {
-            self.viewNrcBack.clipsToBounds = true
-            self.viewNrcBack.layer.cornerRadius = 5
-            self.viewNrcBack.layer.borderWidth = 1.0
-            self.viewNrcBack.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewIncomeProof: UIView! {
-        didSet {
-            self.viewIncomeProof.clipsToBounds = true
-            self.viewIncomeProof.layer.cornerRadius = 5
-            self.viewIncomeProof.layer.borderWidth = 1.0
-            self.viewIncomeProof.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewResidenceProof: UIView! {
-        didSet {
-            self.viewResidenceProof.clipsToBounds = true
-            self.viewResidenceProof.layer.cornerRadius = 5
-            self.viewResidenceProof.layer.borderWidth = 1.0
-            self.viewResidenceProof.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewGuarantorNrc: UIView! {
-        didSet {
-            self.viewGuarantorNrc.clipsToBounds = true
-            self.viewGuarantorNrc.layer.cornerRadius = 5
-            self.viewGuarantorNrc.layer.borderWidth = 1.0
-            self.viewGuarantorNrc.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewGuarantorNrcBack: UIView! {
-        didSet {
-            self.viewGuarantorNrcBack.clipsToBounds = true
-            self.viewGuarantorNrcBack.layer.cornerRadius = 5
-            self.viewGuarantorNrcBack.layer.borderWidth = 1.0
-            self.viewGuarantorNrcBack.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewHouseholdCriminal: UIView! {
-        didSet {
-            self.viewHouseholdCriminal.clipsToBounds = true
-            self.viewHouseholdCriminal.layer.cornerRadius = 5
-            self.viewHouseholdCriminal.layer.borderWidth = 1.0
-            self.viewHouseholdCriminal.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewApplicantFoto: UIView! {
-        didSet {
-            self.viewApplicantFoto.clipsToBounds = true
-            self.viewApplicantFoto.layer.cornerRadius = 5
-            self.viewApplicantFoto.layer.borderWidth = 1.0
-            self.viewApplicantFoto.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewCustomerSignature: UIView! {
-        didSet {
-            self.viewCustomerSignature.clipsToBounds = true
-            self.viewCustomerSignature.layer.cornerRadius = 5
-            self.viewCustomerSignature.layer.borderWidth = 1.0
-            self.viewCustomerSignature.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
-    @IBOutlet weak var viewGuarantorSignature: UIView! {
-        didSet {
-            self.viewGuarantorSignature.clipsToBounds = true
-            self.viewGuarantorSignature.layer.cornerRadius = 5
-            self.viewGuarantorSignature.layer.borderWidth = 1.0
-            self.viewGuarantorSignature.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        }
-    }
+   
     
     @IBOutlet weak var lblProductCategoryText: UILabel!
     
-    @IBOutlet weak var imgMobile: UIImageView!
-    @IBOutlet weak var imgNonmobile: UIImageView!
+  
     
     @IBOutlet weak var lblProductCategoryError: UILabel!
-    @IBOutlet weak var lblProductDescError: UILabel!
+   
     @IBOutlet weak var lblFinanceAmtError: UILabel!
     @IBOutlet weak var lblTermsFinanceError: UILabel!
     @IBOutlet weak var lblProcessingFeeError: UILabel!
@@ -233,18 +45,7 @@ class LoanConfirmationVC: BaseUIViewController {
     @IBOutlet weak var lblFirstRepayAmtError: UILabel!
     @IBOutlet weak var lblMonthlyRepayAmtError: UILabel!
     @IBOutlet weak var lblLastpaymentError: UILabel!
-    @IBOutlet weak var lblNrcFrontError: UILabel!
-    @IBOutlet weak var lblNrcBackError: UILabel!
-    @IBOutlet weak var lblIncomeProofError: UILabel!
-    @IBOutlet weak var lblResidenceProofError: UILabel!
-    @IBOutlet weak var lblGuarantorFrontError: UILabel!
-    @IBOutlet weak var lblGuarantorBackError: UILabel!
-    @IBOutlet weak var lblHouseholdError: UILabel!
-    @IBOutlet weak var lblApplicantFotoError: UILabel!
-    @IBOutlet weak var lblCustomerSignatureError: UILabel!
-    @IBOutlet weak var lblGuarantorSignatureError: UILabel!
-    
-    @IBOutlet weak var lblLoanType: UILabel!
+   
     @IBOutlet weak var lblProductCategory: UILabel!
     @IBOutlet weak var lblProductDesc: UILabel!
     @IBOutlet weak var lblFinanceAmt: UILabel!
@@ -255,16 +56,7 @@ class LoanConfirmationVC: BaseUIViewController {
     @IBOutlet weak var lblFirstRepayAmt: UILabel!
     @IBOutlet weak var lblMonthlyRepayAmt: UILabel!
     @IBOutlet weak var lblLastpayment: UILabel!
-    @IBOutlet weak var lblNrcFront: UILabel!
-    @IBOutlet weak var lblNrcBack: UILabel!
-    @IBOutlet weak var lblIncomeProof: UILabel!
-    @IBOutlet weak var lblResidenceProof: UILabel!
-    @IBOutlet weak var lblGuarantorFront: UILabel!
-    @IBOutlet weak var lblGuarantorBack: UILabel!
-    @IBOutlet weak var lblHousehold: UILabel!
-    @IBOutlet weak var lblApplicantFoto: UILabel!
-    @IBOutlet weak var lblCustomerSignature: UILabel!
-    @IBOutlet weak var lblGuarantorSignature: UILabel!
+   
     //@IBOutlet weak var lblTnC: UILabel!
     @IBOutlet weak var viewTermOfFinance: UIView! {
         didSet {
@@ -276,7 +68,7 @@ class LoanConfirmationVC: BaseUIViewController {
     }
     
     
-    @IBOutlet weak var tfProductDesc: UITextField!
+   
     @IBOutlet weak var tfFinanceAmt: UITextField!
 //    @IBOutlet weak var tfFinanceTerm: UITextField!
     @IBOutlet weak var tfProcessingfee: UITextField!
@@ -286,40 +78,11 @@ class LoanConfirmationVC: BaseUIViewController {
     @IBOutlet weak var tfMonthlyRepayment: UITextField!
     @IBOutlet weak var tfLastPayment: UITextField!
     
-    @IBOutlet weak var lblMobile: UILabel!
-    @IBOutlet weak var lblNonmobile: UILabel!
+   
     
     @IBOutlet weak var lblTermOfFinance: UILabel!
     
-    @IBOutlet weak var imgNrcFrontIcon: UIImageView!
-    @IBOutlet weak var lblNrcFrontInside: UILabel!
-    
-    @IBOutlet weak var imgNrcBackIcon: UIImageView!
-    @IBOutlet weak var lblNrcBackInside: UILabel!
-    
-    @IBOutlet weak var imgIncomeProofIcon: UIImageView!
-    @IBOutlet weak var lblIncomeProofInside: UILabel!
-    
-    @IBOutlet weak var imgResidenceProofIcon: UIImageView!
-    @IBOutlet weak var lblResidenceProofInside: UILabel!
-    
-    @IBOutlet weak var imgGuarantorFrontIcon: UIImageView!
-    @IBOutlet weak var lblGuarantorFrontInside: UILabel!
-    
-    @IBOutlet weak var imgGuarantorBackIcon: UIImageView!
-    
-    @IBOutlet weak var lblGuarantorBackInside: UILabel!
-    
-    @IBOutlet weak var imgHousholdIcon: UIImageView!
-    @IBOutlet weak var lblHouseholdInside: UILabel!
-    
-    @IBOutlet weak var imgApplicantfotoIcon: UIImageView!
-    @IBOutlet weak var lblApplicantFotoInside: UILabel!
-    
-    @IBOutlet weak var imgCusSignatureIcon: UIImageView!
-    @IBOutlet weak var lblCusSignatureInside: UILabel!
-    
-    @IBOutlet weak var stackNrcFront: UIStackView!
+   
     
     @IBOutlet weak var collectViewLoanTerm: UICollectionView!
     @IBOutlet weak var imgGuaSignatureIcon: UIImageView!
@@ -428,12 +191,12 @@ class LoanConfirmationVC: BaseUIViewController {
         self.collectViewLoanTerm.delegate = self
         self.collectViewLoanTerm.dataSource = self
         
-        self.tfProductDesc.setMaxLength(maxLength: 100)
-        self.tfProductDesc.autocapitalizationType = .allCharacters
+       // self.tfProductDesc.setMaxLength(maxLength: 100)
+      //  self.tfProductDesc.autocapitalizationType = .allCharacters
         
         // Do any additional setup after loading the view.
         self.lblProductCategoryError.text = Constants.BLANK
-        self.lblProductDescError.text = Constants.BLANK
+      //  self.lblProductDescError.text = Constants.BLANK
         self.lblFinanceAmtError.text = Constants.BLANK
         self.lblTermsFinanceError.text = Constants.BLANK
         self.lblProcessingFeeError.text = Constants.BLANK
@@ -443,17 +206,17 @@ class LoanConfirmationVC: BaseUIViewController {
         self.lblFirstRepayAmtError.text = Constants.BLANK
         self.lblMonthlyRepayAmtError.text = Constants.BLANK
         self.lblLastpaymentError.text = Constants.BLANK
-        self.lblNrcFrontError.text = Constants.BLANK
-        self.lblNrcBackError.text = Constants.BLANK
+       // self.lblNrcFrontError.text = Constants.BLANK
+       //self.lblNrcBackError.text = Constants.BLANK
         
-        self.lblIncomeProofError.text = Constants.BLANK
-        self.lblResidenceProofError.text = Constants.BLANK
-        self.lblGuarantorFrontError.text = Constants.BLANK
-        self.lblGuarantorBackError.text = Constants.BLANK
-        self.lblHouseholdError.text = Constants.BLANK
-        self.lblApplicantFotoError.text = Constants.BLANK
+       // self.lblIncomeProofError.text = Constants.BLANK
+//        self.lblResidenceProofError.text = Constants.BLANK
+//        self.lblGuarantorFrontError.text = Constants.BLANK
+//        self.lblGuarantorBackError.text = Constants.BLANK
+//        self.lblHouseholdError.text = Constants.BLANK
+//        self.lblApplicantFotoError.text = Constants.BLANK
         
-        self.lblCustomerSignatureError.text = Constants.BLANK
+       // self.lblCustomerSignatureError.text = Constants.BLANK
         
         //self.underlineLink()
         
@@ -463,7 +226,7 @@ class LoanConfirmationVC: BaseUIViewController {
         
         self.tfFinanceAmt.addTarget(self, action: #selector(addSeparatorDidChange(_:)), for: UIControl.Event.editingChanged)
         
-        self.tfProductDesc.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+       // self.tfProductDesc.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         self.updateViews()
         
@@ -481,16 +244,16 @@ class LoanConfirmationVC: BaseUIViewController {
          NotificationCenter.default.addObserver(self, selector: #selector(choosePhotoVia(notification:)), name: NSNotification.Name(rawValue: "ChooseFoto"), object: nil)
         self.doGetProductTypeListAPI()
         
-        self.viewSample.isHidden = true
-        self.viewNewNrcBack.isHidden = true
-        self.viewNewResidenceProof.isHidden = true
-        self.viewNewIncomeProof.isHidden = true
-        self.viewNewGuarantor.isHidden = true
-        self.viewNewGuarantorBack.isHidden = true
-        self.viewNewHoushold.isHidden = true
-        self.viewNewApplicantFoto.isHidden = true
-        self.viewNewCustomerSignature.isHidden = true
-        self.viewNewGuarantorSignature.isHidden = true
+//        self.viewSample.isHidden = true
+//        self.viewNewNrcBack.isHidden = true
+//        self.viewNewResidenceProof.isHidden = true
+//        self.viewNewIncomeProof.isHidden = true
+//        self.viewNewGuarantor.isHidden = true
+//        self.viewNewGuarantorBack.isHidden = true
+//        self.viewNewHoushold.isHidden = true
+//        self.viewNewApplicantFoto.isHidden = true
+//        self.viewNewCustomerSignature.isHidden = true
+//        self.viewNewGuarantorSignature.isHidden = true
         
 //         NotificationCenter.default.addObserver(self, selector: #selector(showPreview), name: NSNotification.Name(rawValue: "showPreview"), object: nil)
     }
@@ -600,8 +363,8 @@ class LoanConfirmationVC: BaseUIViewController {
        
        func fillThisForm(data: LoanConfirmationRequest) {
            
-        self.tfProductDesc.text = data.productDescription
-        self.textFieldDidChange(tfProductDesc)
+      //  self.tfProductDesc.text = data.productDescription
+      //  self.textFieldDidChange(tfProductDesc)
         
         if data.financeAmount == 0 {
             self.tfFinanceAmt.text = ""
@@ -745,7 +508,7 @@ class LoanConfirmationVC: BaseUIViewController {
                   
                   let appData = LoanConfirmationRequest(daLoanTypeId: self.isMobileSelected ? 1 : 2, financeAmount: Double(removedComma
                       
-                      ) ?? 0.0, financeTerm: Int(self.selectedLoanTerm) ?? 0, daProductTypeId: self.selectedProductTypeID, productDescription: self.tfProductDesc.text ?? "", channelType: 1)
+                      ) ?? 0.0, financeTerm: Int(self.selectedLoanTerm) ?? 0, daProductTypeId: self.selectedProductTypeID, productDescription: "", channelType: 1)
                   
                   NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SetLoanConfirmationData"), object: self, userInfo: ["appData": appData, "attachment": attachmentlist])
         }
@@ -776,11 +539,11 @@ class LoanConfirmationVC: BaseUIViewController {
     
     @objc override func updateViews() {
         super.updateViews()
-        self.lblMobile.text = "loanconfirmation_mobile_type".localized
-        self.lblNonmobile.text = "loanconfirmation_nonmobile_type".localized
-        self.lblLoanType.text = "loanconfirmation_loan_type".localized
+//        self.lblMobile.text = "loanconfirmation_mobile_type".localized
+//        self.lblNonmobile.text = "loanconfirmation_nonmobile_type".localized
+       // self.lblLoanType.text = "loanconfirmation_loan_type".localized
         self.lblProductCategory.text = "loanconfirmation_product_category".localized
-        self.lblProductDesc.text = "loanconfirmation_product_desc".localized
+      //  self.lblProductDesc.text = "loanconfirmation_product_desc".localized
         self.lblFinanceAmt.text = "loanconfirmation_finance_amt".localized
         self.lblTermsFinance.text = "loanconfirmation_finance_term".localized
         self.lblProcessingFee.text = "loan.fee".localized
@@ -789,31 +552,31 @@ class LoanConfirmationVC: BaseUIViewController {
         self.lblFirstRepayAmt.text = "loan.first_repay".localized
         self.lblMonthlyRepayAmt.text = "loan.monthly_repay".localized
         self.lblLastpayment.text = "loan.last_payment".localized
-        self.lblNrcFront.text = "loanconfirmation_nrc_front".localized
-        self.lblNrcBack.text = "loanconfirmation_nrc_back".localized
-        self.lblIncomeProof.text = "loanconfirmation_income_proof".localized
-        self.lblResidenceProof.text = "loanconfirmation_residence_proof".localized
-        self.lblGuarantorFront.text = "loanconfirmation_guarantor_front".localized
-        self.lblGuarantorBack.text = "loanconfirmation_guarantor_back".localized
-        self.lblHousehold.text = "loanconfirmation_household".localized
-        self.lblApplicantFoto.text = "loanconfirmation_applicant_foto".localized
-        self.lblCustomerSignature.text = "loanconfirmation_customer_signature".localized
-        self.lblGuarantorSignature.text = "loanconfirmation_guarantor_signature".localized
+//        self.lblNrcFront.text = "loanconfirmation_nrc_front".localized
+//        self.lblNrcBack.text = "loanconfirmation_nrc_back".localized
+//        self.lblIncomeProof.text = "loanconfirmation_income_proof".localized
+//        self.lblResidenceProof.text = "loanconfirmation_residence_proof".localized
+//        self.lblGuarantorFront.text = "loanconfirmation_guarantor_front".localized
+//        self.lblGuarantorBack.text = "loanconfirmation_guarantor_back".localized
+//        self.lblHousehold.text = "loanconfirmation_household".localized
+//        self.lblApplicantFoto.text = "loanconfirmation_applicant_foto".localized
+//        self.lblCustomerSignature.text = "loanconfirmation_customer_signature".localized
+//        self.lblGuarantorSignature.text = "loanconfirmation_guarantor_signature".localized
+//
         
-        
-        self.lblProductDescError.text = productDescMesgLocale?.localized
+       // self.lblProductDescError.text = productDescMesgLocale?.localized
         self.lblFinanceAmtError.text = financeAmtMesgLocale?.localized
         self.lblTermsFinanceError.text = termFinanceMesgLocale?.localized
-        self.lblNrcFrontError.text = nrcFrontMesgLocale?.localized
-        self.lblNrcBackError.text = nrcBackMesgLocale?.localized
-        self.lblIncomeProofError.text = IncomeProofMesgLocale?.localized
-        self.lblResidenceProofError.text = residenceProofMesgLocale?.localized
-        self.lblGuarantorFrontError.text = guarantorNrcFrontMesgLocale?.localized
-        self.lblGuarantorBackError.text = guarantorNrcBackMesgLocale?.localized
-        self.lblHouseholdError.text = householdMesgLocale?.localized
-        self.lblApplicantFotoError.text = applicantFotoMesgLocale?.localized
-        self.lblCustomerSignatureError.text = cusSignatureMesgLocale?.localized
-        self.lblGuarantorSignatureError.text = guaSignatureMesgLocale?.localized
+       // self.lblNrcFrontError.text = nrcFrontMesgLocale?.localized
+       // self.lblNrcBackError.text = nrcBackMesgLocale?.localized
+       // self.lblIncomeProofError.text = IncomeProofMesgLocale?.localized
+//        self.lblResidenceProofError.text = residenceProofMesgLocale?.localized
+//        self.lblGuarantorFrontError.text = guarantorNrcFrontMesgLocale?.localized
+//        self.lblGuarantorBackError.text = guarantorNrcBackMesgLocale?.localized
+//        self.lblHouseholdError.text = householdMesgLocale?.localized
+//        self.lblApplicantFotoError.text = applicantFotoMesgLocale?.localized
+//        self.lblCustomerSignatureError.text = cusSignatureMesgLocale?.localized
+//        self.lblGuarantorSignatureError.text = guaSignatureMesgLocale?.localized
     }
     
 //    func underlineLink() {
@@ -907,16 +670,16 @@ class LoanConfirmationVC: BaseUIViewController {
     }
     
     @IBAction func doSelectMobile(_ sender: Any) {
-        self.imgMobile.image = UIImage(named: "circle_selected")
-        self.imgNonmobile.image = UIImage(named: "circle")
+//        self.imgMobile.image = UIImage(named: "circle_selected")
+//        self.imgNonmobile.image = UIImage(named: "circle")
 
         self.isMobileSelected = true
     }
     
     @IBAction func doSelectNonmobile(_ sender: Any) {
         
-        self.imgNonmobile.image = UIImage(named: "circle_selected")
-        self.imgMobile.image = UIImage(named: "circle")
+//        self.imgNonmobile.image = UIImage(named: "circle_selected")
+//        self.imgMobile.image = UIImage(named: "circle")
 
         self.isMobileSelected = false
     }
@@ -933,16 +696,16 @@ class LoanConfirmationVC: BaseUIViewController {
         
         var isError = false
         
-        if self.tfProductDesc?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
-            self.tfProductDesc?.text = Constants.BLANK
-            self.lblProductDescError.text = Messages.PRODUCT_DESC_EMPTY_ERROR.localized
-            self.productDescMesgLocale = Messages.PRODUCT_DESC_EMPTY_ERROR
-            isError = true
-            
-        } else {
-            self.lblProductDescError.text = Constants.BLANK
-            self.productDescMesgLocale = Constants.BLANK
-        }
+//        if self.tfProductDesc?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
+//            self.tfProductDesc?.text = Constants.BLANK
+//           // self.lblProductDescError.text = Messages.PRODUCT_DESC_EMPTY_ERROR.localized
+//            self.productDescMesgLocale = Messages.PRODUCT_DESC_EMPTY_ERROR
+//            isError = true
+//
+//        } else {
+//          //  self.lblProductDescError.text = Constants.BLANK
+//            self.productDescMesgLocale = Constants.BLANK
+//        }
         
         if self.tfFinanceAmt?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
             self.tfFinanceAmt?.text = Constants.BLANK
@@ -975,106 +738,106 @@ class LoanConfirmationVC: BaseUIViewController {
             self.termFinanceMesgLocale = Constants.BLANK
         }
         
-        if !isNrcFrontChoosen {
-           
-            self.lblNrcFrontError.text = Messages.NRC_FRONT_EMPTY_ERROR.localized
-            self.nrcFrontMesgLocale = Messages.NRC_FRONT_EMPTY_ERROR
-            isError = true
-        } else {
-            self.lblTermsFinanceError.text = Constants.BLANK
-            self.termFinanceMesgLocale = Constants.BLANK
-        }
-        
-        if !isNrcBackChoosen {
-            
-            self.lblNrcBackError.text = Messages.NRC_BACK_EMPTY_ERROR.localized
-            self.nrcBackMesgLocale = Messages.NRC_BACK_EMPTY_ERROR
-            isError = true
-        } else {
-            self.lblNrcBackError.text = Constants.BLANK
-            self.nrcBackMesgLocale = Constants.BLANK
-        }
-        
-        if !isIncomeProofChoosen {
-            
-            self.lblIncomeProofError.text = Messages.INCOME_PROOF_EMPTY_ERROR.localized
-            self.IncomeProofMesgLocale = Messages.INCOME_PROOF_EMPTY_ERROR
-            isError = true
-        } else {
-            self.lblIncomeProofError.text = Constants.BLANK
-            self.IncomeProofMesgLocale = Constants.BLANK
-        }
-        
-        
-        if !isResidenceProofChoosen {
-            
-            self.lblResidenceProofError.text = Messages.RESIDENCE_PROOF_EMPTY_ERROR.localized
-            self.residenceProofMesgLocale = Messages.RESIDENCE_PROOF_EMPTY_ERROR
-            isError = true
-        } else {
-            self.lblResidenceProofError.text = Constants.BLANK
-            self.residenceProofMesgLocale = Constants.BLANK
-        }
-        
-        if !isGuarantorNrcFrontChoosen {
-            
-            self.lblGuarantorFrontError.text = Messages.GUARANTOR_FRONT_EMPTY_ERROR.localized
-            self.guarantorNrcFrontMesgLocale = Messages.GUARANTOR_FRONT_EMPTY_ERROR
-            isError = true
-        } else {
-            self.lblGuarantorFrontError.text = Constants.BLANK
-            self.guarantorNrcFrontMesgLocale = Constants.BLANK
-        }
-        
-        if !isGuarantorNrcBackChoosen {
-            
-            self.lblGuarantorBackError.text = Messages.GUARANTOR_BACK_EMPTY_ERROR.localized
-            self.guarantorNrcBackMesgLocale = Messages.GUARANTOR_BACK_EMPTY_ERROR
-            isError = true
-        } else {
-            self.lblGuarantorBackError.text = Constants.BLANK
-            self.guarantorNrcBackMesgLocale = Constants.BLANK
-        }
+//        if !isNrcFrontChoosen {
+//
+//          //  self.lblNrcFrontError.text = Messages.NRC_FRONT_EMPTY_ERROR.localized
+//            self.nrcFrontMesgLocale = Messages.NRC_FRONT_EMPTY_ERROR
+//            isError = true
+//        } else {
+//            self.lblTermsFinanceError.text = Constants.BLANK
+//            self.termFinanceMesgLocale = Constants.BLANK
+//        }
+//
+//        if !isNrcBackChoosen {
+//
+//           // self.lblNrcBackError.text = Messages.NRC_BACK_EMPTY_ERROR.localized
+//            self.nrcBackMesgLocale = Messages.NRC_BACK_EMPTY_ERROR
+//            isError = true
+//        } else {
+//          //  self.lblNrcBackError.text = Constants.BLANK
+//            self.nrcBackMesgLocale = Constants.BLANK
+//        }
+//
+//        if !isIncomeProofChoosen {
+//
+//          //  self.lblIncomeProofError.text = Messages.INCOME_PROOF_EMPTY_ERROR.localized
+//            self.IncomeProofMesgLocale = Messages.INCOME_PROOF_EMPTY_ERROR
+//            isError = true
+//        } else {
+//           // self.lblIncomeProofError.text = Constants.BLANK
+//            self.IncomeProofMesgLocale = Constants.BLANK
+//        }
+//
+//
+//        if !isResidenceProofChoosen {
+//
+//           // self.lblResidenceProofError.text = Messages.RESIDENCE_PROOF_EMPTY_ERROR.localized
+//            self.residenceProofMesgLocale = Messages.RESIDENCE_PROOF_EMPTY_ERROR
+//            isError = true
+//        } else {
+//          //  self.lblResidenceProofError.text = Constants.BLANK
+//            self.residenceProofMesgLocale = Constants.BLANK
+//        }
+//
+//        if !isGuarantorNrcFrontChoosen {
+//
+//          //  self.lblGuarantorFrontError.text = Messages.GUARANTOR_FRONT_EMPTY_ERROR.localized
+//          //  self.guarantorNrcFrontMesgLocale = Messages.GUARANTOR_FRONT_EMPTY_ERROR
+//            isError = true
+//        } else {
+//          //  self.lblGuarantorFrontError.text = Constants.BLANK
+//          //  self.guarantorNrcFrontMesgLocale = Constants.BLANK
+//        }
+//
+//        if !isGuarantorNrcBackChoosen {
+//
+//            self.lblGuarantorBackError.text = Messages.GUARANTOR_BACK_EMPTY_ERROR.localized
+//            self.guarantorNrcBackMesgLocale = Messages.GUARANTOR_BACK_EMPTY_ERROR
+//            isError = true
+//        } else {
+//            self.lblGuarantorBackError.text = Constants.BLANK
+//            self.guarantorNrcBackMesgLocale = Constants.BLANK
+//        }
         
         //household
-        if !isHouseholdChoosen {
-            
-            self.lblHouseholdError.text = Messages.HOUSEHOLD_EMPTY_ERROR.localized
-            self.householdMesgLocale = Messages.HOUSEHOLD_EMPTY_ERROR
-            isError = true
-        } else {
-            self.lblHouseholdError.text = Constants.BLANK
-            self.householdMesgLocale = Constants.BLANK
-        }
+//        if !isHouseholdChoosen {
+//
+//            self.lblHouseholdError.text = Messages.HOUSEHOLD_EMPTY_ERROR.localized
+//            self.householdMesgLocale = Messages.HOUSEHOLD_EMPTY_ERROR
+//            isError = true
+//        } else {
+//            self.lblHouseholdError.text = Constants.BLANK
+//            self.householdMesgLocale = Constants.BLANK
+//        }
         //applicant
-        if !isApplicantFotoChoosen {
-            
-            self.lblApplicantFotoError.text = Messages.APPLICANT_FOTO_EMPTY_ERROR.localized
-            self.applicantFotoMesgLocale = Messages.APPLICANT_FOTO_EMPTY_ERROR
-            isError = true
-        } else {
-            self.lblApplicantFotoError.text = Constants.BLANK
-            self.applicantFotoMesgLocale = Constants.BLANK
-        }
+//        if !isApplicantFotoChoosen {
+//
+//            self.lblApplicantFotoError.text = Messages.APPLICANT_FOTO_EMPTY_ERROR.localized
+//            self.applicantFotoMesgLocale = Messages.APPLICANT_FOTO_EMPTY_ERROR
+//            isError = true
+//        } else {
+//            self.lblApplicantFotoError.text = Constants.BLANK
+//            self.applicantFotoMesgLocale = Constants.BLANK
+//        }
         //customer signature
-        if !isCustomerSignatureChoosen {
-            
-            self.lblCustomerSignatureError.text = Messages.CUSTOMER_SIGNATURE_EMPTY_ERROR.localized
-            self.cusSignatureMesgLocale = Messages.CUSTOMER_SIGNATURE_EMPTY_ERROR
-            
-            isError = true
-            
-        } else {
-            self.lblCustomerSignatureError.text = Constants.BLANK
-            self.cusSignatureMesgLocale = Constants.BLANK
-        }
-        if !isGuarantorSignatureChoosen {
-            self.lblGuarantorSignatureError.text = Messages.GUARANTOR_SIGNATURE_EMPTY_ERROR.localized
-            self.guaSignatureMesgLocale = Messages.GUARANTOR_SIGNATURE_EMPTY_ERROR
-        }else{
-            self.lblGuarantorSignatureError.text = Constants.BLANK
-            self.cusSignatureMesgLocale = Constants.BLANK
-        }
+//        if !isCustomerSignatureChoosen {
+//
+//            self.lblCustomerSignatureError.text = Messages.CUSTOMER_SIGNATURE_EMPTY_ERROR.localized
+//            self.cusSignatureMesgLocale = Messages.CUSTOMER_SIGNATURE_EMPTY_ERROR
+//
+//            isError = true
+//
+//        } else {
+//            self.lblCustomerSignatureError.text = Constants.BLANK
+//            self.cusSignatureMesgLocale = Constants.BLANK
+//        }
+//        if !isGuarantorSignatureChoosen {
+//            self.lblGuarantorSignatureError.text = Messages.GUARANTOR_SIGNATURE_EMPTY_ERROR.localized
+//            self.guaSignatureMesgLocale = Messages.GUARANTOR_SIGNATURE_EMPTY_ERROR
+//        }else{
+//            self.lblGuarantorSignatureError.text = Constants.BLANK
+//            self.cusSignatureMesgLocale = Constants.BLANK
+//        }
         return isError
     }
     
@@ -1082,10 +845,10 @@ class LoanConfirmationVC: BaseUIViewController {
         
         var errorcount = 0
         
-        if self.tfProductDesc?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
-            errorcount += 1
-            
-        }
+//        if self.tfProductDesc?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
+//            errorcount += 1
+//
+//        }
         
         if self.tfFinanceAmt?.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true{
             errorcount += 1
@@ -1351,7 +1114,7 @@ class LoanConfirmationVC: BaseUIViewController {
                 //                self.imgNrcFrontIcon.image = UIImage(named: "success")
                 //                self.lblNrcFrontInside.text = "Ready to upload"
                 
-                self.addAfterImageCapturingView()
+            //    self.addAfterImageCapturingView()
             }
             
             if self.isNRCBack {
@@ -1362,7 +1125,7 @@ class LoanConfirmationVC: BaseUIViewController {
                 //                self.imgNrcBackIcon.image = UIImage(named: "success")
                 //                self.lblNrcBackInside.text = "Ready to upload"
                 
-                self.addAfterImageCapturingViewNRCBACK()
+            //    self.addAfterImageCapturingViewNRCBACK()
             }
             
             if self.isIncomeProof {
@@ -1373,7 +1136,7 @@ class LoanConfirmationVC: BaseUIViewController {
                 //                self.imgIncomeProofIcon.image = UIImage(named: "success")
                 //                self.lblIncomeProofInside.text = "Ready to upload"
                 
-                self.addAfterImageCapturingViewIncomeProof()
+            //    self.addAfterImageCapturingViewIncomeProof()
             }
             
             if self.isResidenceProof {
@@ -1383,7 +1146,7 @@ class LoanConfirmationVC: BaseUIViewController {
                 
                 //                self.imgResidenceProofIcon.image = UIImage(named: "success")
                 //                self.lblResidenceProofInside.text = "Ready to upload"
-                self.addAfterImageCapturingViewResidenceProof()
+             //   self.addAfterImageCapturingViewResidenceProof()
             }
             
             if self.isGuarantorNrcFront {
@@ -1394,7 +1157,7 @@ class LoanConfirmationVC: BaseUIViewController {
                 //                self.imgGuarantorFrontIcon.image = UIImage(named: "success")
                 //                self.lblGuarantorFrontInside.text = "Ready to upload"
                 
-                self.addAfterImageCapturingViewGuarantor()
+             //   self.addAfterImageCapturingViewGuarantor()
             }
             
             if self.isGuarantorNrcBack {
@@ -1405,7 +1168,7 @@ class LoanConfirmationVC: BaseUIViewController {
                 //                self.imgGuarantorBackIcon.image = UIImage(named: "success")
                 //                self.lblGuarantorBackInside.text = "Ready to upload"
                 
-                self.addAfterImageCapturingViewGuarantorBack()
+           //     self.addAfterImageCapturingViewGuarantorBack()
             }
             
             if self.isHousehold {
@@ -1416,7 +1179,7 @@ class LoanConfirmationVC: BaseUIViewController {
                 //                self.imgHousholdIcon.image = UIImage(named: "success")
                 //                self.lblHouseholdInside.text = "Ready to upload"
                 
-                self.addAfterImageCapturingViewHousehold()
+           //     self.addAfterImageCapturingViewHousehold()
             }
             
             if self.isApplicantFoto {
@@ -1427,7 +1190,7 @@ class LoanConfirmationVC: BaseUIViewController {
                 //                self.imgApplicantfotoIcon.image = UIImage(named: "success")
                 //                self.lblApplicantFotoInside.text = "Ready to upload"
                 
-                self.addAfterImageCapturingViewApplicantFoto()
+         //       self.addAfterImageCapturingViewApplicantFoto()
             }
             
             if self.isCustomerSignature {
@@ -1438,14 +1201,14 @@ class LoanConfirmationVC: BaseUIViewController {
                 //                self.imgCusSignatureIcon.image = UIImage(named: "success")
                 //                self.lblCusSignatureInside.text = "Ready to upload"
                 
-                self.addAfterImageCapturingViewCustomerSignature()
+             //   self.addAfterImageCapturingViewCustomerSignature()
             }
             if self.isGuarantorSignature {
                 self.imgGuarantorSignature = resizeImage
                 self.isGuarantorSignature = false
                 self.isGuarantorSignatureChoosen = true
                 
-                self.addAfterImageCapturingViewGuarantorSignature()
+            //    self.addAfterImageCapturingViewGuarantorSignature()
             }
         
             
@@ -1614,111 +1377,111 @@ class LoanConfirmationVC: BaseUIViewController {
     }
     
     
-    func addAfterImageCapturingView() {
-        self.viewSample.isHidden = false
-       
-        self.viewNrcFront.isHidden = true
-        
-        self.imgChoosenNrcFront.image = self.imgNrcFront
-      
-    self.stackNrcFront.addArrangedSubview(self.viewSample)
-        
-        
-    }
+//    func addAfterImageCapturingView() {
+//        self.viewSample.isHidden = false
+//
+//        self.viewNrcFront.isHidden = true
+//
+//        self.imgChoosenNrcFront.image = self.imgNrcFront
+//
+//    self.stackNrcFront.addArrangedSubview(self.viewSample)
+//
+//
+//    }
+//
     
+//    func addAfterImageCapturingViewNRCBACK() {
+//           self.viewNewNrcBack.isHidden = false
+//
+//           self.viewNrcBack.isHidden = true
+//
+//           self.imgChoosenNrcBack.image = self.imgNrcBack
+//       self.stackNrcBacl.addArrangedSubview(self.viewNewNrcBack)
+//
+//
+//       }
     
-    func addAfterImageCapturingViewNRCBACK() {
-           self.viewNewNrcBack.isHidden = false
-          
-           self.viewNrcBack.isHidden = true
-           
-           self.imgChoosenNrcBack.image = self.imgNrcBack
-       self.stackNrcBacl.addArrangedSubview(self.viewNewNrcBack)
-           
-           
-       }
-    
-    func addAfterImageCapturingViewResidenceProof() {
-              self.viewNewResidenceProof.isHidden = false
-             
-              self.viewResidenceProof.isHidden = true
-              
-              self.imgChoosenResidenceProof.image = self.imgResidenceProof
-          self.stackResidenceProof.addArrangedSubview(self.viewNewResidenceProof)
-              
-              
-          }
-    
-    func addAfterImageCapturingViewIncomeProof() {
-        self.viewNewIncomeProof.isHidden = false
-       
-        self.viewIncomeProof.isHidden = true
-        
-        self.imgChoosenIncomeProof.image = self.imgIncomeProof
-    self.stackIncomeProof.addArrangedSubview(self.viewNewIncomeProof)
-        
-        
-    }
-    
-    func addAfterImageCapturingViewGuarantor() {
-        self.viewNewGuarantor.isHidden = false
-       
-        self.viewGuarantorNrc.isHidden = true
-        
-        self.imgChoosenGuarantor.image = self.imgGuarantorNrcFront
-    self.stackGuarantor.addArrangedSubview(self.viewNewGuarantor)
-        
-        
-    }
-    
-    func addAfterImageCapturingViewGuarantorBack() {
-        self.viewNewGuarantorBack.isHidden = false
-       
-        self.viewGuarantorNrcBack.isHidden = true
-        
-        self.imgChoosenGuarantorBack.image = self.imgGuarantorNrcBack
-    self.stackGuarantorBack.addArrangedSubview(self.viewNewGuarantorBack)
-        
-        
-    }
-    
-    func addAfterImageCapturingViewHousehold() {
-        self.viewNewHoushold.isHidden = false
-       
-        self.viewHouseholdCriminal.isHidden = true
-        
-        self.imgChoosenHousehold.image = self.imgHousehold
-    self.stackHousehold.addArrangedSubview(self.viewNewHoushold)
-        
-        
-    }
-    
-    func addAfterImageCapturingViewApplicantFoto() {
-        self.viewNewApplicantFoto.isHidden = false
-       
-        self.viewApplicantFoto.isHidden = true
-        
-        self.imgChoosenApplicantFoto.image = self.imgApplicantFoto
-    self.stackApplicantFoto.addArrangedSubview(self.viewNewApplicantFoto)
-        
-    }
-    
-    func addAfterImageCapturingViewCustomerSignature() {
-        self.viewNewCustomerSignature.isHidden = false
-       
-        self.viewCustomerSignature.isHidden = true
-        
-        self.imgChoosenCustomerSignature.image = self.imgCustomerSignature
-    self.stackCustomerSignature.addArrangedSubview(self.viewNewCustomerSignature)
-        
-    }
-    func addAfterImageCapturingViewGuarantorSignature() {
-        self.viewNewGuarantorSignature.isHidden = false
-        self.viewGuarantorSignature.isHidden = true
-        self.imgChoosenGuarantorSignature.image = self.imgGuarantorSignature
-        self.stackGuarantorSignature.addArrangedSubview(self.viewNewGuarantorSignature)
-        
-    }
+//    func addAfterImageCapturingViewResidenceProof() {
+//              self.viewNewResidenceProof.isHidden = false
+//
+//              self.viewResidenceProof.isHidden = true
+//
+//              self.imgChoosenResidenceProof.image = self.imgResidenceProof
+//          self.stackResidenceProof.addArrangedSubview(self.viewNewResidenceProof)
+//
+//
+//          }
+//
+//    func addAfterImageCapturingViewIncomeProof() {
+//        self.viewNewIncomeProof.isHidden = false
+//
+//        self.viewIncomeProof.isHidden = true
+//
+//        self.imgChoosenIncomeProof.image = self.imgIncomeProof
+//    self.stackIncomeProof.addArrangedSubview(self.viewNewIncomeProof)
+//
+//
+//    }
+//
+//    func addAfterImageCapturingViewGuarantor() {
+//        self.viewNewGuarantor.isHidden = false
+//
+//        self.viewGuarantorNrc.isHidden = true
+//
+//        self.imgChoosenGuarantor.image = self.imgGuarantorNrcFront
+//    self.stackGuarantor.addArrangedSubview(self.viewNewGuarantor)
+//
+//
+//    }
+//
+//    func addAfterImageCapturingViewGuarantorBack() {
+//        self.viewNewGuarantorBack.isHidden = false
+//
+//        self.viewGuarantorNrcBack.isHidden = true
+//
+//        self.imgChoosenGuarantorBack.image = self.imgGuarantorNrcBack
+//    self.stackGuarantorBack.addArrangedSubview(self.viewNewGuarantorBack)
+//
+//
+//    }
+//
+//    func addAfterImageCapturingViewHousehold() {
+//        self.viewNewHoushold.isHidden = false
+//
+//        self.viewHouseholdCriminal.isHidden = true
+//
+//        self.imgChoosenHousehold.image = self.imgHousehold
+//    self.stackHousehold.addArrangedSubview(self.viewNewHoushold)
+//
+//
+//    }
+//
+//    func addAfterImageCapturingViewApplicantFoto() {
+//        self.viewNewApplicantFoto.isHidden = false
+//
+//        self.viewApplicantFoto.isHidden = true
+//
+//        self.imgChoosenApplicantFoto.image = self.imgApplicantFoto
+//    self.stackApplicantFoto.addArrangedSubview(self.viewNewApplicantFoto)
+//
+//    }
+//
+//    func addAfterImageCapturingViewCustomerSignature() {
+//        self.viewNewCustomerSignature.isHidden = false
+//
+//        self.viewCustomerSignature.isHidden = true
+//
+//        self.imgChoosenCustomerSignature.image = self.imgCustomerSignature
+//    self.stackCustomerSignature.addArrangedSubview(self.viewNewCustomerSignature)
+//
+//    }
+//    func addAfterImageCapturingViewGuarantorSignature() {
+//        self.viewNewGuarantorSignature.isHidden = false
+//        self.viewGuarantorSignature.isHidden = true
+//        self.imgChoosenGuarantorSignature.image = self.imgGuarantorSignature
+//        self.stackGuarantorSignature.addArrangedSubview(self.viewNewGuarantorSignature)
+//
+//    }
     
     @IBAction func tappedOnPreview(_ sender: Any) {
         var tempArray = [AttachmentRequest]()
@@ -1890,6 +1653,9 @@ extension LoanConfirmationVC: UICollectionViewDelegate, UICollectionViewDataSour
     //        self.delegate?.didSelectfoto(image: image)
         }
 }
+
+
+//>>>>>>>>>
 extension LoanConfirmationVC {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.dismiss(animated: true, completion: nil)
